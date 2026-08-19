@@ -226,3 +226,141 @@ The surviving target is narrower: explicit **incoming optical field -> finite-te
 Build the smallest reversible two-reservoir (or three-state if necessary) photodetector cycle satisfying local detailed balance with finite reverse rates. Derive exact \(\eta_{\mathcal I}(\omega)\), \(B_{\mathcal I}\), dark counts, activity, entropy production, and spectral gap. Search asymptotic families for bounded \(\{\dot\Sigma,\mathcal A,\Phi_0,\eta(0)\}\) with divergent \(B_{\mathcal I}\).
 
 **Status:** OPEN — immediate next derivation.
+
+---
+
+## 2026-08-19 — WP2 reversible two-channel result
+
+### Minimal reversible two-state detector
+
+Introduced two distinct reversible channels between states 0 and 1: optical rates \(u,d\) and electrical/readout rates \(r,s\). Exact formulas for response, forward-count PSD, information efficiency, activity, cycle current, and EPR were derived in `notes/WP2_REVERSIBLE_TWO_CHANNEL.md`.
+
+### Fast-reset lemma
+
+For fixed \(u,d>0\), if \(r\to\infty\) then one cannot keep both total stationary activity and entropy-production rate bounded for arbitrary \(s(r)>0\).
+
+If \(s\) stays bounded, activity stays bounded but the cycle affinity grows as \(\ln r\) and EPR diverges. If \(s\to\infty\), bidirectional traffic/activity diverges.
+
+**Status:** PROVED for the two-state/two-channel reversible model.
+
+### Important obstruction
+
+In the bounded-\(s\) branch, \(B_{\mathcal I}\propto r\) while \(\sigma\propto\ln r\). Therefore no simple linear bound \(B_{\mathcal I}\le C_1\mathcal A+C_2\sigma\) can be universal even in this minimal family.
+
+**Status:** VERIFIED asymptotic obstruction.
+
+---
+
+## 2026-08-19 — WP2 three-state rare-fast counterexample
+
+### Construction
+
+Built a reversible unicyclic three-state model with rates
+
+\[
+0\xrightleftharpoons[cR]{u}1,
+\qquad
+1\xrightleftharpoons[q]{R}2,
+\qquad
+2\xrightleftharpoons[s]{b}0,
+\]
+
+counting the forward \(1\to2\) jump. The signal perturbs \(u\). All rates are positive.
+
+The stationary intermediate occupation scales as \(\pi_1\sim R^{-1}\), while the counted forward rate is \(R\), leaving a finite mean output current.
+
+### Bounded activity and bounded EPR
+
+The total stationary activity has a finite \(R\to\infty\) limit because the fast rates act on the rare state.
+
+The cycle affinity is
+
+\[
+\mathcal F=\ln\frac{ub}{cqs},
+\]
+
+independent of \(R\). The cycle current also tends to a finite constant, so the net EPR is bounded.
+
+### Divergent information bandwidth
+
+At scaled frequency \(\omega=Rx\), fixed \(x\neq0\), the count response tends to
+
+\[
+\chi_{I\Phi}(Rx)
+\to
+\frac{\alpha\pi_{0,\infty}}{c+1+ix},
+\]
+
+while the count PSD tends to its finite shot-noise level \(I_\infty\). Therefore the coherent-input information efficiency has a strictly positive scaled-frequency limit,
+
+\[
+\eta_{\mathcal I}(Rx)
+\to
+\frac{\alpha u\pi_{0,\infty}^2}
+{I_\infty[(c+1)^2+x^2]}.
+\]
+
+Any fixed interval in scaled frequency therefore contributes \(O(R)\) to \(B_{\mathcal I}\), proving
+
+\[
+\boxed{B_{\mathcal I}\to\infty\ \text{at least linearly in }R}
+\]
+
+while \(\mathcal A\) and \(\sigma\) remain bounded.
+
+**Status:** COUNTEREXAMPLE / PROVED for the abstract reversible Markov class.
+
+### Numerical verification
+
+For \(u=0.2,b=0.7,q=0.3,s=0.1,c=2,\alpha=0.5\),
+
+\[
+\mathcal A_\infty=0.625,
+\qquad
+\sigma_\infty=0.02118245\ldots,
+\]
+
+while the predicted asymptotic bandwidth coefficient is
+
+\[
+\lim_{R\to\infty}B_{\mathcal I}/R=0.1650815217\ldots.
+\]
+
+Exact numerical integration gives \(B_{\mathcal I}/R=0.1650629350\) at \(R=1000\), relative error approximately \(1.13\times10^{-4}\).
+
+**Status:** VERIFIED numerical support for the asymptotic coefficient; linear divergence is analytically proved.
+
+### Missing resource identified
+
+The cycle affinity stays finite only because individual rate-ratio affinities diverge with opposite signs:
+
+\[
+\ln[u/(cR)]\sim-\ln R,
+\qquad
+\ln(R/q)\sim+\ln R.
+\]
+
+Hence net EPR is too coarse to see the growing microscopic energetic/kinetic scale. A universal photodetection bound likely needs an edge-resolved energetic force, kinetic-prefactor/coupling scale, generator-capacity norm, or microscopic optical/material sum-rule resource.
+
+### Physical caveat
+
+The signal-facing reverse rate \(cR\) grows while the forward optical baseline \(u\) is fixed. A literal fixed-frequency optical absorption/emission reservoir may forbid this scaling through Einstein/detailed-balance relations. Thus this is not yet a counterexample for a fully microscopic fixed-\(\hbar\omega\) photodetector.
+
+**Status:** OPEN physical embedding.
+
+### Literature distinction clarified
+
+Zheng and Lu, arXiv:2602.18631 (2026), derive finite-frequency kinetic and thermodynamic response bounds for barrier/entropic perturbations. Dechant's 2026 FRI and related work place pointwise ceilings on response precision. These results do not automatically bound the present \(B_{\mathcal I}=\int d\omega\,|\chi|^2/S(\omega)\), because their frequency-integrated inequalities use squared response normalized by a time-domain variance rather than the frequency-resolved noise PSD in the denominator.
+
+This distinction must be checked theorem-by-theorem; no novelty should be claimed from notation alone.
+
+### Immediate next action
+
+Construct a stronger counterexample or theorem under a fixed optical reservoir:
+
+- fix \(\hbar\omega_{\rm opt}\), optical occupation/flux, and the absorption/emission rate relation;
+- retain finite temperature and all reverse rates;
+- vary only internal detector kinetics;
+- ask whether \(B_{\mathcal I}\) can still diverge with bounded activity, EPR, and edge-level thermodynamic forces.
+
+This is now the highest-priority gate.
