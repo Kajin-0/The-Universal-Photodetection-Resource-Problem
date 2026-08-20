@@ -6,28 +6,31 @@ This is the first-stop replacement-agent summary. **The repository, not chat his
 
 ## Read first
 1. `AGENTS.md`
-2. `notes/RESEARCH_LOG_ROUND12.md`
-3. `manuscript/event_resource_theorem_rev3.tex`
-4. `docs/MANUSCRIPT_HOSTILE_PROOF_AUDIT_ROUND2.md`
-5. `notes/WP32_GENERAL_MARKED_POISSON_EVENT_KERNEL_THEOREM.md`
-6. `notes/WP33_EXACT_FIXED_MEAN_VARIANCE_JITTER_NO_GO.md`
-7. `notes/WP29_THERMODYNAMIC_BRIDGE_TO_REGISTRATION_INTENSITY.md`
-8. `notes/WP30_WIENER_ATOMIC_DELAY_INFORMATION_THEOREM.md`
-9. `notes/WP31_EVENT_BRANCH_RESOURCE_NECESSITY_MATRIX.md`
-10. `docs/NOVELTY_AUDIT_ROUND5_EVENT_THEOREM_STACK.md`
-11. `manuscript/references.bib`
-12. `manuscript/appendix_rare_fast_counterexample.tex`
+2. `notes/RESEARCH_LOG_ROUND13.md`
+3. `docs/MANUSCRIPT_REV4_INTEGRATION_AUDIT.md`
+4. `manuscript/event_resource_theorem_rev3.tex`
+5. `manuscript/apply_rev4.py`
+6. `notes/WP34_MINIMUM_TIMING_RESOURCE_COST_THEOREM.md`
+7. `notes/WP32_GENERAL_MARKED_POISSON_EVENT_KERNEL_THEOREM.md`
+8. `notes/WP33_EXACT_FIXED_MEAN_VARIANCE_JITTER_NO_GO.md`
+9. `notes/WP29_THERMODYNAMIC_BRIDGE_TO_REGISTRATION_INTENSITY.md`
+10. `notes/WP30_WIENER_ATOMIC_DELAY_INFORMATION_THEOREM.md`
+11. `notes/WP31_EVENT_BRANCH_RESOURCE_NECESSITY_MATRIX.md`
+12. `docs/MANUSCRIPT_HOSTILE_PROOF_AUDIT_ROUND2.md`
+13. `docs/NOVELTY_AUDIT_ROUND5_EVENT_THEOREM_STACK.md`
+14. `manuscript/references.bib`
+15. `manuscript/appendix_rare_fast_counterexample.tex`
 
 Detailed HgCdTe/Kane WP17–24 is **frozen**.
 
 ---
 
 # 1. Central objective
-Determine the smallest physical resource set that bounds source-normalized optical-to-electrical temporal information transfer for a precisely defined photodetector class, and prove insufficiency by explicit counterexample when candidate resources are omitted.
+Determine the smallest physical resource set that bounds source-normalized optical-to-electrical temporal information transfer for a precisely stated photodetector class, and prove insufficiency by explicit counterexample when proposed resources are omitted.
 
-The current mature answer is for **autonomous, independent-event, one-primary-registration photodetection of weak coherent/direct-detection intensity modulation**.
+The mature answer is for **autonomous, independent-event, one-primary-registration photodetection of weak coherent/direct-detection intensity modulation**.
 
-Do not describe the result as a universal all-detector speed limit.
+Do not describe the current result as a universal all-detector speed limit.
 
 ---
 
@@ -54,7 +57,7 @@ G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).
 }
 \]
 
-Any parameter-independent background addition or downstream processing obeys FI data processing and cannot exceed `G`.
+Any parameter-independent background addition or downstream processing cannot exceed `G` by FI data processing.
 
 ---
 
@@ -70,7 +73,7 @@ If `p_j(m)` are atomic masses of the mark-conditioned delay law,
 }
 \]
 
-Purely non-atomic conditional timing therefore gives zero asymptotic **flat-band average** transfer. Do not strengthen this into a general pointwise Fourier-decay claim.
+Purely non-atomic conditional timing gives zero asymptotic **flat-band average** transfer. Do not strengthen this into a general pointwise Fourier-decay claim.
 
 ---
 
@@ -122,7 +125,6 @@ define
 \mathfrak H=\int\Lambda(m)\kappa(dm).
 }
 \]
-
 Then
 \[
 \boxed{\mathfrak R_2\le\mathfrak H.}
@@ -132,7 +134,7 @@ Preferred proof:
 \[
 \int f^2=\int h^2S^2
 \le\Lambda\int hS^2
-=\Lambda/2
+=\Lambda/2,
 \]
 because `d(S^2)/dt=-2hS^2`.
 
@@ -140,7 +142,39 @@ A uniform global hazard is only a stronger sufficient corollary. Rare arbitraril
 
 ---
 
-# 6. WP33 exact low-order-jitter no-go
+# 6. WP34 inverse resource cost
+
+For flat two-sided task `|omega|<=Omega`, define ordinary-frequency half-band
+\[
+B=\frac{\Omega}{2\pi}.
+\]
+
+A target absolute average transfer `q` requires `q<=eta` and
+\[
+\boxed{
+\mathfrak R_2\ge4Bq,
+\qquad
+\mathfrak H\ge4Bq.
+}
+\]
+
+For uniform markwise hazard ceiling `Lambda`,
+\[
+\boxed{
+\Lambda\ge\frac{4Bq}{\eta}.
+}
+\]
+
+For retention `q=r eta` relative to captured DC information,
+\[
+\boxed{\Lambda\ge4Br.}
+\]
+
+This is an exact inversion of the established upper bound and introduces no new detector assumption.
+
+---
+
+# 7. WP33 exact low-order-jitter no-go
 
 For any target
 \[
@@ -148,7 +182,7 @@ For any target
 \qquad
 \sigma^2>0,
 \]
-there exists a smooth delay family with
+there is a smooth delay family with exactly
 \[
 \boxed{
 \mathbb ED=\mu_0,
@@ -156,7 +190,7 @@ there exists a smooth delay family with
 \operatorname{Var}D=\sigma^2
 }
 \]
-for every family member while
+for every selected family member while
 \[
 |H_D(\omega)|^2\to1
 \]
@@ -168,7 +202,7 @@ Do not claim WP33 simultaneously fixes an arbitrary exact FWHM.
 
 ---
 
-# 7. Autonomous-control boundary
+# 8. Autonomous-control boundary
 
 A free source-synchronous temporal reference can encode optical arrival phase into an internal/event mark and report it later with arbitrarily slow final registration while preserving timing FI.
 
@@ -176,7 +210,7 @@ Therefore autonomy is a genuine resource assumption. Clocked/gated/heterodyne/lo
 
 ---
 
-# 8. Thermodynamic no-go + restricted repair
+# 9. Thermodynamic no-go + restricted repair
 
 For the finite-state time-homogeneous reversible Markov optical gateway
 \[
@@ -204,7 +238,6 @@ Memorylessness gives, for downstream marks generated from exit destination and l
 \[
 \boxed{h_D(t|M)\le\lambda_1.}
 \]
-
 Hence
 \[
 \boxed{
@@ -224,27 +257,64 @@ Important limitation: not every nonoptical bare edge affinity is held fixed in t
 
 ---
 
-# 9. Publication frontier
+# 10. Publication frontier
 
-Current manuscript target:
+## Verified scientific base
 
 `manuscript/event_resource_theorem_rev3.tex`
 
-Supporting files:
-- `manuscript/references.bib`
-- `manuscript/appendix_rare_fast_counterexample.tex`
-- `docs/MANUSCRIPT_HOSTILE_PROOF_AUDIT_ROUND2.md`
-- `notes/RESEARCH_LOG_ROUND12.md`
+Rev3 is the fully reconstructed and line-by-line audited scientific source. It includes the rare-fast appendix and the current conservative novelty/scope statements.
 
-Branch compile workflow:
+## Rev4 deterministic candidate
 
-`.github/workflows/manuscript-check.yml`
+`manuscript/apply_rev4.py`
 
-It points to Rev3. The connector has not exposed a completed push-triggered Actions result, so compile success is **not yet verified**.
+generates `event_resource_theorem_rev4.tex` from Rev3.
+
+Rev4 adds:
+- TikZ/pgfplots dependencies;
+- `figure_resource_hierarchy.tex`;
+- WP34 minimum resource-cost corollary;
+- `figure_jitter_no_go.tex`;
+- one Discussion sentence highlighting the inverse cost.
+
+Generator Python syntax: VERIFIED.
+Generator exact anchors against Rev3: VERIFIED.
+
+### Figures
+
+`manuscript/figure_resource_hierarchy.tex`
+
+Final form shows the source -> autonomous kernel -> primary record plus the three intrinsic timing-resource layers. Clock/control is left to its separate theorem.
+
+`manuscript/figure_jitter_no_go.tex`
+
+Shows exact WP33 families with common mean `mu0=2 sigma` and exact variance `sigma^2`; CSV data were checked against the analytic formula.
+
+Both final figures:
+- compile locally in a minimal RevTeX document;
+- pass visual overlap/clipping inspection;
+- produce no overfull/underfull warnings in that test.
+
+### Full build status
+
+`.github/workflows/manuscript-check.yml` safely generates and compiles Rev4 and uploads artifacts on an ordinary observable branch push.
+
+Connector-authored commits in this session have not exposed a push-triggered Actions run. Temporary self-report/persistence experiments were removed.
+
+Therefore **full bibliography-resolved Rev4 compile remains an open mechanical gate**. Do not claim success until a real build result is inspected.
+
+Supporting audit:
+
+`docs/MANUSCRIPT_REV4_INTEGRATION_AUDIT.md`
+
+Latest log:
+
+`notes/RESEARCH_LOG_ROUND13.md`
 
 ---
 
-# 10. Novelty status
+# 11. Novelty status
 
 Verified prior work already includes:
 - Köllner & Wolfrum 1992: photon requirements/lifetime estimation;
@@ -257,19 +327,18 @@ Therefore do **not** claim first information-theoretic detector timing analysis 
 
 Current defensible candidate contribution:
 
-> A resource-completeness theorem for source-modulation information transfer in autonomous marked photodetection event channels, including exact atomic and timing-collision resources and explicit no-go/repair results for low-order jitter moments, free synchronous control, and aggregate stationary thermodynamics.
+> A resource-completeness theorem for source-modulation information transfer in autonomous marked photodetection event channels, including exact atomic and timing-collision resources, a minimum timing-resource cost, and explicit no-go/repair results for low-order jitter moments, free synchronous control, and aggregate stationary thermodynamics.
 
 No equivalent complete theorem stack has been identified in targeted searches. Novelty remains provisional.
 
 ---
 
-# 11. Immediate next actions
-1. Obtain an actual LaTeX compile result for Rev3 and fix any errors.
-2. Final equation/reference cross-check.
-3. Add only figures that materially clarify the theorem/counterexamples.
-4. Final hostile claim/citation review.
-5. Decide whether to prepare submission-ready source/package.
-6. Defer non-Poisson/nonclassical sources unless review shows they are required.
-7. Keep WP17–24 frozen.
+# 12. Immediate next actions
+1. Obtain an observable complete Rev4 LaTeX build result when possible.
+2. Final line-by-line claim/reference audit of generated Rev4.
+3. Keep only the two theorem figures unless a third figure clearly adds scientific information.
+4. Decide whether to prepare submission-ready source/package.
+5. Defer non-Poisson/nonclassical sources unless review shows they are required.
+6. Keep WP17–24 frozen.
 
-**Latest durable checkpoint:** `notes/RESEARCH_LOG_ROUND12.md`.
+**Latest durable checkpoint:** `notes/RESEARCH_LOG_ROUND13.md`.
