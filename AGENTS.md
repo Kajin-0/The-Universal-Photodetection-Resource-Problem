@@ -2,97 +2,96 @@
 
 ## Purpose
 
-This is the durable handoff record for **The Universal Photodetection Resource Problem (UPRP)**. The repository is authoritative project memory. Do not rely on chat context surviving.
+This is the durable handoff for **The Universal Photodetection Resource Problem (UPRP)**. The repository, not chat context, is authoritative.
 
-Before new research, read:
+Before new work, read in this order:
 
-1. `README.md`
-2. `PROBLEM.md`
-3. `ROADMAP.md`
-4. `docs/FORMALISM.md`
-5. `docs/LITERATURE_MAP.md`
-6. `docs/NOVELTY_AND_FALSIFICATION.md`
-7. `notes/RESEARCH_LOG.md`
+1. `docs/CURRENT_RESEARCH_STATE.md`
+2. `notes/RESEARCH_LOG_ROUND3.md`
+3. `notes/WP5_T_OPERATOR_FINITE_BAND_CAPTURE.md`
+4. `notes/WP5_INCIDENT_CHANNEL_QFI_SUM_RULE.md`
+5. `docs/NOVELTY_AUDIT_ROUND2.md`
+6. `notes/WP4_MICROSCOPIC_OPTICAL_COUPLING_NO_GO.md`
+7. `notes/WP3_GATEWAY_RESOURCE_THEOREM.md`
 8. `notes/RESEARCH_LOG_ROUND2.md`
-9. `notes/WP0_WP1_ROUND1.md`
-10. `notes/WP0_BANDWIDTH_CORRECTION.md`
-11. `notes/WP2_REVERSIBLE_TWO_CHANNEL.md`
-12. `notes/WP2_THREE_STATE_RARE_FAST_COUNTEREXAMPLE.md`
-13. `notes/WP3_GATEWAY_RESOURCE_THEOREM.md`
-14. `notes/WP3_MULTIGATEWAY_EXTENSION.md`
-15. `notes/WP4_MICROSCOPIC_OPTICAL_COUPLING_NO_GO.md`
+9. `notes/RESEARCH_LOG.md`
+10. `docs/FORMALISM.md`
+11. `docs/LITERATURE_MAP.md`
 
-## Project objective
+The older WP0/WP1/WP2 notes remain important for derivations and failed conjectures.
 
-Determine what resources are necessary and/or sufficient for a finite-temperature photodetector to transfer information from an incident optical field into an electrical record with specified sensitivity and temporal bandwidth.
+---
 
-Valid endpoints include:
+# Project objective
 
-- a rigorous universal/restricted resource bound;
+Determine the resources necessary and/or sufficient for a finite-temperature photodetector to transfer information from an incident optical field into an electrical measurement record with specified sensitivity and temporal bandwidth.
+
+Valid outcomes include:
+
+- a rigorous resource bound;
 - a rigorous no-go theorem;
 - an explicit counterexample family;
 - identification of a missing resource followed by a repaired theorem.
 
-Do **not** assume a simple sensitivity-bandwidth-temperature inequality exists.
+Do **not** assume a simple sensitivity-bandwidth-temperature product exists.
 
-## Research mode
-
-Analytical/theoretical only. Numerical work may test conjectures or verify algebra. Do not make experiments, fabrication, procurement, or laboratory optimization necessary next steps.
+Research is analytical/theoretical. Numerical work may verify algebra or conjectures. Do not make laboratory experiments or fabrication necessary next steps.
 
 ---
 
-# Primary information metric
+# Information metric
 
-For an optical parameter `theta`, use the information-transfer efficiency
+Use
 
 \[
-\boxed{\eta_{\mathcal I}=\dot F_{\rm out}/\dot F_{\rm in}^{Q}}
+\boxed{
+\eta_{\mathcal I}
+=\frac{F_{\rm electrical}}{F_{\rm incident}^{Q}}
+}
 \]
 
-where the numerator is classical Fisher-information rate in the complete electrical record and the denominator is quantum Fisher-information rate in the incident optical field for the same parameter.
+for the same encoded optical parameter.
 
 For coherent/Poisson weak photon-flux modulation,
 
 \[
-\boxed{
 \eta_{\mathcal I}(\omega)
 =\Phi_0\frac{|\chi_{Y\Phi}(\omega)|^2}{S_Y(\omega)}.
-}
 \]
 
-This is the temporal analogue of DQE. The normalization is useful but not novel.
+This is the temporal analogue of DQE and is not itself novel.
 
-Do **not** use an unqualified all-frequency integral as the primary theorem objective. An ideal white Poisson counter has `eta_I(omega)=1` for all modulation frequencies. Use a finite optical task/mode family:
+Do not use an unweighted all-frequency integral as the universal objective. Use a finite task:
 
 \[
-\boxed{
 \bar\eta_{\mathcal I}
-=\frac{\int \frac{d\omega}{2\pi}\mathcal J_{\rm in}(\omega)\eta_{\mathcal I}(\omega)}
-{\int \frac{d\omega}{2\pi}\mathcal J_{\rm in}(\omega)}.
-}
+=\frac{\int(d\omega/2\pi)\mathcal J_{\rm in}(\omega)\eta_{\mathcal I}(\omega)}
+{\int(d\omega/2\pi)\mathcal J_{\rm in}(\omega)}.
 \]
 
-For a flat task band `|omega| <= Omega_s`, average over that band.
+For a flat baseband task `|Omega| <= Omega_s`, average over that interval.
 
 ---
 
-# Exact Markov machinery — solved
+# WP1 — exact finite-state Markov machinery: SOLVED
 
 Column-vector convention:
 
 \[
-\dot p=Wp,\qquad \mathbf1^TW=0,\qquad W\pi=0,
+\dot p=Wp,
+\qquad
+\mathbf1^TW=0,
+\qquad
+W\pi=0.
 \]
+
+With reduced resolvent
 
 \[
-\Pi=\pi\mathbf1^T,\qquad Q=I-\Pi,
+R(\omega)=Q(i\omega I-W)^{-1}Q,
 \]
 
-\[
-R(\omega)=Q(i\omega I-W)^{-1}Q.
-\]
-
-For counted jump-current operators,
+counted-current noise and response are
 
 \[
 \boxed{
@@ -101,13 +100,14 @@ S_I(\omega)=\mathbf1^T\mathcal J^{(2)}\pi
 }
 \]
 
-and for scalar input `u`,
+and
 
 \[
 \boxed{
-\chi_{Iu}(\omega)
-=\mathbf1^T\mathcal J_u^{(1)}\pi
-+\mathbf1^T\mathcal J_0^{(1)}R(\omega)W_u\pi.
+\chi_{Iu}(\omega)=
+\mathbf1^T\mathcal J_u^{(1)}\pi
++
+\mathbf1^T\mathcal J_0^{(1)}R(\omega)W_u\pi.
 }
 \]
 
@@ -115,31 +115,49 @@ These are **PROVED for finite-state stationary Markov jump detectors** and check
 
 ---
 
-# Important prior results
+# WP4 — strongest no-go result
 
-## A. Activity-only failure
+Microscopic weak-coupling bosonic optical rates are
 
-A two-state excitation/reset model can have bounded stationary activity while latent reset bandwidth diverges. Therefore stationary activity alone cannot bound speed in an unconstrained kinetic model.
+\[
+\Gamma_\uparrow=\gamma(\omega_0)n(\omega_0),
+\qquad
+\Gamma_\downarrow=\gamma(\omega_0)[n(\omega_0)+1].
+\]
 
-## B. Reversible two-channel lemma
+Fixed temperature and photon energy fix the ratio but not the absolute coupling `gamma`.
 
-With fixed optical rates and a readout rate `r -> infinity`, bounded activity and bounded EPR cannot both be maintained in the minimal two-state/two-channel reversible detector.
+The reversible family
 
-## C. First rare-fast reversible counterexample
+\[
+0\xrightleftharpoons[bR]{aR}1,
+\qquad
+1\xrightleftharpoons[q]{cR}2,
+\qquad
+2\xrightleftharpoons[sR]{p}0
+\]
 
-A three-state reversible cycle with a rare `O(1/R)` intermediate can keep stationary activity and net EPR finite while an internal bandwidth grows as `R`. Its first version changed the signal-facing optical reverse rate without preserving a fixed optical detailed-balance ratio, so it was not the final microscopic counterexample.
+preserves fixed optical detailed balance `a/b`, finite nonzero optical throughput, finite total activity, finite total and edge-resolved EPR, and finite nonzero detection probability while the post-absorption escape rate `(b+c)R` diverges.
+
+Therefore
+
+\[
+\boxed{
+\{T,\hbar\omega_0,\text{detailed balance},f_*,\mathcal A,\Sigma,\text{edge EPRs},\eta_q\}
+\not\Rightarrow
+\text{finite detector speed}.
+}
+\]
+
+An **absolute microscopic coupling/transition resource is necessary**.
+
+This is **PROVED for the reversible finite-state Markov event-detector class**.
 
 ---
 
-# WP3 positive restricted theorem
+# WP3 — restricted internal completion theorem
 
-For a reversible optical gateway
-
-\[
-0\xrightleftharpoons[d]{u}1
-\]
-
-with forward stationary optical throughput `f >= f_* > 0`, total dimensionless EPR `sigma <= Sigma`, and total stationary activity `A_tot <= A`, define
+For a reversible optical gateway with fixed reverse optical rate `d`, minimum forward throughput `f_*`, total EPR budget `Sigma`, and activity budget `A`, define
 
 \[
 g(z)=\left(1-\frac1z\right)\ln z,
@@ -150,20 +168,16 @@ Z_*=g^{-1}(\Sigma/f_*).
 Then
 
 \[
-\boxed{\pi_1\ge \frac{f_*}{dZ_*}}
+\pi_1\ge\frac{f_*}{dZ_*},
 \]
 
-and the gateway escape rate obeys
-
 \[
-\boxed{
 \lambda_1\le
 \Lambda_*
 =\frac{\mathcal A d}{f_*}Z_*.
-}
 \]
 
-For a proper single-event detector whose electrical record cannot occur before first exit from state 1,
+For a proper single-event detector whose electrical record cannot occur before first exit from the post-absorption gateway,
 
 \[
 \boxed{
@@ -173,253 +187,224 @@ For a proper single-event detector whose electrical record cannot occur before f
 }
 \]
 
-This is **PROVED for the stated restricted event-transducer class**.
-
-Critical point: `d` is itself a microscopic optical rate. The theorem is finite only if an independent physical resource bounds `d`.
-
----
-
-# WP4 strongest no-go theorem — current central result
-
-Microscopic weak-coupling bosonic optical rates have the form
-
-\[
-\Gamma_\uparrow=\gamma(\omega_0)n(\omega_0),
-\qquad
-\Gamma_\downarrow=\gamma(\omega_0)[n(\omega_0)+1].
-\]
-
-For a thermal optical reservoir,
-
-\[
-\Gamma_\uparrow/\Gamma_\downarrow=e^{-\beta\hbar\omega_0}.
-\]
-
-Thus temperature and photon energy fix the **ratio** of optical rates but not the absolute coupling scale `gamma(omega_0)`.
-
-The following reversible family preserves the optical rate ratio while increasing only the absolute scale:
-
-\[
-0\xrightleftharpoons[bR]{aR}1,
-\qquad
-1\xrightleftharpoons[q]{cR}2,
-\qquad
-2\xrightleftharpoons[sR]{p}0,
-\]
-
-with fixed positive `a,b,c,p,q,s` and fixed `a/b`.
-
-Define
-
-\[
-\Delta=ac+s(b+c),
-\]
-
-\[
-x=\frac{p(b+c)+bq}{\Delta},
-\qquad
-y=\frac{(a+s)q+ap}{\Delta}.
-\]
-
-The exact stationary distribution is
-
-\[
-\boxed{
-\pi_0=\frac{x}{R+x+y},\quad
-\pi_1=\frac{y}{R+x+y},\quad
-\pi_2=\frac{R}{R+x+y}.
-}
-\]
-
-As `R -> infinity`:
-
-- forward optical throughput `aR pi_0 -> ax > 0`;
-- total stationary activity stays finite;
-- every edge’s stationary traffic stays finite;
-- total EPR stays finite;
-- every individual edge EPR stays finite;
-- optical detailed-balance ratio `a/b` remains fixed;
-- successful first-exit electrical branch probability `c/(b+c)` remains fixed and nonzero;
-- post-absorption escape rate `(b+c)R -> infinity`;
-- timing jitter scales as `1/R` and timing bandwidth scales as `R`.
-
-Therefore:
-
-\[
-\boxed{
-\{T,\hbar\omega_0,\text{optical detailed balance},f_*,\mathcal A,\sigma,\text{edge EPRs},\eta_q\}
-\not\Rightarrow
-\text{finite detector speed bound}.
-}
-\]
-
-An **absolute microscopic coupling/transition resource is necessary**.
-
-This is **PROVED for the finite-state reversible Markov event-detector class**.
-
----
-
-# Microscopic repair
-
-If a separate constraint supplies
+If an independent microscopic resource gives
 
 \[
 \gamma(\omega_0)\le\gamma_{\max},
 \]
 
-then
-
-\[
-d\le\gamma_{\max}[n(\omega_0)+1]
-\]
-
-and the WP3 theorem becomes
-
-\[
-\boxed{
-\Lambda_{\rm micro}
-=\frac{\mathcal A\gamma_{\max}[n+1]}{f_*}
-\,g^{-1}(\Sigma/f_*).
-}
-\]
-
-The same Lorentzian information and timing bounds follow with `Lambda_micro`.
-
-Thus the current positive theorem is a **conditional completion theorem**: it needs an optical coupling cap.
+then `d <= gamma_max[n+1]` and the same theorem becomes a microscopic conditional bound.
 
 ---
 
-# Matter-side coupling bound: TRK free-space corollary
+# WP5 — incident optical capture: current frontier
 
-For a free-space electric-dipole transition,
+## Coherent passive capture lemma
 
-\[
-\Gamma_0=\frac{\omega_0^3|\mathbf d|^2}{3\pi\epsilon_0\hbar c^3}.
-\]
-
-With conventional oscillator strength
+For a passive frequency-preserving linear frontend and coherent-state displacement encoding, let `tau(omega)` be the fraction of the normalized incident channel delivered to absorptive/capture modes. Then
 
 \[
-f_{01}=\frac{2m_e\omega_0}{3\hbar e^2}|\mathbf d|^2
-\]
-
-and `sum_f f_0f = N_e`, one obtains
-
-\[
-\boxed{
-\Gamma_0
+F_{\rm electrical}
 \le
-\frac{N_e e^2\omega_0^2}{2\pi\epsilon_0m_ec^3}
-=2N_e\alpha\frac{\hbar\omega_0}{m_ec^2}\omega_0.
+F_{\rm cap}^{Q}
+=
+\int\frac{d\omega}{2\pi}
+\tau(\omega)\mathcal J_{\rm in}(\omega).
+\]
+
+Thus for a flat optical sideband-QFI task,
+
+\[
+\boxed{
+\bar\eta_{\mathcal I}
+\le
+\frac1{2\Omega_s}
+\int_{\omega_0-\Omega_s}^{\omega_0+\Omega_s}
+\tau(\omega)d\omega.
 }
 \]
 
-Illustrative one-electron values:
+This is **PROVED** for the stated coherent/passive frontend class.
 
-- `10 um`: `6.67e5 s^-1`, inverse rate `1.50 us`;
-- `1.55 um`: `2.78e7 s^-1`, inverse rate `36 ns`;
-- `500 nm`: `2.67e8 s^-1`, inverse rate `3.75 ns`.
+## Fixed-spatial-mode T-operator theorem
 
-Do **not** present this as a universal photodetector limit. `N_e` is extensive, solids require careful normalization, and photonic environments modify the LDOS/Purcell factor.
-
----
-
-# Electromagnetic-side missing resource
-
-Matter TRK alone does not bound the full device coupling. The electromagnetic environment controls the Green tensor / LDOS. Resonators, slow light, plasmonic confinement, collective coupling, and cavity mode volume introduce additional resources.
-
-Existing optical-response theory already gives:
-
-- geometry/material-dependent single-frequency optical bounds;
-- LDOS sum rules;
-- arbitrary-bandwidth LDOS power-bandwidth bounds;
-- broadband coupling/absorption bounds.
-
-The leading route is therefore a **composition theorem** combining:
-
-1. matter oscillator-strength / f-sum budget;
-2. electromagnetic LDOS / susceptibility / geometry / bandwidth budget;
-3. the photodetector thermokinetic gateway theorem;
-4. a finite optical information task.
-
-Key physical observation: detecting amplitude/phase modulation up to baseband `Omega_s` requires an optical frontend that accepts carrier sidebands over a corresponding optical bandwidth. An arbitrarily large but arbitrarily narrow Purcell resonance should therefore not automatically yield arbitrarily large information bandwidth.
-
-This composition is **OPEN**.
-
----
-
-# Quantum-photodetector connection
-
-Young–Sarovar–Léonard (2018) explicitly found in their dark-state fully quantum detector that near-perfect detection is obtained when optical coupling `gamma` and localization rate become arbitrarily large compared with photon wavepacket duration. Their model therefore contains the same unbounded-coupling escape hatch isolated by WP4.
-
-Do not claim their result is wrong. It is a model with unconstrained `gamma`. The UPRP contribution is to identify and constrain the physical resource represented by `gamma`.
-
-Nishiyama–Hasegawa (2026) independently indicate that quantum evolution speed depends on interaction-Hamiltonian fluctuations, supporting the expectation that the quantum completion will involve `Var(H_int)` or a related coupling functional rather than entropy production alone.
-
----
-
-# Current strongest research question
-
-> **What is the weakest architecture-independent microscopic light–matter resource that, together with a finite optical task bandwidth and thermodynamic/kinetic budgets, yields a finite upper bound on optical-to-electrical information-transfer speed?**
-
-Leading candidates:
+Use the unrenormalized positive-frequency oscillator variables of Zhang–Monticone–Miller (2023):
 
 \[
-\gamma_{\max}(\omega),
-\quad
-J_{\rm EM}(\omega),
-\quad
-|d|^2\rho_{\rm EM},
-\quad
-\text{TRK/f-sum budget},
-\quad
-\text{finite-band LDOS/absorption functional},
-\quad
-\operatorname{Var}(H_{\rm int}),
-\quad
-\|H_{\rm int}\|.
+\mathbb Z(\omega)
+=\omega\operatorname{Im}\mathbb T(\omega)
+=\mathbb X(\omega)+\mathbb Y(\omega),
 \]
 
-The likely final result may be a paired theorem:
+with `X >= 0` and `-X <= Y <= X`.
 
-1. **No-go:** thermodynamic ratios + stationary costs do not determine an absolute detector speed scale.
-2. **Completion:** adding an explicit microscopic light–matter coupling resource restores a finite information-bandwidth bound.
-
----
-
-# Critical literature overlap
-
-Do not claim as new:
-
-- general quantum photodetector frameworks/tradeoffs — Young, Sarovar, Léonard (2018);
-- continuous-measurement/open-system TURs — Hasegawa and successors;
-- detector performance versus thermodynamic cost — Schwarzhans et al. (2025/2026);
-- finite-frequency fluctuation-response inequalities — Dechant (2026);
-- response KURs — Liu & Gu (2026);
-- finite-frequency thermodynamic/kinetic response bounds — Zheng & Lu (2026);
-- output response precision bounded by QFI/activity — Gu & Liu (2026);
-- general open-system precision limits — Vu et al. (2026);
-- arbitrary-bandwidth LDOS/power-bandwidth bounds — Shim, Fan, Johnson, Miller (2019) and subsequent optical-limit literature.
-
-Potential novelty is the photodetection-specific **missing absolute coupling resource** theorem and its composition with optical sum rules/power-bandwidth limits.
-
----
-
-# Immediate priorities
-
-1. Derive a rigorous finite-band optical coupling bound from TRK + Green-tensor/LDOS power-bandwidth theory.
-2. Prove the carrier-sideband/baseband mapping without assuming a single-mode cavity.
-3. Attempt
+Their high- and low-frequency sum rules imply
 
 \[
-\bar\eta_{\mathcal I}(\Omega_s)\ge r
-\Rightarrow
-\Omega_s\le F(\Sigma,\mathcal A,f_*,C_{\rm matter},C_{\rm EM}).
+\int_0^\infty\mathbb Xd\omega
+\preceq\frac\pi2\omega_p^2\mathbb I_D,
 \]
 
-4. Translate the Markov coupling resource into the Young–Sarovar–Léonard input-output quantum model.
-5. Test whether `Var(H_int)` is sufficient or whether an electromagnetic bandwidth/spectral resource is still independently necessary.
-6. Continue theorem-level novelty audit before publication claims.
+\[
+\int_0^\infty\frac{\mathbb X}{\omega^2}d\omega
+\preceq\frac\pi2\mathbb T_{0,D}.
+\]
+
+For `B=[omega_-,omega_+]` and a **fixed incident spatial vector** `v`,
+
+\[
+\int_Bv^\dagger\mathbb Xv\,d\omega
+\le
+\frac\pi2
+\min\left[
+\omega_p^2\|v\|^2,
+\omega_+^2v^\dagger\mathbb T_{0,D}v
+\right].
+\]
+
+Hence for a reciprocal passive structure,
+
+\[
+\boxed{
+\int_BP_{\rm cap}d\omega
+\le
+\frac{\epsilon_0\pi}{4}
+\min\left[
+\omega_p^2\|v\|^2,
+\omega_+^2v^\dagger\mathbb T_{0,D}v
+\right].
+}
+\]
+
+General nonreciprocal passive case has twice this RHS.
+
+For an electrically small reciprocal detector under nearly uniform illumination,
+
+\[
+\boxed{
+\bar\eta_{\mathcal I}(\Omega_s)
+\le
+\min\left[
+1,
+\frac{\pi}{4cA\Omega_s}
+\min\left(
+\omega_p^2V,
+(\omega_0+\Omega_s)^2\alpha_{\rm stat}
+\right)
+\right].
+}
+\]
+
+This is **PROVED under the fixed-spatial-profile assumptions**.
+
+At `lambda_0=10 um`, `r=0.9`, narrow sideband, the static branch scales as
+
+\[
+f_s\lesssim1.64\times10^{19}(\alpha_{\rm stat}/A)\ {\rm Hz/m}.
+\]
+
+Examples: effective static length `1 um -> 16.4 THz`, `100 nm -> 1.64 THz`, `10 nm -> 164 GHz`. These are scaling examples, not material-specific limits.
+
+---
+
+# New spatial-channel obstruction
+
+For a propagating field over a large device, the incident profile generally changes with frequency:
+
+\[
+v(\omega,r)\propto e^{i\omega\hat k\cdot r/c}.
+\]
+
+Different frequencies can exploit different spatial response directions. If all profiles lie in an `M`-dimensional fixed subspace, a coarse sum-rule bound scales explicitly with `M`.
+
+Therefore the arbitrary finite-band theorem needs a **spatio-spectral degrees-of-freedom / footprint / channel-rank resource** in addition to oscillator strength and static response.
+
+Current likely resource hierarchy:
+
+\[
+\boxed{
+\text{source temporal task}
++
+\text{matter oscillator strength}
++
+\text{static/finite-band EM response}
++
+\text{spatial channel/footprint resource}
++
+\text{internal thermokinetic resources}.
+}
+\]
+
+---
+
+# Current restricted optical + internal theorem
+
+For the intersection of:
+
+- coherent-state encoding;
+- passive reciprocal optical frontend;
+- fixed incident spatial profile over the sideband band;
+- finite T-operator high/low-frequency resources;
+- WP3/WP4 downstream event-transducer assumptions;
+
+we have
+
+\[
+\bar\eta_{\rm total}
+\le B_{\rm opt}(\Omega_s),
+\qquad
+\bar\eta_{\rm total}
+\le B_{\rm trans}(\Omega_s),
+\]
+
+therefore
+
+\[
+\boxed{
+\bar\eta_{\rm total}(\Omega_s)
+\le
+\min\{B_{\rm opt}(\Omega_s),B_{\rm trans}(\Omega_s)\}.
+}
+\]
+
+This is a valid restricted completion theorem. It is not the final universal theorem.
+
+---
+
+# Critical novelty constraints
+
+Do **not** claim novelty for:
+
+- general quantum photodetector tradeoffs — Young, Sarovar, Léonard (2018);
+- thermodynamic measurement/precision bounds — Hasegawa and successors;
+- detector performance versus dissipation — Schwarzhans et al.;
+- finite-frequency fluctuation-response bounds — Dechant, Liu/Gu, Zheng/Lu;
+- optical sum rules or LDOS power-bandwidth limits — Shim et al. and related literature;
+- general electromagnetic T-operator sum rules — Zhang, Monticone, Miller (2023);
+- information theory + Maxwell-constrained structured photonic channels — Amaolo et al. (2026).
+
+Amaolo et al. are especially close: they bound Shannon capacity of structured photonic channels at a **single frequency** and explicitly identify finite-band spectral-sum-rule and macroscopic-QED extensions as future work.
+
+The surviving candidate novelty is specifically a finite-band **incident optical QFI -> physical capture -> finite-temperature electrical transducer** no-go/completion theorem.
+
+Also note the rigor correction: do not assert a blanket scalar macroscopic extinction sum rule without deriving it from a rigorous scattering framework. Use the T-operator route for arbitrary scatterers; use the scalar TRK formula only in its microscopic electric-dipole regime.
+
+---
+
+# Immediate highest-priority task
+
+Replace the fixed incident-vector assumption by a finite-band frequency-dependent incident-channel theorem with an explicit physical spatial resource.
+
+Preferred routes:
+
+1. finite-dimensional source/receiver channel basis with rank `M`;
+2. rigorous space-bandwidth/Shannon-number bound for a finite design domain;
+3. semidefinite optimization of frequency-dependent incident vectors against the T-operator oscillator measure;
+4. footprint/volume-limited plane-wave channel family.
+
+Then compose the resulting optical bound with WP3/WP4 and extend coherent-state QFI to general quantum temporal modes.
+
+Issue #6 tracks this work.
 
 ---
 
@@ -427,22 +412,22 @@ Potential novelty is the photodetection-specific **missing absolute coupling res
 
 For every candidate theorem, test:
 
-1. dimensions and reparameterization invariance;
-2. deterministic output-gain invariance;
-3. ideal photon counter/direct-feedthrough limit;
+1. unit/reparameterization invariance;
+2. output-gain invariance;
+3. ideal photon counter/direct feedthrough;
 4. source-bandwidth leakage;
-5. parallel replication/extensivity;
+5. detector replication/extensivity;
 6. rare-fast states;
-7. hidden degrees of freedom;
-8. bounded total and edge EPR with divergent bare rates;
-9. bounded stationary activity with divergent latent rates;
-10. fixed optical detailed-balance ratio with diverging absolute coupling;
-11. equilibrium/zero-current limits;
-12. weak and strong optical flux;
-13. increasing state-space dimension;
-14. coherence/non-Markovianity/feedback/nonreciprocity;
-15. cavity/LDOS/Purcell engineering;
-16. whether a proposed resource merely restates bandwidth instead of explaining it.
+7. bounded total and edge EPR with divergent bare rates;
+8. fixed optical detailed balance with divergent absolute coupling;
+9. high-Q and vanishing mode volume;
+10. large participating electron number;
+11. propagating spatial phase across large detector area;
+12. increasing spatial channel count;
+13. slow-light and plasmonic singular limits;
+14. active/gain media and pump/noise resources;
+15. strong/ultrastrong coupling and non-Markovianity;
+16. whether the proposed resource merely restates the bandwidth being bounded.
 
 ---
 
@@ -450,21 +435,21 @@ For every candidate theorem, test:
 
 After each substantive result:
 
-- update a dedicated derivation note;
-- add to `notes/RESEARCH_LOG.md` or a numbered round log;
-- preserve failed conjectures/counterexamples;
-- update this file whenever project direction changes materially.
+- add/update a dedicated note;
+- add a numbered research-log round when project direction changes;
+- update this file;
+- preserve failed conjectures and counterexamples.
 
 Status labels:
 
 - **PROVED** — complete derivation under explicit assumptions;
-- **VERIFIED** — independently checked but proof not fully formalized;
+- **VERIFIED** — independently checked but not fully formalized;
 - **CONJECTURE** — plausible and unproved;
-- **COUNTEREXAMPLE** — explicit model violating a stated claim;
+- **COUNTEREXAMPLE** — explicit model violates a stated claim;
 - **OPEN** — unresolved;
 - **BLOCKED** — missing theoretical/source input;
-- **REJECTED** — invalid or redundant.
+- **REJECTED** — invalid/redundant.
 
-## Current state — Round 2, 2026-08-19
+## Current state — end of Round 3, 2026-08-19
 
-WP1 Markov response/noise machinery is solved. WP0 classical/coherent information normalization is largely solved. WP3 produced a restricted positive gateway theorem. WP4 produced the strongest result so far: a reversible detailed-balance-preserving counterexample proving that fixed temperature, photon energy, optical detailed balance, throughput, stationary activity, total EPR, and edge EPRs still do not bound photodetector speed when the absolute light–matter coupling scale is unconstrained. The decisive next gate is to derive the weakest physically meaningful matter+electromagnetic coupling resource that closes this loophole.
+The project has a strong Markov missing-coupling no-go theorem, a restricted internal thermokinetic completion theorem, a coherent incident-channel QFI capture lemma, and a rigorous fixed-spatial-mode finite-band T-operator optical capture theorem. The decisive remaining classical/semiclassical gate is the spatio-spectral incident-channel extension. A full quantum completion and final novelty claim remain open.
