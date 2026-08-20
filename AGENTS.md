@@ -4,42 +4,39 @@
 
 Durable handoff for **The Universal Photodetection Resource Problem (UPRP)**. The repository, not chat context, is authoritative.
 
-Research is analytical/theoretical. Numerical work is allowed for algebraic validation and conjecture testing. Do not make laboratory experiments, fabrication, sample procurement, or measurement campaigns necessary next steps.
+Research is analytical/theoretical only. Numerical algebra/simulation is allowed for validation. Do not make experiments, fabrication, sample procurement, or measurement campaigns necessary next steps.
 
 ## Read first
 
-A replacement agent should read, in order:
+A replacement agent should read in this order:
 
 1. `docs/CURRENT_RESEARCH_STATE.md`
-2. `notes/RESEARCH_LOG_ROUND6.md`
-3. `notes/WP8_UV_NON_GAUSSIAN_INSTABILITY.md`
-4. `notes/WP8_UV_REGULARIZATION_RESOURCE.md`
-5. `notes/WP8_FINITE_SUPPORT_COMPLETION.md`
-6. `notes/WP8_EXACT_GLOBAL_DUAL_CHARACTERIZATION.md`
-7. `notes/WP8_PARITY_REWEIGHT_INTERPOLATION.md`
-8. `notes/WP8_GAUSSIAN_PARITY_BIFURCATION.md`
-9. `notes/WP8_SLD_STAM_GLOBAL_ENERGY_THEOREM.md`
-10. `notes/WP9_FINITE_BAND_QUANTUM_SPECTRAL_COMPOSITION.md`
-11. `notes/WP9_POINTWISE_RESOURCE_COMPLETE_BOUND.md`
-12. `notes/WP7_QUANTUM_DISTINGUISHABILITY_TRANSFER.md`
-13. `notes/WP6_RESTRICTED_COMPOSITE_THEOREM.md`
-14. `notes/WP5_T_OPERATOR_FINITE_BAND_CAPTURE.md`
-15. `notes/WP4_MICROSCOPIC_OPTICAL_COUPLING_NO_GO.md`
-16. `notes/WP3_GATEWAY_RESOURCE_THEOREM.md`
-17. `docs/LITERATURE_MAP.md`
-18. `docs/FORMALISM.md`
+2. `notes/RESEARCH_LOG_ROUND7.md`
+3. `notes/WP11_SPATIAL_DELAY_INFORMATION_THEOREM.md`
+4. `notes/WP11_DISSIPATIVE_MATCHING_THEOREM.md`
+5. `notes/WP11_DISSIPATIVE_DETUNING_EXTENSION.md`
+6. `notes/WP11_MINIMAL_FINITE_LEVEL_SEMICONDUCTOR_DETECTOR.md`
+7. `notes/WP11_SHOCKLEY_RAMO_KANE_RESOURCE_BOUND.md`
+8. `notes/WP12_READOUT_FILTER_INFORMATION_INVARIANCE.md`
+9. `notes/WP12_SIMPLE_RC_AMPLIFIER_INFORMATION_BOUND.md`
+10. `notes/WP8_UV_NON_GAUSSIAN_INSTABILITY.md`
+11. `notes/WP8_GENERAL_FINITE_SUBSPACE_GENERATOR_THEOREM.md`
+12. `notes/WP10_TRK_POINTER_RESOURCE_AUDIT.md`
+13. `notes/WP5_T_OPERATOR_FINITE_BAND_CAPTURE.md`
+14. `notes/WP4_MICROSCOPIC_OPTICAL_COUPLING_NO_GO.md`
+15. `notes/WP3_GATEWAY_RESOURCE_THEOREM.md`
+16. `docs/LITERATURE_MAP.md`
+17. `docs/FORMALISM.md`
 
-Older WP0/WP1/WP2 notes and research logs preserve derivations, failed conjectures, and counterexamples.
+Older research logs and WP0–WP9 notes preserve derivations, failed conjectures, corrections, and novelty audits.
 
 ---
 
 # Project objective
 
-Determine which physical resources are necessary and/or sufficient for a finite-temperature photodetector to transfer information from an incident optical field into an electrical record with specified sensitivity and temporal bandwidth.
+Determine which physical resources are necessary and/or sufficient for a finite-temperature photodetector to transfer information from an incident optical field into an electrical measurement record with specified sensitivity and temporal information bandwidth.
 
-Valid endpoints include a rigorous resource bound, no-go theorem, explicit counterexample family, or a repaired theorem after a missing resource is identified.
-
-Do **not** assume a simple sensitivity-bandwidth-temperature product exists.
+The project is now a **resource-completeness / no-go + repair program**, not a search for one naive sensitivity-bandwidth-temperature product.
 
 ---
 
@@ -48,206 +45,318 @@ Do **not** assume a simple sensitivity-bandwidth-temperature product exists.
 Use
 
 \[
-\eta_{\mathcal I}=F_{\rm electrical}/F_{\rm incident}^{Q}
+\boxed{\eta_{\mathcal I}=F_{\rm electrical}/F_{\rm incident}^{Q}}
 \]
 
-for the same encoded optical parameter.
+for the same encoded parameter.
 
-For coherent/Poisson weak photon-flux modulation,
+For coherent/Poisson weak flux modulation,
 
 \[
-\eta_{\mathcal I}(\omega)=\Phi_0\frac{|\chi_{Y\Phi}(\omega)|^2}{S_Y(\omega)}.
+\eta_{\mathcal I}(\omega)=\Phi_0|\chi_{Y\Phi}(\omega)|^2/S_Y(\omega).
 \]
 
-Use a finite source-information task
+Use a finite source task
 
 \[
 \bar\eta_{\mathcal I}
-=\frac{\int(d\omega/2\pi)\mathcal J_{\rm in}(\omega)\eta_{\mathcal I}(\omega)}
-{\int(d\omega/2\pi)\mathcal J_{\rm in}(\omega)}
+=\frac{\int(d\omega/2\pi)\mathcal J_{\rm in}\eta_{\mathcal I}}
+{\int(d\omega/2\pi)\mathcal J_{\rm in}}
 \]
 
 rather than an unweighted all-frequency integral.
 
 ---
 
-# Established resource-completeness chain
+# Mandatory conceptual distinction — new central result
 
-## Classical/Markov no-go
+Do **not** identify conventional detector `-3 dB` bandwidth with UPRP information bandwidth without an explicit observation/noise model.
 
-Exact finite-state response/noise machinery is solved. More importantly, an explicit reversible three-state family proves
+Three different quantities must be separated:
+
+1. **latency** — deterministic propagation/response delay;
+2. **amplitude bandwidth** — attenuation/phase of a waveform or transfer function;
+3. **information bandwidth** — degradation of source-normalized Fisher/QFI in the accessible output record.
+
+A deterministic known delay has `|e^{-i omega tau}|=1` and therefore no stationary spectral-FI loss.
+
+A deterministic invertible LTI filter applied to signal and all upstream noise obeys
+
+\[
+\boxed{|\chi_Y|^2/S_Y=|\chi_X|^2/S_X}
+\]
+
+where the transfer function is nonzero.
+
+Information loss instead requires inaccessible/coarse-grained degrees of freedom, stochastic timing, downstream additive noise, finite sampling/quantization/observation resources, or exact spectral nulls.
+
+This correction supersedes any older wording that treated transit/RC latency as automatically equivalent to information bandwidth.
+
+---
+
+# Established classical/Markov resource result
+
+Exact finite-state response/noise machinery is solved.
+
+Strongest classical no-go:
 
 \[
 \boxed{
 \{T,\hbar\omega_0,\text{detailed balance},f_*,\mathcal A,\Sigma,\text{edge EPRs},\eta_q\}
-\not\Rightarrow\text{finite detector speed}.
+\not\Rightarrow\text{finite detector speed}
 }
 \]
 
-Stationary thermodynamic resources do not determine an absolute microscopic rate scale. An **absolute coupling/transition resource** is necessary.
+because an explicit reversible family hides diverging absolute rates in rare states while all listed stationary resources remain finite.
 
-## Restricted Markov repair
+**Missing resource:** absolute microscopic coupling/transition scale.
 
-For a reversible optical gateway with fixed reverse optical rate `d`, nonzero throughput, bounded EPR and bounded activity, the post-absorption escape rate is bounded and therefore the event-record information spectrum has a Lorentzian ceiling. See `WP3_GATEWAY_RESOURCE_THEOREM.md`.
+Restricted repair: fixed optical gateway kinetics + finite EPR/activity/throughput gives a finite post-absorption escape-rate and event-record information ceiling. See WP3/WP4.
 
-## Finite-band optical capture
+---
 
-Passive coherent optical capture is bounded using rigorous matrix-valued T-operator sum rules. See WP5. Optical power-bandwidth/sum-rule theory itself is prior art; UPRP uses it as one resource layer.
+# Passive optical frontend — WP5
 
-## Quantum finite-hypothesis branch
-
-For the full optical-field/apparatus partition,
+For coherent passive capture, QFI data processing plus rigorous T-operator sum rules gives finite-band capture ceilings. In a small reciprocal detector,
 
 \[
-D_{\rm elec}/D_{\rm in}\le\min\{1,2G\},
-\qquad
-G=\hbar^{-1}\int g_{\rm int}(t)dt.
+\bar\eta_I(\Omega_s)
+\le
+\min\left[
+1,
+\frac{\pi}{4cA\Omega_s}
+\min(\omega_p^2V,(\omega_0+\Omega_s)^2\alpha_{\rm stat})
+\right]
 \]
 
-This controls Helstrom/binary distinguishability transfer. An exact trine-POVM counterexample proves trace-distance contraction cannot be differentiated into a universal SLD-QFI contraction theorem.
+under the stated spatial/channel assumptions.
 
-## Coherent-state SLD-QFI branch
+Optical power-bandwidth/sum-rule theory is prior art; UPRP uses it as one resource layer.
 
-Directional SLD Stam for passive mixing:
+---
+
+# Quantum apparatus resource — WP7/WP8
+
+Finite-hypothesis branch:
+
+\[
+D_{\rm elec}/D_{\rm in}\le\min\{1,2G\}
+\]
+
+with interaction-action seminorm `G`. Trace-distance contraction does **not** imply SLD-QFI contraction; trine POVM counterexample proves this.
+
+For coherent displacement through passive mixing, directional SLD-Stam gives
 
 \[
 \frac1{J_C}\ge\frac\tau{J_A}+\frac{1-\tau}{J_B}.
 \]
 
-For coherent optical input `J_A=2` and pointer directional QFI `J_D`,
+For coherent input and arbitrary pointer excitation `N`,
 
 \[
 \boxed{
 F_{\rm elec}/F_{\rm in}
-\le
-\frac{\tau J_D}{2(1-\tau)+\tau J_D}.
+\le\frac\tau{\tau+(1-\tau)\xi(N)},
+\quad
+\xi(N)=(\sqrt{N+1}-\sqrt N)^2.
 }
 \]
 
-A pre-squeezed pointer proves **coupling action alone is insufficient**: arbitrarily large preloaded apparatus metrological resource can compensate arbitrarily weak nonzero coupling.
+This is globally tight for the passive-linear single-effective-mode model.
 
-## Exact excitation-energy repair
+### Critical WP8 UV result
 
-For arbitrary pointer state of total mean excitation `N`,
+Finite free energy in an unrestricted harmonic pointer is not enough for an exact smooth Gaussian optimum. High-Fock coherences generate a UV instability for every `D0>0`; energy moments/complete diagonal energy data do not remove it.
 
-\[
-\xi(N)=(\sqrt{N+1}-\sqrt N)^2,
-\]
+A finite preparation subspace `S` and bounded signal generator `G` repair the problem exactly:
 
 \[
 \boxed{
-F_{\rm elec}/F_{\rm in}
-\le
-\frac\tau{\tau+(1-\tau)\xi(N)}.
+\sup_{\rho\subset S}F_Q(\rho,G)
+=4\inf_c\lambda_{\max}[\Pi_S(G-cI)^2\Pi_S].
 }
 \]
 
-This is globally tight in the passive-linear single-effective-mode model.
+Finite level count alone is insufficient if the absolute generator scale can diverge.
+
+TRK/f-sum alone also fails for arbitrary excited pointer states because signed upward/downward oscillator strengths can cancel. See WP10.
 
 ---
 
-# WP8 finite-temperature apparatus findings
+# WP11 — explicit semiconductor detector embedding
 
-Let
+## Exact coherent three-node detector
 
 \[
-\vartheta=\beta\hbar\omega_D,
-\qquad
-D_0=D(\rho_D\Vert\tau_\vartheta)=\beta\Delta F.
+|F\rangle\xleftrightarrow{g}|X\rangle\xleftrightarrow{\kappa}|C\rangle.
 \]
 
-## Exact global dual
+For weak single-rail optical encoding and binary charge readout,
 
 \[
 \boxed{
-J_F^{\max}(D_0)
-=
-\sup_{L=L^\dagger}
-\inf_{\lambda>0}
-\lambda\left[
-D_0+
-\ln\operatorname{Tr}
-\exp\left(
-\log\tau+
-\frac{2i[P,L]-L^2}{\lambda}
-\right)
-\right].
+\eta_I(t)=
+\frac{4g^2\kappa^2}{(g^2+\kappa^2)^2}
+\sin^4\left(\frac{\sqrt{g^2+\kappa^2}t}{2}\right).
 }
 \]
 
-This is exact in finite dimension and gives the oscillator frontier subject to domain/partition-function conditions.
+Time-maximized transfer is unity iff `g=kappa`.
 
-## Non-Gaussian parity structure
-
-Gaussian states are not globally optimal at finite free energy. Exact parity-sector frontiers and simple parity-reweight families are solved. At `vartheta=ln 2`, a simple parity-reweight family beats the entire Gaussian frontier at `D≈0.0122293`; an enlarged squeezed/parity family has a macroscopic restricted-family bifurcation at `D≈0.00481024`.
-
-Do not claim parity enhancement itself as novel; recent and older displacement-sensing literature already contains parity/sparse-Fock advantages.
-
-## Critical UV correction
-
-The ideal infinite harmonic pointer has an even stronger pathology. For every `D_0>0`, sufficiently high-Fock centered coherence perturbations improve SLD displacement QFI at the same free-energy budget. The exact Hessian ratio grows as
+With `Q=e|C><C|`,
 
 \[
-R_n\sim\alpha(\mu,\vartheta)n\to\infty.
+\boxed{\|I\|=e|\kappa|.}
 \]
 
-Therefore:
+For finite electrical subspace with Hamiltonian span `W_S` and charge span `Delta Q_S`,
+
+\[
+\boxed{\|I\|\le W_S\Delta Q_S/(2\hbar)}
+\]
+
+and the bound is tight.
+
+## Shockley–Ramo / band-velocity mapping
+
+For weighting potential `phi_w`,
+
+\[
+Q_w=q\phi_w(\hat r),
+\qquad I_w=(i/\hbar)[H,Q_w].
+\]
+
+With velocity capacity `v_S` and weighting length `ell_w=1/sup|grad phi_w|`,
+
+\[
+\boxed{\|I_w\|\le |q|v_S/\ell_w.}
+\]
+
+Binary-electron internal coupling therefore satisfies
 
 \[
 \boxed{
-\text{Gaussian is regular/asymptotically perturbatively optimal as }D_0\to0,
-\text{ but never exactly optimal for any }D_0>0
+|\kappa|\le
+\min[W_S/(2\hbar),v_S/\ell_w].
 }
 \]
 
-in the unrestricted ideal oscillator.
+A HgCdTe Kane velocity near `1.07e6 m/s` is an illustrative ballistic microscopic scale only, not a detector bandwidth.
 
-The improvement is nonperturbatively small near equilibrium, so the Gaussian BKM expansion remains correct to algebraic orders.
+---
 
-## Energy moments do not repair the UV loophole
+# WP11 spatial-delay information theorem
 
-The unstable coherences are parity odd while every `f(H_D)` is parity even:
-
-\[
-\operatorname{Tr}[\delta\rho f(H_D)]=0.
-\]
-
-Thus mean energy, energy variance, any finite set of moments, or even the complete diagonal energy distribution cannot by themselves control the UV coherence.
-
-Ordinary time-translation/energetic-coherence QFI is also not a uniform repair in a perfect harmonic ladder because level gaps stay constant while displacement matrix elements grow as `sqrt(n)`.
-
-A **coherence-/support-/matrix-element-sensitive microscopic resource is necessary**.
-
-## Exact finite-support repair
-
-If the initial pointer preparation is restricted to
-
-\[
-\mathcal H_N=\operatorname{span}\{|0\rangle,\ldots,|N\rangle\},
-\]
-
-then
+For independently captured Poisson events with random delay `D`, event-timestamp information is
 
 \[
 \boxed{
-J_N^{\max}=4\lambda_{\max}(\Pi_NP^2\Pi_N)
+\eta_I^{\rm timestamp}(\omega)
+=\eta_c|\mathbb E e^{-i\omega D}|^2.
 }
 \]
 
-is the exact arbitrary-state displacement-QFI maximum, achieved by a parity-definite top eigenvector.
-
-Hence
+For unresolved capture-position density `p_abs(r)` and deterministic transport delay `D(r)`,
 
 \[
 \boxed{
-F_{\rm elec}/F_{\rm in}
-\le
-\frac{\tau J_N^{\max}}
-{2(1-\tau)+\tau J_N^{\max}}.
+\eta_I(\omega)=
+\eta_c\left|\int p_{\rm abs}(r)e^{-i\omega D(r)}dr\right|^2.
 }
 \]
 
-This is a complete UV-regularized quantum theorem for the stated support-constrained passive-linear pointer class.
+If capture position is retained as side information, deterministic geometry delay can be corrected and this loss disappears.
+
+Uniform unresolved depth in a planar layer gives
+
+\[
+\boxed{
+\eta_I=\eta_c\operatorname{sinc}^2(\omega L/2v),
+\quad
+f_{1/2}=0.4429464707\ldots\,v/L.
+}
+\]
+
+This recovers the conventional `~0.44/tau` transit coefficient as **delay dispersion**, not deterministic latency.
+
+With dark counts `d`, flux `Phi0`, and independent delays,
+
+\[
+\boxed{
+\eta_I
+=\frac{\eta_c^2\Phi_0}{\eta_c\Phi_0+d}
+\prod_j|H_j(\omega)|^2.
+}
+\]
+
+---
+
+# WP11 dissipative matching
+
+Minimal coherent capture + irreversible electrical localization:
+
+\[
+H=\hbar g(|F\rangle\langle X|+h.c.),
+\qquad L=\sqrt\Gamma|C\rangle\langle X|.
+\]
+
+At resonance,
+
+\[
+\boxed{\langle T\rangle=\Gamma/(4g^2)+2/\Gamma.}
+\]
+
+The mean and variance are minimized at
+
+\[
+\boxed{\Gamma_{\rm opt}=2\sqrt2\,g}
+\]
+
+with `mean=sqrt(2)/g` and `sigma=1/(sqrt(2)g)`.
+
+Too-large `Gamma` enters a quantum-Zeno regime; generic Zeno detector tradeoffs are prior art.
+
+With detuning `Delta`,
+
+\[
+\boxed{
+\langle T\rangle=
+\Gamma/(4g^2)+2/\Gamma+\Delta^2/(\Gamma g^2),
+}
+\]
+
+\[
+\boxed{
+\Gamma_{\rm opt}=2\sqrt{\Delta^2+2g^2}.
+}
+\]
+
+---
+
+# WP12 readout-circuit information
+
+A known deterministic RC pole alone does not destroy FI.
+
+For parallel RC with input-side current noise `S_u` and downstream voltage noise `S_e`,
+
+\[
+\boxed{
+K_V(\omega)=
+\frac{|\chi_I|^2}
+{S_u+\frac{S_e}{R^2}[1+(\omega RC)^2]}.
+}
+\]
+
+For white noise/flat intrinsic response,
+
+\[
+\boxed{
+f_{1/2}^{I}
+=\frac1{2\pi RC}
+\sqrt{1+S_uR^2/S_e}.}
+\]
+
+Only when downstream voltage noise dominates does the FI half-power point reduce to the conventional RC amplitude pole.
 
 ---
 
@@ -258,49 +367,49 @@ The strongest structure now supported by explicit no-go/repair pairs is
 \[
 \boxed{
 \text{finite source task}
-+
-\text{finite-band EM capture resources}
-+
-\text{absolute microscopic cross-coupling}
-+
-\text{apparatus preparation resource}
-+
-\text{UV/support/generator-matrix-element regularizer}
-+
-\text{internal thermokinetic resources}
++\text{finite-band optical capture}
++\text{absolute microscopic coupling}
++\text{finite apparatus preparation/support/generator resource}
++\text{semiconductor transport/current resource}
++\text{optical/electrical geometry and unresolved timing statistics}
++\text{ongoing thermokinetic resources}
++\text{readout noise/sampling resources}
 \Longrightarrow
-\text{finite information-bandwidth ceiling}
+\text{finite information-transfer ceiling}
 }
 \]
 
 under explicit model assumptions.
 
-The conceptual pattern is important: a resource can hide in a vanishing-weight sector. Classically it was a rare fast state; quantum mechanically it is a UV coherence tail.
-
----
-
-# Highest-priority next work
-
-1. Replace the ad hoc harmonic `N_max` support cap by the weakest physically meaningful **finite-level / generator-matrix-element** resource.
-2. Derive a general finite-dimensional pointer theorem for arbitrary generator `G` and preparation subspace `S`.
-3. Test whether TRK/f-sum or another matter sum rule can bound that pointer resource without double-counting WP5 optical oscillator strength.
-4. If matter sum rules are signed/cancellation-prone for excited states, preserve that failure as another missing-resource theorem.
-5. Update Issue #8/WP9 and `RESEARCH_LOG_ROUND6.md` as results accumulate.
-6. Continue theorem-level novelty audit before publication claims.
+The recurring failure mode is **hidden resource in a vanishing-weight or unobserved sector**.
 
 ---
 
 # Novelty constraints
 
-Do not claim novelty for generic detector tradeoffs, squeezing-enhanced metrology, non-Gaussian/parity displacement sensing, metrological usefulness as a thermodynamic resource, work-vs-coherence resource distinctions, TUR/KUR/finite-frequency response bounds, optical power-bandwidth limits, T-operator sum rules, or Maxwell-constrained communication capacity.
+Do not claim novelty for:
 
-The surviving candidate novelty is the **photodetection-specific resource-completeness chain**: explicit counterexamples showing why each seemingly natural resource set is incomplete, followed by repaired finite information-bandwidth theorems once the missing microscopic resources are supplied.
+- generic photodetector gain/speed tradeoffs;
+- transit-time `~0.44/tau` scaling;
+- RC amplitude bandwidth;
+- Shockley–Ramo detector signals;
+- Fisher information applied generically to semiconductor detector signals;
+- quantum-Zeno/anti-Zeno measurement backaction;
+- squeezing/non-Gaussian displacement sensing;
+- thermodynamic metrology resources;
+- optical sum rules/T-operator bounds.
+
+Current candidate novelty is the **source-normalized photodetection resource-completeness chain**, including explicit demonstrations that deterministic latency/amplitude attenuation need not reduce information and identification of the hidden stochastic/noise/coarse-graining resources that do.
 
 ---
 
-# Mandatory adversarial tests
+# Highest-priority next work
 
-For every new bound test: units/reparameterization; output-gain invariance; direct feedthrough; source-bandwidth leakage; parallel replication; rare-fast states; fixed detailed balance with divergent absolute rates; high-Q/vanishing mode volume; active/gain pump resources; strong coupling/non-Markovianity; preloaded squeezing; UV coherence tails; increasing support dimension; and whether the proposed resource merely restates the bandwidth.
+1. Replace flat Markov `Gamma` in WP11 by a structured semiconductor/contact/phonon spectral density and identify Zeno vs anti-Zeno regimes.
+2. Compose WP5 finite-band optical capture with WP11 spatial absorption-delay information: determine the resource cost of sharply localizing absorption while maintaining broad optical bandwidth.
+3. Extend WP12 to correlated amplifier voltage/current noise and finite ADC/sampling resources.
+4. Analyze avalanche/multiplication: deterministic gain is information-invariant; stochastic multiplication/excess noise and bias/pump free energy must be explicit.
+5. Continue theorem-level novelty audit.
 
 ---
 
@@ -309,8 +418,8 @@ For every new bound test: units/reparameterization; output-gain invariance; dire
 After every substantive result:
 
 - create/update a dedicated derivation note;
-- add a numbered research-log checkpoint when project direction changes;
-- update this file and `docs/CURRENT_RESEARCH_STATE.md` when the frontier changes;
+- add a numbered research-log checkpoint when direction changes;
+- update `AGENTS.md` and `docs/CURRENT_RESEARCH_STATE.md`;
 - preserve failed conjectures and corrections.
 
 Status vocabulary: **PROVED**, **VERIFIED**, **CONJECTURE**, **COUNTEREXAMPLE**, **OPEN**, **BLOCKED**, **REJECTED**.
