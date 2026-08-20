@@ -48,6 +48,13 @@ text = replace_once(
 #    stationary thermodynamic rate bound to the independent-event theorem.
 text = replace_once(
     text,
+    "Finally, for a restricted reversible finite-state Markov optical gateway,",
+    "Finally, for a restricted bidirectionally connected finite-state Markov optical gateway,",
+    "abstract thermodynamic terminology",
+)
+
+text = replace_once(
+    text,
     "Consider a restricted reversible \\emph{finite-state, time-homogeneous continuous-time Markov} optical gateway",
     "Consider a restricted bidirectionally connected \\emph{finite-state, time-homogeneous continuous-time Markov} optical gateway. Here bidirectionally connected means that every transition used in the thermodynamic accounting has reverse-transition support; it does not mean stationary detailed-balance reversibility. The optical gateway is",
     "thermodynamic terminology",
