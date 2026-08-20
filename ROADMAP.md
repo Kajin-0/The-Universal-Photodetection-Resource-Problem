@@ -1,11 +1,12 @@
-# Research Roadmap — Submission Package Phase
+# Research Roadmap — Rev6 Submission Package Phase
 
 **Updated:** 2026-08-20
 
 ## Guiding principle
-The autonomous marked-event branch has passed its scientific and manuscript-hardening gates. The first-paper task is now **submission packaging and journal positioning**, not additional foundational derivation.
 
-Do not reopen material-specific, coherent-pointer, analog-detector, or non-Poisson branches unless a concrete referee-level defect in Rev5 requires it.
+The autonomous marked-event branch has passed its theorem, hostile-review, and manuscript-hardening gates. The first-paper task is now **submission packaging and journal positioning**, not additional foundational derivation.
+
+Do not reopen material-specific, coherent-pointer, analog-detector, or non-Poisson branches unless a concrete defect in Rev6 requires it.
 
 ---
 
@@ -19,6 +20,8 @@ K(dm,d\tau)=\kappa(dm)\mu_m(d\tau),
 \qquad
 G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).
 \]
+
+Exact DC is handled separately in Rev6; normalized transfer remains `G(0)=eta`.
 
 ## E1 — Atomic high-band residue
 **PROVED**
@@ -44,7 +47,7 @@ G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).
 \]
 
 ## E3 — Capture-weighted local-hazard resource
-**PROVED; WP35-CORRECTED MICROSCOPIC INTERPRETATION**
+**PROVED; WP35 + REV6 SELF-CONTAINED CTMC COMPLETION**
 
 \[
 \boxed{
@@ -54,15 +57,15 @@ G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).
 }
 \]
 
-For a finite-state CTMC, the safe generic uniform bound after complete mark conditioning is
+For finite-state CTMC pre-registration states,
 \[
 \boxed{
-q_{\max}=\max_{x\in S_{\rm pre}}\sum_{y\ne x}W_{yx},
+q_{\max}=\max_{x\in S_{\rm pre}}
+\sum_{y\ne x}W_{yx}.
 }
 \]
-provided the mark does not independently expose realized pre-registration holding times.
 
-The old registration-edge-only statement is rejected. The generic quantum-jump operator-norm extension is deferred.
+Rev6 proves that `q_max` bounds the complete-mark-conditioned hazard under the stated holding-time mark restriction. The old successful-registration-edge-only statement is rejected. The generic quantum-jump extension remains deferred.
 
 ## E4 — Operational inverse cost
 **PROVED**
@@ -91,17 +94,21 @@ For relative retention `q=r eta`,
 **PROVED FOR MANUSCRIPT CLAIMS**
 
 - exact mean + exact RMS jitter do not bound information bandwidth;
-- a free synchronous clock/reference defeats detector-only timing bounds;
-- stationary EPR/activity/throughput do not supply an absolute microscopic time scale;
+- no fixed-FWHM counterexample is claimed;
+- free synchronous temporal reference defeats detector-only timing bounds;
+- stationary EPR/activity/throughput do not provide an absolute microscopic time scale;
 - deterministic latency is not information loss;
-- parameter-independent downstream processing cannot improve the primary-record FI.
+- parameter-independent downstream processing cannot improve primary-record FI.
 
 ---
 
 # Thermodynamic completion
-**PROVED FOR THE RESTRICTED GATEWAY CLASS**
 
-For the finite-state time-homogeneous reversible optical gateway,
+**PROVED FOR THE RESTRICTED BIDIRECTIONALLY CONNECTED GATEWAY CLASS, WITH EXPLICIT LOW-OVERLAP BRIDGE**
+
+Use **bidirectionally connected**, not “reversible,” for the nonequilibrium CTMC network. Reverse-transition support does not imply detailed balance.
+
+For the restricted gateway,
 \[
 \boxed{
 \lambda_1\le
@@ -112,52 +119,61 @@ g(z)=(1-z^{-1})\ln z.
 }
 \]
 
-`lambda1` is the **total first-exit rate**, so WP29 is already consistent with WP35. The absolute microscopic reverse rate `d` remains indispensable.
+Rev6 explicitly states that stationary baseline thermodynamic quantities constrain microscopic rates, while application to Theorem 1 conditions on an isolated capture and requires the low-overlap regime so capture/recovery do not become history dependent.
+
+If capture/recovery is history dependent, the independent-event theorem is not applied.
+
+The absolute reverse rate `d` remains indispensable.
 
 ---
 
 # Publication state
 
 ## Rev4
-`manuscript/event_resource_theorem_rev4.tex`
-
-**Historical build-verified revision.** Contains the later-corrected WP35 microscopic wording.
+Historical build-verified revision; contains later-corrected WP35 wording.
 
 ## Rev5
-`manuscript/event_resource_theorem_rev5.tex`
+Historical WP35-corrected manuscript; passed final claim/citation audit but was superseded by hostile-review Rev6.
 
-**CURRENT FIRST-PAPER SOURCE — COMMITTED + BUILD VERIFIED.**
+## Rev6
+`manuscript/event_resource_theorem_rev6.tex`
 
-The committed Git blob SHA
+**CURRENT FIRST-PAPER SOURCE — HOSTILE-REVIEW REPAIRED + BUILD VERIFIED + PERSISTED.**
 
-`23ad1c27be95bdbf79d88176d438c8a305f844f0`
+Rev6 adds only publication-hardening changes:
 
-matches the exact TeX source retrieved from the successful CI artifact.
+1. exact-DC source-FI clarification;
+2. self-contained `q_max` CTMC hazard proof;
+3. conservative FWHM wording;
+4. “bidirectionally connected” terminology replacing probabilistic “reversible” language;
+5. explicit isolated-event/low-overlap bridge between stationary thermodynamic accounting and the independent-event theorem;
+6. versioned rare-fast appendix terminology;
+7. layout-only split of the long thermodynamic boxed conclusion.
 
-Rev5 contains:
+No central theorem or numerical coefficient changed.
 
-1. the WP35 total-pre-registration-escape-rate correction;
-2. removal of the generic quantum-jump sentence;
-3. explicit prose references to both theorem figures;
-4. the versioned hierarchy figure with local-rate wording;
-5. conservative finite-frequency prior-work wording after the final citation audit.
+Key verification records:
 
-No central theorem or numerical constant changed.
+- `docs/MANUSCRIPT_REV6_REFEREE_REPAIR_AUDIT.md`
+- `notes/RESEARCH_LOG_ROUND15.md`
 
-Steady-state CI now has read-only permissions and directly compiles committed Rev5. There are no self-commit or issue-comment side effects.
+Steady-state CI has read-only permissions and directly compiles committed Rev6.
 
 ---
 
 # Closed publication gates
 
-## P1 — Rev5 mechanical verification
-**PASSED.** Generation, full LaTeX compilation, and artifact upload succeeded for the final Rev5 transformer state.
+## P1 — Core theorem audit
+**PASSED.** Independent hostile review found no collapse of the exact event-transfer, Wiener, Parseval, hazard-collision, jitter no-go, clock no-go, thermodynamic algebra, or rare-fast results.
 
-## P2 — Final claim/reference audit
-**PASSED.** Prior-work claims remain conservative; novelty is reserved for the combined resource-completeness stack.
+## P2 — Referee model-class/terminology repairs
+**PASSED.** All four targeted corrections are present in Rev6.
 
-## P3 — Source persistence / clean CI
-**PASSED.** Verified source is committed and byte-matched to the CI artifact; CI directly compiles committed Rev5.
+## P3 — Rev6 mechanical verification
+**PASSED.** Full LaTeX compilation and artifact upload succeeded; final layout source persisted successfully.
+
+## P4 — Clean CI
+**PASSED.** Read-only direct compilation; no self-commit or issue-comment side effects.
 
 ---
 
@@ -166,10 +182,10 @@ Steady-state CI now has read-only permissions and directly compiles committed Re
 Prepare the submission-ready package and journal positioning. This may include:
 
 - final author/affiliation metadata;
-- title/abstract polish only if scientifically neutral;
-- journal-format/source cleanliness;
+- journal-format/source cleanup;
 - cover letter and concise novelty statement;
-- final package inventory and reproducibility check.
+- final package inventory / reproducibility check;
+- title/abstract polish only if scientifically neutral.
 
 Do not use submission packaging as a pretext to reopen frozen research branches.
 
