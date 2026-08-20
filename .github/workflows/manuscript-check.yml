@@ -45,5 +45,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: 12,
-              body: `Rev5 manuscript verification ${conclusion} for commit \`${context.sha}\`: generation, LaTeX compilation, and artifact upload were targeted by the verification workflow.`
+              body: `Rev5 artifact capture ${conclusion} for commit \`${context.sha}\`, Actions run \`${context.runId}\`: generation, LaTeX compilation, and artifact upload were targeted.`
             });
