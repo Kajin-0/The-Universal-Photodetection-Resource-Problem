@@ -1,289 +1,309 @@
-# Research Roadmap
+# Research Roadmap — Resource-Completeness Phase
+
+**Updated:** 2026-08-20
 
 ## Guiding principle
 
-The project should advance by **closing logical gates**, not by accumulating loosely related calculations. A work package is complete only when its assumptions, result, adversarial checks, and consequences are recorded.
+The project is no longer a broad search for arbitrary detector tradeoffs. It has converged to a **no-go + repair / detector-class taxonomy**.
+
+The central question is:
+
+> For each well-defined class of photodetector output record, what is the smallest noncircular physical resource set that is sufficient to bound source-normalized optical-to-electrical information transfer, and which resources are provably necessary because their omission permits explicit counterexamples?
+
+Do not add new material-specific calculations unless they close a missing map from a theorem resource to real detector physics.
 
 ---
 
-## WP0 — Definitions, invariances, and novelty closure
+# Core metric — settled
 
-**Status:** OPEN
-
-### Questions
-
-1. What exactly is the optical input variable: power, photon flux, field quadrature, occupation perturbation, or transition-rate drive?
-2. What output record is considered accessible?
-3. What normalized detector performance functional is invariant to output gain and does not reward unlimited source energy?
-4. Which quantities are extensive under parallel replication?
-5. Which nearby general uncertainty relations already imply part of the desired result?
-
-### Required outputs
-
-- dimension table for every variable;
-- explicit PSD convention;
-- finite-time and asymptotic definitions;
-- proof of invariance under output scaling;
-- statement of source constraints;
-- citation-chained novelty matrix.
-
-### Gate WP0
-
-Do not call any inequality “universal” until the left-hand performance functional and right-hand resources are operationally and dimensionally unambiguous.
-
----
-
-## WP1 — General finite-state Markov photodetector calculus
-
-**Status:** OPEN
-
-### 1. Stationary state and projectors
-
-For generator \(W_0\), construct
+Use
 
 \[
-W_0\pi=0,\qquad \mathbf 1^T\pi=1,
+\boxed{\eta_I=F_{\rm electrical}/F_{\rm incident}^{Q}}
 \]
 
-and projectors
+for the same encoded optical parameter.
+
+For stationary weak coherent/Poisson modulation, use frequency-resolved or finite-source-task averages. Do **not** use an unweighted all-frequency integral.
+
+Critical distinction:
 
 \[
-\Pi=\pi\mathbf 1^T,\qquad Q=I-\Pi.
+\boxed{\text{latency}\neq\text{amplitude bandwidth}\neq\text{information bandwidth}.}
 \]
 
-Define the reduced resolvent/Drazin inverse needed to handle the stationary mode.
-
-### 2. Linear susceptibility
-
-For optical perturbation
-
-\[
-W(t)=W_0+\delta P(t)W_1,
-\]
-
-derive the state response and then the current response
-
-\[
-\chi_{IP}(\omega).
-\]
-
-Separate contributions from:
-
-- modulation of occupation probabilities;
-- direct modulation of counted transition intensities, if optical transitions are themselves counted/output-coupled.
-
-### 3. Noise PSD
-
-Derive exact stationary finite-frequency current noise for arbitrary counted edges using at least two independent methods where possible:
-
-- counting-field tilted generator;
-- correlation/resolvent method.
-
-The result must include both singular shot-noise terms and dynamical correlations.
-
-### 4. Thermodynamic bookkeeping
-
-Write edge currents
-
-\[
-J_{ij}=W_{ij}\pi_j-W_{ji}\pi_i,
-\]
-
-edge activities
-
-\[
-A_{ij}=W_{ij}\pi_j+W_{ji}\pi_i,
-\]
-
-and steady-state entropy production in a local-detailed-balance representation.
-
-### Gate WP1
-
-A symbolic formula set that can reproduce two- and three-state examples and is independent of a specific photodetector architecture.
+Known deterministic delay and invertible deterministic filtering do not by themselves reduce stationary FI.
 
 ---
 
-## WP2 — Minimal-model theorem/counterexample search
+# Branch E — proper event/counter detectors
 
-**Status:** OPEN
+## E0 — Exact event mapping
 
-### Model ladder
+**Status: SOLVED**
 
-1. two-state equilibrium absorber;
-2. two-state driven absorber with explicit photon reservoir;
-3. three-state detector with irreversible readout cycle;
-4. three-state metastable gain detector;
-5. parallel copies of the above;
-6. high-activity/low-affinity cycle;
-7. networks with hidden dissipative edges.
+For captured Poisson/coherent events with conditional electrical delay `D`, event-timestamp FI is controlled by the characteristic function of the delay law. Dark/background addition and downstream processing are information-degrading channels.
 
-### For each model compute
+Primary notes:
 
-- stationary distribution;
-- response \(\chi_{IP}(\omega)\);
-- PSD \(S_I(\omega)\);
-- \(K(\omega)\);
-- information functional(s);
-- \(\dot\Sigma\);
-- \(\mathcal A\);
-- absorbed photon flux;
-- equality/slack for every candidate inequality.
+- `notes/WP11_SPATIAL_DELAY_INFORMATION_THEOREM.md`
+- `notes/WP14_INTRINSIC_VS_MEASURED_INFORMATION_BANDWIDTH.md`
 
-### Adversarial scalings
+## E1 — Minimal registration-intensity theorem
 
-Explicitly study:
+**Status: PROVED; current central theorem**
+
+For a proper marked primary-event detector, condition on **all accessible event marks** `M`. Let
 
 \[
-W\mapsto cW,
+\Lambda=\operatorname*{ess\,sup}_{m,t}h(t\mid m)
 \]
 
-parallel replication \(N\to\infty\), weak affinity, strong affinity, metastable rates \(\epsilon\to0\), and optical coupling \(g\to0\) or \(g\to\infty\) where physically admissible.
+be the conditional first-registration hazard ceiling and let `C` bound capture probability.
 
-### Gate WP2
-
-Either:
-
-- identify a candidate inequality surviving the full minimal-model suite; or
-- produce a decisive counterexample and update the resource set.
-
----
-
-## WP3 — Derive the first rigorous bound
-
-**Status:** BLOCKED on WP0–WP2
-
-Candidate mathematical tools:
-
-- thermodynamic uncertainty relations;
-- kinetic uncertainty relations;
-- response uncertainty relations;
-- Cauchy–Schwarz bounds in path space;
-- Fisher-information identities for Markov trajectories;
-- Cramér–Rao inequalities;
-- data-processing inequalities;
-- fluctuation-response identities;
-- spectral-gap/resolvent inequalities;
-- variational formulas for large-deviation rate functions.
-
-### Target hierarchy
-
-Rather than force one scalar product law, seek results such as
+Then for a flat two-sided source-information band `|omega|<=Omega_s`,
 
 \[
-K(\omega)\le B(\omega;\mathcal A,\dot\Sigma,\Phi_\gamma,\ldots)
+\boxed{
+\bar\eta_I
+\le
+C\min\left(1,\frac{\pi\Lambda}{2\Omega_s}\right).
+}
 \]
 
-or
+Target `q` therefore requires
 
 \[
-\int d\omega\,w(\omega)K(\omega)
-\le B(\mathcal A,\dot\Sigma,\Phi_\gamma,\ldots).
+\boxed{q\le C,\qquad B\le\Lambda C/(4q)}
 \]
 
-The frequency-resolved form may be more fundamental than a single bandwidth number.
+with `B=Omega_s/(2pi)`.
+
+The high-bandwidth prefactor is asymptotically saturated by constant-hazard exponential registration.
+
+Primary note:
+
+- `notes/WP25_REGISTRATION_INTENSITY_INFORMATION_BANDWIDTH_THEOREM.md`
+
+## E2 — Weakest timing-concentration resource
+
+**Status: PROVED**
+
+Define
+
+\[
+\mathcal R_2
+=2\,\mathbb E_M\int f(t\mid M)^2dt.
+\]
+
+Then
+
+\[
+\bar\eta_I
+\le
+C\min\left(1,\frac{\pi\mathcal R_2}{2\Omega_s}\right),
+\]
+
+and a hazard ceiling implies `R2<=Lambda`.
+
+Finite mean latency, FWHM jitter, and finite RMS jitter do **not** imply finite information bandwidth; explicit smooth counterexamples exist.
+
+Primary note:
+
+- `notes/WP26_JITTER_MOMENT_NO_GO_AND_COLLISION_INTENSITY_RESOURCE.md`
+
+## E3 — Microscopic map to Lambda
+
+**Status: PARTLY SOLVED**
+
+Classical Markov primary-registration transitions:
+
+\[
+\Lambda_{cl}=\max_x\sum_{y\in E_{reg}(x)}W_{yx}.
+\]
+
+Quantum-jump primary registration:
+
+\[
+\Lambda_q=\left\|\sum_\alpha L_\alpha^\dagger L_\alpha\right\|_\infty.
+\]
+
+WP4 already proves that stationary EPR/activity cannot generally replace this local rate/operator norm because rare states can hide arbitrarily fast transitions.
+
+### Remaining E3 work
+
+1. Rewrite WP3/WP4 explicitly as bounds/no-go results for `Lambda`.
+2. Audit structured-reservoir models only insofar as they bound or violate conditional `Lambda`.
+3. Test dead time and multiple-primary-event models; do not let avalanche side branches obscure the first-event theorem.
+
+## E4 — Temperature/sensitivity map
+
+**Status: OPEN and conceptually isolated**
+
+Temperature is not a primitive variable in the mark-robust event upper bound.
+
+To obtain a genuine sensitivity–bandwidth–temperature theorem, prove a microscopic relation from `T` and other bounded resources to at least one of:
+
+- capture ceiling `C(T,...)`;
+- unavoidable **signal-indistinguishable** background;
+- registration intensity `Lambda(T,...)`.
+
+A scalar dark rate is not sufficient when dark and signal marks are distinguishable.
+
+Do not insert empirical HgCdTe dark-current formulas as if they were universal.
 
 ---
 
-## WP4 — Tightness, saturation, and missing resources
+# Branch A — continuous classical/Markov analog detectors
 
-**Status:** BLOCKED
+**Status: GENERAL THEORY CLOSE TO PRIOR ART; photodetection specialization OPEN**
 
-For any proved inequality:
+Andreas Dechant's 2026 finite-frequency fluctuation-response inequality already gives general Markovian finite-frequency response/noise and broadband SNR constraints. TUR/KUR/RKUR literature further constrains precision using activity and quantum response resources.
 
-1. solve the equality conditions;
-2. search for finite-state saturating models;
-3. determine whether saturation requires singular limits;
-4. quantify the gap for ordinary detector topologies;
-5. determine whether the bound is useful or merely formally true.
+UPRP should not attempt to rediscover these results.
 
-A theorem too loose to exclude any physically relevant detector performance should not be oversold.
+### Remaining high-value question
 
----
+Can optical-input normalization and explicit optical capture be composed with those general inequalities to produce a genuinely photodetection-specific theorem not already a direct corollary?
 
-## WP5 — Semiclassical detector correspondence
-
-**Status:** BLOCKED
-
-Map the abstract resources onto conventional photodetector models:
-
-- photoconductors;
-- photodiodes;
-- phototransistors;
-- avalanche photodiodes;
-- bolometric/thermal detectors where the input-output structure differs.
-
-Important detector-native quantities to recover or reinterpret:
-
-- responsivity \(R(\omega)\);
-- NEP;
-- \(D^*\);
-- quantum efficiency;
-- photoconductive gain;
-- lifetime/transit-time gain-bandwidth relation;
-- generation-recombination noise;
-- shot noise;
-- Johnson noise;
-- dark current.
-
-Determine which familiar engineering tradeoffs are special cases and which are unrelated to the universal theorem.
+If not, Branch A should be treated as literature-covered background rather than a standalone paper result.
 
 ---
 
-## WP6 — Quantum extension
+# Branch Q — coherent quantum pointers before irreversible registration
 
-**Status:** BLOCKED
+## Q0 — Trace-distance branch
 
-Replace the classical generator with an open-quantum-system model, initially Markovian Lindblad dynamics with continuously monitored output trajectories.
+**Status: PROVED restricted theorem**
 
-Investigate:
+Finite-hypothesis distinguishability transfer is bounded by nonlocal interaction action. This does not automatically imply an SLD-QFI bound.
 
-- quantum Fisher information versus classical information in the measured record;
-- coherence and backaction;
-- quantum dynamical activity;
-- perturbation-induced intersubspace terms;
-- strong-coupling generalized activity;
-- nonclassical optical inputs;
-- detector/source entanglement;
-- measurement inefficiency and hidden entropy production.
+## Q1 — QFI apparatus resource
 
-The quantum theorem must state whether the input field is treated as a resource, a prescribed signal, or part of the dynamical system.
+**Status: PROVED for passive-linear coherent-displacement class**
 
----
+Directional SLD-Stam plus detector excitation budget gives
 
-## WP7 — Beyond Markovianity
+\[
+\frac{F_{elec}}{F_{in}}
+\le
+\frac\tau{\tau+(1-\tau)\xi(N)},
+\qquad
+\xi(N)=(\sqrt{N+1}-\sqrt N)^2.
+\]
 
-**Status:** BLOCKED
+Pre-squeezing proves interaction action alone is insufficient.
 
-Only after WP6 is stable, examine whether memory, structured reservoirs, non-Markovian feedback, or strong coupling permit violations of the Markov result or require generalized asymmetry/activity terms.
+## Q2 — UV/support no-go
 
----
+**Status: PROVED**
 
-## WP8 — Infrared consequence
+Finite free energy in an unrestricted harmonic pointer does not control high-Fock coherence. Finite support plus bounded generator repairs the problem:
 
-**Status:** BLOCKED
+\[
+\sup_{\rho\subset S}F_Q(\rho,G)
+=4\inf_c\lambda_{max}[\Pi_S(G-cI)^2\Pi_S].
+\]
 
-Apply only rigorously established results to the question:
+### Remaining Branch Q work
 
-> Can fundamental physics rule out, constrain, or permit a room-temperature MWIR/LWIR detector with simultaneously extreme sensitivity and bandwidth?
-
-Avoid substituting known HgCdTe, InAsSb, T2SL, QWIP, graphene, or superconducting-device limitations for a universal statement.
-
-Possible outputs:
-
-- a true material-independent room-temperature LWIR bound;
-- proof that no such bound follows from thermodynamics alone;
-- a lower bound on required free-energy dissipation/activity at specified information rate;
-- a resource cost comparison among detector classes.
+Only continue if needed to compare the event theorem with a coherent detector that genuinely lies outside Branch E. Do not chase the exact unrestricted oscillator frontier unless publication value becomes clear.
 
 ---
 
-## Publication logic
+# Resource-necessity matrix — current answer structure
 
-Potential papers should emerge from closed logical results, e.g.:
+| Candidate resource/metric | Sufficient by itself? | Current result |
+|---|---|---|
+| Temperature `T` | No | Needs a detector/bath coupling map |
+| Stationary EPR/activity | No | Rare-fast Markov counterexample |
+| Conventional RC bandwidth | No | Deterministic filtering is FI-invariant before downstream noise |
+| Deterministic transit time | No | Latency alone preserves FI |
+| RMS/FWHM timing jitter | No | WP26 prompt-spike/tail counterexample |
+| Marginal delay distribution | No for full marked record | Accessible marks can undo delay |
+| Conditional delay `L2` concentration `R2` | Yes for Branch E average bandwidth | WP26 |
+| Conditional local hazard/rate norm `Lambda` | Yes; physical sufficient resource for Branch E | WP25 |
+| Interaction action alone in coherent QFI branch | No | Squeezed-pointer counterexample |
+| Finite apparatus excitation/support + coupling | Yes in stated passive-linear QFI class | WP7/WP8 |
+| Total optical volume alone | No | Localized-capture geometry obstruction |
+| Optical capture probability `C` | Tightens DC sensitivity but does not by itself bound speed | WP25 |
+| Downstream readout bandwidth | Not needed for intrinsic upper bound | FI data processing |
 
-1. **Finite-state photodetection response–noise theorem/counterexample.**
-2. **Thermokinetic resource bound for continuous photodetection.**
-3. **Quantum photodetection information-resource bound.**
-4. **Consequences for infrared detector sensitivity–bandwidth–temperature limits.**
+This table should drive the paper logic.
 
-No publication framing should be fixed before the mathematics identifies which of these actually exists.
+---
+
+# Frozen validation/example branch — WP15 through WP24
+
+**Status: FROZEN unless needed by a core theorem**
+
+This branch established useful physical examples:
+
+- localized capture in delay space matters more than total optical volume;
+- generic `alpha_abs v` bandwidth-efficiency physics is prior art;
+- simplified Kane optical conductivity has the known `13/12` coefficient;
+- finite-gap Kane composition plus radiative detailed balance gives a task-dependent phase diagram;
+- self-consistent heavy-hole DOS/charge neutrality changes that phase diagram substantially;
+- realistic heavy-hole DOS mass is near `0.53–0.54 m0` in the examined HgCdTe range;
+- Pauli blocking is an order-unity correction while quadratic six-band optical curvature is only a few-percent correction in the tested model.
+
+The unresolved 6↔8-band renormalization/`Gamma7` audit is recorded but **deprioritized**. Do not continue it unless a later theorem requires quantitative HgCdTe validation.
+
+Primary checkpoint:
+
+- `notes/RESEARCH_LOG_ROUND9.md`
+
+---
+
+# Immediate project gates
+
+## Gate 1 — WP25 theorem-level novelty audit
+
+Search specifically for prior results equivalent to:
+
+\[
+\text{conditional event hazard/rate norm}
+\Rightarrow
+\text{finite source-FI bandwidth via Parseval}.
+\]
+
+Marked Poisson FI, timing-jitter theory, and Parseval separately are prior art; the question is whether the **photodetection resource theorem** already exists.
+
+## Gate 2 — Minimality/assumption audit
+
+Stress-test WP25 against:
+
+- accessible side information;
+- multiple primary output channels;
+- parallel replication;
+- dead time;
+- photon-number resolution;
+- time-dependent/synchronous detector control;
+- nonstationary source tasks;
+- non-Poisson/nonclassical optical inputs.
+
+Every failure must either tighten the class definition or expose a missing resource.
+
+## Gate 3 — Integrate WP3/WP4 into Lambda
+
+Stop treating EPR/activity/coupling as separate primitive entries in the event theorem. Express them as attempted microscopic bounds on `Lambda`, and retain the rare-fast result as the proof that stationary resources alone cannot supply such a bound.
+
+## Gate 4 — Manuscript decision
+
+After Gates 1–3, decide whether the first paper is centered on:
+
+> **A no-free-lunch theorem for photodetection timing: local registration intensity, not conventional jitter or thermodynamic activity, is the resource controlling source-information bandwidth in proper event detectors.**
+
+Do not draft a publication before the novelty and assumption audits pass.
+
+---
+
+# Publication logic
+
+A plausible publication hierarchy is now:
+
+1. **Proper-event photodetection resource theorem** — WP25/WP26 + necessity matrix.
+2. **Coherent quantum detector resource theorem** — only if WP7/WP8 proves distinct enough after audit.
+3. **Infrared/HgCdTe illustration** — use frozen WP17–24 only as an example or consequence, not as the universal theorem itself.
+
+The project should now optimize for theorem closure, not calculation count.
