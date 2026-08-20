@@ -1,311 +1,246 @@
-# WP11 — Finite transport chain, weighting geometry, and the electrical spatial resource
+# WP11 — Finite transport chain, weighting geometry, and electrical spatial resources
 
-**Date:** 2026-08-20
+**Date:** 2026-08-20  
+**Corrected:** 2026-08-20 after the spatial-delay information theorem
 
-## Purpose
+## Critical interpretation
 
-The minimal three-node model identifies the internal transduction rate with an electrical current matrix element. `WP11_SHOCKLEY_RAMO_KANE_RESOURCE_BOUND.md` maps that current to carrier velocity and weighting-field geometry.
+This note bounds **carrier/induced-charge signal-formation latency and current slew**, not Fisher-information bandwidth by itself. A deterministic known transit delay can preserve stationary spectral information exactly. Information rolloff requires unresolved delay dispersion, stochastic timing, downstream noise, finite sampling/coarse graining, or a true spectral null.
 
-This note makes the spatial structure explicit with a finite transport chain and proves that **carrier velocity or material bandwidth alone is not a complete electrical speed resource**. The joint optical/electrical geometry matters.
+The information-theoretic correction is derived in `WP11_SPATIAL_DELAY_INFORMATION_THEOREM.md` and `WP12_READOUT_FILTER_INFORMATION_INVARIANCE.md`.
 
 ---
 
 # 1. Tight-binding transport chain
 
-Consider one carrier on a one-dimensional chain with spacing `a` and nearest-neighbor hopping energy `J>0`:
+Consider one carrier on a one-dimensional nearest-neighbor chain,
 
 \[
-H_{m tr}
-=-J\sum_{j=0}^{M-2}
-\left(|j+1\rangle\langle j|+|j\rangle\langle j+1|\right).
+H_{\rm tr}=-J\sum_{j=0}^{M-2}(|j+1\rangle\langle j|+|j\rangle\langle j+1|),
 \]
 
-Let
+with
 
 \[
-X=a\sum_{j=0}^{M-1}j|j\rangle\langle j|.
-\]
-
-The velocity operator is
-
-\[
-\boxed{
-v=\frac{i}{\hbar}[H_{m tr},X]
-=\frac{iJa}{\hbar}
-\sum_j
-\left(|j+1\rangle\langle j|-|j\rangle\langle j+1|\right).
-}
-\]
-
-For the infinite periodic chain,
-
-\[
-E(k)=-2J\cos(ka),
-\]
-
-so
-
-\[
-\boxed{
-v_{\max}=\frac{2Ja}{\hbar}.}
-\]
-
-The one-band width is
-
-\[
-W=4J,
-\]
-
-hence
-
-\[
-\boxed{
-v_{\max}=\frac{Wa}{2\hbar}.}
-\]
-
-For a finite open chain the velocity-operator norm is no larger than this periodic value.
-
-**Status:** PROVED elementary tight-binding result.
-
----
-
-# 2. Planar Shockley-Ramo induced-charge speed
-
-For planar weighting potential across length `L`,
-
-\[
-\phi_w(x)=x/L,
-\qquad
-Q_w=eX/L.
-\]
-
-Therefore
-
-\[
-\frac{d}{dt}\langle Q_w\rangle
-=\frac{e}{L}\langle v\rangle.
-\]
-
-Using `|<v>|<=v_max`,
-
-\[
-\boxed{
-\left|\frac{d}{dt}\langle Q_w\rangle\right|
-\le
-\frac{e v_{\max}}{L}
-=\frac{eWa}{2\hbar L}.
-}
-\]
-
-If the initial induced charge is zero, producing a fraction `r` of a one-electron full induced-charge swing requires
-
-\[
-\boxed{
-t\ge r\frac{L}{v_{\max}}
-=\frac{2r\hbar L}{Wa}.}
-\]
-
-Thus in the nearest-neighbor lattice model the electrical transit resource is not simply an energy bandwidth `W`; it is the combination
-
-\[
-\boxed{Wa/L.}
-\]
-
-This is a concrete realization of the more general velocity + weighting-length resource.
-
----
-
-# 3. Why finite material velocity is still not enough
-
-Replace the planar weighting potential by an arbitrary monotone `phi_w(x)`. Then
-
-\[
-\frac{d}{dt}\langle Q_w\rangle
-=e\left\langle v\frac{d\phi_w}{dx}\right\rangle
-\]
-
-in the semiclassical/local limit.
-
-If the entire weighting-potential change is compressed into a layer of width `epsilon`, a carrier with fixed finite velocity can generate most of the electrode signal in time
-
-\[
-\Delta t\sim\epsilon/v_{\max}.
-\]
-
-Therefore
-
-\[
-\boxed{
-v_{\max}<\infty
-\quad\not\Rightarrow\quad
-\text{finite induced-current pulse bandwidth}
-}
-\]
-
-unless the weighting potential itself is spatially regularized.
-
-This is the electrical analogue of other UPRP hidden-resource mechanisms: a fixed integral resource can hide increasingly sharp structure.
-
----
-
-# 4. Weighting-potential Lipschitz resource
-
-Define
-
-\[
-\ell_w^{-1}
-=\sup_x|d\phi_w/dx|.
+X=a\sum_jj|j\rangle\langle j|.
 \]
 
 Then
 
 \[
-\left|\frac{d}{dt}\langle Q_w\rangle\right|
-\le e v_{\max}/\ell_w.
+\boxed{v=(i/\hbar)[H_{\rm tr},X]}
 \]
 
-For target induced-charge fraction `r`,
+and for the infinite periodic chain
 
 \[
-\boxed{
-t\ge r\ell_w/v_{\max}.}
+E(k)=-2J\cos ka,
+\qquad
+\boxed{v_{\max}=2Ja/\hbar}.
 \]
 
-For the nearest-neighbor transport model,
+The one-band width is `W=4J`, hence
 
 \[
-\boxed{
-t\ge
-\frac{2r\hbar\ell_w}{Wa}.}
+\boxed{v_{\max}=Wa/(2\hbar).}
 \]
 
-A finite weighting length is therefore a genuine electrical geometry resource.
+A finite open chain has no larger velocity norm.
 
 ---
 
-# 5. Small-pixel effect as the known physical realization
+# 2. Planar Shockley–Ramo charge-slew bound
 
-Pixelated semiconductor detectors provide the standard physical example: their weighting potential is nearly flat through much of the detector and rises rapidly near the collecting pixel. The corresponding weighting field is strongly localized near the electrode, concentrating induced signal formation into the final part of the carrier trajectory.
+For planar weighting potential
 
-This is the well-known **small-pixel effect** and must not be presented as a new detector-physics claim. It is useful here because it supplies a real architecture that exercises the UPRP weighting-geometry resource.
+\[
+\phi_w(x)=x/L,
+\qquad
+Q_w=eX/L,
+\]
 
-References include:
+we have
 
-- Z. He, Nucl. Instrum. Meth. A 463, 250–267 (2001), Shockley-Ramo review;
-- modern CdZnTe pixel-detector studies explicitly describe the localized weighting field and near-anode signal formation.
+\[
+\frac{d}{dt}\langle Q_w\rangle=\frac{e}{L}\langle v\rangle.
+\]
+
+Therefore
+
+\[
+\boxed{
+\left|d\langle Q_w\rangle/dt\right|
+\le ev_{\max}/L
+=eWa/(2\hbar L).
+}
+\]
+
+To accumulate induced-charge fraction `r` from zero requires at least
+
+\[
+\boxed{t_{\rm lat}\ge rL/v_{\max}=2r\hbar L/(Wa).}
+\]
+
+This is a kinematic/charge-formation latency bound. It is **not automatically an information-bandwidth bound**.
 
 ---
 
-# 6. Joint optical/electrical geometry obstruction
+# 3. Weighting-geometry no-go
 
-A conventional transit-time argument often uses the full absorber/depletion thickness `L`. This is not universally the relevant distance.
+For arbitrary monotone weighting potential,
 
-If optical absorption is engineered close to the region where `phi_w` changes rapidly, the carrier can generate a large fraction of its electrical signal without traversing the full detector thickness.
+\[
+i=qv\,d\phi_w/dx
+\]
+
+in the semiclassical local limit. If the weighting-potential swing is compressed into a layer of width `epsilon`, then at fixed finite carrier speed
+
+\[
+|i|\sim |q|v/\epsilon,
+\qquad
+\Delta t\sim\epsilon/v.
+\]
 
 Thus
 
 \[
-\boxed{
-\{v_{\max},L\}
-\text{ alone do not determine electrical information delay}
-}
+\boxed{v_{\max}<\infty\not\Rightarrow\text{bounded current-pulse bandwidth}}
 \]
 
-when the optical absorption profile and weighting potential are design variables.
+unless weighting geometry is spatially regularized. The pulse area remains finite because `int i dt=q Delta phi_w`.
 
-A resource-complete spatial description needs the relative geometry of:
+This is the known physical mechanism behind strongly localized weighting fields such as the small-pixel effect; that detector physics is prior art.
 
-1. optical absorption/capture support;
-2. carrier transport paths;
-3. electrical weighting-potential level sets.
+---
 
-Define, for an absorption point `r0` and target weighting change `r`,
+# 4. Weighting-length repair
+
+Define
 
 \[
-d_w(r_0;r)
-=\inf\{\text{path length from }r_0\text{ required to achieve }|\Delta\phi_w|\ge r\}.
+\ell_w^{-1}=\sup_x|d\phi_w/dx|.
 \]
 
-If carrier speed is bounded by `v_max`, then
+Then
 
 \[
-\boxed{t(r_0;r)\ge d_w(r_0;r)/v_{\max}.}
+\boxed{|d\langle Q_w\rangle/dt|\le ev_{\max}/\ell_w}
 \]
 
-For an optical absorption region `A`, the fastest possible event can use
+and a target weighting-potential/induced-charge change `r` requires
+
+\[
+\boxed{t_{\rm lat}\ge r\ell_w/v_{\max}.}
+\]
+
+For the nearest-neighbor chain,
+
+\[
+\boxed{t_{\rm lat}\ge2r\hbar\ell_w/(Wa).}
+\]
+
+Again this is a latency/slew theorem. Whether it becomes an information limit depends on the accessible output record and stochastic/noise model.
+
+---
+
+# 5. Joint optical/electrical geometry
+
+Detector thickness alone is not the relevant geometry when optical absorption and electrode weighting fields can be co-designed.
+
+For capture point `r0`, define the path length needed to accumulate weighting-potential change `r`:
+
+\[
+d_w(r_0;r)=\inf\{\text{path length from }r_0\text{ needed for }|\Delta\phi_w|\ge r\}.
+\]
+
+With speed bound `v_max`,
+
+\[
+\boxed{t_{\rm lat}(r_0;r)\ge d_w(r_0;r)/v_{\max}.}
+\]
+
+For absorption support `A`, the fastest kinematic latency is bounded by
 
 \[
 \boxed{d_{\rm cap\to read}(r)=\inf_{r_0\in A}d_w(r_0;r).}
 \]
 
-Hence
+But a scalar minimum does not determine information bandwidth. For event timestamps the correct object is the **distribution** of delays induced by the optical capture distribution:
 
 \[
-\boxed{t\ge d_{\rm cap\to read}(r)/v_{\max}.}
+H_{\rm geom}(\omega)=\int p_{\rm abs}(r)e^{-i\omega D(r)}dr,
 \]
 
-This is a useful geometric definition for future finite-band composition.
+\[
+\eta_I^{\rm timestamp}=\eta_{\rm cap}|H_{\rm geom}|^2.
+\]
 
-**Status:** definition + kinematic bound PROVED; how best to average it for a full optical QFI task remains OPEN.
+See `WP11_SPATIAL_DELAY_INFORMATION_THEOREM.md`.
 
 ---
 
-# 7. Relation to conventional high-speed photodiodes
+# 6. Uniform-depth information result
 
-Conventional UTC/MUTC and p-i-n photodiode models already show that response speed depends on absorber/collector dimensions, carrier drift/diffusion velocities, and RC response. Transit-time estimates use forms such as
+For unresolved uniform absorption depth in a planar layer and constant carrier speed,
 
 \[
-\tau_{\rm tr}\sim W/v,
+D\sim {\rm Uniform}(0,L/v).
 \]
 
-with architecture-dependent numerical factors.
+Then
 
-UPRP should not claim this scaling as new.
+\[
+\boxed{
+\eta_I(\omega)=\eta_{\rm cap}\operatorname{sinc}^2(\omega L/2v)
+}
+\]
 
-The new project role is to identify which geometric quantity must appear in a **resource-complete information theorem** once arbitrary optical/electrode co-design is allowed.
+and the half-information frequency is
+
+\[
+\boxed{f_{1/2}=0.4429464707\ldots\,v/L.}
+\]
+
+This recovers the familiar transit-time coefficient in an information setting, but the mechanism is **unresolved delay dispersion**, not deterministic propagation time itself.
 
 ---
 
-# 8. Consequence for HgCdTe/Kane mapping
+# 7. Side-information recovery
 
-If a narrow-gap HgCdTe transport sector has a ballistic Kane velocity scale near
+If the capture location or another variable sufficient to determine the deterministic delay is retained in the output record, the delay can be corrected event by event. In the ideal model the geometric FI loss disappears.
 
-\[
-v_K\sim10^6\ {\rm m/s},
-\]
-
-then a planar device gives the microscopic rate scale
-
-\[
-\kappa\lesssim v_K/L.
-\]
-
-But a nonplanar weighting field replaces `L` by `ell_w` or, more precisely, the capture-to-readout weighting distance `d_cap->read`.
-
-Therefore even with a material velocity that is nearly composition-insensitive, detector speed can remain strongly geometry dependent.
+Therefore joint optical/electrical geometry is partly an **observability/coarse-graining resource**, not only a transport resource.
 
 ---
 
-# 9. New resource-completeness statement
+# 8. HgCdTe/Kane interpretation
 
-The electrical transduction layer requires at least
+A narrow-gap HgCdTe transport sector can have a ballistic Kane velocity scale near `10^6 m/s`, giving a planar microscopic rate scale `~v_K/L`. This is not a device bandwidth. Scattering, trapping, absorption-depth dispersion, weighting geometry, contacts, circuit noise, and output coarse graining determine whether that kinematic scale is converted into recoverable information.
+
+---
+
+# 9. Resource-completeness statement
+
+The semiconductor transport/readout geometry layer is better written as
 
 \[
 \boxed{
 \text{band/current scale}
-+
-\text{accessible transport support}
-+
-\text{electrode weighting geometry}
-+
-\text{optical-to-electrical spatial overlap}.
++\text{transport support}
++\text{optical capture distribution}
++\text{weighting geometry}
++\text{timing randomness/output observability}
+\Rightarrow\text{transport information kernel}.
 }
 \]
 
-A universal material-only electrical bandwidth bound is therefore not expected without restricting detector geometry.
+A universal material-only information-bandwidth bound is not expected without restricting geometry and output record.
 
 ---
 
-# 10. Next step
+# 10. Status
 
-The next high-value calculation is to turn `d_cap->read(r)` into an average/pointwise optical-information bound by weighting it with the optical capture distribution from WP5. That would create the first explicit **joint optical-field geometry + semiconductor transport + electrical weighting geometry** information-speed theorem.
+- Tight-binding velocity/current-slew bounds: **PROVED**.
+- Weighting-length latency bound: **PROVED**.
+- Earlier interpretation of this latency as an automatic information-bandwidth bound: **CORRECTED/REJECTED**.
+- Exact event-timestamp information theorem: moved to `WP11_SPATIAL_DELAY_INFORMATION_THEOREM.md`.
