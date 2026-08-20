@@ -10,37 +10,23 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  issues: write
+  contents: read
 
 jobs:
-  persist-rev5:
+  compile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Generate Rev5
-        run: python manuscript/apply_rev5.py
-      - name: Persist verified Rev5 source once
-        run: |
-          if [ -z "$(git status --porcelain -- manuscript/event_resource_theorem_rev5.tex)" ]; then
-            echo "Rev5 source already committed and unchanged."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- manuscript/event_resource_theorem_rev5.tex
-          git commit -m "Persist verified Rev5 manuscript source"
-          git push
-      - name: One-shot persistence report
-        if: always()
-        uses: actions/github-script@v7
+      - name: Compile manuscript
+        uses: xu-cheng/latex-action@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const conclusion = '${{ job.status }}';
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: 12,
-              body: `Rev5 source persistence ${conclusion} for trigger commit \`${context.sha}\`, Actions run \`${context.runId}\`.`
-            });
+          root_file: event_resource_theorem_rev5.tex
+          working_directory: manuscript
+          latexmk_use_xelatex: false
+      - name: Upload manuscript artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: event-resource-theorem-rev5
+          path: |
+            manuscript/event_resource_theorem_rev5.pdf
+            manuscript/event_resource_theorem_rev5.tex
