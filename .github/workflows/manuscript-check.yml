@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   compile:
@@ -32,10 +32,3 @@ jobs:
           path: |
             manuscript/event_resource_theorem_rev4.pdf
             manuscript/event_resource_theorem_rev4.tex
-      - name: Persist verified Rev4 source
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- manuscript/event_resource_theorem_rev4.tex
-          git commit -m "Persist verified Rev4 manuscript [skip ci]"
-          git push
