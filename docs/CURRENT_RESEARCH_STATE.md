@@ -1,8 +1,8 @@
 # Current Research State
 
-**Date:** 2026-08-19
+**Date:** 2026-08-20
 
-This is the first-stop handoff summary. The repository, not chat history, is authoritative. Read `AGENTS.md` and the dedicated notes cited below for full derivations.
+This is the first-stop handoff summary. The repository, not chat history, is authoritative. Read `AGENTS.md`, `notes/RESEARCH_LOG_ROUND5.md`, and the dedicated notes cited below before new work.
 
 ---
 
@@ -10,19 +10,31 @@ This is the first-stop handoff summary. The repository, not chat history, is aut
 
 Determine the physical resources necessary and/or sufficient for a finite-temperature photodetector to transfer information from an incident optical field into an electrical measurement record with specified sensitivity and temporal bandwidth.
 
-The project now has both no-go and positive restricted results. A simple sensitivity-bandwidth-temperature product is not assumed to exist.
+The project now contains:
+
+- classical/Markov no-go theorems;
+- restricted thermokinetic completion theorems;
+- finite-band electromagnetic capture bounds;
+- fully quantum finite-hypothesis transfer bounds;
+- coherent-state SLD-QFI transfer theorems;
+- finite-temperature apparatus-preparation bounds;
+- explicit non-Gaussian counterexamples and asymptotic optima;
+- a finite-band quantum spectral-composition theorem.
+
+Do **not** assume a simple sensitivity-bandwidth-temperature product exists.
 
 ---
 
 # 2. Information metric
 
-Use
+Use source-normalized information transfer
 
 \[
-\eta_{\mathcal I}=F_{\rm electrical}/F_{\rm incident}^{Q}
+\eta_{\mathcal I}
+=F_{\rm electrical}/F_{\rm incident}^{Q}
 \]
 
-for the same encoded optical parameter.
+for the same encoded parameter.
 
 For coherent/Poisson weak photon-flux modulation,
 
@@ -31,7 +43,7 @@ For coherent/Poisson weak photon-flux modulation,
 =\Phi_0\frac{|\chi_{Y\Phi}(\omega)|^2}{S_Y(\omega)}.
 \]
 
-Use a finite source information task,
+Use a finite optical information task
 
 \[
 \bar\eta_{\mathcal I}
@@ -43,9 +55,9 @@ not an unweighted all-frequency integral.
 
 ---
 
-# 3. Finite-state Markov machinery — SOLVED
+# 3. Classical/Markov foundation
 
-For stationary finite-state Markov jump detectors,
+For stationary finite-state Markov jump detectors, exact response/noise formulas are solved:
 
 \[
 S_I(\omega)=\mathbf1^T\mathcal J^{(2)}\pi
@@ -57,36 +69,29 @@ S_I(\omega)=\mathbf1^T\mathcal J^{(2)}\pi
 +\mathbf1^T\mathcal J_0^{(1)}R(\omega)W_u\pi.
 \]
 
-**Status:** PROVED for finite-state stationary Markov jump detectors. Issue #2 closed.
+**Status:** PROVED. Issue #2 closed.
 
----
-
-# 4. Strongest classical no-go theorem — WP4
-
-A reversible three-state family preserves fixed optical detailed balance, photon energy/temperature ratio, finite nonzero optical throughput, finite total activity, finite total and edge-resolved EPR, and finite nonzero detection probability while an absolute optical/internal rate scale diverges.
-
-Therefore
+Strongest Markov no-go theorem: fixed photon energy/temperature ratio, fixed optical detailed balance, finite nonzero throughput, finite total activity, finite total and edge EPR, and finite nonzero detection probability do **not** bound detector speed if an absolute microscopic coupling/rate scale may diverge.
 
 \[
 \boxed{
 \{T,\hbar\omega_0,\text{detailed balance},f_*,\mathcal A,\Sigma,\text{edge EPRs},\eta_q\}
-\not\Rightarrow\text{finite detector speed}.
+\not\Rightarrow\text{finite speed}.
 }
 \]
-
-An **absolute microscopic coupling/transition resource is necessary**.
 
 Primary note: `notes/WP4_MICROSCOPIC_OPTICAL_COUPLING_NO_GO.md`.
 
 ---
 
-# 5. Restricted internal completion theorem — WP3
+# 4. Restricted thermokinetic event-detector theorem
 
-For a reversible optical gateway, minimum throughput `f_*`, EPR budget `Sigma`, activity budget `A`, and fixed reverse optical rate `d`, define
+For a reversible optical gateway with minimum throughput `f_*`, EPR budget `Sigma`, activity budget `A`, and fixed reverse optical rate `d`, define
 
 \[
-g(z)=\left(1-\frac1z\right)\ln z,
-\qquad Z_*=g^{-1}(\Sigma/f_*).
+g(z)=(1-z^{-1})\ln z,
+\qquad
+Z_*=g^{-1}(\Sigma/f_*).
 \]
 
 Then
@@ -97,29 +102,31 @@ Then
 \lambda_1\le\Lambda_*=(\mathcal A d/f_*)Z_*.
 \]
 
-For the proper single-event detector class,
+For the proper single-event class,
 
 \[
 \eta_{\mathcal I}(\omega)
-\le\eta_q\frac{\Lambda_*^2}{\Lambda_*^2+\omega^2}.
+\le
+\eta_q\frac{\Lambda_*^2}{\Lambda_*^2+\omega^2}.
 \]
 
-If `gamma(omega_0)<=gamma_max`, then `d<=gamma_max[n+1]` and the theorem has an explicit microscopic coupling cap.
+**Status:** PROVED under the stated event-transducer assumptions.
 
 Primary note: `notes/WP3_GATEWAY_RESOURCE_THEOREM.md`.
 
 ---
 
-# 6. Passive finite-band optical capture — WP5
+# 5. Passive finite-band electromagnetic capture — WP5
 
-For coherent-state modulation through a passive frequency-preserving optical frontend,
+For coherent-state modulation through a passive frequency-preserving frontend,
 
 \[
-F_{\rm electrical}\le
+F_{\rm electrical}
+\le
 \int\frac{d\omega}{2\pi}\tau(\omega)\mathcal J_{\rm in}(\omega).
 \]
 
-Using rigorous matrix-valued T-operator oscillator/sum-rule bounds, an electrically small reciprocal detector under nearly uniform illumination obeys
+Rigorous matrix-valued T-operator sum rules yield, for an electrically small reciprocal detector under nearly uniform illumination,
 
 \[
 \bar\eta_{\mathcal I}(\Omega_s)
@@ -134,7 +141,7 @@ Using rigorous matrix-valued T-operator oscillator/sum-rule bounds, an electrica
 \right].
 \]
 
-Plane-wave sideband variation over projected radius `R` costs at most
+Plane-wave sideband spatial variation over radius `R` costs at most
 
 \[
 C_{\rm phase}=e^{2\Omega_sR/c}.
@@ -146,28 +153,9 @@ Primary notes:
 
 ---
 
-# 7. Restricted composite theorem — WP6
+# 6. Fully quantum finite-hypothesis theorem — WP7/QH
 
-For coherent modulation, passive reciprocal finite-band optical capture, controlled finite-footprint phase variation, and the WP3 event-transducer assumptions,
-
-\[
-\boxed{
-\bar\eta_{\mathcal I}(\Omega_s)
-\le\min[B_{\rm opt}(\Omega_s),B_{\rm trans}(\Omega_s)].
-}
-\]
-
-This is a valid restricted classical/semiclassical optical+thermokinetic theorem, not a universal quantum theorem.
-
-Primary note: `notes/WP6_RESTRICTED_COMPOSITE_THEOREM.md`.
-
----
-
-# 8. Fully quantum finite-hypothesis theorem — WP7/QH
-
-Partition the closed dilation into optical signal `F` and complete apparatus `D`, initially with the same apparatus state under both optical hypotheses.
-
-Define
+For two optical hypotheses initially tensor the same apparatus state, define the nonlocal interaction seminorm
 
 \[
 g_{\rm int}(t)=\inf_{A_F,B_D}\|H-A_F\otimes I-I\otimes B_D\|_\infty,
@@ -177,7 +165,7 @@ g_{\rm int}(t)=\inf_{A_F,B_D}\|H-A_F\otimes I-I\otimes B_D\|_\infty,
 G(t)=\hbar^{-1}\int_0^t g_{\rm int}(s)ds.
 \]
 
-Then the transferred trace distinguishability satisfies
+Then
 
 \[
 \boxed{
@@ -185,204 +173,372 @@ D_{\rm elec}(t)/D_{\rm in}\le\min\{1,2G(t)\}.
 }
 \]
 
-If `g_int<=E_int`, transferring fraction `r` of the available binary distinguishability requires
+**Status:** PROVED for finite-hypothesis/Helstrom information under the dilation assumptions.
 
-\[
-t\ge r\hbar/(2E_{\rm int}).
-\]
-
-**Status:** PROVED under the initial product/same-apparatus-state and unitary-dilation assumptions.
+A trine-POVM counterexample proves trace-distance contraction cannot be differentiated into a universal SLD-QFI contraction theorem.
 
 Primary note: `notes/WP7_QUANTUM_DISTINGUISHABILITY_TRANSFER.md`.
 
 ---
 
-# 9. Exact obstruction: QFI is a separate quantum problem
+# 7. Coherent-state SLD-QFI interaction theorem
 
-A qubit trine POVM gives
-
-\[
-\eta_{\rm Tr}=2/3
-\]
-
-but, for near-pure equatorial phase families,
+For passive number-conserving bosonic coupling with single-particle cross block `V(t)`, define
 
 \[
-F_{\rm out}/F_{\rm in}=1/(2-s)\to1.
+\Gamma=\int_0^t\|V(s)\|_2ds.
 \]
 
-Hence
+Then source-to-detector transfer probability obeys
 
 \[
-\boxed{\eta_{\rm SLD}=1\quad\text{while}\quad\eta_{\rm Tr}=2/3.}
+\tau\le\sin^2(\min\{\Gamma,\pi/2\}).
 \]
 
-The trace-distance theorem cannot simply be differentiated into an SLD/QFI theorem.
-
-**Status:** PROVED analytic counterexample.
+Cross-coupling action alone is **not** enough: an arbitrarily pre-squeezed pointer can transfer nearly all coherent-state QFI at arbitrarily weak nonzero coupling. Thus initial apparatus metrological resource is necessary.
 
 ---
 
-# 10. Coherent-state/passive-linear QFI theorem
+# 8. Directional SLD-Stam theorem and globally tight energy repair
 
-For coherent optical displacement encoding coupled to detector bosonic modes through a passive number-conserving quadratic Hamiltonian with single-particle cross block `V(t)`, define
-
-\[
-\Gamma(t)=\int_0^t\|V(s)\|_2ds.
-\]
-
-The optical-to-detector single-particle transfer probability obeys
-
-\[
-\|U_{DF}\|_2^2
-\le\sin^2(\min\{\Gamma,\pi/2\}).
-\]
-
-If detector modes initially occupy fixed coherent states, then
+For one output of a passive beam splitter,
 
 \[
 \boxed{
-F_{\rm elec}/F_{\rm in}
-\le\sin^2(\min\{\Gamma,\pi/2\}).
+\frac1{J_C}
+\ge
+\frac\lambda{J_A}
++\frac{1-\lambda}{J_B}.
 }
 \]
 
-For a two-mode beam splitter this is saturated.
+This is derived directly for SLD/Bures QFI from data processing, product additivity, and displacement covariance.
 
-Primary note: `notes/WP7_COHERENT_GAUSSIAN_QFI_TRANSFER.md`.
-
----
-
-# 11. Stronger quantum no-go: preloaded pointer squeezing
-
-The coherent/vacuum theorem is not universal. For a coherent optical x-displacement coupled by beam-splitter angle `phi` to an x-squeezed detector pointer,
+For coherent input (`J_A=2`) and arbitrary detector pointer with total excitation `N`, define
 
 \[
-\boxed{
-F_{\rm elec}/F_{\rm in}
-=
-\frac{\sin^2\phi}
-{\sin^2\phi+\cos^2\phi e^{-2r}}.
-}
-\]
-
-For every nonzero `phi`, this tends to 1 as the detector squeezing `r->infinity`.
-
-Therefore
-
-\[
-\boxed{
-\text{cross-coupling action alone does not bound coherent-state QFI transfer}
-}
-\]
-
-if arbitrary pre-existing apparatus squeezing/metrological energy is allowed.
-
-Maintaining fixed transfer fraction `q` at weak coupling requires detector energy
-
-\[
-N_D\sim\frac{q}{4(1-q)\phi^2}.
-\]
-
-This identifies **initial apparatus metrological resource/noise** as another necessary quantum resource.
-
----
-
-# 12. Tight energy-repaired Gaussian theorem
-
-For the one-signal-mode / one-effective-detector-mode Gaussian class, constrain the detector's initial mean excitation by
-
-\[
-N_D\le N.
-\]
-
-Define
-
-\[
-\boxed{
 \xi(N)=(\sqrt{N+1}-\sqrt N)^2.
-}
 \]
 
-This is the minimum detector quadrature-noise factor allowed by the Gaussian energy budget.
-
-At transfer probability `tau`,
+Then
 
 \[
 \boxed{
-F_{\rm elec}/F_{\rm in}
+\frac{F_{\rm elec}}{F_{\rm in}}
 \le
-\frac{\tau}{\tau+(1-\tau)\xi(N)}.
+\frac\tau{\tau+(1-\tau)\xi(N)}
 }
 \]
 
-Using `tau<=sin^2 Gamma`, for `0<=Gamma<=pi/2`,
+and
 
 \[
 \boxed{
-F_{\rm elec}/F_{\rm in}
+\frac{F_{\rm elec}}{F_{\rm in}}
 \le
 \frac{\sin^2\Gamma}
 {\sin^2\Gamma+\cos^2\Gamma\,\xi(N)}.
 }
 \]
 
-The theorem is tight: equality is attained by a pure squeezed-vacuum pointer aligned to the signal quadrature, beam-splitter coupling, and aligned homodyne readout.
+A squeezed-vacuum pointer plus beam splitter and homodyne saturates the theorem.
 
-To transfer fraction `q`, necessarily
+**Status:** PROVED and globally tight under the passive-linear single-collective-mode model.
+
+Primary note: `notes/WP8_SLD_STAM_GLOBAL_ENERGY_THEOREM.md`.
+
+---
+
+# 9. Finite-temperature free-energy apparatus resource — WP8
+
+Let
+
+\[
+\vartheta=\beta\hbar\omega_D,
+\qquad
+D_0=\beta\Delta F=D(\rho_D\Vert\tau_\vartheta).
+\]
+
+## 9.1 Global arbitrary-state upper bound
+
+Entropy maximization at fixed mean excitation gives
+
+\[
+D_0\ge
+\vartheta N-g(N)-\ln(1-e^{-\vartheta}).
+\]
+
+Let `N_+(D0,vartheta)` be the largest equality root. Then every pointer obeys
 
 \[
 \boxed{
-\Gamma\ge
-\arctan\sqrt{\frac{q\xi(N)}{1-q}}.
+J_D\le\frac2{\xi(N_+)}
 }
 \]
 
-For `N=0`, this reduces to `Gamma>=arcsin sqrt(q)`. For large `N`, `xi(N)~1/(4N)` and the minimum action scales as `N^{-1/2}`.
-
-Primary note: `notes/WP7_ENERGY_REPAIRED_GAUSSIAN_THEOREM.md`.
-
-**Status:** PROVED and saturable for the stated single-effective-mode Gaussian class.
-
----
-
-# 13. Current resource hierarchy
-
-The emerging complete resource logic is
+and therefore
 
 \[
 \boxed{
-\text{source temporal/information task}
-+
-\text{finite-band electromagnetic capture resources}
-+
-\text{absolute microscopic cross-coupling}
-+
-\text{initial apparatus metrological energy/noise}
-+
-\text{internal thermokinetic resources}
-\Longrightarrow
-\text{information-transfer bandwidth ceiling}.
+\frac{F_{\rm elec}}{F_{\rm in}}
+\le
+\frac\tau{\tau+(1-\tau)\xi(N_+)}.
 }
 \]
 
-WP4 shows why the microscopic coupling is necessary. WP7 shows why a quantum apparatus-preparation resource is additionally necessary.
+Finite nonequilibrium free energy is therefore sufficient to close the hidden preloaded-pointer loophole.
+
+Primary note: `notes/WP8_GLOBAL_FREE_ENERGY_UPPER_BOUND.md`.
+
+## 9.2 Gaussian global optimality is false
+
+At
+
+\[
+\vartheta=\ln2,
+\qquad
+D_0=\ln(3/2),
+\]
+
+the even-conditioned thermal state
+
+\[
+\rho_e=\sum_{k\ge0}\frac34 4^{-k}|2k\rangle\langle2k|
+\]
+
+has exactly
+
+\[
+J_X=14/3,
+\qquad
+\langle N\rangle=2/3.
+\]
+
+The Gaussian free-energy theorem proves every Gaussian pointer at the same budget has `J_X<3.783`.
+
+**Status:** analytic COUNTEREXAMPLE / PROVED.
+
+Primary note: `notes/WP8_NON_GAUSSIAN_PARITY_COUNTEREXAMPLE.md`.
+
+## 9.3 Exact parity-sector frontier
+
+For any even-supported state,
+
+\[
+J_X(\rho)=4\operatorname{Tr}(\rho P^2).
+\]
+
+The exact free-energy optimizer in that sector is
+
+\[
+\rho_s\propto\Pi_e e^{\log\tau+sP^2}\Pi_e.
+\]
+
+With
+
+\[
+\mu=\sqrt{\vartheta(\vartheta-2s)},
+\]
+
+\[
+Z_e=(1-e^{-\vartheta})
+\frac{e^{(\vartheta-\mu)/2}}{1-e^{-2\mu}},
+\]
+
+\[
+m=\frac{\vartheta}{\mu}
+\left[\frac12+\frac{2}{e^{2\mu}-1}\right],
+\]
+
+\[
+J_e=4m,
+\qquad
+D_e=s m-\ln Z_e.
+\]
+
+This is the exact optimum over all even-supported states.
+
+At large free energy,
+
+\[
+J_e^{\rm opt}
+=\frac{8D_0}{\vartheta}+O(\ln D_0).
+\]
+
+The global upper bound has the same leading asymptotic term, so the parity-sector family is asymptotically globally optimal to relative error tending to zero.
+
+Primary note: `notes/WP8_EXACT_PARITY_SECTOR_FRONTIER.md`.
+
+## 9.4 Gaussian states are locally optimal near equilibrium
+
+At `D0 -> 0`, the QFI first variation at the thermal state is generated by a quadratic operator and the relative-entropy Hessian is the BKM metric. The steepest-ascent exponential tilt is therefore Gaussian.
+
+Thus squeezed-thermal Gaussian pointers are globally optimal to leading order near equilibrium, while the finite-budget parity state later beats every Gaussian.
+
+A **Gaussian-to-non-Gaussian resource crossover** is therefore proved for the explicit temperature example.
+
+Primary note: `notes/WP8_LOCAL_GAUSSIAN_OPTIMALITY.md`.
 
 ---
 
-# 14. Novelty constraints
+# 10. Exact equilibrium thermal-pointer theorem
 
-Do not claim novelty for generic photodetector tradeoffs, squeezing-enhanced metrology, Gaussian QFI, quantum speed limits, contraction coefficients, thermodynamic uncertainty relations, optical power-bandwidth limits, T-operator sum rules, or Maxwell-constrained information capacity.
+With no nonequilibrium apparatus preparation,
 
-Current candidate novelty remains the **photodetection-specific resource-completeness/no-go/completion structure**, especially the sequence of explicit counterexamples showing which physically hidden resources must be added before a finite information-speed theorem becomes possible.
+\[
+J_\beta
+=2t_\beta,
+\qquad
+t_\beta=\tanh(\beta\hbar\omega_D/2).
+\]
+
+The exact passive-linear optimum is
+
+\[
+\boxed{
+\frac{F_{\rm elec}}{F_{\rm in}}
+=
+\frac{\tau t_\beta}
+{1-\tau+\tau t_\beta}
+}
+\]
+
+and with `tau<=sin^2 Gamma`,
+
+\[
+\boxed{
+\frac{F_{\rm elec}}{F_{\rm in}}
+\le
+\frac{t_\beta\sin^2\Gamma}
+{\cos^2\Gamma+t_\beta\sin^2\Gamma}.
+}
+\]
+
+This is a literal temperature–interaction-action–information theorem for the restricted equilibrium pointer class.
+
+Primary note: `notes/WP8_EXACT_THERMAL_POINTER_THEOREM.md`.
 
 ---
 
-# 15. Exact next actions
+# 11. Finite-band quantum spectral composition — WP9
 
-1. Generalize the energy-repaired Gaussian theorem to arbitrary multimode Gaussian detector apparatus with total energy budget and arbitrary passive local processing.
-2. Determine whether all optimal apparatus energy can always be concentrated into the single coupled collective squeezed quadrature; if yes, the same `xi(N_total)` bound survives.
-3. Relate initial apparatus energy/squeezing to a finite-temperature preparation free-energy or ergotropy resource.
-4. Compose the WP7 Gaussian bound with WP5 finite-band EM capture and WP3/WP4 thermokinetic conversion where assumptions overlap.
-5. Stress-test active Gaussian amplification: any pump energy and added quantum noise must be included explicitly.
-6. Continue theorem-level novelty audit, including 2026 weak-coupling ancilla and squeezed-readout metrology.
+Let WP5 give
+
+\[
+\bar\tau\le B_{\rm opt}(\Omega_s)
+\]
+
+and WP7 give
+
+\[
+\tau(\omega)\le\tau_{\max}=\sin^2\Gamma_{\max}.
+\]
+
+For a frequency-independent pointer QFI cap `J_D`, define
+
+\[
+f_J(\tau)=\frac{\tau J_D}{2(1-\tau)+\tau J_D}.
+\]
+
+Its curvature changes sign exactly at `J_D=2`.
+
+For `J_D>=2` (resourceful pointer, concave),
+
+\[
+\boxed{
+\bar\eta
+\le
+f_J(\min\{B_{\rm opt},\tau_{\max}\}).
+}
+\]
+
+Uniform spectral coupling is optimal under the scalar constraints.
+
+For `J_D<=2` (thermal/noisy pointer, convex),
+
+\[
+\boxed{
+\bar\eta
+\le
+f_J(\tau_{\max})
+\min\{1,B_{\rm opt}/\tau_{\max}\}.
+}
+\]
+
+Bang-bang spectral concentration is optimal.
+
+For an equilibrium thermal pointer and the WP5 narrow-band `B_opt<=Omega_EM/Omega_s` regime,
+
+\[
+\boxed{
+\Omega_s
+\le
+\frac{\Omega_{\rm EM}}{q}
+\frac{t_\beta}
+{1-\tau_{\max}+\tau_{\max}t_\beta}
+}
+\]
+
+is necessary to retain average information fraction `q` when the EM resource is limiting.
+
+Primary note: `notes/WP9_FINITE_BAND_QUANTUM_SPECTRAL_COMPOSITION.md`.
+
+Issue #9 tracks the shared multimode/free-energy extension.
+
+---
+
+# 12. Novelty constraints
+
+Do **not** claim novelty for:
+
+- generic photodetector sensitivity-speed/gain-bandwidth tradeoffs;
+- general quantum photodetector frameworks;
+- generic thermodynamic or kinetic precision bounds;
+- finite-frequency response/noise inequalities;
+- squeezing-enhanced metrology;
+- generic non-Gaussian displacement sensing;
+- sparse/`N`-spaced Fock-support sensing states;
+- optical LDOS/power-bandwidth limits;
+- T-operator sum rules;
+- Maxwell-constrained communication capacity.
+
+Important adjacent results include:
+
+- Young–Sarovar–Léonard quantum photodetector limits/frameworks;
+- Hasegawa and later thermodynamic/kinetic uncertainty relations;
+- Schwarzhans et al. detector thermodynamics;
+- Dechant/Liu-Gu/Zheng-Lu finite-frequency response bounds;
+- Shim et al. finite-band optical response limits;
+- Zhang–Monticone–Miller T-operator sum rules;
+- Amaolo et al. Maxwell-constrained Shannon capacity;
+- Grochowski & Filip (PRL 135, 230802, 2025) `N`-spaced non-Gaussian force-sensing states;
+- Marvian (PRL 129, 190502, 2022) thermodynamic operational interpretation of QFI/coherence cost.
+
+Current candidate novelty is the **photodetection-specific resource-completeness structure**: explicit no-go counterexamples identifying missing microscopic and apparatus resources, followed by finite-band completion theorems when those resources are supplied.
+
+---
+
+# 13. Current sharp open problems
+
+1. Exact finite-budget arbitrary-state pointer frontier
+
+\[
+J_F^{\max}(D_0,\vartheta)
+=\sup_{\rho:D(\rho\Vert\tau_\vartheta)\le D_0}J_X(\rho).
+\]
+
+Known regimes:
+- small `D0`: Gaussian optimal to leading order;
+- finite `D0`: non-Gaussian parity beats Gaussian;
+- large `D0`: exact even-parity exponential family asymptotically globally optimal;
+- all `D0`: rigorous global upper bound.
+
+Next route: two-parity interpolation or tight dual variational solution.
+
+2. WP9 shared spectral preparation budget: replace a per-frequency `J_D` cap by one total free-energy budget across frequency modes and solve the joint spectral allocation.
+
+3. Multimode scattering/channel rank: extend scalar singular-channel composition to multiple spatial channels without hiding footprint resources.
+
+4. Active gain: explicitly count pump/free-energy resource and added quantum noise.
+
+5. Final novelty/publication gate: decide whether the strongest paper should emphasize the Markov missing-coupling theorem, the quantum apparatus free-energy crossover, the finite-band composition, or a unified no-go + completion structure.
