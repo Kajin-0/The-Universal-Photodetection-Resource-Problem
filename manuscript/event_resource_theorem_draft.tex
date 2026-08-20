@@ -1,0 +1,463 @@
+\documentclass[aps,prapplied,preprint,nofootinbib]{revtex4-2}
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\MI}{\mathcal I}
+\newcommand{\Wcal}{\mathcal W}
+\newcommand{\Rtwo}{\mathfrak R_2}
+\newcommand{\Hcap}{\mathfrak H}
+\newcommand{\E}{\mathbb E}
+\newcommand{\M}{\mathsf M}
+
+\begin{document}
+
+\title{Resource Bounds on Temporal Information Transfer in Photodetection Event Channels}
+
+\author{Anonymous}
+\affiliation{Anonymous}
+
+\begin{abstract}
+Photodetector speed is commonly summarized by rise time, transit time, timing jitter, or an electrical $-3\,$dB bandwidth.  These quantities need not coincide with loss of information about an incident optical waveform.  We formulate temporal photodetection as a source-normalized information-transfer problem for an autonomous marked event channel.  In the weak coherent/direct-detection regime, each incident photon is mapped to a primary electrical event with an accessible mark and a random registration delay.  We derive the exact Fisher-information transfer of a sinusoidal optical-flux perturbation in terms of the characteristic functions of the mark-conditioned delay laws.  Classical Wiener theory then implies that the asymptotic high-bandwidth information residue is exactly the capture-weighted squared atomic mass of those delay laws.  When the conditional delay densities are square-integrable, Parseval's identity gives an exact integrated spectral budget controlled by a timing-collision resource.  A capture-weighted local registration-hazard budget provides a microscopic sufficient bound and yields an explicit inverse-bandwidth ceiling.  We construct a smooth fast-path/rare-tail family showing that fixed RMS timing jitter does not bound information bandwidth, and a synchronous-control counterexample showing that an unbounded temporal reference can preserve arrival-phase information despite arbitrarily slow final registration.  Finally, for a restricted reversible Markov optical gateway, we show that stationary entropy production, dynamical activity, and throughput bound temporal information only when an absolute microscopic transition-rate scale is supplied; without that scale a rare-fast counterexample makes information bandwidth unbounded.  The results identify a hierarchy of timing and dynamical resources for autonomous photodetection event channels rather than a universal sensitivity--bandwidth--temperature product.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+The temporal performance of a photodetector is usually described through an engineering response metric: an impulse-response width, a transit-time estimate, an RC pole, a rise time, or a timing-jitter full width at half maximum.  Such quantities are indispensable for circuit and system design, but they answer a different question from the one considered here.  We ask how much \emph{information about a time-dependent incident optical signal} can reach an electrical record.
+
+This distinction matters even in elementary cases.  A known deterministic delay multiplies a Fourier component by a phase factor $e^{-i\omega\tau}$ and therefore changes latency without reducing distinguishability.  Likewise, a known invertible deterministic linear filter acting on a signal and on all noise generated upstream of that filter attenuates both together and need not reduce Fisher information.  Information is lost only when relevant degrees of freedom are inaccessible or coarse-grained, when timing is random and unresolved, when downstream noise is added, when a transfer function has a true null, or when a resource such as a temporal reference is explicitly constrained.
+
+Instrument-response functions (IRFs) and their information consequences have a substantial prior literature in time-correlated single-photon counting (TCSPC).  K\"ollner and Wolfrum used Fisher-information/Cram\'er--Rao reasoning to quantify photon requirements for fluorescence-lifetime estimation \cite{KollnerWolfrum1992}.  Talaga developed an information-theoretical TCSPC treatment that explicitly included IRF convolution, information loss, digitization and detector sensitivity--bandwidth tradeoffs \cite{Talaga2009}.  More recent work has used Fisher information to quantify how finite IRFs, background and photon statistics constrain fluorescence-lifetime precision \cite{Bouchet2019,TrinhEsposito2021}.  Our goal is not to rediscover the fact that timing response affects photon information.  Instead, we seek a detector-side \emph{resource theorem}: which properties of an autonomous photodetection event channel are sufficient to bound source-normalized temporal information, and which familiar metrics are provably insufficient?
+
+We focus first on the independent-event, weak coherent/direct-detection regime.  This is deliberately narrower than the class of all photodetectors.  Coherent continuous pointers, externally synchronized detectors, strongly history-dependent high-flux counters, and nonclassical optical inputs can require additional resources and are discussed as scope boundaries below.
+
+Our main results are as follows.
+\begin{enumerate}
+\item We formulate the detector as an autonomous marked subprobability kernel from incident photon arrival time to a primary electrical event mark and registration delay.  For weak sinusoidal intensity modulation, the source-normalized Fisher-information transfer is exactly a capture-weighted average of squared delay characteristic functions.
+\item By Wiener’s classical theorem, the asymptotic flat-band information residue is exactly the capture-weighted sum of squared atomic timing masses.  Deterministic timing branches, not ordinary variance, are the exact asymptotic obstruction.
+\item For square-integrable timing densities, Parseval's identity yields an exact integrated timing-spectrum resource $\Rtwo$.  This gives a finite-band information ceiling for arbitrary source-information spectra through a spectral-concentration functional.
+\item A capture-weighted bound on local conditional registration hazards supplies a microscopic sufficient resource $\Hcap$ with $\Rtwo\le \Hcap$.  A uniform hazard ceiling is a useful stronger corollary, and a constant-hazard exponential process asymptotically saturates its high-bandwidth coefficient.
+\item Fixed mean delay, RMS jitter, or FWHM jitter do not bound temporal information bandwidth.  An explicit smooth fast-path/rare-tail family retains essentially all information over any prescribed finite band while its variance remains fixed.
+\item A free source-synchronous temporal reference defeats detector-only timing bounds by encoding optical arrival phase into an event mark before arbitrarily slow registration.  Autonomy, or an explicit clock/control resource, is therefore essential.
+\item In a restricted reversible Markov optical-gateway model, entropy production, stationary activity and throughput produce a finite information-bandwidth bound only after an absolute microscopic transition rate is also bounded.  A complementary rare-fast construction shows that stationary thermodynamic resources alone are insufficient.
+\end{enumerate}
+
+The mathematical ingredients---Poisson marking and displacement, characteristic functions, Parseval's identity, Wiener theory, and survival hazards---are classical.  The contribution is their use to construct and adversarially test a photodetection-specific resource hierarchy.
+
+\section{Autonomous marked photodetection event channel}
+
+\subsection{Source model and normalization}
+
+Consider an incident photon flux
+\begin{equation}
+\Phi_\theta(t)=\Phi_0[1+\theta \cos(\omega t)],\qquad |\theta|\ll1,
+\label{eq:source}
+\end{equation}
+modeled as an inhomogeneous Poisson process.  This is the direct-detection statistics of weak intensity modulation of a coherent optical field.  At $\theta=0$, the Fisher-information rate of the incident photon process is
+\begin{equation}
+\dot F_{\rm in}=\frac{\Phi_0}{2}.
+\label{eq:inputFI}
+\end{equation}
+We use the source-normalized transfer
+\begin{equation}
+\eta_I(\omega)=\frac{\dot F_{\rm electrical}(\omega)}{\dot F_{\rm in}(\omega)}.
+\label{eq:etaI}
+\end{equation}
+For the coherent intensity-modulation task above, the incident direct-detection FI equals the relevant incident-field QFI, so $\eta_I\le1$ is consistent with quantum data processing for this task.  We do not claim Eq.~\eqref{eq:etaI} captures arbitrary optical phase modulation or arbitrary nonclassical source states.
+
+\subsection{Marked registration kernel}
+
+Let $\M$ be the complete accessible mark space of the \emph{primary} electrical event.  Per incident photon, define a subprobability kernel
+\begin{equation}
+K(dm,d\tau)=\kappa(dm)\,\mu_m(d\tau),
+\label{eq:kernel}
+\end{equation}
+where $\tau\ge0$ is the registration delay measured from photon arrival.  The finite measure $\kappa$ has total mass
+\begin{equation}
+\eta=\kappa(\M)\le1,
+\label{eq:capture}
+\end{equation}
+which is the probability that an incident photon produces a primary registered electrical event.  For $\kappa$-almost every mark, $\mu_m$ is a normalized probability measure over delays.
+
+The key autonomy assumption is translation covariance in time: the conditional law depends only on elapsed delay from the photon arrival, not on the absolute source phase.  An external clock can violate this assumption and is treated in Sec.~\ref{sec:clock}.
+
+Define the conditional characteristic function
+\begin{equation}
+H_m(\omega)=\int_0^\infty e^{-i\omega\tau}\,d\mu_m(\tau).
+\label{eq:Hm}
+\end{equation}
+
+\begin{theorem}[Exact marked-event information transfer]
+For the source in Eq.~\eqref{eq:source} and the autonomous one-primary-event kernel in Eq.~\eqref{eq:kernel}, the source-normalized Fisher-information transfer of the ideal primary marked event record is
+\begin{equation}
+\boxed{
+G(\omega)=\int_{\M}|H_m(\omega)|^2\,\kappa(dm).}
+\label{eq:G}
+\end{equation}
+Any parameter-independent background process or stochastic downstream processing obeys
+\begin{equation}
+\eta_I^{\rm measured}(\omega)\le G(\omega).
+\label{eq:dataProcessing}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Independent marking and displacement preserve the Poisson property.  At $\theta=0$, the marked output intensity measure is $\Phi_0\kappa(dm)$.  The sinusoidal derivative of that intensity is multiplied by $H_m(\omega)$.  The FI rate of a Poisson process with intensity measure $\lambda_\theta$ is the integral of $(\partial_\theta\lambda)^2/\lambda$; dividing by Eq.~\eqref{eq:inputFI} gives Eq.~\eqref{eq:G}.  Equation~\eqref{eq:dataProcessing} follows from Fisher-information data processing.
+\end{proof}
+
+At zero frequency,
+\begin{equation}
+G(0)=\eta,
+\end{equation}
+so capture loss sets the ideal DC information ceiling.  Importantly, Eq.~\eqref{eq:G} conditions on every accessible mark.  Marginalizing a mark that identifies a deterministic timing branch can create an artificial information loss.
+
+\section{Exact atomic high-bandwidth residue}
+\label{sec:wiener}
+
+A probability measure need not possess a density.  This is important because an exactly deterministic timing branch is an atom rather than a smooth jitter distribution.
+
+For each mark $m$, let $p_j(m)$ denote the masses of the atoms of $\mu_m$.  Wiener’s theorem for Fourier transforms of finite measures gives
+\begin{equation}
+\lim_{\Omega\to\infty}
+\frac{1}{2\Omega}
+\int_{-\Omega}^{\Omega}|H_m(\omega)|^2d\omega
+=\sum_jp_j(m)^2.
+\label{eq:wienerSingle}
+\end{equation}
+Since $|H_m|\le1$ and $\kappa$ is finite, dominated convergence yields the marked result.
+
+\begin{theorem}[Atomic timing residue]
+For the ideal marked event channel,
+\begin{equation}
+\boxed{
+\lim_{\Omega\to\infty}
+\frac{1}{2\Omega}
+\int_{-\Omega}^{\Omega}G(\omega)d\omega
+=
+\int_{\M}\left[\sum_jp_j(m)^2\right]\kappa(dm).}
+\label{eq:atomic}
+\end{equation}
+\end{theorem}
+
+Thus every mark-conditioned delay law being non-atomic is sufficient for the average flat-band information transfer to vanish asymptotically.  Conversely, deterministic or discrete timing branches produce an exact nonzero residue.  For example, if an unresolved delay law contains one atom of probability $p$, its high-band average retains a fraction $p^2$ of the captured timing information.  If a mark identifies which deterministic branch occurred, each conditional law can have unit atomic mass and the full captured timing information survives.
+
+Equation~\eqref{eq:atomic} should not be read as a claim that real detectors literally contain delta-function timing peaks.  It characterizes the singular limit.  A very narrow but continuous prompt component has zero ultimate Wiener residue, yet its crossover bandwidth can be made arbitrarily large; this distinction motivates the quantitative resource below.
+
+\section{Timing-collision spectral resource}
+\label{sec:R2}
+
+Suppose now that each $\mu_m$ has a square-integrable density $f_m(t)$.  Define the absolute, capture-weighted timing-collision intensity
+\begin{equation}
+\boxed{
+\Rtwo=2\int_{\M}\kappa(dm)\int_0^\infty f_m(t)^2dt.}
+\label{eq:R2}
+\end{equation}
+It has dimensions of inverse time.
+
+Parseval's identity applied mark by mark gives an exact sum rule.
+
+\begin{theorem}[Timing-spectrum sum rule]
+\begin{equation}
+\boxed{
+\int_{-\infty}^{\infty}G(\omega)d\omega
+=\pi\Rtwo.}
+\label{eq:parseval}
+\end{equation}
+Consequently, for a flat two-sided source-information band $|\omega|\le\Omega$,
+\begin{equation}
+\boxed{
+\bar\eta_I(\Omega)
+\le
+\min\left[\eta,\frac{\pi\Rtwo}{2\Omega}\right].}
+\label{eq:flatR2}
+\end{equation}
+\end{theorem}
+
+The first branch of Eq.~\eqref{eq:flatR2} follows from $G(\omega)\le G(0)=\eta$; the second follows from Eq.~\eqref{eq:parseval}.
+
+\subsection{Arbitrary source-information spectrum}
+
+A scalar bandwidth is not always a natural descriptor of the source task.  Let $w(\omega)$ be a normalized incident spectral-FI density,
+\begin{equation}
+\int_{-\infty}^{\infty}w(\omega)d\omega=1,
+\qquad w\ge0.
+\end{equation}
+Define its spectral concentration function
+\begin{equation}
+\boxed{
+\Wcal(A)=\sup_{E:\,|E|\le A}\int_Ew(\omega)d\omega,}
+\label{eq:W}
+\end{equation}
+where the supremum is over measurable frequency sets of Lebesgue measure no larger than $A$.
+
+The bathtub/rearrangement principle applied to $0\le G\le\eta$ and Eq.~\eqref{eq:parseval} yields
+\begin{equation}
+\boxed{
+\bar\eta_I[w]
+\le
+\eta\,
+\Wcal\!\left(\frac{\pi\Rtwo}{\eta}\right),}
+\qquad \eta>0.
+\label{eq:arbitrarySource}
+\end{equation}
+For a uniform $w$ on $[-\Omega,\Omega]$, Eq.~\eqref{eq:arbitrarySource} reduces to Eq.~\eqref{eq:flatR2}.
+
+\section{Microscopic completion by local registration intensity}
+\label{sec:hazard}
+
+The collision resource $\Rtwo$ is mathematically direct but is not itself a microscopic rate.  Let
+\begin{equation}
+h_m(t)=\frac{f_m(t)}{S_m(t)}
+\end{equation}
+be the conditional registration hazard, with $S_m(t)=\Pr(D>t\mid m)$.
+
+Suppose
+\begin{equation}
+h_m(t)\le\Lambda(m)
+\label{eq:markhazard}
+\end{equation}
+for almost every $t$.  Define the capture-weighted hazard capacity
+\begin{equation}
+\boxed{
+\Hcap=\int_{\M}\Lambda(m)\kappa(dm).}
+\label{eq:Hcap}
+\end{equation}
+
+\begin{lemma}[Hazard--collision inequality]
+For every mark satisfying Eq.~\eqref{eq:markhazard},
+\begin{equation}
+2\int_0^\infty f_m(t)^2dt\le\Lambda(m).
+\label{eq:hazardL2}
+\end{equation}
+Hence
+\begin{equation}
+\boxed{\Rtwo\le\Hcap.}
+\label{eq:R2H}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Write $u(t)=\int_0^th_m(s)ds$, so $S_m(t)=e^{-u(t)}$ and $f_m=h_me^{-u}$.  On intervals with $h_m>0$, use $du=h_mdt$:
+\begin{equation}
+\int f_m^2dt
+=\int h_m e^{-2u}du
+\le\Lambda(m)\int_0^\infty e^{-2u}du
+=\frac{\Lambda(m)}{2}.
+\end{equation}
+Zero-hazard intervals contribute nothing.
+\end{proof}
+
+Combining Eqs.~\eqref{eq:flatR2} and \eqref{eq:R2H} gives
+\begin{equation}
+\boxed{
+\bar\eta_I(\Omega)
+\le
+\min\left[\eta,\frac{\pi\Hcap}{2\Omega}\right].}
+\label{eq:weightedHazardBound}
+\end{equation}
+A uniform worst-case hazard $h_m(t)\le\Lambda$ gives $\Hcap\le\eta\Lambda$ and therefore
+\begin{equation}
+\bar\eta_I(\Omega)
+\le\eta\min\left[1,\frac{\pi\Lambda}{2\Omega}\right].
+\label{eq:uniformHazard}
+\end{equation}
+The weighted form \eqref{eq:weightedHazardBound} is strictly sharper: an arbitrarily fast branch is harmless if its capture weight becomes sufficiently small.
+
+For a constant-hazard delay $f(t)=\Lambda e^{-\Lambda t}$,
+\begin{equation}
+H(\omega)=\frac{\Lambda}{\Lambda+i\omega},
+\end{equation}
+and
+\begin{equation}
+\frac{1}{2\Omega}\int_{-\Omega}^{\Omega}|H(\omega)|^2d\omega
+=rac{\Lambda}{\Omega}\tan^{-1}\left(\frac{\Omega}{\Lambda}\right)
+\sim\frac{\pi\Lambda}{2\Omega}.
+\end{equation}
+Thus the high-band coefficient in Eq.~\eqref{eq:uniformHazard} is asymptotically tight.
+
+For a classical Markov jump detector, a sufficient uniform bound is the maximum total intensity of all first-registration transitions from any pre-registration state.  For a quantum-jump detector with registration jumps $L_\alpha$, a sufficient bound is $\|\sum_\alpha L_\alpha^\dagger L_\alpha\|_\infty$.  These local quantities should not be confused with stationary dynamical activity, which weights rates by stationary occupation.
+
+\section{Why conventional timing jitter is not resource-complete}
+\label{sec:jitterNoGo}
+
+A finite timing variance does not bound $\Rtwo$ and does not bound the frequency range over which $H(\omega)$ remains close to one.
+
+Consider the smooth two-path delay density
+\begin{equation}
+f_{\epsilon,n}(t)
+=(1-\epsilon)n e^{-nt}
++\epsilon\lambda_\epsilon e^{-\lambda_\epsilon t}.
+\label{eq:mixture}
+\end{equation}
+In the limit $n\to\infty$, choose
+\begin{equation}
+\lambda_\epsilon
+=\frac{\sqrt{\epsilon(2-\epsilon)}}{\sigma}.
+\label{eq:lambdaeps}
+\end{equation}
+A direct moment calculation gives
+\begin{equation}
+\operatorname{Var}(D)\to\sigma^2.
+\end{equation}
+Its characteristic function is
+\begin{equation}
+H_{\epsilon,n}(\omega)
+=(1-\epsilon)\frac{n}{n+i\omega}
++\epsilon\frac{\lambda_\epsilon}{\lambda_\epsilon+i\omega}.
+\label{eq:Hmix}
+\end{equation}
+For any fixed finite frequency interval, first take $n\to\infty$ and then $\epsilon\to0$.  The second term is uniformly bounded by $\epsilon$, while the first tends uniformly to $1-\epsilon$, so
+\begin{equation}
+H_{\epsilon,n}(\omega)\to1
+\end{equation}
+uniformly on the prescribed band.  Hence the information transfer approaches the capture limit while the delay variance remains fixed.
+
+This construction is a physically interpretable two-path Markov detector: most captured photons select an increasingly fast registration channel, while a vanishing fraction select a correspondingly slow channel that carries the variance.  It proves that RMS jitter, FWHM, and low-order delay moments are not resource-complete temporal-information variables.
+
+\section{External temporal reference as an independent resource}
+\label{sec:clock}
+
+The autonomous assumption cannot be dropped for free.  Suppose the detector has a phase-locked clock at the source modulation frequency and stores, at photon arrival,
+\begin{equation}
+M=\omega t\pmod{2\pi}.
+\end{equation}
+For Eq.~\eqref{eq:source}, the phase-mark density is
+\begin{equation}
+p_\theta(M)=\frac{1}{2\pi}[1+\theta\cos M].
+\end{equation}
+The FI of this mark at $\theta=0$ is $1/2$ per captured photon, equal to the incident Poisson timing FI per photon.  The mark can then be reported after an arbitrarily slow registration delay without losing that phase information.
+
+Thus a detector-only registration-rate bound can be evaded by a free temporal reference.  A theorem for synchronous, heterodyne, gated, or clocked detectors must count clock frequency, phase precision, control action, memory, or an equivalent reference-frame resource.  Here we instead restrict the event channel to autonomous/time-translation-invariant processing.
+
+\section{Thermodynamic no-go and restricted completion}
+\label{sec:thermo}
+
+We now connect the event-channel timing resource to stationary thermodynamic quantities in a restricted Markov model.  Consider the reversible optical gateway
+\begin{equation}
+0\xrightleftharpoons[d]{u}1,
+\label{eq:gateway}
+\end{equation}
+with stationary forward optical traffic $f=u\pi_0$ and reverse traffic $r=d\pi_1$.  Assume net absorption, $f\ge r$, a minimum useful forward throughput $f\ge f_*>0$, total dimensionless steady entropy-production rate $\sigma_{\rm tot}\le\Sigma$, and total stationary one-way activity $\mathcal A_{\rm tot}\le\mathcal A$.
+
+Define $z=f/r\ge1$ and
+\begin{equation}
+g(z)=\left(1-\frac{1}{z}\right)\ln z.
+\end{equation}
+The optical-edge entropy production is $\sigma_{\rm opt}=f g(z)$, so
+\begin{equation}
+g(z)\le\frac{\Sigma}{f_*}.
+\end{equation}
+With
+\begin{equation}
+Z_*=g^{-1}(\Sigma/f_*),
+\end{equation}
+we obtain
+\begin{equation}
+\pi_1=\frac{r}{d}=\frac{f}{dz}
+\ge\frac{f_*}{dZ_*}.
+\label{eq:pi1}
+\end{equation}
+Let $\lambda_1$ be the total first-exit rate from state 1.  Since activity includes $\pi_1\lambda_1$,
+\begin{equation}
+\boxed{
+\lambda_1\le
+\Lambda_*
+\equiv
+\frac{\mathcal A d}{f_*}
+\,g^{-1}\!\left(\frac{\Sigma}{f_*}\right).}
+\label{eq:Lstar}
+\end{equation}
+
+Suppose no primary electrical registration can occur before the first exit from state 1.  The first gateway waiting time $T_1\sim\mathrm{Exp}(\lambda_1)$ is independent of the exit destination and of subsequent autonomous Markov dynamics.  For any accessible downstream mark $M$ and additional delay $Y_M\ge0$,
+\begin{equation}
+D\mid M=T_1+Y_M.
+\end{equation}
+The corresponding density and survival function obey
+\begin{equation}
+f_D(t\mid M)
+=\lambda_1\int_0^t e^{-\lambda_1(t-y)}dF_{Y_M}(y)
+\end{equation}
+and
+\begin{equation}
+S_D(t\mid M)
+=\Pr(Y_M>t\mid M)+
+\int_0^t e^{-\lambda_1(t-y)}dF_{Y_M}(y),
+\end{equation}
+so
+\begin{equation}
+\boxed{h_D(t\mid M)\le\lambda_1\le\Lambda_*.}
+\label{eq:hazardBridge}
+\end{equation}
+Combining with Eq.~\eqref{eq:uniformHazard} gives the thermokinetic corollary
+\begin{equation}
+\boxed{
+\bar\eta_I(\Omega)
+\le
+C\min\left[
+1,
+\frac{\pi\mathcal A d}{2f_*\Omega}
+ g^{-1}\!\left(\frac{\Sigma}{f_*}\right)
+\right].}
+\label{eq:thermoBound}
+\end{equation}
+Because the independent exponential gateway factor remains in every conditional delay transform, this restricted model also obeys the stronger pointwise Lorentzian envelope
+\begin{equation}
+\eta_I(\omega)
+\le
+C\frac{\Lambda_*^2}{\Lambda_*^2+\omega^2}.
+\label{eq:lorentzian}
+\end{equation}
+
+Equation~\eqref{eq:thermoBound} is intentionally \emph{not} a thermodynamic speed limit derived from $T$, $\Sigma$, and $\mathcal A$ alone.  The absolute reverse optical rate $d$ is an explicit microscopic rate resource.  Earlier rare-fast reversible constructions show why this is necessary: local rates may diverge while stationary state occupations shrink so that total activity and entropy production remain finite.  Thus stationary thermodynamic quantities constrain how a microscopic rate resource can be used, but do not create the absolute time scale.
+
+For a weakly coupled thermal bosonic optical reservoir, one may further have $d=\gamma(\omega_0)[n_T(\omega_0)+1]$.  Temperature then enters only after the coupling spectrum $\gamma(\omega_0)$ is separately constrained.
+
+\section{Relation to conventional detector metrics and prior work}
+
+The theorem does not imply that conventional detector metrics are unimportant.  It instead separates their operational roles.
+
+A deterministic transit time is latency; unresolved event-to-event transit dispersion can reduce timing information.  An RC pole is an amplitude bandwidth; it reduces intrinsic FI only when combined with inaccessible filtering, downstream noise, sampling limitations, or exact nulls.  RMS/FWHM timing jitter describes low-order or width properties of a delay distribution but does not control prompt concentration or atomic timing structure.  The resources $\Rtwo$, $\Hcap$, and the atomic masses are designed for those latter questions.
+
+Talaga's TCSPC analysis already emphasized IRF-induced information loss, detector sensitivity--bandwidth tradeoffs, and the frequency-domain power spectrum of detector IRFs \cite{Talaga2009}.  K\"ollner and Wolfrum's earlier work quantified photon requirements using lifetime-estimation statistics \cite{KollnerWolfrum1992}; Talaga explicitly notes that the earlier Fisher-information TCSPC treatment neglected instrumental response.  Bouchet \emph{et al.} and Trinh and Esposito later used Fisher information to quantify finite-IRF and photon-statistics limits in lifetime microscopy \cite{Bouchet2019,TrinhEsposito2021}.  Our result differs in target and structure: the parameter is a modulation of the incident optical source itself, the detector IRF is treated as a resource-bearing channel, and the primary claims are the atomic/collision/hazard hierarchy and the accompanying no-go/thermokinetic completion results.
+
+General finite-frequency response--noise inequalities also provide relevant context.  Recent work bounds response precision by dynamical activity or related resources in Markovian systems \cite{Dechant2026}.  Those results are pointwise response/noise inequalities; Eq.~\eqref{eq:parseval} instead arises from the first-registration timing measure and constrains the integrated source-information transfer spectrum.  We do not claim generic finite-frequency fluctuation--response bounds as new.
+
+\section{Scope, limitations, and extensions}
+
+The theorem is intentionally restricted.
+
+First, the independent-event kernel assumes the low-overlap regime in which each incident photon can be treated separately.  History-dependent capture, saturation, and recovery at high flux require a trajectory-level extension.  A parameter-independent dead-time map applied after an ideal latent primary record cannot improve FI, but history-dependent capture is not represented by Eq.~\eqref{eq:kernel}.
+
+Second, multiple offspring after a sufficient primary event are downstream processing.  Multiple independent \emph{pre-primary} timing copies generated from one absorbed photon constitute an additional multiplicity resource and lie outside the one-primary-event class.
+
+Third, the source is weak coherent/direct-detection intensity modulation.  Nonclassical photon statistics and phase-sensitive optical parameters may require quantum Fisher information of the complete input field and can modify the source normalization.
+
+Fourth, the theorem is autonomous.  Synchronous detection can trade detector timing resources against clock/control/reference resources, as demonstrated in Sec.~\ref{sec:clock}.
+
+Finally, Eq.~\eqref{eq:thermoBound} is a restricted completion, not a universal temperature law.  A useful material-specific sensitivity--bandwidth--temperature prediction requires additional microscopic bounds on optical capture, unavoidable background generation, and absolute local transition intensities.
+
+\section{Discussion}
+
+The central lesson is that temporal detector performance does not reduce to one engineering width or one stationary thermodynamic scalar.  For autonomous event detection, timing resources form a hierarchy.
+
+At the weakest structural level, atomic timing mass determines whether a finite fraction of source timing information can survive arbitrarily large flat-bandwidth averaging.  At the quantitative level, the collision intensity $\Rtwo$ fixes the total integrated spectrum of the ideal event-channel transfer function.  At the microscopic level, the capture-weighted local hazard $\Hcap$ bounds $\Rtwo$ and links the timing theorem to local Markov transition rates or quantum jump intensities.  Stationary activity and entropy production generally do not bound these local resources because fast dynamics can hide in rarely occupied states.  A restricted thermodynamic completion becomes possible only after an absolute microscopic rate scale is supplied.
+
+This hierarchy also clarifies why different detector architectures require different resource sets.  An actively synchronized detector possesses an external temporal reference.  A coherent pointer can store optical information in a degree of freedom that is not yet a registered event.  A continuous analog detector may be more naturally constrained through response/noise or channel-capacity bounds.  The present theorem should therefore be viewed as one closed branch of a broader resource theory of photodetection, not as a scalar law for all photodetectors.
+
+\section{Conclusion}
+
+We derived a resource hierarchy for temporal source-information transfer in autonomous photodetection event channels.  The exact marked-event Fisher-information transfer is governed by the characteristic functions of mark-conditioned registration delays.  Deterministic timing atoms determine the asymptotic high-bandwidth residue; square-integrable timing densities define an exact collision-intensity spectral budget; and bounded local registration hazard provides a microscopic quantitative completion.  Conventional RMS/FWHM jitter and stationary thermodynamic activity are not resource-complete substitutes, while a free synchronous clock is an independent resource capable of evading detector-only timing bounds.  In a restricted reversible Markov gateway, thermodynamic budgets yield a finite information-bandwidth ceiling only in conjunction with an absolute microscopic transition-rate scale.  These results replace a putative universal sensitivity--bandwidth--temperature product, for the event-detector class, by a hierarchy of source, timing, local-dynamical, and reference-frame resources.
+
+\bibliography{references}
+
+\end{document}
