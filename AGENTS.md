@@ -3,16 +3,16 @@
 ## Purpose
 Durable handoff for **The Universal Photodetection Resource Problem (UPRP)**. The repository, not chat history, is authoritative.
 
-Research is analytical/theoretical only. Numerical work is allowed for validation. Do not make experiments, fabrication, procurement, or laboratory campaigns necessary next steps.
+Research is analytical/theoretical only. Numerical work may be used for validation. Do not make experiments, fabrication, procurement, or laboratory campaigns necessary next steps.
 
 ## Working branch
 `agent/uprp-core-theorem-round10`
 
 ## Read first
 1. `docs/CURRENT_RESEARCH_STATE.md`
-2. `manuscript/event_resource_theorem_rev5.tex`
-3. `docs/MANUSCRIPT_REV5_FINAL_AUDIT.md`
-4. `notes/RESEARCH_LOG_ROUND14.md`
+2. `manuscript/event_resource_theorem_rev6.tex`
+3. `docs/MANUSCRIPT_REV6_REFEREE_REPAIR_AUDIT.md`
+4. `notes/RESEARCH_LOG_ROUND15.md`
 5. `notes/WP35_MARK_CONDITIONED_MARKOV_RATE_CORRECTION.md`
 6. `notes/WP34_MINIMUM_TIMING_RESOURCE_COST_THEOREM.md`
 7. `notes/WP32_GENERAL_MARKED_POISSON_EVENT_KERNEL_THEOREM.md`
@@ -21,31 +21,31 @@ Research is analytical/theoretical only. Numerical work is allowed for validatio
 10. `notes/WP30_WIENER_ATOMIC_DELAY_INFORMATION_THEOREM.md`
 11. `docs/NOVELTY_AUDIT_ROUND5_EVENT_THEOREM_STACK.md`
 
-**Freeze:** HgCdTe/Kane WP17–24, coherent-pointer, continuous-analog, and non-Poisson/nonclassical branches unless a concrete referee-level defect requires reopening them.
+**Freeze:** HgCdTe/Kane WP17–24, coherent-pointer, continuous-analog, and non-Poisson/nonclassical branches unless a concrete referee-level defect in Rev6 requires reopening them.
 
 ---
 
 # Publication state
 
-The current first-paper source is
+Current first-paper source:
 
-`manuscript/event_resource_theorem_rev5.tex`.
+`manuscript/event_resource_theorem_rev6.tex`
 
-Rev5 is the WP35-corrected successor to fully verified Rev4. The final generated Rev5 source passed GitHub Actions generation, full LaTeX compilation, and artifact upload. The committed Rev5 blob is byte-for-byte identical to the CI artifact (`git blob SHA 23ad1c27be95bdbf79d88176d438c8a305f844f0`).
+Rev6 is the hostile-referee-hardened successor to Rev5. It passed GitHub Actions generation, full LaTeX compilation, artifact upload, and source persistence. The final layout pass also passed and persisted the source.
 
-Steady-state CI is clean and read-only:
+Steady-state CI:
 
 `.github/workflows/manuscript-check.yml`
 
-It compiles the **committed Rev5 directly** and uploads TeX/PDF artifacts. There are no self-commit or issue-comment side effects.
+It has **read-only contents permission**, compiles committed Rev6 directly, and uploads the Rev6 PDF/TeX plus versioned appendix. There are no self-commit or issue-comment side effects.
 
-The final claim/citation audit passed after tightening the Dechant comparison and applying WP35. The project is at the **submission-package stage**.
+Rev5 is historical and should not be edited retroactively.
 
 ---
 
 # First-paper theorem class
 
-The theorem concerns autonomous/time-translation-invariant, independent-event, one-primary-registration photodetection under weak coherent/Poisson direct-detection intensity modulation, retaining the complete accessible primary-event mark.
+The theorem concerns autonomous/time-translation-invariant, independent-event, low-overlap, one-primary-registration photodetection under weak coherent/Poisson direct-detection intensity modulation, retaining the complete accessible primary-event mark.
 
 Do not describe it as a universal all-detector speed limit.
 
@@ -61,7 +61,9 @@ Exact ideal source-normalized FI transfer:
 \boxed{G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).}
 \]
 
-Parameter-independent background/downstream processing cannot increase this FI.
+At exact DC, Eq. for incident FI rate `Phi_0/2` is not used literally: the DC incident rate is `Phi_0`, with the same factor change in output FI, so normalized transfer remains `G(0)=eta`.
+
+Parameter-independent background/downstream processing cannot increase FI.
 
 ---
 
@@ -76,7 +78,7 @@ Parameter-independent background/downstream processing cannot increase this FI.
 \int\kappa(dm)\sum_jp_j(m)^2.
 }
 \]
-This is a flat-band **average** asymptotic; do not claim general pointwise decay for singular continuous delay measures.
+This is a flat-band **average** asymptotic; do not claim generic pointwise Fourier decay for singular continuous measures.
 
 ## Collision resource
 \[
@@ -101,8 +103,8 @@ The capture-weighted `mathfrak H` is preferred to a global worst-case rate.
 
 ---
 
-# WP34 inverse cost
-For a flat task with ordinary-frequency half-band
+# WP34 inverse resource cost
+For ordinary-frequency half-band
 \[
 B=\frac{\Omega}{2\pi},
 \]
@@ -128,43 +130,75 @@ For `q=r eta`,
 
 ---
 
-# WP33 exact jitter no-go
-For any prescribed mean `mu0>0` and variance `sigma^2>0`, there is a smooth delay family satisfying both exactly for every selected family member while `|H_D(omega)|^2 -> 1` uniformly on any prescribed finite band.
+# WP33 conventional-jitter no-go
+For any prescribed mean `mu0>0` and variance `sigma^2>0`, a smooth delay family can satisfy both exactly while `|H_D(omega)|^2 -> 1` uniformly on any prescribed finite band.
 
 Therefore exact mean delay plus exact RMS jitter do not bound information bandwidth.
 
-Do not claim an arbitrary fixed-exact-FWHM theorem.
+Rev6 explicitly does **not** claim a fixed-FWHM counterexample. Scalar widths such as FWHM require additional shape assumptions before functioning as resource summaries.
 
 ---
 
-# WP35 Markov-rate correction
-The successful-registration edge intensity alone does not generically bound the complete mark-conditioned delay hazard when other exits compete.
+# WP35 / finite-state CTMC completion
 
-For finite-state CTMC pre-registration state set `S_pre`, define
+The successful-registration edge intensity alone does not generically bound the complete-mark-conditioned delay hazard when competing exits exist.
+
+For pre-registration state `x`,
 \[
-q_x=\sum_{y\ne x}W_{yx},
+\lambda_x=\sum_{y\ne x}W_{yx},
 \qquad
-\boxed{q_{\max}=\max_{x\in S_{\rm pre}}q_x.}
+\boxed{q_{\max}=\max_{x\in S_{\rm pre}}\lambda_x.}
 \]
 
-Provided the accessible mark does not independently expose realized pre-registration holding times,
+Rev6 now contains the self-contained proof: the first holding time is `Exp(lambda_x)` and independent of exit destination/subsequent trajectory; under the mark restriction,
 \[
-\boxed{h_D(t\mid M)\le q_{\max}.}
+D\mid(M,x)=T_x+Y_{M,x},\qquad Y_{M,x}\ge0,
 \]
+so `f <= lambda_x S`, hence
+\[
+\boxed{h_D(t\mid M,x)\le\lambda_x\le q_{\max}.}
+\]
+Mixing over the initial state preserves the `q_max` ceiling.
 
-The generic quantum-jump operator-norm sentence was removed from Rev5 and is deferred to a separate quantum-trajectory branch.
-
-WP29 is already consistent because it uses the gateway's **total first-exit rate** `lambda1`.
+The generic quantum-jump operator-norm extension remains deferred.
 
 ---
 
-# Other no-go/scope boundaries
+# Rev6 thermodynamic model-class bridge
 
-- A free source-synchronous temporal reference can preserve arrival-phase FI despite slow final registration; autonomy is therefore a real resource assumption.
-- Stationary EPR/activity/throughput do not supply an absolute microscopic time scale without a local rate/coupling resource.
+Use **bidirectionally connected**, not “reversible,” for the nonequilibrium CTMC gateway/counterexample. Here bidirectionally connected means reverse-transition support; it does not mean stationary detailed balance.
+
+The stationary thermodynamic bound is applied to the event theorem only through an explicit isolated-event reduction:
+
+1. stationary baseline EPR/activity/traffic constrain microscopic rates;
+2. condition on one isolated optical capture placing the gateway in state 1;
+3. the post-capture autonomous CTMC generates the per-photon delay kernel;
+4. require low overlap so occupancy/recovery do not make capture or the kernel history dependent.
+
+If capture/recovery is history dependent, the independent-event kernel and thermodynamic information bound are not claimed.
+
+For the restricted gateway,
+\[
+\boxed{
+\lambda_1\le
+\Lambda_*
+=\frac{\mathcal A d}{f_*}g^{-1}(\Sigma/f_*),
+\qquad
+g(z)=(1-z^{-1})\ln z.
+}
+\]
+
+The absolute microscopic rate `d` remains indispensable. The rare-fast family shows stationary thermodynamic aggregates alone do not fix the temporal scale.
+
+---
+
+# Other scope/no-go boundaries
+
+- A free source-synchronous clock can preserve arrival-phase FI despite arbitrarily slow final registration; autonomy is a real resource assumption.
 - Deterministic latency is not information loss.
 - Multiple independent pre-primary timing copies are an additional multiplicity resource.
 - High-flux/history-dependent capture requires trajectory-level treatment.
+- Nonclassical/phase-sensitive sources need a different input-information treatment.
 
 ---
 
@@ -173,13 +207,13 @@ Do not claim first information-theoretic detector timing analysis, first IRF-inf
 
 Defensible contribution:
 
-> A resource-completeness theorem for source-modulation information transfer in autonomous marked photodetection event channels, combining the exact marked-event transfer, atomic timing residue, collision spectral budget, capture-weighted local-hazard resource, inverse timing-resource cost, and explicit no-go/repair results for low-order jitter moments, free synchronous control, and aggregate stationary thermodynamics.
+> A resource-completeness theorem for source-modulation information transfer in autonomous marked photodetection event channels, combining exact marked-event transfer, atomic timing residue, collision spectral budget, capture-weighted local-hazard resource, inverse timing-resource cost, and explicit no-go/repair results for low-order timing moments, free synchronous control, and aggregate stationary thermodynamics.
 
-Novelty is strongest in the **combined theorem stack**, not the classical mathematical ingredients individually.
+Novelty is strongest in the **combined theorem stack**, not the classical ingredients individually.
 
 ---
 
 # Immediate next action
-Prepare the submission package / journal-positioning materials from committed Rev5. Do not reopen foundational theory merely to enlarge the first paper.
+Prepare the submission package / journal-positioning materials from committed Rev6. Do not reopen foundational theory merely to enlarge the paper.
 
 Status vocabulary: **PROVED**, **VERIFIED**, **CONJECTURE**, **COUNTEREXAMPLE**, **OPEN**, **BLOCKED**, **REJECTED**.
