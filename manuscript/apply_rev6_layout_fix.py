@@ -1,5 +1,6 @@
 from pathlib import Path
 
+# Final publication-only layout normalization. Scientific content is unchanged.
 PATH = Path(__file__).resolve().parent / "event_resource_theorem_rev6.tex"
 text = PATH.read_text(encoding="utf-8")
 
