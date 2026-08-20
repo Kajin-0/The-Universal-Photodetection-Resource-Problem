@@ -1,0 +1,96 @@
+\section{Explicit rare-fast thermodynamic counterexample}
+\label{app:rare-fast}
+
+This appendix gives a self-contained bidirectionally connected three-state family showing that stationary thermodynamic resources do not bound the local temporal scale. Here bidirectionally connected means that each transition in the thermodynamic network has reverse-transition support; the stationary process need not satisfy detailed balance and generally has nonzero currents and entropy production.
+
+Consider states $0,1,2$ with rates
+\begin{equation}
+0\xrightleftharpoons[bR]{aR}1,
+\qquad
+1\xrightleftharpoons[q]{cR}2,
+\qquad
+2\xrightleftharpoons[sR]{p}0,
+\label{eq:rareRates}
+\end{equation}
+where $a,b,c,q,p,s>0$ are fixed and $R\to\infty$.  The optical rate ratio $a/b$ is independent of $R$, so a fixed optical detailed-balance ratio does not prevent the scaling.
+
+Define
+\begin{align}
+D&=ac+bs+cs,\\
+E&=ap+aq+bp+bq+cp+qs,\\
+A_0&=bp+bq+cp,\\
+A_1&=ap+aq+qs.
+\end{align}
+The exact stationary distribution is
+\begin{align}
+\pi_0&=\frac{A_0}{RD+E},\\
+\pi_1&=\frac{A_1}{RD+E},\\
+\pi_2&=\frac{RD}{RD+E}.
+\end{align}
+Hence
+\begin{equation}
+\pi_0\sim\frac{A_0}{DR},
+\qquad
+\pi_1\sim\frac{A_1}{DR},
+\qquad
+\pi_2\to1.
+\end{equation}
+The fast $O(R)$ rates act only on $O(R^{-1})$ stationary populations.
+
+The stationary one-way flows have finite limits:
+\begin{align}
+aR\pi_0&\to\frac{aA_0}{D}, &
+ bR\pi_1&\to\frac{bA_1}{D},\\
+cR\pi_1&\to\frac{cA_1}{D}, &
+ q\pi_2&\to q,\\
+sR\pi_0&\to\frac{sA_0}{D}, &
+ p\pi_2&\to p.
+\end{align}
+Therefore the total stationary one-way activity remains finite as $R\to\infty$.
+
+The edge affinity logarithms are also independent of $R$:
+\begin{align}
+\ln\frac{aR\pi_0}{bR\pi_1}
+&=\ln\frac{aA_0}{bA_1},\\
+\ln\frac{cR\pi_1}{q\pi_2}
+&=\ln\frac{cA_1}{qD},\\
+\ln\frac{sR\pi_0}{p\pi_2}
+&=\ln\frac{sA_0}{pD}.
+\end{align}
+The corresponding stationary edge currents remain finite because each is a difference of the finite one-way flows above.  Consequently the total stationary entropy-production rate
+\begin{equation}
+\Sigma_R
+=\sum_{e}J_e\ln\frac{\phi_e^+}{\phi_e^-}
+\end{equation}
+remains bounded as $R\to\infty$.
+
+The useful forward optical traffic is likewise finite and nonzero:
+\begin{equation}
+f_R=aR\pi_0
+\longrightarrow\frac{aA_0}{D}>0.
+\end{equation}
+
+Now condition on an optical capture that places the detector in state $1$.  Let the transition $1\to2$ be the successful primary electrical-registration route, while $1\to0$ is a failed return.  The total holding rate in state $1$ is
+\begin{equation}
+\lambda_1=(b+c)R,
+\end{equation}
+and the probability that the first exit is the successful $1\to2$ route is
+\begin{equation}
+P_{\rm reg}=\frac{c}{b+c}>0,
+\end{equation}
+independent of $R$.  In a continuous-time Markov chain the holding time and exit destination are independent.  Therefore, conditional on successful registration,
+\begin{equation}
+D_R\sim\operatorname{Exp}[(b+c)R]
+\end{equation}
+with characteristic function
+\begin{equation}
+H_R(\omega)
+=\frac{(b+c)R}{(b+c)R+i\omega}.
+\end{equation}
+For every fixed finite frequency band,
+\begin{equation}
+|H_R(\omega)|^2\to1
+\end{equation}
+uniformly as $R\to\infty$.  Thus the conditional temporal information bandwidth diverges linearly in $R$ while the optical detailed-balance ratio, useful optical traffic, stationary activity, and stationary entropy production remain bounded.
+
+The missing resource is an absolute microscopic local rate or equivalent timing-concentration scale.  Stationary activity cannot supply it because activity weights fast rates by the vanishing stationary occupation of the fast states.
