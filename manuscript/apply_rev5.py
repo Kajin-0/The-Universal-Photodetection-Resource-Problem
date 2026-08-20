@@ -33,8 +33,8 @@ replace_once(
     "For a classical Markov detector, a sufficient uniform $\\Lambda$ is the maximum total intensity of all first-registration transitions from any pre-registration state. "
     "For quantum-jump registration, a sufficient bound is $\\|\\sum_\\alpha L_\\alpha^\\dagger L_\\alpha\\|_\\infty$. "
     "These are local rate/operator resources, not stationary activities.",
-    "For a finite-state continuous-time Markov detector, a sufficient uniform bound is the maximum total escape rate "
-    "$q_{\\max}=\\max_{x\\in S_{\\rm pre}}\\sum_{y\\ne x}W_{yx}$ from any pre-registration state, "
+    "For a finite-state continuous-time Markov detector with pre-registration state set $S_{\\rm pre}$, a sufficient uniform bound is the maximum total escape rate "
+    "$q_{\\max}=\\max_{x\\in S_{\\rm pre}}\\sum_{y\\ne x}W_{yx}$, "
     "provided the accessible mark does not independently record the realized pre-registration holding times. "
     "This local bare-rate scale is distinct from stationary dynamical activity.",
     "WP35 Markov-rate correction",
