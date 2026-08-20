@@ -3,7 +3,7 @@
 **Date:** 2026-08-20
 
 ## Purpose
-Record the exact publication-state transition from scientifically audited Rev3 to the deterministic Rev4 candidate without overstating compile status.
+Record the exact publication-state transition from scientifically audited Rev3 to compiled Rev4.
 
 ## Authoritative base
 
@@ -13,7 +13,9 @@ Its central constants, source normalization, Parseval factor, hazard inequality,
 
 ## Deterministic Rev4 generation
 
-`manuscript/apply_rev4.py` reads Rev3 and generates `event_resource_theorem_rev4.tex` without modifying Rev3.
+`manuscript/apply_rev4.py` reads Rev3 and generated the committed
+
+`manuscript/event_resource_theorem_rev4.tex`.
 
 The generator is assertion-based: every replacement anchor must occur exactly once or generation raises an error.
 
@@ -97,41 +99,42 @@ The CSV values were checked against the exact WP33 formula. Plot markers were re
 4. post-WP33 figure anchor;
 5. Discussion resource-cost anchor.
 
-Thus the deterministic transformation is structurally consistent with current Rev3.
+Thus the deterministic transformation is structurally consistent with Rev3.
 
-## CI status
+## Full CI verification
 
-`.github/workflows/manuscript-check.yml` now:
+The temporary one-shot CI reporting step succeeded and posted to Issue #12:
 
-1. checks out the branch;
-2. runs `python manuscript/apply_rev4.py`;
-3. compiles generated `event_resource_theorem_rev4.tex` with `xu-cheng/latex-action@v3`;
-4. uploads the generated TeX and PDF as artifacts.
+> `Rev4 manuscript verification succeeded for commit 0acd8ca6304585e44c89130ca6b31826884c85a8: deterministic Rev4 generation, LaTeX compilation, and artifact upload all completed successfully.`
 
-A temporary attempt to make CI self-report success through Issue #12 / branch persistence was removed. Connector-authored branch commits in this session have not produced an observable Actions result through the available connector interfaces.
+This message was posted by `github-actions[bot]` only after the workflow had completed:
 
-Therefore:
+1. deterministic Rev4 generation;
+2. full LaTeX compilation through `xu-cheng/latex-action@v3`;
+3. artifact upload.
 
-**DO NOT claim that the complete Rev4 manuscript has a verified successful GitHub Actions compile yet.**
+Therefore the full Rev4 build gate is **VERIFIED PASSED** for that branch state.
 
-What is verified locally:
+The subsequent temporary persistence workflow also left the generated Rev4 source on the branch. The current CI workflow has now been simplified to compile the committed Rev4 directly; it has no self-commit or issue-comment side effects.
 
-- figure TeX compilation;
-- figure layout;
-- generator Python syntax;
-- generator anchors against Rev3;
-- the Rev3 theorem/proof layer.
+Current source:
+
+`manuscript/event_resource_theorem_rev4.tex`
+
+Current workflow:
+
+`.github/workflows/manuscript-check.yml`
 
 ## Publication posture
 
-Rev4 is the preferred next manuscript candidate because it adds the operational inverse theorem and two high-information figures without expanding scope.
+Rev4 is now the current manuscript source. It adds the operational inverse theorem and two high-information figures without expanding scope.
 
-Do not open new HgCdTe, non-Poisson, analog-detector, or quantum-pointer research branches merely to improve this manuscript. The next publication work is mechanical full-build verification and final claim/citation review.
+Do not open new HgCdTe, non-Poisson, analog-detector, or quantum-pointer research branches merely to improve this manuscript. The next publication work is final claim/citation review and submission-package preparation.
 
 ## Status
 
 **REV3 SCIENTIFIC BASE: VERIFIED**
 
-**REV4 DETERMINISTIC INTEGRATION: VERIFIED AT GENERATOR/FIGURE LEVEL**
+**REV4 DETERMINISTIC INTEGRATION: VERIFIED**
 
-**REV4 FULL LATEX BUILD: NOT YET OBSERVED**
+**REV4 FULL LATEX BUILD + ARTIFACT UPLOAD: VERIFIED**
