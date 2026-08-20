@@ -2,108 +2,220 @@
 
 ## Research question
 
-**Does a material-independent physical bound exist on the rate at which a finite-temperature photodetector can extract information from an optical field, as a function of its thermodynamic, kinetic, optical, and quantum resources?**
+**What physical resources are actually sufficient to bound the rate at which a photodetector can transfer information from an optical field to an electrical record, and which proposed resource sets fail by explicit counterexample?**
 
-The objective of this repository is to derive the tightest such bound if it exists, or to construct a physically admissible counterexample if it does not.
+The project began by asking for a detector-independent sensitivity--bandwidth--temperature law. The research trail shows that this question is too broad unless the detector/output class and hidden dynamical resources are specified.
 
-This is a theoretical/analytical research program. The primary target is not another material-specific detectivity calculation, but a theorem (or no-go result) that identifies which combinations of sensitivity, bandwidth, temperature, photon flux, dissipation, and dynamical activity are fundamentally compatible with physics.
+The mature first-paper result is therefore a **resource-completeness theorem for one precisely defined detector class**, together with no-go results explaining why broader statements fail.
 
-## Central formulation
+This repository is theoretical/analytical. Numerical calculations are used for validation; experiments, fabrication, procurement, and laboratory campaigns are not required next steps.
 
-Represent a stationary linear photodetector as an optical-to-electrical stochastic transducer
+---
 
-\[
-Y(\omega)=\chi_{YP}(\omega)P(\omega)+N(\omega),
-\]
+## First-paper theorem class
 
-with output-noise power spectral density \(S_Y(\omega)\). Define the input-referred information kernel
+The current manuscript concerns:
 
-\[
-K(\omega)
-=\frac{|\chi_{YP}(\omega)|^2}{S_Y(\omega)}
-=\frac{1}{\operatorname{NEP}^2(\omega)}.
-\]
+- autonomous/time-translation-invariant photodetection;
+- weak coherent/Poisson direct-detection intensity modulation;
+- independent-event/low-overlap operation;
+- one primary electrical registration per captured photon;
+- retention of the complete accessible primary-event mark.
 
-For a parameterized optical waveform \(P(t;\theta)\), an important candidate performance functional is the Fisher-information rate
+It does **not** claim a speed limit for coherent continuous pointers, externally synchronized detectors, arbitrary high-flux/history-dependent counters, nonclassical optical inputs, or every architecture called a photodetector.
 
-\[
-\dot{\mathcal F}_{\theta}
-=\int_{-\infty}^{\infty}\frac{d\omega}{2\pi}
-\frac{|\partial_\theta P(\omega)|^2}{\operatorname{NEP}^2(\omega)},
-\]
+---
 
-subject to explicit PSD, observation-time, and waveform-normalization conventions.
+## Exact marked-event information transfer
 
-The open problem is to determine whether there is a nontrivial universal inequality of the form
+Per incident photon, write the primary-event channel as the subprobability kernel
 
 \[
-\dot{\mathcal F}_{\theta}
-\le
-\mathcal B\!\left(T,\hbar\omega_{\rm opt},\Phi_\gamma,\dot\Sigma,\mathcal A,\eta_{\rm abs},\ldots\right),
-\]
-
-where the right-hand side contains only physically meaningful resources and not a specific detector material or architecture.
-
-## Why the answer is not assumed
-
-Three outcomes are scientifically acceptable:
-
-1. **Universal bound:** prove a nontrivial inequality linking photodetection information rate to physical resources.
-2. **No universal bound under the proposed resources:** construct a physically admissible detector family that violates every finite candidate bound.
-3. **Missing-resource result:** show that a bound fails with, for example, entropy production alone but becomes valid after including dynamical activity, optical flux, coherence/asymmetry, or another resource.
-
-The project must not assume in advance that a simple sensitivity-bandwidth-temperature product exists.
-
-## First tractable model class
-
-Begin with finite-state, stationary, continuous-time Markov photodetectors
-
-\[
-\dot{\mathbf p}=W(P)\mathbf p,
+K(dm,d\tau)=\kappa(dm)\mu_m(d\tau),
 \qquad
-W(P)=W_0+P W_1+O(P^2),
+\eta=\kappa(\mathsf M)\le1,
 \]
 
-with a measured counting/current observable
+where `m` is the complete accessible event mark and `tau` is registration delay.
+
+For weak sinusoidal Poisson intensity modulation, the ideal source-normalized Fisher-information transfer is
 
 \[
-I(t)=\sum_{ij} q_{ij}\,dN_{ij}(t).
+\boxed{
+G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).
+}
 \]
 
-Initial admissibility requirements:
+Parameter-independent background addition and downstream stochastic processing cannot increase this FI.
 
-- local detailed balance for thermal transitions;
-- explicit optical transitions and photon-energy bookkeeping;
-- a stationary dark state;
-- causal response;
-- finite steady-state entropy-production rate;
-- finite dynamical activity;
-- an explicitly defined output record and noise PSD;
-- arbitrary finite number of internal states.
+---
 
-The first theorem/counterexample target is a bound on a normalized frequency-integrated response-to-noise functional derived from \(\chi_{IP}(\omega)\) and \(S_I(\omega)\).
+## Timing-resource hierarchy
 
-## Research phases
+### Atomic timing
 
-- **Phase 0 — Definition and novelty closure:** make every resource, normalization, and admissibility assumption mathematically precise; continuously audit nearby literature.
-- **Phase 1 — Classical finite-state Markov detectors:** derive exact response/noise expressions and test thermodynamic/kinetic inequalities.
-- **Phase 2 — Extremal and counterexample search:** identify saturating networks or prove candidate resource sets insufficient.
-- **Phase 3 — Semiclassical transport:** connect the theorem to generation-recombination, transit-time, photoconductive gain, junction, and avalanche models.
-- **Phase 4 — Quantum extension:** formulate Lindblad/trajectory versions including coherence, backaction, and generalized activity.
-- **Phase 5 — Infrared consequence:** determine what, if anything, the theorem implies for room-temperature high-performance MWIR/LWIR detection.
+Wiener's classical theorem gives the exact high-band flat-average residue
 
-## Repository map
+\[
+\boxed{
+\lim_{\Omega\to\infty}
+\frac{1}{2\Omega}
+\int_{-\Omega}^{\Omega}G(\omega)d\omega
+=
+\int\kappa(dm)\sum_j p_j(m)^2.
+}
+\]
 
-- `PROBLEM.md` — formal problem statement, success criteria, and failure modes.
-- `AGENTS.md` — durable handoff instructions and current research state for future agents.
-- `ROADMAP.md` — work packages and decision gates.
-- `docs/FORMALISM.md` — notation and starting mathematical framework.
-- `docs/LITERATURE_MAP.md` — closest known literature and novelty-risk map.
-- `docs/NOVELTY_AND_FALSIFICATION.md` — explicit novelty claims that may and may not be made.
-- `notes/RESEARCH_LOG.md` — chronological record of results, failed conjectures, and decisions.
+Thus deterministic/discrete timing branches are the exact asymptotic obstruction; purely non-atomic conditional timing forces the flat-band **average** transfer to vanish.
 
-## Research discipline
+### Collision resource
 
-A conjecture is not a result. Every proposed universal inequality must be tested against trivial rescalings, passive amplification, coarse graining, changes of observation convention, equilibrium limits, zero-dissipation limits, high-activity limits, and explicit counterexample families before being promoted to a theorem candidate.
+For square-integrable conditional delay densities,
 
-The repository should retain failed approaches. Negative results are part of the research trail and are essential for handoff continuity.
+\[
+\boxed{
+\mathfrak R_2
+=2\int\kappa(dm)\int f_m(t)^2dt,
+}
+\]
+
+and Parseval gives
+
+\[
+\boxed{
+\int_{-\infty}^{\infty}G(\omega)d\omega
+=\pi\mathfrak R_2.
+}
+\]
+
+### Capture-weighted local hazard capacity
+
+If `h_m(t)<=Lambda(m)`, define
+
+\[
+\boxed{
+\mathfrak H=\int\Lambda(m)\kappa(dm).
+}
+\]
+
+Then
+
+\[
+\boxed{\mathfrak R_2\le\mathfrak H.}
+\]
+
+The capture-weighted resource is sharper than a global worst-case rate: a very fast branch can be harmless when its event weight is sufficiently small.
+
+---
+
+## Operational inverse theorem
+
+For a flat source-information task on ordinary-frequency half-band
+
+\[
+B=\frac{\Omega}{2\pi},
+\]
+
+preserving absolute average incident-information fraction `q` requires
+
+\[
+\boxed{
+q\le\eta,
+\qquad
+\mathfrak R_2\ge4Bq,
+\qquad
+\mathfrak H\ge4Bq.
+}
+\]
+
+For a common per-captured-event conditional-hazard ceiling,
+
+\[
+\boxed{
+\Lambda\ge\frac{4Bq}{\eta}.
+}
+\]
+
+If `q=r eta` is retention relative to captured DC information,
+
+\[
+\boxed{\Lambda\ge4Br.}
+\]
+
+This is the cleanest current operational resource-cost statement.
+
+---
+
+## Main no-go results
+
+The repository contains explicit counterexamples showing that the following are not resource-complete substitutes for the timing resources above:
+
+- deterministic latency;
+- exact mean delay plus exact RMS timing jitter;
+- stationary entropy production/activity/throughput without an absolute microscopic rate scale;
+- detector-only timing resources when an unbounded source-synchronous clock/reference is supplied for free.
+
+For finite-state CTMC detectors, complete mark conditioning also requires care: the safe generic uniform microscopic rate bound is the maximum **total escape rate** from any pre-registration state,
+
+\[
+q_{\max}=\max_{x\in S_{\rm pre}}\sum_{y\ne x}W_{yx},
+\]
+
+not merely the successful-registration edge intensity. This is the WP35 correction.
+
+---
+
+## Thermodynamic bridge
+
+For the restricted reversible finite-state Markov optical gateway, stationary EPR, activity, and minimum throughput can bound temporal information only after an absolute microscopic rate is supplied.
+
+With reverse gateway rate `d`,
+
+\[
+\boxed{
+\lambda_1
+\le
+\frac{\mathcal A d}{f_*}
+ g^{-1}(\Sigma/f_*),
+\qquad
+g(z)=(1-z^{-1})\ln z.
+}
+\]
+
+The gateway's total first-exit rate `lambda_1` bounds the relevant conditional hazard under the stated mark restriction. The rare-fast counterexample proves that stationary aggregate thermodynamic quantities alone do not create the missing absolute time scale.
+
+---
+
+## Publication state
+
+Active branch:
+
+`agent/uprp-core-theorem-round10`
+
+Rev4 was fully build verified. WP35 then identified one localized microscopic-rate wording correction.
+
+Rev5 applies that correction, removes the unneeded generic quantum-jump sentence, explicitly references both theorem figures, and tightens the finite-frequency prior-work wording. The final generated Rev5 state has passed GitHub Actions generation, full LaTeX compilation, and artifact upload.
+
+Current audit/checkpoint files:
+
+- `docs/CURRENT_RESEARCH_STATE.md`
+- `docs/MANUSCRIPT_REV5_FINAL_AUDIT.md`
+- `notes/RESEARCH_LOG_ROUND14.md`
+- `notes/WP35_MARK_CONDITIONED_MARKOV_RATE_CORRECTION.md`
+- `AGENTS.md`
+- `ROADMAP.md`
+
+The first-paper science is at the **submission-package stage**. Additional foundational derivations are not the default next action.
+
+---
+
+## Frozen branches
+
+The following remain scientifically useful but are frozen for the first manuscript unless a concrete review objection requires them:
+
+- HgCdTe/Kane material calculations WP17--24;
+- coherent quantum-pointer resource theory;
+- continuous classical/analog detector generalization;
+- non-Poisson/nonclassical source extensions.
+
+Failed conjectures and negative results are intentionally retained in the repository because they establish why the final resource hierarchy has its present form.
