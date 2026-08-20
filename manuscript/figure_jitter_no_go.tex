@@ -13,13 +13,13 @@
   tick label style={font=\scriptsize},
   label style={font=\small},
 ]
-\addplot+[very thick] table[x=omega_sigma,y=eps020_n50,col sep=comma] {fig_jitter_no_go_data.csv};
+\addplot+[very thick,mark=none] table[x=omega_sigma,y=eps020_n50,col sep=comma] {fig_jitter_no_go_data.csv};
 \addlegendentry{$\epsilon=0.20,\ n\sigma=50$}
-\addplot+[very thick,dashed] table[x=omega_sigma,y=eps005_n200,col sep=comma] {fig_jitter_no_go_data.csv};
+\addplot+[very thick,dashed,mark=none] table[x=omega_sigma,y=eps005_n200,col sep=comma] {fig_jitter_no_go_data.csv};
 \addlegendentry{$\epsilon=0.05,\ n\sigma=200$}
-\addplot+[very thick,dashdotted] table[x=omega_sigma,y=eps001_n1000,col sep=comma] {fig_jitter_no_go_data.csv};
+\addplot+[very thick,dashdotted,mark=none] table[x=omega_sigma,y=eps001_n1000,col sep=comma] {fig_jitter_no_go_data.csv};
 \addlegendentry{$\epsilon=0.01,\ n\sigma=1000$}
-\addplot[thin,dotted,domain=1e-2:2e4] {0.5};
+\addplot[thin,dotted,mark=none,domain=1e-2:2e4] {0.5};
 \end{loglogaxis}
 \end{tikzpicture}
 \caption{Exact low-order-jitter no-go. Each curve belongs to the WP33 two-path family after a deterministic shift chosen so that every detector has the same prescribed mean $\mu_0=2\sigma$ and the same exact variance $\sigma^2$. Decreasing the rare-path probability $\epsilon$ while increasing the fast-path rate $n$ pushes substantial information transfer to progressively larger $\omega\sigma$, despite identical mean delay and RMS jitter. The plotted deterministic shift affects only Fourier phase and therefore does not change $|H|^2$.}
