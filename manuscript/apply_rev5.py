@@ -50,5 +50,19 @@ replace_once(
     "jitter-no-go prose callout",
 )
 
+# 4. Final citation audit: keep the Dechant comparison at the level directly supported
+#    by the cited finite-frequency fluctuation-response paper.
+replace_once(
+    "Recent finite-frequency fluctuation--response inequalities bound response precision by dynamical activity or related resources in Markov systems \\cite{Dechant2026}. "
+    "Those results are pointwise response/noise inequalities and use different broadband quantities. "
+    "Equation~\\eqref{eq:parseval} instead follows from the first-registration timing measure. "
+    "We do not claim generic finite-frequency response--noise inequalities as new.",
+    "Recent finite-frequency fluctuation--response inequalities constrain steady-state finite-frequency response and fluctuations in general Markovian dynamics and yield broadband signal-to-noise bounds \\cite{Dechant2026}. "
+    "Those results concern response/noise inequalities and use different broadband quantities. "
+    "Equation~\\eqref{eq:parseval} instead follows from the first-registration timing measure. "
+    "We do not claim generic finite-frequency response--noise inequalities as new.",
+    "Dechant comparison wording",
+)
+
 DST.write_text(text, encoding="utf-8")
 print(f"Generated {DST.name} from {SRC.name}")
