@@ -2,232 +2,344 @@
 
 ## Purpose
 
-This is a **living map of adjacent theory**, not a completed review. Its main role is to prevent false novelty claims and identify which mathematical machinery may already imply parts of the Universal Photodetection Resource Problem.
+This is a living theorem-level map of adjacent theory. It exists to prevent false novelty claims and to identify which existing machinery already implies parts of the Universal Photodetection Resource Problem (UPRP).
 
-The project should distinguish four questions:
+The project now distinguishes five questions:
 
-1. Are there known architecture-specific photodetector tradeoffs?
-2. Are there known general quantum-photodetector performance frameworks?
-3. Are there known thermodynamic/kinetic uncertainty relations for monitored stochastic or quantum systems?
-4. Has anyone already specialized those results into a detector-native, optical-information-rate bound with explicit photonic and thermodynamic resources?
-
-Only Question 4 corresponds closely to the present novelty hypothesis.
+1. Are architecture-specific photodetector tradeoffs known? **Yes.**
+2. Are general fully quantum photodetector models known? **Yes.**
+3. Are general thermodynamic/kinetic response and precision bounds known? **Yes.**
+4. Are optical LDOS / absorption / power-bandwidth limits known? **Yes.**
+5. Has the specific missing-resource problem been closed: an architecture-independent optical-input-to-electrical-information speed theorem that explicitly combines microscopic light–matter coupling, finite optical task bandwidth, and thermokinetic detector resources? **Not yet established; remains the current novelty hypothesis.**
 
 ---
 
-## A. Photodetector-specific performance limits
+# A. Quantum photodetector frameworks
 
-### Young, Sarovar, Léonard (2018)
+## Young, Sarovar, Léonard (2018)
 
 **Fundamental limits to single-photon detection determined by quantum coherence and backaction**  
 Phys. Rev. A 97, 033836 (2018)  
-DOI: `10.1103/PhysRevA.97.033836`
+DOI `10.1103/PhysRevA.97.033836`
 
 Relevance:
 
-- fully quantum treatment of field, absorption, and amplification;
-- exposes tradeoffs caused by coherence and amplification backaction;
-- explicitly studies efficiency, dark counts, and timing behavior;
-- demonstrates that detector architecture and the quantum-classical interface matter.
+- treats field, optical absorption, internal localization, and amplification in one quantum model;
+- identifies coherence/backaction tradeoffs;
+- studies efficiency, dark counts, and jitter;
+- in the dark-state configuration, reports that near-perfect detection is obtained when optical coupling `gamma` and localization rate are made arbitrarily large compared with the photon-wavepacket timescale.
 
-Novelty risk:
+Novelty consequence:
 
-- high for any claim phrased broadly as “first fundamental photodetector performance limit”;
-- lower for a continuous, finite-temperature, thermodynamic/kinetic information-rate theorem if that result is genuinely absent.
+- generic claims that quantum photodetectors have fundamental tradeoffs are occupied;
+- more importantly, the model explicitly contains an **unbounded optical-coupling escape hatch**. UPRP WP4 isolates this same degree of freedom in a reversible Markov no-go theorem.
+- A potentially distinct contribution is therefore to identify the physical resource represented by `gamma` and prove what happens once it is bounded by microscopic matter/electromagnetic constraints.
 
-### Young, Sarovar, Léonard (2018)
+## Young, Sarovar, Léonard (2018)
 
 **General modeling framework for quantum photodetectors**  
 Phys. Rev. A 98, 063835 (2018)  
-DOI: `10.1103/PhysRevA.98.063835`
+DOI `10.1103/PhysRevA.98.063835`
 
 Relevance:
 
-- provides a general coupled quantum framework for photon field, absorption, and amplification;
-- defines ideal photodetector performance and studies architecture-induced tradeoffs;
-- likely important for later quantum-phase mapping.
+- general coupled quantum framework for field, absorption, and amplification;
+- important target formalism for quantum extension of UPRP.
 
 Novelty risk:
 
-- any “general framework for photodetectors” claim is already occupied;
-- our contribution must be a different mathematical statement: resource-bounded information acquisition or a no-go theorem.
+- “general framework for photodetectors” is not new;
+- UPRP must contribute a resource theorem/no-go result, not merely a framework.
 
-### Sorger and Maiti (2020)
+---
+
+# B. Device-physics gain/speed tradeoffs
+
+## Sorger and Maiti (2020)
 
 **Roadmap for Gain-Bandwidth-Product Enhanced Photodetectors**  
 arXiv:2006.16937
 
 Relevance:
 
-- emphasizes sensitivity/gain versus temporal response tradeoffs;
-- derives practical/scaling constraints tied to detector dimensions, mobility, resistance, optical confinement, and contacts.
+- gain/responsivity versus temporal response;
+- device-geometry, mobility, resistance, waveguide, and contact scaling.
 
-Novelty risk:
+Novelty consequence:
 
-- shows that gain-bandwidth limits already have a substantial device-physics literature;
-- a universal theorem must clearly separate material/geometry scaling laws from thermodynamic or information-theoretic bounds.
+- conventional photodetector gain-bandwidth limits are architecture/material dependent;
+- UPRP must distinguish such scaling laws from a theorem about necessary physical resources.
 
 ---
 
-## B. Continuous-measurement thermodynamic uncertainty relations
+# C. Continuous-measurement and open-system precision bounds
 
-### Hasegawa (2020)
+## Hasegawa (2020)
 
 **Quantum Thermodynamic Uncertainty Relation for Continuous Measurement**  
 Phys. Rev. Lett. 125, 050601 (2020)  
-DOI: `10.1103/PhysRevLett.125.050601`
+DOI `10.1103/PhysRevLett.125.050601`
 
 Relevance:
 
-- uses quantum estimation theory;
-- derives universal fluctuation bounds for continuous measurements under stated scaling conditions;
-- provides bounds involving dynamical activity and entropy production.
+- quantum estimation-theoretic continuous-measurement uncertainty relations;
+- bounds involving dynamical activity and entropy production.
 
-Novelty risk:
+Novelty consequence:
 
-- **very high**. Any claim that “continuous measurement precision is universally bounded by entropy production/activity” is not new.
-- Critical task: determine whether its inequalities can be mapped directly to optical response sensitivity and detector Fisher information. If yes, the project may become a specialization/tightening/counterexample study rather than a wholly new theorem class.
+- “measurement precision is constrained by thermodynamic/kinetic resources” is not new.
 
-### Hasegawa (2021)
+## Hasegawa (2021)
 
 **Thermodynamic Uncertainty Relation for General Open Quantum Systems**  
 Phys. Rev. Lett. 126, 010602 (2021)  
-DOI: `10.1103/PhysRevLett.126.010602`
+DOI `10.1103/PhysRevLett.126.010602`
 
 Relevance:
 
-- extends uncertainty-relation logic beyond standard Markov-process formulations;
-- introduces survival activity and discusses continuous measurement.
-
-Novelty risk:
-
-- reinforces that generic “quantum measurement precision bound” language is too broad for novelty.
+- general open-system precision bounds and survival activity.
 
 ---
 
-## C. Detector thermodynamics
+# D. Detector thermodynamics
 
-### Schwarzhans et al. (2025)
+## Schwarzhans et al. (2025/2026)
 
-**Quantum detectors as autonomous machines: assessing the nonequilibrium thermodynamics of information acquisition**  
-arXiv:2508.16375 (2025)
+**Quantum detectors as autonomous machines: assessing the nonequilibrium thermodynamics of information acquisition**
 
 Relevance:
 
-- explicitly treats a quantum particle detector as an autonomous thermal machine;
-- studies entropy production against detection efficiency, gain, jitter, dead time, and dark counts;
-- directly connects detector quality to nonequilibrium resource expenditure.
+- detector quality versus entropy production;
+- efficiency, gain, jitter, dead time, dark counts;
+- directly overlaps detector thermodynamics.
 
-Novelty risk:
+Novelty consequence:
 
-- **very high** for any generic statement that “better detector performance costs dissipation.”
-- The present project must go beyond this by deriving a detector-native information-rate bound valid across a broader class, or by proving such a universal reduction is impossible.
+- generic dissipation-performance tradeoffs are occupied;
+- UPRP must provide a different theorem structure or an explicit insufficiency result.
 
 ---
 
-## D. Response and kinetic uncertainty relations
+# E. Finite-frequency response and kinetic uncertainty relations
 
-### Liu and Gu (2026)
+## Dechant (2026)
+
+**Finite-Frequency Fluctuation-Response Inequality**  
+Phys. Rev. Lett. 136, 207101 (2026)  
+DOI `10.1103/3hs9-dz3d`
+
+Relevance:
+
+- general finite-frequency fluctuation-response inequality for Markov dynamics, including jump processes;
+- broadband SNR consequences.
+
+Novelty consequence:
+
+- generic finite-frequency `response/noise` bounds are occupied.
+
+## Liu and Gu (2026)
 
 **Response kinetic uncertainty relation for Markovian open quantum systems**  
 Phys. Rev. A 113, 062443 (2026)  
-DOI: `10.1103/ps1b-8l1x`
+DOI `10.1103/ps1b-8l1x`
 
 Relevance:
 
-- directly bounds response precision for measured trajectory observables under perturbations;
-- involves conventional quantum dynamical activity plus a perturbation-induced intersubspace transition term;
-- especially relevant because photodetection is inherently a response problem.
+- response precision bounded by activity-like resources in monitored open quantum systems.
 
-Novelty risk:
+## Gu and Liu (2026)
 
-- **critical**. This may contain mathematical machinery closest to the target theorem.
-- Required action: derive the classical limit and attempt an explicit mapping \(\delta P\to\) optical perturbation and measured trajectory current \(\to\) detector output.
+**Finite-frequency fluctuation-response bounds for open quantum systems**  
+arXiv:2605.03340
 
-### Blasi et al. (2026)
+Relevance:
+
+- downstream measured response precision bounded by output-field QFI and signal-channel activity.
+
+## Zheng and Lu (2026)
+
+arXiv:2602.18631
+
+Relevance:
+
+- finite-frequency kinetic/thermodynamic response bounds for specific perturbation classes.
+
+## Blasi et al. (2026)
 
 **Quantum Kinetic Uncertainty Relations in Mesoscopic Conductors at Strong Coupling**  
-Phys. Rev. Lett. 137, 056302 (2026)  
-DOI: `10.1103/9xcz-nlqk`
+Phys. Rev. Lett. 137, 056302 (2026)
 
 Relevance:
 
-- generalizes dynamical activity to strong system-reservoir coupling;
-- shows standard KURs can break down at strong coupling;
-- introduces a quantum KUR with intrinsic coherent contributions.
+- warns that classical activity is not sufficient outside weak-coupling Markov regimes.
 
-Novelty risk:
-
-- indicates that “activity” is not a unique/simple resource outside weak-coupling Markov limits;
-- any quantum photodetector theorem may require generalized activity rather than the classical jump-rate definition.
-
-### Vu, Honma, Saito (2026)
+## Vu et al. (2026)
 
 **Universal Precision Limits in General Open Quantum Systems**  
-Phys. Rev. Lett. 136, 190401 (2026)  
-DOI: `10.1103/kldv-l3wl`
+Phys. Rev. Lett. 136, 190401 (2026)
 
 Relevance:
 
-- derives precision bounds for generic observables in general open quantum systems;
-- includes entropy-production/asymmetry structure and generalized activity;
-- reaches beyond conventional Markovian weak-coupling assumptions.
-
-Novelty risk:
-
-- high for any ultimate quantum-generalization claim;
-- the likely value of UPRP is therefore not generic precision theory itself, but the **photodetection-specific mapping, optical resource accounting, detector-native objective, and resulting consequences/counterexamples**.
+- generic open-system precision bounds; high novelty risk for any overly broad quantum claim.
 
 ---
 
-## E. Current novelty hypothesis
+# F. Temporal-Fisher speed limits
 
-The following broad claims are **not** novel:
+## Nishiyama and Hasegawa (2026)
 
-- photodetectors possess sensitivity-speed or gain-bandwidth tradeoffs;
-- fully quantum photodetector models exhibit coherence/backaction tradeoffs;
-- continuous-measurement precision can be constrained by entropy production or dynamical activity;
-- detector performance can depend on nonequilibrium dissipation;
-- kinetic uncertainty relations constrain current precision.
+**Unified speed limits in classical and quantum dynamics via temporal Fisher information**  
+Phys. Rev. E 114, 014120 (2026)  
+DOI `10.1103/x95d-fhpq`
 
-The candidate open gap is narrower:
+Relevance:
 
-> Determine whether one can derive a **photodetection-specific, architecture-independent bound on normalized optical information acquisition**, written in detector-native quantities such as input-referred response/noise and tied to explicit optical, thermodynamic, and kinetic resources; or prove that no finite bound exists for a proposed resource set.
+- temporal Fisher information bounded by physical costs;
+- in open quantum systems the relevant speed resource involves interaction-Hamiltonian energetic fluctuations/effective interaction terms.
 
-Even this is **PROVISIONAL** until citation chaining and theorem-level comparison are complete.
+Novelty consequence:
 
----
-
-## F. Mandatory literature-comparison questions
-
-For each candidate theorem we derive, compare it line-by-line against the closest prior uncertainty relation:
-
-1. Is our left-hand quantity mathematically identical to a known response precision or trajectory SNR after a change of notation?
-2. Is our right-hand resource identical to entropy production/activity already used in a known theorem?
-3. Does explicit optical photon-flux/energy bookkeeping add a genuinely new constraint?
-4. Does frequency resolution \(K(\omega)\) produce a stronger statement than known time-integrated current bounds?
-5. Does the theorem survive arbitrary detector architectures inside the stated class?
-6. Does it imply a detector-specific engineering consequence that the generic theorem does not?
-7. If the generic theorem already implies ours, is our contribution only a corollary/application?
-8. If known bounds fail in a photodetection setting, can we prove the failure and identify the missing resource?
+- UPRP should not claim that interaction strength limits state-evolution speed as a general principle;
+- however, this literature independently supports WP4's conclusion that **entropy production alone does not provide the absolute microscopic timescale**.
+- Distinction: temporal FI concerns information about elapsed time/state evolution; UPRP concerns transfer of an externally encoded optical signal into an electrical record.
 
 ---
 
-## G. Search branches still required
+# G. Matter-side optical sum rules
 
-This literature map is incomplete. Priority searches include:
+## Thomas–Reiche–Kuhn / f-sum rule
 
-- classical response uncertainty relations for continuous-time Markov chains;
-- Fisher information of Markov jump trajectories under rate perturbations;
-- information-thermodynamic sensor bounds;
-- biochemical sensing speed-accuracy-energy tradeoffs;
-- communication-channel bounds for photodetection;
-- quantum-limited linear amplifiers and photodetection noise;
-- Bode/Fano, causality, passivity, and response-bandwidth integral bounds;
-- optical absorption bandwidth/sum-rule bounds;
-- stochastic thermodynamics of sensing and transduction;
-- speed-limit literature for Markov and open quantum systems;
-- non-Markovian precision bounds;
-- input-output quantum estimation under finite photon flux.
+Relevance:
 
-No novelty claim should be finalized until these branches are reviewed.
+- constrains total oscillator strength / dipole matrix elements;
+- provides a matter-side budget for light–matter coupling.
+
+For a free-space electric-dipole transition, combining TRK with the spontaneous-emission formula yields the UPRP free-space corollary
+
+\[
+\Gamma_0\le
+\frac{N_e e^2\omega_0^2}{2\pi\epsilon_0m_ec^3}.
+\]
+
+Novelty consequence:
+
+- this relation is not itself the target novelty;
+- `N_e` is extensive and photonic-environment enhancement remains uncontrolled.
+
+Recent semiconductor-specific TRK work: A. Huamán, **The Thomas-Reiche-Kuhn sum rule as a consequence of a non-singular optical susceptibility in semiconductors**, arXiv:2601.00762 (2026).
+
+---
+
+# H. Electromagnetic LDOS / power-bandwidth limits
+
+## Shim, Fan, Johnson, Miller (2019)
+
+**Fundamental Limits to Near-Field Optical Response over Any Bandwidth**  
+Phys. Rev. X 9, 011043 (2019)  
+DOI `10.1103/PhysRevX.9.011043`
+
+Relevance:
+
+- derives LDOS sum rules and arbitrary-bandwidth power-bandwidth limits from causality and energy conservation;
+- directly bounds spontaneous-emission enhancement over finite optical bandwidths;
+- separates single-frequency enhancement from finite-band achievable response;
+- identifies material susceptibility and geometry/separation as necessary resources.
+
+Key conceptual result relevant to UPRP:
+
+- single-frequency LDOS can become arbitrarily large in some ideal lossless resonant limits;
+- average response over any nonzero bandwidth has a finite upper bound once the electromagnetic resource class is specified.
+
+This is extremely important for the next UPRP step because baseband modulation to `Omega_s` generates optical sidebands around the carrier. An optical frontend that only has an infinitesimally narrow enhancement cannot preserve arbitrary modulation bandwidth.
+
+Novelty consequence:
+
+- UPRP must not claim optical power-bandwidth limits themselves;
+- the possible new result is their **composition with photodetection information transfer and thermokinetic transduction constraints**.
+
+## Chao et al. (2022+)
+
+**Maximum Electromagnetic Local Density of States via Material Structuring**  
+arXiv:2209.08668 and subsequent work.
+
+Relevance:
+
+- geometry-independent/numerically tight LDOS bounds over bandwidths using material susceptibility and footprint.
+
+## Miller et al. (2016)
+
+**Fundamental limits to optical response in absorptive systems**
+
+Relevance:
+
+- per-volume bounds on absorption/scattering/LDOS based on material susceptibility figure of merit.
+
+## Yu, Raman, Fan (2012)
+
+**Thermodynamic Upper Bound on Broadband Light Coupling with Photonic Structures**  
+Phys. Rev. Lett. 109, 173901 (2012)
+
+Relevance:
+
+- upper bound on aggregate external coupling rates of optical modes;
+- another possible route to an optical coupling resource for UPRP.
+
+## 2026 broadband absorption work
+
+Recent PRX Energy work derives upper bounds on broadband absorption in open dissipative systems using overlapping resonances and decay-rate structure. Relevant as a modern absorption-side comparison; do not assume it directly implies the UPRP information theorem.
+
+---
+
+# I. Spontaneous emission / LDOS dependence
+
+Primary literature establishes that spontaneous-emission rates depend on the electromagnetic Green tensor / LDOS and can be strongly modified by photonic environments (Purcell physics). Relevant examples include Sauvan et al., Phys. Rev. Lett. 110, 237401 (2013), and quantum-dot LDOS measurements such as Leistikow et al., Phys. Rev. B 79, 045301 (2009).
+
+For active/gain media, simple LDOS-only golden-rule formulas require correction; see Franke et al., Phys. Rev. Lett. 127, 013602 (2021). UPRP should therefore restrict any LDOS-based completion theorem to passive linear environments unless the active-medium quantum noise/pumping resource is explicitly included.
+
+---
+
+# J. Current novelty hypothesis after WP4
+
+The following are **not novel**:
+
+- sensitivity-speed/gain-bandwidth tradeoffs in photodetectors;
+- quantum photodetector coherence/backaction tradeoffs;
+- thermodynamic precision bounds;
+- finite-frequency fluctuation-response bounds;
+- detector dissipation versus jitter/dark-count tradeoffs;
+- oscillator-strength sum rules;
+- LDOS and optical power-bandwidth limits.
+
+The current candidate novelty is much narrower:
+
+> **A photodetection-specific no-go/completion theorem showing that fixed temperature, photon energy, optical detailed balance, useful throughput, stationary activity, and entropy production do not determine an absolute detector speed scale; an explicit microscopic light–matter coupling resource is necessary, and when a physically bounded matter+electromagnetic coupling functional is supplied, it combines with detector thermokinetic constraints to bound optical-to-electrical information bandwidth.**
+
+WP4 already proves the no-go part for a nontrivial reversible finite-state Markov event-detector class. The completion with an architecture-independent matter+EM finite-band resource remains OPEN.
+
+---
+
+# K. Mandatory comparison questions
+
+For every theorem candidate:
+
+1. Is the left side just a known response precision after notation changes?
+2. Is the right side a known TUR/KUR/activity bound?
+3. Does the theorem add a genuine optical input/resource constraint?
+4. Is the microscopic coupling resource independent, or merely a restatement of detector bandwidth?
+5. Does TRK constrain only matter while LDOS/environment remains free?
+6. Does an optical power-bandwidth theorem already imply the proposed result without detector thermodynamics?
+7. Does the result survive detector replication / increasing participating electron number?
+8. Does it require passive, reciprocal, Markovian, or weak-coupling assumptions?
+9. Is coherent optical drive being incorrectly represented as a thermal jump reservoir?
+10. Can the theorem be stated directly in the fully quantum input-output formalism?
+
+---
+
+# L. Highest-priority literature/theorem work
+
+1. Extract a usable finite-band LDOS/coupling inequality from Shim et al. and later LDOS-bound work in notation suitable for photodetection.
+2. Derive the carrier-sideband/baseband information mapping.
+3. Determine whether TRK + finite-band LDOS is sufficient to bound the optical coupling functional for a fixed absorber size/electron number and passive environment class.
+4. Map the result into Young–Sarovar–Léonard's coupling operator `L` / optical rate `gamma`.
+5. Compare the resulting quantum resource with `Var(H_int)` in Nishiyama–Hasegawa.
+6. Search for any existing theorem already composing optical power-bandwidth limits with detector Fisher information or DQE. Until that search is closed, novelty remains provisional.
