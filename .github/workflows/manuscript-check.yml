@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   compile:
@@ -26,9 +27,23 @@ jobs:
           working_directory: manuscript
           latexmk_use_xelatex: false
       - name: Upload manuscript artifacts
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: event-resource-theorem-rev5
           path: |
             manuscript/event_resource_theorem_rev5.pdf
             manuscript/event_resource_theorem_rev5.tex
+      - name: One-shot verification report
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const conclusion = '${{ job.status }}';
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: 12,
+              body: `Rev5 manuscript verification ${conclusion} for commit \`${context.sha}\`: generation, LaTeX compilation, and artifact upload were targeted by the verification workflow.`
+            });
