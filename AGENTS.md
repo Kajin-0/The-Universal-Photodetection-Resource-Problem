@@ -7,244 +7,262 @@ Research is analytical/theoretical only. Numerical work is allowed for validatio
 
 ## Read first
 1. `docs/CURRENT_RESEARCH_STATE.md`
-2. `notes/WP32_GENERAL_MARKED_POISSON_EVENT_KERNEL_THEOREM.md`
-3. `notes/WP29_THERMODYNAMIC_BRIDGE_TO_REGISTRATION_INTENSITY.md`
-4. `notes/WP30_WIENER_ATOMIC_DELAY_INFORMATION_THEOREM.md`
-5. `notes/WP31_EVENT_BRANCH_RESOURCE_NECESSITY_MATRIX.md`
-6. `notes/WP26_JITTER_MOMENT_NO_GO_AND_COLLISION_INTENSITY_RESOURCE.md`
-7. `notes/WP27_SYNCHRONOUS_CONTROL_CLOCK_NO_GO.md`
-8. `notes/WP28_ARBITRARY_SOURCE_SPECTRAL_CONCENTRATION_THEOREM.md`
-9. `notes/RESEARCH_LOG_ROUND11.md`
-10. `docs/ADVERSARIAL_REVIEW_EVENT_THEOREM_STACK.md`
-11. `docs/NOVELTY_AUDIT_ROUND5_EVENT_THEOREM_STACK.md`
-12. `docs/MANUSCRIPT_SKELETON_EVENT_RESOURCE_THEOREM.md`
-13. `notes/WP4_MICROSCOPIC_OPTICAL_COUPLING_NO_GO.md`
-14. earlier WP0–WP24 only as needed.
+2. `notes/RESEARCH_LOG_ROUND12.md`
+3. `manuscript/event_resource_theorem_rev3.tex`
+4. `docs/MANUSCRIPT_HOSTILE_PROOF_AUDIT_ROUND2.md`
+5. `notes/WP32_GENERAL_MARKED_POISSON_EVENT_KERNEL_THEOREM.md`
+6. `notes/WP33_EXACT_FIXED_MEAN_VARIANCE_JITTER_NO_GO.md`
+7. `notes/WP29_THERMODYNAMIC_BRIDGE_TO_REGISTRATION_INTENSITY.md`
+8. `notes/WP30_WIENER_ATOMIC_DELAY_INFORMATION_THEOREM.md`
+9. `notes/WP31_EVENT_BRANCH_RESOURCE_NECESSITY_MATRIX.md`
+10. `docs/NOVELTY_AUDIT_ROUND5_EVENT_THEOREM_STACK.md`
+11. `manuscript/references.bib`
+12. `manuscript/appendix_rare_fast_counterexample.tex`
+13. earlier WP0–WP24 notes only as needed.
 
 **Freeze:** detailed HgCdTe/Kane WP17–24 unless a core theorem explicitly requires material validation.
 
 ---
 
 # Strategic state
-The mature core is the **autonomous proper event/counter detector** branch. The project is no longer seeking one scalar sensitivity-bandwidth-temperature law valid for every detector architecture.
+The mature core is the **autonomous proper marked-event detector** branch. The first-paper candidate is now manuscript Rev3 on branch:
 
-Core metric:
-\[
-\boxed{\eta_I=F_{\rm electrical}/F_{\rm incident}^{Q}}.
-\]
+`agent/uprp-core-theorem-round10`
 
-Critical distinction:
-\[
-\boxed{\text{latency}\neq\text{amplitude bandwidth}\neq\text{information bandwidth}.}
-\]
-Known deterministic delay and invertible deterministic filtering do not by themselves reduce stationary FI.
+Primary source:
+
+`manuscript/event_resource_theorem_rev3.tex`
+
+Do not reopen broad material-specific or analog-detector branches unless a concrete counterexample forces it.
 
 ---
 
-# Strongest event-channel formulation — WP32
-For each incident signal photon, use the autonomous marked subprobability kernel
+# Core event theorem
+Weak coherent/direct-detection source:
+\[
+\Phi_\theta(t)=\Phi_0[1+\theta\cos\omega t].
+\]
+
+Per incident photon, autonomous primary-event kernel:
 \[
 K(dm,d\tau)=\kappa(dm)\mu_m(d\tau),
-\]
-where `m` is the complete accessible primary-event mark, `tau>=0` is registration delay, and
-\[
-\eta=\kappa(\mathsf M)\le1
-\]
-is total primary-event probability.
-
-Define
-\[
-H_m(\omega)=\int e^{-i\omega\tau}\,d\mu_m(\tau).
-\]
-For weak coherent/Poisson sinusoidal intensity modulation, the exact ideal primary-record source-normalized FI is
-\[
-\boxed{G(\omega)=\int |H_m(\omega)|^2\kappa(dm).}
-\]
-Any parameter-independent background or downstream processing obeys
-\[
-\eta_I^{\rm measured}(\omega)\le G(\omega).
+\qquad
+\eta=\kappa(\mathsf M)\le1.
 \]
 
-## Exact asymptotic timing obstruction — WP30/WP32
-If `p_j(m)` are the atomic masses of `mu_m`, Wiener theory gives
+The per-photon kernel is independent of the small source parameter; the source parameter modulates arrival intensity only. `M` is the complete accessible primary-event mark.
+
+Exact ideal-record source-normalized FI transfer:
 \[
 \boxed{
-\lim_{\Omega\to\infty}\frac1{2\Omega}\int_{-\Omega}^{\Omega}G(\omega)d\omega
-=\int\kappa(dm)\sum_jp_j(m)^2.}
+G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).
+}
 \]
-Thus mark-conditioned deterministic/discrete timing atoms are the exact high-band residual; purely non-atomic conditional delays force the flat-band average to zero.
 
-## Quantitative timing-collision resource
-If conditional delays have square-integrable densities `f_m`, define the **absolute captured collision intensity**
+Parameter-independent background or downstream processing can only reduce FI.
+
+---
+
+# Timing-resource hierarchy
+
+## Atomic timing
+If `p_j(m)` are the atoms of the mark-conditioned delay measure,
 \[
 \boxed{
-\mathfrak R_2=2\int\kappa(dm)\int f_m(t)^2dt.}
-\]
-Then
-\[
-\boxed{\int_{-\infty}^{\infty}G(\omega)d\omega=\pi\mathfrak R_2}
-\]
-and for flat band
-\[
-\boxed{\bar\eta_I(\Omega)\le\min\left[\eta,\frac{\pi\mathfrak R_2}{2\Omega}\right].}
+\lim_{\Omega\to\infty}
+\frac1{2\Omega}\int_{-\Omega}^{\Omega}G(\omega)d\omega
+=
+\int\kappa(dm)\sum_jp_j(m)^2.
+}
 \]
 
-For normalized source spectral FI `w(omega)`, define
-\[
-\mathcal W(A)=\sup_{E:\,|E|\le A}\int_Ew(\omega)d\omega.
-\]
-Then, for `eta>0`,
+This is an asymptotic flat-band average statement; do not claim pointwise Fourier decay for every non-atomic singular measure.
+
+## Collision intensity
+For square-integrable conditional densities,
 \[
 \boxed{
-\bar\eta_I[w]
-\le\eta\,\mathcal W\!\left(\frac{\pi\mathfrak R_2}{\eta}\right).}
+\mathfrak R_2
+=2\int\kappa(dm)\int f_m(t)^2dt,
+}
+\]
+and
+\[
+\boxed{
+\int G(\omega)d\omega=\pi\mathfrak R_2.
+}
+\]
+Thus
+\[
+\boxed{
+\bar\eta_I(\Omega)
+\le
+\min\left[\eta,\frac{\pi\mathfrak R_2}{2\Omega}\right].
+}
 \]
 
-## Capture-weighted local hazard resource
-If mark-conditioned hazard satisfies
+## Microscopic hazard capacity
+If
 \[
 h_m(t)\le\Lambda(m),
 \]
 define
 \[
-\boxed{\mathfrak H=\int\Lambda(m)\kappa(dm).}
+\boxed{
+\mathfrak H=\int\Lambda(m)\kappa(dm).
+}
 \]
 Then
 \[
-\boxed{\mathfrak R_2\le\mathfrak H}
+\boxed{\mathfrak R_2\le\mathfrak H.}
 \]
-and hence
-\[
-\boxed{\bar\eta_I(\Omega)\le\min\left[\eta,\frac{\pi\mathfrak H}{2\Omega}\right].}
-\]
-A uniform worst-case `Lambda` is a convenient stronger specialization, **not the minimal marked-channel rate resource**.
 
-Microscopic uniform sufficient forms remain useful:
+A global worst-case hazard is only a stronger corollary. Rare ultra-fast branches are harmless if their capture weight vanishes sufficiently fast.
+
+Preferred proof:
 \[
-\Lambda_{cl}=\max_x\sum_{y\in E_{reg}(x)}W_{yx},
-\]
-\[
-\Lambda_q=\left\|\sum_\alpha L_\alpha^\dagger L_\alpha\right\|_\infty.
+\int f^2=\int h^2S^2
+\le\Lambda\int hS^2
+=\Lambda/2.
 \]
 
 ---
 
-# Conventional jitter no-go — WP26
-A smooth fast-path/rare-slow-path mixture can keep finite/fixed variance while its prompt component becomes arbitrarily fast. Thus mean latency, RMS jitter, FWHM jitter, deterministic transit time, and ordinary `-3 dB` amplitude bandwidth are not resource-complete information-bandwidth variables.
+# WP33 exact jitter no-go
+For any prescribed
+\[
+\mu_0>0,
+\qquad
+\sigma^2>0,
+\]
+there exists a smooth two-exponential-plus-shift family satisfying exactly
+\[
+\boxed{
+\mathbb ED=\mu_0,
+\qquad
+\operatorname{Var}D=\sigma^2
+}
+\]
+for every family member while
+\[
+|H_D(\omega)|^2\to1
+\]
+uniformly on every prescribed finite frequency band.
+
+Therefore
+\[
+\boxed{
+\{\text{exact mean delay, exact RMS jitter}\}
+\not\Rightarrow
+\text{finite information bandwidth}.
+}
+\]
+
+Do not overstate this as an arbitrary exact-FWHM theorem.
 
 ---
 
-# Free clock/control no-go — WP27
-A free source-synchronous clock can encode arrival phase into an event mark and report it arbitrarily slowly while preserving incident timing FI.
+# External clock/control no-go
+A free source-synchronous temporal reference can store arrival phase in a mark and report it arbitrarily slowly while preserving source timing FI.
 
-Therefore WP25–32 apply to **autonomous/time-translation-invariant event detectors** unless clock/control bandwidth, phase precision, memory/reference resources and control action are explicitly counted.
+Therefore the central theorem applies to **autonomous/time-translation-invariant** event detectors unless clock/control bandwidth, phase precision, memory, and action are explicitly included as resources.
 
 ---
 
-# Thermodynamic bridge — WP29
-Restricted reversible optical gateway:
+# Thermodynamic bridge
+Restricted finite-state time-homogeneous Markov gateway:
 \[
 0\xrightleftharpoons[d]{u}1,
-\qquad f=u\pi_0\ge f_*.
-\]
-With total EPR `<=Sigma` and stationary activity `<=A`, define
-\[
-g(z)=(1-z^{-1})\ln z,
-\qquad Z_*=g^{-1}(\Sigma/f_*).
-\]
-WP3 proves
-\[
-\pi_1\ge\frac{f_*}{dZ_*},
 \qquad
-\boxed{\lambda_1\le\Lambda_*={\mathcal A dZ_*}/{f_*}.}
+f=u\pi_0\ge f_*.
 \]
-WP29 proves any autonomous downstream marked registration after the first gateway exit obeys
-\[
-\boxed{h_D(t|M)\le\lambda_1\le\Lambda_*}.
-\]
-Therefore the event theorem yields a finite thermokinetic information-bandwidth ceiling.
 
-### Complementary no-go
-WP4 proves temperature/detailed balance/EPR/activity/throughput alone do **not** bound the absolute microscopic rate scale. Rare-fast states can keep stationary resources bounded while local rates diverge.
+With EPR `<=Sigma` and activity `<=A`, define
+\[
+g(z)=(1-z^{-1})\ln z.
+\]
+Then
+\[
+\boxed{
+\lambda_1
+\le
+\Lambda_*
+=
+\frac{\mathcal A d}{f_*}
+ g^{-1}(\Sigma/f_*).
+}
+\]
 
-Clean original-question answer:
+Because the finite-state Markov holding time in state 1 is exponential and independent of exit destination, any downstream mark generated only from the exit destination and later autonomous Markov path satisfies
 \[
-\boxed{\text{stationary thermodynamics alone}\not\Rightarrow\text{finite information bandwidth},}
+\boxed{h_D(t|M)\le\lambda_1.}
 \]
-but, in the restricted gateway class,
+
+Hence
 \[
-\boxed{\text{thermodynamic budgets}+\text{absolute microscopic rate scale}\Rightarrow\text{finite bandwidth}.}
+\boxed{
+\bar\eta_I(\Omega)
+\le
+C\min\left[
+1,
+\frac{\pi\mathcal A d}{2f_*\Omega}
+ g^{-1}(\Sigma/f_*)
+\right].
+}
 \]
+
+The absolute rate `d` is a microscopic resource. WP4/rare-fast appendix shows aggregate stationary EPR/activity/throughput plus fixed optical detailed-balance ratio do not determine the local temporal scale if hidden nonoptical microscopic scales may diverge.
+
+Do not claim every edge-resolved affinity is fixed in that counterexample.
 
 ---
 
-# Resource necessity matrix
-Necessary for a well-posed invariant event theorem:
-- normalized finite source-information task;
-- complete accessible primary-event mark specification;
-- autonomy OR explicit temporal-reference/control resources.
+# Manuscript status
+Current target:
 
-Exact asymptotic timing obstruction:
-- mark-conditioned atomic timing mass.
+`manuscript/event_resource_theorem_rev3.tex`
 
-Quantitative timing resources:
-- `mathfrak R2`: integrated timing spectrum;
-- `mathfrak H`: capture-weighted local hazard sufficient resource;
-- uniform `Lambda`: convenient stronger specialization.
+Rev3 incorporates all proof-audit corrections and includes
 
-Rejected as primitive universal resources:
-- deterministic latency/transit time;
-- mean delay;
-- RMS/FWHM jitter;
-- RC `-3 dB` amplitude bandwidth;
-- stationary EPR/activity without an absolute rate resource.
+`manuscript/appendix_rare_fast_counterexample.tex`.
 
-Not required for intrinsic upper speed bound:
-- parameter-independent dark/background events;
-- downstream electronics;
-- nontrivial optical capture theorem beyond `eta<=1`, unless a stronger sensitivity ceiling is desired.
+Bibliography:
 
-Parallel replication passes source-normalized extensivity. Multiple independent **pre-primary** timing copies from one photon define a separate resource/class.
+`manuscript/references.bib`.
 
----
+Branch-only compile workflow:
 
-# Detector-class taxonomy
-1. **Autonomous proper event/counter:** WP25–32 mature theorem stack.
-2. **Actively synchronized event:** explicit clock/control/reference resources; WP27.
-3. **Continuous classical/Markov analog:** generic finite-frequency response/noise bounds are close prior art; pursue only distinct additions.
-4. **Coherent quantum pointer before irreversible registration:** separate WP7/WP8 apparatus/coupling/support theory.
+`.github/workflows/manuscript-check.yml`.
 
-Do not claim one formula covers all four.
+The connector has not yet exposed a completed push-triggered Actions result. Do **not** claim the manuscript has compiled successfully until a build result is actually inspected.
 
 ---
 
 # Novelty posture
-Closest prior art now explicitly includes:
-- Köllner & Wolfrum (1992), FI/CRLB photon requirements for fluorescence lifetime;
-- Talaga (2009), information-theoretical TCSPC analysis with IRF convolution, information loss, sensitivity-bandwidth discussion and IRF power spectra;
-- later FLIM/TCSPC FI/CRLB work;
-- classical hazard/reliability theory;
-- Wiener theorem;
-- Poisson displacement/marking theory;
-- Dechant 2026 finite-frequency FRI.
+Closest known work includes FI/CRLB lifetime estimation, Talaga's IRF information/effective-bandwidth treatment, later FLIM FI/IRF analyses, and Dechant's finite-frequency response--noise inequality.
 
-Do **not** claim novelty for “timing response limits information,” Fisher+hazard, IRF convolution, Wiener/Parseval, marked-Poisson FI, or detector jitter theory.
+Do not claim:
+- first information-theoretic detector timing analysis;
+- first timing-response information loss result;
+- first detector sensitivity--bandwidth tradeoff;
+- generic finite-frequency response/noise novelty;
+- universal all-detector speed limit.
 
 Current defensible candidate contribution:
-> a photodetection-specific **resource-completeness theorem stack**: exact source-modulation FI for autonomous marked event channels; exact atomic timing residual; quantitative collision/hazard spectral budgets; conventional-jitter and free-clock no-go results; and a thermodynamic no-go/conditional-repair theorem.
 
-No equivalent complete stack has been identified in targeted searches. Novelty remains provisional.
+> A resource-completeness theorem for source-modulation information transfer in autonomous marked photodetection event channels, with exact atomic and collision-intensity timing resources and explicit no-go/repair results for low-order jitter moments, free synchronous control, and aggregate stationary thermodynamics.
+
+Novelty remains provisional but no equivalent complete stack has been located in targeted searches.
 
 ---
 
-# Publication state
-- `docs/MANUSCRIPT_SKELETON_EVENT_RESOURCE_THEOREM.md`
-- `docs/ADVERSARIAL_REVIEW_EVENT_THEOREM_STACK.md`
-- `docs/NOVELTY_AUDIT_ROUND5_EVENT_THEOREM_STACK.md`
+# Immediate next actions
+1. Obtain and inspect a real LaTeX compile result for Rev3.
+2. Repair any build errors and run a final equation/reference cross-check.
+3. Add only high-information figures that clarify theorem content.
+4. Perform a final publication-level claim/citation audit.
+5. Decide whether to prepare a submission-ready manuscript package.
+6. Defer non-Poisson/nonclassical source extension unless a referee-style review shows it is necessary.
+7. Keep WP17–24 frozen.
 
-Hostile review found no fatal mathematical contradiction under stated low-overlap/autonomous assumptions. Main risks: novelty compression and scope, not an identified theorem error.
-
-## Immediate next action
-Begin a carefully scoped first manuscript using **WP32 notation** and conservative novelty framing. Defer non-Poisson/nonclassical source extension unless manuscript review proves it necessary.
-
-Do not reopen HgCdTe WP17–24.
+Status vocabulary: **PROVED**, **VERIFIED**, **CONJECTURE**, **COUNTEREXAMPLE**, **OPEN**, **BLOCKED**, **REJECTED**.
