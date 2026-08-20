@@ -2,25 +2,45 @@
 
 **Date:** 2026-08-20
 
-This is the first-stop scientific/publication state for UPRP. The active branch is:
+Active branch:
 
 `agent/uprp-core-theorem-round10`
 
-## Current manuscript state
+## Publication state
 
-- `manuscript/event_resource_theorem_rev4.tex` is the last fully build-verified committed manuscript source.
-- GitHub Actions verified Rev4 generation, full LaTeX compilation, and artifact upload for commit `0acd8ca6304585e44c89130ca6b31826884c85a8`.
-- `notes/WP35_MARK_CONDITIONED_MARKOV_RATE_CORRECTION.md` subsequently identified one localized microscopic-rate wording defect in Rev4.
-- `manuscript/apply_rev5.py` is the assertion-based Rev4 -> Rev5 editorial transformer.
-- `.github/workflows/manuscript-check.yml` now generates and compiles `event_resource_theorem_rev5.tex` and uploads the Rev5 TeX/PDF artifacts.
+Current first-paper source:
 
-The WP35 correction does **not** change the central event theorem, Wiener result, Parseval constant, collision resource, capture-weighted hazard theorem, WP33 fixed-jitter no-go, WP34 inverse cost, or WP29 thermodynamic gateway theorem.
+`manuscript/event_resource_theorem_rev5.tex`
+
+Rev5 is now **committed and mechanically verified**. Its committed blob SHA is
+
+`23ad1c27be95bdbf79d88176d438c8a305f844f0`,
+
+which exactly matches the Git blob hash of the TeX source retrieved from the successful GitHub Actions Rev5 artifact.
+
+The final generated Rev5 state passed:
+
+1. assertion-based Rev4 -> Rev5 generation;
+2. full LaTeX compilation;
+3. artifact upload.
+
+Steady-state CI has been restored to read-only direct compilation of committed Rev5. It has no self-commit or issue-comment side effects.
+
+Final audit:
+
+`docs/MANUSCRIPT_REV5_FINAL_AUDIT.md`
+
+Latest durable research checkpoint:
+
+`notes/RESEARCH_LOG_ROUND14.md`
+
+The first-paper science is at the **submission-package stage**.
 
 ---
 
 # Detector class
 
-The mature first-paper theorem is restricted to:
+The mature theorem is restricted to:
 
 - autonomous/time-translation-invariant processing;
 - independent-event/low-overlap operation;
@@ -29,7 +49,7 @@ The mature first-paper theorem is restricted to:
 - weak coherent/Poisson direct-detection intensity modulation;
 - parameter-independent downstream background/processing for the FI upper-bound step.
 
-It is not a universal speed law for every architecture called a photodetector.
+It is not a universal speed law for every photodetector architecture.
 
 ---
 
@@ -42,47 +62,42 @@ K(dm,d\tau)=\kappa(dm)\mu_m(d\tau),
 \eta=\kappa(\mathsf M)\le1.
 \]
 
-For sinusoidal source modulation,
+Exact ideal source-normalized transfer:
 \[
 \boxed{
 G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).
 }
 \]
 
-Any parameter-independent background addition or downstream stochastic map can only reduce FI.
+Parameter-independent background addition or downstream stochastic processing cannot increase FI.
 
 ---
 
-# Resource hierarchy
+# Timing-resource hierarchy
 
 ## Exact atomic residue
-If `p_j(m)` are the atoms of the mark-conditioned delay measure,
 \[
 \boxed{
 \lim_{\Omega\to\infty}\frac1{2\Omega}
 \int_{-\Omega}^{\Omega}G(\omega)d\omega
 =
-\int\kappa(dm)\sum_j p_j(m)^2.
+\int\kappa(dm)\sum_jp_j(m)^2.
 }
 \]
 
-Purely non-atomic conditional timing therefore gives zero asymptotic flat-band **average** transfer. Do not turn this into an unsupported pointwise Fourier-decay claim.
+This is a flat-band **average** result. Purely non-atomic conditional timing gives zero asymptotic average transfer; do not strengthen it to generic pointwise Fourier decay.
 
-## Timing collision intensity
+## Collision resource
 For square-integrable conditional delay densities,
 \[
 \boxed{
 \mathfrak R_2=2\int\kappa(dm)\int f_m(t)^2dt,
-}
-\]
-with exact Parseval budget
-\[
-\boxed{
+\qquad
 \int G(\omega)d\omega=\pi\mathfrak R_2.
 }
 \]
 
-Hence
+Thus
 \[
 \boxed{
 \bar\eta_I(\Omega)
@@ -92,25 +107,21 @@ Hence
 \]
 
 ## Capture-weighted local hazard capacity
-If `h_m(t)<=Lambda(m)`, define
+If `h_m(t)<=Lambda(m)`,
 \[
 \boxed{
-\mathfrak H=\int\Lambda(m)\kappa(dm).
-}
-\]
-Then
-\[
-\boxed{
+\mathfrak H=\int\Lambda(m)\kappa(dm),
+\qquad
 \mathfrak R_2\le\mathfrak H.
 }
 \]
 
-This weighted resource is preferred to a global worst-case rate because rare fast marks can carry negligible capture weight.
+`mathfrak H` is the preferred microscopic sufficient rate resource; a global worst-case hazard is only a stronger corollary.
 
 ---
 
-# Operational inverse theorem
-For a flat task on `|omega|<=Omega`, with ordinary-frequency half-band
+# WP34 inverse resource cost
+For flat ordinary-frequency half-band
 \[
 B=\frac{\Omega}{2\pi},
 \]
@@ -129,61 +140,54 @@ For a common conditional-hazard ceiling,
 \[
 \boxed{\Lambda\ge\frac{4Bq}{\eta}.}
 \]
-For relative retention `q=r eta`,
+For `q=r eta`,
 \[
 \boxed{\Lambda\ge4Br.}
 \]
 
 ---
 
-# Exact conventional-jitter no-go
-For any prescribed mean `mu0>0` and variance `sigma^2>0`, WP33 constructs smooth delay laws satisfying both exactly for every selected family member while their transfer tends uniformly to the capture ceiling on any prescribed finite band.
+# WP33 exact jitter no-go
+For arbitrary prescribed `mu0>0` and `sigma^2>0`, a smooth delay family can satisfy exactly
+\[
+\mathbb E D=\mu_0,
+\qquad
+\operatorname{Var}D=\sigma^2
+\]
+for every selected family member while source-normalized transfer approaches the capture ceiling uniformly on every prescribed finite band.
 
-Therefore exact mean delay plus exact RMS jitter does not determine a finite temporal information bandwidth.
+Therefore exact mean delay plus exact RMS jitter do not bound temporal information bandwidth.
 
-No theorem is claimed for simultaneously fixing an arbitrary exact FWHM.
+No arbitrary fixed-exact-FWHM theorem is claimed.
 
 ---
 
-# WP35 microscopic CTMC correction
-Rev4 says that the maximum total intensity of successful first-registration transitions is a generic uniform mark-conditioned hazard bound. That is too weak.
+# WP35 CTMC correction
+The successful-registration edge intensity alone is not a generic complete-mark-conditioned hazard bound.
 
-For a pre-registration state `x`, define the total escape rate
+For finite-state CTMC pre-registration state set `S_pre`,
 \[
-q_x=\sum_{y\ne x}W_{yx}
-\]
-and
-\[
+q_x=\sum_{y\ne x}W_{yx},
+\qquad
 \boxed{q_{\max}=\max_{x\in S_{\rm pre}}q_x.}
 \]
 
-If the accessible mark does not independently reveal the realized pre-registration holding times, then
+Provided the accessible mark does not independently expose realized pre-registration holding times,
 \[
 \boxed{h_D(t\mid M)\le q_{\max}.}
 \]
 
-Competing-exit check: rates `r` (success) and `R` (failure) give
-\[
-T\mid M=\mathrm{success}\sim\mathrm{Exp}(r+R),
-\]
-so the conditional hazard is `r+R`, while
-\[
-P(M=\mathrm{success})(r+R)=r.
-\]
-This directly illustrates why the capture-weighted hazard capacity remains well behaved.
-
-The generic quantum-jump sentence is removed from Rev5 rather than extending the first paper into quantum-trajectory assumptions.
+Rev5 applies this correction and removes the generic quantum-jump operator-norm sentence. The capture-weighted theorem and all constants are unchanged.
 
 ---
 
 # Thermodynamic bridge
-The restricted finite-state time-homogeneous reversible Markov gateway uses the **total first-exit rate** `lambda1` and is already consistent with WP35.
+The restricted finite-state time-homogeneous reversible gateway already uses the **total first-exit rate** `lambda1`, so WP29 required no repair.
 
-With forward traffic `f>=f_*`, total EPR `<=Sigma`, activity `<=A`, reverse optical rate `d`, and
+With forward traffic `f>=f_*`, EPR `<=Sigma`, activity `<=A`, reverse rate `d`, and
 \[
 g(z)=(1-z^{-1})\ln z,
 \]
-WP29 gives
 \[
 \boxed{
 \lambda_1\le
@@ -192,40 +196,28 @@ WP29 gives
 }
 \]
 
-The exponential gateway waiting time then gives `h_D(t|M)<=lambda1` under the stated mark restriction.
-
-The absolute microscopic rate `d` cannot be eliminated in favor of stationary thermodynamic aggregates alone; the rare-fast construction is the counterexample.
+The absolute microscopic rate `d` cannot be eliminated in favor of stationary thermodynamic aggregates alone; the rare-fast counterexample establishes this.
 
 ---
 
-# Scope boundaries
+# Final claim/citation posture
+Established ingredients are explicitly treated as prior art: marked Poisson processes/FI, Wiener theory, Parseval, survival/hazard calculus, TCSPC/IRF information loss, synchronous references, and generic finite-frequency response/noise inequalities.
 
-- Free synchronous clock/control defeats a detector-only timing bound unless reference resources are counted.
-- Coherent continuous pointers form a separate quantum-resource branch.
-- High-flux history-dependent capture/recovery requires trajectory-level treatment.
-- Multiple independent pre-primary timing copies are an additional multiplicity resource.
-- Nonclassical/phase-sensitive optical source parameters require a different input-information normalization.
+The defensible candidate contribution is the **combined resource-completeness stack** and its photodetection-specific no-go/repair structure.
 
----
-
-# Novelty posture
-The individual mathematical ingredients are established: marked Poisson processes, Fisher information, Wiener theory, Parseval, survival/hazard calculus, and rearrangement inequalities.
-
-The defensible candidate novelty is the **resource-completeness stack**:
-
-> exact marked source-modulation FI transfer -> atomic timing residue -> collision spectral budget -> capture-weighted local-hazard resource -> inverse timing-resource cost, together with explicit jitter, clock/control, and stationary-thermodynamic no-go/repair results.
-
-Do not claim generic information-theoretic timing analysis or generic response/noise theory as new.
+The final audit tightened the Dechant comparison to the claims directly needed from the cited finite-frequency response/fluctuation work.
 
 ---
 
 # Frozen work
-WP17–24 HgCdTe/Kane validation is frozen. The quantum-pointer, continuous-analog, and non-Poisson branches are also frozen for the first manuscript unless a concrete referee-level defect forces reopening them.
+Keep frozen for the first paper unless a concrete referee-level defect requires reopening:
+
+- HgCdTe/Kane WP17–24;
+- coherent quantum pointers;
+- continuous analog detectors;
+- non-Poisson/nonclassical source extensions.
 
 ---
 
-# Immediate publication gates
-1. Observe and inspect the Rev5 CI result.
-2. Persist the generated Rev5 source after successful build verification.
-3. Run a final line-by-line claim/reference audit on Rev5.
-4. If no substantive defect remains, prepare the submission-ready source/package rather than opening another research branch.
+# Next action
+Prepare the submission-ready source/package and journal positioning from committed Rev5. Additional foundational research is not the default next step.
