@@ -10,8 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  issues: write
+  contents: write
 
 jobs:
   compile:
@@ -33,9 +32,10 @@ jobs:
           path: |
             manuscript/event_resource_theorem_rev4.pdf
             manuscript/event_resource_theorem_rev4.tex
-      - name: Report one-shot Rev4 verification success
-        if: ${{ contains(github.event.head_commit.message, 'Rev4 verification') }}
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Persist verified Rev4 source
         run: |
-          gh issue comment 12 --repo "$GITHUB_REPOSITORY" --body "Rev4 manuscript verification succeeded for commit \`$GITHUB_SHA\`: deterministic Rev4 generation, LaTeX compilation, and artifact upload all completed successfully."
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- manuscript/event_resource_theorem_rev4.tex
+          git commit -m "Persist verified Rev4 manuscript [skip ci]"
+          git push
