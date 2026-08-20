@@ -21,9 +21,7 @@ Current mature detector class:
 - one sufficient primary electrical registration per incident photon;
 - complete accessible primary-event mark retained.
 
-The scientific base manuscript remains:
-
-`manuscript/event_resource_theorem_rev3.tex`
+The scientifically audited base remains Rev3; the current manuscript source is now compiled Rev4.
 
 ---
 
@@ -71,11 +69,15 @@ Primary note:
 
 ---
 
-## 3. Rev4 integration strategy
+## 3. Rev4 integration
 
-Rev3 is deliberately left immutable.
+Rev3 was deliberately preserved as the audited scientific base.
 
-`manuscript/apply_rev4.py` deterministically generates a Rev4 candidate from Rev3. The script uses exact single-occurrence replacement assertions and adds only:
+`manuscript/apply_rev4.py` deterministically generated
+
+`manuscript/event_resource_theorem_rev4.tex`.
+
+The script uses exact single-occurrence replacement assertions and added only:
 
 - figure packages;
 - resource-hierarchy figure;
@@ -86,6 +88,8 @@ Rev3 is deliberately left immutable.
 Python syntax check: PASSED.
 
 All generator anchors were checked against the reconstructed Rev3 source.
+
+The generated Rev4 source was subsequently persisted to the working branch by the temporary verification workflow.
 
 ---
 
@@ -102,7 +106,7 @@ Final design contains only the intrinsic event theorem layers:
 3. collision resource `mathfrak R_2`;
 4. local hazard capacity `mathfrak H`.
 
-The source-synchronous clock/control box was deliberately removed from the diagram because it was visually competitive and conceptually belongs to a separate no-go theorem.
+The source-synchronous clock/control box was deliberately removed because it was visually competitive and conceptually belongs to a separate no-go theorem.
 
 Local minimal RevTeX/TikZ compile: PASSED.
 
@@ -116,7 +120,7 @@ Uses exact WP33 data for three progressively more extreme prompt/rare-tail famil
 
 CSV values were checked against the exact formula.
 
-Default point markers were removed; line styles now distinguish the three curves cleanly.
+Default point markers were removed; line styles distinguish the three curves cleanly.
 
 Local minimal RevTeX/pgfplots compile: PASSED.
 
@@ -124,37 +128,35 @@ Visual audit: PASSED.
 
 ---
 
-## 5. CI experiment and final safe workflow
+## 5. Full Rev4 CI compile verified
 
-The branch workflow now targets generated Rev4:
+Because ordinary push-run listing was not exposed through the connector, a temporary one-shot reporting step was added after the Rev4 compile and artifact-upload steps.
+
+GitHub Actions bot subsequently posted to Issue #12:
+
+> `Rev4 manuscript verification succeeded for commit 0acd8ca6304585e44c89130ca6b31826884c85a8: deterministic Rev4 generation, LaTeX compilation, and artifact upload all completed successfully.`
+
+This closes the full manuscript mechanical gate for that Rev4 branch state.
+
+A subsequent temporary workflow also persisted the generated Rev4 source to the branch.
+
+After verification, all temporary side effects were removed. The current workflow now simply:
+
+1. checks out the branch;
+2. compiles committed `manuscript/event_resource_theorem_rev4.tex`;
+3. uploads the PDF and TeX artifacts.
+
+Current workflow:
 
 `.github/workflows/manuscript-check.yml`
 
-It performs:
-
-1. checkout;
-2. `python manuscript/apply_rev4.py`;
-3. LaTeX compile of `event_resource_theorem_rev4.tex`;
-4. artifact upload of PDF and generated TeX.
-
-Two temporary observability experiments were attempted because the available connector does not expose ordinary push-triggered run listing:
-
-- post a success marker to Issue #12;
-- persist the generated Rev4 source after successful compile.
-
-Neither produced an observable run from connector-authored commits. Both temporary reporting/persistence behaviors were removed so future human pushes are not surprised by side effects.
-
-Current workflow is read-only except artifact upload.
-
-**Do not claim a verified full Actions compile.**
-
 ---
 
-## 6. What is currently verified
+## 6. What is verified
 
 ### Scientifically
 
-Rev3 theorem/proof structure remains verified:
+The theorem/proof structure remains verified:
 
 - input Poisson FI normalization;
 - exact marked-event transfer;
@@ -162,6 +164,7 @@ Rev3 theorem/proof structure remains verified:
 - Parseval prefactor;
 - weighted timing-collision resource;
 - hazard-to-collision inequality;
+- WP34 inverse resource cost;
 - exact fixed-mean/fixed-variance no-go;
 - free-clock no-go;
 - restricted thermodynamic bridge;
@@ -169,30 +172,29 @@ Rev3 theorem/proof structure remains verified:
 
 ### Mechanically
 
-Verified locally:
+Verified:
 
 - Rev4 generator Python syntax;
 - Rev4 replacement anchors against Rev3;
 - both theorem figures compile;
 - both figures visually pass overlap/clipping audit;
-- figure test produces no layout warnings.
-
-Not yet directly verified:
-
-- complete Rev4 bibliography-resolved manuscript build through GitHub Actions.
+- figure test produces no layout warnings;
+- full Rev4 LaTeX compile through GitHub Actions;
+- Rev4 artifact upload;
+- committed Rev4 source exists on the branch.
 
 ---
 
 ## 7. Publication posture
 
-Do not reopen broad theory or materials work before finishing manuscript mechanics.
+The autonomous event theorem mathematics and manuscript mechanics are now substantially closed.
 
-Immediate priority:
+Immediate priority is no longer another derivation. It is:
 
-1. obtain a full Rev4 build result when an observable trigger is available;
-2. perform final line-by-line claim/citation audit of the generated Rev4 text;
-3. decide whether a submission package is justified;
-4. defer non-Poisson/nonclassical source extension unless a referee-style review identifies it as necessary.
+1. final line-by-line claim/citation audit of committed Rev4;
+2. decide journal positioning and submission packaging;
+3. clean obsolete draft/build-helper files only if doing so improves submission clarity;
+4. defer non-Poisson/nonclassical source extension unless referee-style review identifies it as necessary.
 
 Supporting audit:
 
@@ -206,6 +208,6 @@ Supporting audit:
 
 **REV3 SCIENTIFIC MANUSCRIPT BASE: VERIFIED**
 
-**REV4 FIGURE + WP34 INTEGRATION: STAGED AND LOCALLY AUDITED**
+**REV4 FIGURE + WP34 INTEGRATION: VERIFIED**
 
-**FULL REV4 BUILD: OPEN MECHANICAL GATE**
+**FULL REV4 BUILD + ARTIFACT UPLOAD: VERIFIED PASSED**
