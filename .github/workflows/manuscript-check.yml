@@ -22,8 +22,8 @@ jobs:
         run: python manuscript/apply_rev5.py
       - name: Persist verified Rev5 source once
         run: |
-          if git diff --quiet -- manuscript/event_resource_theorem_rev5.tex; then
-            echo "Rev5 source already committed."
+          if [ -z "$(git status --porcelain -- manuscript/event_resource_theorem_rev5.tex)" ]; then
+            echo "Rev5 source already committed and unchanged."
             exit 0
           fi
           git config user.name "github-actions[bot]"
