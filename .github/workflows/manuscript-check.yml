@@ -10,16 +10,13 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  issues: write
+  contents: read
 
 jobs:
-  verify-rev6:
+  compile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Generate Rev6
-        run: python manuscript/apply_rev6.py
       - name: Compile manuscript
         uses: xu-cheng/latex-action@v3
         with:
@@ -34,28 +31,3 @@ jobs:
             manuscript/event_resource_theorem_rev6.pdf
             manuscript/event_resource_theorem_rev6.tex
             manuscript/appendix_rare_fast_counterexample_rev6.tex
-      - name: Persist verified Rev6 sources once
-        if: success()
-        run: |
-          if [ -z "$(git status --porcelain -- manuscript/event_resource_theorem_rev6.tex manuscript/appendix_rare_fast_counterexample_rev6.tex)" ]; then
-            echo "Rev6 sources already committed and unchanged."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- manuscript/event_resource_theorem_rev6.tex manuscript/appendix_rare_fast_counterexample_rev6.tex
-          git commit -m "Persist verified Rev6 manuscript sources"
-          git push
-      - name: One-shot Rev6 verification report
-        if: always()
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const conclusion = '${{ job.status }}';
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: 12,
-              body: `Rev6 referee-repair verification ${conclusion} for trigger commit \`${context.sha}\`, Actions run \`${context.runId}\`.`
-            });
