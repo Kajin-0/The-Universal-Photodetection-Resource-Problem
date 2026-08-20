@@ -17,16 +17,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Generate Rev5
+        run: python manuscript/apply_rev5.py
       - name: Compile manuscript
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: event_resource_theorem_rev4.tex
+          root_file: event_resource_theorem_rev5.tex
           working_directory: manuscript
           latexmk_use_xelatex: false
       - name: Upload manuscript artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: event-resource-theorem-rev4
+          name: event-resource-theorem-rev5
           path: |
-            manuscript/event_resource_theorem_rev4.pdf
-            manuscript/event_resource_theorem_rev4.tex
+            manuscript/event_resource_theorem_rev5.pdf
+            manuscript/event_resource_theorem_rev5.tex
