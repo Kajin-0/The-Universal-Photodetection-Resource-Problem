@@ -1,5 +1,6 @@
 \begin{figure*}[t]
 \centering
+\resizebox{0.98\textwidth}{!}{%
 \begin{tikzpicture}[>=latex, line width=0.8pt, font=\small]
   \node[draw, rounded corners, minimum width=3.4cm, minimum height=1.05cm, align=center] (src) at (0,0)
     {Incident Poisson source\\$\Phi_\theta(t)$};
@@ -36,7 +37,8 @@
   \node[draw, dashed, rounded corners, minimum width=4.0cm, minimum height=0.9cm, align=center] (clock) at (12.2,-2.6)
     {Source-synchronous clock/control\\outside autonomous theorem};
   \draw[dashed,->] (clock.north) -- ++(0,1.45) -| (rec.south);
-\end{tikzpicture}
+\end{tikzpicture}%
+}
 \caption{Resource hierarchy for the autonomous marked-event theorem. The per-photon kernel maps an incident photon into a primary electrical mark and registration delay. Atomic timing mass controls the exact asymptotic flat-band residue; the capture-weighted collision intensity $\mathfrak R_2$ fixes the integrated transfer spectrum; and a capture-weighted local hazard capacity $\mathfrak H$ supplies a microscopic sufficient bound. An external source-synchronous temporal reference is a separate resource and lies outside the autonomous theorem.}
 \label{fig:resourceHierarchy}
 \end{figure*}
