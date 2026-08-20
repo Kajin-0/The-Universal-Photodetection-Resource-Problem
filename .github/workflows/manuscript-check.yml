@@ -17,8 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Generate Rev4 from verified Rev3
-        run: python manuscript/apply_rev4.py
       - name: Compile manuscript
         uses: xu-cheng/latex-action@v3
         with:
