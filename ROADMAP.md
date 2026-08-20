@@ -1,58 +1,28 @@
-# Research Roadmap — Publication Closure Phase
+# Research Roadmap — Submission Package Phase
 
 **Updated:** 2026-08-20
 
 ## Guiding principle
-The project has converged from a broad universal-resource search to a detector-class-specific **no-go + repair/resource-completeness program**.
+The autonomous marked-event branch has passed its scientific and manuscript-hardening gates. The first-paper task is now **submission packaging and journal positioning**, not additional foundational derivation.
 
-For the first paper, do not reopen material-specific, coherent-pointer, analog-detector, or non-Poisson branches unless a concrete defect in the autonomous event theorem requires it.
-
-The current question is no longer “what other physics can be added?” It is:
-
-> Is the autonomous marked-event theorem stated with the smallest defensible assumptions, are every claim and citation publication-safe, and is the source package mechanically reproducible?
+Do not reopen material-specific, coherent-pointer, analog-detector, or non-Poisson branches unless a concrete referee-level defect in Rev5 requires it.
 
 ---
 
-# Core metric
-For weak coherent/Poisson direct-detection intensity modulation, normalize electrical-record Fisher information by the incident Poisson FI of the same source parameter.
-
-Critical distinction:
-\[
-\boxed{
-\text{latency}\neq\text{amplitude bandwidth}\neq\text{information bandwidth}.
-}
-\]
-
-Known deterministic delay and invertible deterministic filtering do not by themselves imply FI loss.
-
----
-
-# Branch E — autonomous proper event detectors
+# Closed theorem stack
 
 ## E0 — Exact marked-event kernel
-**Status: PROVED**
+**PROVED**
 
-Per incident photon,
 \[
 K(dm,d\tau)=\kappa(dm)\mu_m(d\tau),
-\qquad \eta=\kappa(\mathsf M)\le1.
-\]
-
-For the complete accessible primary-event mark,
-\[
-\boxed{
+\qquad
 G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).
-}
 \]
 
-Parameter-independent background and downstream processing cannot increase FI.
+## E1 — Atomic high-band residue
+**PROVED**
 
-Primary note: `notes/WP32_GENERAL_MARKED_POISSON_EVENT_KERNEL_THEOREM.md`.
-
-## E1 — Structural high-band obstruction
-**Status: PROVED**
-
-Wiener theory gives the exact capture-weighted atomic residue
 \[
 \boxed{
 \lim_{\Omega\to\infty}\frac1{2\Omega}
@@ -62,14 +32,9 @@ Wiener theory gives the exact capture-weighted atomic residue
 }
 \]
 
-Purely non-atomic conditional delay laws therefore force the flat-band **average** transfer to vanish asymptotically.
+## E2 — Timing-collision spectral resource
+**PROVED**
 
-Primary note: `notes/WP30_WIENER_ATOMIC_DELAY_INFORMATION_THEOREM.md`.
-
-## E2 — Quantitative collision resource
-**Status: PROVED**
-
-For square-integrable conditional delay densities,
 \[
 \boxed{
 \mathfrak R_2=2\int\kappa(dm)\int f_m^2dt,
@@ -78,32 +43,16 @@ For square-integrable conditional delay densities,
 }
 \]
 
-Thus
+## E3 — Capture-weighted local-hazard resource
+**PROVED; WP35-CORRECTED MICROSCOPIC INTERPRETATION**
+
 \[
 \boxed{
-\bar\eta_I(\Omega)
-\le
-\min\left[\eta,\frac{\pi\mathfrak R_2}{2\Omega}\right].
+\mathfrak H=\int\Lambda(m)\kappa(dm),
+\qquad
+\mathfrak R_2\le\mathfrak H.
 }
 \]
-
-Primary notes: WP26, WP28, WP32.
-
-## E3 — Microscopic local-rate resource
-**Status: PROVED WITH WP35 CORRECTION**
-
-If `h_m(t)<=Lambda(m)`, define
-\[
-\boxed{
-\mathfrak H=\int\Lambda(m)\kappa(dm).
-}
-\]
-Then
-\[
-\boxed{\mathfrak R_2\le\mathfrak H.}
-\]
-
-The capture-weighted resource `mathfrak H` is preferred to a global worst-case hazard.
 
 For a finite-state CTMC, the safe generic uniform bound after complete mark conditioning is
 \[
@@ -111,14 +60,12 @@ For a finite-state CTMC, the safe generic uniform bound after complete mark cond
 q_{\max}=\max_{x\in S_{\rm pre}}\sum_{y\ne x}W_{yx},
 }
 \]
-provided the accessible mark does not independently record the realized pre-registration holding times.
+provided the mark does not independently expose realized pre-registration holding times.
 
-The older registration-edge-only bound is rejected. The generic quantum-jump operator-norm sentence is deferred rather than asserted in the first manuscript.
-
-Primary note: `notes/WP35_MARK_CONDITIONED_MARKOV_RATE_CORRECTION.md`.
+The old registration-edge-only statement is rejected. The generic quantum-jump operator-norm extension is deferred.
 
 ## E4 — Operational inverse cost
-**Status: PROVED**
+**PROVED**
 
 For ordinary-frequency half-band `B=Omega/(2pi)` and required absolute average transfer `q`,
 \[
@@ -133,38 +80,28 @@ q\le\eta,
 
 For a common per-captured-event hazard ceiling,
 \[
-\boxed{
-\Lambda\ge\frac{4Bq}{\eta}.
-}
+\boxed{\Lambda\ge4Bq/\eta.}
 \]
 For relative retention `q=r eta`,
 \[
 \boxed{\Lambda\ge4Br.}
 \]
 
-Primary note: `notes/WP34_MINIMUM_TIMING_RESOURCE_COST_THEOREM.md`.
+## E5 — No-go/repair layer
+**PROVED FOR MANUSCRIPT CLAIMS**
 
-## E5 — Resource insufficiency/no-go layer
-**Status: PROVED FOR THE CLAIMS USED IN THE MANUSCRIPT**
-
-- Exact mean delay + exact variance/RMS jitter do not bound information bandwidth: WP33.
-- A free synchronous temporal reference defeats a detector-only timing bound: WP27.
-- Stationary EPR/activity/throughput do not supply an absolute microscopic time scale: WP4/WP29 rare-fast no-go/repair.
-- Deterministic delay is latency, not information loss.
-- Downstream parameter-independent processing cannot improve the primary-record FI.
-
-Do not overstate FWHM: no theorem is claimed for holding an arbitrary exact FWHM fixed while bandwidth diverges.
+- exact mean + exact RMS jitter do not bound information bandwidth;
+- a free synchronous clock/reference defeats detector-only timing bounds;
+- stationary EPR/activity/throughput do not supply an absolute microscopic time scale;
+- deterministic latency is not information loss;
+- parameter-independent downstream processing cannot improve the primary-record FI.
 
 ---
 
 # Thermodynamic completion
-**Status: PROVED FOR THE RESTRICTED GATEWAY CLASS**
+**PROVED FOR THE RESTRICTED GATEWAY CLASS**
 
-For the finite-state time-homogeneous reversible gateway
-\[
-0\xrightleftharpoons[d]{u}1,
-\]
-with forward traffic `f>=f_*`, total EPR `<=Sigma`, and stationary one-way activity `<=A`, WP29 gives
+For the finite-state time-homogeneous reversible optical gateway,
 \[
 \boxed{
 \lambda_1\le
@@ -175,28 +112,7 @@ g(z)=(1-z^{-1})\ln z.
 }
 \]
 
-Here `lambda1` is the **total first-exit rate** from the gateway state, so the bridge is already consistent with WP35.
-
-The absolute reverse optical rate `d` remains an independent microscopic resource. Temperature enters only through a separately justified microscopic rate/coupling law.
-
----
-
-# Other detector classes
-
-## Continuous classical/Markov analog detectors
-**Status: FROZEN FOR PAPER 1**
-
-General finite-frequency response/noise inequalities are close prior art. Reopen only if a distinct photodetection-specific theorem is required.
-
-## Coherent quantum pointers
-**Status: FROZEN FOR PAPER 1**
-
-WP7/WP8 show that interaction action alone is insufficient and that apparatus preparation/generator resources matter. This is scientifically distinct from the autonomous one-event theorem and should not be forced into the first manuscript.
-
-## HgCdTe/Kane material branch WP17–24
-**Status: FROZEN**
-
-Useful as validation/examples, not needed for theorem closure. Do not resume the 6-to-8-band or nonradiative dark-mechanism calculations merely to expand the manuscript.
+`lambda1` is the **total first-exit rate**, so WP29 is already consistent with WP35. The absolute microscopic reverse rate `d` remains indispensable.
 
 ---
 
@@ -205,40 +121,63 @@ Useful as validation/examples, not needed for theorem closure. Do not resume the
 ## Rev4
 `manuscript/event_resource_theorem_rev4.tex`
 
-**Status: FULL BUILD VERIFIED** for commit `0acd8ca6304585e44c89130ca6b31826884c85a8`.
-
-Rev4 contains one later-discovered WP35 wording defect in its generic microscopic-rate paragraph.
+**Historical build-verified revision.** Contains the later-corrected WP35 microscopic wording.
 
 ## Rev5
-`manuscript/apply_rev5.py`
+`manuscript/event_resource_theorem_rev5.tex`
 
-**Status: EDITORIAL CORRECTION STAGED / BUILD GATE TRIGGERED**.
+**CURRENT FIRST-PAPER SOURCE — COMMITTED + BUILD VERIFIED.**
 
-Rev5 changes only:
+The committed Git blob SHA
 
-1. WP35 total-pre-registration-escape-rate wording;
+`23ad1c27be95bdbf79d88176d438c8a305f844f0`
+
+matches the exact TeX source retrieved from the successful CI artifact.
+
+Rev5 contains:
+
+1. the WP35 total-pre-registration-escape-rate correction;
 2. removal of the generic quantum-jump sentence;
-3. explicit prose references to both figures;
-4. a versioned hierarchy figure whose final layer is described as a local-rate resource rather than a rate/operator resource.
+3. explicit prose references to both theorem figures;
+4. the versioned hierarchy figure with local-rate wording;
+5. conservative finite-frequency prior-work wording after the final citation audit.
 
-No central theorem or numerical constant is changed.
+No central theorem or numerical constant changed.
+
+Steady-state CI now has read-only permissions and directly compiles committed Rev5. There are no self-commit or issue-comment side effects.
 
 ---
 
-# Remaining gates
+# Closed publication gates
 
-## Gate P1 — Rev5 mechanical verification
-Generate and compile Rev5 with the existing clean GitHub Actions workflow. Inspect the first fatal line if it fails. Do not reintroduce steady-state self-commit or issue-comment side effects.
+## P1 — Rev5 mechanical verification
+**PASSED.** Generation, full LaTeX compilation, and artifact upload succeeded for the final Rev5 transformer state.
 
-## Gate P2 — Final claim/reference audit
-Audit every externally comparative or novelty-bearing sentence. In particular:
+## P2 — Final claim/reference audit
+**PASSED.** Prior-work claims remain conservative; novelty is reserved for the combined resource-completeness stack.
 
-- keep TCSPC/IRF prior-art claims conservative;
-- keep Dechant comparison equation-level and noncompetitive;
-- reserve novelty for the combined resource-completeness stack;
-- preserve the exact detector-class restrictions;
-- ensure WP35 wording is the only generic classical microscopic-rate statement;
-- verify both figures are explicitly referenced and add scientific information rather than decoration.
+## P3 — Source persistence / clean CI
+**PASSED.** Verified source is committed and byte-matched to the CI artifact; CI directly compiles committed Rev5.
 
-## Gate P3 — Submission package
-If P1 and P2 pass without substantive defects, prepare the submission-ready source/package. At that point, additional foundational research is not the default next action.
+---
+
+# Next gate — Submission package
+
+Prepare the submission-ready package and journal positioning. This may include:
+
+- final author/affiliation metadata;
+- title/abstract polish only if scientifically neutral;
+- journal-format/source cleanliness;
+- cover letter and concise novelty statement;
+- final package inventory and reproducibility check.
+
+Do not use submission packaging as a pretext to reopen frozen research branches.
+
+---
+
+# Frozen branches
+
+- HgCdTe/Kane WP17–24;
+- coherent quantum pointers;
+- continuous classical/analog detector generalization;
+- non-Poisson/nonclassical source extensions.
