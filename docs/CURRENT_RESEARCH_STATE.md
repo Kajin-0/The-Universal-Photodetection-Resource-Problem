@@ -4,24 +4,26 @@
 
 This is the first-stop replacement-agent summary. **The repository, not chat history, is authoritative.**
 
-Read first:
+## Read first
 
 1. `AGENTS.md`
-2. `notes/RESEARCH_LOG_ROUND9.md`
-3. `notes/WP22_HEAVY_HOLE_CURVATURE_CHARGE_NEUTRALITY_REGULARIZATION.md`
-4. `notes/WP23_ANISOTROPIC_LUTTINGER_HEAVY_HOLE_DOS.md`
-5. `notes/WP24_REGULARIZED_SIX_BAND_KANE_LUTTINGER_OPTICAL_AUDIT.md`
-6. `notes/RESEARCH_LOG_ROUND8.md`
-7. `notes/WP21_DIMENSIONLESS_RADIATIVE_KANE_PHASE_DIAGRAM.md`
-8. `notes/WP15_DELAY_CONCENTRATION_AND_LOCALIZED_CAPTURE_CAPACITY.md`
-9. `notes/WP11_SPATIAL_DELAY_INFORMATION_THEOREM.md`
-10. the earlier WP0–WP14 notes as needed.
+2. `notes/RESEARCH_LOG_ROUND10.md`
+3. `notes/WP25_REGISTRATION_INTENSITY_INFORMATION_BANDWIDTH_THEOREM.md`
+4. `notes/WP26_JITTER_MOMENT_NO_GO_AND_COLLISION_INTENSITY_RESOURCE.md`
+5. `notes/WP27_SYNCHRONOUS_CONTROL_CLOCK_NO_GO.md`
+6. `notes/WP28_ARBITRARY_SOURCE_SPECTRAL_CONCENTRATION_THEOREM.md`
+7. `docs/DECHANT_WP25_MAPPING.md`
+8. `docs/NOVELTY_AUDIT_ROUND4_EVENT_INFORMATION_THEOREM.md`
+9. `ROADMAP.md`
+10. `notes/WP4_MICROSCOPIC_OPTICAL_COUPLING_NO_GO.md`
+
+The detailed HgCdTe/Kane WP17–24 branch is frozen unless a core theorem later requires it.
 
 ---
 
-## Central objective
+# 1. Central objective
 
-Determine which physical resources are necessary and/or sufficient for a finite-temperature photodetector to transfer information from an incident optical field into an intrinsic electrical record with specified sensitivity and temporal **information bandwidth**.
+Determine the smallest physical resource set that bounds source-normalized optical-to-electrical information acquisition for a precisely defined photodetector class, and prove necessity of resources by explicit counterexamples when omitted.
 
 Core metric:
 
@@ -29,232 +31,280 @@ Core metric:
 \boxed{\eta_I=F_{\rm electrical}/F_{\rm incident}^{Q}.}
 \]
 
-The project is a resource-completeness / no-go + repair program. A simple sensitivity-bandwidth-temperature product is not assumed.
+The project is no longer seeking one naive sensitivity-bandwidth-temperature product across every detector architecture.
 
 ---
 
-## Core conceptual correction
+# 2. Most important conceptual distinction
 
 \[
 \boxed{\text{latency}\neq\text{amplitude bandwidth}\neq\text{information bandwidth}.}
 \]
 
-Known deterministic delay or invertible deterministic filtering does not by itself reduce stationary Fisher information if signal and all upstream noise are transformed consistently. Information loss requires unresolved stochasticity, inaccessible/coarse-grained variables, downstream noise, finite observation/sampling/quantization, or exact nulls.
+A known deterministic delay changes phase but not stationary spectral FI. An invertible deterministic filter applied to signal and all upstream noise does not change `|chi|^2/S` wherever the transfer function is nonzero.
+
+Information loss requires unresolved stochasticity, inaccessible/coarse-grained variables, downstream noise, finite observation/sampling/quantization, exact nulls, or an explicitly bounded control/reference resource.
 
 ---
 
-## Established no-go/repair structure
+# 3. Current central theorem — autonomous proper marked-event detectors
 
-### Classical/Markov
+WP25 now provides the strongest direct answer to the original UPRP for the event/counter class.
 
-Finite EPR/activity/detailed balance/throughput do not bound absolute speed if bare microscopic rates can diverge in rare states. An absolute microscopic rate/coupling resource is necessary. WP3 provides a restricted gateway repair.
+Assume:
 
-### Quantum apparatus
+- weak coherent/Poisson optical modulation;
+- independent capture probability `eta<=C`;
+- one primary intrinsic electrical registration per captured photon;
+- every accessible event mark `M` retained;
+- autonomous/time-translation-invariant optical-to-event processing; no free source-synchronous clock encodes arrival time into the mark.
 
-Passive coherent transfer obeys directional SLD-Stam. Pre-squeezing proves coupling action alone is insufficient. With pointer excitation budget `N`,
-
-\[
-\frac{F_{\rm elec}}{F_{\rm in}}
-\le\frac\tau{\tau+(1-\tau)(\sqrt{N+1}-\sqrt N)^2}.
-\]
-
-The ideal harmonic pointer has a UV coherence loophole under free-energy-only constraints. Finite support plus bounded generator gives an exact repair.
-
-### Optical/transport geometry
-
-For random unresolved event delay `D`,
+For conditional delay density `f(t|m)`, survival `S(t|m)`, and hazard
 
 \[
-\eta_I(\omega)=\eta_c|\mathbb E e^{-i\omega D}|^2.
+h(t|m)=f(t|m)/S(t|m),
 \]
 
-Uniform unresolved depth yields
+define
 
 \[
-f_{1/2}=0.4429464707\,v/L.
+\boxed{\Lambda=\operatorname*{ess\,sup}_{m,t}h(t|m).}
 \]
 
-WP15 proves that high average information across a modulation band requires a large fraction of incident photons to be captured in a narrow **delay window**. Total optical volume is not the right resource; localized capture in delay space is.
-
----
-
-## Kane/HgCdTe material branch
-
-### WP17–18
-
-Gapless simplified Kane conductivity:
+Then
 
 \[
-\operatorname{Re}\sigma_K=\frac{13e^2\omega}{48\pi\hbar v_K}.
+\int f(t|m)^2dt\le\Lambda/2
 \]
 
-The `13/12` coefficient and Kane dielectric function are prior art. Generic `alpha_abs v` photodiode bandwidth-efficiency physics is also prior art.
-
-Finite positive gap:
-
-\[
-\operatorname{Re}\sigma_K=
-\frac{e^2\omega}{48\pi\hbar v_K}
-\left[12\sqrt{1-y}+(1+2y^2)\sqrt{1-y^2}\right],
-\quad y=E_g/(\hbar\omega).
-\]
-
-At zero temperature, opening the gap worsens the ideal optical-depth/ballistic-transport layer; a finite optimum requires dark/statistical resources.
-
-### WP19–21 radiative detailed balance
-
-van Roosbroeck–Shockley ties equilibrium radiative generation to the absorption spectrum. The old WP21 dimensionless phase diagram used **illustrative fixed `mu=0`** because the perfectly flat heavy-hole band has no finite thermodynamic DOS.
-
-Important: WP21's finite-gap optimum near `E_g/kT≈3.635` is now **superseded quantitatively** by WP22–24. It remains only a structural fixed-chemical-potential example.
-
----
-
-## WP22 — finite heavy-hole curvature and self-consistent neutrality
-
-Use nonparabolic Kane conduction plus a finite parabolic heavy-hole DOS and solve
-
-\[
-n(\mu)-p(\mu)=N_D-N_A.
-\]
-
-For intrinsic 300-K material and `m_hh≈0.55m0`, the calculation agrees closely with standard HgCdTe intrinsic-density formulas. Example near `E_g≈0.155 eV`:
-
-\[
-n_i\approx3.47\times10^{16}\,cm^{-3}
-\]
-
-versus approximately `3.48e16 cm^-3` from the standard empirical expression.
-
-The large heavy-hole DOS pushes the intrinsic Fermi level toward/into the conduction band over much of the room-temperature LWIR gap range, producing strong Pauli/Moss–Burstein suppression of target absorption.
-
-At 10.6 um, the dominant HH→C occupation difference falls roughly from `0.58` near zero gap to `0.34` near `E_g=0.115 eV`.
-
-In the restricted radiative-only phase diagram, a scalar heavy-hole-mass bifurcation occurs near `0.4205m0` for the specific 300-K/10.6-um DC task. `m_hh≈0.55m0` removes the old interior optimum and favors the smallest allowed gap.
-
----
-
-## WP23 — anisotropic heavy-hole DOS closes the scalar-mass ambiguity
-
-Using the published 2025 `kdotpy` HgCdTe Kane/Luttinger parameterization, the warped heavy-hole DOS-equivalent mass is
+and, for a flat two-sided information band `|omega|<=Omega_s`,
 
 \[
 \boxed{
-\frac{m_{hh,DOS}}{m_0}
-=\left\langle[\gamma_1-\Delta_\gamma(\hat k)]^{-3/2}\right\rangle_\Omega^{2/3}.
-}
+\bar\eta_I
+\le
+C\min\left(1,\frac{\pi\Lambda}{2\Omega_s}\right).}
 \]
 
-Across the 300-K positive-gap range relevant to a 10.6-um photon:
+Target average information fraction `q` therefore requires
 
 \[
-\boxed{m_{hh,DOS}\approx0.531-0.542m_0.}
+\boxed{q\le C}
 \]
 
-Directional masses simultaneously span roughly `0.34m0` `[001]` to `0.68m0` `[111]`.
+and
 
-Thus **directional transport mass is not the same resource as thermodynamic DOS mass**. The physically relevant DOS branch lies safely above the WP22 restricted bifurcation and supports the standard `~0.55m0` neutrality branch.
+\[
+\boxed{B\le\Lambda C/(4q),
+\qquad B=\Omega_s/(2\pi).}
+\]
+
+Constant-hazard exponential registration asymptotically saturates the high-bandwidth coefficient.
+
+Microscopic sufficient resources:
+
+\[
+\boxed{\Lambda_{cl}=\max_x\sum_{y\in E_{reg}(x)}W_{yx}}
+\]
+
+for classical Markov registration, and
+
+\[
+\boxed{\Lambda_q=\left\|\sum_\alpha L_\alpha^\dagger L_\alpha\right\|_\infty}
+\]
+
+for quantum-jump registration.
 
 ---
 
-## WP24 — direct quadratic six-band optical audit
+# 4. Why stationary thermodynamics does not replace Lambda
 
-An explicit `Gamma6+Gamma8` Kane–Luttinger Hamiltonian using the same published material parameters was evaluated with
+WP4 provides explicit rare-fast reversible Markov families with bounded stationary activity/EPR and fixed thermodynamic labels while local bare rates diverge.
 
-\[
-v_i=(1/\hbar)\partial H/\partial k_i
-\]
-
-and the interband Kubo formula.
-
-### Validation
-
-Turning off quadratic remote-band terms reproduces the exact gapless simplified-Kane result:
-
-- HH→C : LH→C spectral weight = `12:1`;
-- total `13 e^2 omega/(48 pi hbar v_K)` coefficient;
-- numerical/analytic ratio `0.999999996`.
-
-### Realistic correction
-
-At 10.6 um, realistic quadratic/warping terms reduce the zero-T target conductivity only modestly:
-
-- `E_g≈0`: full/simplified `0.9746`;
-- `0.03 eV`: `0.9696`;
-- `0.06 eV`: `0.9653`;
-- `0.09 eV`: `0.9618`;
-- `0.115 eV`: `0.9596`.
-
-By contrast, self-consistent finite-T occupation suppresses target spectral weight to approximately:
-
-- `0.553` of zero-T at `E_g≈0`;
-- `0.507` at `0.03 eV`;
-- `0.450` at `0.06 eV`;
-- `0.389` at `0.09 eV`;
-- `0.344` at `0.115 eV`.
-
-Therefore the current strongest material-layer conclusion is
+Thus
 
 \[
 \boxed{
-\text{self-consistent carrier statistics / Pauli blocking is the order-unity correction; remote-band optical curvature is only a few-percent correction.}
-}
+\{T,\text{detailed balance},\Sigma,\mathcal A,\ldots\}
+\not\Rightarrow
+\Lambda<\infty.}
+\]
 
-Within the restricted intrinsic/radiative-only 300-K/10.6-um branch, the information optimum remains at the smallest allowed gap over the tested source/task range.
+The local registration-rate/operator norm is a distinct microscopic resource.
 
 ---
 
-## Current resource hierarchy
+# 5. WP26 — collision intensity and the jitter no-go
 
-The strongest current structure is
+Define
 
 \[
 \boxed{
-\text{finite source task}
-+\text{localized finite-band optical capture}
-+\text{absolute microscopic coupling}
-+\text{apparatus support/generator resource}
-+\text{semiconductor band/DOS/current resources}
-+\text{self-consistent occupations/doping}
-+\text{optical/electrical geometry and timing statistics}
-+\text{dark/thermokinetic resources}
-+\text{readout noise/sampling resources}
-\Rightarrow\text{finite information ceiling}
-}
+\mathcal R_2
+=2\,\mathbb E_M\int f(t|M)^2dt.}
 \]
 
-under explicit model assumptions.
+Then
 
-The recurring failure mode is an omitted resource hidden in a rare, UV, canceling, spatially localized, or unobserved sector.
+\[
+\boxed{
+\bar\eta_I
+\le
+C\min\left(1,\frac{\pi\mathcal R_2}{2\Omega_s}\right),
+\qquad
+\mathcal R_2\le\Lambda.}
+\]
+
+`R2` is the mathematically minimal timing-concentration object used by the Parseval proof; `Lambda` is a local physical sufficient condition.
+
+Explicit smooth two-exponential families prove:
+
+\[
+\boxed{
+\text{finite/fixed mean latency + RMS jitter}
+\not\Rightarrow
+\text{finite information bandwidth}.}
+\]
+
+A dominant prompt peak can become arbitrarily narrow while a vanishing long-delay tail carries the moment constraint.
+
+FWHM is likewise not resource-complete.
 
 ---
 
-## Novelty constraints
+# 6. WP27 — reference-clock/control no-go
 
-Do not claim novelty for generic:
+An unrestricted synchronous detector can store the optical arrival phase in an event mark and report it arbitrarily slowly.
 
-- `alpha_abs v` photodiode bandwidth-efficiency;
-- Kane/HgCdTe optical conductivity;
-- nonparabolic carrier statistics;
-- heavy-hole/Luttinger/8-band theory;
-- Moss–Burstein/Pauli blocking;
-- van Roosbroeck–Shockley radiative balance;
-- Shockley–Ramo;
-- transit `0.44/tau` scaling;
-- RC amplitude bandwidth;
-- Zeno/anti-Zeno detector effects;
-- squeezing/non-Gaussian metrology;
-- optical sum rules.
+For
 
-Candidate novelty remains the **source-normalized photodetection resource-completeness chain** and explicit demonstration that reduced resource sets (`E_g,T`, fixed chemical potential, one unspecified effective mass, conventional amplitude bandwidth, total device volume) do not determine intrinsic information performance.
+\[
+\Phi_\theta(t)=\Phi_0[1+\theta\cos\omega t],
+\]
+
+a phase mark
+
+\[
+M=\omega t\pmod{2\pi}
+\]
+
+retains the full incident timing FI per captured photon.
+
+Therefore
+
+\[
+\boxed{
+\text{finite registration hazard alone does not bound actively synchronized detector bandwidth if clock/control resources are free}.}
+\]
+
+Repair: either restrict WP25 to autonomous/time-translation-invariant processing, or count control bandwidth, clock frequency/phase precision, Hamiltonian/action, memory, etc.
 
 ---
 
-## Immediate next gates
+# 7. WP28 — arbitrary source information spectrum
 
-1. **Explicit eight-band `Gamma7` split-off audit** using a consistent HgCdTe parameter set and Kubo calculation. The split-off scale is ~1 eV, so the correction is expected to be moderate but must be checked.
-2. **Doping sensitivity:** solve `n-p=N_D-N_A` across realistic net doping and quantify Pauli blocking and movement of the information optimum.
-3. Use one Hamiltonian consistently for DOS, neutrality, and optical response where feasible.
-4. Add Auger and SRH only after the equilibrium band/statistics layer is stable.
-5. Continue theorem-level novelty audit before publication claims.
+Normalize the incident information spectrum:
 
-**Latest durable checkpoint:** `notes/RESEARCH_LOG_ROUND9.md`.
+\[
+w(\omega)=\mathcal J_{in}(\omega)/\int\mathcal J_{in}d\omega.
+\]
+
+Define its spectral concentration function
+
+\[
+\boxed{
+\mathcal W(A)
+=\sup_{|E|\le A}\int_Ew(\omega)d\omega.}
+\]
+
+Then for the autonomous proper marked-event class,
+
+\[
+\boxed{
+\bar\eta_I[w]
+\le
+C\mathcal W(\pi\mathcal R_2)
+\le
+C\mathcal W(\pi\Lambda).}
+\]
+
+This removes the arbitrary flat-band convention and is the preferred source-side statement.
+
+For a flat band, it reduces exactly to WP25.
+
+Interpretation:
+
+> finite timing concentration allows substantial information transfer over only finite total spectral measure; the source task determines how much information is concentrated in that measure.
+
+---
+
+# 8. Dark counts, readout, and temperature
+
+Parameter-independent dark/background additions and downstream processing cannot increase source FI, so they are not required in the universal mark-robust upper bound.
+
+If dark events are signal-indistinguishable, a sharper unmarked Poisson corollary includes the usual dark dilution factor.
+
+Temperature is **not by itself** an information-performance resource. A genuine sensitivity-bandwidth-temperature theorem needs a microscopic relation from `T` and other bounded physical resources to at least one of:
+
+- capture;
+- signal-indistinguishable background;
+- local registration intensity/timing concentration.
+
+Do not substitute an empirical material dark-current law for a universal theorem.
+
+---
+
+# 9. Detector-class taxonomy
+
+Current classes:
+
+1. **Autonomous proper event/counter detectors** — WP25–28 central result.
+2. **Actively synchronized event detectors** — explicit control/reference resources required; WP27.
+3. **Continuous classical/Markov analog detectors** — general finite-frequency response/noise theory is close prior art; pursue only distinct photodetection-specific composition.
+4. **Coherent quantum pointers before irreversible registration** — WP7/WP8 separate apparatus/coupling/support resource theory.
+
+This taxonomy is currently a more accurate answer than one universal scalar product law.
+
+---
+
+# 10. Novelty status
+
+Known prior art covers individually:
+
+- single-photon efficiency/dark/dead-time/jitter metrics;
+- timing distributions and IRFs;
+- marked Poisson Fisher information;
+- survival/hazard theory;
+- Parseval/Plancherel and rearrangement inequalities;
+- synchronous/heterodyne/lock-in detection;
+- general finite-frequency fluctuation-response bounds.
+
+Equation-level audit of Dechant 2026 shows WP25 is **not an obvious direct algebraic corollary** of the published finite-frequency FRI. Dechant gives a pointwise `R^†S^-1R<=A` bound and a different broadband response/static-variance integral. WP25 adds first-registration timing concentration and local hazard.
+
+No equivalent complete photodetection theorem has yet been located, but novelty remains provisional.
+
+---
+
+# 11. Frozen material-validation branch
+
+WP15–24 contain useful physical examples and should remain available, but detailed HgCdTe/Kane work is frozen.
+
+Key lessons already extracted:
+
+- total optical volume is not localized capture capacity;
+- generic `alpha_abs v` bandwidth-efficiency is prior art;
+- carrier statistics/Pauli blocking can dominate material-specific corrections;
+- material parameters do not determine universal information performance without source, geometry, dark, and record assumptions.
+
+Do not resume the unresolved 6↔8-band HgCdTe renormalization audit unless a core theorem explicitly requires it.
+
+---
+
+# 12. Immediate next gates
+
+1. Search first-passage, reliability, queueing, random-delay Poisson-channel, and communication literature for an equivalent hazard/collision-intensity information theorem.
+2. Rewrite WP3/WP4 directly in `Lambda` language and remove redundant event-branch resource entries.
+3. Finish only assumption tests that can alter the theorem: dead time, multiple primary channels/photon-number resolution, parallel replication, and non-Poisson/nonclassical inputs.
+4. Decide whether WP25–28 plus the necessity matrix forms a publication-worthy first theorem.
+
+**Latest durable checkpoint:** `notes/RESEARCH_LOG_ROUND10.md`.
