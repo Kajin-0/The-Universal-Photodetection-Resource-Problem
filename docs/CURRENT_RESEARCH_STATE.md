@@ -63,7 +63,7 @@ PRApplied Rev10 copy:
 
 - 33 pages;
 - PDF SHA-256 `5ff01f6c9d50fcf6e7e0fd59be34e65911a9abd7459a6a348df3e2c70f63e467`;
-- package ZIP SHA-256 `5ab6c380c3f9efd4b52babb1ec1d6249229abda06dd5483f14771a750b12b42b`;
+- final assembled package ZIP SHA-256 `6670b3e1bd1c0ef133e052bb74c515ca670c6337be43d3805f09f0e627ce201f`;
 - Data Availability updated because the manuscript now analyzes a published figure;
 - worked-example, Data Availability/Appendix transition, and final reference pages visually inspected.
 
