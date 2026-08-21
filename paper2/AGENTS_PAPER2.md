@@ -10,16 +10,17 @@ Paper 1 / Rev11 is scientifically frozen by default. Research remains analytical
 
 ## Read first — authoritative recovery order
 
-1. `paper2/notes/WP24_ATOMIC_SCORE_RESIDUE_PRIOR_ART_AUDIT.md`
-2. `paper2/notes/WP23_CAUSAL_SCORE_MARTINGALE_AND_ATOMIC_MEMORY_PATHS.md`
-3. `paper2/notes/WP22_CONDITIONAL_SCORE_ATOM_THEOREM_AND_SELECTOR_COROLLARY.md`
-4. `paper2/notes/WP21_HISTORICAL_INVERSE_OUTPUT_IDENTIFIABILITY_AUDIT.md`
-5. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
-6. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
-7. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
-8. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
-9. `paper2/notes/WP10_GENERAL_AUTONOMOUS_CHANNEL_THEOREM_HARDENED.md`
-10. `paper2/notes/RESEARCH_LOG_ROUND03_WP13_WP20_CHECKPOINT.md`
+1. `paper2/notes/WP25_FINITE_MEAN_CYCLE_DQM_AND_HEAVY_TAIL_HARDENING.md`
+2. `paper2/notes/WP24_ATOMIC_SCORE_RESIDUE_PRIOR_ART_AUDIT.md`
+3. `paper2/notes/WP23_CAUSAL_SCORE_MARTINGALE_AND_ATOMIC_MEMORY_PATHS.md`
+4. `paper2/notes/WP22_CONDITIONAL_SCORE_ATOM_THEOREM_AND_SELECTOR_COROLLARY.md`
+5. `paper2/notes/WP21_HISTORICAL_INVERSE_OUTPUT_IDENTIFIABILITY_AUDIT.md`
+6. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
+7. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
+8. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
+9. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
+10. `paper2/notes/WP10_GENERAL_AUTONOMOUS_CHANNEL_THEOREM_HARDENED.md`
+11. `paper2/notes/RESEARCH_LOG_ROUND03_WP13_WP20_CHECKPOINT.md`
 
 Older WP13–WP16 and WP20 remain supporting/provenance material; WP15 pair-correlation identity is prior art and supporting only.
 
@@ -45,7 +46,7 @@ WP17 closes the main formal proof gaps. The mathematics is standard functional/s
 
 ### WP07 — continuous deterministic Type-II spectral survival
 
-For deterministic paralyzable dead time `tau`, `rho=lambda*tau`. At the classical paralysis maximum `rho=1`:
+For deterministic paralyzable dead time `tau`, `rho=lambda*tau`. At `rho=1`:
 
 `G_1(0)=0`,
 
@@ -53,79 +54,113 @@ For deterministic paralyzable dead time `tau`, `rho=lambda*tau`. At the classica
 
 `lim_|omega|->infty G_1(omega)=1/e`.
 
-At `omega*tau=pi`, analytic lower bound is `0.516975...`; exact complete-record Volterra numerics give about `0.52814`.
+At `omega*tau=pi`, the analytic lower bound is `0.516975...`; exact complete-record Volterra numerics give about `0.52814`.
 
 This remains the strongest concrete physical spectral theorem.
 
-### WP18 — generalized iid Type-II recovery Fisher singularity
+### WP25 — finite-mean hardening of the generalized Type-II singularity
 
-For iid recovery `T` with mean `m`, classical theory gives
+For iid recovery `T` with only
 
-`r(lambda)=lambda exp(-lambda m)`
+`0<m=E[T]<infinity`,
+
+classical theory gives
+
+`r(lambda)=lambda exp(-lambda m)`,
+
+`E[D]=1/r`,
 
 and
 
 `U_lambda(t)=lambda F(t)exp[-lambda A(t)]`, `A(t)=E[min(T,t)]`.
 
-Under renewal DQM/window regularity,
+At the common count-rate maximum `lambda_*=1/m`, define for `s>0`
 
-`G_DC=(r/lambda)I_D`.
+`phi_s(lambda)=E_lambda[exp(-sD)]`,
 
-At `lambda*m=1`, rate/count FI vanishes. The preferred bounded-Laplace-statistic proof gives
+`W_s=int exp(-st)U_*(t)E[(T-t)_+]/m dt`.
 
-`G_DC=0 iff T=m almost surely`
+Finite mean alone gives the exact derivative
 
-under the stated regularity.
+`dot phi_s=W_s/(1+u_s)^2`.
 
-The next active proof gate is to separate what remains true for all finite-mean nondegenerate laws from what requires finite interval FI / renewal DQM / window regularity, especially for atomic and heavy-tailed recovery.
+For every genuinely nondegenerate recovery law, `W_s>0` for every `s>0`; for deterministic recovery, all `W_s=0`.
+
+Therefore, **without DQM, density assumptions, finite variance, or finite Fisher information**, every nondegenerate recovery law is first-order separated at the count maximum by the bounded statistic `exp(-sD)`. In particular,
+
+`d_TV(P_epsilon,P_0)>=c_s|epsilon|+o(|epsilon|)`
+
+with `c_s>0`, and there is a positive quadratic Hellinger-curvature lower bound.
+
+#### Universal Palm-cycle Fisher theorem
+
+Palm-initialize at a registered cluster start. Let `D` be the next registered interval and `N_D` the number of future incident events through the terminal arrival. The latent stopped marked-Poisson cycle has likelihood
+
+`L_epsilon=(1+epsilon)^(N_D) exp(-lambda epsilon D)`,
+
+score
+
+`S_cyc=N_D-lambda D`,
+
+and Fisher information
+
+`E[S_cyc^2]=lambda E[D]=lambda/r`.
+
+Localization at `D wedge K` plus `E[D]<infinity` yields DQM of the stopped cycle. Since observed `D` is a statistic,
+
+`a(D)=E[S_cyc|D]`,
+
+`I_D<=lambda/r`.
+
+Thus finite one-interval FI is automatic for **every finite-mean recovery law**, including atomic, singular, infinite-variance, and heavy-tailed laws.
+
+Define
+
+`G_cyc=(r/lambda)I_D`.
+
+Then universally
+
+`0<=G_cyc<=1`,
+
+and at `lambda*m=1`,
+
+`G_cyc=0 iff T=m almost surely`.
+
+This is now the preferred class-wide theorem. WP18's older finite-FI assumption is superseded at the Palm-cycle level.
+
+#### Remaining fixed-window issue
+
+Do **not** yet identify the stationary fixed-window rate
+
+`G_DC=lim_{L->infinity}F_window(L)/(lambda L)`
+
+with `G_cyc` for every finite-mean law.
+
+The remaining active gate is whether finite mean alone implies
+
+`F_window(L)=r I_D L+o(L)`,
+
+or whether a genuine renewal boundary/censoring condition is needed for very heavy-tailed intervals. This is now the principal proof question.
 
 ### WP19 — exact mean/variance insufficiency no-go
 
 Two explicit recovery laws have identical `E[T]=1`, `Var(T)=1/4`, `CV=0.5`, and identical conventional curve `r(lambda)=lambda exp(-lambda)`, but different registered-timestamp experiments.
 
-A common interval coarse-graining has zero FI for one and normalized per-time FI `~0.00443520488427` for the other at `lambda=1`.
-
-Converged full static retentions differ by about `8.78%`.
+A common interval coarse-graining has zero FI for one and normalized per-time FI `~0.00443520488427` for the other at `lambda=1`. Converged full static retentions differ by about `8.78%`.
 
 Mean + variance/CV + full mean saturation curve are not resource-complete.
 
-### WP22/WP23 — conditional-score atomic residue
+### WP22/WP23/WP24 — conditional-score atomic residue bridge
 
-Abstract WP22 theorem: if the centered stationary conditional-score random measure has covariance
+WP22: if the stationary conditional-score covariance measure is
 
 `Gamma_M=a delta_0+nu`,
 
-with finite-TV `nu` and `nu({0})=0`, then
+with finite-TV `nu` and no zero atom, proportional high-frequency Cesaro Fisher averages tend to `a/lambda`.
 
-`lambda G(omega)=a+nu_hat(omega)`
+WP23: causality alone does not imply `a=r`; exact delayed score paths can contribute additional atomic timing energy. The physical invariant is total **atomic timing-path energy in the conditional score**.
 
-and every proportional high-frequency Cesaro band average tends to
-
-`a/lambda`.
-
-If `nu` is atomless, Wiener gives high-frequency mean-square convergence; if Rajchman, pointwise convergence follows.
-
-For regular exact-timestamp selectors with diffuse posterior hidden-event mean and Palm/field regularity, `a=r`, hence residue `r/lambda`.
-
-WP23 proves causality alone is insufficient: an exact delayed score path `c u(t-tau)` contributes additional atomic timing energy, so the correct interpretation is **total atomic timing-path energy in the conditional score**, not merely visible-event fraction.
-
-### WP24 — novelty audit of atomic residue theory
-
-This audit is now **closed for strategy**.
-
-Classical prior art already covers:
-
-- Fisher information as score covariance / Bartlett identities;
-- counting-process score martingales and predictable quadratic variation;
-- function-valued point-process Fisher kernels;
-- Bartlett spectra and the point-process high-frequency shot-noise plateau;
-- Fourier-Stieltjes atom/Cesaro/Wiener/Rajchman facts;
-- frequency-domain Fisher information and derivative-system formulations;
-- neural/spike-train frequency-resolved information generally.
-
-The closest collision is the combination of Clark's functional Fisher-kernel work with classical stationary point-process spectral theory. No source located states the full UPRP construction in terms of the **conditional incident-source score after arbitrary detector processing**, but the ingredients are standard enough that WP22/WP23 should be treated as **bridge/structural theory**, not a standalone mathematical breakthrough.
-
-No priority claim is certified.
+WP24 closes the novelty audit for strategy: all mathematical ingredients are strongly classical. No exact predecessor for the full UPRP conditional-source-score synthesis was located, but WP22/WP23 should be treated as bridge/structural theory rather than a standalone mathematical breakthrough.
 
 ## Historical novelty state — WP21
 
@@ -133,24 +168,24 @@ Generic queue-output identifiability is classical by at least 1965 and textbook 
 
 Do not claim generic output identifiability, hidden-service reconstruction, or the broad existence of exceptional information-degenerate service laws as new.
 
-No verified predecessor has yet been found for the narrow WP18 static Fisher singularity at the universal Type-II count maximum.
+No verified predecessor has yet been found for the narrow finite-mean Palm-cycle singularity at the universal Type-II count maximum.
 
 ## Current novelty hierarchy
 
 1. **WP10/WP17** — organizing photodetection-channel Fisher-spectrum synthesis.
-2. **WP07** — strongest concrete new-physics candidate: deterministic Type-II static blindness with dynamic information survival.
-3. **WP18** — strongest class-wide physical theorem candidate: deterministic recovery as unique regular static Fisher singularity at the common Type-II maximum.
+2. **WP07** — strongest concrete physical novelty candidate: deterministic Type-II static blindness with dynamic information survival.
+3. **WP25** — strongest class-wide physical theorem candidate: finite-mean deterministic recovery is the unique zero of Palm-cycle Fisher retention at the common Type-II maximum, with regularity-free bounded-statistic separation for every nondegenerate law.
 4. **WP19** — strong exact resource no-go: mean and variance are insufficient.
 5. **WP22/WP23** — valuable bridge/interpretive theory; standalone novelty downgraded by WP24.
 
-Supporting only: WP14 witness, WP20 intermediate derivation, rate/shape decomposition, branch aliasing, WP15 pair inversion.
+Supporting only: WP18 earlier proof form, WP14 witness, WP20 intermediate derivation, rate/shape decomposition, branch aliasing, WP15 pair inversion.
 
 ## Immediate next gates
 
-1. **Harden WP18 for atomic and heavy-tailed recovery laws.** Separate broad bounded-statistic sensitivity/identifiability from finite Fisher-rate claims.
-2. Determine minimal conditions for `G_DC=(r/lambda)I_D` and rigorously account for finite-window boundary/censoring.
-3. Determine what survives when `E[T]<infinity` but `Var(T)=infinity`, interval FI is infinite, or DQM fails.
-4. Only after that proof gate decide whether the WP10/WP07/WP18/WP19 stack, with WP22/WP23 as bridge theory, has earned manuscript drafting.
+1. **Resolve the stationary fixed-window FI-rate question.** Determine whether finite mean alone implies `G_DC=G_cyc`, or exhibit/prove the need for an additional renewal boundary condition.
+2. Audit renewal-window likelihood/Fisher theory for random-origin stationary renewal processes, especially heavy tails with `E[D]<infinity` but `E[D^2]=infinity`.
+3. Keep the Palm-cycle theorem independent of this boundary issue; do not weaken WP25 if the window theorem needs extra assumptions.
+4. After the fixed-window gate, perform one integrated hostile proof/novelty review of WP10/WP07/WP25/WP19 before deciding whether Paper 2 has earned manuscript drafting.
 
 ## Mandatory documentation rule
 
