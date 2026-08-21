@@ -7,13 +7,6 @@ on:
     paths:
       - 'manuscript/**'
       - '.github/workflows/manuscript-check.yml'
-  pull_request:
-    branches:
-      - agent/uprp-core-theorem-round10
-    paths:
-      - 'manuscript/**'
-      - 'submission/**'
-      - '.github/workflows/manuscript-check.yml'
   workflow_dispatch:
 
 permissions:
@@ -24,16 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Compile canonical Rev7
-        uses: xu-cheng/latex-action@v3
+      - uses: xu-cheng/latex-action@v3
         with:
           root_file: event_resource_theorem_rev7.tex
           working_directory: manuscript
           latexmk_use_xelatex: false
-
-      - name: Upload canonical Rev7 artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: event-resource-theorem-rev7
           path: |
@@ -42,38 +31,3 @@ jobs:
             manuscript/appendix_rare_fast_counterexample_rev7.tex
             manuscript/section_waveform_operator_rev7.tex
             manuscript/section_operational_bandwidth_rev7.tex
-
-      - name: Generate PRApplied submission copy from frozen Rev7
-        if: github.event_name == 'pull_request'
-        working-directory: manuscript
-        run: python make_prapplied_submission.py
-
-      - name: Compile PRApplied submission copy
-        if: github.event_name == 'pull_request'
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: event_resource_theorem_rev7_prapplied.tex
-          working_directory: manuscript
-          latexmk_use_xelatex: false
-
-      - name: Upload PRApplied submission artifact
-        if: github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
-        with:
-          name: event-resource-theorem-rev7-prapplied
-          path: |
-            manuscript/event_resource_theorem_rev7_prapplied.pdf
-            manuscript/event_resource_theorem_rev7_prapplied.tex
-            manuscript/appendix_rare_fast_counterexample_rev7.tex
-            manuscript/section_waveform_operator_rev7.tex
-            manuscript/section_operational_bandwidth_rev7.tex
-            manuscript/figure_resource_hierarchy_rev7.tex
-            manuscript/figure_jitter_no_go.tex
-            manuscript/fig_jitter_no_go_data.csv
-            manuscript/references.bib
-            submission/COVER_LETTER_PRAPPLIED_REV7.md
-            submission/PRAPPLIED_100_WORD_JUSTIFICATION_REV7.txt
-            submission/DATA_AVAILABILITY_REV7.txt
-            submission/AI_DISCLOSURE_DRAFT_REV7.md
-            submission/SUBMISSION_PACKAGE_CHECKLIST_REV7.md
-            submission/BIBLIOGRAPHY_AUDIT_REV7.md
