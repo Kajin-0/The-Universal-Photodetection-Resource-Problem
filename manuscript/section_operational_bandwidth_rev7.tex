@@ -28,6 +28,22 @@ If every captured-event conditional hazard obeys the common ceiling $\Lambda(m)\
 \end{equation}
 For the exponential delay $f(t)=\Lambda e^{-\Lambda t}$, equality holds in Eq.~\eqref{eq:BFILambda}. Its half-power frequency is instead $\Lambda/(2\pi)$, so $B_{\rm FI}$ is not a relabeling of the conventional $-3\,$dB bandwidth.
 
+The band-subspace result Eq.~\eqref{eq:universalBandCondition} gives the inverse resource cost an additional operational meaning. If every admissible weak waveform supported in $|\omega|\le\Omega$ must retain at least an absolute Fisher fraction $q$, then $G(\omega)\ge q$ almost everywhere on that band. Hence Eq.~\eqref{eq:parseval} requires
+\begin{equation}
+\pi\Rtwo
+\ge\int_{-\Omega}^{\Omega}G(\omega)d\omega
+\ge2\Omega q.
+\end{equation}
+With $B=\Omega/(2\pi)$,
+\begin{equation}
+\boxed{
+\Rtwo\ge4Bq,
+\qquad
+\Hcap\ge4Bq.}
+\label{eq:universalBandCost}
+\end{equation}
+Thus the same coefficient previously obtained from a flat-average task is also the necessary timing-resource cost for guaranteeing a minimum Fisher retention over an entire band-limited waveform subspace.
+
 A simple cascade law makes the operational meaning explicit. Consider independent unmarked autonomous delay-only stages. For stage $j$, let the capture probability be $\eta_j$ and the delay characteristic function be $H_j$, so
 \begin{equation}
 G_j(\omega)=\eta_j|H_j(\omega)|^2.
