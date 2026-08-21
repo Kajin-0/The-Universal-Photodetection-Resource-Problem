@@ -1,0 +1,2 @@
+Temporary validation trigger for the generated Rev7 Physical Review Applied submission package.
+This branch and PR are validation-only and must not be merged.
