@@ -42,7 +42,3 @@ Sincerely,
 [Affiliation]
 [Email]
 [ORCID]
-
-## Pre-submission hostile-review hardening
-
-A hostile re-review independently rechecked the principal theorem stack. Rev8 makes only three surgical clarifications in response: it enforces the forward-traffic orientation in the rare-fast thermodynamic counterexample, explicitly identifies the finite-area square-integrable-density branch of the timing-resource hierarchy, and defines the directed stationary one-way activity convention. No theorem class or principal result was broadened.
