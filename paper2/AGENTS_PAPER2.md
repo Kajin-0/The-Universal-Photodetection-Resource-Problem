@@ -11,12 +11,16 @@ Research remains analytical/theoretical. Numerical work may validate derivations
 ## Read first
 
 1. `paper2/README.md`
-2. `paper2/notes/WP02_STATIONARY_POISSON_SPECTRAL_THEOREM.md`
-3. `paper2/notes/WP03_PRIOR_ART_AND_NOVELTY_AUDIT.md`
-4. `paper2/notes/WP05_PARALYZABLE_ONEBIN_EXACT_SPECTRUM.md`
-5. `paper2/notes/WP01_GENERAL_FISHER_CHANNEL_OPERATOR.md`
-6. `paper2/notes/WP04_NONPARALYZABLE_DEAD_TIME_EXACT_EXAMPLE.md`
-7. `paper2/notes/RESEARCH_LOG_ROUND01.md`
+2. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
+3. `paper2/notes/WP08_VISIBLE_EVENT_HIGH_FREQUENCY_RESIDUE.md`
+4. `paper2/notes/WP09_TYPEII_AND_FISHER_OPERATOR_PRIOR_ART_AUDIT.md`
+5. `paper2/notes/WP06_CLOSED_FORM_HIGH_PASS_THEOREM.md`
+6. `paper2/notes/WP05_PARALYZABLE_ONEBIN_EXACT_SPECTRUM.md`
+7. `paper2/notes/WP02_STATIONARY_POISSON_SPECTRAL_THEOREM.md`
+8. `paper2/notes/WP03_PRIOR_ART_AND_NOVELTY_AUDIT.md`
+9. `paper2/notes/WP01_GENERAL_FISHER_CHANNEL_OPERATOR.md`
+10. `paper2/notes/WP04_NONPARALYZABLE_DEAD_TIME_EXACT_EXAMPLE.md`
+11. latest `paper2/notes/RESEARCH_LOG_*.md`
 
 ## Central candidate theorem
 
@@ -34,7 +38,7 @@ Candidate conceptual message:
 
 > **Spectral completeness is symmetry-driven, not independent-event-driven.**
 
-This is not yet certified novel. The statistical and harmonic-analysis ingredients are standard; novelty must lie in the photodetection specialization, full theorem combination, exact consequences, and recovery of Paper 1.
+This is not yet certified novel. The statistical and harmonic-analysis ingredients are standard; novelty must lie in the photodetection specialization, exact consequences, recovery of Paper 1, and new high-flux theorems.
 
 ## General Fisher-channel operator
 
@@ -62,12 +66,18 @@ Do not claim novelty for:
 - Fisher monotonicity under Markov processing;
 - conditional expectation as an `L^2` contraction;
 - translation-invariant bounded `L^2` operators being Fourier multipliers;
+- function-valued Fisher-information operators for point processes;
 - dead-time Fisher-information analysis in general;
+- modulated paralyzable photon counting in general;
+- count-rate, renewal, mean/variance, or power-spectrum formulas for paralyzable counters;
 - nonparalyzable live-time / activation-fraction FI penalties.
 
-Especially important:
+Especially important prior art:
 
-Frederic J. N. Jorgensen and Steven G. Johnson, arXiv:2605.23210 (2026), develop LAN and FI rates for discrete periodic **nonparalyzable** dead-time event detection with arbitrary causal gating. Their result is close to WP04's flat live-fraction example. They explicitly leave paralyzable/Type-II dead time for future work.
+- Teich & Vannucci, JOSA 68, 1338 (1978), DOI `10.1364/JOSA.68.001338`: modulated laser photocounting including paralyzable dead time.
+- Teich & Cantor, IEEE JQE 14, 993 (1978), DOI `10.1109/JQE.1978.1069731`: likelihood/error/mutual-information/channel-capacity analysis with nonparalyzable dead time.
+- Jorgensen & Johnson, arXiv:2605.23210 (2026): LAN/FI rates for discrete periodic **nonparalyzable** dead-time event detection with arbitrary causal gating; paralyzable/Type-II left as future work.
+- Clark, Statistics & Probability Letters 236, 110779 (2026), DOI `10.1016/j.spl.2026.110779`: function-valued score/Fisher operators for point processes.
 
 ## WP04 validation example — nonparalyzable
 
@@ -75,9 +85,9 @@ Ideal deterministic nonparalyzable dead time `tau_d`, complete timestamps:
 
 `G_lambda0(omega) = 1/(1 + lambda0*tau_d)` for every frequency.
 
-Interpretation: predictable dead time removes exposure but does not make a Fisher low-pass. Treat this as a continuous-time validation/corollary, not the central novelty claim.
+Interpretation: predictable dead time removes exposure but does not make a Fisher low-pass. Treat this as a validation/corollary, not the central novelty claim.
 
-## WP05 exact hidden-state result — high priority
+## WP05/WP06 exact hidden-state result — discrete Type II
 
 Discrete one-bin paralyzable detector:
 
@@ -85,41 +95,106 @@ Discrete one-bin paralyzable detector:
 
 `Y_n = X_n(1-X_{n-1})`.
 
-At the symmetric operating point `p=1/2`, the complete output Fisher spectrum obeys
+At `p=1/2`, define `x=1-cos(omega)`. The complete output Fisher spectrum is
 
-`G(0)=0`
+`G(omega)=1-1/(2x)+ln(1+4x)/(8x^2)`
 
-but
+with continuous extension `G(0)=0`.
 
-`G(pi) = 3/4 + ln(3)/16 = 0.818663268...`.
+It is **strictly increasing** on `0<omega<pi`, with
 
-Thus a detector can be locally **completely blind to DC intensity changes while retaining >81% of incident FI in the fastest alternating temporal mode**.
+`G(pi)=3/4+ln(3)/16=0.818663268...`.
 
-This is a genuine hidden-state/high-flux effect. The detector's output law is locally symmetric under `p <-> 1-p` for uniform perturbations, causing DC nonidentifiability, while alternating perturbations break that symmetry.
+Thus a detector can be completely blind to DC intensity changes while retaining >81% of incident FI in the fastest alternating temporal mode.
 
 Repository reproduction:
 
 - `paper2/numerics/paralyzable_onebin_spectrum.py`
 - `paper2/numerics/paralyzable_onebin_spectrum_p_half.csv`
 
-Do not claim priority until the dedicated Type-II prior-art search is deeper.
+## WP07 continuous Type-II theorem — highest-priority current result
+
+Continuous Poisson input, deterministic paralyzable dead time `tau`, operating point `rho=lambda*tau`.
+
+At baseline the recorded timestamps form a renewal process with
+
+`r=lambda*exp(-rho)`
+
+and inter-recording Laplace transform
+
+`psi(s)=r*exp(-s*tau)/(s+r*exp(-s*tau))`.
+
+At the classical paralysis maximum `rho=1`, the **entire homogeneous output renewal law** is locally insensitive to a uniform rate perturbation, hence
+
+`G_1(0)=0`.
+
+For `y=omega*tau`, a single optimally phased Fourier statistic gives the rigorous complete-record lower bound
+
+`G_rho(omega) >= exp(-rho)*|M_rho(y)|^2/[1-2*rho*exp(-rho)*sin(y)/y]`
+
+where
+
+`M_rho(y)=1-rho*(1-exp(-i y))/(i y)`.
+
+At `rho=1`, this lower bound is strictly positive for **every nonzero frequency**. In particular,
+
+`G_1(pi/tau) >= exp(-1)*(1+4/pi^2) = 0.516975...`.
+
+The exact complete-record renewal-score representation further gives
+
+`lim_{|omega|->infty} G_rho(omega)=exp(-rho)`.
+
+Therefore at saturation
+
+`G_1(0)=0` but `G_1(omega)>0` for all `omega != 0`, and `G_1(infty)=1/e`.
+
+This is the strongest current physical high-flux theorem.
+
+Reproduction:
+
+- `paper2/numerics/continuous_paralyzable_spectral_survival.py`
+
+## WP08 visible-event high-frequency residue — provisional general theorem
+
+For an autonomous history-dependent detector that outputs a subset `Y<=N` of incident Poisson events **at their exact incident timestamps**, let `r` be the output rate and `lambda` the input rate.
+
+Under explicit diffuse-posterior and short-memory covariance hypotheses, the complete Fisher spectrum satisfies
+
+`lim_{|omega|->infty} G(omega)=r/lambda`.
+
+Interpretation: the high-frequency FI residue is the fraction of incident timestamps that remain directly visible, regardless of the memoryful selection rule.
+
+This unifies independent exact-timestamp thinning, nonparalyzable dead time, and the continuous paralyzable high-frequency limit.
+
+Treat this as provisional until the random-measure proof and dependent-thinning prior-art search are stronger.
+
+## Current novelty posture
+
+The possible breakthrough is **not** `dead time + Fisher information`.
+
+The strongest defensible research thesis is now:
+
+> An arbitrary autonomous detector channel driven by weak Poisson temporal perturbations possesses a complete local Fisher-retention spectrum; hidden detector memory can create information spectra qualitatively unlike conventional bandwidth response, including exact saturation points with zero DC information but substantial finite/high-frequency information; and exact-timestamp event visibility controls a broad high-frequency residue.
+
+No `first` or priority claim yet.
 
 ## Next decisive research gates
 
-1. **Continuous-time paralyzable detector:** derive `G_lambda0(omega)` or rigorous endpoint/bound results when hidden arrivals restart a deterministic dead interval.
-2. **Full one-bin spectrum:** simplify/prove properties of `G_{1/2}(omega)`; numerics indicate a monotone high-pass curve from 0 to `0.818663...` on `[0,pi]`, but monotonicity is not yet proved.
-3. **d-bin Type-II generalization:** look for exact spectral zeros/passbands and scaling with dead-time length.
-4. **Theorem-grade regularity:** close DQM, whole-line/increasing-window, covariance, real/even multiplier, and Paper-1 recovery proofs.
-5. **Novelty audit:** search stationary statistical experiments, HMM waveform FI, system identification, spike-train Fisher kernels, and continuous measurement theory.
-6. **Only after these gates:** decide whether a Paper-2 manuscript is warranted. Do not draft a grandiose paper around standard ingredients.
+1. **Theorem-grade regularity for WP02:** close DQM, increasing-window limits, shift covariance, real/even multiplier, and Paper-1 recovery.
+2. **Independent WP07 validation:** implement the Volterra interval-score solver with grid convergence and/or a second renewal calculation.
+3. **Continuous Type-II shape:** determine analytic extrema/oscillation properties of `G_1(omega)` beyond the exact endpoints/limit and lower bound.
+4. **WP08 proof hardening:** random-measure formulation and minimal mixing assumptions; seek a weaker Cesaro/Wiener version.
+5. **Dependent-thinning novelty search:** point-process missing-event inference, neural refractory FI spectra, system identification, and stationary-channel LAN.
+6. **Recovery-time generalization:** replace deterministic `tau` by a distribution and identify which spectral-survival/residue statements persist.
+7. **Only after these gates:** decide whether to draft Paper 2. Do not write a grandiose manuscript around standard ingredients.
 
 ## Breakthrough criterion
 
-Paper 2 should proceed to a manuscript only if at least one of the following survives hostile review:
+Paper 2 should proceed to a manuscript only if at least one survives hostile review:
 
 - the arbitrary-autonomous-channel Fisher-spectrum theorem is genuinely new in photodetection/information theory;
 - the hidden-state Type-II results yield a new exact information-spectral phenomenon with substantial scope;
-- a new universal resource bound emerges for the general channel class;
-- an exact architecture-optimization or side-information tradeoff theorem emerges that goes beyond Paper 1.
+- the visible-event residue becomes a robust general theorem;
+- a new universal resource/order theorem emerges beyond Paper 1.
 
-The goal is not another incremental extension. If novelty collapses under prior art, record that result and pivot.
+Current status: **the Type-II branch is strong enough to continue aggressively, but not yet enough for priority language.**
