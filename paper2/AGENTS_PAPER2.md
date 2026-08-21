@@ -10,19 +10,20 @@ Paper 1 / Rev11 is scientifically frozen by default. Research remains analytical
 
 ## Read first — authoritative recovery order
 
-1. `paper2/notes/RESEARCH_LOG_ROUND03_WP13_WP20_CHECKPOINT.md`
-2. `paper2/notes/WP20_CESARO_VISIBLE_EVENT_RESIDUE.md`
-3. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
-4. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
-5. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
-6. `paper2/notes/WP16_HOSTILE_RANDOM_TYPEII_PRIOR_ART_AUDIT.md`
-7. `paper2/notes/WP13_RENEWAL_FISHER_DECOMPOSITION_AND_RECOVERY_UNIQUENESS.md`
-8. `paper2/notes/WP14_RECOVERY_SHAPE_FISHER_WITNESS.md`
-9. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
-10. `paper2/notes/WP10_GENERAL_AUTONOMOUS_CHANNEL_THEOREM_HARDENED.md`
-11. `paper2/notes/WP06_CLOSED_FORM_HIGH_PASS_THEOREM.md`
-12. `paper2/notes/WP15_PAIR_CORRELATION_RATE_IDENTIFIABILITY.md` — supporting only; read with WP16
-13. `paper2/README.md`
+1. `paper2/notes/WP21_HISTORICAL_INVERSE_OUTPUT_IDENTIFIABILITY_AUDIT.md`
+2. `paper2/notes/RESEARCH_LOG_ROUND03_WP13_WP20_CHECKPOINT.md`
+3. `paper2/notes/WP20_CESARO_VISIBLE_EVENT_RESIDUE.md`
+4. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
+5. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
+6. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
+7. `paper2/notes/WP16_HOSTILE_RANDOM_TYPEII_PRIOR_ART_AUDIT.md`
+8. `paper2/notes/WP13_RENEWAL_FISHER_DECOMPOSITION_AND_RECOVERY_UNIQUENESS.md`
+9. `paper2/notes/WP14_RECOVERY_SHAPE_FISHER_WITNESS.md`
+10. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
+11. `paper2/notes/WP10_GENERAL_AUTONOMOUS_CHANNEL_THEOREM_HARDENED.md`
+12. `paper2/notes/WP06_CLOSED_FORM_HIGH_PASS_THEOREM.md`
+13. `paper2/notes/WP15_PAIR_CORRELATION_RATE_IDENTIFIABILITY.md` — supporting only; read with WP16/WP21
+14. `paper2/README.md`
 
 ## Current theorem stack
 
@@ -205,7 +206,9 @@ Do **not** claim novelty for:
 - `U_lambda(t)=lambda F(t)exp[-lambda A(t)]`;
 - the random-paralyzable pair-correlation identity `g_Y^(2)(t)=F(t)exp[lambda E[(T-t)_+]]`;
 - generic pair-correlation dead-time inversion;
-- service/recovery-distribution inference from infinite-server queue outputs generally;
+- service/recovery-distribution inference from queue outputs generally;
+- generic queue-output identifiability or “structural information in the output”;
+- the broad phenomenon that a special service-law subfamily can be output-nonidentifiable while a generic class is recoverable;
 - renewal-process FI or generic rate-vs-timing information distinctions;
 - conditional-score projection or Fisher data processing;
 - function-valued FI operators;
@@ -216,32 +219,42 @@ Do **not** claim novelty for:
 
 WP15's pair-correlation identity is already contained in Apanasovich & Paltsev (JOSA B 12, 1550–1554, 1995) after stationary specialization. Keep WP15 operational/supporting only.
 
-## Historical novelty blocker
+## Historical audit state — WP21
 
-Afanaseva & Mikhailova (1973), approximately `On recovering characteristics of some queueing systems from the output flow`, is cited in the direct Type-II lineage but a readable theorem text has not yet been located. Older infinite-server output-identifiability literature also includes Kendall & Lewis and related work.
+The historical inverse-output gate is **closed for manuscript strategy but not for priority certification**.
 
-Do not infer novelty from inaccessible full text.
+Established facts:
 
-No verified predecessor has yet been found for the exact fixed-recovery-law Fisher singularity
+- queue-output identifiability was an explicit research topic by at least 1965;
+- Kovalenko (1965) is described by later Soviet inverse-problem literature as recovering the Poisson input rate and service-time distribution from the **output process of `M/G/1`**, with `M/M/1` exceptional;
+- Kendall & Lewis (1965), Ivnitskii (1969/1977), Brown (1970), Ross (1970), George & Agrawal (1973), Shanbhag (1973), and others occupy adjacent inverse-output territory;
+- by 1982, Ivchenko–Kashtanov–Kovalenko's queueing textbook had a dedicated section on recovering system characteristics from output-flow observations;
+- Afanaseva & Mikhailova (1973) remains a direct Type-II-lineage blocker whose readable theorem text has not been located.
+
+Therefore do **not** frame WP18 as a new generic identifiability result or as the first example of an exceptional information-degenerate service law.
+
+No verified predecessor has yet been found for the narrow statement
 
 `G_DC=0 iff T deterministic`
 
-at the common Type-II mean-rate maximum, or for the combined WP07 complete-record dynamic spectral-escape result. Priority remains uncertified.
+**at the universal Type-II mean-count maximum**, with `G_DC` the complete registered-cluster-start static Fisher retention, or for the combined WP07 dynamic spectral-escape result. Priority remains uncertified.
+
+Further historical searching is low priority unless a realistic path to the Afanaseva–Mikhailova theorem text appears.
 
 ## Current novelty hierarchy
 
 1. **WP10/WP17** — arbitrary-autonomous-channel local Fisher spectrum as a photodetection-channel synthesis.
 2. **WP07** — continuous Type-II static blindness with positive FI at every nonzero temporal frequency and residue `1/e`.
 3. **WP18** — deterministic recovery as the unique regular static Fisher-singular fixed-mean iid Type-II recovery law at the common mean-rate maximum.
-4. **WP20** — visible-event zero-lag covariance-atom/Cesaro residue theorem, pending targeted novelty audit.
+4. **WP20** — visible-event zero-lag covariance-atom/Cesaro residue theorem, pending targeted novelty/proof audit.
 5. **WP19** — rigorous resource no-go showing recovery mean and variance are insufficient.
 
-Supporting only: rate/shape decomposition, `W_s` witness, WP15 pair inversion.
+Supporting only: rate/shape decomposition, `W_s` witness, branch aliasing, WP15 pair inversion.
 
 ## Immediate next gates
 
-1. Finish the historical inverse-output audit, especially Afanaseva–Mikhailova and old Type-II/infinite-server identifiability work.
-2. Audit WP20 specifically against dependent thinning, missing-event point-process inference, score spectra, and stationary random-measure information literature.
+1. **Audit WP20 adversarially** against dependent thinning, missing-event point-process inference, score spectra, stationary random-measure spectral theory, Palm/compensator theory, and point-process information literature.
+2. Recheck WP20's covariance-measure decomposition `Gamma_M=r delta_0+nu` and the claim that diffuse posterior-hidden intensity/cross terms cannot generate or cancel a zero-lag atom.
 3. Recheck WP18 renewal-DQM/window-censoring assumptions for atomic and heavy-tailed recovery laws; retain explicit regularity qualifications.
 4. Only after these gates decide whether WP10/WP07/WP18/WP20/WP19 has earned a Paper-2 manuscript.
 
