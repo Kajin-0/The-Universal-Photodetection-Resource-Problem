@@ -17,15 +17,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Generate Rev7 from frozen Rev6
+        working-directory: manuscript
+        run: python apply_rev7.py
       - uses: xu-cheng/latex-action@v3
         with:
-          root_file: event_resource_theorem_rev6.tex
+          root_file: event_resource_theorem_rev7.tex
           working_directory: manuscript
           latexmk_use_xelatex: false
       - uses: actions/upload-artifact@v4
         with:
-          name: event-resource-theorem-rev6
+          name: event-resource-theorem-rev7
           path: |
-            manuscript/event_resource_theorem_rev6.pdf
-            manuscript/event_resource_theorem_rev6.tex
-            manuscript/appendix_rare_fast_counterexample_rev6.tex
+            manuscript/event_resource_theorem_rev7.pdf
+            manuscript/event_resource_theorem_rev7.tex
+            manuscript/appendix_rare_fast_counterexample_rev7.tex
+            manuscript/section_waveform_operator_rev7.tex
+            manuscript/section_operational_bandwidth_rev7.tex
