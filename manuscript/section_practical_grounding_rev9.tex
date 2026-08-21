@@ -1,0 +1,152 @@
+\section{Operational translation: canonical timing laws and direct estimators}
+\label{sec:practical}
+
+The preceding results are stated for general marked delay measures. This section records several direct translations into common phenomenological timing models and into quantities that can be computed from an already measured impulse-response histogram. No additional detector model is assumed beyond the theorem class.
+
+\subsection{Canonical timing-law library}
+
+For a single unresolved mark, $G(\omega)=\eta |H(\omega)|^2$ and
+\begin{equation}
+B_{\rm FI}=\frac12\int f(t)^2dt.
+\label{eq:singleMarkBFI}
+\end{equation}
+Thus capture efficiency controls the absolute Fisher-information scale through $G(0)=\eta$, while the DC-normalized equivalent bandwidth depends only on the \emph{shape} of the conditional timing law. Table~\ref{tab:canonicalIRFs} gives closed forms for several standard models. We use $\operatorname{sinc}x\equiv\sin x/x$.
+
+\begin{table}[t]
+\caption{Canonical single-mark timing laws. A deterministic latency contributes only a phase to $H$ and is omitted from $G/\eta$. The Gaussian row is the usual two-sided timing-error idealization after subtracting a known nominal latency; it is phenomenological rather than a strictly nonnegative-support delay law.}
+\label{tab:canonicalIRFs}
+\begin{tabular}{p{0.23\linewidth}p{0.43\linewidth}p{0.25\linewidth}}
+\toprule
+Timing model & $G(\omega)/\eta$ & $B_{\rm FI}$ \\
+\midrule
+Gaussian timing error, rms $\sigma$ & $e^{-\sigma^2\omega^2}$ & $1/(4\sqrt{\pi}\sigma)$ \\
+Exponential wait, rate $\Lambda$ & $\Lambda^2/(\Lambda^2+\omega^2)$ & $\Lambda/4$ \\
+Uniform delay on $[0,T]$ & $\operatorname{sinc}^2(\omega T/2)$ & $1/(2T)$ \\
+$k$ serial exponential waits, rate $\lambda$ & $[\lambda^2/(\lambda^2+\omega^2)]^k$ & $\displaystyle \frac{\lambda}{4}\frac{\binom{2k-2}{k-1}}{4^{k-1}}$ \\
+Gaussian timing error convolved with an exponential wait & $\displaystyle e^{-\sigma^2\omega^2}\frac{\Lambda^2}{\Lambda^2+\omega^2}$ & $\displaystyle \frac{\Lambda}{4}e^{\Lambda^2\sigma^2}\operatorname{erfc}(\Lambda\sigma)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The exponential model makes the distinction from conventional electrical bandwidth explicit. Its ordinary $-3\,$dB frequency is
+\begin{equation}
+f_{3\rm dB}=\frac{\Lambda}{2\pi},
+\end{equation}
+whereas
+\begin{equation}
+\boxed{\frac{B_{\rm FI}}{f_{3\rm dB}}=\frac{\pi}{2}.}
+\label{eq:BFI3dB}
+\end{equation}
+These quantities answer different questions and need not coincide.
+
+For the Gaussian--exponential convolution,
+\begin{equation}
+B_{\rm FI}
+=\frac{\Lambda}{4}e^{\Lambda^2\sigma^2}\operatorname{erfc}(\Lambda\sigma)
+\le \min\!\left(\frac{\Lambda}{4},\frac{1}{4\sqrt{\pi}\sigma}\right).
+\label{eq:exGaussianBFI}
+\end{equation}
+Thus an independent exponential tail introduces a Lorentzian penalty on top of the Gaussian timing-error spectrum and lowers the Fisher-area bandwidth relative to either limiting mechanism alone. The uniform-delay model supplies a complementary caution: its transfer has exact nulls at $\omega=2\pi n/T$ for nonzero integers $n$, even though the delay is bounded and has no long tail.
+
+\subsection{Direct estimator from a digitized impulse-response histogram}
+\label{sec:histEstimator}
+
+Suppose a conventional timing measurement produces $N$ captured events in equal-width bins of duration $\Delta t$, with counts $n_i$ and $N=\sum_i n_i$. Let
+\begin{equation}
+\widehat p_i=\frac{n_i}{N}
+\end{equation}
+be the empirical \emph{conditional-on-capture} bin probabilities. Replacing the unknown density by its piecewise-constant histogram gives
+\begin{equation}
+\boxed{
+B_{\rm FI}^{(\Delta t)}
+=\frac{1}{2\Delta t}\sum_i p_i^2,
+\qquad
+\widehat B_{\rm FI,plug}^{(\Delta t)}
+=\frac{1}{2\Delta t}\sum_i\widehat p_i^2.}
+\label{eq:histPlug}
+\end{equation}
+No parametric IRF fit is required. For a single mark, no factor of $\eta$ appears in the DC-normalized $B_{\rm FI}$ because the same capture probability multiplies both the spectral area and $G(0)$. The absolute collision resource is recovered as $\Rtwo=4\eta B_{\rm FI}$.
+
+The naive plug-in estimator has a finite-count self-collision bias. Conditional on $N>1$, an unbiased estimator of the \emph{binned} quantity is the pair-collision statistic
+\begin{equation}
+\boxed{
+\widehat B_{\rm FI,U}^{(\Delta t)}
+=\frac{1}{2\Delta t}
+\frac{\sum_i n_i(n_i-1)}{N(N-1)}.}
+\label{eq:histUnbiased}
+\end{equation}
+This is directly computable from a saved histogram.
+
+Finite binning is itself a temporal coarse graining. If $p_i=\int_{I_i}f(t)dt$, Cauchy--Schwarz on each bin gives
+\begin{equation}
+\frac{p_i^2}{\Delta t}\le\int_{I_i}f(t)^2dt,
+\end{equation}
+and therefore
+\begin{equation}
+\boxed{B_{\rm FI}^{(\Delta t)}\le B_{\rm FI}.}
+\label{eq:binLower}
+\end{equation}
+For nested partitions whose maximum bin width tends to zero, the binned value converges to $B_{\rm FI}$ for $f\in L^2$. Thus coarse timing bins systematically hide timing concentration even before counting noise is considered. Instrument jitter must likewise be treated as part of the measured timing kernel unless it is independently deconvolved under a justified observation model.
+
+\subsection{Finite support is not an upper speed limit}
+\label{sec:supportCaution}
+
+A finite maximum delay range is physically intuitive, but by itself it gives the \emph{opposite} inequality from an information-bandwidth ceiling. If a normalized single-mark density is supported on an interval of length $T$, then
+\begin{equation}
+1=\left(\int f\right)^2\le T\int f^2,
+\end{equation}
+so
+\begin{equation}
+\boxed{B_{\rm FI}\ge\frac{1}{2T}.}
+\label{eq:supportLower}
+\end{equation}
+The uniform distribution saturates Eq.~\eqref{eq:supportLower}. There is no support-only upper bound: concentrating the same probability into a subinterval of width $\epsilon\ll T$ makes $\int f^2\sim1/\epsilon$ arbitrarily large while preserving the outer support interval.
+
+An upper bound requires an independent concentration scale. For example, if a physically justified density ceiling $\|f\|_\infty\le M$ is available, then
+\begin{equation}
+\boxed{B_{\rm FI}\le\frac{M}{2}.}
+\label{eq:densityCeiling}
+\end{equation}
+This is analogous in purpose, though not identical in content, to the hazard ceiling used in Sec.~V. A geometric device length or maximum drift time does not by itself supply $M$.
+
+\subsection{Accessible marks form an information-resource gradient}
+\label{sec:markGradient}
+
+The mark variable is not merely bookkeeping. It quantifies how much event-resolved side information about the stochastic latency remains available to the estimator. For a discrete fine-grained mark $m$,
+\begin{equation}
+G_{\rm fine}(\omega)=\sum_m\kappa_m|H_m(\omega)|^2.
+\end{equation}
+If the mark is discarded, the conditional delay law becomes the capture-weighted mixture
+\begin{equation}
+H_{\rm no\ mark}(\omega)
+=\frac{1}{\eta}\sum_m\kappa_mH_m(\omega),
+\end{equation}
+so
+\begin{equation}
+G_{\rm no\ mark}(\omega)
+=\eta|H_{\rm no\ mark}(\omega)|^2
+\le G_{\rm fine}(\omega)
+\label{eq:markJensen}
+\end{equation}
+by Jensen's inequality. Any intermediate coarse graining lies between these cases by Fisher-information data processing.
+
+At the extreme, if an accessible primary-event mark identifies the realized latency exactly, then $\mu_m=\delta_{\tau(m)}$, so $|H_m|=1$ and
+\begin{equation}
+\boxed{G(\omega)=\eta\quad\text{for all }\omega.}
+\label{eq:perfectLatencyMark}
+\end{equation}
+This does \emph{not} mean that a downstream time-to-digital converter can create the missing information by digitizing the same delayed event more finely. A downstream digitizer is a coarse graining of the record it receives. Equation~\eqref{eq:perfectLatencyMark} applies only when the retained mark contains additional primary-event information predictive of the otherwise unresolved latency---for example an internal state, spatial/spectral channel, pulse-shape feature, or other side variable that was already physically present before that information was discarded.
+
+\subsection{What the cascade law does---and does not---say about preamplifiers}
+\label{sec:preampCaution}
+
+For independent unresolved stochastic delay stages, the cascade law gives a direct engineering calculation. If intrinsic detector timing has transfer $G_{\rm det}$ and an additional independent unit-efficiency timing stage has characteristic function $H_a$, then
+\begin{equation}
+G_{\rm total}(\omega)=G_{\rm det}(\omega)|H_a(\omega)|^2.
+\label{eq:stochasticReadoutCascade}
+\end{equation}
+For example, an independent exponential readout-latency stage of rate $\Lambda_a$ multiplies the intrinsic spectrum by $\Lambda_a^2/(\Lambda_a^2+\omega^2)$.
+
+A deterministic transimpedance-amplifier pole is different. A known, noiseless, invertible linear filter applied to the complete analog record does not by itself reduce Fisher information; its amplitude roll-off can in principle be undone. A TIA becomes an information bottleneck only after the observation model includes noninvertibility or lost degrees of freedom---for example additive amplifier noise, finite digitizer bandwidth or sampling, saturation, thresholding, or an unresolved stochastic latency. In those cases the appropriate measured-record FI is below the ideal primary-event $G$ by data processing, but it is not obtained by blindly multiplying $G$ by the squared electrical transfer function.
+
+This distinction is operationally important: Eq.~\eqref{eq:stochasticReadoutCascade} is a theorem about independent stochastic displacement stages, not a generic rule equating electrical amplitude bandwidth with information bandwidth.
