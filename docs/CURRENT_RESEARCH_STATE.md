@@ -2,153 +2,114 @@
 
 **Date:** 2026-08-20
 
-Active branch:
-
-`agent/uprp-core-theorem-round10`
+Active branch: `agent/uprp-core-theorem-round10`
 
 ## Immediate status
 
 The first-paper foundational research phase is **closed by default**.
 
-Current preferred submission candidate: **Rev9**.
+Current preferred submission candidate: **Rev10**.
 
-Rev9 preserves the full Rev8 theorem stack and adds translational/operational grounding plus a short full-text-verified empirical anchor subsection for detector physicists and experimentalists.
+Rev10 preserves the complete Rev9 theorem stack and adds one worked applied demonstration using approximate graphical digitization of a published detector IRF. No theorem, proof, or resource inequality changed.
 
 Read first:
 
 1. `AGENTS.md`
-2. `notes/RESEARCH_LOG_ROUND19_EMPIRICAL_GROUNDING.md`
-3. `notes/RESEARCH_LOG_ROUND18_TRANSLATIONAL_GROUNDING.md`
-4. `submission/PRAPPLIED_PACKAGE_VALIDATION_REV9.md`
-5. `submission/SUBMISSION_PACKAGE_CHECKLIST_REV9.md`
-6. `submission/BIBLIOGRAPHY_AUDIT_REV9.md`
-7. `notes/SUPPLEMENTAL_GROUNDING_LITERATURE_REV9.md`
+2. `notes/RESEARCH_LOG_ROUND20_LITERATURE_IRF_EXAMPLE.md`
+3. `submission/PRAPPLIED_PACKAGE_VALIDATION_REV10.md`
+4. `submission/SUBMISSION_PACKAGE_CHECKLIST_REV10.md`
+5. `manuscript/section_worked_irf_example_rev10.tex`
+6. `manuscript/analyze_spinelli1998_fig3_rev10.py`
 
 ## Reproducible source chain
 
-Rev9 is generated in two assertion-based steps:
+1. Rev7 frozen theorem source -> Rev8 via `apply_rev8_referee_surgical.py`.
+2. Rev8 -> Rev9 via `apply_rev9_grounding.py`.
+3. Rev9 -> Rev10 via `apply_rev10_literature_example.py`.
 
-1. frozen Rev7 -> Rev8 via `manuscript/apply_rev8_referee_surgical.py`;
-2. Rev8 -> Rev9 via `manuscript/apply_rev9_grounding.py`.
+Expected hashes are pinned in `REV8_SHA256SUMS.txt`, `REV9_SHA256SUMS.txt`, and `REV10_SHA256SUMS.txt`.
 
-Pinned generated hashes:
+Generated Rev10 main source SHA-256:
 
-- main Rev9 source: `8ae3e4eb89e3af48823e62332481dbb63912281aa75b653cf46f35166b892611`;
-- practical section: `b4702642705b01ef811e95f5a3d2d0686bb951122c337fd438d0b53fa0a18c3f`;
-- empirical section: `512d1d6b43c89933bf723476fa3bae6f0ed54d4d45688f3784602a70a8f12af4`;
-- repaired Appendix: `f9afbdf7e0fd6cc1b57a3a4e00197148e907fc9ed7691a7f9dd42106e16ba665`.
+`9d9e8b1a773121dd69e0a378cf235e90e7d89dc01ebe426222a78a8c20500501`
+
+## New Rev10 applied result
+
+Source: Spinelli et al., *Avalanche Detector with Ultraclean Response for Time-Resolved Photon Counting*, IEEE JQE 34, 817–821 (1998), DOI `10.1109/3.668769`.
+
+The paper reports normalized IRFs for a DJ-SPAD and MCP in the same figure and FWHM values of 35 ps and 25 ps, respectively. FWHM therefore ranks the MCP as faster.
+
+Approximate graphical digitization of the published full response shapes gives:
+
+- DJ-SPAD: `B_FI = 9.160 GHz`;
+- MCP: `B_FI = 5.977 GHz`;
+- ratio: `B_FI(DJ)/B_FI(MCP)=1.533`.
+
+Assuming Gaussian timing laws from FWHM alone would instead give 9.49 GHz and 13.29 GHz. Thus a conventional FWHM ranking reverses when the full IRF shape is used. The manuscript explicitly labels this as approximate figure digitization, not raw-TCSPC reanalysis.
+
+The digitized points and dependency-free analysis script are included in `manuscript/`.
 
 ## Validation
 
-Canonical Rev9 build:
-
-- 31 pages;
-- 390412 bytes;
-- PDF SHA-256 `ef566682d6b47eb0d133bca497f76503fc57817b98846ee4241e7a45fb4bd08d`;
-- no undefined citations or cross-references;
-- empirical pages and final reference pages visually inspected;
-- only material overfull warning is the inherited approximately `2.45667 pt` `timing-concentration` line in Appendix A.
-
-PRApplied copy:
+Canonical Rev10 build:
 
 - 32 pages;
-- 391123 bytes;
-- PDF SHA-256 `770bd2c58a5adcef0c88c6275a29e2a9a74441b02dca63415af6da394815533e`;
-- submission TeX SHA-256 `6d71ea050b047000eed027e3fa1b0d6523c9aa4a52f5315b370fe3b4e6b1d0c0`;
-- final package ZIP SHA-256 `4cde598d5aa88a4d1c66269148690aad4f5e5b4fe535bf49204901d1f7bdb665`.
+- PDF SHA-256 `fe261ba21db5ac04f76e57dd61bc37b105616fe4c3ccabc5bd6b211145055c29`;
+- no undefined citations or cross-references;
+- only material overfull warning is the inherited approximately `2.45667 pt` `timing-concentration` line in Appendix A;
+- worked-example and shifted neighboring pages visually inspected.
 
-Steady-state CI remains read-only and regenerates/hash-checks/compiles Rev9 without committing generated sources.
+PRApplied Rev10 copy:
 
----
+- 33 pages;
+- PDF SHA-256 `5ff01f6c9d50fcf6e7e0fd59be34e65911a9abd7459a6a348df3e2c70f63e467`;
+- package ZIP SHA-256 `5ab6c380c3f9efd4b52babb1ec1d6249229abda06dd5483f14771a750b12b42b`;
+- Data Availability updated because the manuscript now analyzes a published figure;
+- worked-example, Data Availability/Appendix transition, and final reference pages visually inspected.
 
-# Empirical grounding closure
+Steady-state CI remains read-only and now regenerates/hash-checks Rev8, Rev9, and Rev10, reproduces the Spinelli calculation, compiles Rev10, and uploads the artifact.
 
-Five historical SPAD timing papers supplied by the author were read in full and added only where they directly support phenomenological statements:
+## Theorem status
 
-- Cova et al. 1989, DOI `10.1063/1.1140324` — TCPC timing histograms, timing-chain contributions, and sub-FWHM statistical/convolution inference;
-- Lacaita and Mastrapasqua 1990, DOI `10.1049/el:19901324` — detector diameter, absorption position, avalanche spreading, and discriminator-crossing timing;
-- Lacaita et al. 1993, DOI `10.1063/1.108870` — stochastic photon-assisted avalanche spreading and timing jitter;
-- Spinelli et al. 1998, DOI `10.1109/3.668769` — Gaussian-like fast IRF component, diffusion tails, and why tail suppression matters beyond FWHM;
-- Assanelli et al. 2011, DOI `10.1109/JQE.2010.2068038` — injection-position, discriminator-threshold, and propagation-statistics contributions to jitter.
+No Rev10 theorem changes were made.
 
-These experiments motivate the timing structures formalized by Rev9; no experimental result is an assumption in a theorem or proof.
+The theorem class remains autonomous/time-translation-invariant, independent-event/low-overlap, one-primary-registration photodetection under weak coherent/Poisson direct-detection intensity modulation with complete accessible primary-event marks.
 
-The supplemental literature audit now concludes that **no missing-paper blocker remains**. Do not mine further literature by default.
+Core exact transfer:
 
----
+`G(ω)=∫|H_m(ω)|^2 κ(dm)`.
 
-# Theorem status
+Complete local weak-waveform Fisher operator:
 
-No theorem changed in the empirical grounding pass.
+`[F_out]_{ab}=Φ0/(2π)∫G(ω)S_a*(ω)S_b(ω)dω`.
 
-The theorem class remains autonomous/time-translation-invariant, independent-event / low-overlap, one-primary-registration photodetection under weak coherent/Poisson direct-detection intensity modulation with complete accessible primary-event marks.
+Pointwise ordering of `G` is necessary and sufficient for local Fisher dominance over every admitted finite weak temporal waveform task.
 
-Core result:
+For square-integrable timing densities:
 
-\[
-G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm),
-\]
+`B_FI = R2/(4η) <= H/(4η)`.
 
-with complete weak-waveform Fisher operator
+Inverse resource cost:
 
-\[
-[F_{\rm out}]_{ab}=\frac{\Phi_0}{2\pi}\int G(\omega)S_a^*(\omega)S_b(\omega)d\omega.
-\]
+`R2 >= 4Bq`, `H >= 4Bq`.
 
-For square-integrable timing densities,
+For a single unresolved mark:
 
-\[
-B_{\rm FI}=\frac{\mathfrak R_2}{4\eta}\le\frac{\mathfrak H}{4\eta}.
-\]
+`B_FI = (1/2)∫f^2 dt`.
 
-The inverse resource cost remains
+## Submission state
 
-\[
-\mathfrak R_2\ge4Bq,\qquad \mathfrak H\ge4Bq.
-\]
+Primary target remains **Physical Review Applied — Regular Article**.
 
-## Rev9 operational formulas
+Data Availability is no longer the old “purely mathematical/no data analyzed” sentence. Rev10 truthfully states that no new experiments were generated, but the worked example uses an approximate graphical digitization of a published detector figure and supplies the digitized points/script.
 
-Single unresolved mark:
-
-\[
-B_{\rm FI}=\frac12\int f^2dt.
-\]
-
-Equal timing bins `Delta t`:
-
-\[
-B_{\rm FI}^{(\Delta t)}=\frac{1}{2\Delta t}\sum_i p_i^2,
-\]
-
-and the unbiased finite-count estimator of that binned quantity is
-
-\[
-\widehat B_{\rm FI,U}^{(\Delta t)}
-=\frac{1}{2\Delta t}\frac{\sum_i n_i(n_i-1)}{N(N-1)}.
-\]
-
-Finite support of length `T` gives `B_FI >= 1/(2T)` and **does not** provide a support-only upper bound.
-
-A deterministic known noiseless invertible TIA response is not automatically an FI loss; the stochastic cascade product law must not be misapplied to generic electrical amplitude poles.
-
----
-
-# Submission state
-
-Primary target remains:
-
-**Physical Review Applied — Regular Article**
-
-The scientific, mathematical, translational, empirical-grounding, bibliography, compilation, and visual gates are closed.
-
-Remaining blockers are factual human metadata/compliance only:
+Remaining blockers are factual/personal only:
 
 - author name/order;
 - affiliation(s);
 - corresponding-author email;
 - ORCID;
-- truthful substantive-AI acknowledgment describing the human verification process;
+- truthful substantive-AI acknowledgment describing human direction and verification;
 - applicable funding/conflict/prior-submission declarations.
 
-Do not start another science/literature revision unless a new concrete mathematical/model-class defect or a specific referee request appears.
+Do not start another science/literature revision unless a new concrete defect or specific referee request is identified.
