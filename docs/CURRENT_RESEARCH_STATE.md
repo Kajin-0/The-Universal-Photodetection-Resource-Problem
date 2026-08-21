@@ -7,96 +7,135 @@ Active branch: `agent/uprp-core-theorem-round10`
 ## Project-level status
 
 1. **Paper 1 / Rev11:** scientifically frozen and technically validated for Physical Review Applied; only factual/personal submission metadata remain.
-2. **Paper 2:** the theorem-development phase has passed an integrated hostile review. **Manuscript architecture is now authorized.**
+2. **Paper 2:** theorem-development phase passed WP27's integrated hostile review. A complete science manuscript draft now exists. The active phase is **Rev2 mechanical validation, figures, and manuscript-level adversarial review**.
 
-The active frontier is no longer open-ended Paper-2 theorem accumulation. It is conservative manuscript construction around the theorem stack that survived WP27.
+Do not reopen broad Paper-2 theorem exploration unless the manuscript exposes a concrete defect or a serious novelty collision.
 
 ## Read first
 
 1. `AGENTS.md`
 2. `paper2/AGENTS_PAPER2.md`
-3. `paper2/notes/WP27_INTEGRATED_HOSTILE_REVIEW_AND_MANUSCRIPT_GATE.md`
-4. `paper2/notes/RESEARCH_LOG_ROUND04_WP21_WP26_CHECKPOINT.md`
-5. `paper2/notes/WP26_FINITE_MEAN_STATIONARY_WINDOW_FISHER_RATE.md`
-6. `paper2/notes/WP25_FINITE_MEAN_CYCLE_DQM_AND_HEAVY_TAIL_HARDENING.md`
-7. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
-8. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
-9. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
-10. `paper2/notes/WP10_GENERAL_AUTONOMOUS_CHANNEL_THEOREM_HARDENED.md`
+3. `paper2/notes/RESEARCH_LOG_ROUND05_MANUSCRIPT_REV1_REV2.md`
+4. `paper2/manuscript/fisher_spectra_memory_photodetectors_rev1.tex`
+5. `paper2/manuscript/apply_rev2_science_fix.py`
+6. `paper2/manuscript/paper2_refs.bib`
+7. `paper2/MANUSCRIPT_ARCHITECTURE.md`
+8. `paper2/notes/WP27_INTEGRATED_HOSTILE_REVIEW_AND_MANUSCRIPT_GATE.md`
+9. `paper2/notes/WP26_FINITE_MEAN_STATIONARY_WINDOW_FISHER_RATE.md`
+10. `paper2/notes/WP25_FINITE_MEAN_CYCLE_DQM_AND_HEAVY_TAIL_HARDENING.md`
+11. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
+12. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
 
 # Paper 1 — frozen Rev11
 
 Preferred candidate remains Rev11. Do not reopen science absent a concrete defect or referee request.
 
-# Paper 2 — manuscript-ready core
+# Paper 2 — current manuscript state
 
-## Organizing theorem — WP10/WP17
+Working title:
 
-For any parameter-independent autonomous detector channel driven by a homogeneous Poisson source, local waveform Fisher information is represented by a bounded translation-invariant operator, hence an a.e. temporal multiplier
+> **Fisher Spectra and Information Singularities in Photodetectors with Memory**
 
-`0<=G(omega)<=1`.
+`paper2/manuscript/fisher_spectra_memory_photodetectors_rev1.tex` is the first complete science draft. It already contains the abstract, introduction, core theorem sequence, discussion, conclusion, and proof appendices.
 
-This is a photodetection-channel synthesis of standard statistical/harmonic-analysis ingredients.
+A dedicated bibliography exists at `paper2/manuscript/paper2_refs.bib`. Static inspection confirms that all citation keys presently used by Rev1 are present in the bibliography.
 
-## Dynamic Type-II result — WP07
+## Rev2 science correction
 
-At deterministic paralyzable saturation `lambda*tau=1`:
+Rev1 contains one known notation defect: the renewal-density Laplace transform is introduced as Greek `\nu_s` while subsequent equations use the intended Latin `u_s`.
 
-- stationary homogeneous FI retention is zero;
-- every nonzero temporal frequency retains positive complete-record local FI;
-- the high-frequency complete-record retention tends to `1/e`;
-- at `omega*tau=pi`, a rigorous lower bound is `0.516975...` and exact numerical validation gives about `0.52814`.
+The first version of `apply_rev2_science_fix.py` accidentally replaced `\nu_s` with itself. That generator defect was caught before build verification and has been repaired.
 
-Mandatory notation repair in the manuscript: distinguish static `G_DC` from the a.e. general spectrum and formulate finite-frequency performance through model-specific narrowband/continuous representatives.
+The corrected Rev2 generator now:
 
-## Finite-mean recovery singularity — WP25/WP26
+- replaces Greek `\nu_s` with Latin `u_s` exactly once;
+- fails if Greek `\nu_s` remains;
+- fails if the Latin `u_s` definition is missing;
+- guards the mandatory distinctions `G(omega)`, `G_cyc`, `G_DC`, and the WP07 all-nonzero-frequency statement.
 
-For iid recovery with only `0<E[T]=m<infinity`, the stationary registered timestamp process has
+Generated Rev2 is the current science draft once compilation succeeds.
 
-`G_DC=G_cyc=(r/lambda)I_D`,
+## Paper-2 CI
 
-with `r=lambda exp(-lambda m)` and `0<=G_DC<=1`.
+A separate read-only workflow exists at
 
-At the universal count maximum `lambda*m=1`:
+`.github/workflows/paper2-manuscript-check.yml`.
+
+It generates Rev2, compiles it with the same LaTeX action family used for Paper 1, checks unresolved references/citations, and uploads the manuscript artifact. The frozen Paper-1 workflow is untouched.
+
+**Do not yet call Rev2 build-verified.** The actual push-triggered Actions job has not been inspectable through the available connector route in this session, and local container networking cannot clone GitHub.
+
+# Scientific core
+
+## WP10/WP17 — autonomous-channel Fisher spectrum
+
+For homogeneous Poisson baseline `Phi0`, any parameter-independent autonomous detector channel has output score
+
+`S_u^out=E[S_u|Y]`
+
+and a bounded translation-invariant Fisher operator. Hence
+
+`F_out[u,v]=Phi0/(2*pi) int G(omega)U*(omega)V(omega)domega`,
+
+with `0<=G<=1` a.e.
+
+The statistical and harmonic-analysis ingredients are standard; the contribution is the detector-channel synthesis and consequences.
+
+## WP07 — deterministic Type-II dynamic spectral escape
+
+At `lambda*tau=1`:
+
+- stationary homogeneous retention `G_DC=0`;
+- every nonzero temporal frequency has positive model-specific narrowband FI retention;
+- `lim_|omega|->infinity G(omega)=1/e`;
+- at `omega*tau=pi`, a rigorous lower bound is `0.516975...`, with exact numerical validation about `0.52814`.
+
+The manuscript must keep the a.e. universal spectrum separate from the model-specific continuous/narrowband representative and from static `G_DC`.
+
+## WP25/WP26 — finite-mean recovery singularity
+
+For iid recovery with only `0<E[T]=m<infinity`, all laws share
+
+`r(lambda)=lambda exp(-lambda m)`.
+
+WP25 gives finite Palm-cycle FI and regularity-free bounded-statistic separation. WP26 proves the stationary long-window equality
+
+`G_DC=G_cyc=(r/lambda)I_D`
+
+for the entire finite-mean iid Type-II class, including atomic, singular, infinite-variance, and heavy-tailed recovery laws.
+
+At `lambda*m=1`:
 
 `G_DC=0 iff T=m almost surely`.
 
-The theorem covers atomic, singular, infinite-variance, and heavy-tailed recovery distributions. Nondegenerate recovery also has an explicit positive bounded-Laplace-statistic witness.
+## WP19 — exact resource incompleteness
 
-WP27 found no fatal proof defect. Drafting must nevertheless give an explicit stopped-counting-process DQM/localization citation and explicitly justify stationary forward recurrence through the ergodic finite-mean `M/G/infinity` construction.
+Two explicit recovery laws have identical mean, variance/CV, and identical full conventional saturation curve but different timestamp information experiments. The analytic common-statistic construction is the theorem; the approximately `8.78%` complete-FI difference is supporting numerical calibration.
 
-## Resource incompleteness — WP19
+## WP22/WP23/WP24 — structural bridge
 
-Recovery mean + variance/CV + the entire conventional mean saturation curve do not determine the timestamp information experiment. The no-go is analytic; the ~8.78% full-FI difference is supporting numerical calibration.
+Conditional-score atomic timing energy gives useful high-frequency interpretation. WP24 found the ingredients strongly classical, so this material is not a standalone novelty pillar.
 
-## Structural bridge — WP22/WP23/WP24
+# Novelty position
 
-Conditional-score zero-lag atomic timing energy controls high-frequency Cesaro retention under appropriate spectral-measure regularity. This is retained for interpretation only; WP24 downgraded standalone novelty because the mathematical ingredients are strongly classical.
+No exact predecessor has been located for the combined narrow claims in WP07, WP25/WP26, and WP19. Priority is **not certified**.
 
-# Integrated novelty state — WP27
+Do not claim novelty for generic Fisher data processing, function-valued FI operators, translation-invariant multipliers, point-process likelihood martingales, renewal FI, random Type-II cycle laws, generic queue-output identifiability, Bartlett spectra, pair-correlation inversion, or dead-time information theory generally.
 
-No exact predecessor was located for the combined claims:
-
-1. complete deterministic Type-II static blindness with positive complete-record FI at every nonzero temporal frequency and exact high-frequency residue `1/e`;
-2. deterministic recovery as the unique zero of complete stationary static FI at the common Type-II count maximum throughout the arbitrary finite-mean iid-recovery class;
-3. the exact mean+variance resource-incompleteness construction.
-
-Priority is **not certified**. Close classical work occupies modulated paralyzable photocounting, random Type-II cycle laws, queue-output identifiability, renewal FI, and dead-time information theory. The paper must present the above as narrowly scoped candidate contributions rather than first-ever claims.
+Afanaseva & Mikhailova 1973 remains an inaccessible direct Type-II-lineage historical risk. Never make a priority claim that depends on excluding it.
 
 # Current thesis
 
 > A conventional detector saturation curve is not an information-transfer law. For autonomous classical photodetection, information belongs to the complete trajectory channel: deterministic Type-II paralysis can erase a static source tangent while preserving every nonzero temporal mode; random recovery generically destroys that singularity despite the same mean saturation curve; and even recovery mean plus variance do not determine the timestamp information channel.
 
-# Manuscript gate
+# Immediate next actions
 
-**PASSED WITH MANDATORY POSITIONING/NOTATION REPAIRS.**
-
-Next action:
-
-1. create the Paper-2 manuscript architecture and claim/prior-art matrix;
-2. choose a conservative title/abstract structure;
-3. then begin LaTeX drafting;
-4. do not resume broad exploratory theory unless a concrete drafting defect appears.
+1. Inspect the actual Paper-2 compile job if a connector route becomes available; otherwise use another reproducible compile path.
+2. Patch the first genuine LaTeX/BibTeX defect, if any, through a reproducible revision step.
+3. Persist/hash-pin generated Rev2 after successful build and record page count, warnings, and artifact hash.
+4. Render and visually inspect all pages.
+5. Replace four figure placeholders with publication-quality figures based on validated theoretical/numerical assets.
+6. Perform a manuscript-level hostile review after mechanical and visual validation.
 
 # Documentation requirement
 
