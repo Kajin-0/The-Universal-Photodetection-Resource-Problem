@@ -10,20 +10,21 @@ Paper 1 / Rev11 is scientifically frozen by default. Research remains analytical
 
 ## Read first — authoritative recovery order
 
-1. `paper2/notes/WP21_HISTORICAL_INVERSE_OUTPUT_IDENTIFIABILITY_AUDIT.md`
-2. `paper2/notes/RESEARCH_LOG_ROUND03_WP13_WP20_CHECKPOINT.md`
-3. `paper2/notes/WP20_CESARO_VISIBLE_EVENT_RESIDUE.md`
-4. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
-5. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
-6. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
-7. `paper2/notes/WP16_HOSTILE_RANDOM_TYPEII_PRIOR_ART_AUDIT.md`
-8. `paper2/notes/WP13_RENEWAL_FISHER_DECOMPOSITION_AND_RECOVERY_UNIQUENESS.md`
-9. `paper2/notes/WP14_RECOVERY_SHAPE_FISHER_WITNESS.md`
-10. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
-11. `paper2/notes/WP10_GENERAL_AUTONOMOUS_CHANNEL_THEOREM_HARDENED.md`
-12. `paper2/notes/WP06_CLOSED_FORM_HIGH_PASS_THEOREM.md`
-13. `paper2/notes/WP15_PAIR_CORRELATION_RATE_IDENTIFIABILITY.md` — supporting only; read with WP16/WP21
-14. `paper2/README.md`
+1. `paper2/notes/WP22_CONDITIONAL_SCORE_ATOM_THEOREM_AND_SELECTOR_COROLLARY.md`
+2. `paper2/notes/WP21_HISTORICAL_INVERSE_OUTPUT_IDENTIFIABILITY_AUDIT.md`
+3. `paper2/notes/RESEARCH_LOG_ROUND03_WP13_WP20_CHECKPOINT.md`
+4. `paper2/notes/WP20_CESARO_VISIBLE_EVENT_RESIDUE.md` — superseded in manuscript wording by WP22
+5. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
+6. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
+7. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
+8. `paper2/notes/WP16_HOSTILE_RANDOM_TYPEII_PRIOR_ART_AUDIT.md`
+9. `paper2/notes/WP13_RENEWAL_FISHER_DECOMPOSITION_AND_RECOVERY_UNIQUENESS.md`
+10. `paper2/notes/WP14_RECOVERY_SHAPE_FISHER_WITNESS.md`
+11. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
+12. `paper2/notes/WP10_GENERAL_AUTONOMOUS_CHANNEL_THEOREM_HARDENED.md`
+13. `paper2/notes/WP06_CLOSED_FORM_HIGH_PASS_THEOREM.md`
+14. `paper2/notes/WP15_PAIR_CORRELATION_RATE_IDENTIFIABILITY.md` — supporting only; read with WP16/WP21
+15. `paper2/README.md`
 
 ## Current theorem stack
 
@@ -171,31 +172,57 @@ about `8.78%` apart.
 
 Conclusion: mean + variance/CV + the entire mean saturation curve do not determine the timestamp information channel. This closes the variance branch at the needed resource-no-go level.
 
-### E. Visible-event high-frequency residue — WP20 supersedes WP08
+### E. Conditional-score covariance-atom residue — WP22 supersedes WP20 for manuscript wording
 
-For an exact-timestamp selector `Y<=N`, package the conditional source score into a stationary random measure `M`. If its covariance measure is
+The robust general invariant is **not automatically the visible event fraction**.
 
-`Gamma_M = r delta_0 + nu`,
+Let the complete output score admit a centered stationary conditional-score random measure `M` whose covariance measure is
 
-where `nu` has finite total variation and no atom at zero, then
+`Gamma_M = a delta_0 + nu`,
 
-`lambda G(omega)=r+nu_hat(omega)`
+with `nu` finite in total variation and `nu({0})=0`.
 
-for the continuous representative in this class.
+Then
 
-Finite total variation does **not** imply the pointwise limit `nu_hat->0`. The robust theorem is the moving-band Cesaro law:
+`lambda G(omega)=a+nu_hat(omega)`
 
-`lim_{Omega->infty} 1/[(b-a)Omega] int_{aOmega}^{bOmega} G(omega)domega = r/lambda`
+for the Fourier-Stieltjes representative in this regularity class, and for every fixed `0<a0<b0`,
 
-for every fixed `0<a<b`.
+`lim_{Omega->infty} 1/[(b0-a0)Omega] int_{a0Omega}^{b0Omega} G(omega)domega = a/lambda`.
+
+This is the abstract **conditional-score covariance-atom theorem**.
 
 Hierarchy:
 
-1. finite correction covariance measure -> exact high-frequency band-average residue `r/lambda`;
-2. atomless correction -> high-frequency mean-square/Cesaro convergence via Wiener;
-3. Rajchman correction, e.g. `L1` density -> pointwise `G(omega)->r/lambda`.
+1. finite correction covariance measure -> high-frequency Cesaro residue `a/lambda`;
+2. atomless correction -> high-frequency mean-square convergence via Wiener;
+3. Rajchman correction, e.g. `L1` density -> pointwise `G(omega)->a/lambda`.
 
-Interpretation: the visible-event fraction is the coefficient of the zero-lag conditional-score covariance atom. Use WP20 as the preferred general residue statement; WP08 is the stronger Level-III corollary only.
+For an exact-timestamp selector `Y<=N` of rate `r`, assume additionally that the posterior hidden-event conditional mean is diffuse,
+
+`E[H(dt)|Y]=m_Y(t)dt`,
+
+with ordinary locally-square-integrable stationary field `xi_Y(t)=m_Y(t)-(lambda-r)`, and that the required Palm first moments / field covariance exist as locally integrable functions. Then
+
+`M(dt)=Y(dt)-r dt+xi_Y(t)dt`.
+
+The simple-point-process part contributes exactly `r delta_0`; the distinct-event reduced covariance has no zero-lag atom; point-field cross terms are absolutely continuous in lag by Campbell/Palm reduction; and the diffuse-field covariance is also absolutely continuous. Hence
+
+`Gamma_M({0})=r`.
+
+Under finite-TV correction regularity the selector corollary is therefore
+
+`lim high-frequency band-average G = r/lambda`.
+
+**Important withdrawal:** `Y<=N` alone does not justify `a=r`. A pathological history-dependent selector can encode hidden-event timing information nonlocally into the observed keep/drop pattern, making the posterior hidden-event measure singular. In that case the universal residue remains `a/lambda`, not necessarily `r/lambda`.
+
+Use WP22, not WP20, as the preferred manuscript theorem. WP20 remains the intermediate derivation that first introduced the Cesaro/Wiener hierarchy.
+
+A useful finite-band bound is
+
+`|Gbar_Omega-a/lambda| <= lambda^{-1}[ |nu|((-delta,delta)) + 2||nu||_TV/((b0-a0)Omega delta) ]`.
+
+All Fourier/Palm/random-measure ingredients are standard; novelty remains uncertified.
 
 ## Major prior-art corrections
 
@@ -211,9 +238,9 @@ Do **not** claim novelty for:
 - the broad phenomenon that a special service-law subfamily can be output-nonidentifiable while a generic class is recoverable;
 - renewal-process FI or generic rate-vs-timing information distinctions;
 - conditional-score projection or Fisher data processing;
-- function-valued FI operators;
+- function-valued FI / score-covariance kernels;
 - translation-invariant Fourier multipliers;
-- stationary random-measure spectral theory, covariance atoms, or Wiener's theorem;
+- stationary random-measure spectral theory, covariance atoms, Campbell/Palm formulas, Fourier-Stieltjes theory, Rajchman measures, or Wiener's theorem;
 - dead-time information theory generally;
 - modulated paralyzable photocounting generally.
 
@@ -246,17 +273,17 @@ Further historical searching is low priority unless a realistic path to the Afan
 1. **WP10/WP17** — arbitrary-autonomous-channel local Fisher spectrum as a photodetection-channel synthesis.
 2. **WP07** — continuous Type-II static blindness with positive FI at every nonzero temporal frequency and residue `1/e`.
 3. **WP18** — deterministic recovery as the unique regular static Fisher-singular fixed-mean iid Type-II recovery law at the common mean-rate maximum.
-4. **WP20** — visible-event zero-lag covariance-atom/Cesaro residue theorem, pending targeted novelty/proof audit.
+4. **WP22** — conditional-score zero-lag covariance-atom/Cesaro residue theorem plus regular exact-timestamp-selector corollary, pending targeted novelty audit.
 5. **WP19** — rigorous resource no-go showing recovery mean and variance are insufficient.
 
-Supporting only: rate/shape decomposition, `W_s` witness, branch aliasing, WP15 pair inversion.
+Supporting only: WP20 derivation, rate/shape decomposition, `W_s` witness, branch aliasing, WP15 pair inversion.
 
 ## Immediate next gates
 
-1. **Audit WP20 adversarially** against dependent thinning, missing-event point-process inference, score spectra, stationary random-measure spectral theory, Palm/compensator theory, and point-process information literature.
-2. Recheck WP20's covariance-measure decomposition `Gamma_M=r delta_0+nu` and the claim that diffuse posterior-hidden intensity/cross terms cannot generate or cancel a zero-lag atom.
+1. **Audit WP22 specifically for novelty** against dependent thinning, missing-event point-process inference, point-process filtering/innovation theory, score spectra, Palm/compensator theory, neural spike-train Fisher spectra, and photodetection information literature.
+2. Search for any prior theorem explicitly identifying a high-frequency Fisher/score-spectrum residue with a zero-lag **conditional-score covariance atom**.
 3. Recheck WP18 renewal-DQM/window-censoring assumptions for atomic and heavy-tailed recovery laws; retain explicit regularity qualifications.
-4. Only after these gates decide whether WP10/WP07/WP18/WP20/WP19 has earned a Paper-2 manuscript.
+4. Only after these gates decide whether WP10/WP07/WP18/WP22/WP19 has earned a Paper-2 manuscript.
 
 ## Documentation rule — mandatory
 
