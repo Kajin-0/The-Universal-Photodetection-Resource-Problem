@@ -1,7 +1,7 @@
 name: Manuscript LaTeX check
 
 on:
-  pull_request:
+  push:
     branches:
       - agent/uprp-core-theorem-round10
     paths:
@@ -10,19 +10,21 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
 
-      - name: Generate Rev8 surgical referee repair source
+      - name: Generate Rev8 from frozen Rev7
         working-directory: manuscript
         run: python apply_rev8_referee_surgical.py
+
+      - name: Verify generated Rev8 source hashes
+        working-directory: manuscript
+        run: sha256sum -c REV8_SHA256SUMS.txt
 
       - name: Compile Rev8
         uses: xu-cheng/latex-action@v3
@@ -31,7 +33,7 @@ jobs:
           working_directory: manuscript
           latexmk_use_xelatex: false
 
-      - name: Upload Rev8 artifact
+      - name: Upload verified Rev8 artifact
         uses: actions/upload-artifact@v4
         with:
           name: event-resource-theorem-rev8
@@ -45,16 +47,4 @@ jobs:
             manuscript/figure_jitter_no_go.tex
             manuscript/fig_jitter_no_go_data.csv
             manuscript/references.bib
-
-      - name: Persist generated Rev8 source on validation branch
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- manuscript/event_resource_theorem_rev8.tex manuscript/appendix_rare_fast_counterexample_rev8.tex
-          if git diff --cached --quiet; then
-            echo "Rev8 source already persisted"
-            exit 0
-          fi
-          git commit -m "Generate Rev8 surgical referee repair source"
-          git push origin HEAD:${{ github.head_ref }}
+            manuscript/REV8_SHA256SUMS.txt
