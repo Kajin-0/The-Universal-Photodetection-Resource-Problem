@@ -4,16 +4,19 @@
 Rev9 does not change the theorem class. It adds only operational translation:
 canonical timing-law mappings, a direct histogram estimator, finite-support and
 mark-resource clarifications, a measurement-chain caveat, a DC-normalization
-note, and an engineering interpretation of the rare-fast construction.
+note, an engineering interpretation of the rare-fast construction, and a short
+empirical anchor subsection tied to established SPAD timing measurements.
 """
 from pathlib import Path
 
 src = Path("event_resource_theorem_rev8.tex")
 out = Path("event_resource_theorem_rev9.tex")
 section = Path("section_practical_grounding_rev9.tex")
+empirical = Path("section_empirical_grounding_rev9.tex")
 
 assert src.exists(), "Generate Rev8 first with apply_rev8_referee_surgical.py"
 assert section.exists()
+assert empirical.exists()
 s = src.read_text(encoding="utf-8")
 
 old = (
@@ -48,7 +51,15 @@ s = s.replace(old, new, 1)
 
 anchor = r"\input{section_operational_bandwidth_rev7}"
 assert s.count(anchor) == 1
-s = s.replace(anchor, anchor + "\n\n" + r"\input{section_practical_grounding_rev9}", 1)
+s = s.replace(
+    anchor,
+    anchor
+    + "\n\n"
+    + r"\input{section_practical_grounding_rev9}"
+    + "\n\n"
+    + r"\input{section_empirical_grounding_rev9}",
+    1,
+)
 
 old = (
     r"For a weakly coupled thermal bosonic optical reservoir one may have "
@@ -63,6 +74,7 @@ assert s.count(old) == 1
 s = s.replace(old, new, 1)
 
 assert s.count(r"\input{section_practical_grounding_rev9}") == 1
+assert s.count(r"\input{section_empirical_grounding_rev9}") == 1
 assert "fit-free estimator" in s
 assert "multiply $G(0)$ by two" in s
 assert "hidden fast local mode" in s
