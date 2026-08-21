@@ -15,15 +15,16 @@ The active scientific frontier is Paper 2.
 
 1. `AGENTS.md`
 2. `paper2/AGENTS_PAPER2.md`
-3. `paper2/notes/WP25_FINITE_MEAN_CYCLE_DQM_AND_HEAVY_TAIL_HARDENING.md`
-4. `paper2/notes/WP24_ATOMIC_SCORE_RESIDUE_PRIOR_ART_AUDIT.md`
-5. `paper2/notes/WP23_CAUSAL_SCORE_MARTINGALE_AND_ATOMIC_MEMORY_PATHS.md`
-6. `paper2/notes/WP22_CONDITIONAL_SCORE_ATOM_THEOREM_AND_SELECTOR_COROLLARY.md`
-7. `paper2/notes/WP21_HISTORICAL_INVERSE_OUTPUT_IDENTIFIABILITY_AUDIT.md`
-8. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
-9. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
-10. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
-11. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
+3. `paper2/notes/RESEARCH_LOG_ROUND04_WP21_WP26_CHECKPOINT.md`
+4. `paper2/notes/WP26_FINITE_MEAN_STATIONARY_WINDOW_FISHER_RATE.md`
+5. `paper2/notes/WP25_FINITE_MEAN_CYCLE_DQM_AND_HEAVY_TAIL_HARDENING.md`
+6. `paper2/notes/WP24_ATOMIC_SCORE_RESIDUE_PRIOR_ART_AUDIT.md`
+7. `paper2/notes/WP23_CAUSAL_SCORE_MARTINGALE_AND_ATOMIC_MEMORY_PATHS.md`
+8. `paper2/notes/WP22_CONDITIONAL_SCORE_ATOM_THEOREM_AND_SELECTOR_COROLLARY.md`
+9. `paper2/notes/WP21_HISTORICAL_INVERSE_OUTPUT_IDENTIFIABILITY_AUDIT.md`
+10. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
+11. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
+12. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
 
 # Paper 1 — frozen Rev11
 
@@ -63,37 +64,35 @@ At `omega*tau=pi`, analytic lower bound is `0.516975...`; exact complete-record 
 
 This remains the strongest concrete physical spectral result.
 
-## WP25 — finite-mean generalized Type-II singularity theorem
-
-This supersedes the main regularity concern in WP18 at the **Palm-cycle** level.
+## WP25/WP26 — finite-mean generalized Type-II singularity theorem
 
 Let iid recovery `T` have only finite positive mean
 
 `m=E[T] in (0,infinity)`.
 
-At the common count-rate maximum `lambda_*=1/m`, for every `s>0`, the one-interval bounded statistic
+### WP25: Palm-cycle theorem
+
+At the common count-rate maximum `lambda_*=1/m`, for every `s>0`, the bounded interval statistic
 
 `Z_s=exp(-sD)`
 
-has exact fractional-rate derivative
+has exact derivative
 
 `dot phi_s=W_s/(1+u_s)^2`.
 
 For every nondegenerate recovery law, `W_s>0`; for deterministic `T=m` a.s., `W_s=0`.
 
-Therefore nondegenerate recovery is first-order separated from the base experiment in total variation and Hellinger distance **without requiring DQM, a density, finite variance, or finite Fisher information**.
+Thus nondegenerate recovery is first-order separated from the deterministic singular case in total variation/Hellinger without requiring a density, DQM, finite variance, or finite Fisher information.
 
-### Palm-cycle Fisher bound
-
-Palm-initialize at a registered cluster start and stop at the next registered event. The latent marked-Poisson cycle has score
+Palm-initialize at a registered cluster start. The latent marked-Poisson cycle score is
 
 `S_cyc=N_D-lambda D`
 
-and exact information
+with exact FI
 
-`E[S_cyc^2]=lambda E[D]=lambda/r<infinity`.
+`E[S_cyc^2]=lambda E[D]=lambda/r`.
 
-Localization at `D wedge K` uses only `E[D]<infinity`, which follows from finite recovery mean. Since the observed interval `D` is a statistic,
+The observed interval is a statistic, so
 
 `I_D<=lambda/r`.
 
@@ -101,7 +100,7 @@ Define
 
 `G_cyc=(r/lambda)I_D`.
 
-Then for **every finite-mean recovery law**, including atomic, singular, infinite-variance, and heavy-tailed laws,
+Then for every finite-mean recovery law, including atomic, singular, infinite-variance, and heavy-tailed laws,
 
 `0<=G_cyc<=1`,
 
@@ -109,23 +108,49 @@ and at `lambda*m=1`,
 
 `G_cyc=0 iff T=m almost surely`.
 
-This is now the strongest class-wide Type-II theorem.
+### WP26: stationary long-window equality
 
-### Remaining fixed-window issue
+The fixed-window regularity gate is now **closed**.
 
-The unresolved question is narrower:
+For an ordinary renewal process started at a renewal, progressively censored next-interval information `J(t)` increases to `I_D`. Sequential score orthogonality plus the elementary renewal theorem gives
 
-Does finite mean alone imply the stationary long-window Fisher-rate identity
+`I_ord(t)/t -> r I_D`
 
-`F_window(L)=rI_D L+o(L)`
+under only finite `E[D]` and finite `I_D`.
 
-and hence
+For the stationary Type-II random-origin boundary, the complete relevant pre-zero state is the finite marked-Poisson cloud of recovery intervals active at time zero. Its mean population is `lambda m`, hence its fractional-rate FI is `lambda m`.
 
-`G_DC=G_cyc`?
+If `Y` is the forward recurrence to the first registered event,
 
-WP25 does **not** assume this. Very heavy-tailed stationary renewal boundary/censoring terms may require additional regularity even though the Palm-cycle theorem is fully finite-mean.
+`I(C_L(Y)) <= lambda m + lambda E[min(Y,L)]`.
 
-This fixed-window boundary question is the active proof gate.
+Since `Y<infinity` a.s.,
+
+`E[min(Y,L)]/L ->0`
+
+even when `E[Y]=infinity`.
+
+The stationary window therefore obeys
+
+`I_stat(L)=I(C_L(Y))+E[1{Y<L}I_ord(L-Y)]`,
+
+so
+
+`boxed: lim_{L->infinity}I_stat(L)/L=rI_D`.
+
+Equivalently, throughout the entire finite-mean iid-recovery Type-II class,
+
+`boxed: G_DC=G_cyc=(r/lambda)I_D`.
+
+At `lambda*m=1`,
+
+`boxed: G_DC=0 iff T=E[T] almost surely`.
+
+No density, finite recovery variance, finite forward-recurrence mean, or separate finite-FRT-FI assumption remains.
+
+Zhao–Nagaraja (2011) establish the analogous generic window-censored renewal asymptotic under stronger FRT regularity. WP26's improvement is Type-II-specific and uses the finite stationary `M/G/infinity` latent boundary state; do not claim a new generic renewal theorem.
+
+This is now the strongest class-wide physical theorem in Paper 2.
 
 ## WP19 — exact mean/variance insufficiency
 
@@ -146,17 +171,24 @@ WP22 gives the abstract zero-lag conditional-score covariance atom/Cesaro residu
 # Current novelty hierarchy
 
 1. **WP10/WP17:** organizing photodetection-channel Fisher-spectrum synthesis.
-2. **WP07:** strongest concrete physical novelty candidate.
-3. **WP25:** strongest class-wide physical theorem candidate; finite-mean Palm-cycle singularity plus regularity-free bounded-statistic separation.
+2. **WP07:** strongest concrete dynamic physical novelty candidate.
+3. **WP25/WP26:** strongest class-wide physical theorem candidate; arbitrary finite-mean deterministic recovery is the unique zero of stationary static Fisher retention at the common Type-II maximum.
 4. **WP19:** exact resource incompleteness/no-go result.
 5. **WP22/WP23:** useful structural bridge; standalone novelty downgraded by WP24.
 
-# Immediate next gates
+# Immediate next gate
 
-1. **Resolve the stationary fixed-window Fisher-rate question.** Determine whether finite recovery mean alone implies `G_DC=G_cyc`.
-2. Audit random-origin/window-censored renewal likelihood theory for heavy-tailed intervals, especially `E[D]<infinity` with `E[D^2]=infinity`.
-3. If finite mean is insufficient, state the weakest defensible boundary/censoring hypothesis and keep the Palm-cycle theorem separate.
-4. After this gate, perform one integrated hostile proof/novelty review of WP10/WP07/WP25/WP19 before deciding whether Paper 2 has earned manuscript drafting.
+The heavy-tail/fixed-window proof program is closed unless a concrete flaw is found.
+
+Perform one integrated hostile proof/novelty review of the candidate Paper-2 stack:
+
+1. proof correctness and hidden assumptions across WP10/WP07/WP25/WP26/WP19;
+2. consistency between spectral `G(omega)`, Palm-cycle `G_cyc`, and stationary static `G_DC`;
+3. targeted prior-art collision search focused on WP07 and the exact WP25/WP26 finite-mean zero-IFF-deterministic theorem;
+4. significance/coherence: whether WP07 + WP25/WP26 + WP19 form a genuine temporal-information resource theory rather than disconnected dead-time results;
+5. manuscript threshold decision.
+
+Do not begin manuscript drafting before this integrated review is complete.
 
 # Documentation requirement
 
