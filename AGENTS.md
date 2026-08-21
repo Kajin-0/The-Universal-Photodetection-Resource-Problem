@@ -59,7 +59,7 @@ PRApplied submission-copy verification:
 
 - 25 pages, 365072 bytes;
 - PDF SHA-256: `60da4f9a3919ffdf64d450b5397755a75109d4fc2a0a374a8132a93931092c37`;
-- package ZIP SHA-256: `5e9085aa99186e9d60f21ca9e7c3daa0661e871ed84248ce54f7c8be30812c81`.
+- package ZIP SHA-256: `9ed6b408a9b27da8c6bc6cbc7f4aea869ec4ebb4e394dc286fbeb6a0c5ad96ca`.
 
 Temporary PR `#15` was closed unmerged. Temporary validation branches were neutralized to the clean publication head.
 
