@@ -7,36 +7,22 @@ on:
     paths:
       - 'manuscript/**'
       - '.github/workflows/manuscript-check.yml'
-  pull_request:
-    branches:
-      - agent/uprp-core-theorem-round10
-    paths:
-      - 'manuscript/**'
-      - '.github/workflows/manuscript-check.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Generate Rev7 from frozen Rev6
-        working-directory: manuscript
-        run: python apply_rev7.py
-
-      - name: Compile Rev7
-        uses: xu-cheng/latex-action@v3
+      - uses: xu-cheng/latex-action@v3
         with:
           root_file: event_resource_theorem_rev7.tex
           working_directory: manuscript
           latexmk_use_xelatex: false
-
-      - name: Upload Rev7 artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: event-resource-theorem-rev7
           path: |
@@ -45,17 +31,3 @@ jobs:
             manuscript/appendix_rare_fast_counterexample_rev7.tex
             manuscript/section_waveform_operator_rev7.tex
             manuscript/section_operational_bandwidth_rev7.tex
-
-      - name: Persist verified Rev7 source and run marker
-        if: github.event_name == 'push'
-        run: |
-          printf 'REV7_BUILD_VERIFIED\nrun_id=%s\ntrigger_sha=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" > manuscript/REV7_BUILD_OK.txt
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- \
-            manuscript/event_resource_theorem_rev7.tex \
-            manuscript/appendix_rare_fast_counterexample_rev7.tex \
-            manuscript/REV7_BUILD_OK.txt
-          git diff --cached --quiet && exit 0
-          git commit -m "Persist build-verified Rev7 manuscript source"
-          git push
