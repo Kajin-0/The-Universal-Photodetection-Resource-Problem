@@ -1,6 +1,6 @@
-# Research Roadmap — Rev10 Submission Freeze
+# Research Roadmap — Rev11 Submission Freeze
 
-**Updated:** 2026-08-20
+**Updated:** 2026-08-21
 
 ## Guiding principle
 
@@ -13,7 +13,8 @@ The autonomous marked-event first paper has passed:
 - Rev8 thermodynamic Appendix repair;
 - Rev9 translational grounding and empirical citation anchors;
 - Rev10 worked published-IRF demonstration;
-- full LaTeX/bibliography/cross-reference validation;
+- Rev11 ENBW positioning correction and practical histogram uncertainty note;
+- full LaTeX/BibTeX/cross-reference validation;
 - visual inspection of all newly affected pages.
 
 **Do not perform another broad first-paper revision unless a new concrete defect or specific referee request is identified.**
@@ -27,7 +28,7 @@ Primary target: **Physical Review Applied — Regular Article**.
 ## G0 — Exact autonomous marked-event transfer
 **PASSED**
 
-`G(ω)=∫|H_m(ω)|^2 κ(dm)`.
+`G(ω)=∫|H_m(ω)|² κ(dm)`.
 
 ## G1 — Complete local weak-waveform Fisher operator
 **PASSED**
@@ -37,7 +38,7 @@ Primary target: **Physical Review Applied — Regular Article**.
 ## G2 — Universal local Fisher detector ordering
 **PASSED**
 
-Pointwise `G_A >= G_B` iff detector A Fisher-dominates B for every admitted finite weak-waveform task.
+Pointwise `G_A>=G_B` iff detector A Fisher-dominates B for every admitted finite weak-waveform task.
 
 ## G3 — Exact band-subspace guarantee
 **PASSED**
@@ -81,12 +82,12 @@ Gaussian, exponential, uniform, Erlang, and Gaussian–exponential closed forms 
 ## T2 — Existing-data estimator
 **PASSED**
 
-`B_FI^(Δt)=[1/(2Δt)]Σp_i^2` with unbiased finite-count pair-collision estimator.
+`B_FI^(Δt)=[1/(2Δt)]Σp_i²` with unbiased finite-count pair-collision estimator.
 
 ## T3 — Physical support clarification
 **PASSED**
 
-Finite support gives `B_FI >= 1/(2T)`, not an upper speed limit.
+Finite support gives `B_FI>=1/(2T)`, not an upper speed limit.
 
 ## T4 — Mark resource gradient
 **PASSED**
@@ -115,53 +116,63 @@ Full-text SPAD literature verifies real Gaussian-like cores, exponential/diffusi
 ## A1 — Real published IRF example
 **PASSED**
 
-Source: Spinelli et al., IEEE JQE 34, 817–821 (1998), DOI `10.1109/3.668769`.
+Spinelli et al. 1998, DOI `10.1109/3.668769`:
 
-Reported FWHM:
+- DJ-SPAD FWHM 35 ps, `B_FI≈9.160 GHz`;
+- MCP FWHM 25 ps, `B_FI≈5.977 GHz`;
+- FWHM ranks MCP first, while full-shape `B_FI` ranks DJ-SPAD first.
 
-- DJ-SPAD: 35 ps;
-- MCP: 25 ps.
-
-Approximate figure-digitized full-shape Fisher bandwidth:
-
-- DJ-SPAD: `9.160 GHz`;
-- MCP: `5.977 GHz`.
-
-Thus FWHM ranks the MCP first, while `B_FI` ranks the DJ-SPAD first. The ranking reversal is the central applied demonstration.
-
-## A2 — Reproducibility
+## A2 — Reproducibility and scope
 **PASSED**
 
-Digitized points and dependency-free analysis script are included and hash-pinned. CI reproduces the numbers.
+Digitized points and a dependency-free analysis script are included and hash-pinned. The calculation is explicitly approximate graphical digitization, not raw-event precision metrology.
 
-## A3 — Scope/caveat
+## A3 — Data Availability
 **PASSED**
 
-The manuscript explicitly labels the calculation approximate graphical digitization of a published figure, not raw-event precision metrology.
+The submission copy truthfully discloses the published-figure analysis and supplied digitization/script.
 
-## A4 — Data Availability
+---
+
+# Rev11 positioning gate
+
+## P1 — Conventional ENBW identity
 **PASSED**
 
-Rev10 no longer claims that no data were analyzed. It truthfully states that no new experiments were generated and identifies the published figure used, with digitized points/script supplied.
+For a single unresolved mark,
+
+`B_FI = ∫_0^∞|H(2πf)|²df = B_ENBW`
+
+because `H(0)=1`. Rev11 now says this explicitly and cites Motchenbacher & Connelly (1993).
+
+## P2 — Novelty narrowing
+**PASSED**
+
+The paper no longer leaves any implication that the scalar `∫|H|²df` integral or the first-order `π/2` relation is novel. The contribution is explicitly located in the stochastic registration-delay/Fisher interpretation, retained-mark generalization, collision identity, hazard bounds, detector ordering, and inverse resource costs.
+
+## P3 — Histogram uncertainty prescription
+**PASSED**
+
+A multinomial plug-in bootstrap is given for finite-count uncertainty of the binned pair-collision estimator. Its scope excludes systematic instrument jitter, background subtraction, digitization, and deconvolution error.
 
 ---
 
 # Mechanical validation
 
-Canonical Rev10:
-
-- 32 pages;
-- PDF SHA-256 `fe261ba21db5ac04f76e57dd61bc37b105616fe4c3ccabc5bd6b211145055c29`.
-
-PRApplied Rev10:
+Canonical Rev11:
 
 - 33 pages;
-- PDF SHA-256 `5ff01f6c9d50fcf6e7e0fd59be34e65911a9abd7459a6a348df3e2c70f63e467`;
-- final assembled package ZIP SHA-256 `6670b3e1bd1c0ef133e052bb74c515ca670c6337be43d3805f09f0e627ce201f`.
+- PDF SHA-256 `9eedbf562ed5fa70b78a8c1c63627e1c578f149074f7f25f3fd3988c8668ecef`.
 
-No undefined citations/references. Only inherited ~2.45667 pt Appendix overfull warning remains. Affected pages visually inspected.
+PRApplied Rev11:
 
-Steady-state CI is read-only and regenerates/hash-checks Rev8, Rev9, and Rev10, reproduces the Spinelli example, compiles Rev10, and uploads the artifact.
+- 33 pages;
+- PDF SHA-256 `d9e4a3330543106a272d4aa7b26cf6187bbd2f6ef170db4a8927b06edb824db7`;
+- package ZIP SHA-256 `b9f1abff76bbcc7a97ca8b2c3038f1e44e5adbb68f230cdb7d13c02431b6183e`.
+
+No undefined citations/references. Only inherited ~2.45667 pt Appendix overfull warning remains. Affected canonical and PRApplied pages were visually inspected.
+
+Steady-state CI is read-only and regenerates/hash-checks Rev8 through Rev11, reproduces the Spinelli example, compiles Rev11, and uploads the artifact.
 
 ---
 
@@ -192,4 +203,4 @@ Do not add to the first paper absent a concrete referee demand:
 - material-specific detector optimization;
 - additional literature worked examples.
 
-Rev10 should now be treated as scientifically frozen by default.
+Rev11 should now be treated as scientifically frozen by default.
