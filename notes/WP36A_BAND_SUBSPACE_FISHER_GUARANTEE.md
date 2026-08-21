@@ -1,6 +1,7 @@
 # WP36A — Exact Band-Subspace Fisher Guarantee
 
-**Date:** 2026-08-20
+**Date:** 2026-08-20  
+**Status:** Proof-hardened for Rev7.
 
 ## Purpose
 
@@ -10,21 +11,21 @@ Record the strongest operational corollary of WP36. Once `G(omega)` is recognize
 
 ## Rayleigh quotient
 
-For a scalar weak perturbation `s(t)` with Fourier transform `S(omega)`, WP36 gives
+For a scalar weak perturbation `s(t)` with Plancherel Fourier transform `S(omega)`, WP36 gives
 
 \[
 F_{\rm out}[s]
 =\frac{\Phi_0}{2\pi}\int G(\omega)|S(\omega)|^2d\omega,
 \]
 
-while
+and
 
 \[
 F_{\rm in}[s]
 =\frac{\Phi_0}{2\pi}\int |S(\omega)|^2d\omega.
 \]
 
-Therefore the source-normalized retention is
+Therefore
 
 \[
 \boxed{
@@ -34,7 +35,7 @@ Therefore the source-normalized retention is
 }
 \]
 
-For spectra supported in a measurable set `E`, this is the Rayleigh quotient of the multiplication operator by `G`, so
+For spectra supported in a symmetric measurable set `E`, this is the Rayleigh quotient of multiplication by `G`:
 
 \[
 \boxed{
@@ -44,22 +45,43 @@ For spectra supported in a measurable set `E`, this is the Rayleigh quotient of 
 }
 \]
 
-The two bounds are sharp as infimum/supremum over admissible perturbations. Smooth compactly supported spectra may be concentrated arbitrarily near essential extrema; their inverse Fourier transforms are Schwartz and therefore belong to the manuscript source class `L2 cap L-infinity`.
+The bounds are sharp. To approach either essential extremum, choose a symmetric finite-measure subset on which `G` lies within `epsilon` of the extremum and take `S` to be its real-even indicator. Then `S in L1 cap L2`, so its inverse Fourier transform is real, bounded, and square-integrable and is admissible under the Rev7 source class.
 
 ---
 
-## Universal band guarantee
+## Continuity upgrades a physical compact band
 
-For the symmetric band `|omega| <= Omega`, preserving at least an absolute Fisher fraction `q` for **every** admissible weak temporal waveform in that band is equivalent to
+Every mark-conditioned characteristic function `H_m` is continuous and obeys `H_m(-omega)=H_m(omega)^*`. Since `|H_m|<=1` and `kappa` is finite, dominated convergence gives
+
+\[
+\boxed{G\in C(\mathbb R),\qquad G(-\omega)=G(\omega).}
+\]
+
+For the compact symmetric band `[-Omega,Omega]`, essential extrema therefore equal ordinary extrema. The exact worst-case retention is
+
+\[
+\boxed{
+\inf_{\operatorname{supp}S\subset[-\Omega,\Omega]}
+\rho_G[s]
+=
+\min_{|\omega|\le\Omega}G(\omega).
+}
+\]
+
+Hence preserving at least an absolute Fisher fraction `q` for **every** admissible weak temporal waveform in that band is equivalent to the pointwise condition
 
 \[
 \boxed{
 G(\omega)\ge q
-\quad\text{for almost every }|\omega|\le\Omega.
+\qquad\text{for every }|\omega|\le\Omega.
 }
 \]
 
-This is stronger and more operational than specifying a flat spectral average. It means the detector cannot have a hidden information notch inside the advertised task band.
+This is stronger and more operational than a flat spectral-average requirement: an advertised information band cannot hide a narrow Fisher-information notch.
+
+---
+
+## Universal band resource cost
 
 For square-integrable conditional delay densities,
 
@@ -68,14 +90,21 @@ For square-integrable conditional delay densities,
 =\pi\mathfrak R_2.
 \]
 
-Hence the universal band guarantee implies
+The pointwise band guarantee gives
 
 \[
 \pi\mathfrak R_2
-\ge 2\Omega q.
+\ge\int_{-\Omega}^{\Omega}G(\omega)d\omega
+\ge2\Omega q.
 \]
 
-With ordinary-frequency half-band `B = Omega/(2 pi)`, this is
+With ordinary-frequency half-band
+
+\[
+B=\frac{\Omega}{2\pi},
+\]
+
+we obtain
 
 \[
 \boxed{
@@ -83,7 +112,13 @@ With ordinary-frequency half-band `B = Omega/(2 pi)`, this is
 }
 \]
 
-Since `mathfrak R_2 <= mathfrak H`, also
+Since
+
+\[
+\mathfrak R_2\le\mathfrak H,
+\]
+
+also
 
 \[
 \boxed{
@@ -91,8 +126,6 @@ Since `mathfrak R_2 <= mathfrak H`, also
 }
 \]
 
-Thus the same `4 B q` coefficient that Rev6 obtained as a necessary cost for flat-average retention also has a stronger interpretation:
+Thus the same `4Bq` coefficient first obtained in Rev6 for flat-average retention has a stronger Rev7 interpretation:
 
-> it is the necessary timing-resource cost of guaranteeing at least `q` Fisher retention for every weak temporal waveform in an entire band-limited subspace.
-
-This is now part of the Rev7 significance upgrade.
+> it is also the necessary timing-resource cost of guaranteeing at least `q` Fisher retention for every admissible weak temporal waveform in a complete band-limited subspace.
