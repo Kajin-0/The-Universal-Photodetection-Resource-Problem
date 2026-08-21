@@ -17,6 +17,10 @@ u_s=\int_0^\infty e^{-st}U_{\lambda_*}(t)\,dt,
 W_s=\int_0^\infty e^{-st}U_{\lambda_*}(t)\frac{R(t)}{m}\,dt.
 \label{eq:usWs}
 \end{equation}"""
+# The replacement above intentionally uses the ordinary Latin symbol u_s,
+# not the Greek command \nu_s.  Keep the source target exact so this fails
+# loudly if Rev1 changes.
+new = new.replace(r"\nu_s", "u_s", 1)
 
 count = text.count(old)
 if count != 1:
@@ -35,6 +39,13 @@ required = [
 for token in required:
     if token not in text:
         raise RuntimeError(f"Required Rev2 invariant missing: {token}")
+
+# Ensure the notation repair really occurred rather than silently replacing
+# the target with itself.
+if r"\nu_s=\int_0^\infty e^{-st}U_{\lambda_*}(t)" in text:
+    raise RuntimeError("Rev2 notation repair failed: Greek \\nu_s still present")
+if r"u_s=\int_0^\infty e^{-st}U_{\lambda_*}(t)" not in text:
+    raise RuntimeError("Rev2 notation repair failed: Latin u_s not present")
 
 DST.write_text(text, encoding="utf-8")
 print(f"Wrote {DST.name}")
