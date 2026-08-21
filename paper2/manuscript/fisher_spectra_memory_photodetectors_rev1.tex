@@ -1,0 +1,645 @@
+\documentclass[aps,prapplied,preprint,nofootinbib]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{graphicx}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\newcommand{\GDC}{\mathcal G_{\rm DC}}
+\newcommand{\Gcyc}{\mathcal G_{\rm cyc}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\R}{\mathbb R}
+\newcommand{\TV}{d_{\rm TV}}
+
+\begin{document}
+
+\title{Fisher Spectra and Information Singularities in Photodetectors with Memory}
+\author{Anonymous}
+\affiliation{Anonymous}
+
+\begin{abstract}
+High-flux photodetectors are commonly characterized by scalar quantities such as dead time, recovery time, timing jitter, or a saturation curve. These quantities need not determine how much information about a time-dependent optical signal survives in the complete electrical record. We consider weak classical intensity modulation of a Poisson optical source followed by an arbitrary parameter-independent autonomous detector channel. The local output Fisher metric is a positive contraction on the temporal waveform space, and time-translation covariance therefore makes it a bounded spectral multiplier $0\le G(\omega)\le1$ almost everywhere, without assuming independent registration events or low flux. We then study paralyzable (Type-II) detection. At the classical deterministic paralysis maximum, the complete stationary timestamp experiment is Fisher-blind to a uniform rate perturbation, yet every nonzero temporal frequency retains strictly positive local information; the exact high-frequency retention tends to $1/e$. For iid random recovery with any finite positive mean, all recovery laws share the same conventional mean saturation curve, but deterministic recovery is uniquely singular: at the common count-rate maximum the complete stationary static Fisher retention vanishes if and only if the recovery time is deterministic. Every nondegenerate recovery law admits an explicit positive bounded-statistic information witness, including atomic, singular, infinite-variance, and heavy-tailed laws. Finally, two recovery distributions with identical mean, variance, and complete mean saturation curve are shown to define different timestamp information experiments. These results identify the complete detector trajectory channel, rather than a saturation curve or a few recovery moments, as the relevant object for temporal information transfer in photodetectors with memory.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Dead time, pileup, saturation, and recovery are central limits in photon counting, radiation detection, and neural counting. Their counting statistics have a long history, including fixed and time-varying input rates, paralyzable and nonparalyzable counters, random prolonging dead times, renewal and cycle laws, and output correlation functions \cite{TeichVannucci1978,VannucciTeich1978,DvurecenskijOsoskov1984,DvurecenskijOsoskov1985,ApanasovichPaltsev1995}. Information-theoretic and inferential questions under detector dead time are likewise not new: likelihood-ratio detection and information measures were studied in early optical counting work \cite{TeichCantor1978}; intensity estimation has been developed for censored Type-I and Type-II counters with richer idle/dead-state observations \cite{BaratDautremerTrigano2006}; and recent work establishes local asymptotic normality and Fisher-information rates for nonparalyzable dead-time event detection with gating \cite{JorgensenJohnson2026}.
+
+The question here is narrower. Suppose the incident optical signal is a weak temporal perturbation of a stationary Poisson flux, and suppose the detector may contain arbitrary hidden memory, saturation, recovery, state-dependent capture, or nonlinear history dependence. What object completely describes the \emph{local temporal Fisher information} retained by the complete accessible detector record? And which familiar scalar detector summaries are insufficient to determine it?
+
+Our first result is structural. Fisher-information data processing under a parameter-independent observation channel turns the source score into its conditional expectation given the accessible detector record. The resulting Fisher bilinear form is a positive contraction on the source waveform tangent space. If the detector is autonomous, the contraction commutes with temporal translations and is therefore diagonal in frequency. The result is a bounded temporal Fisher-retention spectrum $G(\omega)$, even when no independent-event timing kernel exists. The statistical and harmonic-analysis ingredients are standard \cite{Pollard2013,Kallenberg2021,Stein1970,Clark2026}; the role of the theorem is to provide one complete local waveform language for photodetectors with arbitrary autonomous memory.
+
+The nontrivial consequences appear in the Type-II model. A deterministic paralyzable detector at its classical count-rate maximum provides a sharp counterexample to scalar saturation intuition: the full homogeneous timestamp experiment is locally blind to a uniform intensity perturbation, but every nonzero temporal mode remains informative. We next generalize the recovery time from a constant to an arbitrary iid nonnegative random variable. All equal-mean recovery laws have the same conventional count-rate curve, yet deterministic recovery is uniquely Fisher-singular at the common maximum. Finally, even fixing both the recovery mean and variance does not determine the timestamp information experiment.
+
+The resulting thesis is simple: a detector saturation curve is not an information-transfer law. Temporal information belongs to the complete trajectory channel.
+
+We restrict attention to classical Poisson/direct-detection intensity modulation and parameter-independent autonomous detector channels. We do not claim a theorem for arbitrary nonclassical optical states, phase-sensitive measurements, or generic Blackwell ordering.
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.88\linewidth}{\centering
+\vspace{1.0cm}
+\textbf{Figure 1 placeholder.} Poisson input trajectory $\rightarrow$ autonomous detector with hidden memory $\rightarrow$ complete accessible record. Contrast a scalar saturation curve $r(\lambda)$ with the complete local Fisher spectrum $G(\omega)$.
+\vspace{1.0cm}}}
+\caption{Conceptual distinction between a scalar high-flux response summary and the complete local temporal information-transfer object.}
+\label{fig:concept}
+\end{figure}
+
+\section{Autonomous detector channels have a temporal Fisher spectrum}
+\label{sec:general}
+
+\subsection{Poisson waveform tangent}
+
+Let the incident optical trajectory $N$ be a homogeneous Poisson point process on $\R$ with baseline flux $\Phi_0>0$. For a real compactly supported smooth waveform $u$, define the local intensity family
+\begin{equation}
+\Phi_{\epsilon,u}(t)=\Phi_0[1+\epsilon u(t)],
+\qquad |\epsilon|\ll1.
+\end{equation}
+The source score at $\epsilon=0$ is
+\begin{equation}
+S_u(N)=\int_{\R}u(t)[N(dt)-\Phi_0dt],
+\label{eq:sourceScore}
+\end{equation}
+and the Poisson isometry gives
+\begin{equation}
+\E[S_uS_v]=\Phi_0\langle u,v\rangle_{L^2}.
+\label{eq:sourceFisher}
+\end{equation}
+
+Let $K(dy\mid n)$ be an arbitrary parameter-independent stochastic detector channel from the incident trajectory to the complete accessible record $Y$. The output record may be a point process, a marked event stream, or another standard-Borel path-valued record.
+
+\begin{lemma}[Conditional output score]
+For every admitted source tangent $u$, the output experiment is differentiable in quadratic mean and its score is
+\begin{equation}
+\boxed{
+S_u^{\rm out}(Y)=\E[S_u(N)\mid Y].
+}
+\label{eq:conditionalScore}
+\end{equation}
+\end{lemma}
+
+This is the standard score-projection result for a statistic/Markov image; Appendix~\ref{app:general} gives a precise route for randomized detector kernels using kernel randomization and DQM under statistics \cite{Kallenberg2021,Pollard2013}.
+
+Define the output Fisher bilinear form
+\begin{equation}
+\mathcal F_K[u,v]=\E[S_u^{\rm out}S_v^{\rm out}].
+\end{equation}
+Conditional expectation is an orthogonal contraction, so
+\begin{equation}
+0\le \mathcal F_K[u,u]\le \Phi_0\|u\|_2^2.
+\end{equation}
+Hence there is a unique positive contraction $A_K$ on $L^2(\R)$ such that
+\begin{equation}
+\mathcal F_K[u,v]=\Phi_0\langle u,A_Kv\rangle.
+\label{eq:AK}
+\end{equation}
+
+\subsection{Autonomy and spectral completeness}
+
+Assume the detector is autonomous in the precise sense that its stochastic kernel is covariant under simultaneous shifts of incident and output trajectories. Then $A_K$ commutes with all temporal translations. A bounded translation-invariant operator on $L^2(\R)$ is a Fourier multiplier \cite{Stein1970}.
+
+\begin{theorem}[Autonomous-channel temporal Fisher spectrum]
+\label{thm:generalSpectrum}
+For a parameter-independent autonomous detector channel driven by the source family above, there exists an even measurable function
+\begin{equation}
+0\le G_{\Phi_0,K}(\omega)\le1
+\quad\text{for a.e. }\omega
+\end{equation}
+such that for all $u,v\in L^2(\R)$,
+\begin{equation}
+\boxed{
+\mathcal F_K[u,v]
+=\frac{\Phi_0}{2\pi}
+\int_{\R}G_{\Phi_0,K}(\omega)
+U^*(\omega)V(\omega)\,d\omega.
+}
+\label{eq:generalSpectrum}
+\end{equation}
+No independent-event delay kernel, finite detector state, low-flux approximation, or one-output-per-photon assumption is required.
+\end{theorem}
+
+The spectrum in Theorem~\ref{thm:generalSpectrum} is an $L^\infty$ equivalence class. A pure infinite sinusoid is therefore not taken as the primitive perturbation. Operational frequency performance is obtained using normalized finite-energy wavepackets concentrated around a frequency $\omega_0$; at Lebesgue points of $G$, their normalized Fisher retention converges to $G(\omega_0)$. This distinction will matter below at exact DC.
+
+A direct corollary is local waveform ordering: if two autonomous channels satisfy $G_A(\omega)\ge G_B(\omega)$ almost everywhere, then $A$ has at least as much local Fisher information as $B$ for every admitted finite-energy weak temporal waveform, and conversely. This is local Fisher ordering, not generic Blackwell dominance.
+
+The independent-event timing law of the first paper is recovered as a special case. Here we instead ask what the spectrum does when high-flux history dependence is essential.
+
+\section{Deterministic Type-II paralysis: a static information zero without a temporal cutoff}
+\label{sec:detTypeII}
+
+Consider an ideal paralyzable detector with deterministic dead interval $\tau$. An incident event at time $t$ is recorded if and only if no incident event occurred in $(t-\tau,t)$. Every incident event, including an unrecorded one, restarts the dead interval. Define
+\begin{equation}
+\rho=\lambda\tau,
+\qquad
+r=\lambda e^{-\rho},
+\label{eq:detRate}
+\end{equation}
+where $\lambda$ is the homogeneous incident rate and $r$ is the stationary registered rate.
+
+The registered events form a renewal process. If $D$ is one inter-registration interval, its Laplace transform is
+\begin{equation}
+\psi(s)=\E[e^{-sD}]
+=\frac{r e^{-s\tau}}{s+r e^{-s\tau}}.
+\label{eq:detIntervalLT}
+\end{equation}
+Thus the entire homogeneous renewal law depends on $\lambda$ only through $r(\lambda)$. At the classical paralysis maximum
+\begin{equation}
+\rho=1,
+\end{equation}
+the first derivative of $r$ vanishes.
+
+For the homogeneous fractional-rate experiment, define the source-normalized stationary Fisher-information rate
+\begin{equation}
+\GDC
+=\lim_{L\to\infty}
+\frac{I_{\rm stat}(L)}{\lambda L},
+\label{eq:GDCdef}
+\end{equation}
+whenever the limit exists.
+
+\begin{proposition}[Complete static blindness at deterministic paralysis]
+\label{prop:staticZero}
+For deterministic Type-II recovery at $\lambda\tau=1$,
+\begin{equation}
+\boxed{\GDC=0.}
+\end{equation}
+The statement concerns the complete stationary timestamp experiment, not merely the slope of the mean count rate.
+\end{proposition}
+
+Now perturb the incident intensity by a narrowband mode. For the formal complex mode $u(t)=e^{i\omega t}$, used as shorthand for the corresponding long-window/narrowband limit, the exact first-order mean registered intensity has fractional response
+\begin{equation}
+M_\rho(y)
+=1-\rho\frac{1-e^{-iy}}{iy},
+\qquad y=\omega\tau.
+\label{eq:Mrho}
+\end{equation}
+At $\rho=1$, $M_1(y)\neq0$ for every real $y\neq0$.
+
+The baseline Bartlett spectrum of the registered renewal process is
+\begin{equation}
+S_Y(\omega)
+=r\left[1-2\rho e^{-\rho}\frac{\sin y}{y}\right],
+\label{eq:Bartlett}
+\end{equation}
+which is strictly positive. A single optimally phased long-window Fourier statistic therefore gives the complete-record lower bound
+\begin{equation}
+G_\rho(\omega)
+\ge
+L_\rho(y)
+\equiv
+e^{-\rho}
+\frac{|M_\rho(y)|^2}
+{1-2\rho e^{-\rho}\sin(y)/y}.
+\label{eq:lowerBound}
+\end{equation}
+
+\begin{theorem}[Type-II spectral escape at the paralysis maximum]
+\label{thm:spectralEscape}
+For deterministic paralyzable dead time at $\lambda\tau=1$, the homogeneous static retention is zero,
+\begin{equation}
+\GDC=0,
+\end{equation}
+while the model-specific narrowband Fisher spectrum satisfies
+\begin{equation}
+\boxed{
+G_1(\omega)>0\qquad\text{for every }\omega\neq0.
+}
+\label{eq:positiveAllNonzero}
+\end{equation}
+In particular,
+\begin{equation}
+\boxed{
+G_1(\pi/\tau)
+\ge\frac1e\left(1+\frac4{\pi^2}\right)
+=0.516975\ldots .
+}
+\label{eq:piBound}
+\end{equation}
+Moreover the exact complete-record spectrum obeys
+\begin{equation}
+\boxed{
+\lim_{|\omega|\to\infty}G_\rho(\omega)=e^{-\rho},
+}
+\label{eq:highfreq}
+\end{equation}
+so the paralysis-point high-frequency retention is $1/e$.
+\end{theorem}
+
+The strict finite-frequency inequality follows already from Eq.~\eqref{eq:lowerBound}. The high-frequency result uses the exact renewal-transition score: the observed terminal cluster-start timestamp provides an atomic timing contribution, whereas the conditional hidden-arrival contribution is diffuse and its Fourier component vanishes at high frequency. Appendix~\ref{app:detTypeII} gives the exact score representation and the numerical Volterra calculation.
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.88\linewidth}{\centering
+\vspace{1.0cm}
+\textbf{Figure 2 placeholder.} Plot exact numerical $G_1(\omega)$ and rigorous lower bound $L_1(\omega\tau)$ versus $\omega\tau$; show static zero, the point $\pi$, and horizontal asymptote $1/e$.
+\vspace{1.0cm}}}
+\caption{Deterministic Type-II information spectrum at the classical paralysis maximum. The detector is statically Fisher-blind but retains information at every nonzero frequency.}
+\label{fig:typeIIspectrum}
+\end{figure}
+
+The important point is not that the mean response depends on modulation frequency; that is established dead-time physics \cite{TeichVannucci1978,VannucciTeich1978}. The information statement is that the complete timestamp record has a zero static tangent without a finite temporal information cutoff.
+
+\section{Random recovery destroys the deterministic information singularity}
+\label{sec:randomRecovery}
+
+We now let every incident event start an iid recovery interval $T\ge0$ with arbitrary fixed law $F$ and finite positive mean
+\begin{equation}
+m=\E[T]\in(0,\infty).
+\end{equation}
+The detector is dead whenever at least one event-generated recovery interval remains active. Registered events are starts of the corresponding $M/G/\infty$ busy clusters. Random Type-II/cycle laws are classical and are not claimed here \cite{DvurecenskijOsoskov1984,DvurecenskijOsoskov1985}.
+
+A striking classical fact is that every recovery law with the same mean has the identical conventional stationary count curve
+\begin{equation}
+\boxed{
+r(\lambda)=\lambda e^{-\lambda m}.
+}
+\label{eq:universalCurve}
+\end{equation}
+Thus all equal-mean recovery laws have the same count-rate maximum at
+\begin{equation}
+\lambda_*=1/m.
+\end{equation}
+
+Let
+\begin{equation}
+A(t)=\E[\min(T,t)],
+\qquad
+R(t)=m-A(t)=\E[(T-t)_+].
+\end{equation}
+The classical renewal density of registered cluster starts after a registered event is
+\begin{equation}
+U_\lambda(t)
+=\lambda F(t)e^{-\lambda A(t)}.
+\label{eq:renewalDensity}
+\end{equation}
+For $s>0$, define
+\begin{equation}
+u_s=\int_0^\infty e^{-st}U_{\lambda_*}(t)\,dt,
+\qquad
+W_s=\int_0^\infty e^{-st}U_{\lambda_*}(t)\frac{R(t)}{m}\,dt.
+\label{eq:usWs}
+\end{equation}
+If $D$ is one Palm inter-registration interval and
+\begin{equation}
+\phi_s(\lambda)=\E_\lambda[e^{-sD}],
+\end{equation}
+then the renewal identity gives $\phi_s=u_s/(1+u_s)$, and direct differentiation at $\lambda_*$ yields
+\begin{equation}
+\boxed{
+\left.\frac{d}{d\epsilon}
+\E_{\lambda_*(1+\epsilon)}[e^{-sD}]
+\right|_{\epsilon=0}
+=
+\frac{W_s}{(1+u_s)^2}.
+}
+\label{eq:laplaceWitness}
+\end{equation}
+
+\begin{lemma}[Recovery-shape separation]
+\label{lem:Ws}
+For finite positive mean recovery,
+\begin{equation}
+W_s=0\ \text{for one (equivalently every) }s>0
+\quad\Longleftrightarrow\quad
+T=m\ \text{a.s.}
+\end{equation}
+Every genuinely nondegenerate recovery law has $W_s>0$ for every $s>0$.
+\end{lemma}
+
+The proof is elementary: a nondegenerate law has a nonzero interval of lags on which both $F(t)>0$ and $R(t)>0$, making the integrand in Eq.~\eqref{eq:usWs} strictly positive. Equation~\eqref{eq:laplaceWitness} therefore supplies a bounded-statistic first-order separation theorem without requiring a recovery density, a finite variance, or a Fisher-score representation.
+
+\subsection{Palm-cycle Fisher information}
+
+Palm-initialize the process at a registered cluster start and let $D$ be the time to the next registered event. Let $N_D$ count future incident events through the terminal arrival. The future marked-Poisson path stopped at $D$ has fractional-rate likelihood
+\begin{equation}
+L_\epsilon=(1+\epsilon)^{N_D}e^{-\lambda\epsilon D}
+\end{equation}
+and score
+\begin{equation}
+S_{\rm cyc}=N_D-\lambda D.
+\label{eq:cycleScore}
+\end{equation}
+Because $\E[D]=1/r<\infty$, stopped-martingale localization gives
+\begin{equation}
+\E[S_{\rm cyc}^2]
+=\lambda\E[D]
+=\frac{\lambda}{r}.
+\label{eq:cycleFI}
+\end{equation}
+The observed interval is a statistic of the latent cycle. If $I_D$ denotes its Fisher information for the fractional rate perturbation, data processing yields
+\begin{equation}
+0\le I_D\le\frac{\lambda}{r}.
+\end{equation}
+Define the Palm-cycle normalized retention
+\begin{equation}
+\Gcyc=\frac{r}{\lambda}I_D,
+\qquad
+0\le\Gcyc\le1.
+\label{eq:Gcyc}
+\end{equation}
+Appendix~\ref{app:cycle} states the bounded-stopping localization explicitly.
+
+\subsection{Stationary long-window information}
+
+A Palm-cycle quantity and a stationary fixed-window quantity need not be identified without proof. Here the Type-II construction supplies the needed boundary control.
+
+At an arbitrary stationary time, the pre-zero incident events that can influence future detector behavior are exactly the recovery intervals still active at zero. They form a finite marked-Poisson cloud with mean population $\lambda m$. Its latent fractional-rate Fisher information is therefore $\lambda m$.
+
+For an ordinary renewal process started at a renewal, progressively censored interval information approaches $I_D$, and the elementary renewal theorem gives an information rate $rI_D$. For the stationary process, the first registered event after the left boundary contributes only sublinear information: if $Y$ is the forward recurrence and $C_L(Y)$ denotes its censoring at $L$,
+\begin{equation}
+I(C_L(Y))
+\le \lambda m+\lambda\E[\min(Y,L)]
+=o(L).
+\label{eq:boundaryFI}
+\end{equation}
+The properness of $Y$ follows from the ergodic stationary finite-mean $M/G/\infty$ construction, whose empty-state probability is $e^{-\lambda m}>0$.
+
+\begin{theorem}[Finite-mean Type-II recovery singularity]
+\label{thm:recoverySingularity}
+For any iid recovery law satisfying only $0<\E[T]=m<\infty$, the source-normalized Fisher-information rate of the complete stationary registered-timestamp record exists and is
+\begin{equation}
+\boxed{
+\GDC=\Gcyc=\frac{r}{\lambda}I_D,
+\qquad
+0\le\GDC\le1,
+}
+\label{eq:windowEquality}
+\end{equation}
+where $r=\lambda e^{-\lambda m}$. At the common count-rate maximum $\lambda m=1$,
+\begin{equation}
+\boxed{
+\GDC=0
+\quad\Longleftrightarrow\quad
+T=m\ \text{a.s.}
+}
+\label{eq:zeroIffDet}
+\end{equation}
+Every nondegenerate law has the quantitative lower bound
+\begin{equation}
+\boxed{
+\GDC
+\ge
+\frac{4}{e}\frac{W_s^2}{(1+u_s)^4}
+>0,
+\qquad s>0.
+}
+\label{eq:WsLower}
+\end{equation}
+\end{theorem}
+
+Theorem~\ref{thm:recoverySingularity} includes atomic, singular, infinite-variance, and heavy-tailed recovery distributions. Generic window-censored renewal Fisher asymptotics are established in prior work under standard regularity assumptions \cite{ZhaoNagaraja2011}; Appendix~\ref{app:window} records the Type-II-specific finite-mean argument used here to control the stationary boundary.
+
+The conclusion should not be paraphrased as ``randomness helps.'' It is conditional on a fixed recovery mean and the common Type-II count-rate maximum. Random recovery breaks an exact deterministic information singularity by changing the shape of the complete interval law while leaving Eq.~\eqref{eq:universalCurve} unchanged.
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.88\linewidth}{\centering
+\vspace{1.0cm}
+\textbf{Figure 3 placeholder.} Upper panel: identical saturation curve $r(\lambda)=\lambda e^{-\lambda m}$ for deterministic and random recovery. Lower panel: static information retention at $\lambda m=1$, showing deterministic $0$ and exponential recovery $\simeq0.06916$.
+\vspace{1.0cm}}}
+\caption{Equal conventional saturation curves do not imply equal information transfer.}
+\label{fig:sameCurve}
+\end{figure}
+
+For exponential recovery with $m=1$ and $\lambda=1$, independent Volterra evaluation of the interval score gives
+\begin{equation}
+\GDC\simeq0.06915579,
+\end{equation}
+providing a quantitative calibration of the strictly positive theorem.
+
+\section{Mean and variance do not complete the recovery resource}
+\label{sec:noGo}
+
+One might hope that the missing information is captured by supplementing the mean recovery time with its variance. This is false.
+
+Consider the two mean-one recovery laws
+\begin{align}
+\text{A:}\quad &\Prob(T=1/2)=\Prob(T=3/2)=1/2,
+\\
+\text{B:}\quad &\Prob(T=1/4)=2/9,\quad
+\Prob(T=1)=5/9,\quad
+\Prob(T=7/4)=2/9.
+\end{align}
+Both satisfy exactly
+\begin{equation}
+\E[T]=1,
+\qquad
+\operatorname{Var}(T)=1/4,
+\qquad
+\mathrm{CV}=1/2,
+\end{equation}
+and therefore have the identical conventional saturation curve
+\begin{equation}
+r(\lambda)=\lambda e^{-\lambda}.
+\end{equation}
+
+Nevertheless their registered timestamp experiments differ. Retain from one observed interval only the common coarse-graining
+\begin{equation}
+Z=\mathbf 1\{D\le2/5\}.
+\end{equation}
+For law A, $D\ge1/2$ almost surely, so $Z$ is constant and carries zero Fisher information at every rate. For law B,
+\begin{equation}
+\Prob_\lambda(D\le2/5)
+=\frac{2}{7}
+\left(e^{-\lambda/4}-e^{-11\lambda/30}\right),
+\label{eq:lawBprob}
+\end{equation}
+which has nonzero local derivative at $\lambda=1$. The resulting source-normalized per-time Fisher witness is approximately
+\begin{equation}
+0.00443520488427>0.
+\end{equation}
+
+\begin{theorem}[Mean--variance resource incompleteness]
+\label{thm:varianceNoGo}
+Recovery mean, recovery variance (equivalently CV at fixed mean), and the complete conventional Type-II mean saturation curve do not determine the registered-timestamp statistical experiment or its local Fisher information.
+\end{theorem}
+
+The proof is the explicit common-statistic construction above; it does not depend on numerical evaluation of complete-record FI. As a cross-check, numerical Volterra calculations give
+\begin{equation}
+\GDC^{\rm A}\simeq0.01765401,
+\qquad
+\GDC^{\rm B}\simeq0.01920434,
+\end{equation}
+an approximately $8.78\%$ difference.
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.88\linewidth}{\centering
+\vspace{1.0cm}
+\textbf{Figure 4 placeholder.} Stem plots for recovery laws A and B with the same mean and variance, plus a compact annotation showing zero versus positive FI for the common event $D\le2/5$.
+\vspace{1.0cm}}}
+\caption{An exact mean--variance matched counterexample to finite-summary resource completeness.}
+\label{fig:varianceNoGo}
+\end{figure}
+
+\section{Discussion}
+
+The general spectrum of Sec.~\ref{sec:general} and the Type-II results of Secs.~\ref{sec:detTypeII}--\ref{sec:noGo} separate three notions that are often conflated.
+
+First, a conventional saturation curve is a first-moment input-output characteristic. It can be identical for detectors whose complete timestamp experiments have different local distinguishability. Theorem~\ref{thm:recoverySingularity} sharpens this statement: at the common maximum, deterministic recovery is an isolated zero of static complete-record Fisher information within the entire finite-mean iid-recovery class.
+
+Second, static blindness is not a temporal bandwidth statement. Theorem~\ref{thm:spectralEscape} gives a detector that is exactly blind to the uniform tangent while preserving information at every nonzero frequency. The recovery time $\tau$ sets a physical time scale, but it does not impose a finite information cutoff.
+
+Third, a finite list of recovery moments is not a complete resource description. Theorem~\ref{thm:varianceNoGo} explicitly survives fixing both the first and second recovery moments as well as the full mean saturation curve.
+
+The structural reason is that local information belongs to the complete trajectory channel. In the general autonomous theorem this channel is summarized locally by the Fisher operator $A_K$ or its spectral multiplier $G(\omega)$. In regular point-process models, high-frequency averaged retention can be interpreted through zero-lag atomic timing energy in the conditional source score. That observation connects naturally to classical score covariance, Bartlett spectra, and point-process spectral theory \cite{Clark2026,DaleyVereJones2003}; it is used here as interpretation rather than as a standalone novelty claim. Importantly, exact delayed score paths can also contribute atomic timing energy, so causality alone does not reduce the high-frequency resource to the visible-event fraction.
+
+The inference literature also clarifies the observation model. Barat, Dautremer, and Trigano studied Type-I/II intensity inference while observing both the counting process and the idle/dead indicator process \cite{BaratDautremerTrigano2006}; that is a richer record than the timestamp-only record analyzed in the Type-II theorems here. Jorgensen and Johnson derive LAN and Fisher rates for a broad nonparalyzable/gated event-detection class \cite{JorgensenJohnson2026}. Our results should therefore be read as a complementary high-flux Type-II trajectory-information analysis, not as the first statistical treatment of dead time.
+
+Several limitations are deliberate. The source is classical Poisson direct detection with local intensity perturbations. The accessible record is assumed complete relative to the stated detector output; deliberately discarded marks or timestamps are downstream coarse graining. The detector channel is parameter independent and autonomous. The Type-II model is idealized. No claim is made that recovery randomness is beneficial away from the specified operating point, or that the local Fisher ordering obtained from $G$ is a generic Blackwell ordering.
+
+\section{Conclusion}
+
+Autonomy gives a complete local temporal Fisher spectrum for classical Poisson photodetection channels even when detector memory destroys an independent-event description. Within this framework, deterministic Type-II paralysis provides a sharp information singularity: the complete timestamp record loses the static source-rate tangent at the classical count maximum but retains every nonzero temporal mode. General iid recovery shows that this zero is not generic. For every finite-mean nondegenerate recovery law the complete stationary timestamp record retains strictly positive static Fisher information at the same mean-count maximum, despite sharing the identical conventional saturation curve. Even fixing the recovery variance does not restore resource completeness.
+
+These results suggest that high-flux detector characterization should distinguish scalar engineering summaries from the complete trajectory-level information transfer they only partially constrain.
+
+\appendix
+
+\section{General-channel proof details}
+\label{app:general}
+
+We state the proof architecture needed for Theorem~\ref{thm:generalSpectrum}. Let the incident state space be the locally finite counting measures on $\R$ with the vague topology. Let the accessible output be any standard-Borel record space equipped with a measurable time-shift action.
+
+For $u\in C_c^\infty(\R)$, the inhomogeneous Poisson likelihood relative to the homogeneous baseline is
+\begin{equation}
+\log\frac{dP_{\epsilon,u}}{dP_0}(N)
+=
+\int\log[1+\epsilon u(t)]N(dt)
+-\Phi_0\epsilon\int u(t)dt,
+\end{equation}
+which is DQM with score Eq.~\eqref{eq:sourceScore}.
+
+Because the output space is standard Borel, a stochastic detector kernel may be realized as a measurable function of the input trajectory and one independent uniform random variable \cite{Kallenberg2021}. The enlarged source experiment has the same score. DQM under the resulting statistic gives Eq.~\eqref{eq:conditionalScore} \cite{Pollard2013}.
+
+The Fisher form is bounded by the source $L^2$ norm and therefore extends from $C_c^\infty$ to all $L^2$. Autonomy makes the form invariant under simultaneous shifts, hence $A_K$ commutes with the unitary translation group. The standard translation-invariant operator theorem then gives the multiplier representation \cite{Stein1970}.
+
+For narrowband interpretation, take a normalized wavepacket
+\begin{equation}
+u_T(t)=T^{-1/2}w(t/T)e^{i\omega_0t}.
+\end{equation}
+Its spectral energy forms an approximate identity at $\omega_0$, so the normalized Fisher retention converges to $G(\omega_0)$ at Lebesgue points. This is the operational replacement for an infinite sinusoidal tangent.
+
+\section{Deterministic Type-II exact transition score}
+\label{app:detTypeII}
+
+Let the incident interarrival gaps after a registered event be $E_j\sim\mathrm{Exp}(\lambda)$ and
+\begin{equation}
+N=\min\{j\ge1:E_j>\tau\},
+\qquad
+D=\sum_{j=1}^{N}E_j.
+\end{equation}
+For a complex temporal mode, the derivative of the conditional next-interval log likelihood can be written
+\begin{equation}
+\partial_\epsilon\log k_\epsilon(T,D)\big|_0
+=e^{i\omega T}A_D(\omega),
+\end{equation}
+where
+\begin{equation}
+A_D(\omega)
+=
+\E\left[
+\sum_{j=1}^{N}e^{i\omega S_j}
+\,\middle|\,D
+\right]
+-\lambda\frac{e^{i\omega D}-1}{i\omega}.
+\label{eq:AD}
+\end{equation}
+Successive baseline intervals are iid and the conditional transition score has zero mean, giving
+\begin{equation}
+G_\rho(\omega)=e^{-\rho}\E|A_D(\omega)|^2.
+\end{equation}
+
+At high frequency the final recorded arrival contributes $e^{i\omega D}$, whereas the conditional hidden-arrival mean measure inside $(0,D)$ is diffuse. The latter Fourier contribution vanishes by the Riemann--Lebesgue lemma; the compensator is $O(|\omega|^{-1})$. The geometric cluster size has finite second moment, supplying uniform integrability, and Eq.~\eqref{eq:highfreq} follows.
+
+At $\rho=1$, the exact transition score tends in $L^2$ to the homogeneous fractional-rate transition score as $\omega\to0$. The latter vanishes because the deterministic interval law depends on $\lambda$ only through $r(\lambda)$ and $r'(\lambda_*)=0$. This gives the model-specific continuous extension $G(\omega)\to\GDC=0$ as $\omega\to0$; it is not a consequence of the universal theorem.
+
+The exact numerical spectrum used for Fig.~\ref{fig:typeIIspectrum} is obtained by the causal Volterra equations recorded in the repository work package WP07. Rev1 leaves the final plotting input external to avoid duplicating validated numerical assets.
+
+\section{Finite-mean Palm-cycle localization}
+\label{app:cycle}
+
+Under Palm initialization at a registered cluster start, let $D$ be the next registered time. For bounded $D_K=D\wedge K$, standard counting-process likelihood theory gives DQM for the stopped marked-Poisson experiment with score
+\begin{equation}
+S_K=N_{D_K}-\lambda D_K.
+\end{equation}
+The compensated Poisson martingale $M_t=N_t-\lambda t$ obeys
+\begin{equation}
+\E[(M_D-M_{D_K})^2]
+=\lambda\E[D-D_K]\to0
+\end{equation}
+because $\E[D]<\infty$. Square-root likelihood localization then passes DQM to the unbounded stopping time with score $S_{\rm cyc}=M_D$ and information $\lambda\E[D]$. A final manuscript revision should attach a theorem-grade counting-process likelihood citation to this standard localization step.
+
+Since $D$ is a parameter-independent statistic of the stopped latent cycle, its score is
+\begin{equation}
+a(D)=\E[S_{\rm cyc}\mid D]
+\end{equation}
+and
+\begin{equation}
+I_D=\E[a(D)^2]\le\lambda/r.
+\end{equation}
+
+The bounded Laplace statistic yields
+\begin{equation}
+I_D
+\ge
+\frac{\dot\phi_s^2}{\operatorname{Var}(e^{-sD})},
+\end{equation}
+which, together with $\operatorname{Var}(e^{-sD})\le1/4$, gives Eq.~\eqref{eq:WsLower} at $\lambda m=1$.
+
+\section{Stationary-window Fisher rate}
+\label{app:window}
+
+Let $a(D)$ be the DQM Palm interval score with $I_D=\E[a(D)^2]$. For horizon $t$, let $C_t(D)$ reveal $D$ when $D\le t$ and otherwise reveal only the censoring event $D>t$. The censored score is the conditional expectation of $a(D)$, and its information
+\begin{equation}
+J(t)=\E\left[\E[a(D)\mid C_t(D)]^2\right]
+\end{equation}
+increases to $I_D$ by $L^2$ martingale convergence.
+
+For an ordinary renewal process starting at a renewal, sequential likelihood-score increments for progressively censored intervals are conditionally centered and orthogonal. If $N_t$ is the number of complete renewals,
+\begin{equation}
+I_{\rm ord}(t)
+=\E\sum_{n\ge1}
+\mathbf 1\{S_{n-1}\le t\}
+J(t-S_{n-1}).
+\end{equation}
+The bounds $J\le I_D$ and $J(t)\to I_D$, together with the elementary renewal theorem, imply
+\begin{equation}
+\lim_{t\to\infty}\frac{I_{\rm ord}(t)}{t}
+=\frac{I_D}{\E[D]}
+=rI_D.
+\label{eq:ordRate}
+\end{equation}
+Generic window-censored renewal Fisher asymptotics under standard regularity are classical \cite{ZhaoNagaraja2011}; the argument here is tailored to the already-established finite-mean Type-II Palm interval experiment.
+
+For the stationary left boundary, the active pre-zero marked-Poisson cloud has total intensity $\lambda m$. Conditional on that finite cloud, future arrivals form a fresh marked Poisson process. If $Y$ is the first registered event after zero and $\tau_L=Y\wedge L$, stopped-Poisson data processing gives Eq.~\eqref{eq:boundaryFI}. Because the stationary finite-mean $M/G/\infty$ process is ergodic and has empty-state probability $e^{-\lambda m}>0$, cluster starts recur almost surely and $Y<\infty$ a.s. Thus $\E[Y\wedge L]/L\to0$.
+
+Finally, conditional on $Y=y<L$, the post-$y$ record is an independent ordinary renewal process observed for $L-y$. Fisher chain rule gives
+\begin{equation}
+I_{\rm stat}(L)
+=I(C_L(Y))
++\E\left[\mathbf 1\{Y<L\}I_{\rm ord}(L-Y)\right].
+\end{equation}
+Equation~\eqref{eq:ordRate}, the sublinear boundary term, and a standard split on $Y\le\delta L$ versus $Y>\delta L$ yield Eq.~\eqref{eq:windowEquality}.
+
+\section{Exact mean--variance matched counterexample}
+\label{app:variance}
+
+For law B, direct specialization of the classical random-recovery renewal density gives Eq.~\eqref{eq:lawBprob}. Differentiation in the fractional source-rate parameter at $\lambda=1$ produces a nonzero Bernoulli score for $Z=\mathbf1\{D\le2/5\}$. Law A makes the same statistic identically zero. Since a common statistic already has different Fisher information, the complete experiments cannot be equivalent.
+
+The repository contains independent Volterra numerical assets for the complete static FI values quoted in Sec.~\ref{sec:noGo}. Those numbers are validation rather than a premise of Theorem~\ref{thm:varianceNoGo}.
+
+\bibliographystyle{apsrev4-2}
+\bibliography{paper2_refs}
+
+\end{document}
