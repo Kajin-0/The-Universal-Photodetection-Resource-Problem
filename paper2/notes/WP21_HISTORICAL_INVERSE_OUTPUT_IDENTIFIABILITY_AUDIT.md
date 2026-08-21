@@ -1,6 +1,6 @@
 # WP21 — Historical inverse-output / identifiability audit for generalized Type-II recovery
 
-**Status:** hostile prior-art audit. This note materially narrows the novelty posture of WP13/WP18. It does **not** invalidate the deterministic-recovery Fisher-singularity theorem, but it establishes that broad claims about output-flow identifiability, recovering queue characteristics from output observations, or structural information in queue outputs were already an active literature by the mid-1960s to mid-1970s.
+**Status:** hostile prior-art audit. This note materially narrows the novelty posture of WP13/WP18. It does **not** invalidate the deterministic-recovery Fisher-singularity theorem, but it establishes that broad claims about output-flow identifiability, recovering queue characteristics from output observations, or structural information in queue outputs were already an active literature by the mid-1960s to mid-1970s and had entered queueing textbooks by the early 1980s.
 
 **Date:** 2026-08-21
 
@@ -89,6 +89,8 @@ This is a particularly strong warning against broad inverse-output novelty langu
 
 Again, it is a single-server restricted-sojourn model, not obviously the iid Type-II cluster-start process.
 
+A later bibliography also records a 1977 Ivnitskii paper with essentially the generic title **“On recovery of system characteristics from observations of the output flow,”** Theory of Probability and Its Applications 22(1), 188–191 in the Russian citation lineage. This further confirms sustained work on output-only inverse problems rather than a one-off result.
+
 ### 3.4 Milne 1970
 
 R. K. Milne (with A. J. Stam in accessible abstracts),
@@ -121,6 +123,8 @@ are explicit service-distribution inference results.
 
 The latter uses departure/output times from repeated systems starting empty. It therefore does not observe the same stationary busy-cluster-start record as WP18, but it confirms that hidden service/recovery-shape inference from queue outputs is old prior art.
 
+A modern annotated queue-inference bibliography (Asanjarani, Nazarathy & Pollett, arXiv:1701.08338 and subsequent versions) classifies `M/G/infinity` random-translation models as an established inference class and describes Brown (1970) as estimating `G` from arrival and departure times without knowing which departure belongs to which arrival. The same bibliography explicitly lists Kovalenko (1965) in its chronological queue-inference record. This independent modern survey confirms that these older papers are recognized as part of the estimation/identifiability literature, not merely adjacent queueing theory.
+
 ### 3.7 Shanbhag 1973
 
 D. N. Shanbhag,
@@ -128,6 +132,25 @@ D. N. Shanbhag,
 **“Characterization for the queueing system M/G/infinity,”** Proc. Cambridge Philos. Soc. 74 (1973), 141–143, DOI `10.1017/S0305004100047897`.
 
 This is another characterization result in the immediate infinite-server queue family. Accessible extract does not expose enough detail to assess overlap with cluster-start-only identifiability.
+
+### 3.8 By 1982, output-flow reconstruction was textbook material
+
+The breadth of this classical area is no longer inferential from scattered papers alone.
+
+G. I. Ivchenko, V. A. Kashtanov, and I. N. Kovalenko, **Теория массового обслуживания** (*Queueing Theory*, 1982, 256 pp.) devote Chapter VI to **statistics of queueing systems**. Its table of contents contains:
+
+- §1 Introduction;
+- §2 Systems with complete information;
+- §3 Markov systems with complete information — asymptotic theory;
+- §4 Systems with incomplete information;
+- **§5 “Восстановление характеристик системы по наблюдениям над выходящим потоком”** — *Recovery of system characteristics from observations of the output flow*;
+- §6 Statistics of loss systems.
+
+The same section title is retained in the 2012 edition/reprint.
+
+This matters for positioning: by the early 1980s, inverse reconstruction from output-flow observations was sufficiently established to be a named subsection of a general queueing-theory text, immediately inside a chapter on queue statistics and incomplete information.
+
+Therefore **generic “the output record reveals hidden queue/recovery characteristics” framing cannot carry novelty weight at all**. Any contribution in the present project must arise from the exact Fisher/resource statement, observation class, operating-point singularity, or temporal spectral structure.
 
 ---
 
@@ -166,7 +189,8 @@ Do not claim novelty for any of the following:
 5. identifying random displacement laws of Poisson processes under richer input/output observations;
 6. Type-II registered-interval analysis for random prolonging dead times;
 7. the classical generalized Type-II / `M/G/infinity` busy-cycle renewal formulas;
-8. the random-paralyzable pair-correlation identity already demoted in WP16.
+8. the random-paralyzable pair-correlation identity already demoted in WP16;
+9. presenting output-only reconstruction as a newly recognized methodological possibility.
 
 ### Still a candidate contribution
 
@@ -205,13 +229,18 @@ This is a cleaner and safer manuscript architecture than centering Paper 2 on ge
 
 ---
 
-## 7. Remaining historical tasks
+## 7. Remaining historical tasks and stopping rule
 
 1. Obtain or inspect the actual theorem text of Afanaseva & Mikhailova (1973), pp. 132–138, if realistically possible.
-2. Inspect Kovalenko (1965) Soviet Math. 6, 1328–1331 for its exact model/observable.
-3. Inspect the identifiability section of Daley (1976) if a full readable copy can be obtained; its abstract and bibliography confirm the field but not theorem details.
-4. Search citations to Afanaseva–Mikhailova (1973) beyond Dvurecenskij & Ososkov to infer whether their inverse result reconstructs the service/recovery law from the registered-interval distribution.
-5. Keep **all priority language disabled** until these checks are exhausted.
+2. Inspect Kovalenko (1965) Soviet Math. 6, 1328–1331 for its exact model/observable if a readable source can be located.
+3. Search citations to Afanaseva–Mikhailova (1973) beyond Dvurecenskij & Ososkov only when they expose theorem content rather than merely bibliography.
+4. Keep **all priority language disabled** for generic identifiability regardless of whether the inaccessible papers can be obtained.
+
+### Stopping rule
+
+The historical search should **not become an indefinite sidequest**. The accessible record has already established the only conclusion needed for present manuscript strategy: generic queue-output identifiability is classical and cannot be a novelty pillar.
+
+Continue searching the inaccessible 1965/1973 papers only if there is a realistic path to their theorem statements. Otherwise record the residual uncertainty and move to novelty/proof stress-testing of the explicitly Fisher-theoretic results (WP18/WP20), where the candidate contribution is substantially narrower than the old inverse-output literature.
 
 ---
 
@@ -219,7 +248,7 @@ This is a cleaner and safer manuscript architecture than centering Paper 2 on ge
 
 The hostile audit did **not** find a source that explicitly states the WP18 Fisher singularity theorem.
 
-However, it did show that the surrounding inverse-output-identifiability territory is heavily occupied by classical work beginning at least in 1965. Therefore Paper 2 must not present the result as a new generic identifiability principle.
+However, it did show that the surrounding inverse-output-identifiability territory is heavily occupied by classical work beginning at least in 1965 and standardized in queue-statistics textbooks by 1982. Therefore Paper 2 must not present the result as a new generic identifiability principle.
 
 The defensible candidate is narrower and more interesting from the present resource-theory perspective:
 
