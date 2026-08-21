@@ -1,5 +1,6 @@
 name: Manuscript LaTeX check
 
+# Temporary validation workflow; do not merge.
 on:
   pull_request:
     branches:
