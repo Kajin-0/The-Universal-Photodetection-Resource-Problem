@@ -70,6 +70,7 @@ figures = [
     ),
 ]
 
+# Raw strings above contain a single LaTeX backslash despite JSON escaping.
 for old, new, label in figures:
     count = text.count(old)
     if count != 1:
@@ -88,6 +89,10 @@ for token in required:
     if token not in text:
         raise RuntimeError(f"Required Rev4 invariant missing: {token}")
 
+# Guard against the prior generator bug that emitted a LaTeX line-break command
+# before input rather than the input command itself.
+if r"\\input{figure" in text:
+    raise RuntimeError("Rev4 generator emitted double-backslash figure input")
 if "placeholder" in text:
     raise RuntimeError("A figure placeholder survived Rev4")
 
