@@ -65,9 +65,19 @@ replace_once(
 \section{Microscopic completion by local registration intensity}""",
     r"""Equation~\eqref{eq:flat} is recovered for uniform $w$ on $[-\Omega,\Omega]$. Equation~\eqref{eq:arbsource} is a scalar weighted-task consequence of the spectral budget; arbitrary correlated finite-dimensional weak temporal estimation is covered directly by the Fisher-operator result Eq.~\eqref{eq:waveformFI}.
 
+\section{Microscopic completion by local registration intensity}""",
+)
+
+qmax_anchor = r"""For a finite-state continuous-time Markov detector with pre-registration state set $S_{\rm pre}$, define $\lambda_x=\sum_{y\ne x}W_{yx}$ and $q_{\max}=\max_{x\in S_{\rm pre}}\lambda_x$. Condition first on an initial pre-registration state $x$. Its first holding time $T_x\sim\operatorname{Exp}(\lambda_x)$ is independent of the exit destination and subsequent Markov trajectory. Under the stated restriction that the accessible mark does not independently record the realized holding time, $D\mid(M,x)=T_x+Y_{M,x}$ with $Y_{M,x}\ge0$. Hence $f_{D\mid M,x}(t)\le\lambda_x S_{D\mid M,x}(t)$ by the same exponential-convolution calculation used below, so $h_D(t\mid M,x)\le\lambda_x\le q_{\max}$. If the initial pre-registration state is random after capture, mixing over $x$ preserves $f\le q_{\max}S$. Thus $q_{\max}$ is a sufficient uniform conditional-hazard ceiling. This local bare-rate scale is distinct from stationary dynamical activity.
+
+\section{Exactly fixed mean and RMS jitter do not bound information bandwidth}"""
+replace_once(
+    qmax_anchor,
+    r"""For a finite-state continuous-time Markov detector with pre-registration state set $S_{\rm pre}$, define $\lambda_x=\sum_{y\ne x}W_{yx}$ and $q_{\max}=\max_{x\in S_{\rm pre}}\lambda_x$. Condition first on an initial pre-registration state $x$. Its first holding time $T_x\sim\operatorname{Exp}(\lambda_x)$ is independent of the exit destination and subsequent Markov trajectory. Under the stated restriction that the accessible mark does not independently record the realized holding time, $D\mid(M,x)=T_x+Y_{M,x}$ with $Y_{M,x}\ge0$. Hence $f_{D\mid M,x}(t)\le\lambda_x S_{D\mid M,x}(t)$ by the same exponential-convolution calculation used below, so $h_D(t\mid M,x)\le\lambda_x\le q_{\max}$. If the initial pre-registration state is random after capture, mixing over $x$ preserves $f\le q_{\max}S$. Thus $q_{\max}$ is a sufficient uniform conditional-hazard ceiling. This local bare-rate scale is distinct from stationary dynamical activity.
+
 \input{section_operational_bandwidth_rev7}
 
-\section{Microscopic completion by local registration intensity}""",
+\section{Exactly fixed mean and RMS jitter do not bound information bandwidth}""",
 )
 
 replace_once(
