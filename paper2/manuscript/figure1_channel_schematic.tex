@@ -2,34 +2,34 @@
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm,>=latex,font=\small]
   % Input trajectory
-  \node[anchor=west,font=\bfseries] at (0,3.25) {Incident Poisson trajectory};
-  \draw[->,thick] (0,2.55) -- (3.2,2.55) node[right] {$t$};
+  \node[anchor=west,font=\small\bfseries] at (0,3.35) {Incident Poisson trajectory};
+  \draw[->,thick] (0,2.35) -- (3.2,2.35) node[right] {$t$};
   \foreach \x in {0.35,0.82,1.16,1.92,2.18,2.78} {
-    \draw[thick] (\x,2.42) -- (\x,2.78);
+    \draw[thick] (\x,2.22) -- (\x,2.58);
   }
 
   % Detector box
-  \node[draw,thick,rounded corners=1.5pt,minimum width=4.15cm,minimum height=1.45cm,align=center] (det) at (5.55,2.55)
+  \node[draw,thick,rounded corners=1.5pt,minimum width=4.15cm,minimum height=1.15cm,align=center] (det) at (5.55,2.35)
   {Autonomous detector channel\\hidden state, dead time, recovery, saturation};
-  \draw[->,thick] (3.25,2.55) -- (det.west);
+  \draw[->,thick] (3.25,2.35) -- (det.west);
 
   % Output trajectory
-  \node[anchor=west,font=\bfseries] at (8.25,3.25) {Accessible record};
-  \draw[->,thick] (8.25,2.55) -- (11.25,2.55) node[right] {$t$};
+  \node[anchor=west,font=\small\bfseries] at (8.25,3.35) {Accessible record};
+  \draw[->,thick] (8.25,2.35) -- (11.25,2.35) node[right] {$t$};
   \foreach \x in {8.72,9.62,10.58} {
-    \draw[thick] (\x,2.42) -- (\x,2.78);
+    \draw[thick] (\x,2.22) -- (\x,2.58);
   }
-  \draw[->,thick] (det.east) -- (8.2,2.55);
+  \draw[->,thick] (det.east) -- (8.2,2.35);
 
   % Two summaries below
-  \draw[densely dashed] (5.55,1.78) -- (5.55,1.32);
-  \node[draw,minimum width=4.5cm,minimum height=0.9cm,align=center] (scalar) at (3.05,0.75)
+  \draw[densely dashed] (5.55,1.75) -- (5.55,1.22);
+  \node[draw,minimum width=4.5cm,minimum height=0.86cm,align=center] (scalar) at (3.05,0.65)
   {Scalar summary\\$r(\lambda)$, dead time, moments};
-  \node[draw,thick,minimum width=4.5cm,minimum height=0.9cm,align=center] (full) at (8.05,0.75)
+  \node[draw,thick,minimum width=4.5cm,minimum height=0.86cm,align=center] (full) at (8.05,0.65)
   {Trajectory information\\$A_K$ and $G_{\Phi_0,K}(\omega)$};
-  \draw[->] (5.55,1.32) -- (scalar.north east);
-  \draw[->] (5.55,1.32) -- (full.north west);
-  \node[anchor=north,align=center] at (5.55,-0.05)
+  \draw[->] (5.55,1.22) -- (scalar.north east);
+  \draw[->] (5.55,1.22) -- (full.north west);
+  \node[anchor=north,align=center] at (5.55,-0.10)
   {Scalar response summaries need not determine the complete local information channel.};
 \end{tikzpicture}
 \caption{Trajectory-level formulation. A parameter-independent autonomous detector maps the complete incident Poisson trajectory to an accessible record. Conventional scalar response summaries describe only projections of this channel, whereas the local waveform Fisher operator $A_K$---equivalently its autonomous spectral multiplier $G_{\Phi_0,K}(\omega)$---describes the complete local temporal Fisher metric.}
