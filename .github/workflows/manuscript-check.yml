@@ -26,25 +26,35 @@ jobs:
         working-directory: manuscript
         run: sha256sum -c REV8_SHA256SUMS.txt
 
-      - name: Compile Rev8
+      - name: Generate Rev9 grounding revision from Rev8
+        working-directory: manuscript
+        run: python apply_rev9_grounding.py
+
+      - name: Verify generated Rev9 source hashes
+        working-directory: manuscript
+        run: sha256sum -c REV9_SHA256SUMS.txt
+
+      - name: Compile Rev9
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: event_resource_theorem_rev8.tex
+          root_file: event_resource_theorem_rev9.tex
           working_directory: manuscript
           latexmk_use_xelatex: false
 
-      - name: Upload verified Rev8 artifact
+      - name: Upload verified Rev9 artifact
         uses: actions/upload-artifact@v4
         with:
-          name: event-resource-theorem-rev8
+          name: event-resource-theorem-rev9
           path: |
-            manuscript/event_resource_theorem_rev8.pdf
-            manuscript/event_resource_theorem_rev8.tex
+            manuscript/event_resource_theorem_rev9.pdf
+            manuscript/event_resource_theorem_rev9.tex
             manuscript/appendix_rare_fast_counterexample_rev8.tex
             manuscript/section_waveform_operator_rev7.tex
             manuscript/section_operational_bandwidth_rev7.tex
+            manuscript/section_practical_grounding_rev9.tex
             manuscript/figure_resource_hierarchy_rev7.tex
             manuscript/figure_jitter_no_go.tex
             manuscript/fig_jitter_no_go_data.csv
             manuscript/references.bib
             manuscript/REV8_SHA256SUMS.txt
+            manuscript/REV9_SHA256SUMS.txt
