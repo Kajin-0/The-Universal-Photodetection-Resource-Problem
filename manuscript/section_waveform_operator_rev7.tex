@@ -102,17 +102,18 @@ c^T(F_A-F_B)c
 \end{equation}
 Hence $F_A-F_B$ is positive semidefinite for every perturbation family.
 
-Conversely, suppose $G_A<G_B$ on a set of nonzero measure. Since $G_A-G_B$ is bounded, measurable, and even, there exists a finite symmetric frequency region containing a positive-measure subset on which $G_A-G_B$ is bounded above by a negative constant. By regularity of Lebesgue measure, choose a real even smooth compactly supported spectrum $S$ concentrated sufficiently strongly on that subset that
+Conversely, suppose $G_A<G_B$ on a set of nonzero measure. Since $G_A-G_B$ is bounded, measurable, and even, there exist $\delta>0$ and a symmetric measurable set $E$ with $0<|E|<\infty$ on which $G_A-G_B\le-\delta$. Choose a nonzero real even $S\in L^2$ supported in $E$; for example, the indicator of a finite-measure symmetric subset of $E$. Then $S\in L^1$ as well, so its inverse Fourier transform $s$ is real, bounded, and square-integrable. Thus $s$ is admissible and
 \begin{equation}
-\int [G_A-G_B]|S|^2d\omega<0.
+\int [G_A-G_B]|S|^2d\omega
+\le-\delta\int_E|S|^2d\omega<0.
 \end{equation}
-Its inverse Fourier transform is a real Schwartz function and hence belongs to $L^2\cap L^\infty$. For this scalar perturbation Eq.~\eqref{eq:waveformFI} gives $F_A<F_B$, contradicting universal Fisher dominance. Thus $G_A\ge G_B$ almost everywhere.
+Equation~\eqref{eq:waveformFI} therefore gives $F_A<F_B$ for this scalar perturbation, contradicting universal Fisher dominance. Thus $G_A\ge G_B$ almost everywhere.
 \end{proof}
 
 Theorem~\ref{thm:ordering} gives an operational interpretation of the entire spectrum. If two detectors have the same $G$ almost everywhere, they are Fisher-equivalent for every admissible weak temporal waveform task in this model even if their microscopic mechanisms or latency decompositions differ. If their spectra cross, there is no task-independent ranking: each is superior for some weak temporal perturbations.
 
 \begin{corollary}[Exact band-subspace guarantee]
-For a nonzero scalar perturbation $s$ with Fourier transform $S$, define its source-normalized Fisher retention
+Let $E$ be a symmetric measurable frequency set. For a nonzero scalar perturbation $s$ with Fourier transform $S$ supported in $E$, define its source-normalized Fisher retention
 \begin{equation}
 \rho_G[s]
 \equiv
@@ -122,7 +123,7 @@ For a nonzero scalar perturbation $s$ with Fourier transform $S$, define its sou
 {\int |S(\omega)|^2d\omega}.
 \label{eq:RayleighG}
 \end{equation}
-If $S$ is supported in a measurable frequency set $E$, then
+Then
 \begin{equation}
 \operatorname*{ess\,inf}_{\omega\in E}G(\omega)
 \le \rho_G[s]\le
@@ -133,7 +134,7 @@ Moreover, the infimum and supremum of $\rho_G[s]$ over admissible nonzero pertur
 \end{corollary}
 
 \begin{proof}
-Equation~\eqref{eq:RayleighG} is the Rayleigh quotient of the multiplication operator by $G$. The inequalities follow immediately because $|S|^2/\int|S|^2$ is a probability density on frequency. The extremal values are approached by smooth compactly supported spectra concentrated where $G$ approaches its essential infimum or supremum; their inverse Fourier transforms are admissible Schwartz perturbations.
+Equation~\eqref{eq:RayleighG} is the Rayleigh quotient of the multiplication operator by $G$. The inequalities follow immediately because $|S|^2/\int|S|^2$ is a probability density on frequency. Let $g_-$ and $g_+$ denote the essential infimum and supremum on $E$. For every $\varepsilon>0$, the sets where $G<g_-+\varepsilon$ and $G>g_+-\varepsilon$ have positive measure whenever the corresponding essential bound is finite. Intersect either set with a sufficiently large symmetric finite interval and symmetrize it; because $G$ is even, this produces a symmetric finite-measure subset of positive measure. Taking $S$ to be the real even indicator of that subset gives $S\in L^1\cap L^2$, so its inverse Fourier transform is real, bounded, and square-integrable. The resulting Rayleigh quotient lies within $\varepsilon$ of the corresponding essential bound. Letting $\varepsilon\downarrow0$ proves sharpness.
 \end{proof}
 
 Therefore preserving at least an absolute Fisher fraction $q$ for \emph{every} admissible weak waveform whose spectrum lies in $|\omega|\le\Omega$ is equivalent to
