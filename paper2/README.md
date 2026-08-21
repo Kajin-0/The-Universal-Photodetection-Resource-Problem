@@ -2,246 +2,176 @@
 
 ## Status
 
-**Active research program.** Paper 1 / Rev11 is scientifically frozen by default and remains the preferred first-paper submission candidate. This directory is a separate second-paper program.
+**Active theoretical research program.** Paper 1 / Rev11 is scientifically frozen by default and remains the preferred first-paper submission candidate. Paper 2 removes the independent-event restriction and studies complete local temporal Fisher transfer through arbitrary autonomous detector channels with memory and high-flux nonlinear dynamics.
 
-The ambition is deliberately higher than Paper 1: remove the independent-event / one-primary-registration restriction without giving up an exact universal local-information ordering theorem, and identify genuinely new high-flux information phenomena that appear only when detector memory is allowed.
+For current recovery state, read first:
 
-## Central research question
+1. `notes/RESEARCH_LOG_ROUND03_WP13_WP20_CHECKPOINT.md`
+2. `AGENTS_PAPER2.md`
+3. `notes/WP20_CESARO_VISIBLE_EVENT_RESIDUE.md`
+4. `notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
+5. `notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
+6. `notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
+7. `notes/WP16_HOSTILE_RANDOM_TYPEII_PRIOR_ART_AUDIT.md`
 
-> For an arbitrary photodetector viewed as a parameter-independent stochastic channel from the complete incident optical record to the complete accessible detector record, what operator exactly describes the local temporal Fisher information retained by the detector, and what does time-translation symmetry force that operator to look like?
+## Central question
 
-## Candidate organizing theorem
+For a stationary Poisson optical input passed through an arbitrary parameter-independent autonomous detector channel, what object exactly describes the local temporal Fisher information retained in the complete accessible detector record?
 
-Let a stationary Poisson optical input of baseline flux `Phi0` be weakly modulated by arbitrary square-integrable temporal waveforms. Let the detector be **any autonomous stochastic channel** from the entire incident photon trajectory to an accessible output record. The detector may have dead time, saturation, recovery, afterpulsing, hidden-state memory, state-dependent capture, multiple output events, analog marks, and arbitrary high-flux history dependence.
+The target detector class may include dead time, saturation, recovery, afterpulsing, hidden states, state-dependent capture, multiple outputs per incident event, analog marks, and arbitrary high-flux history dependence.
 
-Under differentiability/regularity assumptions, the complete output local Fisher metric should be representable as
+## Organizing theorem — WP10/WP17
 
-\[
-F_{\rm out}[u,v]
-=\frac{\Phi_0}{2\pi}\int_{\mathbb R}
-G_{\Phi_0}(\omega)U^*(\omega)V(\omega)d\omega,
-\]
+For homogeneous Poisson baseline flux `Phi0` and local waveform tangents `u`, the source score is
+
+`S_u=int u(t)[N(dt)-Phi0 dt]`.
+
+For any parameter-independent detector channel with accessible record `Y`, the output score is
+
+`S_u^out=E[S_u|Y]`.
+
+This defines a positive contraction `A_K` on the scalar temporal tangent space. Time-translation covariance implies `A_K` commutes with translations, so
+
+`F_out[u,v]=Phi0/(2*pi) int G_{Phi0,K}(omega) U*(omega)V(omega)domega`,
 
 with
 
-\[
-0\le G_{\Phi_0}(\omega)\le1\quad\text{a.e.}
-\]
+`0<=G_{Phi0,K}(omega)<=1` a.e.
 
-**without any independent-event delay kernel.**
+WP17 supplies the publication-grade route through standard-Borel trajectory spaces, stochastic-kernel randomization, DQM under statistics, the translation-invariant `L2` multiplier theorem, and narrowband wavepacket interpretation.
 
-Proof route:
+Paper 1 is recovered exactly as the independent marked-Poisson special case.
 
-1. output score = conditional expectation of the source score;
-2. package this as a positive contraction on the Poisson waveform tangent space;
-3. autonomy makes that operator commute with temporal translations;
-4. scalar `L^2(R)` multiplicity plus the Fourier-multiplier theorem gives `G_Phi0(omega)`;
-5. Paper 1's marked-delay spectrum must emerge as an exact low-overlap special case.
-
-Candidate conceptual message:
+Candidate message:
 
 > **Spectral completeness is symmetry-driven, not independent-event-driven.**
 
-The statistical/operator ingredients are standard. Novelty, if any, lies in the photodetection specialization and its nontrivial consequences.
+The abstract statistical/harmonic-analysis ingredients are prior art. Any contribution must lie in the photodetection-channel synthesis and detector-specific consequences.
 
----
+## Strongest exact spectral example — continuous Type II
 
-# Strongest current new results
+For deterministic paralyzable dead time `tau`, input rate `lambda`, and `rho=lambda*tau`, at the classical paralysis maximum `rho=1` the complete registered-timestamp process satisfies
 
-## 1. Discrete Type-II information high-pass
+`G_1(0)=0`,
 
-For the one-bin paralyzable detector
+`G_1(omega)>0` for every `omega!=0`,
 
-\[
-Y_n=X_n(1-X_{n-1}),
-\qquad X_n\sim\operatorname{Bernoulli}(p_n),
-\]
+`lim_|omega|->infty G_1(omega)=1/e`.
 
-at the symmetric high-flux point `p=1/2`, define
+At `omega=pi/tau`,
 
-\[
-x=1-\cos\omega.
-\]
+`G_1>=exp(-1)(1+4/pi^2)=0.516975...`,
 
-The complete source-normalized Fisher spectrum is exactly
+while independent complete-record Volterra numerics give approximately `0.52814`.
 
-\[
-\boxed{
-G_{1/2}(\omega)
-=1-\frac{1}{2x}
-+\frac{\ln(1+4x)}{8x^2},
-}
-\]
+Thus complete static intensity information can vanish while dynamic temporal information survives at every nonzero frequency.
 
-with continuous extension `G(0)=0`.
+See `notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`.
 
-It is strictly increasing over `0<omega<pi` and reaches
+## General iid Type-II recovery — Fisher singularity
 
-\[
-\boxed{G(\pi)=\frac34+\frac{\ln3}{16}=0.818663268\ldots}
-\]
+For iid recovery duration `T` with finite mean `m`, every recovery law shares the same conventional mean curve
 
-Thus hidden Type-II memory can turn saturation into a **Fisher-information high-pass**: complete DC blindness but strong high-frequency information.
+`r(lambda)=lambda exp(-lambda m)`.
 
-See `notes/WP05_*` and `notes/WP06_*`.
+Classical `M/G/infinity` theory also supplies the registered-event renewal density
 
-## 2. Continuous-time paralyzable spectral survival
+`U_lambda(t)=lambda F(t) exp[-lambda A(t)]`,
 
-For a Poisson input of rate `lambda` and deterministic paralyzable dead time `tau`, let
+`A(t)=E[min(T,t)]`.
 
-\[
-\rho=\lambda\tau.
-\]
+These are prior art.
 
-The baseline output is a renewal process of rate
+For the homogeneous fractional-rate experiment define the static FI retention per unit time `G_DC` separately from the a.e.-defined general spectral multiplier. Under renewal DQM/window regularity,
 
-\[
-r=\lambda e^{-\rho}.
-\]
+`G_DC=(r/lambda)I_D`.
 
-At the classical paralysis maximum `rho=1`, the **entire homogeneous output timestamp law**, not just its mean rate, is locally insensitive to uniform intensity:
+At `lambda*m=1`, all count/rate FI vanishes. WP18 then uses bounded interval Laplace statistics to prove, under the stated regularity,
 
-\[
-\boxed{G_1(0)=0.}
-\]
+`G_DC=0 iff T=m almost surely`.
 
-For `y=omega*tau`, a single Fourier statistic gives the rigorous complete-record lower bound
+Thus deterministic recovery is the unique fixed-mean iid Type-II law that is completely static-Fisher-blind at the common mean-rate maximum.
 
-\[
-\boxed{
-G_\rho(\omega)
-\ge
-e^{-\rho}
-\frac{
-1-2\rho\sin y/y+2\rho^2(1-\cos y)/y^2
-}
-{1-2\rho e^{-\rho}\sin y/y}.
-}
-\]
+A quantitative stop-loss witness is given in WP14/WP18.
 
-At `rho=1`, this is strictly positive for **every nonzero frequency**. In particular,
+## Mean and variance are not enough — WP19
 
-\[
-\boxed{
-G_1(\pi/\tau)
-\ge\frac1e\left(1+\frac4{\pi^2}\right)
-\approx0.516975.
-}
-\]
+WP19 gives two exact recovery laws with identical
 
-The exact complete-record renewal-score representation further gives
+`E[T]=1`, `Var(T)=1/4`, `CV=0.5`,
 
-\[
-\boxed{
-\lim_{|\omega|\to\infty}G_\rho(\omega)=e^{-\rho}.
-}
-\]
+and therefore identical entire mean saturation curve `r(lambda)=lambda exp(-lambda)`, but different timestamp information channels.
 
-Therefore at the paralysis maximum
+A common interval coarse-graining has zero FI for one law and normalized per-time FI approximately `0.00443520488427` for the other at `lambda=1`.
 
-\[
-\boxed{
-G_1(0)=0,
-\quad
-G_1(\omega)>0\ \forall\omega\ne0,
-\quad
-G_1(\infty)=e^{-1}.
-}
-\]
+Converged complete static FI values differ by about `8.78%`.
 
-This is the strongest current physical high-flux theorem. See `notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`.
+Therefore recovery mean plus variance/CV plus the conventional saturation curve are not resource-complete descriptors of timestamp information.
 
-## 3. Visible-event high-frequency residue — provisional general theorem
+## Visible-event residue — WP20 supersedes WP08 as the robust theorem
 
-For an autonomous detector that selects a history-dependent subset `Y<=N` of incident Poisson events but preserves selected timestamps exactly, let `r` and `lambda` be output and input rates.
+For an exact-timestamp selector `Y<=N`, package the conditional source score into a stationary random measure with covariance
 
-Under explicit diffuse-posterior and short-memory covariance assumptions,
+`Gamma_M=r delta_0+nu`.
 
-\[
-\boxed{
-\lim_{|\omega|\to\infty}G(\omega)=\frac r\lambda.
-}
-\]
+If `nu` has finite total variation and no atom at zero, then the robust high-frequency result is
 
-Thus the high-frequency Fisher residue is controlled by **atomic timestamp visibility**, not by a recovery time constant.
+`lim_{Omega->infty} 1/[(b-a)Omega] int_{aOmega}^{bOmega} G(omega)domega = r/lambda`
 
-This unifies independent exact-timestamp thinning, nonparalyzable dead time, and the continuous paralyzable limit. See `notes/WP08_VISIBLE_EVENT_HIGH_FREQUENCY_RESIDUE.md`.
+for every fixed `0<a<b`.
 
----
+If `nu` is atomless, Wiener's theorem yields high-frequency mean-square Cesaro convergence. If `nu` is Rajchman, e.g. has an `L1` density, then the stronger pointwise limit `G(omega)->r/lambda` follows.
 
-# Why this could be substantially broader than Paper 1
+Interpretation: exact visible timestamps contribute a zero-lag conditional-score covariance atom of weight `r`, fixing the high-frequency averaged Fisher residue independently of detailed detector memory.
 
-Paper 1 assumes autonomous low-overlap independent primary events and obtains
+## Major prior-art corrections
 
-\[
-G(\omega)=\int|H_m(\omega)|^2\kappa(dm).
-\]
+Do not claim novelty for:
 
-Paper 2 asks whether the same spectral completeness survives when that explicit kernel representation disappears. The target class includes, in principle:
+- random Type-II/paralyzable recovery;
+- `M/G/infinity` modeling, busy periods/cycles, or the classical renewal density above;
+- random-paralyzable pair-correlation formulas;
+- the identity `g_Y^(2)(t)=F(t)exp[lambda E[(T-t)_+]]`;
+- pair-correlation dead-time inversion generally;
+- infinite-server service/recovery inference generally;
+- renewal-process FI or generic spike-timing-vs-rate FI ideas;
+- conditional-score/Fisher data processing;
+- function-valued FI operators;
+- translation-invariant Fourier multipliers;
+- stationary random-measure spectral theory/Wiener's theorem;
+- dead-time information theory generally;
+- modulated paralyzable photocounting generally.
 
-- SPAD dead time and pile-up;
-- SNSPD recovery and history-dependent efficiency;
-- afterpulsing and trap memory;
-- state-dependent capture;
-- high-flux saturation;
-- multiple primary registrations;
-- arbitrary hidden Markov / semi-Markov detector dynamics;
-- complete analog or digital output records.
+WP15's pair-correlation result is operational/supporting, not a lead novelty theorem. Apanasovich & Paltsev (1995) already contain the equivalent random-paralyzable second-order formula.
 
-The spectrum generally depends on baseline flux: `G=G_Phi0(omega)`.
+## Historical novelty risk
 
----
+Afanaseva & Mikhailova (1973), approximately `On recovering characteristics of some queueing systems from the output flow`, is cited in the direct Type-II lineage, but a readable theorem text has not yet been obtained. Older infinite-server output-identifiability literature also exists.
 
-# Novelty discipline
+Therefore no `first`, `unprecedented`, or certified-priority language is allowed for the recovery-identifiability theorem.
 
-Known ingredients that must **not** be claimed as new:
+No verified predecessor has yet been located for either:
 
-- Fisher-information monotonicity under Markov kernels;
-- output-score identity `score_out=E(score_in|output)`;
-- conditional expectation as an `L^2` contraction;
-- translation-invariant bounded operators being Fourier multipliers;
-- generic function-valued Fisher-information operators for point processes;
-- modulated paralyzable photon counting;
-- dead-time count-rate, renewal, moment, correlation, or PSD theory;
-- information-theoretic analysis of detector dead time in general.
+- the fixed-recovery-law Fisher singularity `G_DC=0 iff T deterministic` at the universal Type-II mean-rate maximum;
+- the WP07 complete-record dynamic escape from static blindness.
 
-Important close references include:
+## Current novelty hierarchy
 
-- Teich & Vannucci, JOSA 68, 1338 (1978), DOI `10.1364/JOSA.68.001338`;
-- Teich & Cantor, IEEE JQE 14, 993 (1978), DOI `10.1109/JQE.1978.1069731`;
-- Jorgensen & Johnson, arXiv:2605.23210 (2026), nonparalyzable LAN/FI theory;
-- Clark, Statistics & Probability Letters 236, 110779 (2026), DOI `10.1016/j.spl.2026.110779`, functional Fisher operators for point processes.
+1. `WP10/WP17`: arbitrary-autonomous-channel local Fisher spectrum as a photodetection-channel synthesis.
+2. `WP07`: continuous Type-II static blindness with positive information at every nonzero temporal frequency and residue `1/e`.
+3. `WP18`: deterministic recovery as the unique regular static Fisher-singular fixed-mean iid Type-II recovery law.
+4. `WP20`: visible-event zero-lag covariance-atom / high-frequency Cesaro residue theorem, pending targeted novelty audit.
+5. `WP19`: exact resource no-go for recovery mean+variance sufficiency.
 
-The current targeted searches have **not** found the exact complete-record Type-II Fisher-spectrum phenomena above or the visible-event residue theorem, but priority is not certified.
+Supporting only: WP14 recovery-shape witness, rate/shape decomposition, WP15 pair-correlation inversion.
 
----
+## Immediate gates
 
-# Current work packages
+1. Finish the historical inverse-output audit, especially Afanaseva–Mikhailova and old Type-II/infinite-server identifiability literature.
+2. Audit WP20 against dependent thinning, missing-event point-process inference, stationary score spectra, and information-spectrum literature.
+3. Recheck WP18 renewal DQM and window-censoring assumptions for atomic and heavy-tailed recovery laws.
+4. Only after these gates decide whether the WP10/WP07/WP18/WP20/WP19 stack has earned manuscript drafting.
 
-1. `notes/WP01_GENERAL_FISHER_CHANNEL_OPERATOR.md`
-2. `notes/WP02_STATIONARY_POISSON_SPECTRAL_THEOREM.md`
-3. `notes/WP03_PRIOR_ART_AND_NOVELTY_AUDIT.md`
-4. `notes/WP04_NONPARALYZABLE_DEAD_TIME_EXACT_EXAMPLE.md`
-5. `notes/WP05_PARALYZABLE_ONEBIN_EXACT_SPECTRUM.md`
-6. `notes/WP06_CLOSED_FORM_HIGH_PASS_THEOREM.md`
-7. `notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
-8. `notes/WP08_VISIBLE_EVENT_HIGH_FREQUENCY_RESIDUE.md`
-9. `notes/WP09_TYPEII_AND_FISHER_OPERATOR_PRIOR_ART_AUDIT.md`
-10. `notes/RESEARCH_LOG_*.md`
+## Documentation rule
 
-Numerical/reproduction assets are under `paper2/numerics/`.
-
----
-
-# Immediate research priorities
-
-1. Harden the general autonomous-channel theorem (DQM/increasing-window/translation covariance/Paper-1 recovery).
-2. Independently validate the continuous Type-II exact-spectrum Volterra calculation.
-3. Harden the visible-event residue theorem and seek weaker assumptions/Cesaro variants.
-4. Search dependent-thinning, refractory-neuron, spike-train, stationary-channel LAN, and system-identification literatures.
-5. Generalize deterministic Type-II dead time to random recovery and identify which information-spectral features are invariant.
-6. Only then decide whether the result is strong enough for a Paper-2 manuscript.
-
-## Research rule
-
-Do not manufacture a "breakthrough" by renaming standard statistics. Paper 2 is worth writing only if the organizing theorem plus the hidden-memory consequences survive adversarial proof and prior-art review.
+Material results must be committed as they are obtained. Do not allow theorem status, proof repairs, prior-art collisions, numerical values used in arguments, or next-gate decisions to exist only in chat. Update a `WP*.md` or research log immediately, and synchronize `AGENTS_PAPER2.md` / `docs/CURRENT_RESEARCH_STATE.md` when the project-level state changes.
