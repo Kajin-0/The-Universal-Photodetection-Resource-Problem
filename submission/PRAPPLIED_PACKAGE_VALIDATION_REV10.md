@@ -32,7 +32,9 @@ No undefined citations or cross-references remain. The only material overfull wa
 - pages: 33
 - submission-TeX SHA-256: `49bff3155aab944c4336c97c774a7aa5ca9758e489eb048e6f929b78b2ba7eda`
 - PDF SHA-256: `5ff01f6c9d50fcf6e7e0fd59be34e65911a9abd7459a6a348df3e2c70f63e467`
-- package ZIP SHA-256: `5ab6c380c3f9efd4b52babb1ec1d6249229abda06dd5483f14771a750b12b42b`
+- final package ZIP SHA-256: `6670b3e1bd1c0ef133e052bb74c515ca670c6337be43d3805f09f0e627ce201f`
+
+The final package includes the validated PRApplied manuscript source/PDF, the worked-example digitization and analysis script, bibliography/figure inputs, Data Availability statement, cover-letter draft, exact 100-word justification, and AI-disclosure draft. `FINAL_PACKAGE_SHA256_REV10.txt` is kept outside the ZIP to avoid self-reference.
 
 The submission copy updates Data Availability truthfully: no new experiments were performed, but the manuscript now analyzes an approximate digitization of a published figure; the digitized points and script are supplied with the source. The worked-example pages, Data Availability/Appendix transition, and final reference pages were visually inspected.
 
