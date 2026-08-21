@@ -136,25 +136,10 @@ Moreover, the infimum and supremum of $\rho_G[s]$ over admissible nonzero pertur
 Equation~\eqref{eq:RayleighG} is the Rayleigh quotient of the multiplication operator by $G$. The inequalities follow immediately because $|S|^2/\int|S|^2$ is a probability density on frequency. The extremal values are approached by smooth compactly supported spectra concentrated where $G$ approaches its essential infimum or supremum; their inverse Fourier transforms are admissible Schwartz perturbations.
 \end{proof}
 
-Therefore preserving at least an absolute Fisher fraction $q$ for \emph{every} admissible weak waveform whose spectrum lies in $|\omega|\le\Omega$ is equivalent to the pointwise-almost-everywhere condition
+Therefore preserving at least an absolute Fisher fraction $q$ for \emph{every} admissible weak waveform whose spectrum lies in $|\omega|\le\Omega$ is equivalent to
 \begin{equation}
 G(\omega)\ge q
-\qquad (|\omega|\le\Omega).
+\quad\text{for almost every }|\omega|\le\Omega.
 \label{eq:universalBandCondition}
 \end{equation}
-For square-integrable delay densities, Eq.~\eqref{eq:parseval} then implies
-\begin{equation}
-\pi\Rtwo
-\ge\int_{-\Omega}^{\Omega}G(\omega)d\omega
-\ge2\Omega q,
-\end{equation}
-so with $B=\Omega/(2\pi)$,
-\begin{equation}
-\boxed{\Rtwo\ge4Bq.}
-\label{eq:universalBandCost}
-\end{equation}
-Together with $\Rtwo\le\Hcap$, the same coefficient gives
-\begin{equation}
-\boxed{\Hcap\ge4Bq.}
-\end{equation}
-Thus the Rev6 inverse resource cost is not only a flat-average necessary bound: it is also the necessary timing-resource cost of guaranteeing a minimum Fisher retention for every weak temporal waveform in a complete band-limited subspace.
+The resource cost of this universal band-subspace guarantee is derived after introducing the integrated timing spectrum below.
