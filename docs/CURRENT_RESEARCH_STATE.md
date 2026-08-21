@@ -6,8 +6,6 @@ Active branch: `agent/uprp-core-theorem-round10`
 
 ## Project-level status
 
-The repository has two publication tracks:
-
 1. **Paper 1 / Rev11:** scientifically frozen and technically validated for Physical Review Applied; only factual/personal submission metadata remain.
 2. **Paper 2:** active theoretical program on arbitrary autonomous detector channels, hidden-memory Fisher spectra, Type-II recovery information singularities, and temporal information resources.
 
@@ -17,196 +15,131 @@ The active scientific frontier is Paper 2.
 
 1. `AGENTS.md`
 2. `paper2/AGENTS_PAPER2.md`
-3. `paper2/notes/WP23_CAUSAL_SCORE_MARTINGALE_AND_ATOMIC_MEMORY_PATHS.md`
-4. `paper2/notes/WP22_CONDITIONAL_SCORE_ATOM_THEOREM_AND_SELECTOR_COROLLARY.md`
-5. `paper2/notes/WP21_HISTORICAL_INVERSE_OUTPUT_IDENTIFIABILITY_AUDIT.md`
-6. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
-7. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
-8. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
-9. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
-
----
+3. `paper2/notes/WP24_ATOMIC_SCORE_RESIDUE_PRIOR_ART_AUDIT.md`
+4. `paper2/notes/WP23_CAUSAL_SCORE_MARTINGALE_AND_ATOMIC_MEMORY_PATHS.md`
+5. `paper2/notes/WP22_CONDITIONAL_SCORE_ATOM_THEOREM_AND_SELECTOR_COROLLARY.md`
+6. `paper2/notes/WP21_HISTORICAL_INVERSE_OUTPUT_IDENTIFIABILITY_AUDIT.md`
+7. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
+8. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
+9. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
+10. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
 
 # Paper 1 — frozen Rev11
 
-Preferred submission candidate: **Rev11**. Do not reopen science absent a concrete defect or referee request.
+Preferred candidate remains Rev11. Do not reopen science absent a concrete defect or referee request.
 
-Core independent-event marked transfer:
+# Paper 2 — current core
 
-`G(omega)=int |H_m(omega)|^2 kappa(dm)`.
+## WP10/WP17 — autonomous-channel Fisher spectrum
 
-For one unresolved mark,
-
-`B_FI=int_0^infty |H(2*pi*f)|^2df=B_ENBW`,
-
-which is conventional ENBW and not claimed as new.
-
----
-
-# Paper 2 — active frontier
-
-## WP10/WP17 — general autonomous-channel Fisher spectrum
-
-For homogeneous Poisson source baseline `Phi0`, any parameter-independent stochastic detector channel has output score
-
-`S_u^out=E[S_u|Y]`,
-
-where
+For homogeneous Poisson baseline `Phi0`, the incident waveform score is
 
 `S_u=int u(t)[N(dt)-Phi0dt]`.
 
-This defines a positive contraction on scalar `L2(R)`. Autonomy/time-translation covariance diagonalizes it:
+For any parameter-independent detector channel,
+
+`S_u^out=E[S_u|Y]`.
+
+Autonomy/time-translation covariance turns the induced positive contraction on `L2(R)` into a scalar Fourier multiplier:
 
 `F_out[u,v]=Phi0/(2*pi) int G_{Phi0,K}(omega)U*(omega)V(omega)domega`,
 
-`0<=G<=1` a.e.
+with `0<=G<=1` a.e.
 
-WP17 closes the main formal proof gaps. The mathematical ingredients are standard; contribution must come from detector specialization/consequences.
+WP17 closes the principal DQM/trajectory-space/multiplier/narrowband formal gaps.
 
-## WP07 — continuous deterministic Type-II spectral survival
+## WP07 — deterministic Type-II spectral survival
 
-With deterministic paralyzable dead time `tau` and `rho=lambda*tau`, at the paralysis maximum `rho=1`:
+At deterministic paralyzable saturation `lambda*tau=1`:
 
 `G_1(0)=0`,
 
-`G_1(omega)>0` for all `omega!=0`,
+`G_1(omega)>0` for every nonzero frequency,
 
-`lim_|omega|->infty G_1(omega)=1/e`.
+`G_1(infinity)=1/e`.
 
-At `omega=pi/tau`, analytic lower bound is `0.516975...`; exact complete-record numerics give about `0.52814`.
+At `omega*tau=pi`, the analytic lower bound is `0.516975...`; exact complete-record Volterra numerics give about `0.52814`.
 
-This remains the strongest concrete physical spectral theorem.
+This remains the strongest concrete physical spectral result.
 
-## WP18 — generalized iid Type-II recovery singularity
+## WP18 — generalized iid recovery Fisher singularity
 
-All iid recovery laws with mean `m` share the classical mean curve
+All iid recovery laws with mean `m` have the same classical count curve
 
 `r(lambda)=lambda exp(-lambda m)`.
 
-Under renewal DQM/window regularity, static retention is
+Under renewal DQM/window regularity,
 
 `G_DC=(r/lambda)I_D`.
 
-At `lambda*m=1`, count/rate FI vanishes. WP18's bounded-Laplace-statistic proof yields
+At `lambda*m=1`, count/rate FI vanishes. The bounded-Laplace-statistic proof gives
 
 `G_DC=0 iff T=m almost surely`
 
 under the stated regularity.
 
-Generic output identifiability is classical and cannot be novelty framing.
+**This is now the active proof-hardening target.** The next step is to separate the broad nonzero bounded-statistic sensitivity statement from the stronger finite Fisher-rate statement for atomic/heavy-tailed laws.
 
-## WP19 — exact mean/variance insufficiency no-go
+## WP19 — exact mean/variance insufficiency
 
-Two explicit recovery laws have identical
+Two explicit recovery laws have identical mean `1`, variance `1/4`, CV `0.5`, and identical conventional saturation curve, but different registered-timestamp information experiments. A common coarse-graining has zero FI for one law and normalized FI `~0.00443520488427` for the other; converged full static FI differs by about `8.78%`.
 
-`E[T]=1`, `Var(T)=1/4`, `CV=0.5`
-
-and identical `r(lambda)=lambda exp(-lambda)`, but different timestamp information channels.
-
-A common interval coarse-graining has zero FI for one and normalized FI `~0.00443520488427` for the other at `lambda=1`. Full static retentions differ by about `8.78%`.
-
-Mean + variance/CV + conventional mean saturation curve are therefore not resource-complete.
+Thus mean + variance/CV + conventional mean curve are not resource-complete.
 
 ## WP21 — historical inverse-output audit
 
-Generic queue-output identifiability was established literature by at least 1965 and textbook material by 1982. Kovalenko's `M/G/1` output-only reconstruction already exhibits a generic-identifiable / exceptional-nonrecoverable service-law structure. Afanaseva & Mikhailova (1973) remains an inaccessible direct Type-II-lineage historical blocker.
+Generic output-flow identifiability is classical from at least the 1960s and textbook material by 1982. Afanaseva & Mikhailova (1973) remains a direct Type-II-lineage historical blocker whose theorem text is inaccessible.
 
-The historical gate is closed for manuscript strategy but not priority certification.
+Do not claim generic queue-output identifiability, hidden-service reconstruction, or exceptional information-degenerate service laws as new.
 
-Do not claim generic identifiability, output reconstruction, or exceptional information-degenerate service laws as new.
+## WP22/WP23 — conditional-score atomic residue
 
-## WP22 — abstract conditional-score covariance-atom theorem
-
-Let the complete output score admit a centered stationary random measure `M` with covariance measure
+WP22: if the conditional-score covariance is
 
 `Gamma_M=a delta_0+nu`,
 
-where `nu` has finite total variation and `nu({0})=0`.
+with finite-TV `nu` and no zero atom, the proportional high-frequency Cesaro Fisher residue is
 
-Then, in this regularity class,
+`a/lambda`.
 
-`lambda G(omega)=a+nu_hat(omega)`
+WP23: causality alone does not force `a=r`; exact delayed score paths can contribute additional atomic timing energy. The correct interpretation is total **atomic timing-path energy in the conditional score**.
 
-and for every fixed `0<a0<b0`,
+For regular selectors with diffuse/non-atomic posterior memory, the immediate exact-timestamp path gives `a=r` and residue `r/lambda`.
 
-`lim_{Omega->infty} 1/[(b0-a0)Omega] int_{a0Omega}^{b0Omega} G(omega)domega=a/lambda`.
+## WP24 — atomic-residue novelty audit
 
-Thus the robust high-frequency invariant is the **zero-lag conditional-score covariance atom**, normalized by source rate.
+The audit is **closed for manuscript strategy**.
 
-If `nu` is atomless, Wiener gives high-frequency mean-square convergence. If `nu` is Rajchman, pointwise convergence follows.
+Every mathematical ingredient has strong prior art:
 
-For a regular exact-timestamp selector `Y<=N` of rate `r`, diffuse posterior hidden-event mean plus Palm/field regularity imply `a=r` and residue `r/lambda`.
+- score covariance / Bartlett identities;
+- counting-process innovation-martingale Fisher information;
+- functional point-process Fisher kernels (including Clark 2022/2026);
+- Bartlett spectra and high-frequency point-process shot-noise plateaus;
+- Fourier-Stieltjes/Cesaro/Wiener/Rajchman atom theory;
+- frequency-domain Fisher information in system identification;
+- frequency-resolved neural/spike-train information.
 
-Important: `Y<=N` alone does not prove `a=r`.
+No located source states the full UPRP chain in terms of the **conditional incident-source score after arbitrary detector processing**, but the construction is close enough to a synthesis of standard ingredients that WP22/WP23 should be treated as **bridge/structural theory, not a standalone mathematical breakthrough**.
 
-## WP23 — causal score martingale and atomic memory paths
-
-Standard counting-process likelihood gives
-
-`S_u^Y=int h_t[u](dY_t-q_tdt)`,
-
-`F_Y[u,v]=E int q_t h_t[u]h_t[v]dt`.
-
-For a causal exact-timestamp selector with
-
-`q_t^epsilon=lambda_epsilon(t)alpha_t^epsilon`,
-
-`h_t[u]=u(t)+B_t[u]`,
-
-where `B` is the causal hidden-state/acceptance response.
-
-A key adversarial result is that **causality alone does not imply residue `r/lambda`**. For an abstract exact delayed memory term
-
-`B_t[u]=c u(t-tau)`,
-
-`G(omega)` contains
-
-`|1+c exp(-i omega tau)|^2`,
-
-whose high-frequency band average contains `1+c^2`. The delayed atomic timing path self-correlates into an additional zero-lag Fisher covariance atom.
-
-Therefore the preferred physical interpretation is:
-
-> **high-frequency Cesaro Fisher retention measures total atomic timing-path energy in the conditional score.**
-
-Immediately visible event timestamps are one atomic path. Perfectly sharp delayed timing memories can add others. Diffuse/smoothing memory averages away under the WP22 regularity.
-
-In an idealized deterministic score impulse response
-
-`k(dt)=sum_j c_j delta_{tau_j}(dt)+k_c(t)dt`,
-
-with sufficiently diffuse finite-energy `k_c`,
-
-`lim <G>_high=(r/lambda)sum_j |c_j|^2`.
-
-For regular exact-timestamp selectors the immediate path has `c_0=1`. Additional exact delayed paths add to the residue.
-
-Do not replace WP22's non-atomic/diffuse memory assumptions merely by “causal.”
-
----
+Priority language remains disabled.
 
 # Current novelty hierarchy
 
-1. **WP10/WP17:** general autonomous-channel local Fisher spectrum as a photodetection-channel synthesis.
-2. **WP07:** deterministic Type-II complete static blindness with positive FI at every nonzero frequency and residue `1/e`.
-3. **WP18:** deterministic recovery as the unique regular static Fisher-singular iid Type-II law at the common mean-rate maximum.
-4. **WP22/WP23:** conditional-score covariance-atom theorem and atomic timing-path interpretation.
-5. **WP19:** exact resource no-go showing mean and variance are insufficient.
-
-Standard/prior art and not claimable: conditional-score projection, Fisher data processing, counting-process innovation likelihoods, martingale isometry, point-process Fisher kernels, Bartlett spectra, Campbell/Palm formulas, Fourier multipliers, Wiener/Rajchman theory, random Type-II busy-cycle formulas, pair correlations, generic dead-time FI, generic queue-output identifiability.
-
----
+1. **WP10/WP17:** organizing photodetection-channel Fisher-spectrum synthesis.
+2. **WP07:** strongest concrete physical novelty candidate.
+3. **WP18:** strongest class-wide physical theorem candidate.
+4. **WP19:** strong exact resource incompleteness/no-go result.
+5. **WP22/WP23:** useful structural bridge; standalone novelty downgraded by WP24.
 
 # Immediate next gates
 
-1. Continue targeted novelty audit of WP22/WP23 against classical counting-process likelihood/innovation theory, point-process score spectra, Bartlett spectra, neural frequency-resolved information, and photodetection dead-time FI.
-2. Search specifically for a predecessor connecting the **zero-lag atom of a conditional/efficient score process** to a high-frequency Fisher-information residue, or interpreting exact delayed score paths as additive atomic information resources.
-3. Determine whether an ordinary event-driven selector class gives a natural microscopic condition guaranteeing non-atomic memory; do not force a theorem if the condition merely restates diffuseness.
-4. Recheck WP18 renewal DQM/window-censoring assumptions for atomic and heavy-tailed recovery laws.
-5. Then decide whether the WP10/WP07/WP18/WP22-WP23/WP19 stack has earned manuscript drafting.
-
----
+1. **Harden WP18 for atomic and heavy-tailed recovery laws.**
+2. Split the theorem into a minimal bounded-statistic sensitivity/identifiability result and a stronger finite positive `G_DC` result requiring DQM/FI-rate regularity.
+3. Determine minimal conditions for `G_DC=(r/lambda)I_D` and treat finite-window censoring/boundary terms rigorously.
+4. Determine what remains valid for finite-mean but infinite-variance recovery, infinite interval FI, or DQM failure.
+5. After this gate, decide whether the WP10/WP07/WP18/WP19 core, with WP22/WP23 as bridge theory, has earned manuscript drafting.
 
 # Documentation requirement
 
-Material theorem results, proof repairs, prior-art collisions, numerical results used in arguments, and changes in next-gate decisions must be committed as they occur. Keep `paper2/AGENTS_PAPER2.md` and this file synchronized with the active frontier.
+Material theorem results, proof repairs, prior-art collisions, numerical results used in arguments, and changes in next-gate decisions must be committed immediately. Keep `paper2/AGENTS_PAPER2.md` and this file synchronized with the active frontier.
