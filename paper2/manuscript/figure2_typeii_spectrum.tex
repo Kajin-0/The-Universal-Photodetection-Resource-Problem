@@ -1,0 +1,33 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.94\linewidth,
+  height=0.53\linewidth,
+  xmin=0,xmax=20,
+  ymin=0,ymax=0.58,
+  xlabel={$\omega\tau$},
+  ylabel={source-normalized Fisher retention},
+  xtick={0,3.14159265,5,10,15,20},
+  xticklabels={$0$,$\pi$,$5$,$10$,$15$,$20$},
+  ytick={0,0.1,0.2,0.3,0.367879,0.5},
+  yticklabels={$0$,$0.1$,$0.2$,$0.3$,$1/e$,$0.5$},
+  legend style={draw=none,fill=none,at={(0.98,0.97)},anchor=north east,font=\small},
+  axis line style={black},
+  tick align=outside,
+  clip=false,
+]
+\addplot[black,thick] table[x=omega_tau,y=G_extrapolated,col sep=comma] {figure2_typeii_spectrum_data.csv};
+\addlegendentry{complete-record Volterra spectrum}
+\addplot[black,dashed,thick] table[x=omega_tau,y=L_lower,col sep=comma] {figure2_typeii_spectrum_data.csv};
+\addlegendentry{rigorous one-statistic lower bound}
+\addplot[black,densely dotted] coordinates {(0,0.3678794412) (20,0.3678794412)};
+\addlegendentry{high-frequency limit $1/e$}
+\addplot[only marks,mark=*,mark size=1.8pt,black] coordinates {(3.1415926536,0.5281426515)};
+\node[anchor=south west,font=\scriptsize] at (axis cs:3.1415926536,0.5281426515) {$G_1(\pi/\tau)\simeq0.52814$};
+\node[anchor=north west,font=\scriptsize,align=left] at (axis cs:0.35,0.145) {static limit: $\mathcal G_{\rm DC}=0$\\but $G_1(\omega)>0$ for every $\omega\ne0$};
+\end{axis}
+\end{tikzpicture}
+\caption{Deterministic Type-II information spectrum at the classical paralysis maximum $\lambda\tau=1$. The solid curve is a Richardson-extrapolated numerical solution of the exact Volterra renewal-score equations; the dashed curve is the rigorous lower bound from one optimally phased Fourier statistic. The detector is statically Fisher-blind, yet all nonzero frequencies retain information. The exact spectrum approaches $1/e$ at high frequency.}
+\label{fig:typeIIspectrum}
+\end{figure}
