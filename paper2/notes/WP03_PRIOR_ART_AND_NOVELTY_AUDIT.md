@@ -1,6 +1,6 @@
 # WP03 — Prior-Art and Novelty Audit for the General-Channel Program
 
-**Status:** initial hostile audit. Conclusion: the statistical ingredients are old; the photodetection-specific stationary spectral theorem remains a plausible novelty target but is **not yet certified novel**.
+**Status:** active hostile audit. Conclusion: the statistical ingredients are old; recent dead-time Fisher theory also overlaps strongly with the simplest high-flux examples. The architecture-independent stationary spectral theorem remains a plausible novelty target but is **not yet certified novel**.
 
 ## 1. Standard mathematics we must treat as prior art
 
@@ -50,15 +50,11 @@ This distinction needs a full literature review before any priority claim.
 
 High-flux photodetection and dead-time effects are already modeled extensively, especially in TCSPC and LiDAR.
 
-Important examples:
-
 ### Rapp et al., high-flux single-photon lidar
 
 *High-flux single-photon lidar*, Optica (2021), DOI `10.1364/OPTICA.403190`.
 
-This work models sequences of high-flux detection times as a Markov chain to account for detector/electronics dead time and demonstrates that high-flux measurements can be exploited rather than discarded.
-
-Its reference chain includes earlier pile-up/dead-time compensation literature and Markov modeling.
+This line of work models sequences of high-flux detection times as a Markov chain to account for detector/electronics dead time and demonstrates that high-flux measurements can be exploited rather than simply discarded.
 
 ### Wu et al., dead-time CRLB
 
@@ -66,11 +62,26 @@ Its reference chain includes earlier pile-up/dead-time compensation literature a
 
 This derives Cramér–Rao bounds for specific dToF architectures with dead time and photon-number resolution and shows that pile-up reduces per-bin information and introduces parameter coupling.
 
-### Other dead-time work
+### Jorgensen & Johnson 2026 — especially close prior art
 
-There are specific dead-time compensation/coding and SPAD ranging papers, including Rapp et al. on dead-time compensation and later synchronous/multi-trigger architectures.
+Frederic J. N. Jorgensen and Steven G. Johnson, *Fundamental Bounds and Efficient Estimation for Dead-Time-Constrained Event Detection, with Application to Single-Photon Lidar*, arXiv:2605.23210 (May 2026).
 
-**Novelty consequence:** Paper 2 cannot claim that Fisher information with dead time, Markov detector memory, or high-flux SPAD modeling is itself new.
+This is important and must be treated as close prior art, not merely background. It develops LAN and Fisher-information rates for **nonparalyzable dead-time event detection with arbitrary causal gating** in a discrete periodic Bernoulli model. It identifies activation counts as part of a sufficient statistic and shows that history-dependent gating enters the asymptotic Fisher information through limiting phasewise activation/sampling frequencies.
+
+Consequences for our program:
+
+1. A simple nonparalyzable dead-time result in which complete timestamp/activation knowledge reduces FI by a live-time or activation fraction is **not a safe novelty claim**.
+2. Our continuous-time flat-spectrum result for ideal nonparalyzable dead time should be presented, if used, as a continuous-time spectral validation/corollary of the general framework, not as the central breakthrough.
+3. Jorgensen & Johnson explicitly identify **paralyzable (Type-II) dead time** as a future direction. This strengthens the case for using hidden-state/paralyzable dynamics as the first genuinely nontrivial Paper-2 detector example.
+4. Their model remains structured: discrete periodic binary event detection, nonparalyzable dead time, and causal gating. It does not by itself establish the proposed arbitrary-channel continuous-time spectral theorem.
+
+### Classical dead-time statistics
+
+Paralyzable and nonparalyzable count distributions/rates have long prior art, including nuclear-counting literature such as *Counting statistics of nuclear detectors*, Nuclear Instruments and Methods 70, 52–56 (1969), DOI `10.1016/0029-554X(69)90179-7`.
+
+There is also older information/detection work for dead-time-perturbed Poisson counters, including Teich and Cantor, *Information, error, and imaging in deadtime-perturbed doubly stochastic Poisson counting systems*, IEEE Journal of Quantum Electronics, DOI `10.1109/JQE.1978.1069731`.
+
+**Novelty consequence:** Paper 2 cannot claim that Fisher information with dead time, Markov detector memory, high-flux SPAD modeling, or live-time corrections are themselves new.
 
 The candidate distinction is a detector-model-independent theorem that **every autonomous channel driven by the same weak Poisson waveform tangent admits a complete source-normalized Fisher multiplier**, with exact pointwise ordering and data processing.
 
@@ -78,7 +89,7 @@ The candidate distinction is a detector-model-independent theorem that **every a
 
 ## 4. What appears potentially new
 
-The following combination was not located in the first-pass search:
+The following combination has not yet been located in the audit:
 
 1. arbitrary parameter-independent stochastic detector channel from full incident photon trajectory to full detector record;
 2. no independent-event, low-flux, dead-time form, finite-state form, or particular detector architecture assumed;
@@ -89,9 +100,10 @@ The following combination was not located in the first-pass search:
 7. `0 <= G_Phi0(omega) <= 1` a.e.;
 8. pointwise `G_A >= G_B` iff universal local weak-waveform Fisher dominance at that operating flux;
 9. arbitrary autonomous record coarse-graining gives **pointwise frequency-by-frequency** data processing;
-10. Paper 1's marked-delay formula is recovered as an exact soluble special case.
+10. Paper 1's marked-delay formula is recovered as an exact soluble special case;
+11. multimode source tangents produce a positive matrix-valued spectral multiplier rather than requiring architecture-specific derivations.
 
-The high-level message would be:
+The high-level candidate message is:
 
 > **spectral completeness is symmetry-driven, not independent-event-driven.**
 
@@ -119,6 +131,7 @@ Do **not** claim:
 - first translation-invariant spectral representation;
 - first FI analysis of detector dead time;
 - first high-flux photodetection information theory;
+- novelty of live-time / activation-fraction Fisher penalties for nonparalyzable dead time;
 - generic Blackwell dominance;
 - a theorem for nonclassical optical states;
 - a theorem for arbitrary coherent/phase-sensitive measurements;
@@ -137,14 +150,15 @@ Before publication-level novelty can be asserted, search specifically for:
 5. point-process LAN/DQM under thinning, dead time, and nonlinear observation channels;
 6. system-identification literature where Fisher information operators are diagonalized by temporal stationarity;
 7. neural/spike-train information transfer using Fisher kernels or coherence;
-8. quantum continuous-measurement analogues that may already formulate an operator-level local information spectrum.
+8. quantum continuous-measurement analogues that may already formulate an operator-level local information spectrum;
+9. paralyzable/Type-II dead-time FI or LAN beyond rate-only estimation.
 
 ---
 
 ## 8. Current verdict
 
-**Promising enough to proceed.**
+**Promising enough to proceed, but the novelty bar has become clearer and higher.**
 
-The general score-projection operator is not the breakthrough. The research value rests on whether the symmetry theorem yields a genuinely new architecture-independent photodetection result and whether we can extract nontrivial consequences beyond restating standard `L^2` multiplier theory.
+The general score-projection operator is not the breakthrough. The nonparalyzable live-fraction result is also not sufficient because of close 2026 prior art. The research value rests on whether the symmetry theorem yields a genuinely new architecture-independent photodetection result and whether hidden-state/paralyzable examples produce new frequency-domain consequences beyond activation-frequency weighting.
 
-The next decisive work package should therefore be an explicit **history-dependent detector example**—preferably a nonparalyzable dead-time or finite-state recovery model—to calculate or bound `G_Phi0(omega)` and demonstrate behavior impossible in Paper 1's flux-independent delay-kernel class.
+The next decisive work package is therefore **paralyzable or otherwise hidden detector state**, where the detector's instantaneous live state is not reconstructible from the accessible output trajectory.
