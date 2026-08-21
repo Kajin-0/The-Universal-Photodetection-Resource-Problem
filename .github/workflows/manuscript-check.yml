@@ -7,6 +7,12 @@ on:
     paths:
       - 'manuscript/**'
       - '.github/workflows/manuscript-check.yml'
+  pull_request:
+    branches:
+      - agent/uprp-core-theorem-round10
+    paths:
+      - 'manuscript/**'
+      - '.github/workflows/manuscript-check.yml'
   workflow_dispatch:
 
 permissions:
@@ -41,6 +47,7 @@ jobs:
             manuscript/section_operational_bandwidth_rev7.tex
 
       - name: Persist verified Rev7 source and run marker
+        if: github.event_name == 'push'
         run: |
           printf 'REV7_BUILD_VERIFIED\nrun_id=%s\ntrigger_sha=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" > manuscript/REV7_BUILD_OK.txt
           git config user.name "github-actions[bot]"
