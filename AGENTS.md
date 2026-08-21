@@ -13,163 +13,275 @@ Active branch:
 ## Read first
 
 1. `docs/CURRENT_RESEARCH_STATE.md`
-2. `notes/RESEARCH_LOG_ROUND17.md`
-3. `submission/PRAPPLIED_PACKAGE_VALIDATION_REV8.md`
-4. `notes/REV8_SURGICAL_REVIEW_REPAIRS.md`
-5. `manuscript/apply_rev8_referee_surgical.py`
-6. `manuscript/REV8_SHA256SUMS.txt`
-7. `manuscript/event_resource_theorem_rev7.tex` — frozen Rev8 input / Rev7 predecessor
-8. `notes/RESEARCH_LOG_ROUND16.md`
-9. `notes/WP36_COMPLETE_WEAK_WAVEFORM_FISHER_OPERATOR.md`
-10. `notes/WP36A_BAND_SUBSPACE_FISHER_GUARANTEE.md`
-11. `docs/MANUSCRIPT_REV6_REFEREE_REPAIR_AUDIT.md`
-12. `notes/WP35_MARK_CONDITIONED_MARKOV_RATE_CORRECTION.md`
-13. `notes/WP34_MINIMUM_TIMING_RESOURCE_COST_THEOREM.md`
-14. `notes/WP33_EXACT_FIXED_MEAN_VARIANCE_JITTER_NO_GO.md`
-15. `notes/WP32_GENERAL_MARKED_POISSON_EVENT_KERNEL_THEOREM.md`
-16. `docs/NOVELTY_AUDIT_ROUND5_EVENT_THEOREM_STACK.md`
+2. `notes/RESEARCH_LOG_ROUND18_TRANSLATIONAL_GROUNDING.md`
+3. `submission/PRAPPLIED_PACKAGE_VALIDATION_REV9.md`
+4. `submission/SUBMISSION_PACKAGE_CHECKLIST_REV9.md`
+5. `manuscript/section_practical_grounding_rev9.tex`
+6. `manuscript/apply_rev9_grounding.py`
+7. `manuscript/REV9_SHA256SUMS.txt`
+8. `notes/RESEARCH_LOG_ROUND17.md`
+9. `notes/RESEARCH_LOG_ROUND16.md`
+10. `notes/WP36_COMPLETE_WEAK_WAVEFORM_FISHER_OPERATOR.md`
+11. `notes/WP36A_BAND_SUBSPACE_FISHER_GUARANTEE.md`
+12. `docs/MANUSCRIPT_REV6_REFEREE_REPAIR_AUDIT.md`
 
 ---
 
-# Current publication state — Rev8
+# Current publication state — Rev9
 
-**Rev8 is the current first-paper submission candidate.**
+**Rev9 is the preferred first-paper submission candidate.**
 
-Rev8 is deliberately a reproducible derived source rather than a broad new science round:
+The version chain is deliberately reproducible:
 
-- frozen input: `manuscript/event_resource_theorem_rev7.tex`;
-- frozen Appendix input: `manuscript/appendix_rare_fast_counterexample_rev7.tex`;
-- assertion-based transform: `manuscript/apply_rev8_referee_surgical.py`;
-- expected generated hashes: `manuscript/REV8_SHA256SUMS.txt`.
+1. frozen theorem source: `manuscript/event_resource_theorem_rev7.tex`;
+2. Rev8 hostile-review repair: `manuscript/apply_rev8_referee_surgical.py`;
+3. Rev9 translational grounding: `manuscript/apply_rev9_grounding.py`;
+4. expected generated-source hashes: `manuscript/REV8_SHA256SUMS.txt` and `manuscript/REV9_SHA256SUMS.txt`.
 
-Expected generated-source SHA-256 values:
+Rev9 does **not** broaden the theorem class. It keeps the Rev8 theorem stack intact and adds operational translation for detector physicists.
 
-- `event_resource_theorem_rev8.tex`: `07068067744c8cff464931739505e49850c97d68a9c5b9fa63324c6251711a09`
-- `appendix_rare_fast_counterexample_rev8.tex`: `f9afbdf7e0fd6cc1b57a3a4e00197148e907fc9ed7691a7f9dd42106e16ba665`
+Canonical generated Rev9 hashes:
 
-Independent local manuscript verification:
+- `event_resource_theorem_rev9.tex`: `79d0da661ba394b6064a73103cce4db157f634d2d4b5d47a674c7cd1552af6fc`;
+- `section_practical_grounding_rev9.tex`: `b4702642705b01ef811e95f5a3d2d0686bb951122c337fd438d0b53fa0a18c3f`;
+- inherited repaired Appendix: `f9afbdf7e0fd6cc1b57a3a4e00197148e907fc9ed7691a7f9dd42106e16ba665`.
 
-- Rev8 PDF: 25 pages, 364825 bytes;
-- PDF SHA-256: `bb7dba5a12f5b74181968060b0a6776d7847fad69dfb00090c76425d35974f86`;
-- full bibliography/cross-reference compile passed;
-- affected pages visually inspected;
-- only inherited material warning: approximately `2.45667 pt` overfull line involving `timing-concentration`.
+Independent full Rev9 build:
 
-PRApplied submission-copy verification:
+- 30 pages;
+- PDF SHA-256 `2d8c93a98840d303a1f32cc3c67cd4c2c6d46a4010e440317691cae09df1f0cc`;
+- no undefined citations/references;
+- only inherited material overfull warning: approximately `2.45667 pt` around `timing-concentration` in Appendix A;
+- new pages visually inspected.
 
-- 25 pages, 365072 bytes;
-- PDF SHA-256: `60da4f9a3919ffdf64d450b5397755a75109d4fc2a0a374a8132a93931092c37`;
-- package ZIP SHA-256: `9ed6b408a9b27da8c6bc6cbc7f4aea869ec4ebb4e394dc286fbeb6a0c5ad96ca`.
+PRApplied copy:
 
-Temporary PR `#15` was closed unmerged. Temporary validation branches were neutralized to the clean publication head.
+- 30 pages;
+- PDF SHA-256 `5e4c17e7a7e3a8f26172e770b43d9391f88d20e0252cfdc9425e530cbfec9111`;
+- final package ZIP SHA-256 `c612899d536f4653e872f179f8b9fbea61264ed37e3120ac68fb1813ac5b913d`.
 
-Steady-state `.github/workflows/manuscript-check.yml` is read-only. It generates Rev8, checks the exact hashes, compiles it, and uploads the artifact. It does not self-commit or mutate source.
-
----
-
-# Why Rev8 exists
-
-A hostile Rev7 re-review found no blocking error in the principal theorem stack. It requested exactly three surgical repairs.
-
-## 1. Rare-fast Appendix orientation
-
-The main thermodynamic section assumes `f >= r`. Rev7 allowed arbitrary positive rare-fast parameters. Rev8 imposes
-
-`acp >= bqs`.
-
-Using the exact stationary distribution,
-
-`f_R-r_R = R(acp-bqs)/(RD+E) >= 0`
-
-for every `R>0`. Strict `acp>bqs` gives strict forward bias. The rare-fast scaling and counterexample are otherwise unchanged.
-
-## 2. Finite-area timing branch
-
-Rev8 explicitly states that `R_2`, `B_FI`, and the hazard resource belong to the absolutely continuous square-integrable timing branch. Atomic or more singular timing measures are classified first by the Wiener residue theorem and need not possess finite Fisher spectral area.
-
-## 3. Activity convention
-
-Rev8 defines stationary one-way activity as total directed stationary jump traffic,
-
-`A_tot = sum_x pi_x sum_{y != x} W_yx`,
-
-with each directed jump counted once. This removes factor-of-two ambiguity and makes `pi_1 lambda_1 <= A` explicit.
-
-No other theorem or model-class change belongs in Rev8.
+Steady-state CI is read-only. It generates Rev8, verifies Rev8 hashes, generates Rev9, verifies Rev9 hashes, compiles Rev9, and uploads the artifact. It performs no self-commit or source mutation.
 
 ---
 
 # First-paper theorem class
 
-The theorem concerns autonomous/time-translation-invariant, independent-event / low-overlap, one-primary-registration photodetection under weak coherent/Poisson direct-detection intensity modulation, retaining the complete accessible primary-event mark.
+Autonomous/time-translation-invariant, independent-event / low-overlap, one-primary-registration photodetection under weak coherent/Poisson direct-detection intensity modulation, retaining the complete accessible primary-event mark.
 
-Do **not** describe it as a universal all-detector speed limit.
+Do **not** describe this as a universal speed limit for all photodetectors.
 
 Per incident photon,
 
-`K(dm,dτ)=κ(dm) μ_m(dτ)`, with `η=κ(M)<=1`.
+\[
+K(dm,d\tau)=\kappa(dm)\mu_m(d\tau),\qquad \eta=\kappa(\mathsf M)\le1.
+\]
 
-For sinusoidal modulation,
+Exact sinusoidal transfer:
 
-`G(ω)=∫ |H_m(ω)|^2 κ(dm)`.
+\[
+\boxed{G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).}
+\]
 
-For arbitrary finite-dimensional weak temporal perturbations, `G(ω)` is the spectral multiplier of the complete local weak-waveform Fisher operator. Pointwise `G_A >= G_B` is necessary and sufficient for local Fisher dominance over every admitted weak temporal task.
+At exact DC, the absolute incident FI rate is `Phi_0`, not `Phi_0/2`, but normalized transfer remains
 
-At exact DC the input FI rate is `Phi_0`, not `Phi_0/2`, while normalized transfer remains `G(0)=η`.
+\[
+\boxed{G(0)=\eta.}
+\]
+
+Rev9 explicitly warns: do **not** multiply `G(0)` by two. The factor of two matters only when converting normalized transfer to absolute FI rate.
 
 ---
 
-# Resource stack that remains valid
+# Complete weak-waveform operator
 
-## Atomic timing residue
+For admissible finite-dimensional real weak perturbations,
 
-Wiener theory gives the exact asymptotic flat-band residue from atomic delay mass. This is an average theorem; do not claim generic pointwise Fourier decay for singular continuous measures.
+\[
+\boxed{
+[F_{\rm out}]_{ab}
+=\frac{\Phi_0}{2\pi}\int G(\omega)S_a^*(\omega)S_b(\omega)d\omega.
+}
+\]
 
-## Finite-area L2 branch
+Thus `G` is the spectral multiplier of the complete local weak-waveform Fisher operator within the declared model.
 
-For square-integrable conditional delay densities,
+For two detectors,
 
-`R_2 = 2 ∫κ(dm)∫ f_m(t)^2 dt`
+\[
+\boxed{
+G_A(\omega)\ge G_B(\omega)\ \forall\omega
+\iff
+F_A\succeq F_B
+\text{ for every admissible finite weak-waveform task.}
+}
+\]
 
-and
+This is local Fisher ordering, **not** generic Blackwell dominance.
 
-`∫ G(ω)dω = π R_2`.
+For a compact band,
 
-For `η>0`,
+\[
+\boxed{
+\inf_{\operatorname{supp}S\subset[-\Omega,\Omega]}
+\frac{F_{\rm out}}{F_{\rm in}}
+=\min_{|\omega|\le\Omega}G(\omega).
+}
+\]
 
-`B_FI = R_2/(4η)`.
+---
 
-`B_FI` is an equivalent rectangular Fisher-information area bandwidth, not an amplitude or `-3 dB` bandwidth.
+# Timing-resource hierarchy
 
-## Capture-weighted hazard
+Atomic timing residue:
 
-If `h_m(t)<=Λ(m)`,
+\[
+\lim_{\Omega\to\infty}\frac1{2\Omega}\int_{-\Omega}^{\Omega}G(\omega)d\omega
+=\int\kappa(dm)\sum_jp_j(m)^2.
+\]
 
-`H = ∫Λ(m)κ(dm)`, and `R_2 <= H`.
+For square-integrable delay densities,
 
-A common ceiling gives `B_FI <= Λ/4`; a single exponential saturates it.
+\[
+\boxed{
+\mathfrak R_2=2\int\kappa(dm)\int f_m^2dt,
+\qquad
+\int G(\omega)d\omega=\pi\mathfrak R_2.
+}
+\]
 
-## Inverse resource cost
+Capture-weighted hazard resource:
 
-For ordinary-frequency half-band `B` and required absolute retention `q`,
+\[
+\boxed{
+\mathfrak H=\int\Lambda(m)\kappa(dm),
+\qquad
+\mathfrak R_2\le\mathfrak H.
+}
+\]
 
-`q<=η`, `R_2>=4Bq`, `H>=4Bq`.
+Equivalent Fisher bandwidth:
 
-The same coefficient is necessary for guaranteeing `G(ω)>=q` throughout the whole band.
+\[
+\boxed{
+B_{\rm FI}=\frac{\mathfrak R_2}{4\eta}
+\le\frac{\mathfrak H}{4\eta}.
+}
+\]
 
-## Conventional-jitter no-go
+A common hazard ceiling gives `B_FI <= Lambda/4`.
 
-Exact mean delay plus exact variance/RMS jitter do not determine finite information bandwidth. No fixed-FWHM counterexample is claimed.
+Minimum resource cost over ordinary-frequency half-band `B`:
 
-## Finite-state CTMC completion
+\[
+\boxed{
+\mathfrak R_2\ge4Bq,
+\qquad
+\mathfrak H\ge4Bq.
+}
+\]
 
-The successful-registration edge rate alone is insufficient with competing exits. The sufficient local ceiling is based on total pre-registration exit rate `q_max`.
+---
 
-## Thermodynamic bridge
+# Rev9 translational grounding — important formulas
 
-Use **bidirectionally connected**, not `reversible`, for the nonequilibrium CTMC network. Apply stationary thermodynamic bounds to the event theorem only through the explicit isolated-event / low-overlap reduction. If capture/recovery is history dependent, the independent-event thermodynamic information bound is not claimed.
+For a **single unresolved mark**,
 
-The absolute microscopic reverse optical rate remains an independent temporal resource; aggregate stationary thermodynamic budgets alone do not determine the local timing scale.
+\[
+\boxed{B_{\rm FI}=\frac12\int f(t)^2dt.}
+\]
+
+Canonical examples:
+
+- Gaussian timing-error idealization: `B_FI = 1/(4 sqrt(pi) sigma)`;
+- exponential wait: `B_FI=Lambda/4`, `f_3dB=Lambda/(2 pi)`, hence `B_FI/f_3dB=pi/2`;
+- uniform delay on `[0,T]`: `G/eta=sinc^2(omega T/2)`, `B_FI=1/(2T)`;
+- Gaussian timing error convolved with exponential wait:
+  `B_FI=(Lambda/4) exp(Lambda^2 sigma^2) erfc(Lambda sigma)`.
+
+## Histogram estimator
+
+For equal bins `Delta t` and conditional-on-capture bin probabilities `p_i`,
+
+\[
+\boxed{
+B_{\rm FI}^{(\Delta t)}=\frac{1}{2\Delta t}\sum_i p_i^2.
+}
+\]
+
+For counts `n_i`, `N=sum_i n_i`, the unbiased finite-count estimator of the **binned** quantity is
+
+\[
+\boxed{
+\widehat B_{\rm FI,U}^{(\Delta t)}
+=\frac{1}{2\Delta t}\frac{\sum_i n_i(n_i-1)}{N(N-1)}.
+}
+\]
+
+Finite binning obeys
+
+\[
+\boxed{B_{\rm FI}^{(\Delta t)}\le B_{\rm FI}.}
+\]
+
+## Finite support — do not reverse this inequality
+
+If normalized `f` is supported on an interval of length `T`,
+
+\[
+\boxed{B_{\rm FI}\ge\frac1{2T}.}
+\]
+
+Finite support alone gives **no upper bound** on `B_FI`. An independent density ceiling `||f||_infty <= M` gives `B_FI <= M/2`.
+
+## Mark gradient
+
+Discarding a fine mark can only reduce transfer:
+
+\[
+G_{\rm no\ mark}\le G_{\rm fine}.
+\]
+
+If an accessible primary-event mark exactly identifies the realized latency, then `G=eta` at all frequency. A downstream TDC does **not** create missing pre-registration information merely by digitizing the same delayed event more finely.
+
+## Preamplifier / cascade caveat
+
+The product law applies to independent unresolved **stochastic delay stages**:
+
+\[
+G_{\rm total}=G_{\rm det}|H_a|^2.
+\]
+
+Do **not** multiply by a deterministic TIA transfer function merely because it has an RC pole. A known noiseless invertible filter does not itself reduce FI. Information loss requires downstream noise, finite sampling/bandwidth, saturation, thresholding, noninvertibility, unresolved stochastic latency, or another explicit observation limitation.
+
+---
+
+# Rev8 thermodynamic repair remains mandatory
+
+Appendix A must keep
+
+\[
+\boxed{acp\ge bqs}
+\]
+
+so that for every `R>0`,
+
+\[
+f_R-r_R=\frac{R(acp-bqs)}{RD+E}\ge0.
+\]
+
+The stationary one-way activity convention is total directed stationary jump traffic.
+
+The rare-fast construction is interpreted in Rev9 as a hidden fast local mode with `lambda_1 ~ R` but occupation `~1/R`, so time-averaged activity can remain finite while the conditional transient rate diverges.
+
+---
+
+# Conventional-jitter / clock / thermodynamic no-gos
+
+- exact mean delay and exact RMS jitter do not bound finite temporal information bandwidth;
+- no fixed-FWHM theorem is claimed;
+- a free source-synchronous clock is an independent resource and can defeat detector-only timing bounds;
+- stationary aggregate activity/EPR/throughput alone do not set the temporal scale without an absolute microscopic rate;
+- high-flux/history-dependent capture lies outside the independent-event kernel.
 
 ---
 
@@ -178,35 +290,30 @@ The absolute microscopic reverse optical rate remains an independent temporal re
 Do not claim:
 
 - first information-theoretic detector timing analysis;
-- first IRF-information result;
-- first sensitivity-bandwidth tradeoff;
-- generic finite-frequency response/noise novelty;
-- generic Fisher-information transfer-function novelty;
-- Blackwell ordering;
+- first IRF information-loss result;
+- first generic FI transfer function;
+- generic Blackwell dominance;
 - arbitrary fixed-FWHM no-go;
-- universal all-detector speed limit.
+- universal all-detector speed limit;
+- deterministic TIA bandwidth as an automatic FI-loss factor.
 
 Defensible contribution:
 
-> A temporal-information resource theory for autonomous marked photodetection event channels in which the exact marked-delay spectrum is the complete local weak-waveform Fisher multiplier; pointwise spectral ordering is necessary and sufficient for universal local weak-waveform Fisher dominance; atomic timing, collision concentration, and capture-weighted hazard provide a branched resource hierarchy; exact Fisher-equivalent bandwidth and inverse band-resource costs make that hierarchy operational; and explicit no-go/repair results show why low-order jitter metrics, free synchronous control, and aggregate stationary thermodynamics are incomplete resources.
-
-Novelty is strongest in the combined theorem stack.
+> A temporal-information resource theory for autonomous marked photodetection event channels in which the exact marked-delay spectrum is the complete local weak-waveform Fisher multiplier; pointwise spectral ordering completely characterizes local weak-waveform Fisher dominance; collision and hazard resources yield exact/inverse bandwidth laws; and the framework is now directly computable from canonical timing laws or existing digitized IRF histograms while explicit no-go results delimit what ordinary timing, clock, thermodynamic, support, and readout summaries can actually imply.
 
 ---
 
 # Immediate next action
 
-**Do not continue foundational expansion of the first paper unless a new concrete defect is found.**
+**Stop adding first-paper theory or “grounding” by default.**
 
-The remaining submission blockers are factual/administrative:
+The remaining submission blockers are factual/personal:
 
 - author name/order;
 - affiliation;
 - corresponding-author email;
 - ORCID;
-- truthful substantive-AI disclosure describing how the human author verified AI-assisted derivations, citations, and manuscript claims;
-- applicable funding, conflict, and prior-submission declarations.
+- truthful substantive-AI disclosure describing the human verification process;
+- applicable funding/conflict/prior-submission declarations.
 
-Physical Review Applied remains the primary target; PR Research is the principal APS fallback.
-
-Potential QFI/capacity/high-flux-memory/general detector extensions belong to a second-paper program.
+Do not submit until those are supplied. Reopen the scientific manuscript only for a new concrete defect.
