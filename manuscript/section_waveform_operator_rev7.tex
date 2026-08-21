@@ -9,11 +9,11 @@ Let
 =\Phi_0\left[1+\sum_{a=1}^{p}\theta_a s_a(t)\right],
 \label{eq:waveformSource}
 \end{equation}
-where the real perturbation modes satisfy $s_a\in L^2(\mathbb R)\cap L^\infty(\mathbb R)$ and $\boldsymbol\theta$ is restricted to a sufficiently small neighborhood of zero so that the intensity remains nonnegative. Define
+where the real perturbation modes satisfy $s_a\in L^2(\mathbb R)\cap L^\infty(\mathbb R)$ and $\boldsymbol\theta$ is restricted to a sufficiently small neighborhood of zero so that the intensity remains nonnegative. Let $S_a=\mathcal F s_a$ denote the Plancherel $L^2$ Fourier transform, with the convention
 \begin{equation}
-S_a(\omega)=\int_{-\infty}^{\infty}e^{-i\omega t}s_a(t)dt.
+(\mathcal F s)(\omega)=\int_{-\infty}^{\infty}e^{-i\omega t}s(t)dt
 \end{equation}
-At $\boldsymbol\theta=0$, the incident Poisson Fisher matrix is
+when $s\in L^1\cap L^2$. At $\boldsymbol\theta=0$, the incident Poisson Fisher matrix is
 \begin{equation}
 [F_{\rm in}]_{ab}
 =\Phi_0\int s_a(t)s_b(t)dt
@@ -27,7 +27,7 @@ For mark $m$, define the delayed perturbation
 g_{a,m}(t)
 =\int s_a(t-\tau)\mu_m(d\tau).
 \end{equation}
-The marked output intensity measure is
+Convolution with the probability measure $\mu_m$ is a contraction on $L^2$ and $L^\infty$, so $g_{a,m}$ is again bounded and square-integrable. The marked output intensity measure is
 \begin{equation}
 \lambda_{\boldsymbol\theta}(t,dm)
 =\Phi_0\left[1+\sum_a\theta_a g_{a,m}(t)\right]\kappa(dm).
@@ -62,11 +62,11 @@ The Poisson Fisher matrix therefore gives
 =\Phi_0\int_{\M}\kappa(dm)
 \int g_{a,m}(t)g_{b,m}(t)dt.
 \end{equation}
-Because
+In the Plancherel sense,
 \begin{equation}
-\widehat g_{a,m}(\omega)=S_a(\omega)H_m(\omega),
+\widehat g_{a,m}(\omega)=S_a(\omega)H_m(\omega).
 \end{equation}
-Parseval's identity yields
+Parseval's identity then yields
 \begin{align}
 [F_{\rm out}]_{ab}
 &=\frac{\Phi_0}{2\pi}
@@ -80,20 +80,36 @@ The matrix data-processing statement is the usual Fisher-information monotonicit
 
 The long-observation sinusoidal theorem is recovered from Eq.~\eqref{eq:waveformFI} as the long-window limit of square-integrable windowed sinusoids. In the translation-invariant limit, temporal Fourier modes diagonalize the local Fisher operator with multiplier $G(\omega)$. The source choice in Eq.~\eqref{eq:source} is therefore a spectral probe rather than a uniquely privileged waveform.
 
-\begin{theorem}[Complete detector ordering]
+\begin{lemma}[Regularity of the transfer spectrum]
+The transfer spectrum is real, bounded, even, and continuous:
+\begin{equation}
+0\le G(\omega)\le\eta,
+\qquad
+G(-\omega)=G(\omega),
+\qquad
+G\in C(\mathbb R).
+\label{eq:Gregularity}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For every mark, $H_m$ is the characteristic function of a probability measure and is therefore continuous, satisfies $H_m(-\omega)=H_m(\omega)^*$, and obeys $|H_m|\le1$. Hence $|H_m|^2$ is continuous and even. Because $\kappa$ is finite and the integrand is bounded by one, dominated convergence passes continuity through the $\kappa$ integral in Eq.~\eqref{eq:G}; the remaining statements follow directly.
+\end{proof}
+
+\begin{theorem}[Universal weak-waveform Fisher ordering]
+\label{thm:ordering}
 Consider two detectors $A$ and $B$ in the same theorem class, with transfer spectra $G_A$ and $G_B$. The following are equivalent:
 \begin{enumerate}
-\item $G_A(\omega)\ge G_B(\omega)$ for almost every $\omega$;
+\item $G_A(\omega)\ge G_B(\omega)$ for every $\omega\in\mathbb R$;
 \item for every finite collection of admissible weak temporal perturbations $\{s_a\}$, the corresponding ideal primary-record Fisher matrices obey
 \begin{equation}
 F_A\succeq F_B.
 \end{equation}
 \end{enumerate}
-\label{thm:ordering}
 \end{theorem}
 
 \begin{proof}
-If $G_A\ge G_B$ almost everywhere, then for any real coefficient vector $c$, with $S_c=\sum_a c_aS_a$,
+If $G_A\ge G_B$ pointwise, then for any real coefficient vector $c$, with $S_c=\sum_a c_aS_a$,
 \begin{equation}
 c^T(F_A-F_B)c
 =\frac{\Phi_0}{2\pi}
@@ -102,15 +118,15 @@ c^T(F_A-F_B)c
 \end{equation}
 Hence $F_A-F_B$ is positive semidefinite for every perturbation family.
 
-Conversely, suppose $G_A<G_B$ on a set of nonzero measure. Since $G_A-G_B$ is bounded, measurable, and even, there exist $\delta>0$ and a symmetric measurable set $E$ with $0<|E|<\infty$ on which $G_A-G_B\le-\delta$. Choose a nonzero real even $S\in L^2$ supported in $E$; for example, the indicator of a finite-measure symmetric subset of $E$. Then $S\in L^1$ as well, so its inverse Fourier transform $s$ is real, bounded, and square-integrable. Thus $s$ is admissible and
+Conversely, suppose the pointwise ordering fails at some $\omega_0$. By Lemma~1, $G_A-G_B$ is continuous and even, so there exist $\delta>0$ and a symmetric measurable set $E$ with $0<|E|<\infty$ on which $G_A-G_B\le-\delta$. Choose a nonzero real even $S\in L^2$ supported in $E$; for example, the indicator of a finite-measure symmetric subset of $E$. Then $S\in L^1$ as well, so its inverse Fourier transform $s$ is real, bounded, and square-integrable. Thus $s$ is admissible and
 \begin{equation}
 \int [G_A-G_B]|S|^2d\omega
 \le-\delta\int_E|S|^2d\omega<0.
 \end{equation}
-Equation~\eqref{eq:waveformFI} therefore gives $F_A<F_B$ for this scalar perturbation, contradicting universal Fisher dominance. Thus $G_A\ge G_B$ almost everywhere.
+Equation~\eqref{eq:waveformFI} therefore gives $F_A<F_B$ for this scalar perturbation, contradicting universal Fisher dominance. Thus the pointwise ordering must hold everywhere.
 \end{proof}
 
-Theorem~\ref{thm:ordering} gives an operational interpretation of the entire spectrum. If two detectors have the same $G$ almost everywhere, they are Fisher-equivalent for every admissible weak temporal waveform task in this model even if their microscopic mechanisms or latency decompositions differ. If their spectra cross, there is no task-independent ranking: each is superior for some weak temporal perturbations.
+Theorem~\ref{thm:ordering} gives an operational interpretation of the entire spectrum. If two detectors have the same $G$ everywhere, they are Fisher-equivalent for every admissible weak temporal waveform task in this model even if their microscopic mechanisms or latency decompositions differ. If their spectra cross, there is no task-independent Fisher ranking: each is superior for some weak temporal perturbations.
 
 \begin{corollary}[Exact band-subspace guarantee]
 Let $E$ be a symmetric measurable frequency set of positive measure. For a nonzero scalar perturbation $s$ with Fourier transform $S$ supported in $E$, define its source-normalized Fisher retention
@@ -137,10 +153,20 @@ Moreover, the infimum and supremum of $\rho_G[s]$ over admissible nonzero pertur
 Equation~\eqref{eq:RayleighG} is the Rayleigh quotient of the multiplication operator by $G$. The inequalities follow immediately because $|S|^2/\int|S|^2$ is a probability density on frequency. Let $g_-$ and $g_+$ denote the essential infimum and supremum on $E$. For every $\varepsilon>0$, the sets where $G<g_-+\varepsilon$ and $G>g_+-\varepsilon$ have positive measure. Intersect either set with a sufficiently large symmetric finite interval and symmetrize it; because $G$ is even, this produces a symmetric finite-measure subset of positive measure. Taking $S$ to be the real even indicator of that subset gives $S\in L^1\cap L^2$, so its inverse Fourier transform is real, bounded, and square-integrable. The resulting Rayleigh quotient lies within $\varepsilon$ of the corresponding essential bound. Letting $\varepsilon\downarrow0$ proves sharpness.
 \end{proof}
 
-Therefore preserving at least an absolute Fisher fraction $q$ for \emph{every} admissible weak waveform whose spectrum lies in $|\omega|\le\Omega$ is equivalent to
+For the compact symmetric band $E=[-\Omega,\Omega]$, continuity strengthens the essential bounds to ordinary extrema:
 \begin{equation}
+\boxed{
+\inf_{\substack{s\ne0\\ \operatorname{supp}S\subset[-\Omega,\Omega]}}
+\rho_G[s]
+=
+\min_{|\omega|\le\Omega}G(\omega).}
+\label{eq:bandMinimum}
+\end{equation}
+Therefore preserving at least an absolute Fisher fraction $q$ for \emph{every} admissible weak waveform whose spectrum lies in $|\omega|\le\Omega$ is equivalent to the pointwise condition
+\begin{equation}
+\boxed{
 G(\omega)\ge q
-\quad\text{for almost every }|\omega|\le\Omega.
+\qquad\text{for every }|\omega|\le\Omega.}
 \label{eq:universalBandCondition}
 \end{equation}
 The resource cost of this universal band-subspace guarantee is derived after introducing the integrated timing spectrum below.
