@@ -1,0 +1,55 @@
+\begin{figure}[t]
+\centering
+\begin{minipage}[t]{0.61\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=\linewidth,
+  height=0.67\linewidth,
+  ybar,
+  bar width=6pt,
+  symbolic x coords={qtr,half,one,threehalf,sevenqtr},
+  xtick=data,
+  xticklabels={$1/4$,$1/2$,$1$,$3/2$,$7/4$},
+  xlabel={$T$},
+  ylabel={probability mass},
+  ymin=0,ymax=0.64,
+  ytick={0,0.2,0.4,0.6},
+  legend style={draw=none,fill=none,at={(0.5,0.98)},anchor=north,font=\scriptsize,legend columns=2},
+  tick align=outside,
+]
+\addplot[draw=black,fill=black!18] coordinates {(qtr,0) (half,0.5) (one,0) (threehalf,0.5) (sevenqtr,0)};
+\addlegendentry{Law A}
+\addplot[draw=black,fill=white,postaction={pattern=north east lines}] coordinates {(qtr,0.2222222222) (half,0) (one,0.5555555556) (threehalf,0) (sevenqtr,0.2222222222)};
+\addlegendentry{Law B}
+\node[anchor=north,font=\scriptsize,align=center] at (axis cs:one,0.18) {both: $\E[T]=1$\\$\mathrm{Var}(T)=1/4$};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.35\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=\linewidth,
+  height=1.15\linewidth,
+  ybar,
+  bar width=13pt,
+  symbolic x coords={A,B},
+  xtick=data,
+  ymin=0,ymax=0.0052,
+  ylabel={normalized FI of $Z$},
+  xlabel={$Z=\mathbf 1\{D\le2/5\}$},
+  ytick={0,0.001,0.002,0.003,0.004,0.005},
+  scaled y ticks=false,
+  y tick label style={/pgf/number format/fixed,/pgf/number format/precision=3,font=\scriptsize},
+  nodes near coords,
+  nodes near coords style={font=\scriptsize,/pgf/number format/fixed,/pgf/number format/precision=5},
+  tick align=outside,
+]
+\addplot[fill=white,draw=black,thick] coordinates {(A,0) (B,0.00443520488427)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\caption{Exact mean--variance matched resource counterexample. Left: laws A and B have identical recovery mean $1$ and variance $1/4$, and therefore the same full conventional curve $r(\lambda)=\lambda e^{-\lambda}$. Right: the same observed-interval coarse graining $Z=\mathbf1\{D\le2/5\}$ has zero Fisher information for law A but strictly positive normalized Fisher information for law B at $\lambda=1$. Thus mean, variance, and the complete mean saturation curve do not determine the timestamp information experiment.}
+\label{fig:varianceNoGo}
+\end{figure}
