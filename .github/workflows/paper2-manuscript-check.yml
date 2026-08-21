@@ -38,31 +38,36 @@ jobs:
         working-directory: paper2/manuscript
         run: python apply_rev6_prior_art_positioning.py
 
-      - name: Compile Paper 2 Rev6
+      - name: Generate Paper 2 Rev7 applied-readability revision
+        working-directory: paper2/manuscript
+        run: python apply_rev7_applied_readability.py
+
+      - name: Compile Paper 2 Rev7
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: fisher_spectra_memory_photodetectors_rev6.tex
+          root_file: fisher_spectra_memory_photodetectors_rev7.tex
           working_directory: paper2/manuscript
           latexmk_use_xelatex: false
 
       - name: Check for unresolved references, citations, or box overflow
         working-directory: paper2/manuscript
         run: |
-          if grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|Package natbib Warning:.*undefined" fisher_spectra_memory_photodetectors_rev6.log; then
+          if grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|Package natbib Warning:.*undefined" fisher_spectra_memory_photodetectors_rev7.log; then
             echo "Unresolved LaTeX references/citations detected"
             exit 1
           fi
-          if grep -E "Overfull \\hbox|Overfull \\vbox" fisher_spectra_memory_photodetectors_rev6.log; then
+          if grep -E "Overfull \\hbox|Overfull \\vbox" fisher_spectra_memory_photodetectors_rev7.log; then
             echo "Overfull LaTeX boxes detected"
             exit 1
           fi
 
-      - name: Upload Paper 2 Rev6 artifact
+      - name: Upload Paper 2 Rev7 artifact
         uses: actions/upload-artifact@v4
         with:
-          name: fisher-spectra-memory-photodetectors-rev6
+          name: fisher-spectra-memory-photodetectors-rev7
           path: |
-            paper2/manuscript/fisher_spectra_memory_photodetectors_rev6.pdf
+            paper2/manuscript/fisher_spectra_memory_photodetectors_rev7.pdf
+            paper2/manuscript/fisher_spectra_memory_photodetectors_rev7.tex
             paper2/manuscript/fisher_spectra_memory_photodetectors_rev6.tex
             paper2/manuscript/fisher_spectra_memory_photodetectors_rev5.tex
             paper2/manuscript/fisher_spectra_memory_photodetectors_rev4.tex
@@ -74,6 +79,7 @@ jobs:
             paper2/manuscript/apply_rev4_figures.py
             paper2/manuscript/apply_rev5_hostile_review.py
             paper2/manuscript/apply_rev6_prior_art_positioning.py
+            paper2/manuscript/apply_rev7_applied_readability.py
             paper2/manuscript/figure1_channel_schematic.tex
             paper2/manuscript/figure2_typeii_spectrum.tex
             paper2/manuscript/figure2_typeii_spectrum_data.csv
