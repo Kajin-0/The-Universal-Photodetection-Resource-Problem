@@ -66,7 +66,7 @@ assert app.count(old) == 1
 app = app.replace(old, new, 1)
 
 assert main.count("eq:activityDef") == 2
-assert app.count(r"acp\ge bqs") == 2
+assert app.count(r"acp\ge bqs") == 1
 assert app.count(r"f_R\ge r_R") == 1
 
 Path("event_resource_theorem_rev8.tex").write_text(main, encoding="utf-8")
