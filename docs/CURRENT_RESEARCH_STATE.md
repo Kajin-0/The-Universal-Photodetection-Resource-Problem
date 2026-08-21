@@ -4,113 +4,274 @@
 
 Active branch: `agent/uprp-core-theorem-round10`
 
-## Immediate status
+## Project-level status
 
-The first-paper scientific phase is **closed by default**.
+The repository now has two clearly separated publication tracks:
+
+1. **Paper 1 / Rev11:** scientifically frozen and technically validated for Physical Review Applied; only factual/personal submission metadata remain.
+2. **Paper 2:** active theoretical research program on arbitrary autonomous detector channels, high-flux hidden memory, Type-II recovery identifiability, and information-spectral resource structure.
+
+The active scientific frontier is Paper 2. New agents must not infer the current research state from the Paper-1 submission files alone.
+
+## Read first
+
+### Project routing
+
+1. `AGENTS.md`
+2. `paper2/AGENTS_PAPER2.md`
+3. `paper2/notes/RESEARCH_LOG_ROUND03_WP13_WP20_CHECKPOINT.md`
+
+### Current Paper-2 theorem/proof state
+
+4. `paper2/notes/WP20_CESARO_VISIBLE_EVENT_RESIDUE.md`
+5. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
+6. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
+7. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
+8. `paper2/notes/WP16_HOSTILE_RANDOM_TYPEII_PRIOR_ART_AUDIT.md`
+9. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
+
+### Paper-1 submission state
+
+10. `notes/RESEARCH_LOG_ROUND21_ENBW_POSITIONING.md`
+11. `submission/PRAPPLIED_PACKAGE_VALIDATION_REV11.md`
+12. `submission/SUBMISSION_PACKAGE_CHECKLIST_REV11.md`
+
+---
+
+# Paper 1 — frozen Rev11
 
 Current preferred submission candidate: **Rev11**.
 
-Rev11 preserves the complete Rev10 theorem stack and worked published-IRF demonstration. It adds the final literature/positioning correction that the single-unresolved-mark Fisher-equivalent bandwidth is mathematically the conventional one-sided equivalent noise bandwidth (ENBW) of the normalized timing transfer function. No theorem, proof, resource inequality, or Spinelli worked-example number changed.
+The first-paper theorem class remains autonomous/time-translation-invariant, independent-event/low-overlap, one-primary-registration photodetection under weak coherent/Poisson direct-detection intensity modulation with complete accessible primary-event marks.
 
-Read first:
+Core exact transfer:
 
-1. `AGENTS.md`
-2. `notes/RESEARCH_LOG_ROUND21_ENBW_POSITIONING.md`
-3. `submission/PRAPPLIED_PACKAGE_VALIDATION_REV11.md`
-4. `submission/SUBMISSION_PACKAGE_CHECKLIST_REV11.md`
-5. `manuscript/apply_rev11_enbw_positioning.py`
-6. `manuscript/REV11_SHA256SUMS.txt`
+`G(omega)=int |H_m(omega)|^2 kappa(dm)`.
 
-## Reproducible source chain
+Complete local weak-waveform Fisher operator:
 
-1. Rev7 frozen theorem source -> Rev8 via `apply_rev8_referee_surgical.py`.
-2. Rev8 -> Rev9 via `apply_rev9_grounding.py`.
-3. Rev9 -> Rev10 via `apply_rev10_literature_example.py`.
-4. Rev10 -> Rev11 via `apply_rev11_enbw_positioning.py`.
+`[F_out]_{ab}=Phi0/(2*pi) int G(omega)S_a*(omega)S_b(omega)domega`.
 
-Expected hashes are pinned in `REV8_SHA256SUMS.txt` through `REV11_SHA256SUMS.txt`.
+For square-integrable timing densities:
 
-## Rev11 ENBW positioning
+`B_FI=R2/(4 eta)<=H/(4 eta)`.
 
-For one unresolved mark,
+For one unresolved mark:
 
-`G(ω)=η|H(ω)|²`, `H(0)=1`, hence
+`B_FI=int_0^infty |H(2*pi*f)|^2 df=B_ENBW`.
 
-`B_FI = ∫_0^∞ |H(2πf)|² df = B_ENBW`.
+The conventional ENBW identity and first-order `pi/2` ratio are explicitly acknowledged as prior art.
 
-Rev11 explicitly acknowledges that this scalar integral and the first-order `π/2` ratio are conventional ENBW results. Standard reference added: C. D. Motchenbacher and J. A. Connelly, *Low-Noise Electronic System Design* (Wiley, 1993), ISBN 9780471577423.
-
-The distinct contribution remains the event-registration/Fisher interpretation, retained-mark transfer `G=∫|H_m|²κ(dm)`, collision-resource identity, microscopic hazard bounds, complete weak-waveform Fisher ordering, inverse resource costs, no-go results, and direct detector/histogram applications.
-
-Rev11 also adds a multinomial plug-in bootstrap prescription for finite-count uncertainty of the binned pair-collision estimator, explicitly excluding systematic instrument/deconvolution uncertainty.
-
-## Rev10 worked detector result retained
-
-Spinelli et al., IEEE JQE 34, 817–821 (1998), DOI `10.1109/3.668769`:
-
-- DJ-SPAD: FWHM `35 ps`, Gaussian-from-FWHM `9.49 GHz`, figure-digitized `B_FI=9.160 GHz`;
-- MCP: FWHM `25 ps`, Gaussian-from-FWHM `13.29 GHz`, figure-digitized `B_FI=5.977 GHz`;
-- ranking reversal: `B_FI(DJ)/B_FI(MCP)=1.533`.
-
-This is explicitly approximate figure digitization, not raw-TCSPC reanalysis.
-
-## Validation
+### Validation
 
 Canonical Rev11:
 
 - 33 pages;
-- generated source SHA-256 `fe966f4ab3fa067bb94d200ed09605a1ed3a2cdef9b4488fd0d18a55e95ccb6e`;
-- practical-section SHA-256 `ae596eb3866fb0d4d628cb0b527e281d802badc6262e68d3618366bb49903ce3`;
-- PDF SHA-256 `9eedbf562ed5fa70b78a8c1c63627e1c578f149074f7f25f3fd3988c8668ecef`;
-- no undefined citations/references;
-- only inherited ~2.45667 pt `timing-concentration` Appendix overfull warning;
-- affected pages visually inspected.
+- source SHA-256 `fe966f4ab3fa067bb94d200ed09605a1ed3a2cdef9b4488fd0d18a55e95ccb6e`;
+- PDF SHA-256 `9eedbf562ed5fa70b78a8c1c63627e1c578f149074f7f25f3fd3988c8668ecef`.
 
 PRApplied Rev11:
 
 - 33 pages;
 - PDF SHA-256 `d9e4a3330543106a272d4aa7b26cf6187bbd2f6ef170db4a8927b06edb824db7`;
-- package ZIP SHA-256 `b9f1abff76bbcc7a97ca8b2c3038f1e44e5adbb68f230cdb7d13c02431b6183e`;
-- Data Availability remains truthful for the published-figure analysis;
-- ENBW, estimator, Data Availability/Appendix, and reference pages visually inspected.
+- package ZIP SHA-256 `b9f1abff76bbcc7a97ca8b2c3038f1e44e5adbb68f230cdb7d13c02431b6183e`.
 
-Steady-state CI remains read-only and now generates/hash-checks Rev8, Rev9, Rev10, reproduces the Spinelli calculation, generates/hash-checks Rev11, compiles Rev11, and uploads the artifact.
+Do not add Paper-1 theory, literature, or examples without a concrete defect or referee request.
 
-## Theorem status
+Remaining Paper-1 blockers are factual/personal only: author/order, affiliation, corresponding email, ORCID, truthful AI disclosure, funding/conflict/prior-submission declarations.
 
-No Rev11 theorem changes were made.
+---
 
-The theorem class remains autonomous/time-translation-invariant, independent-event/low-overlap, one-primary-registration photodetection under weak coherent/Poisson direct-detection intensity modulation with complete accessible primary-event marks.
+# Paper 2 — active frontier
 
-Core exact transfer:
+## 1. General autonomous-channel Fisher spectrum — WP10/WP17
 
-`G(ω)=∫|H_m(ω)|² κ(dm)`.
+For homogeneous Poisson baseline flux `Phi0`, the source tangent score is
 
-Complete local weak-waveform Fisher operator:
+`S_u=int u(t)[N(dt)-Phi0 dt]`.
 
-`[F_out]_{ab}=Φ0/(2π)∫G(ω)S_a*(ω)S_b(ω)dω`.
+Any parameter-independent detector channel maps this to
 
-Pointwise ordering of `G` is necessary and sufficient for local Fisher dominance over every admitted finite weak temporal waveform task.
+`S_u^out=E[S_u|Y]`,
 
-For square-integrable timing densities:
+which defines a positive contraction `A_K` on scalar `L2(R)`.
 
-`B_FI=R2/(4η)<=H/(4η)`.
+If the detector is autonomous/time-translation covariant, `A_K` commutes with temporal translations and therefore is a Fourier multiplier:
 
-Inverse resource cost:
+`F_out[u,v]=Phi0/(2*pi) int G_{Phi0,K}(omega)U*(omega)V(omega)domega`,
 
-`R2>=4Bq`, `H>=4Bq`.
+`0<=G<=1` a.e.
 
-## Submission state
+WP17 closes the main formal proof gaps using standard-Borel trajectory spaces, kernel randomization, DQM under statistics, the classical `L2` translation-invariant multiplier theorem, and narrowband wavepacket limits.
 
-Primary target remains **Physical Review Applied — Regular Article**.
+Paper 1 is recovered exactly as the marked-Poisson special case.
 
-Remaining blockers are factual/personal only:
+Current status: proof architecture is strong; novelty/positioning remains under hostile audit.
 
-- author name/order;
-- affiliation(s);
-- corresponding-author email;
-- ORCID;
-- truthful substantive-AI acknowledgment describing human direction and verification;
-- applicable funding/conflict/prior-submission declarations.
+## 2. Continuous deterministic Type-II spectral survival — WP07
 
-Do not start another science/literature revision unless a new concrete defect or specific referee request is identified.
+For deterministic paralyzable dead time `tau`, input rate `lambda`, `rho=lambda*tau`, output rate `r=lambda exp(-rho)`.
+
+At the classical paralysis maximum `rho=1`:
+
+`G_1(0)=0`,
+
+`G_1(omega)>0` for every `omega!=0`,
+
+`lim_|omega|->infty G_1(omega)=1/e`.
+
+At `omega=pi/tau`,
+
+`G_1>=exp(-1)(1+4/pi^2)=0.516975...`.
+
+Independent complete-record Volterra numerics give about `0.52814`.
+
+This is the strongest current concrete physical spectral theorem.
+
+## 3. General iid Type-II recovery singularity — WP13/WP14/WP18
+
+For iid recovery duration `T` with mean `m`, every recovery law has the same conventional mean curve
+
+`r(lambda)=lambda exp(-lambda m)`.
+
+The classical busy-cycle renewal density is
+
+`U_lambda(t)=lambda F(t)exp[-lambda A(t)]`,
+
+`A(t)=E[min(T,t)]`.
+
+These formulas are prior art.
+
+Define the homogeneous static FI retention per unit time `G_DC` separately from WP10's a.e.-defined spectral multiplier.
+
+Under renewal DQM/window regularity,
+
+`G_DC=(r/lambda) I_D`.
+
+At `lambda*m=1`, all rate/count FI vanishes. WP18's preferred bounded-Laplace-statistic proof yields
+
+`G_DC=0 iff T=m almost surely`
+
+under the stated regularity.
+
+The recovery-shape witness uses
+
+`W_s=int exp(-s t)U_*(t)E[(T-t)_+]/m dt`
+
+and gives
+
+`G_DC >= (4/e) W_s^2/(1+u_s)^4`.
+
+Thus deterministic recovery is the unique zero/minimizer of complete static FI at the common mean-rate maximum within the regular fixed-mean iid-recovery class.
+
+For fixed known recovery law, complete stationary Lambert-W branch aliasing occurs iff recovery is deterministic; treat this as an identifiability corollary, not new queueing theory.
+
+## 4. Mean/variance insufficiency — WP19
+
+Two exact recovery laws have identical
+
+`E[T]=1`, `Var(T)=1/4`, `CV=0.5`,
+
+and identical entire conventional saturation curve `r(lambda)=lambda exp(-lambda)`, but different registered-timestamp information channels.
+
+A common interval coarse-graining has zero FI for one law and normalized per-time FI
+
+`~0.00443520488427`
+
+for the other at `lambda=1`.
+
+Converged full static values are
+
+`G_DC^A~0.01765400847`,
+
+`G_DC^B~0.01920433799`,
+
+about `8.78%` different.
+
+Conclusion: recovery mean plus variance/CV plus the complete conventional mean curve are not resource-complete descriptors of timestamp information.
+
+## 5. Visible-event Cesaro residue — WP20
+
+WP20 supersedes WP08 as the preferred robust general statement.
+
+For an exact-timestamp selector `Y<=N`, suppose the conditional-score covariance measure is
+
+`Gamma_M=r delta_0+nu`,
+
+where `nu` has finite total variation and no atom at zero.
+
+Then the robust high-frequency theorem is
+
+`lim_{Omega->infty} 1/[(b-a)Omega] int_{aOmega}^{bOmega}G(omega)domega=r/lambda`
+
+for every fixed `0<a<b`.
+
+If `nu` is atomless, Wiener's theorem gives high-frequency mean-square/Cesaro convergence. If `nu` is Rajchman, for example has an `L1` density, then the pointwise limit `G(omega)->r/lambda` follows.
+
+Interpretation: exact visible timestamps create a zero-lag conditional-score covariance atom whose weight fixes the high-frequency averaged Fisher residue.
+
+## 6. Numerical calibration
+
+At mean recovery `m=1` and `lambda=1`:
+
+- exponential recovery: converged `G_DC~0.06915579`;
+- gamma-family values decrease toward the deterministic limit within that family only;
+- no universal variance monotonicity is claimed.
+
+The former chat-only gamma/lognormal comparison is superseded by WP19 and must not be used as evidence.
+
+---
+
+# Current novelty boundaries
+
+Classical / must be credited:
+
+- random Type-II/paralyzable recovery and `M/G/infinity` modeling;
+- busy-period/busy-cycle renewal formulas;
+- the random-recovery renewal density above;
+- random-paralyzable pair-correlation formulas;
+- `g_Y^(2)(t)=F(t)exp[lambda E[(T-t)_+]]`;
+- generic pair-correlation dead-time inversion;
+- infinite-server recovery/service-distribution inference;
+- renewal-process FI and generic rate-vs-timing distinctions;
+- conditional-score projection / Fisher data processing;
+- function-valued FI operators;
+- translation-invariant Fourier multipliers;
+- stationary random-measure spectral theory / Wiener atom theorems;
+- dead-time information theory generally;
+- modulated paralyzable photocounting generally.
+
+WP15's central pair-correlation identity is prior art through Apanasovich & Paltsev (1995); WP15 is supporting/operational only.
+
+## Historical risk
+
+Afanaseva & Mikhailova (1973), approximately `On recovering characteristics of some queueing systems from the output flow`, is cited in the direct Type-II lineage but its theorem text has not yet been obtained. Older infinite-server output-identifiability literature also exists.
+
+No priority language is permitted until this history is exhausted as far as feasible.
+
+No verified predecessor has yet been found for:
+
+- `G_DC=0 iff T deterministic` at the universal Type-II mean-rate maximum;
+- the WP07 complete-record dynamic escape from static blindness;
+- the detector-specific WP20 zero-lag Fisher-covariance interpretation.
+
+---
+
+# Immediate next gates
+
+1. Finish the historical inverse-output audit, especially Afanaseva–Mikhailova and old Type-II/infinite-server identifiability literature.
+2. Audit WP20 specifically against dependent thinning, missing-event point-process inference, score spectra, and stationary-channel information literature.
+3. Recheck WP18 renewal DQM/window-censoring assumptions for atomic and heavy-tailed recovery laws.
+4. Only after those gates decide whether the WP10/WP07/WP18/WP20/WP19 stack has earned Paper-2 manuscript drafting.
+
+---
+
+# Documentation requirement
+
+Material theorem results, proof repairs, prior-art collisions, numerical results used in arguments, and changes in next-gate decisions must be committed as they occur. Do not allow important project state to exist only in chat.
+
+At minimum, keep synchronized:
+
+- the relevant `paper2/notes/WP*.md` or research log;
+- `paper2/AGENTS_PAPER2.md` when recovery order/claims/gates change;
+- this file when project-level status changes.
