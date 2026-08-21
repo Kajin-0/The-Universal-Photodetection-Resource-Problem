@@ -78,7 +78,7 @@ Parseval's identity yields
 The matrix data-processing statement is the usual Fisher-information monotonicity under a parameter-independent stochastic map.
 \end{proof}
 
-The long-observation sinusoidal theorem is the Fourier-mode specialization of Eq.~\eqref{eq:waveformFI}: temporal Fourier modes diagonalize the local Fisher operator, with eigenvalue $G(\omega)$. The source choice in Eq.~\eqref{eq:source} is therefore a spectral probe rather than a restriction to a uniquely privileged waveform.
+The long-observation sinusoidal theorem is recovered from Eq.~\eqref{eq:waveformFI} as the long-window limit of square-integrable windowed sinusoids. In the translation-invariant limit, temporal Fourier modes diagonalize the local Fisher operator with multiplier $G(\omega)$. The source choice in Eq.~\eqref{eq:source} is therefore a spectral probe rather than a uniquely privileged waveform.
 
 \begin{theorem}[Complete detector ordering]
 Consider two detectors $A$ and $B$ in the same theorem class, with transfer spectra $G_A$ and $G_B$. The following are equivalent:
@@ -113,7 +113,7 @@ Equation~\eqref{eq:waveformFI} therefore gives $F_A<F_B$ for this scalar perturb
 Theorem~\ref{thm:ordering} gives an operational interpretation of the entire spectrum. If two detectors have the same $G$ almost everywhere, they are Fisher-equivalent for every admissible weak temporal waveform task in this model even if their microscopic mechanisms or latency decompositions differ. If their spectra cross, there is no task-independent ranking: each is superior for some weak temporal perturbations.
 
 \begin{corollary}[Exact band-subspace guarantee]
-Let $E$ be a symmetric measurable frequency set. For a nonzero scalar perturbation $s$ with Fourier transform $S$ supported in $E$, define its source-normalized Fisher retention
+Let $E$ be a symmetric measurable frequency set of positive measure. For a nonzero scalar perturbation $s$ with Fourier transform $S$ supported in $E$, define its source-normalized Fisher retention
 \begin{equation}
 \rho_G[s]
 \equiv
@@ -134,7 +134,7 @@ Moreover, the infimum and supremum of $\rho_G[s]$ over admissible nonzero pertur
 \end{corollary}
 
 \begin{proof}
-Equation~\eqref{eq:RayleighG} is the Rayleigh quotient of the multiplication operator by $G$. The inequalities follow immediately because $|S|^2/\int|S|^2$ is a probability density on frequency. Let $g_-$ and $g_+$ denote the essential infimum and supremum on $E$. For every $\varepsilon>0$, the sets where $G<g_-+\varepsilon$ and $G>g_+-\varepsilon$ have positive measure whenever the corresponding essential bound is finite. Intersect either set with a sufficiently large symmetric finite interval and symmetrize it; because $G$ is even, this produces a symmetric finite-measure subset of positive measure. Taking $S$ to be the real even indicator of that subset gives $S\in L^1\cap L^2$, so its inverse Fourier transform is real, bounded, and square-integrable. The resulting Rayleigh quotient lies within $\varepsilon$ of the corresponding essential bound. Letting $\varepsilon\downarrow0$ proves sharpness.
+Equation~\eqref{eq:RayleighG} is the Rayleigh quotient of the multiplication operator by $G$. The inequalities follow immediately because $|S|^2/\int|S|^2$ is a probability density on frequency. Let $g_-$ and $g_+$ denote the essential infimum and supremum on $E$. For every $\varepsilon>0$, the sets where $G<g_-+\varepsilon$ and $G>g_+-\varepsilon$ have positive measure. Intersect either set with a sufficiently large symmetric finite interval and symmetrize it; because $G$ is even, this produces a symmetric finite-measure subset of positive measure. Taking $S$ to be the real even indicator of that subset gives $S\in L^1\cap L^2$, so its inverse Fourier transform is real, bounded, and square-integrable. The resulting Rayleigh quotient lies within $\varepsilon$ of the corresponding essential bound. Letting $\varepsilon\downarrow0$ proves sharpness.
 \end{proof}
 
 Therefore preserving at least an absolute Fisher fraction $q$ for \emph{every} admissible weak waveform whose spectrum lies in $|\omega|\le\Omega$ is equivalent to
