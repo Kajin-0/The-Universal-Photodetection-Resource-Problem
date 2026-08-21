@@ -10,19 +10,19 @@ Paper 1 / Rev11 is scientifically frozen by default. Research remains analytical
 
 ## Read first — authoritative recovery order
 
-1. `paper2/notes/WP25_FINITE_MEAN_CYCLE_DQM_AND_HEAVY_TAIL_HARDENING.md`
-2. `paper2/notes/WP24_ATOMIC_SCORE_RESIDUE_PRIOR_ART_AUDIT.md`
-3. `paper2/notes/WP23_CAUSAL_SCORE_MARTINGALE_AND_ATOMIC_MEMORY_PATHS.md`
-4. `paper2/notes/WP22_CONDITIONAL_SCORE_ATOM_THEOREM_AND_SELECTOR_COROLLARY.md`
-5. `paper2/notes/WP21_HISTORICAL_INVERSE_OUTPUT_IDENTIFIABILITY_AUDIT.md`
-6. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
-7. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
-8. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
-9. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
-10. `paper2/notes/WP10_GENERAL_AUTONOMOUS_CHANNEL_THEOREM_HARDENED.md`
-11. `paper2/notes/RESEARCH_LOG_ROUND03_WP13_WP20_CHECKPOINT.md`
+1. `paper2/notes/RESEARCH_LOG_ROUND04_WP21_WP26_CHECKPOINT.md`
+2. `paper2/notes/WP26_FINITE_MEAN_STATIONARY_WINDOW_FISHER_RATE.md`
+3. `paper2/notes/WP25_FINITE_MEAN_CYCLE_DQM_AND_HEAVY_TAIL_HARDENING.md`
+4. `paper2/notes/WP24_ATOMIC_SCORE_RESIDUE_PRIOR_ART_AUDIT.md`
+5. `paper2/notes/WP23_CAUSAL_SCORE_MARTINGALE_AND_ATOMIC_MEMORY_PATHS.md`
+6. `paper2/notes/WP22_CONDITIONAL_SCORE_ATOM_THEOREM_AND_SELECTOR_COROLLARY.md`
+7. `paper2/notes/WP21_HISTORICAL_INVERSE_OUTPUT_IDENTIFIABILITY_AUDIT.md`
+8. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
+9. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
+10. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
+11. `paper2/notes/WP10_GENERAL_AUTONOMOUS_CHANNEL_THEOREM_HARDENED.md`
 
-Older WP13–WP16 and WP20 remain supporting/provenance material; WP15 pair-correlation identity is prior art and supporting only.
+Older WP13–WP18 and WP20 remain supporting/provenance material; WP15 pair-correlation identity is prior art and supporting only.
 
 ## Current theorem stack
 
@@ -58,67 +58,51 @@ At `omega*tau=pi`, the analytic lower bound is `0.516975...`; exact complete-rec
 
 This remains the strongest concrete physical spectral theorem.
 
-### WP25 — finite-mean hardening of the generalized Type-II singularity
+### WP25/WP26 — finite-mean generalized Type-II singularity theorem
 
-For iid recovery `T` with only
+Let iid recovery `T` have only
 
-`0<m=E[T]<infinity`,
+`0<m=E[T]<infinity`.
 
-classical theory gives
+Classical formulas are
 
 `r(lambda)=lambda exp(-lambda m)`,
 
 `E[D]=1/r`,
 
-and
+and the random-Type-II busy-cycle renewal formulas. These are prior art.
 
-`U_lambda(t)=lambda F(t)exp[-lambda A(t)]`, `A(t)=E[min(T,t)]`.
+#### Regularity-free bounded-statistic separation — WP25
 
-At the common count-rate maximum `lambda_*=1/m`, define for `s>0`
+At the common count maximum `lambda_*=1/m`, for every `s>0`,
 
-`phi_s(lambda)=E_lambda[exp(-sD)]`,
+`dot phi_s = W_s/(1+u_s)^2`,
 
-`W_s=int exp(-st)U_*(t)E[(T-t)_+]/m dt`.
+where `phi_s=E[exp(-sD)]`.
 
-Finite mean alone gives the exact derivative
+For every genuinely nondegenerate recovery law, `W_s>0`; for deterministic recovery, all `W_s=0`.
 
-`dot phi_s=W_s/(1+u_s)^2`.
+Thus every nondegenerate finite-mean recovery law is first-order separated from the deterministic singular case by the bounded statistic `exp(-sD)`, even without assuming a density, DQM, finite variance, or finite FI.
 
-For every genuinely nondegenerate recovery law, `W_s>0` for every `s>0`; for deterministic recovery, all `W_s=0`.
+#### Universal Palm-cycle FI — WP25
 
-Therefore, **without DQM, density assumptions, finite variance, or finite Fisher information**, every nondegenerate recovery law is first-order separated at the count maximum by the bounded statistic `exp(-sD)`. In particular,
+Palm-initialize at a registered cluster start and stop at the next one. The latent marked-Poisson cycle has score
 
-`d_TV(P_epsilon,P_0)>=c_s|epsilon|+o(|epsilon|)`
+`S_cyc=N_D-lambda D`
 
-with `c_s>0`, and there is a positive quadratic Hellinger-curvature lower bound.
-
-#### Universal Palm-cycle Fisher theorem
-
-Palm-initialize at a registered cluster start. Let `D` be the next registered interval and `N_D` the number of future incident events through the terminal arrival. The latent stopped marked-Poisson cycle has likelihood
-
-`L_epsilon=(1+epsilon)^(N_D) exp(-lambda epsilon D)`,
-
-score
-
-`S_cyc=N_D-lambda D`,
-
-and Fisher information
+and exact FI
 
 `E[S_cyc^2]=lambda E[D]=lambda/r`.
 
-Localization at `D wedge K` plus `E[D]<infinity` yields DQM of the stopped cycle. Since observed `D` is a statistic,
-
-`a(D)=E[S_cyc|D]`,
+The observed interval `D` is a statistic, so
 
 `I_D<=lambda/r`.
-
-Thus finite one-interval FI is automatic for **every finite-mean recovery law**, including atomic, singular, infinite-variance, and heavy-tailed laws.
 
 Define
 
 `G_cyc=(r/lambda)I_D`.
 
-Then universally
+Then for every finite-mean recovery law
 
 `0<=G_cyc<=1`,
 
@@ -126,21 +110,53 @@ and at `lambda*m=1`,
 
 `G_cyc=0 iff T=m almost surely`.
 
-This is now the preferred class-wide theorem. WP18's older finite-FI assumption is superseded at the Palm-cycle level.
+This covers atomic, singular, infinite-variance, and heavy-tailed recovery.
 
-#### Remaining fixed-window issue
+#### Stationary fixed-window rate — WP26
 
-Do **not** yet identify the stationary fixed-window rate
+WP26 closes the last major regularity caveat.
 
-`G_DC=lim_{L->infinity}F_window(L)/(lambda L)`
+For an ordinary renewal process started at a renewal, progressively censoring the next interval at residual horizon `t` gives information `J(t)` with
 
-with `G_cyc` for every finite-mean law.
+`J(t) increasing to I_D`.
 
-The remaining active gate is whether finite mean alone implies
+Sequential score orthogonality plus the elementary renewal theorem yields
 
-`F_window(L)=r I_D L+o(L)`,
+`I_ord(t)/t -> r I_D`
 
-or whether a genuine renewal boundary/censoring condition is needed for very heavy-tailed intervals. This is now the principal proof question.
+under only finite `E[D]` and finite `I_D`.
+
+For the **stationary Type-II** random-origin boundary, the relevant pre-zero detector state is exactly the finite marked-Poisson cloud of recovery intervals active at time zero. Its total mean population is `lambda m`, so its fractional-rate FI is `lambda m`.
+
+If `Y` is the forward recurrence to the first registered event, the censored first-stage observation satisfies
+
+`I(C_L(Y)) <= lambda m + lambda E[min(Y,L)]`.
+
+Because `Y<infinity` a.s.,
+
+`E[min(Y,L)]/L ->0`
+
+even when `E[Y]=infinity`.
+
+DQM chain rule then gives
+
+`I_stat(L)=I(C_L(Y))+E[1{Y<L}I_ord(L-Y)]`,
+
+and therefore
+
+`boxed: lim_{L->infinity} I_stat(L)/L = r I_D`.
+
+Hence throughout the entire finite-mean iid-recovery Type-II class,
+
+`boxed: G_DC=G_cyc=(r/lambda)I_D`,
+
+and at the universal count maximum
+
+`boxed: G_DC=0 iff T=E[T] almost surely`.
+
+No density, finite variance, finite forward-recurrence mean, or separate FRT-FI assumption remains.
+
+Zhao–Nagaraja (2011) prove the analogous generic window-censored renewal asymptotic under stronger FRT regularity; do not claim the generic renewal result as new. The project-specific hardening is the use of the finite stationary `M/G/infinity` boundary state to remove that caveat for this detector class.
 
 ### WP19 — exact mean/variance insufficiency no-go
 
@@ -152,15 +168,9 @@ Mean + variance/CV + full mean saturation curve are not resource-complete.
 
 ### WP22/WP23/WP24 — conditional-score atomic residue bridge
 
-WP22: if the stationary conditional-score covariance measure is
+WP22 gives the abstract zero-lag conditional-score covariance atom / high-frequency Cesaro residue statement. WP23 shows causality alone is insufficient because exact delayed score paths add atomic timing energy. WP24 finds the mathematical ingredients are strongly classical.
 
-`Gamma_M=a delta_0+nu`,
-
-with finite-TV `nu` and no zero atom, proportional high-frequency Cesaro Fisher averages tend to `a/lambda`.
-
-WP23: causality alone does not imply `a=r`; exact delayed score paths can contribute additional atomic timing energy. The physical invariant is total **atomic timing-path energy in the conditional score**.
-
-WP24 closes the novelty audit for strategy: all mathematical ingredients are strongly classical. No exact predecessor for the full UPRP conditional-source-score synthesis was located, but WP22/WP23 should be treated as bridge/structural theory rather than a standalone mathematical breakthrough.
+Keep this stack as **bridge/structural theory**, not a standalone breakthrough claim.
 
 ## Historical novelty state — WP21
 
@@ -168,24 +178,29 @@ Generic queue-output identifiability is classical by at least 1965 and textbook 
 
 Do not claim generic output identifiability, hidden-service reconstruction, or the broad existence of exceptional information-degenerate service laws as new.
 
-No verified predecessor has yet been found for the narrow finite-mean Palm-cycle singularity at the universal Type-II count maximum.
+No verified predecessor has yet been found for the exact finite-mean zero-IFF-deterministic Type-II Fisher theorem at the universal count maximum.
 
 ## Current novelty hierarchy
 
 1. **WP10/WP17** — organizing photodetection-channel Fisher-spectrum synthesis.
 2. **WP07** — strongest concrete physical novelty candidate: deterministic Type-II static blindness with dynamic information survival.
-3. **WP25** — strongest class-wide physical theorem candidate: finite-mean deterministic recovery is the unique zero of Palm-cycle Fisher retention at the common Type-II maximum, with regularity-free bounded-statistic separation for every nondegenerate law.
-4. **WP19** — strong exact resource no-go: mean and variance are insufficient.
+3. **WP25/WP26** — strongest class-wide physical theorem candidate: finite-mean deterministic recovery is the unique zero of complete stationary static Fisher retention at the common Type-II maximum.
+4. **WP19** — strong exact resource no-go: recovery mean and variance are insufficient.
 5. **WP22/WP23** — valuable bridge/interpretive theory; standalone novelty downgraded by WP24.
 
-Supporting only: WP18 earlier proof form, WP14 witness, WP20 intermediate derivation, rate/shape decomposition, branch aliasing, WP15 pair inversion.
+## Immediate next gate
 
-## Immediate next gates
+The heavy-tail/fixed-window proof program is **closed unless a concrete flaw is found**.
 
-1. **Resolve the stationary fixed-window FI-rate question.** Determine whether finite mean alone implies `G_DC=G_cyc`, or exhibit/prove the need for an additional renewal boundary condition.
-2. Audit renewal-window likelihood/Fisher theory for random-origin stationary renewal processes, especially heavy tails with `E[D]<infinity` but `E[D^2]=infinity`.
-3. Keep the Palm-cycle theorem independent of this boundary issue; do not weaken WP25 if the window theorem needs extra assumptions.
-4. After the fixed-window gate, perform one integrated hostile proof/novelty review of WP10/WP07/WP25/WP19 before deciding whether Paper 2 has earned manuscript drafting.
+Perform one integrated hostile review of the candidate Paper-2 stack:
+
+1. proof correctness and hidden assumptions across WP10/WP07/WP25/WP26/WP19;
+2. notation/experiment consistency between spectral `G(omega)`, Palm-cycle `G_cyc`, and stationary static `G_DC`;
+3. targeted novelty collision search focused specifically on WP07 and the exact WP25/WP26 finite-mean zero-IFF-deterministic theorem;
+4. significance/coherence: determine whether WP07 + WP25/WP26 + WP19 form one resource-theory story rather than a collection of dead-time facts;
+5. decide whether manuscript drafting is now justified.
+
+Do **not** begin manuscript drafting before this integrated review is completed.
 
 ## Mandatory documentation rule
 
