@@ -11,21 +11,32 @@ on:
 
 permissions:
   contents: read
+  statuses: write
 
 jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Generate Rev7 from frozen Rev6
+        id: generate
+        continue-on-error: true
         working-directory: manuscript
         run: python apply_rev7.py
-      - uses: xu-cheng/latex-action@v3
+
+      - name: Compile Rev7
+        id: latex
+        continue-on-error: true
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: event_resource_theorem_rev7.tex
           working_directory: manuscript
           latexmk_use_xelatex: false
-      - uses: actions/upload-artifact@v4
+
+      - name: Upload Rev7 artifact
+        if: steps.generate.outcome == 'success' && steps.latex.outcome == 'success'
+        uses: actions/upload-artifact@v4
         with:
           name: event-resource-theorem-rev7
           path: |
@@ -34,3 +45,43 @@ jobs:
             manuscript/appendix_rare_fast_counterexample_rev7.tex
             manuscript/section_waveform_operator_rev7.tex
             manuscript/section_operational_bandwidth_rev7.tex
+
+      - name: Publish Rev7 validation status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GENERATE_OUTCOME: ${{ steps.generate.outcome }}
+          LATEX_OUTCOME: ${{ steps.latex.outcome }}
+        run: |
+          if [ "$GENERATE_OUTCOME" = "success" ] && [ "$LATEX_OUTCOME" = "success" ]; then
+            STATE=success
+            DESCRIPTION="Rev7 generation and LaTeX compile passed"
+          else
+            STATE=failure
+            DESCRIPTION="Rev7 verification failed; inspect Actions log"
+          fi
+          TARGET_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          python - "$STATE" "$DESCRIPTION" "$TARGET_URL" > /tmp/status.json <<'PY'
+          import json, sys
+          print(json.dumps({
+              "state": sys.argv[1],
+              "description": sys.argv[2],
+              "context": "rev7-manuscript-validation",
+              "target_url": sys.argv[3],
+          }))
+          PY
+          curl --fail-with-body -sS \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" \
+            --data-binary @/tmp/status.json
+
+      - name: Fail job if Rev7 validation failed
+        if: always()
+        env:
+          GENERATE_OUTCOME: ${{ steps.generate.outcome }}
+          LATEX_OUTCOME: ${{ steps.latex.outcome }}
+        run: |
+          test "$GENERATE_OUTCOME" = "success" && test "$LATEX_OUTCOME" = "success"
