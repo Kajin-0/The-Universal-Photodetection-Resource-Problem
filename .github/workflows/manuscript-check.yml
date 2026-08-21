@@ -10,24 +10,49 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: xu-cheng/latex-action@v3
+
+      - name: Generate Rev8 surgical referee repair source
+        working-directory: manuscript
+        run: python apply_rev8_referee_surgical.py
+
+      - name: Compile Rev8
+        uses: xu-cheng/latex-action@v3
         with:
-          root_file: event_resource_theorem_rev7.tex
+          root_file: event_resource_theorem_rev8.tex
           working_directory: manuscript
           latexmk_use_xelatex: false
-      - uses: actions/upload-artifact@v4
+
+      - name: Upload Rev8 artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: event-resource-theorem-rev7
+          name: event-resource-theorem-rev8
           path: |
-            manuscript/event_resource_theorem_rev7.pdf
-            manuscript/event_resource_theorem_rev7.tex
-            manuscript/appendix_rare_fast_counterexample_rev7.tex
+            manuscript/event_resource_theorem_rev8.pdf
+            manuscript/event_resource_theorem_rev8.tex
+            manuscript/appendix_rare_fast_counterexample_rev8.tex
             manuscript/section_waveform_operator_rev7.tex
             manuscript/section_operational_bandwidth_rev7.tex
+            manuscript/figure_resource_hierarchy_rev7.tex
+            manuscript/figure_jitter_no_go.tex
+            manuscript/fig_jitter_no_go_data.csv
+            manuscript/references.bib
+
+      - name: Persist generated Rev8 source
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- manuscript/event_resource_theorem_rev8.tex manuscript/appendix_rare_fast_counterexample_rev8.tex
+          if git diff --cached --quiet; then
+            echo "Rev8 source already persisted"
+            exit 0
+          fi
+          git commit -m "Generate Rev8 surgical referee repair source"
+          git push
