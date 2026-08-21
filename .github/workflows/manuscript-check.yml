@@ -52,6 +52,7 @@ jobs:
             manuscript/section_waveform_operator_rev7.tex
             manuscript/section_operational_bandwidth_rev7.tex
             manuscript/section_practical_grounding_rev9.tex
+            manuscript/section_empirical_grounding_rev9.tex
             manuscript/figure_resource_hierarchy_rev7.tex
             manuscript/figure_jitter_no_go.tex
             manuscript/fig_jitter_no_go_data.csv
