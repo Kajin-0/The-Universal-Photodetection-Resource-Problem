@@ -61,15 +61,28 @@ states in its abstract that the final topic is **identifiability** and character
 
 The following items are especially relevant.
 
-### 3.1 Kovalenko 1965
+### 3.1 Kovalenko 1965 — scope now substantially resolved
 
 I. N. Kovalenko,
 
 **“The recovery of the characteristics of a system from observations on the output flow,”** Dokl. Akad. Nauk SSSR 164 (1965), 979–981; English translation: Soviet Math. 6 (1965), 1328–1331.
 
-This title alone establishes that inverse recovery of queue/system characteristics from output-flow observations predates WP13 by six decades.
+A later Soviet seminar summary by G. Sh. Tsitsiashvili, explicitly discussing inverse problems in queueing and citing Kovalenko as reference [1], states the substantive content of the 1965 result:
 
-The exact model and observable still need theorem-level inspection before deciding whether it overlaps the generalized Type-II cluster-start model.
+> from observations of the **output process of an `M/G/1` system (but not `M/M/1`)**, the Poisson input intensity and the service-time distribution are recovered.
+
+This resolves the previously open question about Kovalenko’s observational regime enough for novelty positioning:
+
+- it is genuinely **output-only** queue inference;
+- it recovers both an input-rate parameter and a hidden service distribution;
+- it treats a generic `M/G/1` class;
+- `M/M/1` is singled out as an exceptional nonrecoverable case.
+
+The model is **not** our generalized Type-II `M/G/infinity` busy-cluster-start process, so it does not directly preempt WP18.
+
+However, it is a close historical structural analogue to the present theme: a broad service-law class is identifiable from output observations while a special service-law subfamily loses structural information. Therefore the conceptual statement “a special recovery law is information-degenerate whereas generic laws retain hidden-parameter information” is itself not safely novel at a broad queueing level.
+
+The potentially distinctive WP18 content must remain the exact **Fisher singularity at the universal Type-II mean-count maximum**, its iff characterization by deterministic recovery, and its embedding in the temporal Fisher-spectrum resource theory—not the generic idea of an exceptional output-nonidentifiable service law.
 
 ### 3.2 Kendall & Lewis 1965
 
@@ -79,7 +92,7 @@ D. G. Kendall and T. Lewis,
 
 This is another explicit structural-identifiability result for infinite-server queues. The observation regime is not automatically the same as our registered busy-cluster-start process, so it does not directly preempt WP18, but it makes any broad “output law contains hidden recovery information” framing historical rather than novel.
 
-### 3.3 Ivnitskii 1969
+### 3.3 Ivnitskii 1969 and 1977
 
 V. A. Ivnitskii,
 
@@ -89,7 +102,11 @@ This is a particularly strong warning against broad inverse-output novelty langu
 
 Again, it is a single-server restricted-sojourn model, not obviously the iid Type-II cluster-start process.
 
-A later bibliography also records a 1977 Ivnitskii paper with essentially the generic title **“On recovery of system characteristics from observations of the output flow,”** Theory of Probability and Its Applications 22(1), 188–191 in the Russian citation lineage. This further confirms sustained work on output-only inverse problems rather than a one-off result.
+MathNet also identifies the later paper precisely as:
+
+V. A. Ivnitskii, **“On reconstruction of the performance of a `GI/M/1` system from observations of the outcoming flow,”** Theory Probab. Appl. 22:1 (1977), 184–187 (Russian original 188–191).
+
+This further confirms sustained output-only inverse work across multiple queue families.
 
 ### 3.4 Milne 1970
 
@@ -190,7 +207,8 @@ Do not claim novelty for any of the following:
 6. Type-II registered-interval analysis for random prolonging dead times;
 7. the classical generalized Type-II / `M/G/infinity` busy-cycle renewal formulas;
 8. the random-paralyzable pair-correlation identity already demoted in WP16;
-9. presenting output-only reconstruction as a newly recognized methodological possibility.
+9. presenting output-only reconstruction as a newly recognized methodological possibility;
+10. the broad phenomenon that a special service-law subfamily may be output-nonidentifiable while a generic class is recoverable.
 
 ### Still a candidate contribution
 
@@ -202,7 +220,7 @@ Equivalently, under the WP18 regularity:
 
 `G_DC=0 iff T=m a.s.`
 
-This is a **local information-singularity / extremal theorem**, not a generic output-identifiability theorem.
+This is a **local information-singularity / extremal theorem at a distinguished physical operating point**, not a generic output-identifiability theorem.
 
 The related full-law branch aliasing statement should be treated as a corollary unless the 1973 source can be ruled out:
 
@@ -232,15 +250,16 @@ This is a cleaner and safer manuscript architecture than centering Paper 2 on ge
 ## 7. Remaining historical tasks and stopping rule
 
 1. Obtain or inspect the actual theorem text of Afanaseva & Mikhailova (1973), pp. 132–138, if realistically possible.
-2. Inspect Kovalenko (1965) Soviet Math. 6, 1328–1331 for its exact model/observable if a readable source can be located.
-3. Search citations to Afanaseva–Mikhailova (1973) beyond Dvurecenskij & Ososkov only when they expose theorem content rather than merely bibliography.
-4. Keep **all priority language disabled** for generic identifiability regardless of whether the inaccessible papers can be obtained.
+2. Search citations to Afanaseva–Mikhailova (1973) beyond Dvurecenskij & Ososkov only when they expose theorem content rather than merely bibliography.
+3. Keep **all priority language disabled** for generic identifiability regardless of whether the inaccessible paper can be obtained.
+
+The Kovalenko (1965) scope is no longer a major blocker: the later inverse-problems summary identifies it as output-only `M/G/1` reconstruction of the Poisson input rate and service distribution, with `M/M/1` exceptional.
 
 ### Stopping rule
 
-The historical search should **not become an indefinite sidequest**. The accessible record has already established the only conclusion needed for present manuscript strategy: generic queue-output identifiability is classical and cannot be a novelty pillar.
+The historical search should **not become an indefinite sidequest**. The accessible record has already established the only conclusion needed for present manuscript strategy: generic queue-output identifiability and exceptional nonidentifiable service subfamilies are classical and cannot be novelty pillars.
 
-Continue searching the inaccessible 1965/1973 papers only if there is a realistic path to their theorem statements. Otherwise record the residual uncertainty and move to novelty/proof stress-testing of the explicitly Fisher-theoretic results (WP18/WP20), where the candidate contribution is substantially narrower than the old inverse-output literature.
+Continue searching the inaccessible 1973 Type-II paper only if there is a realistic path to its theorem statement. Otherwise record the residual uncertainty and move to novelty/proof stress-testing of the explicitly Fisher-theoretic results (WP18/WP20), where the candidate contribution is substantially narrower than the old inverse-output literature.
 
 ---
 
@@ -248,7 +267,7 @@ Continue searching the inaccessible 1965/1973 papers only if there is a realisti
 
 The hostile audit did **not** find a source that explicitly states the WP18 Fisher singularity theorem.
 
-However, it did show that the surrounding inverse-output-identifiability territory is heavily occupied by classical work beginning at least in 1965 and standardized in queue-statistics textbooks by 1982. Therefore Paper 2 must not present the result as a new generic identifiability principle.
+However, it did show that the surrounding inverse-output-identifiability territory is heavily occupied by classical work beginning at least in 1965 and standardized in queue-statistics textbooks by 1982. Kovalenko’s `M/G/1` result also provides a direct historical analogue in which a broad output-identifiable family has a special nonrecoverable subfamily (`M/M/1`). Therefore Paper 2 must not present either generic identifiability or the broad idea of an exceptional information-degenerate service law as new.
 
 The defensible candidate is narrower and more interesting from the present resource-theory perspective:
 
