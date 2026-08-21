@@ -46,24 +46,32 @@ jobs:
         working-directory: manuscript
         run: python analyze_spinelli1998_fig3_rev10.py
 
-      - name: Compile Rev10
+      - name: Generate Rev11 ENBW positioning from Rev10
+        working-directory: manuscript
+        run: python apply_rev11_enbw_positioning.py
+
+      - name: Verify Rev11 source and positioning hashes
+        working-directory: manuscript
+        run: sha256sum -c REV11_SHA256SUMS.txt
+
+      - name: Compile Rev11
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: event_resource_theorem_rev10.tex
+          root_file: event_resource_theorem_rev11.tex
           working_directory: manuscript
           latexmk_use_xelatex: false
 
-      - name: Upload verified Rev10 artifact
+      - name: Upload verified Rev11 artifact
         uses: actions/upload-artifact@v4
         with:
-          name: event-resource-theorem-rev10
+          name: event-resource-theorem-rev11
           path: |
-            manuscript/event_resource_theorem_rev10.pdf
-            manuscript/event_resource_theorem_rev10.tex
+            manuscript/event_resource_theorem_rev11.pdf
+            manuscript/event_resource_theorem_rev11.tex
             manuscript/appendix_rare_fast_counterexample_rev8.tex
             manuscript/section_waveform_operator_rev7.tex
             manuscript/section_operational_bandwidth_rev7.tex
-            manuscript/section_practical_grounding_rev9.tex
+            manuscript/section_practical_grounding_rev11.tex
             manuscript/section_empirical_grounding_rev9.tex
             manuscript/section_worked_irf_example_rev10.tex
             manuscript/spinelli1998_fig3_digitized_rev10.csv
@@ -75,3 +83,4 @@ jobs:
             manuscript/REV8_SHA256SUMS.txt
             manuscript/REV9_SHA256SUMS.txt
             manuscript/REV10_SHA256SUMS.txt
+            manuscript/REV11_SHA256SUMS.txt
