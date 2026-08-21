@@ -1,133 +1,190 @@
-# Research Roadmap — Rev8 Submission Freeze
+# Research Roadmap — Rev9 Submission Freeze
 
 **Updated:** 2026-08-20
 
 ## Guiding principle
 
-The autonomous marked-event first paper has passed theorem construction, hostile review, significance upgrade, proof hardening, and the final Rev8 surgical referee-repair gate.
+The autonomous marked-event first paper has passed:
 
-**Do not perform another broad first-paper theory revision unless a new concrete defect is identified.**
+- theorem construction;
+- hostile review and model-class repair;
+- weak-waveform significance upgrade;
+- proof hardening;
+- Rev8 thermodynamic Appendix repair;
+- Rev9 translational grounding for detector physicists;
+- full LaTeX/bibliography/cross-reference validation;
+- visual inspection of all newly affected pages.
+
+**Do not perform another broad first-paper revision unless a new concrete defect is identified.**
 
 Primary target: **Physical Review Applied — Regular Article**.
 
 ---
 
-# Publication gates
+# Closed scientific gates
 
-## Core marked-event theorem stack
+## G0 — Exact autonomous marked-event transfer
 **PASSED**
 
-The exact marked delay spectrum
+\[
+G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).
+\]
 
-`G(omega)=integral |H_m(omega)|^2 kappa(dm)`
+Exact DC convention repaired and explicit.
 
-is the source-normalized sinusoidal transfer and the spectral multiplier of the complete local weak-waveform Fisher operator in the declared autonomous independent-event detector class.
-
-## Universal local Fisher ordering
+## G1 — Complete local weak-waveform Fisher operator
 **PASSED**
 
-Pointwise `G_A>=G_B` is necessary and sufficient for detector A to Fisher-dominate B for every admissible finite weak temporal task in the model.
+\[
+[F_{\rm out}]_{ab}
+=\frac{\Phi_0}{2\pi}\int G(\omega)S_a^*(\omega)S_b(\omega)d\omega.
+\]
 
-## Exact band-subspace guarantee
+## G2 — Universal local Fisher detector ordering
 **PASSED**
 
-Worst-case retention over a compact band equals the minimum of `G` on that band. Uniform retention `q` is therefore equivalent to `G(omega)>=q` throughout the band.
+Pointwise `G_A >= G_B` iff detector A Fisher-dominates B for every admitted finite weak-waveform task.
 
-## Timing-resource hierarchy
-**PASSED, REV8 CLARIFIED**
-
-General timing measures are first classified through the Wiener atomic-residue theorem.
-
-On the absolutely continuous square-integrable finite-area branch:
-
-- Parseval gives `integral G d omega = pi R_2`;
-- `B_FI = R_2/(4 eta)`;
-- capture-weighted hazard gives `R_2 <= H`;
-- inverse band resource cost gives `R_2 >= 4Bq`, `H >= 4Bq`.
-
-Rev8 explicitly records this branch structure so atomic/singular timing measures are not visually or verbally implied to possess all finite-area resources.
-
-## Fixed-moment timing no-go
+## G3 — Exact band-subspace guarantee
 **PASSED**
 
-Exact mean and variance/RMS jitter do not determine finite temporal information bandwidth. No fixed-FWHM counterexample is claimed.
+Worst-case retention over a compact band equals `min G` on that band.
 
-## Synchronous-clock no-go
+## G4 — Timing-resource hierarchy
 **PASSED**
 
-A free source-synchronous temporal reference can retain source phase information despite arbitrarily slow final registration. Autonomy is therefore a genuine resource assumption.
+Atomic residue, collision resource `R_2`, hazard resource `H`, equivalent Fisher bandwidth, and inverse cost theorem all closed.
 
-## Finite-state CTMC hazard completion
+## G5 — Conventional-jitter no-go
 **PASSED**
 
-The successful-registration edge rate alone is insufficient with competing exits; the relevant sufficient local ceiling uses total pre-registration exit rates.
+Exact fixed mean + exact variance do not bound finite temporal information bandwidth. No fixed-FWHM theorem is claimed.
 
-## Thermodynamic isolated-event bridge
+## G6 — Clock/control no-go
 **PASSED**
 
-Stationary thermodynamic quantities constrain microscopic rates only before an explicit isolated-event/low-overlap reduction is used to construct the per-photon kernel.
+A free source-synchronous reference is a separate resource.
 
-Rev8 defines stationary one-way activity as total directed stationary jump traffic, eliminating the factor-of-two convention ambiguity.
+## G7 — CTMC microscopic rate repair
+**PASSED**
 
-## Rare-fast thermodynamic counterexample
-**PASSED — REV8 REPAIRED**
+The sufficient finite-state hazard ceiling is the maximum total first-exit rate from relevant pre-registration states, not merely a successful-registration edge rate.
 
-Rev8 imposes `acp>=bqs`, yielding exactly
+## G8 — Thermodynamic bridge and rare-fast counterexample
+**PASSED**
 
-`f_R-r_R = R(acp-bqs)/(RD+E) >= 0`
-
-for every `R>0`. The counterexample therefore lies inside the main section's assumed `f>=r` sector. Its rare-fast scaling remains unchanged.
+Rev8 enforces `acp >= bqs`, defines the directed one-way activity convention, and preserves the isolated-event/low-overlap bridge.
 
 ---
 
-# Mechanical / hostile-review gates
+# Rev9 translational gate
 
-- Rev6 hostile-referee model-class repairs — **PASSED**
-- Rev7 complete weak-waveform significance upgrade — **PASSED**
-- Rev7 hostile re-review of principal derivations — **PASSED**
-- Rev8 three surgical repairs — **PASSED**
-- Rev8 full LaTeX + bibliography/cross-reference build — **PASSED**
-- Rev8 affected-page visual inspection — **PASSED**
-- Rev8 PRApplied submission-copy build — **PASSED**
-- Rev8 PRApplied affected-page/Data Availability visual inspection — **PASSED**
-- steady-state read-only hash-checked CI configuration — **PASSED**
+## T1 — Canonical detector timing-law library
+**PASSED**
 
-See `notes/RESEARCH_LOG_ROUND17.md` and `submission/PRAPPLIED_PACKAGE_VALIDATION_REV8.md`.
+Closed forms supplied for:
+
+- Gaussian timing error;
+- exponential delay;
+- uniform finite-support delay;
+- serial Erlang stages;
+- Gaussian--exponential convolution.
+
+## T2 — Existing-data estimator
+**PASSED**
+
+For equal histogram bins,
+
+\[
+B_{\rm FI}^{(\Delta t)}
+=\frac{1}{2\Delta t}\sum_i p_i^2.
+\]
+
+Finite-count unbiased pair estimator:
+
+\[
+\widehat B_{\rm FI,U}^{(\Delta t)}
+=\frac{1}{2\Delta t}\frac{\sum_i n_i(n_i-1)}{N(N-1)}.
+\]
+
+Finite binning is a lower/coarse-grained estimate of continuous `B_FI`.
+
+## T3 — Physical support clarification
+**PASSED**
+
+Finite support of length `T` gives the **lower** bound
+
+\[
+B_{\rm FI}\ge\frac1{2T},
+\]
+
+not an upper speed limit. There is no support-only upper bound.
+
+## T4 — Mark resource gradient
+**PASSED**
+
+Fine accessible event marks can preserve more FI than discarded/coarse marks. Perfect primary latency side information gives `G=eta`; a downstream TDC cannot manufacture information lost before the primary record.
+
+## T5 — Preamplifier/readout interpretation
+**PASSED**
+
+The cascade product law applies to independent stochastic delay stages. It must not be misapplied to a deterministic invertible TIA RC pole without explicit downstream noise/coarse-graining/noninvertibility.
+
+## T6 — DC pedagogical note
+**PASSED**
+
+`G(0)=eta` remains the correct normalized ratio. The factor-of-two distinction is only in absolute FI normalization.
+
+## T7 — Thermodynamic engineering analogy
+**PASSED**
+
+The rare-fast CTMC is interpreted as a high-rate, low-duty-cycle hidden transient mode without making a false circuit high-pass identification.
 
 ---
 
-# Frozen first-paper branches
+# Mechanical validation
 
-Do not reopen by default:
+Generated Rev9 source is deterministic and hash-pinned.
 
-- HgCdTe/Kane material-specific WP17–24;
-- coherent quantum pointers;
-- continuous analog detectors;
-- non-Poisson/nonclassical sources;
-- high-flux/history-dependent capture/recovery;
-- generic QFI/channel-capacity extensions.
+Canonical build:
 
-Those are second-paper programs unless a specific first-paper referee defect requires otherwise.
+- 30 pages;
+- PDF SHA-256 `2d8c93a98840d303a1f32cc3c67cd4c2c6d46a4010e440317691cae09df1f0cc`.
+
+PRApplied build:
+
+- 30 pages;
+- PDF SHA-256 `5e4c17e7a7e3a8f26172e770b43d9391f88d20e0252cfdc9425e530cbfec9111`;
+- final ZIP SHA-256 `c612899d536f4653e872f179f8b9fbea61264ed37e3120ac68fb1813ac5b913d`.
+
+Steady-state CI is read-only and compiles generated/hash-checked Rev9.
 
 ---
 
-# Current gate — administrative submission finalization
+# Remaining submission work
 
-Required factual inputs from the human author:
+Only factual/personal items remain:
 
-1. author name and order;
-2. affiliation;
+1. author name/order;
+2. affiliation(s);
 3. corresponding-author email;
 4. ORCID;
-5. truthful substantive-AI disclosure describing how the human author verified AI-assisted reasoning, derivations, literature synthesis, citations, and manuscript claims;
-6. applicable funding/conflict/prior-submission declarations.
+5. truthful substantive-AI acknowledgment describing the author's actual verification;
+6. applicable funding/conflict/prior-submission disclosures;
+7. optional referee suggestions/exclusions after conflict review;
+8. one final metadata-stage compile/visual inspection.
 
-After those are supplied:
+---
 
-1. insert metadata and finalized acknowledgment into Rev8 submission copy;
-2. regenerate and compile once;
-3. inspect only the pages affected by metadata/compliance changes plus first/last pages;
-4. freeze final portal-upload ZIP;
-5. submit to Physical Review Applied.
+# Explicitly deferred to later papers
 
-Fallback venue if needed: **Physical Review Research**; PRA remains secondary.
+Do not add to the first paper absent a concrete referee demand:
+
+- high-flux/history-dependent detection;
+- arbitrary semi-Markov detectors;
+- coherent continuous quantum pointers;
+- nonclassical-light/QFI extensions;
+- general Shannon-capacity theory;
+- material-specific detector optimization.
+
+Potential second-paper directions remain open, but the Rev9 first paper should now be treated as scientifically frozen.
