@@ -80,21 +80,17 @@ The matrix data-processing statement is the usual Fisher-information monotonicit
 
 The long-observation sinusoidal theorem is recovered from Eq.~\eqref{eq:waveformFI} as the long-window limit of square-integrable windowed sinusoids. In the translation-invariant limit, temporal Fourier modes diagonalize the local Fisher operator with multiplier $G(\omega)$. The source choice in Eq.~\eqref{eq:source} is therefore a spectral probe rather than a uniquely privileged waveform.
 
-\begin{lemma}[Regularity of the transfer spectrum]
-The transfer spectrum is real, bounded, even, and continuous:
+\paragraph{Regularity of the transfer spectrum.}
+For every mark, $H_m$ is the characteristic function of a probability measure and is therefore continuous, satisfies $H_m(-\omega)=H_m(\omega)^*$, and obeys $|H_m|\le1$. Hence $|H_m|^2$ is continuous and even. Because $\kappa$ is finite and the integrand is bounded by one, dominated convergence passes continuity through the $\kappa$ integral in Eq.~\eqref{eq:G}. Therefore
 \begin{equation}
+\boxed{
 0\le G(\omega)\le\eta,
 \qquad
 G(-\omega)=G(\omega),
 \qquad
-G\in C(\mathbb R).
+G\in C(\mathbb R).}
 \label{eq:Gregularity}
 \end{equation}
-\end{lemma}
-
-\begin{proof}
-For every mark, $H_m$ is the characteristic function of a probability measure and is therefore continuous, satisfies $H_m(-\omega)=H_m(\omega)^*$, and obeys $|H_m|\le1$. Hence $|H_m|^2$ is continuous and even. Because $\kappa$ is finite and the integrand is bounded by one, dominated convergence passes continuity through the $\kappa$ integral in Eq.~\eqref{eq:G}; the remaining statements follow directly.
-\end{proof}
 
 \begin{theorem}[Universal weak-waveform Fisher ordering]
 \label{thm:ordering}
@@ -118,7 +114,7 @@ c^T(F_A-F_B)c
 \end{equation}
 Hence $F_A-F_B$ is positive semidefinite for every perturbation family.
 
-Conversely, suppose the pointwise ordering fails at some $\omega_0$. By Lemma~1, $G_A-G_B$ is continuous and even, so there exist $\delta>0$ and a symmetric measurable set $E$ with $0<|E|<\infty$ on which $G_A-G_B\le-\delta$. Choose a nonzero real even $S\in L^2$ supported in $E$; for example, the indicator of a finite-measure symmetric subset of $E$. Then $S\in L^1$ as well, so its inverse Fourier transform $s$ is real, bounded, and square-integrable. Thus $s$ is admissible and
+Conversely, suppose the pointwise ordering fails at some $\omega_0$. By Eq.~\eqref{eq:Gregularity}, $G_A-G_B$ is continuous and even, so there exist $\delta>0$ and a symmetric measurable set $E$ with $0<|E|<\infty$ on which $G_A-G_B\le-\delta$. Choose a nonzero real even $S\in L^2$ supported in $E$; for example, the indicator of a finite-measure symmetric subset of $E$. Then $S\in L^1$ as well, so its inverse Fourier transform $s$ is real, bounded, and square-integrable. Thus $s$ is admissible and
 \begin{equation}
 \int [G_A-G_B]|S|^2d\omega
 \le-\delta\int_E|S|^2d\omega<0.
