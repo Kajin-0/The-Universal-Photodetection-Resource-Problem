@@ -1,0 +1,50 @@
+\begin{figure}[t]
+\centering
+\begin{minipage}[t]{0.58\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=\linewidth,
+  height=0.67\linewidth,
+  xmin=0,xmax=3,
+  ymin=0,ymax=0.41,
+  xlabel={$\lambda m$},
+  ylabel={$r m$},
+  xtick={0,1,2,3},
+  ytick={0,0.1,0.2,0.3,0.367879},
+  yticklabels={$0$,$0.1$,$0.2$,$0.3$,$1/e$},
+  tick align=outside,
+]
+\addplot[black,thick,domain=0:3,samples=120] {x*exp(-x)};
+\addplot[only marks,mark=*,mark size=1.8pt,black] coordinates {(1,0.3678794412)};
+\draw[densely dashed] (axis cs:1,0) -- (axis cs:1,0.3678794412);
+\node[anchor=south east,font=\scriptsize,align=right] at (axis cs:2.88,0.31) {same curve for every recovery law\\with mean $m$};
+\node[anchor=north west,font=\scriptsize] at (axis cs:1.04,0.363) {count maximum};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.38\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=\linewidth,
+  height=1.02\linewidth,
+  ybar,
+  bar width=13pt,
+  symbolic x coords={deterministic,exponential},
+  xtick=data,
+  x tick label style={rotate=25,anchor=east,font=\scriptsize},
+  ymin=0,ymax=0.08,
+  ylabel={$\mathcal G_{\rm DC}$ at $\lambda m=1$},
+  ytick={0,0.02,0.04,0.06,0.08},
+  nodes near coords,
+  nodes near coords style={font=\scriptsize,/pgf/number format/fixed,/pgf/number format/precision=4},
+  tick align=outside,
+]
+\addplot[fill=white,draw=black,thick] coordinates {(deterministic,0) (exponential,0.06915579)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\caption{The conventional saturation curve does not determine static information retention. Left: every iid Type-II recovery law with mean $m$ has the same registered-rate curve $r=\lambda e^{-\lambda m}$ and the same maximum at $\lambda m=1$. Right: at that common operating point deterministic recovery has exactly zero stationary Fisher retention, whereas exponential recovery retains $\mathcal G_{\rm DC}\simeq0.06916$.}
+\label{fig:sameCurve}
+\end{figure}
