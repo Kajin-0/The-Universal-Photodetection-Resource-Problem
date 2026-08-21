@@ -9,6 +9,7 @@ s = SRC.read_text(encoding="utf-8")
 assert "\\author{Anonymous}" in s
 assert "\\affiliation{Anonymous}" in s
 assert "\\input{section_practical_grounding_rev9}" in s
+assert "\\input{section_empirical_grounding_rev9}" in s
 assert s.count("\\appendix") == 1
 assert "\\section*{Data Availability}" not in s
 
