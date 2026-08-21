@@ -99,7 +99,7 @@ Submission PDF:
 
 Complete submission ZIP SHA-256:
 
-`5e9085aa99186e9d60f21ca9e7c3daa0661e871ed84248ce54f7c8be30812c81`
+`9ed6b408a9b27da8c6bc6cbc7f4aea869ec4ebb4e394dc286fbeb6a0c5ad96ca`
 
 The APS-compatible purely mathematical Data Availability statement is included. The substantive-AI acknowledgment remains intentionally unfinished until the human author supplies a literally truthful description of how the AI-assisted derivations, citations, and manuscript were personally verified.
 
