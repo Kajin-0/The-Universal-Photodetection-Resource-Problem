@@ -1,0 +1,5 @@
+Rev8 PRApplied submission PDF
+60da4f9a3919ffdf64d450b5397755a75109d4fc2a0a374a8132a93931092c37  event_resource_theorem_rev8_prapplied.pdf
+
+Rev8 PRApplied complete package ZIP
+92fd38711b4672f036fd4d95acd5e626c63972d0ca31def782c9f2447971e834  event-resource-theorem-rev8-prapplied.zip
