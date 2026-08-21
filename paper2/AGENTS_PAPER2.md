@@ -10,24 +10,25 @@ Paper 1 / Rev11 is scientifically frozen by default. Research remains analytical
 
 ## Current phase
 
-**Paper 2 has passed the manuscript threshold. A complete science draft exists.**
+**Paper 2 has a complete science draft and generated Rev3 is locally build-verified and visually inspected.**
 
-The active task is now **Rev2 mechanical validation, figures, and manuscript-level adversarial review**. Do not return to open-ended theorem accumulation unless drafting exposes a concrete proof defect or novelty collision.
+The active task is now **publication figures followed by a manuscript-level hostile review**. Do not return to open-ended theorem accumulation unless drafting exposes a concrete proof defect or novelty collision.
 
 ## Read first — authoritative recovery order
 
-1. `paper2/notes/RESEARCH_LOG_ROUND05_MANUSCRIPT_REV1_REV2.md`
-2. `paper2/manuscript/fisher_spectra_memory_photodetectors_rev1.tex`
-3. `paper2/manuscript/apply_rev2_science_fix.py`
-4. `paper2/manuscript/paper2_refs.bib`
-5. `paper2/MANUSCRIPT_ARCHITECTURE.md`
-6. `paper2/notes/WP27_INTEGRATED_HOSTILE_REVIEW_AND_MANUSCRIPT_GATE.md`
-7. `paper2/notes/RESEARCH_LOG_ROUND04_WP21_WP26_CHECKPOINT.md`
-8. `paper2/notes/WP26_FINITE_MEAN_STATIONARY_WINDOW_FISHER_RATE.md`
-9. `paper2/notes/WP25_FINITE_MEAN_CYCLE_DQM_AND_HEAVY_TAIL_HARDENING.md`
-10. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
-11. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
-12. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
+1. `paper2/notes/PAPER2_REV3_LOCAL_VALIDATION.md`
+2. `paper2/notes/RESEARCH_LOG_ROUND05_MANUSCRIPT_REV1_REV2.md`
+3. `paper2/MANUSCRIPT_ARCHITECTURE.md`
+4. `paper2/manuscript/fisher_spectra_memory_photodetectors_rev1.tex`
+5. `paper2/manuscript/apply_rev2_science_fix.py`
+6. `paper2/manuscript/apply_rev3_mechanical_polish.py`
+7. `paper2/manuscript/paper2_refs.bib`
+8. `paper2/notes/WP27_INTEGRATED_HOSTILE_REVIEW_AND_MANUSCRIPT_GATE.md`
+9. `paper2/notes/WP26_FINITE_MEAN_STATIONARY_WINDOW_FISHER_RATE.md`
+10. `paper2/notes/WP25_FINITE_MEAN_CYCLE_DQM_AND_HEAVY_TAIL_HARDENING.md`
+11. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
+12. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
+13. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
 
 WP22/WP23 are structural bridge theory. WP13–WP18/WP20 remain proof/provenance material. WP15's central pair-correlation identity is prior art and supporting only.
 
@@ -37,30 +38,29 @@ Working title:
 
 > **Fisher Spectra and Information Singularities in Photodetectors with Memory**
 
-Rev1 is the first complete science draft. It contains:
+Revision chain:
 
-1. the general autonomous-channel Fisher-spectrum theorem;
-2. deterministic Type-II static blindness with dynamic spectral escape;
-3. the finite-mean random-recovery zero-IFF-deterministic theorem;
-4. the exact mean+variance resource-incompleteness theorem;
-5. discussion/limitations and proof appendices.
+- Rev1: first complete science draft.
+- Rev2: assertion-checked repair of Greek `\nu_s` versus intended Latin `u_s`.
+- Rev3: assertion-checked mechanical polish: hidden hyperlink boxes, removal of internal drafting language, and explicit counting-process likelihood references.
 
-`paper2/manuscript/paper2_refs.bib` contains every citation key presently used by Rev1.
+The separate Paper-2 CI workflow generates Rev2 then Rev3 and compiles Rev3. The frozen Paper-1 CI is untouched.
 
-### Rev2 science fix
+## Rev3 local validation
 
-Rev1 contains one known notation defect: the renewal-density Laplace transform is introduced as Greek `\nu_s` while subsequent equations use Latin `u_s`.
+A clean local `latexmk`/pdfLaTeX build of generated Rev3 succeeded. The local environment's `bibtex` alternative was broken, so installed `bibtex8` was used through a PATH shim; this is an environment workaround only.
 
-`apply_rev2_science_fix.py` is the assertion-checked generator for Rev2. The first version of this generator accidentally replaced `\nu_s` with itself; this was caught before build verification and corrected.
+Result:
 
-The corrected generator now:
+- 19 pages;
+- all citations/cross-references resolved;
+- no overfull or underfull boxes;
+- only warning is the benign `nameref` label-definition warning;
+- rendered 19-page contact sheet shows no clipping, overlap, broken glyphs, or margin overflow.
 
-- replaces Greek `\nu_s` with Latin `u_s` exactly once;
-- fails if Greek `\nu_s` survives;
-- fails if the Latin `u_s` definition is absent;
-- guards the mandatory distinctions `G(omega)`, `G_cyc`, and `G_DC` and the WP07 all-nonzero-frequency statement.
+Hashes from the locally validated generation are recorded in `PAPER2_REV3_LOCAL_VALIDATION.md`.
 
-Treat generated Rev2 as the current manuscript once compilation is verified.
+**Verification boundary:** Rev3 is locally build-verified and visually inspected, but the branch push-triggered GitHub Actions run itself has not been directly inspected through the connector in this session.
 
 ## Core theorem stack
 
@@ -131,26 +131,13 @@ The analytic common-statistic construction is the theorem; the numerical differe
 
 High-frequency Cesaro retention can be interpreted through zero-lag atomic timing energy in the conditional source score. Exact delayed score paths can add atomic residue, so causality alone does not imply a visible-event-fraction theorem.
 
-WP24 found the ingredients to be strongly classical. Use this material for interpretation, not as a lead novelty claim.
+WP24 found the ingredients strongly classical. Use this material for interpretation, not as a lead novelty claim.
 
 ## Novelty boundaries
 
-Do **not** claim novelty for:
+Do **not** claim novelty for generic Fisher data processing/score projection, function-valued FI operators, translation-invariant multipliers, point-process martingale likelihoods, generic renewal/window-censored renewal FI, random Type-II / `M/G/infinity` modeling, Type-II cycle transforms/busy-cycle laws, random-paralyzable pair correlations, generic queue-output identifiability, Bartlett spectra, Wiener/Rajchman theory, or dead-time information theory generally.
 
-- generic Fisher data processing / score projection;
-- function-valued FI operators;
-- translation-invariant Fourier multipliers;
-- point-process martingale likelihoods;
-- generic renewal/window-censored renewal FI;
-- random Type-II / `M/G/infinity` modeling;
-- Type-II cycle transforms / busy-cycle laws;
-- random-paralyzable pair correlations / generic dead-time inversion;
-- generic queue-output identifiability;
-- Bartlett spectra / shot-noise plateaus / Wiener-Rajchman theory;
-- dead-time information theory generally;
-- modulated paralyzable photocounting generally.
-
-Keep close prior art visible: Teich/Vannucci 1978; Vannucci/Teich 1978; Teich/Cantor 1978; Dvurecenskij/Ososkov 1984 and 1985; Zhao/Nagaraja 2011; Barat/Dautremer/Trigano 2006; Jorgensen/Johnson 2026; Clark 2026; older inverse-output queue literature.
+Keep close prior art visible: Teich/Vannucci 1978; Vannucci/Teich 1978; Teich/Cantor 1978; Dvurecenskij/Ososkov 1984 and 1985; Zhao/Nagaraja 2011; Barat/Dautremer/Trigano 2006; Jorgensen/Johnson 2026; Clark 2026; Andersen/Borgan/Gill/Keiding 1993; Jacobsen 2006; older inverse-output queue literature.
 
 Afanaseva & Mikhailova 1973 remains an inaccessible direct Type-II-lineage historical risk. Never make a priority claim that depends on excluding it.
 
@@ -158,35 +145,16 @@ Afanaseva & Mikhailova 1973 remains an inaccessible direct Type-II-lineage histo
 
 > **A detector's conventional saturation curve is not an information-transfer law. For autonomous classical photodetection, temporal Fisher information is a property of the complete trajectory channel: deterministic Type-II paralysis can erase the static tangent while preserving every nonzero temporal mode, random recovery generically breaks that singularity despite the same mean saturation curve, and even recovery mean plus variance do not determine the information channel.**
 
-## Verification state
-
-Verified:
-
-- manuscript architecture exists;
-- Rev1 is a complete science draft;
-- all citation keys used in Rev1 are present in `paper2_refs.bib`;
-- the Rev2 notation-generator defect has been repaired and guarded;
-- Paper-1 CI remains untouched;
-- a separate read-only Paper-2 LaTeX workflow exists.
-
-Not yet verified:
-
-- successful Rev2 LaTeX/BibTeX compilation;
-- compiler-warning inventory;
-- rendered-page visual inspection;
-- final figures.
-
-Do **not** call Rev2 build-verified until the actual compiler result has been inspected.
-
 ## Immediate next action
 
-1. Obtain/inspect the Paper-2 compile job by any available connector path; if unavailable, use another reproducible compilation route.
-2. Patch the first genuine LaTeX/BibTeX defect, if any, through a reproducible revision step.
-3. Persist generated Rev2 or a hash-pinned equivalent after successful build and record page count/warnings/artifact hash.
-4. Render and visually inspect every page.
-5. Replace the four figure placeholders with publication-quality figures from validated assets.
-6. Perform a manuscript-level hostile review after mechanical/visual validation.
+1. Replace Figure 1 placeholder with a clean conceptual trajectory-channel versus saturation-curve diagram.
+2. Replace Figure 2 placeholder with the validated deterministic Type-II exact-spectrum / rigorous-lower-bound plot.
+3. Replace Figure 3 placeholder with the common saturation curve plus deterministic/random static-FI comparison.
+4. Replace Figure 4 placeholder with the exact mean/variance-matched recovery counterexample.
+5. Rebuild and re-render after figure insertion.
+6. Perform a manuscript-level hostile review of proof handoffs, novelty language, significance, exposition, and figure accuracy.
+7. Only after that decide whether another science revision is justified.
 
 ## Mandatory documentation rule
 
-Material theorem results, proof repairs, prior-art collisions, numerical results used in arguments, or changes in manuscript strategy must be committed immediately. Keep this file and `docs/CURRENT_RESEARCH_STATE.md` synchronized.
+Material theorem results, proof repairs, prior-art collisions, numerical results used in arguments, build/visual-validation changes, or changes in manuscript strategy must be committed immediately. Keep this file and `docs/CURRENT_RESEARCH_STATE.md` synchronized.
