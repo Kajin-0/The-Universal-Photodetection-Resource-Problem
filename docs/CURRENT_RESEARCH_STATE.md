@@ -7,63 +7,64 @@ Active branch: `agent/uprp-core-theorem-round10`
 ## Project-level status
 
 1. **Paper 1 / Rev11:** scientifically frozen and technically validated for Physical Review Applied; only factual/personal submission metadata remain.
-2. **Paper 2:** theorem-development phase passed WP27's integrated hostile review. A complete science manuscript draft now exists. The active phase is **Rev2 mechanical validation, figures, and manuscript-level adversarial review**.
+2. **Paper 2:** theorem-development phase passed WP27's integrated hostile review. A complete manuscript draft exists. Generated **Rev3 is locally build-verified and visually inspected**. The active phase is publication figures followed by manuscript-level adversarial review.
 
-Do not reopen broad Paper-2 theorem exploration unless the manuscript exposes a concrete defect or a serious novelty collision.
+Do not reopen broad Paper-2 theorem exploration unless the manuscript exposes a concrete defect or serious novelty collision.
 
 ## Read first
 
 1. `AGENTS.md`
 2. `paper2/AGENTS_PAPER2.md`
-3. `paper2/notes/RESEARCH_LOG_ROUND05_MANUSCRIPT_REV1_REV2.md`
-4. `paper2/manuscript/fisher_spectra_memory_photodetectors_rev1.tex`
-5. `paper2/manuscript/apply_rev2_science_fix.py`
-6. `paper2/manuscript/paper2_refs.bib`
-7. `paper2/MANUSCRIPT_ARCHITECTURE.md`
-8. `paper2/notes/WP27_INTEGRATED_HOSTILE_REVIEW_AND_MANUSCRIPT_GATE.md`
-9. `paper2/notes/WP26_FINITE_MEAN_STATIONARY_WINDOW_FISHER_RATE.md`
-10. `paper2/notes/WP25_FINITE_MEAN_CYCLE_DQM_AND_HEAVY_TAIL_HARDENING.md`
-11. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
-12. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
+3. `paper2/notes/PAPER2_REV3_LOCAL_VALIDATION.md`
+4. `paper2/notes/RESEARCH_LOG_ROUND05_MANUSCRIPT_REV1_REV2.md`
+5. `paper2/MANUSCRIPT_ARCHITECTURE.md`
+6. `paper2/manuscript/fisher_spectra_memory_photodetectors_rev1.tex`
+7. `paper2/manuscript/apply_rev2_science_fix.py`
+8. `paper2/manuscript/apply_rev3_mechanical_polish.py`
+9. `paper2/manuscript/paper2_refs.bib`
+10. `paper2/notes/WP27_INTEGRATED_HOSTILE_REVIEW_AND_MANUSCRIPT_GATE.md`
+11. `paper2/notes/WP26_FINITE_MEAN_STATIONARY_WINDOW_FISHER_RATE.md`
+12. `paper2/notes/WP25_FINITE_MEAN_CYCLE_DQM_AND_HEAVY_TAIL_HARDENING.md`
+13. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
+14. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
 
 # Paper 1 — frozen Rev11
 
 Preferred candidate remains Rev11. Do not reopen science absent a concrete defect or referee request.
 
-# Paper 2 — current manuscript state
+# Paper 2 — manuscript state
 
 Working title:
 
 > **Fisher Spectra and Information Singularities in Photodetectors with Memory**
 
-`paper2/manuscript/fisher_spectra_memory_photodetectors_rev1.tex` is the first complete science draft. It already contains the abstract, introduction, core theorem sequence, discussion, conclusion, and proof appendices.
+Revision chain:
 
-A dedicated bibliography exists at `paper2/manuscript/paper2_refs.bib`. Static inspection confirms that all citation keys presently used by Rev1 are present in the bibliography.
+- Rev1 — first complete science draft;
+- Rev2 — assertion-checked `\nu_s` -> Latin `u_s` science notation repair;
+- Rev3 — assertion-checked mechanical polish: hidden hyperlink boxes, internal drafting-language removal, and explicit stopped-counting-process likelihood references.
 
-## Rev2 science correction
+The dedicated Paper-2 CI generates Rev2 then Rev3 and compiles Rev3. Paper-1 CI is untouched.
 
-Rev1 contains one known notation defect: the renewal-density Laplace transform is introduced as Greek `\nu_s` while subsequent equations use the intended Latin `u_s`.
+## Local Rev3 validation
 
-The first version of `apply_rev2_science_fix.py` accidentally replaced `\nu_s` with itself. That generator defect was caught before build verification and has been repaired.
+A clean local `latexmk`/pdfLaTeX build of generated Rev3 succeeded. Because the container's `bibtex` alternative was broken, installed `bibtex8` was used through a PATH shim. This was only a local environment workaround.
 
-The corrected Rev2 generator now:
+Validated result:
 
-- replaces Greek `\nu_s` with Latin `u_s` exactly once;
-- fails if Greek `\nu_s` remains;
-- fails if the Latin `u_s` definition is missing;
-- guards the mandatory distinctions `G(omega)`, `G_cyc`, `G_DC`, and the WP07 all-nonzero-frequency statement.
+- **19 pages**;
+- all citations and cross-references resolved;
+- no overfull or underfull boxes;
+- only remaining warning: benign `nameref` label-definition warning;
+- all 19 pages rendered and inspected;
+- no clipping, overlap, broken glyphs, black boxes, or margin overflow;
+- hyperlink boxes removed in Rev3.
 
-Generated Rev2 is the current science draft once compilation succeeds.
+Hashes and validation details are recorded in `paper2/notes/PAPER2_REV3_LOCAL_VALIDATION.md`.
 
-## Paper-2 CI
+**Verification boundary:** Rev3 is locally build-verified and visually inspected. The branch push-triggered GitHub Actions run itself has not been directly inspected through the available connector in this session.
 
-A separate read-only workflow exists at
-
-`.github/workflows/paper2-manuscript-check.yml`.
-
-It generates Rev2, compiles it with the same LaTeX action family used for Paper 1, checks unresolved references/citations, and uploads the manuscript artifact. The frozen Paper-1 workflow is untouched.
-
-**Do not yet call Rev2 build-verified.** The actual push-triggered Actions job has not been inspectable through the available connector route in this session, and local container networking cannot clone GitHub.
+The four figure placeholders are now the principal mechanical/publication-quality deficiency.
 
 # Scientific core
 
@@ -88,9 +89,9 @@ At `lambda*tau=1`:
 - stationary homogeneous retention `G_DC=0`;
 - every nonzero temporal frequency has positive model-specific narrowband FI retention;
 - `lim_|omega|->infinity G(omega)=1/e`;
-- at `omega*tau=pi`, a rigorous lower bound is `0.516975...`, with exact numerical validation about `0.52814`.
+- at `omega*tau=pi`, rigorous lower bound `0.516975...`, exact numerical validation about `0.52814`.
 
-The manuscript must keep the a.e. universal spectrum separate from the model-specific continuous/narrowband representative and from static `G_DC`.
+The manuscript correctly separates the a.e. universal spectrum, model-specific continuous/narrowband representation, and static `G_DC`.
 
 ## WP25/WP26 — finite-mean recovery singularity
 
@@ -98,7 +99,7 @@ For iid recovery with only `0<E[T]=m<infinity`, all laws share
 
 `r(lambda)=lambda exp(-lambda m)`.
 
-WP25 gives finite Palm-cycle FI and regularity-free bounded-statistic separation. WP26 proves the stationary long-window equality
+WP25 gives finite Palm-cycle FI and regularity-free bounded-statistic separation. WP26 proves
 
 `G_DC=G_cyc=(r/lambda)I_D`
 
@@ -107,6 +108,8 @@ for the entire finite-mean iid Type-II class, including atomic, singular, infini
 At `lambda*m=1`:
 
 `G_DC=0 iff T=m almost surely`.
+
+Rev3 now cites standard counting-process likelihood/point-process references for the stopped-martingale localization.
 
 ## WP19 — exact resource incompleteness
 
@@ -130,13 +133,14 @@ Afanaseva & Mikhailova 1973 remains an inaccessible direct Type-II-lineage histo
 
 # Immediate next actions
 
-1. Inspect the actual Paper-2 compile job if a connector route becomes available; otherwise use another reproducible compile path.
-2. Patch the first genuine LaTeX/BibTeX defect, if any, through a reproducible revision step.
-3. Persist/hash-pin generated Rev2 after successful build and record page count, warnings, and artifact hash.
-4. Render and visually inspect all pages.
-5. Replace four figure placeholders with publication-quality figures based on validated theoretical/numerical assets.
-6. Perform a manuscript-level hostile review after mechanical and visual validation.
+1. Replace Figure 1 placeholder with a clean trajectory-channel versus saturation-curve conceptual diagram.
+2. Replace Figure 2 placeholder with the validated deterministic Type-II exact-spectrum / rigorous-lower-bound plot.
+3. Replace Figure 3 placeholder with the shared saturation curve plus deterministic/random static-FI comparison.
+4. Replace Figure 4 placeholder with the exact mean/variance-matched recovery counterexample.
+5. Rebuild and visually re-inspect after figures are inserted.
+6. Perform a manuscript-level hostile review of proof handoffs, novelty language, significance, exposition, and figure accuracy.
+7. Only after that decide whether another science revision is justified.
 
 # Documentation requirement
 
-Material theorem results, proof repairs, prior-art collisions, numerical results used in arguments, or changes in manuscript strategy must be committed immediately. Keep `paper2/AGENTS_PAPER2.md` and this file synchronized.
+Material theorem results, proof repairs, prior-art collisions, numerical results used in arguments, build/visual-validation changes, or changes in manuscript strategy must be committed immediately. Keep `paper2/AGENTS_PAPER2.md` and this file synchronized.
