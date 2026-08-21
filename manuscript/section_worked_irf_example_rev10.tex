@@ -1,0 +1,29 @@
+\subsection{Worked literature example: FWHM can reverse a detector ranking}
+\label{sec:workedIRF}
+
+A simple literature example illustrates why the full IRF shape matters operationally. Spinelli \emph{et al.} published normalized timing-response curves for a double-junction SPAD (DJ-SPAD) and a microchannel-plate photomultiplier (MCP) in the same figure, together with FWHM values of $35\,$ps and $25\,$ps, respectively \cite{Spinelli1998}. By FWHM alone the MCP therefore appears faster.
+
+We performed an approximate graphical digitization of the two normalized traces in their Fig.~3 over the displayed $0$--$1000\,$ps interval. Because $B_{\rm FI}$ for a single unresolved mark can be written directly from any nonnegative trace $c(t)$ as
+\begin{equation}
+B_{\rm FI}
+=\frac12\frac{\int c(t)^2dt}{\left[\int c(t)dt\right]^2},
+\label{eq:traceBFI}
+\end{equation}
+the arbitrary vertical normalization of the published plot cancels. Linear interpolation of the digitized logarithmic ordinate gives the values in Table~\ref{tab:spinelliWorkedExample}. The digitized points and the analysis script are supplied with the source files so that the calculation is reproducible.
+
+\begin{table}[t]
+\caption{Worked estimate from the published normalized IRFs of Spinelli \emph{et al.} \cite{Spinelli1998}. The last column is an approximate figure-digitization result, not a reanalysis of the authors' raw TCSPC events. ``Gaussian from FWHM'' means the value one would infer by assuming a Gaussian timing law having only the reported FWHM.}
+\label{tab:spinelliWorkedExample}
+\begin{tabular}{lccc}
+\toprule
+Detector & Reported FWHM & Gaussian from FWHM & Fig.-digitized $B_{\rm FI}$ \\
+\midrule
+DJ-SPAD & $35\,$ps & $9.49\,$GHz & $\approx9.16\,$GHz \\
+MCP & $25\,$ps & $13.29\,$GHz & $\approx5.98\,$GHz \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The ranking reverses. Although the MCP has the smaller FWHM, the figure-digitized estimate gives the DJ-SPAD about $1.53$ times the Fisher-equivalent bandwidth. The reason is visible directly in the published IRF: the MCP has broad bumps and tails outside its narrow central peak, whereas the DJ-SPAD response is much cleaner. Treating the FWHM as if it defined a Gaussian law would overestimate the MCP value by a factor of about $2.22$, while changing the DJ-SPAD estimate by only a few percent.
+
+This example should not be interpreted as precision metrology. The calculation uses a printed logarithmic figure rather than raw event times, and the finite plotting window and line thickness introduce digitization uncertainty. Its purpose is narrower: to demonstrate on a real published detector comparison that a conventional width can rank two timing responses oppositely from a full-shape information measure. Given raw TCSPC counts, Eq.~\eqref{eq:histUnbiased} is the preferred estimator.
