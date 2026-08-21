@@ -1,0 +1,80 @@
+\subsection{Fisher-equivalent bandwidth and serial timing stages}
+\label{sec:bfi}
+
+For square-integrable conditional delay densities, Eq.~\eqref{eq:parseval} permits an exact equivalent-rectangular interpretation of the collision resource. Because $G$ is even and $G(0)=\eta$, define, for $\eta>0$, the ordinary-frequency DC-normalized Fisher-equivalent bandwidth
+\begin{equation}
+\boxed{
+B_{\rm FI}
+\equiv
+\frac{1}{\eta}\int_0^\infty G(2\pi f)\,df.}
+\label{eq:BFIdef}
+\end{equation}
+Changing variables from $f$ to $\omega$ and using Eq.~\eqref{eq:parseval} gives the exact identity
+\begin{equation}
+\boxed{
+B_{\rm FI}=\frac{\Rtwo}{4\eta}.}
+\label{eq:BFI}
+\end{equation}
+This is an area bandwidth of the source-normalized Fisher transfer, not an electrical amplitude bandwidth. Combining Eqs.~\eqref{eq:BFI} and \eqref{eq:R2H} yields
+\begin{equation}
+\boxed{
+B_{\rm FI}\le\frac{\Hcap}{4\eta}.}
+\label{eq:BFIH}
+\end{equation}
+If every captured-event conditional hazard obeys the common ceiling $\Lambda(m)\le\Lambda$, then $\Hcap\le\eta\Lambda$ and
+\begin{equation}
+\boxed{B_{\rm FI}\le\frac{\Lambda}{4}.}
+\label{eq:BFILambda}
+\end{equation}
+For the exponential delay $f(t)=\Lambda e^{-\Lambda t}$, equality holds in Eq.~\eqref{eq:BFILambda}. Its half-power frequency is instead $\Lambda/(2\pi)$, so $B_{\rm FI}$ is not a relabeling of the conventional $-3\,$dB bandwidth.
+
+A simple cascade law makes the operational meaning explicit. Consider independent unmarked autonomous delay-only stages. For stage $j$, let the capture probability be $\eta_j$ and the delay characteristic function be $H_j$, so
+\begin{equation}
+G_j(\omega)=\eta_j|H_j(\omega)|^2.
+\end{equation}
+For two serial independent stages, delays add and capture probabilities multiply; therefore
+\begin{equation}
+\boxed{
+G_{12}(\omega)=G_1(\omega)G_2(\omega).}
+\label{eq:cascade}
+\end{equation}
+Thus unresolved independent timing stages multiply source Fisher transfer. This scalar factorization is restricted to independent unmarked delay-only stages; general retained marks remain governed by Eq.~\eqref{eq:G}.
+
+As an analytic architecture example, take $k$ serial independent exponential waiting stages of common rate $\lambda$ and total capture probability $\eta$. The total delay is Erlang,
+\begin{equation}
+f_k(t)=\frac{\lambda^k t^{k-1}e^{-\lambda t}}{(k-1)!},
+\end{equation}
+with
+\begin{equation}
+H_k(\omega)=\left(\frac{\lambda}{\lambda+i\omega}\right)^k
+\end{equation}
+and hence
+\begin{equation}
+\boxed{
+G_k(\omega)
+=\eta\left(\frac{\lambda^2}{\lambda^2+\omega^2}\right)^k.}
+\label{eq:ErlangG}
+\end{equation}
+Direct integration of $f_k^2$ gives
+\begin{equation}
+\boxed{
+\frac{\Rtwo}{\eta}
+=\lambda\frac{(2k-2)!}{4^{k-1}[(k-1)!]^2},}
+\label{eq:ErlangR2}
+\end{equation}
+and therefore
+\begin{equation}
+\boxed{
+B_{\rm FI}
+=\frac{\lambda}{4}
+\frac{\binom{2k-2}{k-1}}{4^{k-1}}.}
+\label{eq:ErlangBFI}
+\end{equation}
+Using the central-binomial asymptotic,
+\begin{equation}
+B_{\rm FI}
+\sim\frac{\lambda}{4\sqrt{\pi(k-1)}}
+\qquad (k\to\infty).
+\label{eq:ErlangAsymptotic}
+\end{equation}
+Thus serial unresolved stochastic registration stages progressively consume equivalent temporal Fisher bandwidth even when every stage has the same bare microscopic rate.
