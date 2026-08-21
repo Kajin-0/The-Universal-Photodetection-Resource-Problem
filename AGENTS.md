@@ -2,56 +2,64 @@
 
 ## Purpose
 
-Durable handoff for **The Universal Photodetection Resource Problem (UPRP)**. The repository, not chat history, is authoritative.
+Durable project handoff for **The Universal Photodetection Resource Problem (UPRP)**. The repository, not chat history, is authoritative.
 
-Research is analytical/theoretical. Numerical analysis of published data is allowed for validation and illustration. Do not make new experiments, fabrication, procurement, or laboratory campaigns necessary next steps.
+Active branch: `agent/uprp-core-theorem-round10`.
 
-Active branch: `agent/uprp-core-theorem-round10`
+Research is analytical/theoretical. Numerical analysis is used for validation, calibration, and published-data analysis. Do not make experiments, fabrication, procurement, or laboratory campaigns necessary next steps.
 
-## Read first
+## Critical project split
+
+There are now two publication tracks:
+
+1. **Paper 1 / Rev11** — scientifically frozen, technically validated, awaiting factual/personal submission metadata.
+2. **Paper 2** — active research frontier: arbitrary autonomous detector channels, high-flux hidden memory, Type-II information spectra, recovery-law identifiability, and resource-completeness no-go results.
+
+Do not assume the active scientific state is contained in the Paper-1 files.
+
+## Read first — active research
 
 1. `docs/CURRENT_RESEARCH_STATE.md`
-2. `notes/RESEARCH_LOG_ROUND21_ENBW_POSITIONING.md`
-3. `submission/PRAPPLIED_PACKAGE_VALIDATION_REV11.md`
-4. `submission/SUBMISSION_PACKAGE_CHECKLIST_REV11.md`
-5. `manuscript/apply_rev11_enbw_positioning.py`
-6. `manuscript/REV11_SHA256SUMS.txt`
-7. `notes/RESEARCH_LOG_ROUND20_LITERATURE_IRF_EXAMPLE.md`
-8. `notes/RESEARCH_LOG_ROUND19_EMPIRICAL_GROUNDING.md`
-9. `notes/RESEARCH_LOG_ROUND18_TRANSLATIONAL_GROUNDING.md`
+2. `paper2/AGENTS_PAPER2.md`
+3. `paper2/notes/RESEARCH_LOG_ROUND03_WP13_WP20_CHECKPOINT.md`
+4. `ROADMAP.md`
+5. `paper2/notes/WP20_CESARO_VISIBLE_EVENT_RESIDUE.md`
+6. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
+7. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
+8. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
+9. `paper2/notes/WP16_HOSTILE_RANDOM_TYPEII_PRIOR_ART_AUDIT.md`
+10. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
 
-## Current publication state — Rev11
+## Paper 1 / Rev11 — frozen publication state
 
-**Rev11 is the preferred first-paper submission candidate.**
+Preferred first-paper submission candidate: **Rev11**.
 
-Reproducible source chain:
+The theorem class is autonomous/time-translation-invariant, independent-event/low-overlap, one-primary-registration photodetection under weak coherent/Poisson direct-detection intensity modulation, retaining complete accessible primary-event marks.
 
-1. frozen theorem source: `manuscript/event_resource_theorem_rev7.tex`;
-2. Rev8 referee repair: `manuscript/apply_rev8_referee_surgical.py`;
-3. Rev9 operational/empirical grounding: `manuscript/apply_rev9_grounding.py`;
-4. Rev10 published-IRF worked example: `manuscript/apply_rev10_literature_example.py`;
-5. Rev11 ENBW positioning: `manuscript/apply_rev11_enbw_positioning.py`.
+Core exact transfer:
 
-Hash manifests: `REV8_SHA256SUMS.txt`, `REV9_SHA256SUMS.txt`, `REV10_SHA256SUMS.txt`, `REV11_SHA256SUMS.txt`.
+`G(omega)=int |H_m(omega)|^2 kappa(dm)`.
 
-Rev11 changes **no theorem, proof, resource inequality, or worked-example number**. It makes the final positioning correction that, for one unresolved mark,
+Complete local weak-waveform Fisher operator:
 
-`B_FI = ∫_0^∞ |H(2πf)|² df = B_ENBW`
+`[F_out]_{ab}=Phi0/(2*pi) int G(omega)S_a*(omega)S_b(omega)domega`.
 
-because `H(0)=1`. This is explicitly acknowledged as the standard one-sided equivalent-noise-bandwidth integral. Do **not** claim novelty for the scalar integral or for the familiar first-order `π/2` ratio.
+For square-integrable timing densities:
 
-What remains genuinely distinct is the stochastic event-registration/Fisher interpretation, retained-mark transfer
+`R2=2 int kappa(dm) int f_m(t)^2 dt`,
 
-`G(ω)=∫|H_m(ω)|² κ(dm)`,
+`B_FI=R2/(4 eta)<=H/(4 eta)`.
 
-its collision-resource area identity, microscopic hazard bounds, universal local weak-waveform Fisher ordering, and inverse resource costs. In general the retained-mark `G` is not the ENBW of the mark-discarded scalar timing law.
+For one unresolved mark,
 
-Rev11 also adds a practical multinomial plug-in bootstrap for finite-count uncertainty of the binned histogram estimator. It is explicitly limited to counting uncertainty and does not include systematic instrument/deconvolution uncertainty.
+`B_FI=int_0^infty |H(2*pi*f)|^2 df=B_ENBW`.
+
+Do not claim novelty for that scalar ENBW integral or the familiar first-order `pi/2` ratio.
 
 Canonical Rev11:
 
 - 33 pages;
-- generated source SHA-256 `fe966f4ab3fa067bb94d200ed09605a1ed3a2cdef9b4488fd0d18a55e95ccb6e`;
+- source SHA-256 `fe966f4ab3fa067bb94d200ed09605a1ed3a2cdef9b4488fd0d18a55e95ccb6e`;
 - PDF SHA-256 `9eedbf562ed5fa70b78a8c1c63627e1c578f149074f7f25f3fd3988c8668ecef`.
 
 PRApplied Rev11:
@@ -60,89 +68,124 @@ PRApplied Rev11:
 - PDF SHA-256 `d9e4a3330543106a272d4aa7b26cf6187bbd2f6ef170db4a8927b06edb824db7`;
 - package ZIP SHA-256 `b9f1abff76bbcc7a97ca8b2c3038f1e44e5adbb68f230cdb7d13c02431b6183e`.
 
-Steady-state CI is read-only. It regenerates/hash-checks Rev8, Rev9, Rev10, reproduces the Spinelli calculation, generates/hash-checks Rev11, compiles Rev11, and uploads the artifact.
+Remaining Paper-1 blockers are human metadata/compliance only: author/order, affiliations, corresponding email, ORCID, truthful AI disclosure, funding/conflict/prior-submission declarations.
 
-## First-paper theorem class
+Do not add more Paper-1 science unless a concrete defect or referee request appears.
 
-Autonomous/time-translation-invariant, independent-event / low-overlap, one-primary-registration photodetection under weak coherent/Poisson direct-detection intensity modulation, retaining the complete accessible primary-event mark.
+## Paper 2 — active theorem stack
 
-Do **not** describe this as a universal speed limit for all photodetectors.
+### General autonomous-channel theorem — WP10/WP17
 
-Core exact transfer:
+For homogeneous Poisson baseline flux `Phi0`, any parameter-independent stochastic detector channel gives output score
 
-`G(ω)=∫ |H_m(ω)|² κ(dm)`, with `G(0)=η`.
+`S_u^out=E[S_u|Y]`.
 
-Complete local weak-waveform Fisher operator:
+This defines a positive contraction on scalar `L2(R)`. Autonomy/time-translation covariance forces exact Fourier diagonalization:
 
-`[F_out]_{ab}=Φ0/(2π)∫G(ω)S_a*(ω)S_b(ω)dω`.
+`F_out[u,v]=Phi0/(2*pi) int G_{Phi0,K}(omega)U*(omega)V(omega)domega`,
 
-Pointwise `G_A>=G_B` iff detector A locally Fisher-dominates B for every admitted finite weak-waveform task. This is **not** generic Blackwell dominance.
+`0<=G<=1` a.e.
 
-For square-integrable timing densities:
+WP17 closes the main formal proof gaps through standard-Borel trajectory spaces, stochastic-kernel randomization, DQM under statistics, the classical `L2` multiplier theorem, and narrowband wavepacket limits.
 
-`R2=2∫κ(dm)∫f_m²dt`,
+Candidate message: **spectral completeness is symmetry-driven, not independent-event-driven.**
 
-`B_FI=R2/(4η)<=H/(4η)`.
+All abstract statistical/harmonic-analysis ingredients are prior art.
 
-A common hazard ceiling gives `B_FI<=Λ/4`. Band-retention inverse costs remain `R2>=4Bq` and `H>=4Bq`.
+### Continuous Type-II spectral escape — WP07
 
-For one unresolved mark:
+For deterministic paralyzable dead time at `lambda*tau=1`:
 
-`B_FI=(1/2)∫f²dt=B_ENBW` for the normalized timing transfer.
+`G_1(0)=0`,
 
-Histogram estimator:
+`G_1(omega)>0` for every nonzero frequency,
 
-`B_FI^(Δt)=[1/(2Δt)]Σp_i²`,
+`G_1(infty)=1/e`.
 
-`Bhat_FI,U^(Δt)=[1/(2Δt)]Σn_i(n_i-1)/[N(N-1)]`.
+At `omega=pi/tau`, rigorous lower bound `0.516975...`; independent complete-record Volterra value about `0.52814`.
 
-Finite binning lowers the inferred value. Finite support of length `T` gives `B_FI>=1/(2T)`, not an upper bound. A separate density ceiling `||f||∞<=M` gives `B_FI<=M/2`.
+### General iid-recovery Fisher singularity — WP18
 
-A perfect latency-resolving primary mark gives `G=η` at all frequency. A downstream TDC does not recreate information already lost before the primary record. The cascade product law applies to independent unresolved stochastic delay stages, not automatically to deterministic TIA transfer functions.
+For iid recovery `T` of fixed mean `m`, every law has the same conventional curve
 
-## Rev10 worked published-IRF result
+`r(lambda)=lambda exp(-lambda m)`.
 
-Spinelli et al. 1998, DOI `10.1109/3.668769`:
+The renewal density `U_lambda(t)=lambda F(t)exp[-lambda A(t)]` is classical prior art.
 
-- FWHM: MCP `25 ps`, DJ-SPAD `35 ps` -> FWHM ranks MCP faster;
-- Gaussian-from-FWHM `B_FI`: MCP `13.29 GHz`, DJ-SPAD `9.49 GHz`;
-- approximate figure-digitized full-shape `B_FI`: MCP `5.977 GHz`, DJ-SPAD `9.160 GHz`;
-- ranking reverses: `B_FI(DJ)/B_FI(MCP)=1.533`.
+For the homogeneous static experiment use `G_DC`, not an unjustified point value of the a.e. WP10 multiplier.
 
-This remains approximate published-figure digitization, not raw-event reanalysis.
+Under renewal DQM/window regularity, WP18's bounded-Laplace-statistic proof yields at `lambda*m=1`:
 
-## Rev8 thermodynamic repair — mandatory
+`G_DC=0 iff T=m almost surely`.
 
-Appendix A must keep `acp >= bqs`, ensuring `f_R-r_R=R(acp-bqs)/(RD+E)>=0` for every `R>0`.
+This is currently a serious novelty candidate but priority is not certified.
 
-Stationary one-way activity is total directed stationary jump traffic. Aggregate stationary activity/EPR/throughput alone do not set an absolute microscopic time scale.
+### Recovery moment insufficiency — WP19
 
-## Novelty posture
+Two exact recovery laws have identical `E[T]=1`, `Var(T)=1/4`, `CV=0.5`, and identical entire conventional saturation curve but different timestamp information channels.
 
-Do not claim:
+A common coarse-graining has zero FI for one and normalized FI `~0.00443520488427` for the other. Converged full static FI differs by about `8.78%`.
 
-- first information-theoretic detector timing analysis;
-- first IRF-information result;
-- first generic FI transfer function;
-- novelty of the scalar ENBW integral `∫|H|²df`;
-- novelty of the first-order ENBW ratio `π/2`;
-- generic Blackwell dominance;
-- arbitrary fixed-FWHM no-go;
-- universal all-detector speed limit.
+Conclusion: mean and variance/CV are not resource-complete.
 
-Defensible contribution: a temporal-information resource theory for autonomous marked photodetection event channels in which the exact marked-delay spectrum is the complete local weak-waveform Fisher multiplier; pointwise ordering completely characterizes local weak-waveform Fisher dominance; collision and hazard resources give exact/inverse bandwidth laws; and the framework is directly computable from timing laws, histograms, and a worked published-IRF example that reverses a conventional FWHM ranking.
+### Visible-event residue — WP20
 
-## Immediate next action
+WP20 supersedes the original WP08 as the robust theorem.
 
-**Stop adding first-paper theory, literature, or worked examples by default.**
+If an exact-timestamp selector has conditional-score covariance measure
 
-Remaining submission blockers are factual/personal:
+`Gamma_M=r delta_0+nu`,
 
-- author name/order;
-- affiliation(s);
-- corresponding-author email;
-- ORCID;
-- truthful substantive-AI disclosure describing human direction and verification;
-- applicable funding/conflict/prior-submission declarations.
+with finite-total-variation `nu` and no zero atom, then for every fixed `0<a<b`:
 
-Do not submit until these are supplied. Reopen science only for a concrete defect or specific referee request.
+`lim_{Omega->infty} 1/[(b-a)Omega] int_{aOmega}^{bOmega}G(omega)domega=r/lambda`.
+
+Atomless `nu` gives mean-square/Cesaro convergence; Rajchman/L1 `nu` gives the pointwise limit.
+
+Interpretation: exact visible timestamps produce a zero-lag Fisher covariance atom whose coefficient fixes the high-frequency averaged residue.
+
+## Mandatory Paper-2 novelty boundaries
+
+Do not claim novelty for:
+
+- random Type-II/paralyzable recovery or `M/G/infinity` modeling;
+- busy-period/busy-cycle renewal theory;
+- the classical generalized renewal density;
+- random-paralyzable pair-correlation formulas;
+- `g_Y^(2)(t)=F(t)exp[lambda E[(T-t)_+]]`;
+- pair-correlation dead-time inversion generally;
+- infinite-server service/recovery inference generally;
+- renewal-process FI or generic timing-vs-rate FI;
+- conditional-score projection / Fisher data processing;
+- function-valued FI operators;
+- translation-invariant Fourier multipliers;
+- stationary random-measure spectral theory / Wiener atom results;
+- dead-time information theory generally;
+- modulated paralyzable photocounting generally.
+
+WP15 is supporting/operational only after the Apanasovich–Paltsev 1995 prior-art correction.
+
+## Historical blocker
+
+Afanaseva & Mikhailova (1973), approximately `On recovering characteristics of some queueing systems from the output flow`, is cited in the direct Type-II lineage but a readable theorem text has not yet been obtained. Older infinite-server output-identifiability literature also exists.
+
+Absence of accessible full text is not evidence of novelty.
+
+## Immediate active work
+
+1. Finish the historical inverse-output audit.
+2. Audit WP20's detector-specific covariance-atom/Cesaro formulation against dependent-thinning, missing-event, stationary-score, and information-spectrum literature.
+3. Recheck WP18 renewal-DQM/window-censoring assumptions for atomic and heavy-tailed recovery.
+4. Decide on Paper-2 manuscript drafting only after those gates.
+
+## Documentation discipline — mandatory
+
+Do not allow material research state to exist only in chat.
+
+After every material theorem, proof repair, prior-art collision, numerical result used in an argument, or change in next-gate decision:
+
+- commit/update the relevant work package or dated research log;
+- update `paper2/AGENTS_PAPER2.md` when the active recovery order, novelty hierarchy, or gates change;
+- update `docs/CURRENT_RESEARCH_STATE.md` and `ROADMAP.md` when project-level status changes.
+
+A new agent must be able to recover the full active state from the repository alone.
