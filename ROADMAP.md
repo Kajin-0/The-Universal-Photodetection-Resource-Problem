@@ -1,4 +1,4 @@
-# Research Roadmap — Rev9 Submission Freeze
+# Research Roadmap — Rev10 Submission Freeze
 
 **Updated:** 2026-08-20
 
@@ -11,11 +11,12 @@ The autonomous marked-event first paper has passed:
 - weak-waveform significance upgrade;
 - proof hardening;
 - Rev8 thermodynamic Appendix repair;
-- Rev9 translational grounding for detector physicists;
+- Rev9 translational grounding and empirical citation anchors;
+- Rev10 worked published-IRF demonstration;
 - full LaTeX/bibliography/cross-reference validation;
 - visual inspection of all newly affected pages.
 
-**Do not perform another broad first-paper revision unless a new concrete defect is identified.**
+**Do not perform another broad first-paper revision unless a new concrete defect or specific referee request is identified.**
 
 Primary target: **Physical Review Applied — Regular Article**.
 
@@ -26,19 +27,12 @@ Primary target: **Physical Review Applied — Regular Article**.
 ## G0 — Exact autonomous marked-event transfer
 **PASSED**
 
-\[
-G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).
-\]
-
-Exact DC convention repaired and explicit.
+`G(ω)=∫|H_m(ω)|^2 κ(dm)`.
 
 ## G1 — Complete local weak-waveform Fisher operator
 **PASSED**
 
-\[
-[F_{\rm out}]_{ab}
-=\frac{\Phi_0}{2\pi}\int G(\omega)S_a^*(\omega)S_b(\omega)d\omega.
-\]
+`[F_out]_{ab}=Φ0/(2π)∫G(ω)S_a*(ω)S_b(ω)dω`.
 
 ## G2 — Universal local Fisher detector ordering
 **PASSED**
@@ -65,99 +59,109 @@ Exact fixed mean + exact variance do not bound finite temporal information bandw
 
 A free source-synchronous reference is a separate resource.
 
-## G7 — CTMC microscopic rate repair
+## G7 — CTMC microscopic-rate repair
 **PASSED**
 
-The sufficient finite-state hazard ceiling is the maximum total first-exit rate from relevant pre-registration states, not merely a successful-registration edge rate.
+The finite-state sufficient hazard ceiling is the maximum total first-exit rate from relevant pre-registration states.
 
 ## G8 — Thermodynamic bridge and rare-fast counterexample
 **PASSED**
 
-Rev8 enforces `acp >= bqs`, defines the directed one-way activity convention, and preserves the isolated-event/low-overlap bridge.
+Rev8 enforces `acp >= bqs`, fixes the directed activity convention, and preserves the isolated-event/low-overlap bridge.
 
 ---
 
 # Rev9 translational gate
 
-## T1 — Canonical detector timing-law library
+## T1 — Canonical timing-law library
 **PASSED**
 
-Closed forms supplied for:
-
-- Gaussian timing error;
-- exponential delay;
-- uniform finite-support delay;
-- serial Erlang stages;
-- Gaussian--exponential convolution.
+Gaussian, exponential, uniform, Erlang, and Gaussian–exponential closed forms checked.
 
 ## T2 — Existing-data estimator
 **PASSED**
 
-For equal histogram bins,
-
-\[
-B_{\rm FI}^{(\Delta t)}
-=\frac{1}{2\Delta t}\sum_i p_i^2.
-\]
-
-Finite-count unbiased pair estimator:
-
-\[
-\widehat B_{\rm FI,U}^{(\Delta t)}
-=\frac{1}{2\Delta t}\frac{\sum_i n_i(n_i-1)}{N(N-1)}.
-\]
-
-Finite binning is a lower/coarse-grained estimate of continuous `B_FI`.
+`B_FI^(Δt)=[1/(2Δt)]Σp_i^2` with unbiased finite-count pair-collision estimator.
 
 ## T3 — Physical support clarification
 **PASSED**
 
-Finite support of length `T` gives the **lower** bound
-
-\[
-B_{\rm FI}\ge\frac1{2T},
-\]
-
-not an upper speed limit. There is no support-only upper bound.
+Finite support gives `B_FI >= 1/(2T)`, not an upper speed limit.
 
 ## T4 — Mark resource gradient
 **PASSED**
 
-Fine accessible event marks can preserve more FI than discarded/coarse marks. Perfect primary latency side information gives `G=eta`; a downstream TDC cannot manufacture information lost before the primary record.
+Fine accessible event marks can preserve more FI; perfect primary latency side information gives `G=η`.
 
 ## T5 — Preamplifier/readout interpretation
 **PASSED**
 
-The cascade product law applies to independent stochastic delay stages. It must not be misapplied to a deterministic invertible TIA RC pole without explicit downstream noise/coarse-graining/noninvertibility.
+Stochastic-delay cascade law is distinguished from deterministic invertible TIA filtering.
 
-## T6 — DC pedagogical note
+## T6 — DC normalization
 **PASSED**
 
-`G(0)=eta` remains the correct normalized ratio. The factor-of-two distinction is only in absolute FI normalization.
+`G(0)=η` remains correctly normalized.
 
-## T7 — Thermodynamic engineering analogy
+## T7 — Empirical citation anchors
 **PASSED**
 
-The rare-fast CTMC is interpreted as a high-rate, low-duty-cycle hidden transient mode without making a false circuit high-pass identification.
+Full-text SPAD literature verifies real Gaussian-like cores, exponential/diffusive tails, spatially conditioned latency, threshold dependence, and stochastic avalanche-spreading timing mechanisms.
+
+---
+
+# Rev10 applied-demonstration gate
+
+## A1 — Real published IRF example
+**PASSED**
+
+Source: Spinelli et al., IEEE JQE 34, 817–821 (1998), DOI `10.1109/3.668769`.
+
+Reported FWHM:
+
+- DJ-SPAD: 35 ps;
+- MCP: 25 ps.
+
+Approximate figure-digitized full-shape Fisher bandwidth:
+
+- DJ-SPAD: `9.160 GHz`;
+- MCP: `5.977 GHz`.
+
+Thus FWHM ranks the MCP first, while `B_FI` ranks the DJ-SPAD first. The ranking reversal is the central applied demonstration.
+
+## A2 — Reproducibility
+**PASSED**
+
+Digitized points and dependency-free analysis script are included and hash-pinned. CI reproduces the numbers.
+
+## A3 — Scope/caveat
+**PASSED**
+
+The manuscript explicitly labels the calculation approximate graphical digitization of a published figure, not raw-event precision metrology.
+
+## A4 — Data Availability
+**PASSED**
+
+Rev10 no longer claims that no data were analyzed. It truthfully states that no new experiments were generated and identifies the published figure used, with digitized points/script supplied.
 
 ---
 
 # Mechanical validation
 
-Generated Rev9 source is deterministic and hash-pinned.
+Canonical Rev10:
 
-Canonical build:
+- 32 pages;
+- PDF SHA-256 `fe261ba21db5ac04f76e57dd61bc37b105616fe4c3ccabc5bd6b211145055c29`.
 
-- 30 pages;
-- PDF SHA-256 `2d8c93a98840d303a1f32cc3c67cd4c2c6d46a4010e440317691cae09df1f0cc`.
+PRApplied Rev10:
 
-PRApplied build:
+- 33 pages;
+- PDF SHA-256 `5ff01f6c9d50fcf6e7e0fd59be34e65911a9abd7459a6a348df3e2c70f63e467`;
+- package ZIP SHA-256 `5ab6c380c3f9efd4b52babb1ec1d6249229abda06dd5483f14771a750b12b42b`.
 
-- 30 pages;
-- PDF SHA-256 `5e4c17e7a7e3a8f26172e770b43d9391f88d20e0252cfdc9425e530cbfec9111`;
-- final ZIP SHA-256 `c612899d536f4653e872f179f8b9fbea61264ed37e3120ac68fb1813ac5b913d`.
+No undefined citations/references. Only inherited ~2.45667 pt Appendix overfull warning remains. Affected pages visually inspected.
 
-Steady-state CI is read-only and compiles generated/hash-checked Rev9.
+Steady-state CI is read-only and regenerates/hash-checks Rev8, Rev9, and Rev10, reproduces the Spinelli example, compiles Rev10, and uploads the artifact.
 
 ---
 
@@ -169,7 +173,7 @@ Only factual/personal items remain:
 2. affiliation(s);
 3. corresponding-author email;
 4. ORCID;
-5. truthful substantive-AI acknowledgment describing the author's actual verification;
+5. truthful substantive-AI acknowledgment describing the author's actual direction and verification;
 6. applicable funding/conflict/prior-submission disclosures;
 7. optional referee suggestions/exclusions after conflict review;
 8. one final metadata-stage compile/visual inspection.
@@ -185,6 +189,7 @@ Do not add to the first paper absent a concrete referee demand:
 - coherent continuous quantum pointers;
 - nonclassical-light/QFI extensions;
 - general Shannon-capacity theory;
-- material-specific detector optimization.
+- material-specific detector optimization;
+- additional literature worked examples.
 
-Potential second-paper directions remain open, but the Rev9 first paper should now be treated as scientifically frozen.
+Rev10 should now be treated as scientifically frozen by default.
