@@ -2,378 +2,157 @@
 
 ## Research question
 
-**What physical resources are actually sufficient to bound the rate at which a photodetector can transfer information from an optical field to an electrical record, and which proposed resource sets fail by explicit counterexample?**
+**What physical resources are sufficient to bound how much temporal information a photodetector can transfer from an incident optical field into an accessible electrical/event record, and which proposed resource sets fail by explicit counterexample?**
 
-The project began by asking for a detector-independent sensitivity--bandwidth--temperature law. The research trail shows that this is too broad unless the detector/output class and hidden dynamical resources are specified.
+The project began as a search for a detector-independent sensitivity–bandwidth–temperature law. The research now shows that such a scalar law is too broad unless the detector/output class and hidden dynamical resources are specified.
 
-The mature first-paper result is therefore a **temporal-information resource theory for one precisely defined autonomous photodetection event class**, together with exact operational bounds and no-go results explaining why broader statements fail.
+This repository is theoretical/analytical. Numerical calculations are used for validation and calibration; experiments, fabrication, procurement, and laboratory campaigns are not required next steps.
 
-This repository is theoretical/analytical. Numerical calculations are used for validation; experiments, fabrication, procurement, and laboratory campaigns are not required next steps.
+Active branch: `agent/uprp-core-theorem-round10`.
 
----
-
-## First-paper theorem class
+## Current publication split
 
-The current manuscript concerns:
-
-- autonomous/time-translation-invariant photodetection;
-- weak coherent/Poisson direct-detection intensity modulation;
-- independent-event / low-overlap operation;
-- one primary electrical registration per captured photon;
-- retention of the complete accessible primary-event mark.
-
-It does **not** claim a speed limit for coherent continuous pointers, externally synchronized detectors, arbitrary high-flux/history-dependent counters, nonclassical optical inputs, or every architecture called a photodetector.
-
----
-
-## Exact marked-event information transfer
-
-Per incident photon,
-\[
-K(dm,d\tau)=\kappa(dm)\mu_m(d\tau),
-\qquad
-\eta=\kappa(\mathsf M)\le1.
-\]
-
-For weak sinusoidal Poisson intensity modulation, the ideal source-normalized Fisher-information transfer is
-\[
-\boxed{
-G(\omega)=\int_{\mathsf M}|H_m(\omega)|^2\kappa(dm).
-}
-\]
-
-At exact DC the incident FI rate changes from `Phi_0/2` to `Phi_0`; the same factor changes in the output FI, so normalized transfer remains
-\[
-\boxed{G(0)=\eta.}
-\]
-
-Parameter-independent background addition and downstream stochastic processing cannot increase FI.
-
----
-
-## Complete weak-waveform Fisher operator
-
-Rev7 removes the apparent dependence on a sinusoidal probe. For arbitrary finite-dimensional weak temporal flux perturbations
-\[
-\Phi_{\boldsymbol\theta}(t)
-=\Phi_0\left[1+\sum_{a=1}^{p}\theta_a s_a(t)\right],
-\qquad
-s_a\in L^2(\mathbb R)\cap L^\infty(\mathbb R),
-\]
-with Plancherel transforms `S_a`, the ideal primary-record Fisher matrix is
-\[
-\boxed{
-[F_{\rm out}]_{ab}
-=\frac{\Phi_0}{2\pi}
-\int_{-\infty}^{\infty}
-G(\omega)S_a^*(\omega)S_b(\omega)d\omega.
-}
-\]
-
-Thus `G(omega)` is the spectral multiplier of the **complete local weak-waveform Fisher-information operator** for this detector class. Sinusoidal modulation is simply its Fourier-mode specialization.
-
-The transfer spectrum is bounded, even, and continuous:
-\[
-\boxed{
-0\le G(\omega)\le\eta,
-\qquad
-G(-\omega)=G(\omega),
-\qquad
-G\in C(\mathbb R).
-}
-\]
-
----
-
-## Universal weak-waveform Fisher ordering
-
-For two detectors `A` and `B` in the same theorem class,
-\[
-\boxed{
-G_A(\omega)\ge G_B(\omega)\ \text{for every }\omega
-\iff
-F_A\succeq F_B
-\text{ for every admissible finite weak-waveform task.}
-}
-\]
-
-So `G` is a complete local Fisher-ordering object for weak temporal waveform estimation in this model. If two spectra cross, neither detector has a task-independent Fisher advantage.
-
-This is **not** a claim of generic Blackwell dominance.
-
----
-
-## Exact band-subspace guarantee
-
-For a scalar weak perturbation with spectrum supported in `[-Omega,Omega]`, define
-\[
-\rho_G[s]
-=\frac{F_{\rm out}[s]}{F_{\rm in}[s]}
-=\frac{\int G(\omega)|S(\omega)|^2d\omega}
-{\int |S(\omega)|^2d\omega}.
-\]
-
-Rev7 proves
-\[
-\boxed{
-\inf_{s\ne0,\ \operatorname{supp}S\subset[-\Omega,\Omega]}
-\rho_G[s]
-=
-\min_{|\omega|\le\Omega}G(\omega).
-}
-\]
-
-Therefore preserving at least an absolute Fisher fraction `q` for **every weak temporal waveform in the full band** is equivalent to
-\[
-\boxed{
-G(\omega)\ge q
-\qquad\text{for every }|\omega|\le\Omega.
-}
-\]
-
----
-
-## Timing-resource hierarchy
-
-### Atomic timing
-
-Wiener's classical theorem gives
-\[
-\boxed{
-\lim_{\Omega\to\infty}
-\frac{1}{2\Omega}
-\int_{-\Omega}^{\Omega}G(\omega)d\omega
-=
-\int\kappa(dm)\sum_j p_j(m)^2.
-}
-\]
-
-This is a flat-band **average** asymptotic.
-
-### Collision resource
-
-For square-integrable conditional delay densities,
-\[
-\boxed{
-\mathfrak R_2
-=2\int\kappa(dm)\int f_m(t)^2dt,
-\qquad
-\int G(\omega)d\omega=\pi\mathfrak R_2.
-}
-\]
-
-### Capture-weighted local hazard capacity
-
-If `h_m(t)<=Lambda(m)`, define
-\[
-\boxed{
-\mathfrak H=\int\Lambda(m)\kappa(dm),
-\qquad
-\mathfrak R_2\le\mathfrak H.
-}
-\]
-
-A very fast branch can be negligible if its event weight is correspondingly small, so the capture-weighted resource is more informative than a global worst-case rate.
-
----
-
-## Exact Fisher-equivalent bandwidth
-
-For `eta>0`, Rev7 defines the DC-normalized equivalent rectangular Fisher bandwidth
-\[
-\boxed{
-B_{\rm FI}
-\equiv
-\frac1\eta\int_0^\infty G(2\pi f)df
-=
-\frac{\mathfrak R_2}{4\eta}.
-}
-\]
-
-This is an information-area metric, not an electrical amplitude or `-3 dB` bandwidth.
-
-The hazard hierarchy gives
-\[
-\boxed{
-B_{\rm FI}\le\frac{\mathfrak H}{4\eta}.
-}
-\]
-
-For a common captured-event conditional-hazard ceiling,
-\[
-\boxed{B_{\rm FI}\le\Lambda/4.}
-\]
-
-A single exponential registration delay saturates the common-hazard bound.
-
----
-
-## Operational inverse theorem
-
-For ordinary-frequency half-band
-\[
-B=\frac{\Omega}{2\pi},
-\]
-preserving absolute average incident-information fraction `q` requires
-\[
-\boxed{
-q\le\eta,
-\qquad
-\mathfrak R_2\ge4Bq,
-\qquad
-\mathfrak H\ge4Bq.
-}
-\]
-
-Rev7 gives the same coefficient a stronger interpretation: these resource lower bounds are also necessary for guaranteeing at least `q` Fisher retention for **every weak waveform** in the entire band.
-
-For a common per-captured-event conditional-hazard ceiling,
-\[
-\boxed{
-\Lambda\ge\frac{4Bq}{\eta}.
-}
-\]
-
-If `q=r eta`,
-\[
-\boxed{\Lambda\ge4Br.}
-\]
-
----
-
-## Independent delay-stage cascade
-
-For serial independent unresolved **unmarked delay-only** stages,
-\[
-\boxed{G_{12}(\omega)=G_1(\omega)G_2(\omega).}
-\]
-
-For `k` serial exponential waiting stages of common rate `lambda`, total capture probability `eta`,
-\[
-G_k(\omega)
-=\eta\left(\frac{\lambda^2}{\lambda^2+\omega^2}\right)^k,
-\]
-and
-\[
-\boxed{
-B_{\rm FI}
-=\frac{\lambda}{4}
-\frac{\binom{2k-2}{k-1}}{4^{k-1}}
-\sim
-\frac{\lambda}{4\sqrt{\pi(k-1)}}.
-}
-\]
-
-This gives a simple architecture-level example of unresolved serial timing stages progressively consuming equivalent temporal Fisher bandwidth.
-
----
-
-## Main no-go results
-
-Explicit counterexamples show that the following are not resource-complete substitutes for the timing resources above:
-
-- deterministic latency;
-- exact mean delay plus exact RMS timing jitter;
-- stationary entropy production/activity/throughput without an absolute microscopic rate scale;
-- detector-only timing resources when an unbounded source-synchronous clock/reference is supplied for free.
-
-No fixed-FWHM counterexample is claimed; scalar widths such as FWHM require additional shape assumptions.
-
-For finite-state CTMC detectors, the safe generic complete-mark-conditioned microscopic rate bound is
-\[
-\boxed{
-q_{\max}=\max_{x\in S_{\rm pre}}
-\sum_{y\ne x}W_{yx},
-}
-\]
-the maximum **total escape rate** from pre-registration states, not merely the successful-registration edge intensity. The manuscript contains the self-contained holding-time proof.
-
----
-
-## Thermodynamic bridge
-
-The nonequilibrium gateway is described as **bidirectionally connected**, not “reversible” in the standard detailed-balance Markov-chain sense. Bidirectional support allows nonzero stationary currents and entropy production.
-
-For the restricted finite-state gateway,
-\[
-\boxed{
-\lambda_1
-\le
-\frac{\mathcal A d}{f_*}
- g^{-1}(\Sigma/f_*),
-\qquad
-g(z)=(1-z^{-1})\ln z.
-}
-\]
-
-The stationary rate bound is connected to the independent-event theorem through an **isolated-event / low-overlap reduction**: stationary thermodynamic quantities constrain baseline microscopic rates, then one conditions on an isolated optical capture and uses the subsequent autonomous CTMC as the per-photon post-capture delay kernel. If occupancy/recovery makes capture history dependent, the independent-event information bound is not claimed.
-
-The rare-fast counterexample proves that stationary aggregate thermodynamic quantities alone do not supply an absolute temporal scale.
-
----
-
-## Publication state
-
-Active branch:
-
-`agent/uprp-core-theorem-round10`
-
-Current manuscript:
-
-`manuscript/event_resource_theorem_rev7.tex`
-
-Rev7 is the current publication candidate. It inherits the hostile-referee repairs in Rev6 and adds the complete weak-waveform Fisher operator, pointwise detector ordering, exact band-subspace guarantee, exact Fisher-equivalent bandwidth, and independent serial-delay example.
-
-Verification:
-
-- push run `32433326375`: successful generation, full LaTeX compilation, artifact upload, and source persistence;
-- independent proof-hardened run `32433375491`: successful generation, full LaTeX compilation, and artifact upload;
-- artifact ID `9429898246`;
-- verified main TeX blob `f59e36e32a2d6eb36752c847cbdd40b07b241db0`;
-- only the inherited approximately `2.45667 pt` appendix overfull warning remains.
-
-Temporary validation PR #13 is closed and unmerged.
-
-Current state files:
-
-- `docs/CURRENT_RESEARCH_STATE.md`
-- `notes/RESEARCH_LOG_ROUND16.md`
-- `notes/WP36_COMPLETE_WEAK_WAVEFORM_FISHER_OPERATOR.md`
-- `notes/WP36A_BAND_SUBSPACE_FISHER_GUARANTEE.md`
-- `AGENTS.md`
-- `ROADMAP.md`
-
-Steady-state CI has read-only permissions and directly compiles committed Rev7. It has no self-commit/source-generation validation machinery.
-
-The first-paper science is at the **submission-package stage**. Additional foundational derivations are not the default next action.
-
----
-
-## Novelty posture
-
-Do not claim:
-
-- first information-theoretic detector timing analysis;
-- first IRF-information result;
-- first generic sensitivity-bandwidth tradeoff;
-- generic Fisher-information transfer-function novelty;
-- generic Blackwell detector ordering;
-- generic finite-frequency response/noise novelty;
-- arbitrary fixed-FWHM no-go;
-- a universal all-detector speed limit.
-
-The defensible contribution is the combined autonomous marked-event temporal-resource theorem stack and its operational weak-waveform completion.
-
----
-
-## Frozen branches
-
-Frozen for the first manuscript unless a concrete Rev7 defect requires reopening:
-
-- HgCdTe/Kane material calculations WP17--24;
-- coherent quantum-pointer resource theory;
-- continuous classical/analog detector generalization;
-- non-Poisson/nonclassical source extensions;
-- high-flux/history-dependent event-channel extensions.
-
-Failed conjectures and negative results remain in the repository because they establish why the final resource hierarchy has its present form.
+### Paper 1 — Rev11 frozen
+
+Paper 1 develops a temporal-information resource theory for autonomous low-overlap marked photodetection event channels.
+
+Core transfer:
+
+`G(omega)=int |H_m(omega)|^2 kappa(dm)`.
+
+For arbitrary finite weak temporal waveform families,
+
+`[F_out]_{ab}=Phi0/(2*pi) int G(omega)S_a*(omega)S_b(omega)domega`.
+
+Pointwise ordering of `G` is necessary and sufficient for local Fisher dominance over every admitted weak temporal waveform task in the theorem class.
+
+For square-integrable timing densities,
+
+`B_FI=R2/(4 eta)<=H/(4 eta)`.
+
+For one unresolved mark,
+
+`B_FI=int_0^infty |H(2*pi*f)|^2 df=B_ENBW`.
+
+Rev11 explicitly recognizes this single-mark scalar integral as conventional one-sided equivalent noise bandwidth; the novelty claim is narrower and lies in the event-registration/Fisher interpretation, retained-mark spectrum, resource identities/bounds, and waveform ordering.
+
+The published-IRF demonstration using Spinelli et al. 1998 gives an approximate full-shape ranking reversal:
+
+- MCP FWHM `25 ps`, digitized `B_FI~5.977 GHz`;
+- DJ-SPAD FWHM `35 ps`, digitized `B_FI~9.160 GHz`;
+- ratio `B_FI(DJ)/B_FI(MCP)=1.533`.
+
+Rev11 is technically validated and scientifically frozen by default. Remaining submission blockers are factual/personal metadata and compliance declarations.
+
+### Paper 2 — active research frontier
+
+Paper 2 removes the independent-event restriction and treats the detector as an arbitrary parameter-independent autonomous stochastic channel from the full incident Poisson trajectory to the complete accessible output record.
+
+The current organizing theorem is:
+
+`F_out[u,v]=Phi0/(2*pi) int G_{Phi0,K}(omega)U*(omega)V(omega)domega`,
+
+`0<=G<=1` a.e.,
+
+where the scalar Fisher multiplier is forced by time-translation covariance of the detector channel rather than by an independent single-event delay kernel.
+
+Candidate message:
+
+> **Spectral completeness is symmetry-driven, not independent-event-driven.**
+
+The mathematical ingredients—conditional-score projection, Fisher data processing, translation-invariant operator theory—are standard. The research question is whether their photodetection-channel synthesis and hidden-memory consequences are genuinely new and physically useful.
+
+## Strongest active Paper-2 results
+
+### Continuous deterministic Type-II spectral escape
+
+For ideal deterministic paralyzable dead time at the classical paralysis maximum `lambda*tau=1`:
+
+`G_1(0)=0`,
+
+`G_1(omega)>0` for every nonzero temporal frequency,
+
+`lim_|omega|->infty G_1(omega)=1/e`.
+
+At `omega=pi/tau`, a rigorous complete-record lower bound is `0.516975...`; independent Volterra calculation gives about `0.52814`.
+
+Thus the complete stationary record can be locally blind to a uniform intensity perturbation while retaining substantial information about every nonzero temporal mode.
+
+### Deterministic recovery is an information-singular boundary
+
+For generalized iid Type-II recovery duration `T` with mean `m`, every recovery law shares the conventional mean curve
+
+`r(lambda)=lambda exp(-lambda m)`.
+
+Under stated renewal-DQM/window regularity, at the common mean-rate maximum `lambda*m=1` the static complete-record Fisher retention satisfies
+
+`G_DC=0 iff T=m almost surely`.
+
+The preferred proof uses bounded interval Laplace statistics and the stop-loss functional `E[(T-t)_+]`, avoiding an unnecessary pointwise-density argument.
+
+### Recovery mean and variance are not resource-complete
+
+Two exact recovery laws have identical
+
+`E[T]=1`, `Var(T)=1/4`, `CV=0.5`,
+
+and therefore the same entire conventional saturation curve, yet different timestamp information channels. A common timestamp coarse-graining has zero FI for one law and positive normalized FI `~0.0044352` for the other. Converged full static FI differs by about `8.78%`.
+
+Thus mean plus variance/CV are insufficient to characterize recovery information.
+
+### Visible-event high-frequency Cesaro residue
+
+For an exact-timestamp event selector whose conditional-score covariance measure has form
+
+`Gamma_M=r delta_0+nu`,
+
+with finite-total-variation `nu` and no zero atom,
+
+`lim_{Omega->infty} 1/[(b-a)Omega] int_{aOmega}^{bOmega}G(omega)domega=r/lambda`
+
+for every fixed `0<a<b`.
+
+Atomless corrections give high-frequency mean-square/Cesaro convergence; Rajchman/L1 corrections give the stronger pointwise limit.
+
+The physical interpretation is that directly visible incident timestamps contribute a zero-lag Fisher covariance atom whose coefficient fixes the high-frequency averaged residue.
+
+## Important prior-art corrections
+
+The following are established and must not be claimed as new:
+
+- random Type-II/paralyzable recovery and `M/G/infinity` modeling;
+- busy-cycle renewal theory and the generalized random-recovery renewal density;
+- random-paralyzable pair-correlation formulas;
+- `g_Y^(2)(t)=F(t)exp[lambda E[(T-t)_+]]`;
+- generic pair-correlation dead-time inversion;
+- infinite-server service/recovery inference;
+- renewal-process FI and generic timing-vs-rate information comparisons;
+- conditional-score/Fisher data processing;
+- function-valued FI operators;
+- translation-invariant Fourier multipliers;
+- stationary random-measure spectral theory and Wiener atom theorems;
+- dead-time information theory generally;
+- modulated paralyzable photocounting generally.
+
+The exact pair-correlation identity originally highlighted in WP15 is already contained in Apanasovich & Paltsev (JOSA B, 1995) after stationary specialization and is now treated as supporting material only.
+
+Afanaseva & Mikhailova (1973) and older infinite-server output-identifiability literature remain important historical checks before any priority claim for the Type-II recovery singularity theorem.
+
+## Current research gates
+
+Before drafting Paper 2:
+
+1. finish the historical inverse-output audit;
+2. audit the visible-event covariance-atom/Cesaro theorem against dependent-thinning, missing-event, stationary-score, and information-spectrum literature;
+3. harden the renewal-DQM/window-censoring scope for atomic and heavy-tailed recovery laws.
+
+## Where to resume
+
+Read, in order:
+
+1. `docs/CURRENT_RESEARCH_STATE.md`
+2. `paper2/AGENTS_PAPER2.md`
+3. `paper2/notes/RESEARCH_LOG_ROUND03_WP13_WP20_CHECKPOINT.md`
+4. `ROADMAP.md`
+
+The repository is intended to be sufficient for context recovery without relying on prior chat history.
