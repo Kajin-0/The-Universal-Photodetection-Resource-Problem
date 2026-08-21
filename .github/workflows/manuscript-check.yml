@@ -1,7 +1,7 @@
 name: Manuscript LaTeX check
 
 on:
-  push:
+  pull_request:
     branches:
       - agent/uprp-core-theorem-round10
     paths:
@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Generate Rev8 surgical referee repair source
         working-directory: manuscript
@@ -44,7 +46,7 @@ jobs:
             manuscript/fig_jitter_no_go_data.csv
             manuscript/references.bib
 
-      - name: Persist generated Rev8 source
+      - name: Persist generated Rev8 source on validation branch
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
@@ -55,4 +57,4 @@ jobs:
             exit 0
           fi
           git commit -m "Generate Rev8 surgical referee repair source"
-          git push
+          git push origin HEAD:${{ github.head_ref }}
