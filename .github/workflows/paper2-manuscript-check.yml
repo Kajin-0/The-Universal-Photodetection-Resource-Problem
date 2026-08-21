@@ -18,26 +18,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Compile Paper 2 Rev1
+      - name: Generate Paper 2 Rev2 from Rev1
+        working-directory: paper2/manuscript
+        run: python apply_rev2_science_fix.py
+
+      - name: Compile Paper 2 Rev2
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: fisher_spectra_memory_photodetectors_rev1.tex
+          root_file: fisher_spectra_memory_photodetectors_rev2.tex
           working_directory: paper2/manuscript
           latexmk_use_xelatex: false
 
       - name: Check for unresolved references or citations
         working-directory: paper2/manuscript
         run: |
-          if grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references" fisher_spectra_memory_photodetectors_rev1.log; then
+          if grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references" fisher_spectra_memory_photodetectors_rev2.log; then
             echo "Unresolved LaTeX references/citations detected"
             exit 1
           fi
 
-      - name: Upload Paper 2 Rev1 artifact
+      - name: Upload Paper 2 Rev2 artifact
         uses: actions/upload-artifact@v4
         with:
-          name: fisher-spectra-memory-photodetectors-rev1
+          name: fisher-spectra-memory-photodetectors-rev2
           path: |
-            paper2/manuscript/fisher_spectra_memory_photodetectors_rev1.pdf
+            paper2/manuscript/fisher_spectra_memory_photodetectors_rev2.pdf
+            paper2/manuscript/fisher_spectra_memory_photodetectors_rev2.tex
             paper2/manuscript/fisher_spectra_memory_photodetectors_rev1.tex
+            paper2/manuscript/apply_rev2_science_fix.py
             paper2/manuscript/paper2_refs.bib
