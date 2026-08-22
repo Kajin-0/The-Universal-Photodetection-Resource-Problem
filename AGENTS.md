@@ -4,7 +4,7 @@
 
 Durable repository handoff for **The Universal Photodetection Resource Problem (UPRP)**. The repository, not chat history, is authoritative.
 
-`main` is the landing/index branch. Active derivations and the Grand Challenge manuscript live on `agent/temporal-information-resource-law`.
+`main` is the landing/index branch. Active derivations and Grand Challenge manuscript generation live on `agent/temporal-information-resource-law`.
 
 Research is analytical/theoretical. Paper 1 Rev11 and Paper 2 Rev7 are frozen.
 
@@ -12,99 +12,69 @@ Research is analytical/theoretical. Paper 1 Rev11 and Paper 2 Rev7 are frozen.
 
 **Grand Challenge science checkpoint: WP24.**
 
-**Rev4 freezes the science content. Rev5 is the preferred frozen publication draft, locally build-verified, visually inspected, bibliography-audited, and figure-reviewed.**
+**Rev4 freezes science. Rev5 freezes publication content. Rev6 is the current PRX Quantum style package.**
 
-Mandatory first action for a replacement agent: switch to
-
-`agent/temporal-information-resource-law`
-
-and read:
+Mandatory first action for a replacement agent: switch to `agent/temporal-information-resource-law` and read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
-3. `grand_challenge/notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
-4. `grand_challenge/notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV6_PRXQ_PACKAGING_PREFLIGHT_2026-08-22.md`
+3. `grand_challenge/submission/PRX_QUANTUM_TARGET_AND_CHECKLIST_2026-08-22.md`
+4. `grand_challenge/submission/APS_AI_AND_DATA_DISCLOSURE_DRAFTS.md`
 5. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-6. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
-7. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
-8. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
-9. `docs/CURRENT_RESEARCH_STATE.md`
-10. `ROADMAP.md`
+6. `docs/CURRENT_RESEARCH_STATE.md`
+7. `ROADMAP.md`
 
-Do not resume the historical HgCdTe/Kane frontier shown in older `main` commits.
+# Strongest theorem
 
-# Strongest current theorem
+For exact periodic random-time encoding with sector probabilities `q_n`,
 
-For exact periodic random-time encoding with sector probabilities `q_n`, define
+`T_k=sum_(m>=k)q_m`,
 
-`T_k=sum_(m>=k)q_m`.
-
-For any finite number `N` of independently encoded excitations and **any joint POVM**,
+and any finite number `N` of independently encoded excitations and any joint POVM,
 
 `Tr F_N^(k)<=N min(D_k,U_k)<=N T_k`.
 
-Therefore
+Hence `R_N(k)=Tr F_N^(k)/N<=T_k` and `sum_(k>=1)R_N(k)<=nbar`.
 
-`R_N(k)=Tr F_N^(k)/N<=T_k`,
+`R_N(k)` is the two-quadrature / phase-averaged source-normalized Fisher retention. Controlled large-period limits obey `R(nu)<=P(Omega>=nu)`, `int_R R<=2Ebar^+/hbar`, and `Ebar^+>=hbar nu R(nu)`.
 
-`sum_(k>=1)R_N(k)<=nbar`.
+WP23 extends the source-normalized law to an independent quantum-marked compound-Poisson source under arbitrary parameter-independent bosonic-field/detector processing. WP14 excludes arbitrary parameter-dependent waveform-state synthesis from baseline-energy-only control.
 
-`R_N(k)` is the two-quadrature / phase-averaged source-normalized Fisher retention. A scalar guarantee that must hold for every sinusoidal phase obeys the same ceiling.
+# Priority discipline
 
-WP20 proves this directly by Hilbert--Schmidt Cauchy--Schwarz, including arbitrary entangled finite-copy collective measurements.
+Do not claim novelty for weighted `U(1)` twirling, energy-gap modes, canonical phase POVMs, number/energy-constrained phase estimation, generic QFI/Holevo/RLD/SLD bounds, random-unitary estimation, waveform QFI, Hardy--Hilbert/positive-frequency inequalities, or generic Poisson/CPTP machinery.
 
-## Controlled continuum form
+The candidate contribution is narrowly the operational **classical-Fisher tail/survival law** and its energy/source-to-record consequences. **Priority remains unverified, not certified.**
 
-For a positive excitation-frequency spectral probability measure `mu` with finite first moment, controlled large-period limits of exact periodic approximants satisfy
-
-`R(nu)<=mu([nu,infinity))`.
-
-Consequently
-
-`int_R R(nu)dnu<=2Ebar^+/hbar`,
-
-and
-
-`Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
-
-The geometric/exponential canonical phase-time family attains the bound exactly.
-
-## Physical scope
-
-WP23 extends this source-normalized theorem to an independent quantum-marked compound-Poisson source followed by arbitrary parameter-independent source-to-bosonic-field formation, wavepacket overlap, coherent detector memory, ancillas, and measurement.
-
-WP14 excludes arbitrary coherent waveform state synthesis based only on baseline mean energy.
-
-# Secondary QFI envelope
-
-WP10/WP12/WP15 remain valid separately optimized SLD-QFI metric bounds:
-
-`sum_(k>=1)G_Q(k)<=2nbar`,
-
-`int_R G_Q(nu)dnu<=pi Ebar^+/hbar`.
-
-They are secondary to the sharp operational theorem. WP16 records that the `pi/4` operator norm is classical Hardy--Hilbert mathematics.
-
-# Prior-art discipline
-
-Do not claim novelty for `U(1)` modes of asymmetry, weighted random phase/time twirling, canonical phase POVMs, photon-number-constrained phase estimation, arbitrary-measurement Fisher/Holevo/RLD/SLD bounds, random-unitary probability estimation, waveform QFI, Hardy--Hilbert/positive-frequency inequalities, or generic CPTP/Poisson machinery.
-
-The candidate contribution is narrowly the **operational classical-Fisher tail/survival law** for Fourier perturbations of the latent random-time mixing distribution and its sharp source-to-record energy consequences.
-
-Priority remains **unverified, not certified**.
-
-# Manuscript status
+# Manuscript / target state
 
 Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
-Rev4 is the science-content checkpoint. Rev5 adds one conceptual architecture figure and `hidelinks` only; it changes no theorem, proof, coefficient, source hypothesis, or novelty claim.
+- Rev4: frozen science content.
+- Rev5: frozen publication content; one conceptual figure + hidden links only.
+- Rev6: PRX Quantum packaging only; REVTeX `pra -> prx`.
 
-Rev5 has passed full local LaTeX/BibTeX compilation, seven-page visual inspection, Figure 1 review, deterministic random-POVM sanity tests, and DOI/title bibliography auditing. The current connector does not expose the branch-push GitHub Actions run; do not claim direct remote CI inspection.
+Rev5 passed complete local build/visual/bibliography/numerical preflight. Rev6 remains seven pages and has no target-style layout regression in local reproduction; dedicated CI is configured to compile it. Do not claim direct remote Actions inspection.
 
-# Current work order
+**First target: PRX Quantum — Research Article.**
 
-Do **not** accumulate another theorem by default. Continue with **journal targeting and submission engineering** only. Reopen science for a concrete theorem, priority, build, or referee defect.
+**Fallback: Physical Review A — Regular Article.**
+
+# Human-only blockers
+
+No new theorem work by default. Remaining blockers are:
+
+1. human verification sufficient for truthful APS AI disclosure;
+2. author name/order and affiliation(s);
+3. contact email and optional ORCID(s);
+4. funding/conflict/submission-history facts;
+5. preprint/e-print decision;
+6. stable repository/archive citation for Data Availability;
+7. optional referee recommendations/exclusions;
+8. APC coverage/institutional agreement.
+
+APS's June 2026 AI policy requires substantive AI-use disclosure for this project. Never fabricate human verification or administrative facts.
 
 # Documentation discipline
 
-Every project-level theorem/status change must update the active notes/landing files and then be mirrored onto `main`. Never leave the frontier only on an agent branch or in chat.
+Every material project-status change must update the active branch and then be mirrored onto `main`.
