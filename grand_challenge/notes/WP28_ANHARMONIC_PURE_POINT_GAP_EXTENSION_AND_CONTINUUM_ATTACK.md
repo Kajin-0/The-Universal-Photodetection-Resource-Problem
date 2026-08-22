@@ -2,7 +2,9 @@
 
 **Date:** 2026-08-22
 
-**Status:** core derivation PASS at theorem level; numerical validator pending/companion. This note is a hostile response to a new adversarial critique of Rev10. It does not weaken the existing periodic theorem. It identifies one genuine generalization: the modewise Fisher-tail mechanism does not require a globally equally spaced Hamiltonian.
+**Status:** analytic derivation PASS; dedicated incommensurate-spectrum validator committed; targeted priority screen found no obvious predecessor for the arbitrary-POVM Fisher-tail coefficient at an exact Bohr gap. Priority remains unverified, not certified.
+
+This note is a hostile response to a new adversarial critique of Rev10. It does not weaken the existing periodic theorem. It identifies one genuine generalization: the modewise Fisher-tail mechanism and the fixed-one-copy Herglotz/high-retention mechanism do not require a globally equally spaced Hamiltonian.
 
 ## 1. Adversarial claims under review
 
@@ -13,12 +15,12 @@ The new critique raises four claims:
 3. zero-population sector completion in the Herglotz proof allegedly introduces unphysical "ghost" states that create artificial cross-frequency constraints;
 4. the theory is local in the perturbation parameters and therefore does not by itself control global finite-amplitude estimation risk.
 
-Preliminary verdict:
+Verdict:
 
 - (1) identifies a real presentation/scope vulnerability but overstates the algebraic necessity of a global ladder. A fixed-Bohr-gap extension to arbitrary semibounded pure-point generators exists.
 - (2) is mathematically incorrect as stated. The lower-bin tail convergence requires no density or smoothness and covers arbitrary finite Borel measures, including atomic and singular-continuous parts. The real noncompact issue is the absence of a normalized uniform time law on `R`, which Rev10 already acknowledges.
 - (3) is not a loophole. Null sectors are annihilated by `rho0^(1/2)` and have zero posterior support almost everywhere; completion changes no score or Fisher information.
-- (4) is correct but already explicit in Rev10. A separate finite-amplitude trace-distance extension may be possible, but it is not needed to defend the stated Fisher theorem.
+- (4) is correct but already explicit in Rev10. A separate finite-amplitude trace-distance extension exists at least at the elementary bound level described below, but it is conceptually different from the Fisher theorem.
 
 ---
 
@@ -70,9 +72,11 @@ and complex positive-gap tangent
 
 with zero terms omitted.
 
-For a finite-dimensional spectrum the convergence is immediate in every matrix norm. For a countable pure-point spectrum, trace-norm convergence follows by finite-energy-sector truncation: the random-unitary averages and signed tangent averages are trace-norm contractions, while the truncated finite-dimensional problem converges termwise. Therefore the limiting statistical experiment is well defined for the purified state.
+For a finite-dimensional spectrum the convergence is immediate in every matrix norm. For a countable pure-point spectrum, trace-norm convergence follows by finite-sector truncation: the random-unitary averages and signed tangent averages are trace-norm contractions, while the truncated finite-dimensional problem converges termwise. Therefore the limiting statistical experiment is well defined for the purified state.
 
 This is an ordinary-real-time long-window limit on one fixed Hamiltonian. It does not require `U_(T_M)` to be periodic or the energy spectrum to be commensurate.
+
+Random-time dephasing itself is established prior art. Boixo, Knill, and Somma, *Eigenpath traversal by phase randomization*, Quantum Information and Computation 9, 833--855 (2009), DOI `10.26421/QIC9.9-10-7`, explicitly relate random evolution times to suppression of energy-basis coherences through the characteristic function of the random-time law. No novelty is claimed for that dephasing mechanism.
 
 ---
 
@@ -217,15 +221,15 @@ The genuine continuum hypothesis is elsewhere: a chosen sequence of periodic **p
 
 A useful manuscript clarification is therefore: *spectral-measure regularity is not assumed; the controlled hypothesis concerns the physical detector/source limit, not smoothness of `mu`.*
 
-The adversarial claim that singular-continuous spectra are frequent in structured open-system baths is also too broad. Standard structured-bath models are usually expressed through continuous spectral densities and/or discrete oscillator-mode sums; singular-continuous spectra occur in more special quasiperiodic/disordered/fractal spectral problems. This physical side claim is not needed for the mathematical rebuttal.
+The adversarial claim that singular-continuous spectra are frequent in structured open-system baths is too broad. Standard structured-bath work commonly models the environment by continuous spectral densities and/or discrete oscillator-mode sums; singular-continuous spectra are well known in more special fractal/disordered/quasiperiodic spectral problems. This physical side claim is not needed for the mathematical rebuttal.
 
 ---
 
-# 7. Local Fisher scope
+# 7. Local Fisher scope and a finite-amplitude consequence
 
 The critique that the theorem is local is correct but not a newly exposed defect. Rev10 explicitly states that it bounds Fisher information at the uniform/random-time baseline and is not a global finite-amplitude estimation-risk theorem.
 
-Because the sinusoidal random-time family is affine in `(eps_c,eps_s)`, there is a separate possible global distinguishability bound. For perturbation amplitude `a=sqrt(eps_c^2+eps_s^2)`,
+Because the sinusoidal random-time family is affine in `(eps_c,eps_s)`, there is nevertheless an elementary global distinguishability consequence. For perturbation amplitude `a=sqrt(eps_c^2+eps_s^2)`,
 
 `rho_eps-rho0 = a D_phi`
 
@@ -235,30 +239,54 @@ with
 
 Therefore
 
-`||D_phi||_1 <= ||A||_1`
+`||D_phi||_1 <= ||A||_1`.
 
-and, in the pure-sector model,
+In the pure-sector model the singular values of `A` are the paired values `sqrt(q_lower q_upper)`, so
 
 `||A||_1 = sum_pairs sqrt(q_lower q_upper) <= sqrt(D U) <= sqrt(T)`.
 
-Thus every downstream parameter-independent measurement/channel obeys the finite-amplitude trace-distance ceiling
+Hence
 
 `(1/2)||rho_eps-rho0||_1 <= (a/2) sqrt(D U) <= (a/2) sqrt(T)`.
 
-This gives a global binary-discrimination/total-variation consequence, but it has a square-root tail coefficient and is conceptually different from the local Fisher theorem. It should be developed only if it materially improves the manuscript rather than added defensively.
+By trace-distance contractivity, the same ceiling holds after any parameter-independent downstream channel and for the total-variation distance of every final measurement record. This yields a finite-amplitude binary-discrimination bound, although with a square-root tail coefficient rather than the sharper local Fisher coefficient.
+
+This result should be developed further only if it materially improves the manuscript rather than added defensively.
 
 ---
 
-# 8. Research decision
+# 8. Numerical and literature gates
+
+Dedicated validator:
+
+`grand_challenge/numerics/verify_anharmonic_pure_point_gap_extension.py`
+
+The test spectrum is deliberately globally incommensurate while retaining several exact pairs at one selected `nu`. The checks cover:
+
+1. long-window dephasing and exact-gap tangent convergence;
+2. `A_nu=rho0^(1/2)V_nu rho0^(1/2)`;
+3. paired-mass and energy-tail ordering;
+4. random generalized and projective POVMs against the FI ceiling;
+5. Toeplitz positivity of one fixed measurement's retention values across multiples of `nu`.
+
+Equivalent local numerical checks passed, including trace-norm convergence of the finite-window experiment and random-POVM inequalities. The committed script is the durable reproducible gate for CI integration.
+
+Targeted searches found prior work on random-time dephasing, energy-gap/mode decompositions, phase estimation, and generic Fisher/QFI metrology, but no obvious predecessor for the specific claim
+
+`arbitrary-POVM classical Fisher at an exact Bohr-gap perturbation <= paired population <= semibounded energy tail`
+
+for a globally anharmonic pure-point Hamiltonian, nor for combining that coefficient with the common-measurement Herglotz law. This is only a priority screen, not priority certification.
+
+---
+
+# 9. Research decision
 
 The strongest adversarial point should not be answered merely by defensive wording. The arbitrary-pure-point gap extension is a genuine theorem-level strengthening and directly removes the claim that anharmonicity destroys the proof engine.
 
-Recommended next gate:
+Recommended manuscript action:
 
-1. numerically validate the long-window convergence and arbitrary-gap FI coefficient on deliberately incommensurate spectra;
-2. targeted priority search for a prior arbitrary-POVM Fisher-tail theorem formulated at exact Bohr gaps of an anharmonic semibounded Hamiltonian;
-3. if both pass, replace the peripheral separately optimized SLD-QFI section in the manuscript with a compact fixed-Hamiltonian pure-point extension, keeping page count approximately unchanged;
-4. add one sentence to the continuum theorem stating explicitly that no absolute-continuity/smoothness assumption on `mu` is made;
-5. add one sentence to the Herglotz proof explaining null-sector completion invariance.
-
-Do not broaden the complete-extremizer theorem beyond its proven contiguous-chain scope.
+1. replace the peripheral separately optimized SLD-QFI section with a compact fixed-Hamiltonian pure-point extension, keeping page count approximately unchanged;
+2. add one sentence to the continuum theorem stating explicitly that no absolute-continuity/smoothness assumption on `mu` is made;
+3. add one sentence to the Herglotz proof explaining null-sector completion invariance;
+4. preserve the complete-extremizer theorem's existing contiguous-chain scope;
+5. do not add the global trace-distance result unless it earns its space after the stronger pure-point extension is integrated.
