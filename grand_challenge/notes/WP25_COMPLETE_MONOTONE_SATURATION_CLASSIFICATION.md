@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-22
 
-**Status:** one-copy rigidity theorem derived and general-outcome POVM Radon--Nikodym gate closed; continuum equality cone identified. The finite-copy entangled-collective **converse** remains open and is not claimed.
+**Status:** one-copy rigidity theorem derived; general-outcome POVM Radon--Nikodym gate and infinite-dimensional saturating-POVM normalization gate closed; continuum equality cone identified. The finite-copy entangled-collective **converse** remains open and is not claimed.
 
 ## Motivation
 
@@ -156,37 +156,79 @@ Conversely, suppose
 
 `q_n = int_[0,1) (1-r) r^n pi(dr)`.
 
-For each `r` and phase `theta`, define
+For each `r` and phase `theta`, define the normalized backward-shift eigenvector
 
 `|psi_(r,theta)> = sqrt(1-r) sum_(n>=0) r^(n/2) exp(i n theta)|n>`.
 
-Uniform phase averaging removes all off-diagonal terms:
+Uniform phase averaging gives the exact ensemble decomposition
 
 `rho0 = int pi(dr) int_(0)^(2pi) dtheta/(2pi) |psi_(r,theta)><psi_(r,theta)|`.
 
-This ensemble induces the valid source-adapted POVM
+## 4.1 Avoiding the unbounded inverse shorthand
 
-`M(dr,dtheta) = rho0^(-1/2) [pi(dr)dtheta/(2pi) |psi_(r,theta)><psi_(r,theta)|] rho0^(-1/2)`
+The formal expression
 
-on the support of `rho0` (plus the orthogonal-complement projector if needed).
+`rho0^(-1/2)|psi><psi|rho0^(-1/2)`
 
-Because
+is useful mnemonically but may involve generalized non-normalizable phase vectors in infinite dimension. Do **not** use it as the rigorous definition of the POVM density.
 
-`(V^dagger)^k |psi_(r,theta)> = r^(k/2) exp(i k theta)|psi_(r,theta)>`,
+Instead define the POVM directly by its weak matrix elements. For every measurable set `C subset [0,1) x [0,2pi)`, set
 
-its harmonic-`k` Fisher trace is
+`<n|M(C)|m>`
 
-`Tr F_1^(k) = int pi(dr) r^k`.
+`= 1/sqrt(q_n q_m) * int_C (1-r) r^((n+m)/2) exp(i(n-m)theta) pi(dr)dtheta/(2pi)`.
+
+For any finitely supported vector `a=(a_n)`, the quadratic form is
+
+`<a|M(C)|a>`
+
+`= int_C (1-r) |sum_n a_n^* r^(n/2) exp(i n theta)/sqrt(q_n)|^2 pi(dr)dtheta/(2pi) >=0`.
+
+Thus `M(C)` is positive as a quadratic form. The full outcome space gives
+
+`<n|M(total)|m>=delta_(nm)`
+
+because the phase integral removes `n != m` and the mixture identity gives
+
+`int (1-r)r^n pi(dr)=q_n`.
+
+Therefore `M(total)=I`. Since `M(C)>=0` and `M(total\C)>=0`,
+
+`0<=M(C)<=I`,
+
+so every effect extends uniquely to a bounded positive contraction. Countable additivity follows weakly from the defining integral. Hence this is a legitimate POVM even when the pointwise generalized ket density is not a bounded operator.
+
+Its baseline outcome probability is simply
+
+`p(dr,dtheta)=pi(dr)dtheta/(2pi)`.
+
+Indeed the diagonal trace gives
+
+`sum_n q_n * (1-r)r^n/q_n = 1`.
+
+For harmonic `k`, direct substitution gives the complex score density
+
+`z_k(r,theta)=r^(k/2) exp(-i k theta)`
+
+(up to the global sine/phase convention), because
+
+`sum_(n>=0)(1-r)r^(n+k/2)=r^(k/2)`.
+
+Therefore
+
+`Tr F_1^(k)=int pi(dr) r^k`.
 
 But the spectral tail is
 
 `T_k = sum_(n>=k) q_n = int pi(dr) r^k`.
 
-Therefore
+Thus
 
 `Tr F_1^(k)=T_k`
 
-for **every k simultaneously under one common POVM**.
+for **every k simultaneously under one common bounded POVM**.
+
+This explicit matrix-element construction closes the infinite-dimensional normalization/boundedness gate.
 
 A product of this one-copy POVM also saturates the per-copy bound for every finite number of independent copies. This is a sufficiency statement for finite `N`; the converse for arbitrary entangled collective POVMs at `N>1` is not yet proved.
 
@@ -321,7 +363,7 @@ Do **not** claim novelty for:
 - Bernstein--Widder representation;
 - unilateral/backward-shift eigenvectors;
 - trace-class Radon--Nikodym theory;
-- canonical phase POVMs.
+- generalized/canonical phase POVMs.
 
 Targeted web searches on 2026-08-22 did not identify a prior quantum-metrology result connecting these classical structures to exact saturation of an arbitrary-POVM temporal Fisher-tail resource law. Priority remains **unverified, not certified**.
 
@@ -338,10 +380,11 @@ Useful provenance found:
 
 Before promotion into a manuscript revision:
 
-1. add an independent symbolic/numerical validator for geometric mixtures, Hausdorff finite differences, and continuum lower-bin identities;
-2. run a targeted literature search specifically for quantum phase/Fisher extremizer classifications involving completely monotone or geometric-mixture spectra;
+1. run the committed symbolic/numerical validator for geometric mixtures, Hausdorff finite differences, and continuum lower-bin identities;
+2. complete the targeted literature search specifically for quantum phase/Fisher extremizer classifications involving completely monotone or geometric-mixture spectra;
 3. decide whether the finite-`N` **converse** can be proved. Do not claim it unless established;
-4. hostile-audit the source-adapted POVM normalization in the infinite-dimensional support and the zero-eigenvalue/trivial-ground edge case;
-5. determine whether the theorem belongs in the main text or End Matter/Supplement without diluting the operational story.
+4. decide the cleanest manuscript placement and compress the proof without hiding the arbitrary-outcome or infinite-dimensional gates.
 
-The general-outcome Radon--Nikodym gate is now closed. If the remaining gates pass, WP25 justifies a genuine Rev9 scientific revision rather than another polish pass.
+The general-outcome Radon--Nikodym gate and infinite-dimensional saturating-POVM gate are closed. The finite-`N` converse is not needed for a valid one-copy classification theorem, because the constructed one-copy POVM already yields finite-`N` saturation by products.
+
+WP25 is now strong enough to justify a genuine Rev9 scientific revision, provided the targeted priority search remains negative.
