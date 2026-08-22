@@ -32,7 +32,7 @@ def random_povm(d: int, outcomes: int) -> list[np.ndarray]:
 
 def fisher_trace(povm: list[np.ndarray], rho: np.ndarray, A: np.ndarray) -> float:
     # D_c=(A+A^dag)/2, D_s=(A-A^dag)/(2i). For outcome y,
-    # derivatives are Re z_y and Im z_y, so trace FI contribution is |z_y|^2/p_y.
+    # derivatives are Re z_y and Im z_y, so trace-FI contribution is |z_y|^2/p_y.
     out = 0.0
     for M in povm:
         p = float(np.trace(rho @ M).real)
@@ -54,9 +54,11 @@ def numerical_radius(B: np.ndarray, phase_steps: int = 4001) -> float:
 def check_qubit_no_go_and_sharpness() -> None:
     c = 0.5
     E = 1.0
+    last_ratio = None
     for nu in (10.0, 100.0, 1000.0, 10000.0):
         p = E / nu
         rho = np.diag([1.0 - p, p]).astype(complex)
+        # A=2c|1><0| gives D_c=c sigma_x, D_s=c sigma_y.
         A = np.array([[0.0, 0.0], [2.0 * c, 0.0]], dtype=complex)
         Rlin = math.sqrt(p * (1.0 - p)) / c
 
@@ -75,21 +77,23 @@ def check_qubit_no_go_and_sharpness() -> None:
             povm.append(M)
 
         F = fisher_trace(povm, rho, A)
-        # With the chosen D_c,D_s normalization, exact continuum trace FI is c^2.
-        assert abs(F - c * c) < 2e-7, (nu, F)
+        assert abs(F - 4.0 * c * c) < 2e-7, (nu, F)
 
         tail = p
         robust = (Rlin * Rlin / 4.0) * F
-        # The theorem is valid; this normalization is not the asymptotically tight
-        # convention used in the analytic note's alternative A-scaling, so only
-        # inequality is asserted here.
         assert robust <= tail + 1e-12
+        assert abs(robust / tail - (1.0 - p)) < 2e-8
 
         # Mean energy remains exactly E while nu grows and F remains constant.
         mean_energy = p * nu
         assert abs(mean_energy - E) < 1e-12
+        energy_rhs = nu * robust
+        assert energy_rhs <= E + 1e-12
+        last_ratio = energy_rhs / E
 
+    assert last_ratio is not None and last_ratio > 0.9998
     print("Fixed-energy/high-frequency local-Fisher no-go PASS")
+    print("Qubit robust energy-law asymptotic sharpness PASS")
 
 
 def check_random_one_copy() -> None:
@@ -110,8 +114,7 @@ def check_random_one_copy() -> None:
         Rlin = 1.0 / wnum
         A = sq @ B @ sq
 
-        # Positivity at random points inside the disk and failure just outside in
-        # the worst numerical-range direction are checked approximately.
+        # Positivity at random points inside the disk.
         Dc = (A + A.conj().T) / 2.0
         Ds = (A - A.conj().T) / (2j)
         for _ in range(100):
