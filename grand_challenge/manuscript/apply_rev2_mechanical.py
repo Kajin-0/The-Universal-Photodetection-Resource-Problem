@@ -14,9 +14,8 @@ assert r"\begin{proof}" in text, "Expected proof environment not found"
 insertion = r"""\newtheorem{theorem}{Theorem}
 \newtheorem{corollary}{Corollary}
 % REVTeX permits \newtheorem but APS production guidance excludes amsthm.
-% Supply a minimal proof environment only if the class does not already define one.
+% REVTeX 4.2 already defines \endproof but not the opening \proof command.
 \providecommand{\proof}{\par\noindent\textit{Proof.}\ }
-\providecommand{\endproof}{\hfill$\square$\par}
 """
 
 text = text.replace(anchor, anchor + insertion, 1)
