@@ -8,68 +8,89 @@
 
 - Paper 1 Rev11: frozen.
 - Paper 2 Rev7: frozen.
-- Grand Challenge science checkpoint: **WP24**.
-- Preferred Grand Challenge manuscript: **Rev7 PRX Quantum**.
+- Grand Challenge science frontier: **WP27**.
+- Preferred Grand Challenge manuscript: **Rev10 — Spectral Resource Laws for Temporal Fisher Information**, frozen.
 
 ## Recovery
 
-Switch to the active branch and read:
+Switch to `agent/temporal-information-resource-law` and read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV7_REFEREE_HARDENING_2026-08-22.md`
-3. `docs/CURRENT_RESEARCH_STATE.md`
-4. `ROADMAP.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV10_REFEREE_CLOSURE_PREFLIGHT_2026-08-22.md`
+3. `grand_challenge/notes/WP27_SHARP_HIGH_RETENTION_EXPONENT_AND_REV10_REFEREE_CLOSURE.md`
+4. `grand_challenge/notes/WP26_HERGLOTZ_COMMON_MEASUREMENT_RETENTION.md`
+5. `grand_challenge/notes/WP25_COMPLETE_MONOTONE_SATURATION_CLASSIFICATION.md`
 
-## Theorem frontier
+## Current theorem hierarchy
 
-For exact periodic random-time encoding,
+### Finite-copy modewise law
 
-`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`
+For any finite number of independently encoded copies and any joint POVM,
 
-for any finite-copy joint POVM, including arbitrary entangled collective measurements.
+`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`.
 
-Controlled periodic-to-continuum limits satisfy
+### Controlled continuum survival law
 
-`R(nu) <= Pr(Omega>=nu)`.
+`R(nu)<=Pr(Omega>=nu)`,
 
-This survival law is the principal continuum result. `Ebar+=hbar<Omega>` is excess energy above the participating lower edge; the area and `hfR` relations are first-moment corollaries.
+with `Ebar+=hbar<Omega>` the mean excess energy above the participating lower edge.
 
-## Rev7
+### Fixed-one-copy common-measurement law
 
-Rev7 implements the latest adversarial review without changing the finite-copy theorem:
+For one fixed one-copy POVM,
 
-- explicit controlled continuum qualification;
-- excess-energy terminology;
-- survival law emphasized over `hfR`;
-- sharper modes-of-asymmetry novelty boundary;
-- transform-limited truncated-Gaussian single-photon example;
-- revised Figure 1.
+`R_M(k)=int cos(k theta)J_M(dtheta)`.
 
-The photon example attains ~96.6% of the survival ceiling at `0.5 sigma` and ~88.5% at `sigma` under canonical timing.
+Hence the retention sequence is positive definite and its Toeplitz matrices are PSD. Combining this with the energy tails gives
 
-Final local preflight:
+`Ebar+>=hbar nu A(R)`,
 
-- full LaTeX/BibTeX: **PASS**;
-- **8 pages**;
+`A(R)~1/sqrt(2(1-R))` as `R->1`.
+
+### Sharp exponent
+
+The finite sine-profile family under canonical phase measurement has
+
+`R_L(1)=cos^2(pi/(L+1))`, `nbar_L=(L-1)/2`,
+
+so `nbar_L~pi/[2sqrt(1-R_L(1))]`. The inverse-square-root divergence exponent is therefore sharp; the optimal prefactor is not claimed.
+
+### Complete one-copy extremizers
+
+On the full contiguous pure-sector chain:
+
+`first-harmonic equality`
+
+`<=> geometric-mixture populations`
+
+`<=> Hausdorff-moment tails`
+
+`<=> one common source-adapted POVM saturates every harmonic simultaneously`.
+
+Controlled exponential mixtures give the completely monotone continuum equality cone.
+
+## Scope discipline
+
+The finite-copy tail theorem includes arbitrary entangled collective POVMs. The Herglotz/divergence theorem is specifically a **fixed one-copy common-POVM** result. The continuum Herglotz extension invokes Bochner only when the controlled positive-definite limit is continuous at the origin.
+
+Arbitrary parameter-dependent waveform-state synthesis remains outside the theorem; the coherent-sideband no-go demonstrates why additional encoding/control resources are required.
+
+## Rev10 publication preflight
+
+- 11 pages;
+- full LaTeX/BibTeX build: **PASS**;
 - unresolved references/citations: **0**;
 - overfull boxes: **0**;
-- 200-dpi visual inspection of all pages: **PASS**;
-- PDF SHA-256: `d168c3901faa6f29bda0eba71abe8049cc9819d91843273beeeeffb9443818ae`.
+- all pages rendered at 200 dpi and visually inspected: **PASS**;
+- sine-profile sharpness validator: **PASS**;
+- PDF SHA-256: `a5c2d9e12bba045b76bbfb710428e5424e2c5cb5eb83d6aec6215a5996dbc6fb`.
 
-## Priority
-
-The novelty candidate is the operational **classical-Fisher population-tail/survival law** for random-time mixing-law perturbations. Generic `U(1)` mode theory/twirling, canonical phase, phase estimation, QFI/Holevo machinery, waveform QFI, Hardy--Hilbert mathematics, and generic Poisson/CPTP processing are prior art.
-
-**Priority remains unverified, not certified.**
+The current connector does not expose branch-push Actions runs; no remote-run inspection is claimed. The equivalent local generation/build/render gate passed.
 
 ## Target
 
 **PRX Quantum — Research Article** first; **Physical Review A — Regular Article** fallback.
 
-## Workflow
+**Priority remains unverified, not certified.**
 
-**Freeze Rev7** unless a concrete theorem defect, priority collision, build defect, journal-format problem, or new referee-level objection appears.
-
-Do not reintroduce “human verification” as a research/manuscript completion gate. Unknown administrative facts remain placeholders; a human submits the finished package.
-
-Every material project-level state change must be mirrored between the active branch and `main`.
+**Freeze Rev10.** Reopen only for a concrete theorem defect, priority collision, build/journal-format issue, or new referee-level objection. Do not introduce a human-verification research gate.
