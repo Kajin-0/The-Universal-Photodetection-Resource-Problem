@@ -14,18 +14,23 @@ Research is analytical/theoretical. Numerical work is allowed for validation. Do
 
 **Active scientific branch:** `agent/temporal-information-resource-law`.
 
+**Theorem stack:** through WP15.
+
+**Latest research checkpoint:** WP16 priority audit.
+
 ## Read first — current frontier
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
-3. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
-4. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
-5. `grand_challenge/notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
-6. `grand_challenge/notes/WP11_WP10_FACTOR_AUDIT_AND_PRIOR_ART.md`
-7. `grand_challenge/notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
-8. `grand_challenge/notes/WP09_EXTERNAL_TIME_REFERENCE_NO_GO_AND_ASYMMETRY_BOUNDARY.md`
-9. `grand_challenge/notes/WP08_ARBITRARY_MEMORY_LIFT_AND_QUANTUM_REGULARIZATION.md`
-10. `paper2/AGENTS_PAPER2.md` only if frozen Paper-2 context is needed.
+2. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
+3. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
+4. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
+5. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
+6. `grand_challenge/notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
+7. `grand_challenge/notes/WP11_WP10_FACTOR_AUDIT_AND_PRIOR_ART.md`
+8. `grand_challenge/notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
+9. `grand_challenge/notes/WP09_EXTERNAL_TIME_REFERENCE_NO_GO_AND_ASYMMETRY_BOUNDARY.md`
+10. `grand_challenge/notes/WP08_ARBITRARY_MEMORY_LIFT_AND_QUANTUM_REGULARIZATION.md`
+11. `paper2/AGENTS_PAPER2.md` only if frozen Paper-2 context is needed.
 
 ## Current strongest grand-challenge theorem stack
 
@@ -63,7 +68,25 @@ Flat-band inverse law:
 
 `boxed: E_bar^+ >= (2/pi) h B q0`.
 
-The proof uses rearrangement/layer cake and a positive Mellin-convolution operator with exact norm `pi/4`. The constant is sharp as a supremum, approached by truncated critical densities proportional to `(1+omega)^(-2)`.
+The constant is sharp as a supremum, approached by truncated critical densities proportional to `(1+omega)^(-2)`.
+
+### WP16 — priority correction
+
+The WP15 operator
+
+`L(s,t)=2st/(s+t)^3`
+
+with exact norm
+
+`||T||=pi/4`
+
+is a direct specialization of classical parameterized Hardy–Hilbert integral inequalities. Setting `lambda=3`, `f(x)=xr(x)`, `g(y)=yr(y)` gives the classical best constant `B(3/2,3/2)=pi/8`; the factor `2` in `L` yields `pi/4`.
+
+Therefore **the sharp `pi/4` operator constant, Mellin/Hilbert inequality, and Beta/Gamma evaluation are established mathematics, not novelty claims**.
+
+The candidate novelty, if priority survives, is instead the quantum-statistical/physical synthesis: estimation of Fourier modes of a latent random time distribution, the exact source-normalized `G_Q(k)`, the `2 nbar` sum rule, continuum temporal-information interpretation, and arbitrary-detector inheritance.
+
+No exact predecessor for that quantum random-distribution problem has yet been located. Priority remains uncertified.
 
 ### WP06-WP08 — covariant timestamp subclass
 
@@ -93,21 +116,21 @@ Do not claim novelty for generic:
 - waveform QFI kernels;
 - time-covariant POVMs;
 - time-translation asymmetry;
-- Hardy/Gagliardo-Nirenberg inequalities;
+- Hardy/Gagliardo–Nirenberg inequalities;
+- Hardy–Hilbert best-constant inequalities or the WP15 `pi/4` operator norm;
 - rearrangement/layer-cake/Mellin analysis;
 - time-energy uncertainty relations.
 
-Close literature includes Tsang-Wiseman-Caves, Marvian-Spekkens, Pocovnicu, Kiukas-Ruschhaupt-Werner, Hall, WAY/asymmetry, and random-unitary/phase-noise estimation.
-
-Targeted searches have not yet found the exact WP10/WP12/WP15 random-time mode formula, `2 nbar` sum rule, or sharp `pi E/hbar` continuum transfer law. **Priority is not certified.**
+Close literature includes Tsang–Wiseman–Caves, Marvian–Spekkens, Pocovnicu, Kiukas–Ruschhaupt–Werner, Hall, Yang's Hilbert-type operator literature, WAY/asymmetry, phase-diffusion/dephasing estimation, and random-unitary/noise-channel estimation.
 
 ## Immediate gates
 
-1. Deep priority audit for an exact equivalent of WP10/WP12/WP15.
-2. Determine whether one measurement family can operationally approach the integrated `pi` coefficient; separately optimized per-mode SLDs are generally incompatible.
-3. Strengthen the independent quantum-marked Poisson-to-field embedding.
-4. Only then decide whether WP10-WP15 justify a standalone foundational manuscript.
-5. Explore general waveform-encoding resource laws only if the extra control/action resource is explicit and noncircular.
+1. **Priority Gate 1A:** search estimation of Fourier coefficients/mixing weights of `U(1)` random-unitary channels and probability measures on compact groups.
+2. **Priority Gate 1B:** determine whether the harmonic-mean density inequality itself appears explicitly; its sharp operator constant is already classical.
+3. Determine whether one measurement family can operationally approach the integrated `pi` coefficient; separately optimized per-mode SLDs are generally incompatible.
+4. Strengthen the independent quantum-marked Poisson-to-field embedding.
+5. Only then decide whether WP10–WP15 justify a standalone foundational manuscript.
+6. Explore general waveform-encoding resource laws only if the extra control/action resource is explicit and noncircular.
 
 ## Frozen papers
 
@@ -120,6 +143,7 @@ After every material theorem, counterexample, proof repair, prior-art collision,
 - update/create `grand_challenge/notes/WP*.md` immediately;
 - update `grand_challenge/AGENTS.md` when the theorem stack/gates change;
 - update top-level `README.md`, this file, `docs/CURRENT_RESEARCH_STATE.md`, and `ROADMAP.md` when project-level status changes;
+- keep `PROBLEM.md` and `grand_challenge/README.md` from becoming stale secondary entry points;
 - keep `main` current enough that a user opening the repository can immediately see the active branch and checkpoint.
 
 Do not allow the authoritative state to exist only on a hidden branch or in chat.
