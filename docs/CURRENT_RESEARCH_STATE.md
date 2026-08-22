@@ -2,95 +2,74 @@
 
 **Last synchronized:** 2026-08-22
 
-**Default branch role:** landing/index only.
+`main` is landing/index only.
 
-**Active scientific branch:** `agent/temporal-information-resource-law`
+**Active branch:** `agent/temporal-information-resource-law`
 
-Paper 1 Rev11 and Paper 2 Rev7 are frozen.
+- Paper 1 Rev11: frozen.
+- Paper 2 Rev7: frozen.
+- Grand Challenge science checkpoint: **WP24**.
+- Preferred Grand Challenge manuscript: **Rev7 PRX Quantum**.
 
-**Grand Challenge science checkpoint:** WP24.
+## Recovery
 
-**Rev4:** frozen science content.
-
-**Rev5:** frozen publication content.
-
-**Rev6:** current PRX Quantum style package.
-
-## Recovery order
-
-Switch to `agent/temporal-information-resource-law`, then read:
+Switch to the active branch and read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV6_PRXQ_PACKAGING_PREFLIGHT_2026-08-22.md`
-3. `grand_challenge/submission/PRX_QUANTUM_TARGET_AND_CHECKLIST_2026-08-22.md`
-4. `grand_challenge/submission/APS_AI_AND_DATA_DISCLOSURE_DRAFTS.md`
-5. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-6. active-branch `docs/CURRENT_RESEARCH_STATE.md`
-7. active-branch `ROADMAP.md`.
+2. `grand_challenge/notes/MANUSCRIPT_REV7_REFEREE_HARDENING_2026-08-22.md`
+3. `docs/CURRENT_RESEARCH_STATE.md`
+4. `ROADMAP.md`
 
-# Current theorem
+## Theorem frontier
 
-For exact periodic random-time encoding with sector probabilities `q_n`, define `T_k=sum_(m>=k)q_m`. Any finite number `N` of independently encoded excitations and any joint POVM obey
+For exact periodic random-time encoding,
 
-`Tr F_N^(k)<=N min(D_k,U_k)<=N T_k`.
+`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`
 
-Hence
+for any finite-copy joint POVM, including arbitrary entangled collective measurements.
 
-`R_N(k)=Tr F_N^(k)/N<=T_k`,
+Controlled periodic-to-continuum limits satisfy
 
-`sum_(k>=1)R_N(k)<=nbar`.
+`R(nu) <= Pr(Omega>=nu)`.
 
-`R_N(k)` is the two-quadrature / phase-averaged source-normalized Fisher retention.
+This survival law is the principal continuum result. `Ebar+=hbar<Omega>` is excess energy above the participating lower edge; the area and `hfR` relations are first-moment corollaries.
 
-Controlled large-period limits satisfy
+## Rev7
 
-`R(nu)<=P(Omega>=nu)`,
+Rev7 implements the latest adversarial review without changing the finite-copy theorem:
 
-`int_R R(nu)dnu<=2Ebar^+/hbar`,
+- explicit controlled continuum qualification;
+- excess-energy terminology;
+- survival law emphasized over `hfR`;
+- sharper modes-of-asymmetry novelty boundary;
+- transform-limited truncated-Gaussian single-photon example;
+- revised Figure 1.
 
-`Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
+The photon example attains ~96.6% of the survival ceiling at `0.5 sigma` and ~88.5% at `sigma` under canonical timing.
 
-WP23 provides the independent compound-Poisson source-to-field embedding. WP14 retains the arbitrary-waveform no-go boundary.
+Final local preflight:
 
-# Priority
+- full LaTeX/BibTeX: **PASS**;
+- **8 pages**;
+- unresolved references/citations: **0**;
+- overfull boxes: **0**;
+- 200-dpi visual inspection of all pages: **PASS**;
+- PDF SHA-256: `d168c3901faa6f29bda0eba71abe8049cc9819d91843273beeeeffb9443818ae`.
 
-The candidate contribution is the operational **classical-Fisher tail/survival theorem** for Fourier perturbations of the latent random-time distribution and its paired-population/energy/source-to-record consequences. Generic `U(1)` modes/twirling, phase estimation, quantum-information bounds, waveform QFI, Hardy--Hilbert analysis, and generic Poisson/CPTP machinery are prior art.
+## Priority
+
+The novelty candidate is the operational **classical-Fisher population-tail/survival law** for random-time mixing-law perturbations. Generic `U(1)` mode theory/twirling, canonical phase, phase estimation, QFI/Holevo machinery, waveform QFI, Hardy--Hilbert mathematics, and generic Poisson/CPTP processing are prior art.
 
 **Priority remains unverified, not certified.**
 
-# Manuscript / journal package
+## Target
 
-Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
+**PRX Quantum — Research Article** first; **Physical Review A — Regular Article** fallback.
 
-- Rev4 freezes scientific content.
-- Rev5 freezes publication content and adds one conceptual architecture figure only.
-- Rev6 changes only the REVTeX journal option from `pra` to `prx` for the current target.
+## Workflow
 
-Rev5 passed complete local build, visual, numerical, figure, and bibliography preflight. Rev6 remains seven pages with no target-style page-flow regression in local reproduction; dedicated CI is configured to generate/compile Rev6. The current connector does not expose the branch-push Actions run, so direct remote-job inspection is not claimed.
+**Freeze Rev7** unless a concrete theorem defect, priority collision, build defect, journal-format problem, or new referee-level objection appears.
 
-# Journal target
+Do not reintroduce “human verification” as a research/manuscript completion gate. Unknown administrative facts remain placeholders; a human submits the finished package.
 
-**First target:** PRX Quantum, Research Article.
-
-**Fallback:** Physical Review A, Regular Article.
-
-PRL is a stretch only after a deliberate Letter rewrite.
-
-# Remaining blockers
-
-Scientific work is frozen. Remaining work is human submission completion:
-
-- human verification for APS substantive AI-use disclosure;
-- final author/order/affiliation/contact details;
-- optional ORCID;
-- funding/conflict/submission-history facts;
-- preprint/e-print decision;
-- stable repository/archive citation for Data Availability;
-- optional referee recommendations/exclusions;
-- APC coverage/institutional agreement.
-
-Do not invent these facts.
-
-## Documentation requirement
-
-Every project-level status change must be reflected both on the active branch and `main`.
+Every material project-level state change must be mirrored between the active branch and `main`.
