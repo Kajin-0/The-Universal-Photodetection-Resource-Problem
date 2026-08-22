@@ -1,388 +1,252 @@
 # Formal Problem Statement
 
-**Updated:** 2026-08-20
+**Updated:** 2026-08-21
 
-## 1. Scientific objective
+**Default branch role:** landing/index only.
 
-Determine which finite physical resources are necessary and/or sufficient for a finite-temperature photodetector to transfer information from an incident optical field into an **accessible electrical record** with specified efficiency and temporal information bandwidth.
+**Active scientific branch:** `agent/temporal-information-resource-law`
 
-The project is explicitly agnostic between:
+## 1. Current scientific objective
 
-- a universal bound;
-- a no-go theorem for an incomplete resource set;
-- a hierarchy of restricted theorems;
-- a resource-completeness result identifying what must be specified before a finite bound exists.
+Determine what fundamental physical resources constrain the transfer of **temporal Fisher information** from a random optical event-time/source distribution into an accessible record, under physically realizable quantum dynamics and measurement.
 
-The project no longer assumes that a simple sensitivity-bandwidth-temperature product exists.
+The current frontier is no longer the August-20 semiconductor/structured-reservoir work program. That work remains historical background and a library of restricted no-go/repair results. The active Grand Challenge is the quantum temporal-information resource program on `agent/temporal-information-resource-law`.
 
----
+The project is falsification-first. It allows that the final answer may be:
 
-## 2. Core information normalization
+- a sharp universal theorem for a precisely defined source class;
+- a hierarchy of restricted theorems with explicit boundaries;
+- a no-go theorem showing that an apparently natural resource set is incomplete;
+- a resource-completeness statement specifying what additional source/control/reference resources must be counted.
 
-For an optical parameter `theta`, define
-
-\[
-\boxed{
-\eta_{\mathcal I}
-=\frac{F_{\rm electrical}}
-{F_{\rm incident}^{Q}}
-}
-\]
-
-for the same encoded parameter.
-
-For coherent/Poisson weak photon-flux modulation in a stationary Gaussian/linear record,
-
-\[
-\boxed{
-\eta_{\mathcal I}(\omega)
-=\Phi_0\frac{|\chi_{Y\Phi}(\omega)|^2}{S_Y(\omega)}.
-}
-\]
-
-This is the temporal analogue of DQE and is not itself a novelty claim.
-
-A finite optical information task must be specified. If `J_in(omega)` is the incident QFI spectral density,
-
-\[
-\boxed{
-\bar\eta_{\mathcal I}
-=
-\frac{\int(d\omega/2\pi)\mathcal J_{\rm in}(\omega)\eta_{\mathcal I}(\omega)}
-{\int(d\omega/2\pi)\mathcal J_{\rm in}(\omega)}.
-}
-\]
-
-Do not use an unqualified all-frequency integral as a universal finite objective; an ideal continuous-time photon counter can have flat information efficiency in an ideal white point-process model.
+The repository—not chat history—is authoritative.
 
 ---
 
-## 3. Intrinsic versus measured electrical information
+## 2. Active statistical experiment
 
-A central project correction is that **latency, amplitude bandwidth, and information bandwidth are not identical**.
+The strongest current theorem concerns **random temporal-distribution encoding of a fixed semibounded-energy quantum excitation**.
 
-### Intrinsic electrical boundary
+In the periodic model, a latent event time `t` is drawn from
 
-Let the detector produce an electrical subsystem/state `rho_E(theta)` after inaccessible internal degrees are traced out. Define
+`p_eps(t)=(1/T)[1+eps_c cos(k omega0 t)+eps_s sin(k omega0 t)]`,
 
-\[
-\boxed{
-\eta_{\rm int}
-=F_Q[\rho_E(\theta)]/F_{\rm incident}^{Q}.
-}
-\]
+and the fixed excitation is translated by
 
-In a classical detector, replace `rho_E` by the complete accessible electrical trajectory `Z` and use path Fisher information.
+`U_t=exp(-i Ht/hbar)`.
 
-### Measured record
+The encoded state is
 
-Let a practical record `Y` be obtained from the intrinsic electrical record by a parameter-independent readout/coarse-graining channel:
+`rho_eps=int p_eps(t) U_t sigma U_t^dagger dt`.
 
-\[
-Z\to Y.
-\]
+The unknown parameter is therefore a Fourier coefficient of the **probability law of a random event time**, not a deterministic global time shift and not an arbitrary parameter-dependent source-state synthesis operation.
+
+For a pure excitation with total-energy-sector probabilities `q_n`, the exact scalar-quadrature source-normalized quantum Fisher retention is
+
+`boxed: G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`.
+
+The latent classical label Fisher information is `1/2` per cosine/sine quadrature.
+
+For mixed excitations the same population expression is an upper bound by purification and QFI monotonicity.
+
+---
+
+## 3. Current resource theorem
+
+### 3.1 Periodic/discrete law — WP10/WP11
+
+Let
+
+`nbar=sum_n n q_n`.
 
 Then
 
-\[
-\boxed{F_Y\le F_Z.}
-\]
+`boxed: sum_{k>=1}G_Q(k)<=2 nbar`,
 
-A one-to-one deterministic transformation preserves FI exactly.
+`boxed: sum_{k!=0}G_Q(k)<=4 nbar`.
 
-Consequences:
+The constants are sharp as suprema.
 
-- a deterministic known delay can be latency-only;
-- deterministic known gain is FI-neutral;
-- a deterministic invertible RC/LTI filter can preserve FI if signal and upstream noise are transformed together;
-- timing dispersion, inaccessible latent variables, downstream noise, thresholding, dead time, quantization, finite sampling, or exact spectral nulls can destroy information.
+Because the parameter is encoded before the detector is chosen, every parameter-independent apparatus state, coherent detector memory, joint quantum channel, and final measurement is downstream of this QFI bound.
 
-Therefore every bandwidth theorem must state which electrical output record is accessible.
+### 3.2 Continuum law — WP12/WP15
 
-Primary framework: `notes/WP14_INTRINSIC_VS_MEASURED_INFORMATION_BANDWIDTH.md`.
+For normalized `q(omega)>=0` on `[0,infinity)` with finite first moment
 
----
+`omega_bar=int_0^infinity omega q(omega)domega`,
 
-## 4. Candidate universal/resource statement
+define for `nu>0`
 
-Seek conditions under which
+`G_Q(nu)=2 int_0^infinity q(omega)q(omega+nu)/[q(omega)+q(omega+nu)]domega`,
 
-\[
-\boxed{
-\bar\eta_{\mathcal I}(\Omega_s)\ge q
-\quad\Longrightarrow\quad
-\Omega_s\le
-\mathcal B(R_1,\ldots,R_n;q)
-}
-\]
+with even extension.
 
-or an equivalent pointwise/integrated information inequality, for all detectors in a precisely specified class.
+WP15 proves for every finite-first-moment density
 
-The resource set is itself part of the problem.
+`boxed: int_0^infinity G_Q(nu)dnu <= (pi/2)omega_bar`,
 
-Resources already shown to matter in explicit models include:
+and therefore
 
-### Source/task resources
+`boxed: int_R G_Q(nu)dnu <= pi E_bar^+/hbar`,
 
-- finite optical temporal-mode/information task;
-- incident photon flux/energy;
-- optical carrier frequency.
+where
 
-### Optical frontend resources
+`E_bar^+=hbar omega_bar`.
 
-- material oscillator-strength/plasma-frequency budget;
-- static electromagnetic response;
-- device volume/area/footprint;
-- finite-band capture/channel resources.
+If
 
-### Microscopic coupling resources
+`G_Q(2*pi*f)>=q0` for every `|f|<=B`,
 
-- absolute light-matter coupling/rate scale;
-- structured-reservoir spectral density/correlation time;
-- energetic detuning.
+then
 
-### Apparatus/preparation resources
+`boxed: E_bar^+ >= (2/pi)hBq0`.
 
-- pointer excitation/free energy;
-- finite preparation support or equivalent UV regularizer;
-- bounded signal-generator matrix elements.
-
-### Semiconductor transport/electrical resources
-
-- accessible electrical energy span;
-- charge span;
-- band/velocity scale;
-- Shockley-Ramo weighting geometry;
-- optical capture-position distribution;
-- stochastic timing/localization statistics.
-
-### Thermokinetic resources
-
-- entropy-production rate;
-- dynamical activity;
-- throughput;
-- bias/pump free-energy or power throughput.
-
-### Readout resources
-
-- downstream voltage/current noise;
-- impedance/filter topology;
-- sampling rate;
-- quantization/ADC precision;
-- dead time/threshold logic.
-
-A central research goal is to identify which of these can be eliminated, combined, or replaced by weaker invariant resources.
+The coefficient is sharp as a supremum.
 
 ---
 
-## 5. Established no-go results
+## 4. Mathematical provenance correction — WP16
 
-The following resource sets are already known to be incomplete within explicit model classes.
+WP15 reduces the positive-side area functional to
 
-### 5.1 Stationary thermodynamics alone
+`A[q]=<r,Tr>`,
 
-There is a reversible finite-state family with fixed optical detailed balance, finite useful throughput, bounded activity, bounded total and edge entropy production, and finite efficiency while an absolute kinetic scale diverges.
+where
 
-Thus
+`L(s,t)=2st/(s+t)^3`.
 
-\[
-\boxed{
-\{T,\hbar\omega_0,\text{detailed balance},f_*,\mathcal A,\Sigma,\eta_q\}
-\not\Rightarrow
-\text{finite absolute speed}.
-}
-\]
+The exact operator norm
 
-### 5.2 Coupling action alone in the quantum QFI branch
+`||T||=pi/4`
 
-An arbitrarily pre-squeezed detector pointer can transfer nearly all coherent-state QFI at arbitrarily weak nonzero passive coupling. A preparation/metrological resource is necessary.
+is **not a new mathematical constant**. WP16 identifies it as a direct specialization of established parameterized Hardy–Hilbert integral inequalities with best Beta-function constants.
 
-### 5.3 Free energy alone in an unrestricted ideal harmonic pointer
+Using the classical inequality for `(x+y)^(-lambda)` with `lambda=3` and substituting
 
-High-Fock coherences create a UV instability for every nonzero free-energy budget. Energy moments/diagonal energy data do not uniformly regularize it. A support/coherence/matrix-element-sensitive resource is needed.
+`f(x)=x r(x)`, `g(y)=y r(y)`,
 
-### 5.4 TRK/f-sum alone for an excited pointer
+gives the best constant
 
-Signed upward/downward oscillator strengths can cancel while individual transition strengths grow. A spectral/support/sign constraint is required.
+`B(3/2,3/2)=pi/8`.
 
-### 5.5 Carrier velocity alone
+The factor `2` in `L` yields exactly `pi/4`.
 
-An arbitrarily localized weighting field can generate arbitrarily sharp current pulses at fixed carrier speed. Electrical geometry must be specified.
-
-### 5.6 Transit time or RC pole alone
-
-A deterministic known delay or invertible filter need not reduce FI. Randomness/noise/coarse graining must be specified before conventional amplitude bandwidth becomes information bandwidth.
-
-### 5.7 Integrated reservoir coupling weight alone
-
-Arbitrarily narrow spectral features can evade coarse overlap-rate bounds. A reservoir spectral-regularity/correlation-time resource is required.
+Therefore do not claim novelty for the Mellin/operator constant, Hilbert-type inequality, rearrangement machinery, or Beta/Gamma evaluation. The possible contribution is the **quantum statistical reduction and temporal-information interpretation**.
 
 ---
 
-## 6. Established positive/repaired results
+## 5. Physical source scope — WP13/WP14
 
-### 6.1 Finite-state Markov response/noise
+### Included
 
-Exact counted-current susceptibility and finite-frequency PSD formulas are solved for finite-state stationary Markov jump detectors.
+The periodic theorem depends on sectors of the **total generator of time translations**, not particle labels. It therefore includes:
 
-### 6.2 Fixed optical-gateway thermokinetic theorem
+- fixed-photon-number multiphoton pulses;
+- entangled/multimode fixed-number states;
+- arbitrary degeneracy within total-energy sectors;
+- independent quantum-marked Poisson streams, for which QFI and total excess energy are additive;
+- arbitrary subsequent parameter-independent mapping into common bosonic field modes, propagation, overlap, coherent detector memory, and measurement.
 
-For a reversible optical gateway with fixed reverse kinetics, nonzero throughput, bounded EPR, and bounded activity, the post-absorption escape rate is finite and an event-timestamp information rolloff follows.
+### Excluded without additional resource accounting
 
-### 6.3 Passive finite-band optical capture
+WP14 constructs a coherent-field counterexample to any extension based only on baseline mean energy. An arbitrarily high-frequency infinitesimal sideband can enter the state tangent at first order while its added energy appears only at second order.
 
-For coherent passive frontend capture, rigorous T-operator sum rules give a finite-band optical-information ceiling under specified material/geometry assumptions.
+Thus baseline mean energy does **not** bound arbitrary waveform state engineering.
 
-### 6.4 Finite-support quantum pointer theorem
-
-For preparation subspace `S` and generator `G`,
-
-\[
-\boxed{
-\sup_{\rho\subset S}F_Q(\rho,G)
-=4\inf_c\lambda_{\max}[\Pi_S(G-cI)^2\Pi_S].
-}
-\]
-
-### 6.5 Minimal finite-level semiconductor theorem
-
-For the coherent one-excitation chain
-
-\[
-|F\rangle\xleftrightarrow{g}|X\rangle\xleftrightarrow{\kappa}|C\rangle,
-\]
-
-weak single-rail optical encoding and binary charge readout give
-
-\[
-\boxed{
-\eta_I(t)=
-\frac{4g^2\kappa^2}{(g^2+\kappa^2)^2}
-\sin^4\left(\frac{\sqrt{g^2+\kappa^2}t}{2}\right).
-}
-\]
-
-The internal electrical coupling satisfies
-
-\[
-\|I\|=e|\kappa|
-\]
-
-and, in a finite electrical subspace,
-
-\[
-\|I\|\le W_S\Delta Q_S/(2\hbar).
-\]
-
-### 6.6 Shockley-Ramo transport resource
-
-With velocity capacity `v_S` and weighting length `ell_w`,
-
-\[
-\boxed{\|I_w\|\le |q|v_S/\ell_w.}
-\]
-
-### 6.7 Spatial delay information theorem
-
-For captured Poisson events delayed by random `D`,
-
-\[
-\boxed{
-\eta_I^{\rm timestamp}(\omega)
-=\eta_c|\mathbb E e^{-i\omega D}|^2.
-}
-\]
-
-Uniform unresolved transit delays recover the conventional `0.442946... v/L` half-information coefficient.
-
-### 6.8 Readout-noise composition
-
-For parallel RC with input-side current noise `S_u` and downstream voltage noise `S_e`,
-
-\[
-\boxed{
-f_{1/2}^{I}
-=\frac1{2\pi RC}
-\sqrt{1+S_uR^2/S_e}}
-\]
-
-under the white-noise/flat-intrinsic-response approximation.
+A broader theorem would need to include an explicit encoding/control/action resource, such as energy curvature, tangent energy, or control-Hamiltonian bandwidth/action.
 
 ---
 
-## 7. Model hierarchy
+## 6. Covariant timestamp subclass
 
-The current research hierarchy is
+For a reference-free covariant timestamp measurement, WP06–WP08 give the sharper measurement-class-specific law
 
-\[
-\text{finite-state Markov}
-\subset
-\text{finite-level coherent/dissipative detector}
-\subset
-\text{semiconductor transport + structured reservoirs}
-\subset
-\text{passive/active quantum input-output detector}
-\subset
-\text{general open quantum detector}.
-\]
+`boxed: int_R G_timestamp(nu)dnu <=2 E_det^+/hbar`,
 
-A sequence of rigorously stated restricted results is preferred over an overbroad false universal theorem.
+with flat-band inverse form
+
+`boxed: E_det^+>=hBq`.
+
+The resource is the detected energy above the participating lower spectral edge, so it is invariant under `H -> H+cI`.
+
+WP08 lifts this through arbitrary downstream parameter-independent classical memory. Finite-energy quantum timing therefore regularizes the exact infinite-frequency `1/e` plateau of Paper 2's ideal deterministic Type-II classical model.
 
 ---
 
-## 8. Mandatory adversarial tests
+## 7. Established no-go boundaries
 
-Every proposed bound must survive or explicitly exclude:
+Do not restart or overclaim the following directions:
 
-1. output-unit/gain changes;
-2. deterministic invertible filtering;
-3. direct optical-to-electrical feedthrough;
-4. source bandwidth/energy scaling;
-5. parallel replication/extensivity;
-6. rare-fast internal states;
-7. fixed detailed balance with divergent bare coupling;
-8. preloaded squeezing/metrological resource;
-9. UV coherence tails/increasing support;
-10. signed sum-rule cancellations;
-11. arbitrarily sharp weighting geometry;
-12. unresolved versus observed transport side information;
-13. structured-reservoir spectral spikes;
-14. active gain/pump resources;
-15. downstream noise placement;
-16. sampling/quantization/dead time;
-17. whether the proposed resource merely renames the bandwidth being bounded.
+1. **Entropy production alone:** does not universally bound information acquisition.
+2. **Generic frequency-domain FI/response vs dissipation:** neighboring uncertainty relations already exist.
+3. **Generic quantum waveform QFI kernels:** established quantum-metrology territory.
+4. **Thermodynamic cost inferred from `G` alone:** underdetermined by the input-output channel.
+5. **Mean energy for deterministic global time-shift QFI:** false with sparse high-energy coherence and an external time/phase reference.
+6. **Baseline mean energy for arbitrary waveform synthesis:** false by WP14 coherent-sideband construction.
+7. **Mathematical novelty of the WP15 `pi/4` operator constant:** preempted by classical Hardy–Hilbert theory.
 
 ---
 
-## 9. Novelty discipline
+## 8. Novelty discipline
 
 Do not claim novelty for generic:
 
-- detector sensitivity-speed/gain-bandwidth tradeoffs;
-- transit-time `~0.44/tau` scaling;
-- RC amplitude bandwidth;
-- Shockley-Ramo signals;
-- Fisher information applied generally to semiconductor detector waveforms;
-- quantum Zeno/anti-Zeno control;
-- non-Gaussian/squeezed metrology;
-- thermodynamic metrology resources;
-- TRK/f-sum rules;
-- electromagnetic/T-operator power-bandwidth limits.
+- SLD QFI or QFI monotonicity;
+- harmonic denominators in the SLD metric;
+- `U(1)`/energy-gap mode decomposition;
+- waveform QFI kernels;
+- covariant time POVMs;
+- time-translation asymmetry/resource theory;
+- Hardy/Gagliardo–Nirenberg inequalities;
+- Hardy–Hilbert integral inequalities and their sharp Beta-function constants;
+- rearrangement/layer-cake/Mellin/Carleman techniques;
+- generic time-energy uncertainty relations.
 
-The surviving candidate novelty is the **photodetection-specific source-information resource-completeness program**: explicit no-go constructions showing why common resource sets and conventional speed metrics are insufficient, together with repaired information-transfer theorems once the missing microscopic resources and output record are specified.
+The current candidate novelty, if priority survives, is the combined theorem stack:
+
+1. Fourier-mode estimation of a latent random time distribution encoded by a fixed excitation;
+2. exact source-normalized mode retention `G_Q(k)`;
+3. the `2 nbar` all-positive-mode budget;
+4. the continuum `pi E/hbar` temporal-information area interpretation;
+5. the Planck-scale inverse flat-band law;
+6. the detector-independent inheritance through arbitrary downstream parameter-independent quantum processing;
+7. the explicit boundary separating random-time encoding from arbitrary waveform synthesis.
+
+Priority is **not certified**.
 
 ---
 
-## 10. Current next gates
+## 9. Current hostile gates
 
-1. Structured semiconductor phonon/contact reservoirs: derive coarse material spectral bounds rather than requiring the full `G(omega)`.
-2. Joint finite-band optical capture + spatial localization: price how sharply absorption can be localized while retaining broadband capture.
-3. Active multiplication: distinguish resolved-event FI from analog excess-noise penalties and include bias/free-energy resources.
-4. Readout: correlated voltage/current noise and finite sampling/quantization.
-5. Only after the general structure stabilizes, evaluate nontrivial MWIR/LWIR/room-temperature consequences.
+1. **Quantum-priority Gate 1A:** search estimation of Fourier coefficients/mixing weights of `U(1)` random-unitary channels and quantum statistical inference for probability measures on compact groups.
+2. **Analysis-provenance Gate 1B:** determine whether the harmonic-mean density inequality appears explicitly in classical analysis, although its sharp operator constant is already known.
+3. **Operational attainability Gate 2:** determine whether a single measurement family can approach the integrated `pi` QFI-area coefficient despite multiparameter/multimode SLD incompatibility.
+4. **Physical embedding Gate 3:** strengthen the independent quantum-marked Poisson/event model into publication-grade incoherent optical-field language.
+5. Only if these gates survive should WP10–WP15 be drafted as a standalone foundational manuscript.
 
 ---
 
-## 11. Current status
+## 10. Historical detector-resource program
 
-The project now has multiple proved no-go/repair pairs and several restricted completion theorems. The exact fully universal theorem remains OPEN; the original statement that there was “no theorem/no impossibility proof” is obsolete.
+The August-20 semiconductor/transport/resource-completeness program remains valuable historical work in the repository. It established multiple restricted no-go/repair pairs involving microscopic rates, finite-support pointers, optical capture, Shockley–Ramo geometry, spatial delay, and readout noise.
+
+Those results are **not the current research frontier** and should not be resumed by default. Consult historical notes only when a Grand Challenge proof or physical mapping specifically requires them.
+
+---
+
+## 11. Recovery order
+
+Switch to `agent/temporal-information-resource-law`, then read:
+
+1. `grand_challenge/AGENTS.md`
+2. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
+3. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
+4. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
+5. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
+6. `grand_challenge/notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
+7. `grand_challenge/notes/WP11_WP10_FACTOR_AUDIT_AND_PRIOR_ART.md`
+8. `grand_challenge/notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
+9. `docs/CURRENT_RESEARCH_STATE.md`
+10. `ROADMAP.md`
+
+Do not treat older semiconductor work-package numbering as the active checkpoint.
