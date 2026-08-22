@@ -6,9 +6,9 @@
 
 Paper 1 Rev11 and Paper 2 Rev7 are frozen.
 
-**Grand Challenge science checkpoint:** WP24.
+**Grand Challenge science frontier:** **WP27**.
 
-**Preferred manuscript:** **Rev7 PRX Quantum**.
+**Preferred manuscript:** **Rev10 — Spectral Resource Laws for Temporal Fisher Information**, frozen after full local preflight.
 
 # Established hierarchy
 
@@ -16,101 +16,114 @@ Paper 1 Rev11 and Paper 2 Rev7 are frozen.
 
 For exact periodic random-time encoding,
 
-`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`,
+`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`
 
-for any finite `N` and any joint POVM, including arbitrary entangled collective measurements.
+for any finite `N` and any joint POVM, including arbitrary entangled collective measurements. Summing gives `sum_(k>=1)R_N(k)<=nbar`.
 
-Summing gives
+## G2 — controlled continuum survival law
 
-`sum_(k>=1) R_N(k) <= nbar`.
+`R(nu)<=Pr(Omega>=nu)`.
 
-## G2 — controlled periodic-to-continuum survival law
+`Ebar+=hbar<Omega>` is excess energy above the participating lower edge. The area law and pointwise `hfR` relation are first-moment corollaries.
 
-For controlled periodic-to-continuum limits,
+## G3 — common-measurement Herglotz geometry
 
-`R(nu) <= Pr(Omega>=nu)`.
+For one fixed one-copy POVM,
 
-This is the principal continuum statement.
+`R_M(k)=int cos(k theta)J_M(dtheta)`.
 
-`Ebar+=hbar<Omega>` is excess energy above the participating lower edge. The area and pointwise relations are first-moment corollaries:
+Every finite Toeplitz matrix `[R_M(i-j)]` is PSD. This is an additional global constraint across harmonics, not a replacement for the finite-copy modewise theorem.
 
-`int_R R <= 2Ebar+/hbar`,
+## G4 — near-lossless divergence and sharp exponent
 
-`Ebar+ >= hbar nu R(nu) = h f R(2pi f)`.
+With `q=R_M(nu)`,
 
-## G3 — sharpness
+`Ebar+>=hbar nu A(q)`,
 
-The geometric/canonical-phase family saturates every discrete harmonic simultaneously and yields the exponential/Cauchy controlled-continuum equality family.
+`A(q)~1/sqrt(2(1-q))` as `q->1`.
 
-## G4 — nonextremal photon relevance
+Exact unit retention at nonzero frequency is impossible for a normalized semibounded source.
 
-Rev7 adds one transform-limited truncated-Gaussian single-photon example. Canonical covariant timing reaches about 96.6% of the survival ceiling at `0.5 sigma` and 88.5% at `sigma`. Closed forms and convergence from lower-bin periodic approximants are validated numerically.
+The finite-chain sine-profile family under canonical phase measurement has
 
-## G5 — independent Poisson source to field
+`R_L(1)=cos^2(pi/(L+1))`, `nbar_L=(L-1)/2`,
 
-For an independent quantum-marked Poisson source, arbitrary **parameter-independent** field formation and detector processing cannot evade the normalized bound because the final POVM pulls back to the upstream event register.
+so `nbar_L~pi/[2sqrt(1-R_L(1))]`. Therefore the inverse-square-root exponent is sharp. Do not claim the optimal prefactor.
 
-## G6 — secondary QFI envelope
+## G5 — complete one-copy extremizer classification
 
-WP10/WP12/WP15 remain valid but secondary. The modewise SLD-QFI area coefficient is not the jointly accessible operational theorem; WP16 records the Hardy--Hilbert mathematical provenance.
+On the full contiguous pure-sector one-copy chain:
 
-## G7 — arbitrary waveform synthesis
+`first-harmonic saturation`
 
-WP14/Rev7 retain the coherent-sideband **NO-GO**: baseline mean energy alone cannot constrain arbitrary parameter-dependent waveform-state synthesis.
+`<=> geometric-mixture populations`
 
-# Novelty/prior-art boundary
+`<=> Hausdorff-moment tails`
 
-Modes-of-asymmetry theory already identifies `U(1)` energy-gap modes and weighted-twirl Fourier structure. The Grand Challenge contribution is instead the **classical Fisher information ceiling for any actual POVM**, expressed through participating population tails and valid for arbitrary finite-copy collective measurements.
+`<=> one common source-adapted POVM saturates every harmonic simultaneously`.
 
-Do not claim novelty for weighted twirling, canonical phase POVMs, number/energy-constrained phase estimation, generic QFI/Holevo machinery, random-unitary estimation, waveform QFI, positive-frequency/Hardy--Hilbert mathematics, or generic Poisson/CPTP data processing.
+Controlled exponential-mixture limits give the completely monotone continuum equality cone.
+
+## G6 — nonextremal photon relevance
+
+A transform-limited truncated-Gaussian single photon reaches about 96.6% of the survival ceiling at `0.5 sigma` and 88.5% at `sigma` under canonical covariant timing.
+
+## G7 — independent Poisson source to field
+
+For an independent quantum-marked Poisson source, arbitrary parameter-independent field formation and detector processing cannot evade the normalized modewise bound because final POVMs pull back to the upstream event register.
+
+## G8 — secondary QFI envelope
+
+WP10/WP12/WP15 remain valid but secondary. If journal length pressure appears, move the separately optimized SLD-QFI comparison before cutting the Herglotz theorem, extremizer theorem, or photon example.
+
+## G9 — arbitrary waveform synthesis boundary
+
+The coherent-sideband no-go remains: baseline mean energy alone cannot constrain arbitrary parameter-dependent waveform-state synthesis. Broader laws require explicit encoding/control/action resource accounting.
+
+# Prior-art discipline
+
+Do not claim novelty for weighted `U(1)` twirling, Herglotz/Bochner theory, Hausdorff/Bernstein moment theory, canonical phase POVMs, geometric/exponential mixtures, finite sine states, generic QFI/Holevo machinery, or generic Poisson/CPTP data processing.
+
+The candidate contribution is the operational synthesis: arbitrary-POVM Fisher-tail coefficients, fixed-measurement spectral consistency, semibounded near-lossless divergence with a sharp exponent, complete one-copy equality classification, and source-to-record inheritance.
 
 **Priority remains unverified, not certified.**
 
-# Rev7 gate — PASSED
+# Rev10 gate — PASSED locally
 
-Rev7 directly answers the highest-value criticisms from the latest adversarial review:
-
-1. continuum theorem now explicitly labeled controlled periodic-to-continuum;
-2. resource consistently identified as excess energy above the active lower edge;
-3. survival law promoted above the elementary `hf` first-moment corollary;
-4. modes-of-asymmetry distinction sharpened;
-5. one nonextremal transform-limited single-photon example added;
-6. Figure 1 updated to reflect the same claim discipline.
+The extreme Rev9 re-review found no central mathematical failure and requested two narrow formal/scope fixes. It also proposed the sine-profile family as the one optional result capable of materially strengthening the divergence theorem. Rev10 closes all three points.
 
 Final local preflight:
 
 - full LaTeX/BibTeX build: **PASS**;
-- **8 pages**;
+- **11 pages**;
+- PDF size: **444,063 bytes**;
 - unresolved citations/references: **0**;
 - overfull boxes: **0**;
-- all 8 pages rendered at 200 dpi and visually inspected: **PASS**;
-- final local PDF SHA-256: `d168c3901faa6f29bda0eba71abe8049cc9819d91843273beeeeffb9443818ae`;
-- photon-example analytic and periodic-approximant validation: **PASS**.
+- all 11 pages rendered at 200 dpi and visually inspected: **PASS**;
+- sharpness validator: **PASS**;
+- PDF SHA-256: `a5c2d9e12bba045b76bbfb710428e5424e2c5cb5eb83d6aec6215a5996dbc6fb`;
+- source ZIP SHA-256: `cfa2452f9ce4e99d0cd56f931151f6bb166fd90d4332d86faf3ea2485dec1db9`.
 
 Detailed record:
-
-`grand_challenge/notes/MANUSCRIPT_REV7_REFEREE_HARDENING_2026-08-22.md`.
+`grand_challenge/notes/MANUSCRIPT_REV10_REFEREE_CLOSURE_PREFLIGHT_2026-08-22.md`.
 
 # Journal ladder
 
-1. **PRX Quantum — Research Article**: first target.
-2. **Physical Review A — Regular Article**: preferred fallback.
-3. Physical Review Research: secondary alternative.
-4. PRL: only after a deliberate Letter rewrite; do not hide hypotheses/proofs to force the format.
+1. **PRX Quantum — Research Article**.
+2. **Physical Review A — Regular Article**.
+3. Physical Review Research — secondary alternative.
+4. PRL — only after a deliberate Letter rewrite; do not hide hypotheses/proofs to force format.
 
 # Current work order
 
-**Freeze Rev7.**
-
-Do not add more theorem scope, detector technologies, source classes, squeezed/correlated extensions, or examples by default. Reopen only for:
+**Freeze Rev10.** Do not optimize the asymptotic prefactor, add more examples, or broaden the source class by default. Reopen only for:
 
 - a concrete theorem defect;
 - historical-priority collision;
-- build/rendering defect;
-- new referee-level objection;
-- unavoidable journal-format requirement.
+- build/rendering or journal-format defect;
+- a new referee-level objection.
 
-The paper and submission materials should be completed as far as possible autonomously. Do not introduce “human verification” as a research/manuscript gate. A human submits the finished package; unknown administrative facts remain placeholders rather than being invented.
+The paper and submission package are to be completed as far as possible autonomously. Do not introduce “human verification” as a research/manuscript gate.
 
 # Documentation discipline
 
