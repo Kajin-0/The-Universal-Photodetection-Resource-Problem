@@ -2,141 +2,97 @@
 
 **Status synchronized: 2026-08-21**
 
-This repository contains three distinct research layers:
+## Project split
 
-1. **Paper 1 / Rev11** — scientifically frozen and technically validated; only factual/personal submission metadata remain.
-2. **Paper 2 / Rev7** — preferred frozen science draft, locally build-verified and visually inspected.
-3. **Grand Challenge program** — active high-risk/high-ceiling theoretical research on quantum resources for temporal information transfer.
+1. **Paper 1 / Rev11** — scientifically frozen and technically validated.
+2. **Paper 2 / Rev7** — preferred frozen science draft.
+3. **Grand Challenge** — active on `agent/temporal-information-resource-law`.
 
-## Active branch and checkpoint
+The theorem stack is now through **WP17**. The authoritative handoff is `grand_challenge/AGENTS.md`.
 
-The current scientific frontier is on:
-
-`agent/temporal-information-resource-law`
-
-The authoritative active handoff is:
-
-`grand_challenge/AGENTS.md`
-
-The **theorem stack is through WP15**. The latest research checkpoint is **WP16**, a deep priority audit that identifies a classical Hardy–Hilbert collision for the analytic `pi/4` operator constant while leaving the quantum random-time priority question unresolved.
-
-## Current grand question
+## Grand question
 
 > For a physically realizable measurement of temporal structure, what fundamental resources constrain source-to-record temporal Fisher-information transfer?
 
-The program is analytical/theoretical and falsification-first. Numerical work is used only for proof checks and calibration. Experiments, fabrication, procurement, and laboratory campaigns are not active requirements.
+## Modewise quantum envelope — WP10/WP12/WP15
 
-## Strongest current result — sharp random-time quantum mode-area law
-
-For a normalized nonnegative excitation-frequency density `q(omega)` with finite mean
-
-`omega_bar = int_0^infinity omega q(omega) d omega`,
-
-the maximal source-normalized quantum Fisher retention for a random-time Fourier mode `nu>0` is
-
-`G_Q(nu) = 2 int_0^infinity q(omega) q(omega+nu) / [q(omega)+q(omega+nu)] d omega`,
-
-with even extension to negative `nu`.
-
-WP15 proves, for every finite-first-moment density and without smoothness assumptions,
-
-`boxed: int_0^infinity G_Q(nu) dnu <= (pi/2) omega_bar`,
-
-or equivalently
-
-`boxed: int_R G_Q(nu) dnu <= pi E_bar^+ / hbar`.
-
-For a flat guaranteed temporal-information band,
-
-`G_Q(2*pi*f) >= q0` for `|f|<=B`,
-
-this gives
-
-`boxed: E_bar^+ >= (2/pi) h B q0`.
-
-The constant is sharp as a supremum; truncated critical densities proportional to `(1+omega)^(-2)` approach equality.
-
-## WP16 priority correction
-
-WP16 shows that the WP15 kernel
-
-`L(s,t)=2st/(s+t)^3`
-
-and its exact norm
-
-`||T||=pi/4`
-
-are an explicit specialization of established parameterized Hardy–Hilbert integral inequalities with best Beta-function constants. With `lambda=3`, `f(x)=x r(x)`, `g(y)=y r(y)`, the classical best constant is `B(3/2,3/2)=pi/8`; the factor `2` in `L` gives `pi/4`.
-
-Therefore **do not claim mathematical novelty for the sharp operator constant, Mellin diagonalization, or Hilbert-type inequality**. The candidate novelty, if priority survives, is the quantum-statistical and physical synthesis: Fourier-mode estimation of a latent random time distribution, the exact source-normalized mode-retention formula, the `2 nbar` mode budget, the continuum temporal-information interpretation, and detector-independent inheritance.
-
-Targeted searches still have not found an exact predecessor for
+For random temporal-distribution encoding of a fixed semibounded-energy excitation,
 
 `G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`
 
-as Fisher retention of the `k`th Fourier coefficient of a random `U(1)` translation distribution, nor the sum rule
+in the periodic model, with
 
 `sum_{k>=1}G_Q(k)<=2 nbar`.
 
-**Quantum priority remains uncertified.**
+For a continuum density `q(omega)` of finite mean `omega_bar`,
 
-## Earlier covariant-timestamp law
+`G_Q(nu)=2 int_0^infinity q(omega)q(omega+nu)/[q(omega)+q(omega+nu)]domega`,
 
-For the narrower class of reference-free covariant timestamp readouts, WP06-WP08 give
+and
 
-`int_R G_timestamp(nu) dnu <= 2 E_det^+ / hbar`,
+`int_R G_Q(nu)dnu <= pi E_bar^+/hbar`.
 
-or
+The corresponding separately optimized QFI flat-band envelope is
 
-`E_det^+ >= h B q`.
+`E_bar^+ >= (2/pi) hBq0`.
 
-WP08 lifts this through arbitrary downstream classical detector memory and shows that finite-energy quantum timing regularizes the ideal infinite-frequency `1/e` plateau of Paper 2's classical deterministic Type-II model.
+WP16 establishes that the `pi/4` operator norm used in the sharp continuum proof is classical Hardy–Hilbert mathematics; it is not a mathematical novelty claim.
 
-## Scope and important no-gos
+## Sharp operational law — WP17
 
-The present strongest theorem concerns **random temporal-distribution encoding of a fixed semibounded-energy excitation**. It is not a universal bound for arbitrary parameter-dependent state engineering.
+For **one fixed arbitrary POVM** used to recover all cosine/sine temporal modes, let `F_M^(k)` denote the `2 x 2` classical Fisher block. Then
 
-WP14 gives a decisive no-go for the broader claim: a coherent carrier can acquire arbitrarily high-frequency infinitesimal sidebands while the additional energy enters only at second order. A broader waveform theorem therefore needs an encoding/control/action resource in addition to baseline energy.
+`boxed: sum_{k>=1} Tr F_M^(k) <= nbar`.
 
-Other discarded universal currencies include entropy production alone, ordinary dynamical activity alone, and detector thermodynamic cost inferred from `G` alone.
+The source block is `(1/2)I_2`, so `Tr F_M^(k)` is the total source-normalized Fisher retention of the two real quadratures.
 
-## Prior-art boundary
+The constant is sharp as a supremum. The theorem requires no covariance or reference-free condition on the final POVM and extends to arbitrary adaptive/separable measurement of independent quantum-marked events.
 
-Do not claim novelty for generic SLD/QFI, waveform-QFI kernels, time-covariant POVMs, time-translation asymmetry resource theory, Hardy/Gagliardo–Nirenberg inequalities, Hardy–Hilbert best-constant inequalities, rearrangement/layer-cake/Mellin analysis, or generic time-energy uncertainty relations.
+Controlled continuum consequence:
 
-Close literature includes Tsang–Wiseman–Caves, Marvian–Spekkens, Pocovnicu, Kiukas–Ruschhaupt–Werner, Hall, Yang's Hilbert-type operator literature, WAY/asymmetry work, phase-diffusion/dephasing estimation, and random-unitary/noise-channel estimation.
+`boxed: int_R R_M(nu)dnu <=2 E_bar^+/hbar`,
 
-## Immediate active gates
+where `R_M` is the trace retention of the two real mode quadratures.
 
-1. Search specifically for estimation of Fourier coefficients/mixing weights of `U(1)` random-unitary channels and probability measures on compact groups.
-2. Determine whether the harmonic-mean density inequality itself has appeared explicitly; its sharp operator constant is already classical.
-3. Determine operational attainability of the integrated `pi` coefficient by a single measurement family; per-mode SLDs need not be jointly compatible.
-4. Strengthen the independent quantum-marked Poisson-to-field mapping for realistic incoherent optical source models.
-5. Explore arbitrary waveform-encoding resource laws only if the required control/action resource can be made noncircular and universal.
-6. If priority and operational interpretation survive, decide whether WP10–WP15 justify a standalone foundational manuscript.
+If one detector guarantees
 
-## Where to resume
+`F_M(nu) >= (q0/2)I_2`
 
-Read in this order:
+through `|f|<=B`, then
+
+`boxed: E_bar^+ >= hBq0`.
+
+This coefficient is sharp: the Cauchy/exponential covariant timestamp family from WP06/WP07 saturates the continuum area law.
+
+Thus, for fixed single-copy/separable readout, the `pi/2` gap between the QFI coefficient `pi` and operational coefficient `2` is an **incompatibility gap**, not an established realizable detector advantage.
+
+## Critical remaining loophole
+
+WP17 does not yet cover arbitrary **collective entangled measurements across multiple independently twirled event excitations**. The twirled state is generally mixed, and standard multiparameter theory permits collective mixed-state advantages over separable measurements.
+
+The next gate is to solve the asymptotic Holevo/collective limit, starting with the two-sector qubit model, and determine whether the `2E/hbar` operational area coefficient survives arbitrary collective readout.
+
+## Scope boundary — WP14
+
+Baseline mean energy does not bound arbitrary parameter-dependent coherent waveform synthesis. The current theorem class is random temporal-distribution encoding of a fixed semibounded-energy excitation. A broader waveform theorem requires an explicit encoding/control/action resource.
+
+## Immediate gates
+
+1. Collective mixed-state/Holevo analysis of the random-time model.
+2. Deep priority search for exact equivalents of WP10/WP17.
+3. Strengthen the quantum-marked Poisson/event-to-field embedding.
+4. Determine explicit classical-analysis provenance of the harmonic-mean density functional if available.
+5. Draft no foundational manuscript until these survive.
+
+## Read first
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
-3. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
-4. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
-5. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
-6. `grand_challenge/notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
-7. `grand_challenge/notes/WP11_WP10_FACTOR_AUDIT_AND_PRIOR_ART.md`
-8. `grand_challenge/notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
-9. `paper2/AGENTS_PAPER2.md` only if Paper-2 context is needed.
+2. `grand_challenge/notes/WP17_SINGLE_MEASUREMENT_OPERATIONAL_MODE_BUDGET.md`
+3. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
+4. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
+5. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
+6. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
 
 ## Documentation discipline
 
-After every material theorem, counterexample, proof repair, prior-art collision, numerical result, or strategy change:
-
-- create/update the relevant `grand_challenge/notes/WP*.md` immediately;
-- update `grand_challenge/AGENTS.md` whenever the theorem stack or gates change;
-- update top-level `README.md`, `AGENTS.md`, `docs/CURRENT_RESEARCH_STATE.md`, and `ROADMAP.md` whenever the project-level frontier changes;
-- keep `PROBLEM.md` and `grand_challenge/README.md` current enough not to misroute a replacement agent;
-- ensure `main` advertises the current active branch and current checkpoint.
-
-The repository—not chat history—must remain sufficient for full context recovery.
+Every material result must be recorded in a WP note, reflected in the active handoff/landing documents, and mirrored onto `main`. The repository—not chat history—must remain sufficient for recovery.
