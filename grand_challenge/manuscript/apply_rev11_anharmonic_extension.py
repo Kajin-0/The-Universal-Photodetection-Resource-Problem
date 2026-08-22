@@ -51,6 +51,7 @@ main = replace_once(
     r"Let $\mu$ be an arbitrary Borel probability measure on $[0,\infty)$ with finite first moment.  No density or smoothness is assumed; atomic, absolutely continuous, and singular-continuous components are all allowed.  Write",
 )
 main = replace_once(main, r"\input{rev10_spectral_theorems.tex}", r"\input{rev11_spectral_theorems.tex}")
+main = replace_once(main, r"\bibliography{references}", r"\bibliography{references,references_rev11}")
 main = replace_region(main, r"\section{Separately optimized quantum Fisher envelope}", r"\section{Boundary: arbitrary waveform synthesis}", "")
 main = replace_once(
     main,
@@ -88,6 +89,7 @@ assert r"\input{rev11_anharmonic_extension.tex}" in main
 assert r"\section{Separately optimized quantum Fisher envelope}" not in main
 assert "singular-continuous components are all allowed" in main
 assert "The completion cannot create score or Fisher information" in spec
+assert r"\bibliography{references,references_rev11}" in main
 
 main_dst.write_text(main, encoding="utf-8")
 spec_dst.write_text(spec, encoding="utf-8")
