@@ -18,17 +18,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Compile Grand Challenge Rev1
+      - name: Generate Grand Challenge Rev2 mechanical repair
+        working-directory: grand_challenge/manuscript
+        run: python apply_rev2_mechanical.py
+
+      - name: Compile Grand Challenge Rev2
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: energy_survival_temporal_fisher_rev1.tex
+          root_file: energy_survival_temporal_fisher_rev2.tex
           working_directory: grand_challenge/manuscript
           latexmk_use_xelatex: false
 
       - name: Check for unresolved references, citations, or box overflow
         working-directory: grand_challenge/manuscript
         run: |
-          LOG=energy_survival_temporal_fisher_rev1.log
+          LOG=energy_survival_temporal_fisher_rev2.log
           if grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|Package natbib Warning:.*undefined" "$LOG"; then
             echo "Unresolved LaTeX references/citations detected"
             exit 1
@@ -38,11 +42,13 @@ jobs:
             exit 1
           fi
 
-      - name: Upload Grand Challenge Rev1 artifact
+      - name: Upload Grand Challenge Rev2 artifact
         uses: actions/upload-artifact@v4
         with:
-          name: energy-survival-temporal-fisher-rev1
+          name: energy-survival-temporal-fisher-rev2
           path: |
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev1.pdf
+            grand_challenge/manuscript/energy_survival_temporal_fisher_rev2.pdf
+            grand_challenge/manuscript/energy_survival_temporal_fisher_rev2.tex
             grand_challenge/manuscript/energy_survival_temporal_fisher_rev1.tex
+            grand_challenge/manuscript/apply_rev2_mechanical.py
             grand_challenge/manuscript/references.bib
