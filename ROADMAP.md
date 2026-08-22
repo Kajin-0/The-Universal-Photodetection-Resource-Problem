@@ -12,9 +12,11 @@
 - **Paper 2 / Rev7:** frozen preferred science draft.
 - **Grand Challenge:** active high-risk/high-ceiling theoretical program.
 
+The Grand Challenge **theorem stack is through WP15**. The **latest checkpoint is WP16**, a deep priority audit.
+
 ## Active objective
 
-Find sharp, physically meaningful quantum resource constraints on temporal Fisher-information transfer, while explicitly proving no-go results for overbroad resource proposals.
+Find sharp, physically meaningful quantum resource constraints on temporal Fisher-information transfer, while explicitly proving no-go results and prior-art boundaries for overbroad claims.
 
 ## Current strongest result — WP15
 
@@ -34,7 +36,29 @@ A guaranteed flat band implies
 
 `boxed: E_bar^+ >= (2/pi) h B q0`.
 
-The constant is sharp as a supremum. WP15 supplies the general finite-first-moment proof.
+The coefficient is sharp as a supremum.
+
+## WP16 — priority correction
+
+The sharp WP15 operator norm
+
+`||T||=pi/4`, for `L(s,t)=2st/(s+t)^3`,
+
+is a direct specialization of established parameterized Hardy–Hilbert integral inequalities. Setting `lambda=3`, `f(x)=xr(x)`, `g(y)=yr(y)` yields `B(3/2,3/2)=pi/8`, and the factor `2` in the WP15 kernel yields `pi/4`.
+
+Therefore **the operator constant, Mellin/Hilbert inequality, and Beta/Gamma evaluation are prior art and are not mathematical novelty claims**.
+
+The unresolved priority question is now narrower: has quantum estimation theory already derived the Fisher geometry and mean-generator mode budget for Fourier perturbations of a random `U(1)` translation distribution?
+
+No exact predecessor has yet been located for
+
+`G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`
+
+or
+
+`sum_{k>=1}G_Q(k)<=2 nbar`.
+
+This absence is **not priority certification**.
 
 ## Supporting theorem chain
 
@@ -72,7 +96,8 @@ Baseline mean energy does not bound arbitrary parameter-dependent coherent wavef
 - generic frequency-domain thermodynamic FI/response law — already covered by neighboring literature;
 - generic quantum waveform-QFI spectrum — prior art;
 - detector work cost determined by `G` alone — underdetermined;
-- generic classical-vs-quantum accessibility gap — insufficiently distinctive by itself.
+- generic classical-vs-quantum accessibility gap — insufficiently distinctive by itself;
+- mathematical novelty of the WP15 `pi/4` operator constant — explicitly preempted by Hardy–Hilbert theory.
 
 ## Manuscript gate
 
@@ -80,20 +105,22 @@ Do **not** draft the grand-challenge paper yet.
 
 Required before drafting:
 
-1. **Deep priority audit** for exact equivalents of WP10/WP12/WP15.
-2. **Operational attainability audit** of the integrated `pi` coefficient under a single measurement family; different mode SLDs may be incompatible.
-3. **Physical source mapping** from the quantum-marked Poisson/event model to realistic incoherent optical fields.
-4. Preserve the WP14 scope boundary and avoid implying a theorem for arbitrary waveform state engineering.
+1. **Quantum priority Gate 1A:** search estimation of Fourier coefficients/mixing weights of `U(1)` random-unitary channels and probability measures on compact groups.
+2. **Analysis provenance Gate 1B:** determine whether the harmonic-mean density inequality itself appears explicitly; its sharp operator constant is already classical.
+3. **Operational attainability audit:** determine whether one measurement family can approach the integrated `pi` coefficient; different mode SLDs may be incompatible.
+4. **Physical source mapping:** strengthen the quantum-marked Poisson/event model into realistic incoherent optical-field language.
+5. Preserve the WP14 scope boundary and avoid implying a theorem for arbitrary waveform state engineering.
 
-If those gates survive, the candidate manuscript would center on the discrete mode budget, sharp continuum Planck-scale area law, inverse bandwidth-energy inequality, photodetection embedding, and explicit coherent-waveform no-go.
+If those gates survive, the candidate manuscript would center on the random-distribution mode-estimation problem, discrete `2 nbar` budget, continuum Planck-scale area law with proper Hardy–Hilbert attribution, inverse bandwidth-energy inequality, photodetection embedding, and explicit coherent-waveform no-go.
 
 ## Immediate work order
 
-1. Search random-unitary/group-distribution estimation, phase-noise estimation, Rényi/time-observable inequalities, and harmonic-analysis literature for exact prior equivalents.
-2. Analyze joint/collective measurements for integrated-area attainability.
-3. Harden the quantum optical source embedding.
-4. Decide on manuscript formation only afterward.
+1. Search group-distribution estimation, random-unitary mixing-weight estimation, phase-noise Fourier/characteristic-coefficient inference, and nonparametric dephasing-channel estimation.
+2. Search exact classical provenance of the harmonic-mean density-functional statement.
+3. Analyze joint/collective measurements for integrated-area attainability.
+4. Harden the quantum optical source embedding.
+5. Decide on manuscript formation only afterward.
 
 ## Documentation policy
 
-Detailed derivations live on `agent/temporal-information-resource-law`, but `main` must always show the active branch and latest checkpoint. Any project-level theorem/gate change must update both the active branch state docs and these default-branch landing docs.
+Detailed derivations live on `agent/temporal-information-resource-law`, but `main` must always show the active branch and latest checkpoint. Any project-level theorem/gate change must update both the active branch state docs and these default-branch landing docs, including `PROBLEM.md` when needed to prevent stale routing.
