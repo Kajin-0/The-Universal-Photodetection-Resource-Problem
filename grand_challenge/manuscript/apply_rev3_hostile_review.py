@@ -13,6 +13,17 @@ def replace_once(old: str, new: str):
     text = text.replace(old, new, 1)
 
 
+# 0. Short theorem subtitles so REVTeX two-column theorem headings do not
+# create overfull boxes.  This is layout-only; theorem content is unchanged.
+replace_once(
+    r"\begin{theorem}[Collective temporal-harmonic Fisher bound]",
+    r"\begin{theorem}[Finite-copy Fisher bound]",
+)
+replace_once(
+    r"\begin{theorem}[Continuum operational survival bound]",
+    r"\begin{theorem}[Continuum survival bound]",
+)
+
 # 1. Abstract: define R operationally and retain the two-quadrature scope.
 replace_once(
     "where $F_N^{(k)}$ is the classical Fisher-information block and $N_E$ is the excitation-sector index above the participating lower energy edge.  The result follows directly",
