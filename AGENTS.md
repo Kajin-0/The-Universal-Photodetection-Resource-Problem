@@ -12,7 +12,7 @@ Research is analytical/theoretical. Paper 1 Rev11 and Paper 2 Rev7 are frozen.
 
 **Grand Challenge science checkpoint: WP24.**
 
-**Preferred Grand Challenge manuscript: Rev4 — locally build-verified, visually inspected, bibliography-audited, and frozen unless a concrete theorem, priority, build, or referee-level defect appears.**
+**Rev4 freezes the science content. Rev5 is the preferred frozen publication draft, locally build-verified, visually inspected, bibliography-audited, and figure-reviewed.**
 
 Mandatory first action for a replacement agent: switch to
 
@@ -21,14 +21,15 @@ Mandatory first action for a replacement agent: switch to
 and read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
-3. `grand_challenge/notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
-4. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-5. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
-6. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
-7. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
-8. `docs/CURRENT_RESEARCH_STATE.md`
-9. `ROADMAP.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
+3. `grand_challenge/notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
+4. `grand_challenge/notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
+5. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+6. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+7. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+8. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+9. `docs/CURRENT_RESEARCH_STATE.md`
+10. `ROADMAP.md`
 
 Do not resume the historical HgCdTe/Kane frontier shown in older `main` commits.
 
@@ -96,13 +97,13 @@ Priority remains **unverified, not certified**.
 
 Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
-Rev4 has passed full local LaTeX/BibTeX compilation, seven-page visual inspection, deterministic random-POVM sanity tests, and DOI/title bibliography auditing. A real Pocovnicu metadata mismatch was corrected; the DOI had pointed to the scientifically correct sharp-inequality paper but the title was wrong.
+Rev4 is the science-content checkpoint. Rev5 adds one conceptual architecture figure and `hidelinks` only; it changes no theorem, proof, coefficient, source hypothesis, or novelty claim.
 
-The current connector does not expose the branch-push GitHub Actions run. Do not claim direct remote CI inspection; equivalent local build verification is complete.
+Rev5 has passed full local LaTeX/BibTeX compilation, seven-page visual inspection, Figure 1 review, deterministic random-POVM sanity tests, and DOI/title bibliography auditing. The current connector does not expose the branch-push GitHub Actions run; do not claim direct remote CI inspection.
 
 # Current work order
 
-Do **not** accumulate another theorem by default. Continue with publication engineering only: remote CI inspection if accessible, one figure only if materially useful, conservative priority language, and factual submission metadata when supplied.
+Do **not** accumulate another theorem by default. Continue with **journal targeting and submission engineering** only. Reopen science for a concrete theorem, priority, build, or referee defect.
 
 # Documentation discipline
 
