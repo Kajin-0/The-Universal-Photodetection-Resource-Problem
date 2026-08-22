@@ -58,6 +58,10 @@ jobs:
         working-directory: grand_challenge/manuscript
         run: python apply_rev8_local_scope_clarification.py
 
+      - name: Generate Rev9 spectral resource theory
+        working-directory: grand_challenge/manuscript
+        run: python apply_rev9_spectral_resource_theory.py
+
       - name: Run operational-tail numerical validation
         working-directory: grand_challenge
         run: python numerics/verify_operational_tail_bound.py
@@ -66,17 +70,26 @@ jobs:
         working-directory: grand_challenge
         run: python numerics/verify_truncated_gaussian_photon_example.py
 
-      - name: Compile Grand Challenge Rev8 PRX Quantum package
+      - name: Validate complete-monotone extremizers
+        working-directory: grand_challenge
+        run: python numerics/verify_complete_monotone_saturation.py
+
+      - name: Validate Herglotz high-retention law
+        working-directory: grand_challenge
+        run: python numerics/verify_herglotz_high_retention.py
+
+      - name: Compile Grand Challenge Rev9 PRX Quantum package
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: energy_survival_temporal_fisher_rev8_prxq.tex
+          root_file: energy_survival_temporal_fisher_rev9_prxq.tex
           working_directory: grand_challenge/manuscript
           latexmk_use_xelatex: false
 
-      - name: Check for unresolved references, citations, or box overflow
+      - name: Check Rev9 references, scope, and layout
         working-directory: grand_challenge/manuscript
         run: |
-          LOG=energy_survival_temporal_fisher_rev8_prxq.log
+          LOG=energy_survival_temporal_fisher_rev9_prxq.log
+          TEX=energy_survival_temporal_fisher_rev9_prxq.tex
           if grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|Package natbib Warning:.*undefined" "$LOG"; then
             echo "Unresolved LaTeX references/citations detected"
             exit 1
@@ -85,55 +98,65 @@ jobs:
             echo "Overfull LaTeX boxes detected"
             exit 1
           fi
-          if grep -F '\boxed{' energy_survival_temporal_fisher_rev8_prxq.tex; then
+          if grep -F '\boxed{' "$TEX"; then
             echo "APS-incompatible boxed markup remains"
             exit 1
           fi
-          if grep -F '\documentclass[aps,pra,' energy_survival_temporal_fisher_rev8_prxq.tex; then
+          if grep -F '\documentclass[aps,pra,' "$TEX"; then
             echo "PRA journal option remains in PRX Quantum package"
             exit 1
           fi
-          if ! grep -F '\documentclass[aps,prx,' energy_survival_temporal_fisher_rev8_prxq.tex; then
+          if ! grep -F '\documentclass[aps,prx,' "$TEX"; then
             echo "PRX journal option missing from target package"
             exit 1
           fi
-          if ! grep -F '\section{Controlled periodic-to-continuum survival law}' energy_survival_temporal_fisher_rev8_prxq.tex; then
+          if ! grep -F '\title{Spectral Resource Laws for Temporal Fisher Information}' "$TEX"; then
+            echo "Rev9 title missing"
+            exit 1
+          fi
+          if ! grep -F '\section{Controlled periodic-to-continuum survival law}' "$TEX"; then
             echo "Controlled continuum qualification missing"
             exit 1
           fi
-          if ! grep -F '\section{Nonextremal single-photon wavepacket}' energy_survival_temporal_fisher_rev8_prxq.tex; then
-            echo "Single-photon significance example missing"
+          if ! grep -F '\input{rev9_spectral_theorems.tex}' "$TEX"; then
+            echo "Rev9 spectral theorem input missing"
             exit 1
           fi
-          if ! grep -F 'does not by itself constitute a global finite-amplitude estimation-error or risk bound' energy_survival_temporal_fisher_rev8_prxq.tex; then
+          if ! grep -F '\section{Common-measurement spectral consistency}' rev9_spectral_theorems.tex; then
+            echo "Herglotz section missing"
+            exit 1
+          fi
+          if ! grep -F '\section{Exact saturation and complete extremizers}' rev9_spectral_theorems.tex; then
+            echo "Extremizer section missing"
+            exit 1
+          fi
+          if ! grep -F 'Exact $q=1$ at nonzero $k$ is impossible' rev9_spectral_theorems.tex; then
+            echo "Near-lossless endpoint qualification missing"
+            exit 1
+          fi
+          if grep -F '[\cos(m\theta_q)]_+' rev9_spectral_theorems.tex; then
+            echo "Invalid recycled positive-cosine lobe claim remains"
+            exit 1
+          fi
+          if ! grep -F 'does not by itself constitute a global finite-amplitude estimation-error or risk bound' "$TEX"; then
             echo "Local-Fisher scope clarification missing"
             exit 1
           fi
 
-      - name: Upload Grand Challenge Rev8 PRX Quantum artifact
+      - name: Upload Grand Challenge Rev9 PRX Quantum artifact
         uses: actions/upload-artifact@v4
         with:
-          name: energy-survival-temporal-fisher-rev8-prxq
+          name: spectral-resource-laws-temporal-fisher-rev9-prxq
           path: |
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev8_prxq.pdf
+            grand_challenge/manuscript/energy_survival_temporal_fisher_rev9_prxq.pdf
+            grand_challenge/manuscript/energy_survival_temporal_fisher_rev9_prxq.tex
             grand_challenge/manuscript/energy_survival_temporal_fisher_rev8_prxq.tex
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev7_prxq.tex
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev6_prxq.tex
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev5.tex
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev4.tex
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev3.tex
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev2.tex
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev1.tex
-            grand_challenge/manuscript/apply_rev2_mechanical.py
-            grand_challenge/manuscript/apply_rev3_hostile_review.py
-            grand_challenge/manuscript/apply_rev4_final_polish.py
-            grand_challenge/manuscript/apply_rev5_publication_figure.py
-            grand_challenge/manuscript/apply_rev6_prxquantum_packaging.py
-            grand_challenge/manuscript/apply_rev7_referee_hardening.py
-            grand_challenge/manuscript/apply_rev7_layout_repair.py
-            grand_challenge/manuscript/apply_rev8_local_scope_clarification.py
-            grand_challenge/manuscript/figure1_operational_architecture_body.tex
+            grand_challenge/manuscript/apply_rev9_spectral_resource_theory.py
+            grand_challenge/manuscript/rev9_spectral_theorems.tex
+            grand_challenge/manuscript/figure1_operational_architecture_body_rev9.tex
             grand_challenge/manuscript/figure1_operational_architecture_body_rev7.tex
             grand_challenge/manuscript/references.bib
             grand_challenge/numerics/verify_operational_tail_bound.py
             grand_challenge/numerics/verify_truncated_gaussian_photon_example.py
+            grand_challenge/numerics/verify_complete_monotone_saturation.py
+            grand_challenge/numerics/verify_herglotz_high_retention.py
