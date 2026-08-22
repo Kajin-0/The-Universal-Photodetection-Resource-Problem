@@ -10,13 +10,13 @@
 - **Paper 2 / Rev7:** frozen science draft; no open theorem-development gate.
 - **Grand Challenge:** active program seeking fundamental quantum resource laws for temporal information transfer.
 
-The current frontier is `grand_challenge/`, not the older Paper-2 work packages.
+The **theorem stack is through WP15**. The **latest checkpoint is WP16**, a deep priority audit.
 
 # Grand Challenge objective
 
 Determine whether physically realizable temporal measurement obeys sharp, architecture-independent information-transfer resource laws, while explicitly classifying which broader formulations fail.
 
-The program is falsification-first. A theorem is promoted only after counterexample and priority audits.
+The program is falsification-first. A theorem is promoted only after counterexample, proof, priority, and operational audits.
 
 # Closed/redirected directions
 
@@ -68,7 +68,7 @@ Mean energy does not bound deterministic global time-shift QFI if an external ph
 
 ## G8 — discrete random-time quantum mode budget — WP10/WP11
 
-**PASSED analytically; priority audit open.**
+**PASSED analytically; quantum priority audit open.**
 
 For periodic temporal Fourier mode `k`:
 
@@ -90,8 +90,6 @@ For `nu>0`:
 
 `G_Q(nu)=2 int_0^infinity q(omega)q(omega+nu)/[q(omega)+q(omega+nu)]domega`.
 
-The conjectured/derived integrated resource coefficient is `pi` in two-sided angular-frequency area.
-
 ## G10 — second-quantized/Poisson embedding — WP13
 
 **PASSED at current theorem scope; further physical mapping open.**
@@ -100,7 +98,7 @@ Total-energy sectors include fixed-photon-number multiphoton/entangled/multimode
 
 ## G11 — general-density sharp `pi` area theorem — WP15
 
-**PASSED analytically; current strongest result.**
+**PASSED analytically; current strongest theorem.**
 
 For every normalized `q(omega)>=0` with finite first moment `omega_bar`:
 
@@ -114,7 +112,33 @@ Flat-band inverse law:
 
 `boxed: E_bar^+ >= (2/pi) h B q0`.
 
-WP15 removes smoothness assumptions using rearrangement, layer cake, and an exact positive Mellin-convolution operator of norm `pi/4`. The constant is sharp as a supremum, approached by truncated critical densities proportional to `(1+omega)^(-2)`.
+WP15 removes smoothness assumptions using rearrangement and an exact positive-kernel/layer-cake reduction. The coefficient is sharp as a supremum.
+
+## G12 — deep priority audit / Hardy–Hilbert collision — WP16
+
+**MATERIAL CLAIM-DISCIPLINE CORRECTION; theorem unchanged.**
+
+WP16 identifies the exact WP15 operator norm
+
+`||T||=pi/4`, for `L(s,t)=2st/(s+t)^3`,
+
+as a direct specialization of established parameterized Hardy–Hilbert integral inequalities.
+
+Using the classical sharp kernel `(x+y)^(-lambda)` inequality with
+
+`lambda=3`, `f(x)=xr(x)`, `g(y)=yr(y)`
+
+gives
+
+`B(3/2,3/2)=pi/8`,
+
+and the factor `2` in the WP15 kernel gives `pi/4`.
+
+Therefore the sharp operator constant, Mellin/Hilbert inequality, and Beta/Gamma evaluation are **not mathematical novelty claims**.
+
+The surviving priority question is narrower and quantum-statistical: has prior work already derived the exact Fisher geometry and mean-generator mode budget for Fourier perturbations of a random `U(1)` translation distribution?
+
+Targeted generic searches of `U(1)` asymmetry, phase diffusion/dephasing estimation, random-unitary/noise-channel estimation, and noise spectroscopy have not yet located the exact WP10 formula or `2 nbar` sum rule. This is **not** priority certification.
 
 # Current publication gate
 
@@ -122,16 +146,17 @@ Do **not** draft the grand-challenge paper yet.
 
 A manuscript decision requires all of:
 
-1. **Priority survival:** no exact prior theorem/formula equivalent to WP10/WP12/WP15.
-2. **Operational interpretation:** clarify whether a single measurement can approach the integrated `pi` coefficient, since different temporal-mode SLDs are generally incompatible.
-3. **Physical source mapping:** strengthen the independent quantum-marked Poisson/event model into realistic incoherent optical-field language without adding hidden resources.
-4. **Claim discipline:** retain the WP14 boundary; do not state the theorem for arbitrary state-valued waveform encoding.
+1. **Quantum priority survival:** no exact prior theorem/formula equivalent to the WP10 random-distribution mode formula and `2 nbar` sum rule.
+2. **Analysis provenance discipline:** cite Hardy–Hilbert theory for the `pi/4` sharp constant; determine whether the harmonic-mean density inequality has appeared explicitly.
+3. **Operational interpretation:** clarify whether a single measurement can approach the integrated `pi` coefficient, since different temporal-mode SLDs are generally incompatible.
+4. **Physical source mapping:** strengthen the independent quantum-marked Poisson/event model into realistic incoherent optical-field language without adding hidden resources.
+5. **Claim discipline:** retain the WP14 boundary; do not state the theorem for arbitrary state-valued waveform encoding.
 
 If these gates survive, the likely manuscript spine is:
 
-- random-time encoding problem and why ordinary time-shift/QFI intuition is insufficient;
+- random-time encoding problem and why ordinary deterministic time-shift/QFI intuition is insufficient;
 - exact discrete mode-retention formula and `2 nbar` sum rule;
-- sharp continuum `pi E/hbar` area law;
+- controlled continuum reduction and sharp `pi E/hbar` area law, explicitly citing classical Hardy–Hilbert mathematics for the sharp constant;
 - Planck-scale inverse bandwidth/resource inequality;
 - second-quantized/Poisson photodetection embedding;
 - covariant timestamp subclass and comparison with Paper 2's classical memory plateau;
@@ -139,10 +164,11 @@ If these gates survive, the likely manuscript spine is:
 
 # Immediate work order
 
-1. Deep priority audit in random-unitary/group-distribution estimation, phase-noise estimation, Rényi/time-observable inequalities, and harmonic-analysis literature.
-2. Analyze joint-measurement/attainability of the integrated QFI-area coefficient.
-3. Harden source-to-field embedding for realistic incoherent optical events.
-4. Only then make a manuscript decision.
+1. **Gate 1A:** search estimation/tomography of probability measures on `U(1)` and compact groups, random-unitary mixing-weight estimation, phase-noise Fourier/characteristic-coefficient estimation, and nonparametric dephasing-channel inference.
+2. **Gate 1B:** locate direct classical-analysis provenance, if any, for the harmonic-mean density inequality itself.
+3. Analyze joint/collective measurements and the operationally attainable integrated FI area.
+4. Harden source-to-field embedding for realistic incoherent optical events.
+5. Only then make a manuscript decision.
 
 # Documentation discipline
 
@@ -151,4 +177,5 @@ Every material theorem, proof repair, no-go, prior-art collision, numerical resu
 - `grand_challenge/notes/WP*.md`;
 - `grand_challenge/AGENTS.md`;
 - top-level `README.md`, `AGENTS.md`, `docs/CURRENT_RESEARCH_STATE.md`, and this roadmap when project-level state changes;
+- `PROBLEM.md` and `grand_challenge/README.md` when needed to prevent stale secondary entry points;
 - the default `main` landing documents so the active branch/checkpoint is visible without branch hunting.
