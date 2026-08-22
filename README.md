@@ -8,7 +8,7 @@
 
 1. **Paper 1 / Rev11** — frozen.
 2. **Paper 2 / Rev7** — frozen.
-3. **Grand Challenge** — science frontier **WP27**; Rev10 referee-closure manuscript in final build gate.
+3. **Grand Challenge** — science frontier **WP27**; **Rev10 frozen as the preferred PRX Quantum manuscript**.
 
 Authoritative handoff: active-branch `grand_challenge/AGENTS.md`.
 
@@ -38,17 +38,11 @@ Combining this spectral consistency with the energy tails gives
 
 `Ebar+ >= hbar nu A(R_M(nu))`,
 
-with
-
-`A(q) ~ 1/sqrt(2(1-q))` as `q->1`.
+with `A(q) ~ 1/sqrt(2(1-q))` as `q->1`.
 
 Thus near-unit retention at nonzero frequency requires divergent mean excess energy in the fixed-one-copy/common-measurement setting.
 
-Rev10 proves that this exponent is **sharp**: the finite sine-profile family
-
-`a_n=sqrt(2/(L+1)) sin((n+1)pi/(L+1))`
-
-under canonical phase measurement has
+Rev10 proves that this exponent is **sharp**: the finite sine-profile family under canonical phase measurement has
 
 `R_L(1)=cos^2(pi/(L+1))`,
 
@@ -86,7 +80,17 @@ Independent quantum-marked Poisson sources inherit the modewise survival law thr
 
 Working title: **Spectral Resource Laws for Temporal Fisher Information**.
 
-Rev9 passed a full local 11-page build/render preflight. An external extreme adversarial re-review found no central mathematical failure and rated the manuscript approximately 9.6/10 overall, with PRX Quantum well justified. Rev10 implements the two remaining scope/formal fixes and the review's one high-value optional scientific enhancement: proof that the near-lossless divergence exponent is achievable.
+Rev10 passed the full local publication gate:
+
+- **11 pages**;
+- full LaTeX/BibTeX compile: **PASS**;
+- unresolved references/citations: **0**;
+- overfull boxes: **0**;
+- all 11 pages rendered at 200 dpi and visually inspected: **PASS**;
+- sine-profile sharpness validator: **PASS**;
+- PDF SHA-256: `a5c2d9e12bba045b76bbfb710428e5424e2c5cb5eb83d6aec6215a5996dbc6fb`.
+
+An external extreme adversarial re-review found no central mathematical failure and judged the PRX Quantum case well justified. Rev10 implements the review's two remaining formal/scope fixes plus its one worthwhile optional scientific enhancement, proving the near-lossless divergence exponent is sharp.
 
 **First target:** PRX Quantum — Research Article.
 
@@ -99,11 +103,14 @@ Rev9 passed a full local 11-page build/render preflight. An external extreme adv
 Switch to `agent/temporal-information-resource-law` and read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/WP27_SHARP_HIGH_RETENTION_EXPONENT_AND_REV10_REFEREE_CLOSURE.md`
-3. `grand_challenge/notes/MANUSCRIPT_REV9_SPECTRAL_RESOURCE_PREFLIGHT_2026-08-22.md`
-4. `grand_challenge/notes/WP26_HERGLOTZ_COMMON_MEASUREMENT_RETENTION.md`
-5. `grand_challenge/notes/WP25_COMPLETE_MONOTONE_SATURATION_CLASSIFICATION.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV10_REFEREE_CLOSURE_PREFLIGHT_2026-08-22.md`
+3. `grand_challenge/notes/WP27_SHARP_HIGH_RETENTION_EXPONENT_AND_REV10_REFEREE_CLOSURE.md`
+4. `grand_challenge/notes/MANUSCRIPT_REV9_SPECTRAL_RESOURCE_PREFLIGHT_2026-08-22.md`
+5. `grand_challenge/notes/WP26_HERGLOTZ_COMMON_MEASUREMENT_RETENTION.md`
+6. `grand_challenge/notes/WP25_COMPLETE_MONOTONE_SATURATION_CLASSIFICATION.md`
 
 # Workflow rule
+
+**Freeze Rev10.** Do not start another prefactor-optimization or theory-extension cycle without a concrete defect or referee-level reason.
 
 Do not reintroduce “human verification” as a research/manuscript completion gate. The finished package is produced as far as possible and then submitted by a human. Unknown administrative facts remain placeholders rather than being invented.
