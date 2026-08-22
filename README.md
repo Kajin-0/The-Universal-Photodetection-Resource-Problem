@@ -1,109 +1,95 @@
 # The Universal Photodetection Resource Problem
 
-## Research question
+**Current status: 2026-08-21**
 
-**Does a material-independent physical bound exist on the rate at which a finite-temperature photodetector can extract information from an optical field, as a function of its thermodynamic, kinetic, optical, and quantum resources?**
+This repository has progressed beyond the original broad resource-search phase. The current project consists of two frozen papers plus one active high-risk theoretical program.
 
-The objective of this repository is to derive the tightest such bound if it exists, or to construct a physically admissible counterexample if it does not.
+## Current branches and deliverables
 
-This is a theoretical/analytical research program. The primary target is not another material-specific detectivity calculation, but a theorem (or no-go result) that identifies which combinations of sensitivity, bandwidth, temperature, photon flux, dissipation, and dynamical activity are fundamentally compatible with physics.
+### Paper 1 — Rev11 frozen
 
-## Central formulation
+Autonomous low-overlap marked-event photodetection resource theorem. Scientifically frozen and technically validated; remaining work is factual/personal submission metadata and compliance statements.
 
-Represent a stationary linear photodetector as an optical-to-electrical stochastic transducer
+Primary science branch: `agent/uprp-core-theorem-round10`.
 
-\[
-Y(\omega)=\chi_{YP}(\omega)P(\omega)+N(\omega),
-\]
+### Paper 2 — Rev7 frozen
 
-with output-noise power spectral density \(S_Y(\omega)\). Define the input-referred information kernel
+**Fisher Spectra and Information Singularities in Photodetectors with Memory**.
 
-\[
-K(\omega)
-=\frac{|\chi_{YP}(\omega)|^2}{S_Y(\omega)}
-=\frac{1}{\operatorname{NEP}^2(\omega)}.
-\]
+Paper 2 extends temporal Fisher analysis to arbitrary parameter-independent autonomous detector channels with memory and develops the deterministic/random Type-II information-singularity results. Rev7 is the preferred frozen science draft and has been locally build-verified and visually inspected.
 
-For a parameterized optical waveform \(P(t;\theta)\), an important candidate performance functional is the Fisher-information rate
+Primary science branch: `agent/uprp-core-theorem-round10`.
 
-\[
-\dot{\mathcal F}_{\theta}
-=\int_{-\infty}^{\infty}\frac{d\omega}{2\pi}
-\frac{|\partial_\theta P(\omega)|^2}{\operatorname{NEP}^2(\omega)},
-\]
+### Grand Challenge — ACTIVE
 
-subject to explicit PSD, observation-time, and waveform-normalization conventions.
+The current scientific frontier is on:
 
-The open problem is to determine whether there is a nontrivial universal inequality of the form
+`agent/temporal-information-resource-law`
 
-\[
-\dot{\mathcal F}_{\theta}
-\le
-\mathcal B\!\left(T,\hbar\omega_{\rm opt},\Phi_\gamma,\dot\Sigma,\mathcal A,\eta_{\rm abs},\ldots\right),
-\]
+The authoritative handoff there is:
 
-where the right-hand side contains only physically meaningful resources and not a specific detector material or architecture.
+`grand_challenge/AGENTS.md`
 
-## Why the answer is not assumed
+The active question is:
 
-Three outcomes are scientifically acceptable:
+> **For a physically realizable measurement of temporal structure, what fundamental quantum resources constrain source-to-record temporal Fisher-information transfer?**
 
-1. **Universal bound:** prove a nontrivial inequality linking photodetection information rate to physical resources.
-2. **No universal bound under the proposed resources:** construct a physically admissible detector family that violates every finite candidate bound.
-3. **Missing-resource result:** show that a bound fails with, for example, entropy production alone but becomes valid after including dynamical activity, optical flux, coherence/asymmetry, or another resource.
+## Strongest current grand-challenge result
 
-The project must not assume in advance that a simple sensitivity-bandwidth-temperature product exists.
+The active theorem stack is through **WP15**.
 
-## First tractable model class
+For a normalized positive excitation-frequency density `q(omega)` with finite first moment `omega_bar`, define the random-time Fourier-mode quantum retention
 
-Begin with finite-state, stationary, continuous-time Markov photodetectors
+`G_Q(nu)=2 int_0^infinity q(omega)q(omega+nu)/[q(omega)+q(omega+nu)]domega`, `nu>0`,
 
-\[
-\dot{\mathbf p}=W(P)\mathbf p,
-\qquad
-W(P)=W_0+P W_1+O(P^2),
-\]
+with even extension.
 
-with a measured counting/current observable
+WP15 proves for every finite-first-moment density:
 
-\[
-I(t)=\sum_{ij} q_{ij}\,dN_{ij}(t).
-\]
+`boxed: int_0^infinity G_Q(nu)dnu <= (pi/2) omega_bar`,
 
-Initial admissibility requirements:
+or equivalently
 
-- local detailed balance for thermal transitions;
-- explicit optical transitions and photon-energy bookkeeping;
-- a stationary dark state;
-- causal response;
-- finite steady-state entropy-production rate;
-- finite dynamical activity;
-- an explicitly defined output record and noise PSD;
-- arbitrary finite number of internal states.
+`boxed: int_R G_Q(nu)dnu <= pi E_bar^+/hbar`.
 
-The first theorem/counterexample target is a bound on a normalized frequency-integrated response-to-noise functional derived from \(\chi_{IP}(\omega)\) and \(S_I(\omega)\).
+For a guaranteed flat temporal-information band,
 
-## Research phases
+`G_Q(2*pi*f)>=q0` for every `|f|<=B`,
 
-- **Phase 0 — Definition and novelty closure:** make every resource, normalization, and admissibility assumption mathematically precise; continuously audit nearby literature.
-- **Phase 1 — Classical finite-state Markov detectors:** derive exact response/noise expressions and test thermodynamic/kinetic inequalities.
-- **Phase 2 — Extremal and counterexample search:** identify saturating networks or prove candidate resource sets insufficient.
-- **Phase 3 — Semiclassical transport:** connect the theorem to generation-recombination, transit-time, photoconductive gain, junction, and avalanche models.
-- **Phase 4 — Quantum extension:** formulate Lindblad/trajectory versions including coherence, backaction, and generalized activity.
-- **Phase 5 — Infrared consequence:** determine what, if anything, the theorem implies for room-temperature high-performance MWIR/LWIR detection.
+this implies
 
-## Repository map
+`boxed: E_bar^+ >= (2/pi) h B q0`.
 
-- `PROBLEM.md` — formal problem statement, success criteria, and failure modes.
-- `AGENTS.md` — durable handoff instructions and current research state for future agents.
-- `ROADMAP.md` — work packages and decision gates.
-- `docs/FORMALISM.md` — notation and starting mathematical framework.
-- `docs/LITERATURE_MAP.md` — closest known literature and novelty-risk map.
-- `docs/NOVELTY_AND_FALSIFICATION.md` — explicit novelty claims that may and may not be made.
-- `notes/RESEARCH_LOG.md` — chronological record of results, failed conjectures, and decisions.
+The constant is sharp as a supremum. The proof is based on rearrangement/layer-cake reduction and a positive Mellin-convolution operator with exact norm `pi/4`.
 
-## Research discipline
+## Important scope boundary
 
-A conjecture is not a result. Every proposed universal inequality must be tested against trivial rescalings, passive amplification, coarse graining, changes of observation convention, equilibrium limits, zero-dissipation limits, high-activity limits, and explicit counterexample families before being promoted to a theorem candidate.
+This strongest theorem applies to **random temporal-distribution encoding of a fixed semibounded-energy excitation**. It is not currently a theorem for arbitrary parameter-dependent quantum waveform synthesis.
 
-The repository should retain failed approaches. Negative results are part of the research trail and are essential for handoff continuity.
+WP14 gives an explicit coherent-field no-go showing that baseline mean energy alone cannot bound arbitrary high-frequency waveform tangents; a broader theorem would need an encoding/control/action resource.
+
+## Current gates
+
+Before a new foundational manuscript is drafted:
+
+1. complete a deep priority audit for exact equivalents of WP10/WP12/WP15;
+2. determine operational attainability of the integrated `pi` coefficient by one measurement family;
+3. strengthen the independent quantum-marked Poisson/event-to-field embedding;
+4. preserve the WP14 source-encoding boundary and claim discipline.
+
+## Where to read the live state
+
+Switch to branch:
+
+`agent/temporal-information-resource-law`
+
+Then read:
+
+1. `grand_challenge/AGENTS.md`
+2. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
+3. `docs/CURRENT_RESEARCH_STATE.md`
+4. `ROADMAP.md`
+
+## Documentation policy
+
+The default `main` branch is the repository landing/index branch and must always advertise the current active branch and checkpoint. Detailed in-progress derivations may remain on agent branches, but the project-level state must never again be hidden from the default repository view.
