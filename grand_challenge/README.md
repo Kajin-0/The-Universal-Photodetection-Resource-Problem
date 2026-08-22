@@ -1,82 +1,90 @@
 # Grand Challenge — Temporal Information Resource Law
 
-**Current checkpoint: WP16 — 2026-08-21**
+**Current checkpoint: WP24 — 2026-08-22**
 
-This directory contains the active high-risk/high-ceiling theoretical program launched from the frozen Paper-2 result on Fisher spectra of autonomous detector channels.
+This directory contains the active theoretical program launched from the frozen Paper-2 result on Fisher spectra of autonomous detector channels.
 
 ## Grand question
 
 > For a physically realizable measurement of temporal structure, what fundamental resources constrain source-to-record temporal Fisher-information transfer?
 
-The program is analytical/theoretical and falsification-first. Numerical work is used only for proof checks and counterexample searches.
+## Current strongest theorem
 
-## Current strongest theorem — WP12/WP15
+For periodic random-time encoding of a fixed semibounded-energy excitation with sector probabilities `q_n`, let
 
-For a normalized positive excitation-frequency density `q(omega)` with finite first moment
+`T_k=sum_(m>=k)q_m`.
 
-`omega_bar=int_0^infinity omega q(omega)domega`,
+For any finite number `N` of independently encoded excitations and any joint POVM,
 
-the random-time Fourier-mode quantum Fisher retention is
+`boxed: Tr F_N^(k)<=N T_k`.
 
-`G_Q(nu)=2 int_0^infinity q(omega)q(omega+nu)/[q(omega)+q(omega+nu)]domega`, `nu>0`,
+Hence
 
-with even extension.
+`boxed: R_N(k)<=T_k`,
 
-WP15 proves for every finite-first-moment density
+`boxed: sum_(k>=1)R_N(k)<=nbar`.
 
-`boxed: int_0^infinity G_Q(nu)dnu <= (pi/2)omega_bar`,
+WP20 proves this directly for arbitrary entangled collective measurements. A support-sensitive refinement is
 
-hence
+`R_N(k)<=min(D_k,U_k)<=T_k`.
 
-`boxed: int_R G_Q(nu)dnu <= pi E_bar^+/hbar`.
+## Continuum
 
-A guaranteed flat ordinary-frequency band obeys
+For a general positive excitation-frequency spectral probability measure `mu` with finite mean,
 
-`boxed: E_bar^+ >= (2/pi) h B q0`.
+`boxed: R(nu)<=mu([nu,infinity))`.
 
-The coefficient is sharp as a supremum.
+Therefore
 
-## Current priority correction — WP16
+`boxed: int_R R(nu)dnu<=2Ebar^+/hbar`,
 
-WP16 establishes that the sharp operator norm used in WP15,
+and
 
-`||T||=pi/4`, for `L(s,t)=2st/(s+t)^3`,
+`boxed: Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
 
-is an explicit specialization of established parameterized Hardy–Hilbert integral inequalities with best Beta-function constants. Therefore the `pi/4` operator constant and associated Mellin/Hilbert inequality are **not mathematical novelty claims**.
+The geometric sector distribution / exponential continuum spectrum with canonical phase/time measurement saturates the bound exactly.
 
-The physics priority question remains open: targeted searches have not yet found an exact predecessor for estimating Fourier coefficients of a latent random `U(1)` time/phase distribution with
+## Physical source scope
 
-`G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`
+WP23 extends the theorem to an independent quantum-marked compound-Poisson event source followed by arbitrary parameter-independent formation of a common bosonic field, wavepacket overlap, coherent detector memory, and measurement. The final detector POVM pulls back through the source-to-field CPTP channel to the upstream event register.
 
-and the summed resource law
+This is not a theorem for every field with Poisson photocount statistics and not a theorem for arbitrary coherent waveform synthesis.
 
-`sum_{k>=1}G_Q(k)<=2 nbar`.
+## Secondary QFI envelope
 
-Priority is not certified.
+WP10/WP12/WP15 remain correct as separately optimized SLD-QFI bounds:
 
-## Critical scope boundary
+`sum_(k>=1)G_Q(k)<=2nbar`,
 
-The theorem concerns **random temporal-distribution encoding of a fixed semibounded-energy excitation** followed by arbitrary parameter-independent quantum processing.
+`int_R G_Q(nu)dnu<=pi Ebar^+/hbar`.
 
-WP14 proves that baseline mean energy alone cannot bound arbitrary parameter-dependent coherent waveform synthesis. A broader theorem would need an explicit encoding/control/action resource.
+The operational theorem has the sharper attainable coefficient `2E/hbar`. WP16 identifies the `pi/4` analytic operator norm as established Hardy--Hilbert mathematics.
 
-## Immediate gates
+## Prior-art boundary
 
-1. Search specifically for estimation of Fourier coefficients/mixing weights of `U(1)` random-unitary channels and probability measures on compact groups.
-2. Determine whether the harmonic-mean density inequality itself has appeared explicitly; its sharp operator constant is already classical.
-3. Determine whether one physical measurement family can approach the integrated `pi` QFI-area coefficient despite SLD incompatibility.
-4. Strengthen the independent quantum-marked Poisson/event-to-field mapping for realistic incoherent optical sources.
-5. Draft no foundational manuscript until these gates survive.
+Marvian--Spekkens, Phys. Rev. A 90, 062110 (2014), already establish `U(1)` energy-gap modes and weighted twirling of the form
+
+`sigma^(k)=p_(-k)rho^(k)`.
+
+Canonical phase measurements, phase Fourier moments, photon-number-constrained phase estimation, arbitrary collective Fisher/Holevo bounds, random-unitary estimation, and asymmetry resource theory are also prior art.
+
+The candidate contribution is narrowly the arbitrary-measurement **Fisher** ceiling for perturbations of the latent random-time mixing distribution, its explicit population-tail/mean-energy law, and the source-to-record photodetection consequence.
+
+Targeted searches have not located an exact predecessor. Priority remains unverified.
+
+## Current status
+
+WP24 integrated hostile review: **PASS**, after repairing support-gap notation and narrowing novelty language.
+
+The project is now at a reasonable standalone-manuscript formation threshold.
 
 ## Read first
 
 1. `AGENTS.md`
-2. `notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
-3. `notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
-4. `notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
-5. `notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
-6. `notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
-7. `notes/WP11_WP10_FACTOR_AUDIT_AND_PRIOR_ART.md`
-8. `notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
+2. `notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+3. `notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+4. `notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+5. `notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+6. `notes/WP21_TARGETED_PRIORITY_AUDIT_SURVIVAL_FUNCTION_LAW.md`
 
 The repository handoff files must remain sufficient for full context recovery; do not rely on chat history.
