@@ -22,23 +22,26 @@ Active branch: `agent/temporal-information-resource-law`.
 
 ## Read first — authoritative order
 
-1. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
-2. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
-3. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
-4. `grand_challenge/notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
-5. `grand_challenge/notes/WP11_WP10_FACTOR_AUDIT_AND_PRIOR_ART.md`
-6. `grand_challenge/notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
-7. `grand_challenge/notes/WP09_EXTERNAL_TIME_REFERENCE_NO_GO_AND_ASYMMETRY_BOUNDARY.md`
-8. `grand_challenge/notes/WP08_ARBITRARY_MEMORY_LIFT_AND_QUANTUM_REGULARIZATION.md`
-9. `grand_challenge/notes/WP07_ENERGY_EDGE_AND_COVARIANT_POVM_PROOF_REPAIR.md`
-10. `grand_challenge/notes/WP06_POSITIVE_ENERGY_TEMPORAL_FISHER_AREA_LAW.md`
-11. `grand_challenge/notes/WP05_OPERATIONAL_CLOSURE_AND_LOCAL_LANDAUER_BASELINE.md`
-12. `grand_challenge/notes/WP04_QUANTUM_WAVEFORM_PRIOR_ART_COLLISION.md`
-13. `grand_challenge/notes/WP03_COVARIANT_TIMESTAMP_REGULARITY_AND_QFI_BOUND.md`
-14. `grand_challenge/notes/WP02_QUANTUM_TIMING_BANDWIDTH_CANDIDATE.md`
-15. `grand_challenge/notes/WP01_LANDSCAPE_AND_FIRST_NO_GOS.md`
+1. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
+2. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
+3. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
+4. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
+5. `grand_challenge/notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
+6. `grand_challenge/notes/WP11_WP10_FACTOR_AUDIT_AND_PRIOR_ART.md`
+7. `grand_challenge/notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
+8. `grand_challenge/notes/WP09_EXTERNAL_TIME_REFERENCE_NO_GO_AND_ASYMMETRY_BOUNDARY.md`
+9. `grand_challenge/notes/WP08_ARBITRARY_MEMORY_LIFT_AND_QUANTUM_REGULARIZATION.md`
+10. `grand_challenge/notes/WP07_ENERGY_EDGE_AND_COVARIANT_POVM_PROOF_REPAIR.md`
+11. `grand_challenge/notes/WP06_POSITIVE_ENERGY_TEMPORAL_FISHER_AREA_LAW.md`
+12. `grand_challenge/notes/WP05_OPERATIONAL_CLOSURE_AND_LOCAL_LANDAUER_BASELINE.md`
+13. `grand_challenge/notes/WP04_QUANTUM_WAVEFORM_PRIOR_ART_COLLISION.md`
+14. `grand_challenge/notes/WP03_COVARIANT_TIMESTAMP_REGULARITY_AND_QFI_BOUND.md`
+15. `grand_challenge/notes/WP02_QUANTUM_TIMING_BANDWIDTH_CANDIDATE.md`
+16. `grand_challenge/notes/WP01_LANDSCAPE_AND_FIRST_NO_GOS.md`
 
-## Current strongest theorem stack — WP10/WP12/WP15
+## Current checkpoint
+
+The **theorem stack remains through WP15**. WP16 is a priority/positioning audit, not a new theorem.
 
 ### Periodic random-time quantum mode budget — WP10/WP11
 
@@ -78,11 +81,11 @@ The positive-side area is
 
 `A[q]=iint q(x)q(y)/[q(x)+q(y)] dxdy`.
 
-WP15 gives a publication-grade inequality for every finite-first-moment density, without smoothness assumptions. Rearrangement reduces to decreasing `q`; the superlevel-length function `r(s)` obeys
+WP15 gives a general finite-first-moment proof without smoothness assumptions. Rearrangement reduces to decreasing `q`; the superlevel-length function `r(s)` obeys
 
 `wbar=(1/2)||r||_2^2`.
 
-Using the exact positive-kernel identity
+Using
 
 `ab/(a+b)=int_0^a int_0^b 2st/(s+t)^3 dt ds`,
 
@@ -90,11 +93,11 @@ Tonelli gives `A=<r,Tr>` with kernel
 
 `L(s,t)=2st/(s+t)^3`.
 
-Its Mellin multiplier is
+The exact norm is
 
-`lambda(xi)=|Gamma(3/2+i xi)|^2=pi(1/4+xi^2)/cosh(pi xi)`,
+`||T||=pi/4`,
 
-so `||T||=pi/4`. Therefore
+hence
 
 `boxed: int_0^infinity G_Q(nu)dnu <= (pi/2)wbar`,
 
@@ -106,9 +109,29 @@ Flat-band inverse law:
 
 `boxed: Ebar^+ >= (2/pi) h B q0`.
 
-The constant is sharp as a supremum, approached by truncated critical densities `q_R(w) proportional (1+w)^(-2)` over increasingly large ranges.
+The constant is sharp as a supremum, approached by truncated critical densities `q_R(w) proportional (1+w)^(-2)`.
 
-This is currently the strongest measurement-independent Planck-scale temporal-information resource law in the program.
+This remains the strongest measurement-independent Planck-scale temporal-information resource law in the program.
+
+### WP16 priority correction — the analytic `pi/4` constant is classical
+
+WP16 establishes that the WP15 operator inequality is an explicit specialization of classical parameterized Hardy–Hilbert integral inequalities.
+
+The standard sharp form
+
+`iint f(x)g(y)/(x+y)^lambda dxdy`
+
+`<= B(lambda/2,lambda/2)`
+
+`   * [int x^(1-lambda)f(x)^2 dx]^(1/2)`
+
+`   * [int y^(1-lambda)g(y)^2 dy]^(1/2)`
+
+holds for `lambda>0` with best Beta-function constant. Taking `lambda=3`, `f(x)=x r(x)`, `g(y)=y r(y)` gives `B(3/2,3/2)=pi/8`; multiplying by the factor `2` in the WP15 kernel yields exactly `||T||=pi/4`.
+
+Therefore **do not claim mathematical novelty for the `pi/4` operator norm, Mellin constant, or sharp Hilbert-type inequality**. Cite classical Hardy–Hilbert theory, including B. Yang, JMAA 321, 182–192 (2006), DOI `10.1016/j.jmaa.2005.07.071`.
+
+The candidate novelty, if priority survives, is the quantum-statistical and physical synthesis: random latent-time Fourier-mode estimation, exact source-normalized QFI retention, the `2nbar` sum rule, controlled continuum temporal-information law, and detector-independent photodetection interpretation.
 
 ## Physical source scope — WP13/WP14
 
@@ -120,7 +143,7 @@ For an independent quantum-marked Poisson event source, QFI and total excess ene
 
 ### Not included without extra resource accounting
 
-WP14 gives a coherent-field no-go against extending the theorem to arbitrary waveform state engineering based only on baseline mean energy. A carrier coherent state can acquire an arbitrarily high-frequency infinitesimal sideband at first order in amplitude while the additional energy appears only at second order. Thus baseline energy cannot bound arbitrary state-valued waveform tangents.
+WP14 gives a coherent-field no-go against extending the theorem to arbitrary waveform state engineering based only on baseline mean energy. A carrier coherent state can acquire an arbitrarily high-frequency infinitesimal sideband at first order in amplitude while the additional energy appears only at second order.
 
 The current theorem applies to **random temporal-distribution encoding of a fixed semibounded-energy excitation**, not arbitrary parameter-dependent source-state synthesis.
 
@@ -128,7 +151,7 @@ A broader quantum-waveform theorem would need to include the encoding-map/contro
 
 ## Covariant timestamp comparison — WP06/WP07/WP08
 
-For a reference-free covariant timestamp readout, the sharper measurement-class-specific area law is
+For a reference-free covariant timestamp readout,
 
 `boxed: int G_timestamp(nu)dnu <=2E_det^+/hbar`,
 
@@ -154,19 +177,21 @@ Do not claim novelty for:
 - time-translation asymmetry as resource theory;
 - rearrangement/layer cake/Mellin/Carleman analysis;
 - Hardy/Gagliardo--Nirenberg inequalities;
+- **the sharp Hardy–Hilbert operator constant `pi/4` used in WP15**;
 - generic time-energy uncertainty relations.
 
-Close sources include Marvian--Spekkens (PRA 90, 062110, 2014), Tsang--Wiseman--Caves (PRL 106, 090401, 2011), Pocovnicu (Analysis & PDE 4, 379--404, 2011), Kiukas--Ruschhaupt--Werner arrival-time work, Hall (Entropy 24, 1679, 2022), WAY/asymmetry literature, and random-unitary/phase-noise estimation work.
+Close sources include Marvian--Spekkens (PRA 90, 062110, 2014), Tsang--Wiseman--Caves (PRL 106, 090401, 2011), Pocovnicu (Analysis & PDE 4, 379--404, 2011), Kiukas--Ruschhaupt--Werner arrival-time work, Hall (Entropy 24, 1679, 2022), Yang's Hilbert-type operator literature, WAY/asymmetry literature, phase-diffusion/dephasing estimation, and random-unitary/noise-channel estimation.
 
-Targeted searches have not yet found the exact random-time Fisher-mode formula, `2nbar` sum rule, or sharp continuum `int G_Q<=pi E/hbar` formulation. Priority is not certified.
+Targeted searches still have not found the exact **quantum random-time distribution-mode** formula, `2nbar` sum rule, or their source-to-record temporal-information interpretation. Priority is not certified. The next search must target estimation of random-unitary mixing distributions / Fourier coefficients of probability measures on `U(1)`, because generic phase-noise searches are no longer sufficient.
 
 ## Immediate hostile gates
 
-1. **Deep priority audit:** search random-unitary/group-distribution estimation and analysis literature for an exact equivalent of WP10/WP12/WP15.
-2. **Operational attainability:** determine whether a single measurement family can approach the integrated `pi` QFI-area coefficient, given per-mode SLD incompatibility, or whether `pi` is only a sum of separately optimized bounds.
-3. Strengthen the independent quantum-marked Poisson to field mapping for realistic incoherent optical source models.
-4. Explore a broader theorem including the energetic/control resource of arbitrary waveform encoding, motivated by WP14, only if it does not distract from the stronger random-time theorem.
-5. If priority survives and operational interpretation remains strong, decide whether WP10--WP15 justify a standalone foundational manuscript.
+1. **Priority Gate 1A:** deep search for estimation of Fourier coefficients or mixing weights of `U(1)` random-unitary channels / probability measures on groups.
+2. **Priority Gate 1B:** determine whether the harmonic-mean density inequality itself appears explicitly in analysis literature; its operator constant is already classical.
+3. **Operational attainability:** determine whether a single measurement family can approach the integrated `pi` QFI-area coefficient, given per-mode SLD incompatibility, or whether `pi` is only a sum of separately optimized bounds.
+4. Strengthen the independent quantum-marked Poisson to field mapping for realistic incoherent optical source models.
+5. Explore a broader theorem including the energetic/control resource of arbitrary waveform encoding only if it does not distract from the stronger random-time theorem.
+6. If priority survives and operational interpretation remains strong, decide whether WP10--WP15 justify a standalone foundational manuscript.
 
 ## Documentation rule
 
@@ -176,4 +201,5 @@ After every material theorem, counterexample, proof repair, prior-art collision,
 2. update this file when the active theorem/gates change;
 3. update active-branch top-level `README.md`, `AGENTS.md`, `docs/CURRENT_RESEARCH_STATE.md`, and `ROADMAP.md` for every project-level change;
 4. mirror the active branch/checkpoint into the same landing files on `main` so the repository default view remains current;
-5. do not rely on chat history as the only record.
+5. keep `PROBLEM.md` and `grand_challenge/README.md` from becoming misleading secondary entry points;
+6. do not rely on chat history as the only record.
