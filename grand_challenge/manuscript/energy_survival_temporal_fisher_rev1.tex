@@ -1,0 +1,514 @@
+\documentclass[aps,pra,reprint,amsmath,amssymb,longbibliography]{revtex4-2}
+
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\begin{document}
+
+\title{A Sharp Energy-Survival Law for Temporal Fisher Information}
+
+\author{Anonymous}
+\date{\today}
+
+\begin{abstract}
+Temporal resolution is usually characterized through a response time or transfer function, but these quantities do not by themselves specify how much information about a time-dependent source reaches an accessible record.  We consider a different question: a fixed quantum excitation with a semibounded generator is emitted at a latent random time, and weak temporal structure is encoded in Fourier coefficients of the probability distribution of that random translation.  For the two real quadratures of harmonic $k$, we prove that every joint measurement on any finite number $N$ of independently encoded excitations obeys
+\begin{equation}
+ \frac{1}{N}\Tr F_N^{(k)}\leq \Pr(N_E\geq k),
+\end{equation}
+where $F_N^{(k)}$ is the classical Fisher-information block and $N_E$ is the excitation-sector index above the participating lower energy edge.  The result follows directly from a factorization of the random-time tangent through an energy-shift partial isometry and Hilbert--Schmidt Cauchy--Schwarz; it requires neither a covariant detector nor separable measurement.  In the continuum limit it gives the pointwise survival law $R(\nu)\leq\Pr(\Omega\geq\nu)$, the sharp area bound $\int_{\mathbb R}R(\nu)\dd\nu\leq2\bar E^+/\hbar$, and the pointwise resource inequality $\bar E^+\geq\hbar\nu R(\nu)=hfR(2\pi f)$.  A geometric energy distribution with the canonical phase measurement saturates every discrete harmonic simultaneously, and its continuum limit is the exponential-energy/Cauchy-time equality family.  The bound is inherited by independent quantum-marked Poisson event sources under arbitrary parameter-independent source-to-field dynamics, bosonic overlap, coherent detector memory, and final measurement.  We distinguish this operational theorem from established $U(1)$ mode decompositions and phase-estimation bounds, and we give an explicit no-go showing why baseline mean energy alone cannot constrain arbitrary parameter-dependent waveform-state synthesis.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+A detector can have a finite response time without that response time being a complete measure of temporal information transfer.  Deterministic delay, invertible filtering, hidden timing dispersion, dead time, thresholding, and inaccessible internal variables affect conventional bandwidth and Fisher information in different ways.  This motivates an information-theoretic formulation in which the object of interest is the local statistical experiment that maps a temporal source perturbation to an accessible record.
+
+Here we isolate a source class for which a sharp detector-independent resource law can be proved.  A fixed excitation is translated by a latent random time, and the unknown temporal waveform is a small perturbation of the \emph{probability distribution} over translations.  The problem is therefore distinct from deterministic phase or time-shift estimation, and also from arbitrary state-valued waveform synthesis.  Harmonic decompositions of $U(1)$-asymmetric states and weighted group twirling are established tools: in particular, a weighted twirl multiplies each energy-gap mode by the corresponding Fourier coefficient of the mixing distribution~\cite{MarvianSpekkens2014Modes}.  Phase estimation under energy or photon-number constraints is likewise well developed~\cite{BuzekDerkaMassar1999,ImaiHayashi2009,Hayashi2011}, as are generic quantum-statistical bounds for arbitrary measurements~\cite{BraunsteinCaves1994,Gill2005} and estimation of random-unitary channel weights~\cite{FujiwaraImai2003}.  Our question is narrower: how much \emph{classical Fisher information about a local Fourier perturbation of the mixing distribution} can any downstream measurement retain?
+
+The answer is controlled by a simple spectral survival probability.  If $q_n$ is the probability that the fixed excitation occupies total-generator sector $n$ above its participating lower edge, then the accessible two-quadrature Fisher information in temporal harmonic $k$ cannot exceed the probability mass in sectors at least $k$ quanta above that edge.  The result is finite-copy and includes arbitrary entangled collective measurements.  Summing the harmonic tails gives the mean excitation exactly, while a periodic-to-continuum construction produces a pointwise survival-function law and a sharp Planck-scale energy--frequency relation.
+
+The theorem has three useful features.  First, its proof is short and operational: no optimal quantum measurement needs to be constructed.  Second, the bound is exactly attainable by one common measurement for an infinite family of harmonics.  Third, an independent compound-Poisson source representation allows the final detector measurement to be pulled back through arbitrary parameter-independent source-to-field and detector dynamics, so common-field overlap and coherent detector memory do not evade the source bound.
+
+We also state the boundary of the theorem explicitly.  If the unknown waveform is allowed to modify the quantum state through a parameter-dependent control map rather than only through a random translation distribution, baseline mean energy is insufficient: infinitesimal high-frequency coherent sidebands can enter the state tangent at first order while their added mean energy is second order.  Any theorem for that broader class must account for the encoding/control resource itself.
+
+\section{Random-time quantum statistical experiment}
+\label{sec:model}
+
+\subsection{Periodic formulation and normalization}
+
+Let the relevant time coordinate be periodic with period $T$ and fundamental angular frequency
+\begin{equation}
+ \omega_0=\frac{2\pi}{T}.
+\end{equation}
+On the participating invariant subspace, let the generator of time translations have the semibounded sector decomposition
+\begin{equation}
+ H=E_* I+\hbar\omega_0\sum_{n\geq0} n P_n .
+ \label{eq:H-periodic}
+\end{equation}
+The additive edge $E_*$ contributes only a common phase within the participating representation and will not enter the encoded density operator.
+
+A fixed state $\sigma$ is translated by
+\begin{equation}
+ U_t=\exp(-iHt/\hbar).
+\end{equation}
+For one nonzero temporal harmonic $k\geq1$, take the latent event-time density
+\begin{equation}
+ p_{\bm\epsilon}(t)=\frac1T\left[1+\epsilon_c\cos(k\omega_0t)+\epsilon_s\sin(k\omega_0t)\right]
+ \label{eq:latent-density}
+\end{equation}
+for sufficiently small $\bm\epsilon=(\epsilon_c,\epsilon_s)$.  The quantum state presented to all downstream processing is
+\begin{equation}
+ \rho_{\bm\epsilon}=\int_0^T p_{\bm\epsilon}(t)
+ U_t\sigma U_t^\dagger\,\dd t .
+ \label{eq:encoded-state}
+\end{equation}
+At $\bm\epsilon=0$, the latent classical Fisher block is
+\begin{equation}
+ F_{\rm in}^{(k)}=\frac12 I_2,
+ \qquad \Tr F_{\rm in}^{(k)}=1
+ \label{eq:input-FI}
+\end{equation}
+per event.  We therefore normalize the full two-quadrature output retention by the trace of the output Fisher block.
+
+The weighted-twirl structure of Eq.~\eqref{eq:encoded-state} is not new; it is the $U(1)$ harmonic framework of Ref.~\cite{MarvianSpekkens2014Modes}.  The result below concerns the measurement-accessible Fisher geometry of a \emph{perturbation of the weight distribution}.
+
+\subsection{Purified sector representation and complex tangent}
+
+It is enough to prove the upper bound for a purification of $\sigma$, since granting the detector access to a purifier can only enlarge its measurement set.  Write the purified excitation as
+\begin{equation}
+ |\Psi\rangle=\sum_{n\geq0}\sqrt{q_n}\,|\phi_n\rangle,
+ \qquad
+ q_n\geq0,
+ \qquad
+ \sum_n q_n=1,
+ \label{eq:pure-sector-state}
+\end{equation}
+where the $|\phi_n\rangle$ are normalized and lie in mutually orthogonal total-generator sectors.  The uniform random-time baseline is
+\begin{equation}
+ \rho_0=\sum_n q_n|\phi_n\rangle\langle\phi_n|.
+ \label{eq:twirled-baseline}
+\end{equation}
+Define the complex $k$-gap tangent
+\begin{equation}
+ A_k=\sum_{n\geq0}\sqrt{q_nq_{n+k}}
+ |\phi_{n+k}\rangle\langle\phi_n|,
+ \label{eq:Ak}
+\end{equation}
+with zero terms omitted.  With a sine-sign convention fixed once and for all,
+\begin{align}
+ D_c^{(k)}&=\left.\frac{\partial\rho_{\bm\epsilon}}{\partial\epsilon_c}\right|_0
+ =\frac{A_k+A_k^\dagger}{2},\\
+ D_s^{(k)}&=\left.\frac{\partial\rho_{\bm\epsilon}}{\partial\epsilon_s}\right|_0
+ =\frac{A_k-A_k^\dagger}{2i}.
+ \label{eq:real-tangents}
+\end{align}
+
+To allow arbitrary gaps in the participating spectrum, define the paired partial shift
+\begin{equation}
+ V_k=\sum_{n:q_nq_{n+k}>0}|\phi_{n+k}\rangle\langle\phi_n|.
+ \label{eq:Vk}
+\end{equation}
+Its domain and range projectors are
+\begin{equation}
+ P_{{\rm dom},k}=V_k^\dagger V_k,
+ \qquad
+ P_{{\rm ran},k}=V_kV_k^\dagger.
+\end{equation}
+The tangent factorizes exactly as
+\begin{equation}
+ \boxed{A_k=\rho_0^{1/2}V_k\rho_0^{1/2}}.
+ \label{eq:tangent-factorization}
+\end{equation}
+This identity is the engine of the operational bound.
+
+Define the paired population masses
+\begin{align}
+ D_k&=\Tr(\rho_0P_{{\rm dom},k}),\\
+ U_k&=\Tr(\rho_0P_{{\rm ran},k}),
+ \label{eq:DU}
+\end{align}
+and the coarse semibounded tail
+\begin{equation}
+ T_k=\sum_{m\geq k}q_m.
+ \label{eq:Tk}
+\end{equation}
+By construction $U_k\leq T_k$.
+
+\section{Finite-copy operational energy-tail theorem}
+\label{sec:discrete-theorem}
+
+\begin{theorem}[Collective temporal-harmonic Fisher bound]
+\label{thm:finite-copy}
+For any finite $N\geq1$ and any POVM acting jointly on $N$ independently encoded copies of Eq.~\eqref{eq:encoded-state}, let $F_N^{(k)}$ denote the $2\times2$ classical Fisher-information block for $(\epsilon_c,\epsilon_s)$ at the uniform random-time baseline.  Then
+\begin{equation}
+ \boxed{
+ \frac1N\Tr F_N^{(k)}\leq\min(D_k,U_k)\leq T_k .
+ }
+ \label{eq:main-discrete}
+\end{equation}
+The result includes arbitrary entangled collective measurements and arbitrary parameter-independent ancillas.
+\end{theorem}
+
+\begin{proof}
+We first prove the range bound for one copy.  For a POVM element $M_y$, with the obvious measure-theoretic replacement for continuous outcomes, define
+\begin{equation}
+ p_y=\Tr(\rho_0M_y),
+ \qquad
+ z_y=\Tr(A_kM_y).
+\end{equation}
+Equations~\eqref{eq:real-tangents} give
+\begin{equation}
+ \partial_c p_y=\Re z_y,
+ \qquad
+ \partial_s p_y=\Im z_y,
+\end{equation}
+up to the irrelevant global sine convention.  Hence the contribution of outcome $y$ to the Fisher trace is
+\begin{equation}
+ \frac{(\partial_cp_y)^2+(\partial_sp_y)^2}{p_y}
+ =\frac{|z_y|^2}{p_y}.
+ \label{eq:FI-outcome}
+\end{equation}
+For zero-probability outcomes the standard regular limiting convention is understood.
+
+Using Eq.~\eqref{eq:tangent-factorization} and cyclicity of the trace,
+\begin{equation}
+ z_y=\Tr\!\left[
+ M_y^{1/2}\rho_0^{1/2}V_k\rho_0^{1/2}M_y^{1/2}
+ \right].
+\end{equation}
+Hilbert--Schmidt Cauchy--Schwarz gives
+\begin{align}
+ |z_y|^2
+ &\leq
+ \Tr\!\left[M_y\rho_0^{1/2}V_kV_k^\dagger\rho_0^{1/2}\right]
+ \Tr(M_y\rho_0)\\
+ &=p_y\,\Tr(M_y\rho_0P_{{\rm ran},k}),
+ \label{eq:outcome-CS}
+\end{align}
+where $P_{{\rm ran},k}$ commutes with $\rho_0$.  Summing over the POVM and using $\int M(\dd y)=I$ yields
+\begin{equation}
+ \Tr F_1^{(k)}\leq U_k.
+ \label{eq:onecopy-U}
+\end{equation}
+Applying the same argument to $A_k^\dagger=\rho_0^{1/2}V_k^\dagger\rho_0^{1/2}$ gives
+\begin{equation}
+ \Tr F_1^{(k)}\leq D_k.
+\end{equation}
+
+For $N$ copies let $\rho_N=\rho_0^{\otimes N}$ and
+\begin{equation}
+ B_{k,N}=\sum_{j=1}^N V_k^{(j)}.
+\end{equation}
+The complex derivative of the product experiment is
+\begin{equation}
+ A_{k,N}=\rho_N^{1/2}B_{k,N}\rho_N^{1/2}.
+\end{equation}
+Repeating Eq.~\eqref{eq:outcome-CS} outcome by outcome and summing gives
+\begin{equation}
+ \Tr F_N^{(k)}
+ \leq\Tr(\rho_N B_{k,N}B_{k,N}^\dagger).
+ \label{eq:Ncopy-resource}
+\end{equation}
+The diagonal terms contribute $NU_k$.  All cross-copy terms vanish because
+\begin{equation}
+ \Tr(\rho_0V_k)=0,
+ \qquad k\geq1,
+\end{equation}
+so
+\begin{equation}
+ \Tr F_N^{(k)}\leq NU_k.
+\end{equation}
+Repeating with $V_k^\dagger$ gives $ND_k$.  Finally $U_k\leq T_k$, proving Eq.~\eqref{eq:main-discrete}.
+\end{proof}
+
+Theorem~\ref{thm:finite-copy} is an operational statement about the Fisher information produced by one physical measurement.  It is stronger for this purpose than optimizing a different SLD measurement independently for each temporal mode.
+
+\begin{corollary}[All-mode mean-excitation budget]
+\label{cor:sum}
+Define the per-event two-quadrature retention
+\begin{equation}
+ R_N(k)=\frac1N\Tr F_N^{(k)}.
+\end{equation}
+Then
+\begin{equation}
+ \boxed{
+ \sum_{k\geq1}R_N(k)\leq\bar n,
+ \qquad
+ \bar n=\sum_{n\geq0}nq_n .
+ }
+ \label{eq:sum-rule}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Use $R_N(k)\leq T_k$ and the tail-sum identity
+\begin{equation}
+ \sum_{k\geq1}T_k
+ =\sum_{k\geq1}\sum_{m\geq k}q_m
+ =\sum_m mq_m=\bar n.
+\end{equation}
+\end{proof}
+
+\section{Continuum survival-function law}
+\label{sec:continuum}
+
+A normalized uniform time distribution on the noncompact real line does not exist.  We therefore formulate the continuum result as a large-period limit of exact periodic models rather than invoking a formal uniform twirl on $\mathbb R$.
+
+Let $\mu$ be a probability measure on $[0,\infty)$ with finite first moment
+\begin{equation}
+ \bar\omega=\int_{[0,\infty)}\omega\,\mu(\dd\omega)<\infty.
+ \label{eq:omega-mean}
+\end{equation}
+For frequency spacing $\delta>0$, define the lower-bin probabilities
+\begin{equation}
+ q_n^{(\delta)}=\mu([n\delta,(n+1)\delta)).
+ \label{eq:lower-bin}
+\end{equation}
+The exact discrete tail is
+\begin{equation}
+ T_k^{(\delta)}=\mu([k\delta,\infty)),
+ \label{eq:exact-tail-bin}
+\end{equation}
+and the discretized mean
+\begin{equation}
+ \bar\omega_\delta
+ =\delta\sum_n n q_n^{(\delta)}
+ =\int \delta\lfloor\omega/\delta\rfloor\,\mu(\dd\omega)
+ \uparrow\bar\omega
+ \label{eq:mean-conv}
+\end{equation}
+under refinement along a nested sequence, with ordinary dominated convergence sufficient more generally.
+
+\begin{theorem}[Continuum operational survival bound]
+\label{thm:continuum}
+Suppose a sequence of periodic physical measurement schemes has source-normalized mode-trace retentions whose lattice values converge at modulation angular frequency $\nu>0$ to $R(\nu)$.  Then
+\begin{equation}
+ \boxed{R(\nu)\leq S_\mu(\nu):=\mu([\nu,\infty)).}
+ \label{eq:survival-law}
+\end{equation}
+Without an assumed pointwise detector limit, the corresponding limsup inequality holds along lattice frequencies approaching $\nu$.
+\end{theorem}
+
+\begin{proof}
+Choose $k_\delta=\lfloor\nu/\delta\rfloor$, so $k_\delta\delta\to\nu$ from below.  Theorem~\ref{thm:finite-copy} and Eq.~\eqref{eq:exact-tail-bin} give
+\begin{equation}
+ R_\delta(k_\delta)\leq\mu([k_\delta\delta,\infty)).
+\end{equation}
+Continuity from above of a finite measure yields convergence of the right-hand side to $\mu([\nu,\infty))$, including at atoms because the closed-tail convention is used.
+\end{proof}
+
+\begin{corollary}[Area and pointwise energy laws]
+\label{cor:continuum-energy}
+Every nonnegative continuum retention spectrum satisfying Theorem~\ref{thm:continuum} obeys
+\begin{align}
+ \int_0^\infty R(\nu)\,\dd\nu&\leq\bar\omega,\\
+ \int_{\mathbb R}R(\nu)\,\dd\nu&\leq\frac{2\bar E^+}{\hbar},
+ \label{eq:area-operational}
+\end{align}
+where $\bar E^+=\hbar\bar\omega$ and the second line uses the even extension.  Moreover,
+\begin{equation}
+ \boxed{\bar E^+\geq\hbar\nu R(\nu).}
+ \label{eq:pointwise-energy}
+\end{equation}
+At ordinary modulation frequency $f=\nu/(2\pi)$,
+\begin{equation}
+ \boxed{\bar E^+\geq h f\,R(2\pi f).}
+ \label{eq:hf-law}
+\end{equation}
+Thus a guaranteed retention $R(2\pi B)\geq q_0$ requires $\bar E^+\geq hBq_0$.
+\end{corollary}
+
+\begin{proof}
+The first line is the layer-cake identity for a nonnegative random variable,
+\begin{equation}
+ \int_0^\infty S_\mu(\nu)\,\dd\nu=\bar\omega.
+\end{equation}
+The pointwise statement follows from
+\begin{equation}
+ \bar\omega\geq\nu\,\mu([\nu,\infty))\geq\nu R(\nu).
+\end{equation}
+\end{proof}
+
+\section{Exact equality family}
+\label{sec:equality}
+
+The operational coefficient is not merely a worst-case upper bound.  It can be saturated simultaneously for every harmonic by a simple state and one common measurement.
+
+Take the geometric sector distribution
+\begin{equation}
+ q_n=(1-r)r^n,
+ \qquad 0<r<1.
+ \label{eq:geometric}
+\end{equation}
+Then
+\begin{equation}
+ \bar n=\frac{r}{1-r},
+ \qquad
+ T_k=r^k.
+\end{equation}
+On the number-sector chain use the canonical phase POVM
+\begin{equation}
+ M(\dd\theta)=\frac{\dd\theta}{2\pi}|\theta\rangle\langle\theta|,
+ \qquad
+ |\theta\rangle=\sum_{n\geq0}\e^{in\theta}|n\rangle,
+ \label{eq:canonical-phase}
+\end{equation}
+understood in the standard generalized-POVM sense.  The baseline phase density is uniform.  For harmonic $k$, the relevant complex score amplitude is proportional to
+\begin{equation}
+ \alpha_k=\sum_n\sqrt{q_nq_{n+k}}=r^{k/2}.
+\end{equation}
+Direct integration gives
+\begin{equation}
+ F_{cc}^{(k)}=F_{ss}^{(k)}=\frac{r^k}{2},
+\end{equation}
+so
+\begin{equation}
+ \boxed{R(k)=r^k=T_k}
+ \label{eq:discrete-equality}
+\end{equation}
+for every $k$ simultaneously and
+\begin{equation}
+ \sum_{k\geq1}R(k)=\bar n.
+\end{equation}
+
+For the continuum limit choose
+\begin{equation}
+ r=\e^{-\beta\delta}.
+\end{equation}
+The exact lower-bin probabilities of the exponential measure
+\begin{equation}
+ \mu(\dd\omega)=\beta\e^{-\beta\omega}\dd\omega
+ \label{eq:exp-spectrum}
+\end{equation}
+are precisely geometric for every $\delta$.  Hence
+\begin{equation}
+ R(\nu)=\e^{-\beta|\nu|}=S_\mu(|\nu|),
+ \qquad
+ \bar\omega=\frac1\beta,
+ \label{eq:continuum-equality}
+\end{equation}
+and the area bound is saturated.  With $\beta=2a$, the corresponding canonical covariant time density is the Cauchy law
+\begin{equation}
+ f_a(t)=\frac{a}{\pi(t^2+a^2)},
+ \label{eq:Cauchy}
+\end{equation}
+whose characteristic-function retention is $\e^{-2a|\nu|}$.  Canonical phase/time measurements and their Fourier structure are established; their role here is to exhibit exact equality rather than to supply a novelty claim.
+
+\section{Independent Poisson events and a physical bosonic field}
+\label{sec:poisson-field}
+
+The one-event theorem can be connected to an incoherent photodetection source class without requiring photons to remain distinguishable at the detector.
+
+Let $\cH_e$ be the Hilbert space of one fixed excitation/mark and introduce the labeled event-register space
+\begin{equation}
+ \cK=\bigoplus_{N=0}^\infty \cH_e^{\otimes N},
+\end{equation}
+used only as an upstream information extension.  For a parameter-independent Poisson mean $\mu$, define
+\begin{equation}
+ \Sigma_{\bm\epsilon}
+ =\bigoplus_{N=0}^\infty p_\mu(N)\rho_{\bm\epsilon}^{\otimes N},
+ \qquad
+ p_\mu(N)=\e^{-\mu}\frac{\mu^N}{N!}.
+ \label{eq:compound-state}
+\end{equation}
+For a nonzero temporal harmonic, conditioning on the event number reveals parameter-independent side information and therefore can only increase Fisher information.  Theorem~\ref{thm:finite-copy} gives
+\begin{equation}
+ \Tr F_{\Sigma}^{(k)}
+ \leq\sum_Np_\mu(N)NT_k
+ =\mu T_k.
+ \label{eq:poisson-tail}
+\end{equation}
+The latent classical Poisson experiment has input Fisher trace $\mu$, so its source-normalized retention again obeys $R(k)\leq T_k$.
+
+Now let a particular physical source/emission apparatus map the event register into an outgoing bosonic field and any retained auxiliary systems by a fixed CPTP map
+\begin{equation}
+ \Gamma:\mathcal T(\cK)\longrightarrow
+ \mathcal T(\cF_s(\cH_{\rm field})\otimes\cH_{\rm aux}).
+ \label{eq:Gamma}
+\end{equation}
+The final field state is $\tau_{\bm\epsilon}=\Gamma(\Sigma_{\bm\epsilon})$.  For any detector POVM $M(\dd y)$,
+\begin{equation}
+ \Pr_{\bm\epsilon}(\dd y)
+ =\Tr[\Gamma(\Sigma_{\bm\epsilon})M(\dd y)]
+ =\Tr[\Sigma_{\bm\epsilon}\Gamma^*(M(\dd y))].
+ \label{eq:pullback}
+\end{equation}
+Because $\Gamma^*$ is unital completely positive, $\Gamma^*(M)$ is a valid POVM on the upstream event register.  Equation~\eqref{eq:poisson-tail} therefore bounds the \emph{final} detector record.  Wavepacket overlap, bosonic interference, mode mixing, propagation, loss, coherent detector memory, parameter-independent ancillas, and arbitrary final joint measurement are all included in $\Gamma$ and the final POVM.
+
+The assumption is substantive: the unknown temporal parameter must enter through the independent event-time encoding before $\Gamma$.  Observing Poisson photocount statistics at one detector does not by itself establish the compound-event source representation.
+
+\section{Separately optimized quantum Fisher envelope}
+\label{sec:qfi-envelope}
+
+For comparison, optimizing the SLD measurement separately for a scalar quadrature of harmonic $k$ gives, for a pure excitation,
+\begin{equation}
+ G_Q(k)=2\sum_n\frac{q_nq_{n+k}}{q_n+q_{n+k}},
+ \label{eq:QFI-mode}
+\end{equation}
+where zero denominators contribute zero.  The positive-mode sum obeys
+\begin{equation}
+ \sum_{k\geq1}G_Q(k)\leq2\bar n.
+ \label{eq:QFI-discrete-sum}
+\end{equation}
+In the continuum, for a density $q(\omega)$ with finite first moment, the corresponding modewise envelope is
+\begin{equation}
+ G_Q(\nu)=2\int_0^\infty
+ \frac{q(\omega)q(\omega+\nu)}{q(\omega)+q(\omega+\nu)}\dd\omega,
+\end{equation}
+with the two-sided area bound
+\begin{equation}
+ \int_{\mathbb R}G_Q(\nu)\dd\nu
+ \leq\frac{\pi\bar E^+}{\hbar}.
+ \label{eq:pi-envelope}
+\end{equation}
+The analytic $\pi$ coefficient can be reduced to a classical sharp Hardy--Hilbert integral inequality; it is not claimed as new mathematics.  Related sharp positive-frequency inequalities are established in analysis~\cite{Pocovnicu2011}.
+
+Equations~\eqref{eq:QFI-mode}--\eqref{eq:pi-envelope} are useful as a quantum envelope, but they optimize incompatible measurements mode by mode.  Theorem~\ref{thm:finite-copy} instead bounds the Fisher information of one actual measurement, even if that measurement is a finite-copy entangled collective POVM.  The operational survival law is therefore the principal resource theorem of this work.
+
+\section{Boundary: arbitrary waveform synthesis}
+\label{sec:no-go}
+
+The random-time hypothesis cannot simply be removed while retaining a baseline-mean-energy-only theorem.  Consider a phase-coherent optical carrier and let the parameter generate an infinitesimal sideband at an arbitrarily large modulation frequency.  The derivative of the quantum state with respect to the sideband amplitude is first order in that amplitude, while the additional mean sideband energy is second order.  Consequently, by taking the local parameter to zero while increasing the sideband frequency, one can obtain a nonzero local waveform tangent at frequencies that are not controlled by the unperturbed mean energy alone.
+
+This is consistent with general waveform-estimation theory~\cite{TsangWisemanCaves2011}: a waveform can enter through a parameter-dependent Hamiltonian or source map, and its quantum Fisher kernel depends on the generator of that encoding.  A universal theorem for arbitrary state-valued waveform synthesis would therefore have to count an encoding/control/action resource---for example a suitable tangent-energy, energy-curvature, or control-Hamiltonian constraint---rather than only the baseline energy of the unmodulated state.
+
+The positive theorem proved here avoids this loophole by fixing the excitation and placing the unknown waveform solely in the probability law of its random translation time.
+
+\section{Discussion}
+\label{sec:discussion}
+
+The central result can be read directly from Eq.~\eqref{eq:survival-law}: retaining temporal Fisher information at angular frequency $\nu$ requires spectral probability weight at least $\hbar\nu$ above the participating lower energy edge.  The relevant resource is therefore not merely an energy variance, response time, or abstract coherence norm, but an energy-survival probability that is converted by semiboundedness into a pointwise and integrated information budget.
+
+This statement is related to, but distinct from, ordinary time--energy uncertainty and deterministic phase estimation.  In the present experiment, absolute temporal phase is randomized at baseline; the parameters are Fourier coefficients of the random-time \emph{distribution}.  Established modes-of-asymmetry theory explains why those Fourier coefficients couple to corresponding energy gaps~\cite{MarvianSpekkens2014Modes}.  The new statistical step is the operational inequality that converts the $k$-gap tangent into an accessible Fisher ceiling determined by paired populations and, universally, by the upper energy tail.
+
+The equality family is particularly informative.  For a geometric spectrum, one canonical phase measurement saturates every harmonic simultaneously, so the all-mode mean-energy coefficient is not an artifact of summing independent inequalities.  In the continuum, the same construction gives an exponential excitation spectrum and Cauchy timing density, providing an exact bridge between the energy survival function and a physically interpretable timestamp channel.
+
+For photodetection, the compound-Poisson construction gives an end-to-end statement for an explicit incoherent source class.  Once the random event-time parameters are encoded upstream, arbitrary subsequent field formation and detector dynamics are data processing in the statistical sense.  The theorem therefore constrains the final accessible record without assuming linear response, finite detector state dimension, weak detector memory, or distinguishable photons at detection.
+
+Several extensions remain open.  Correlated quantum emission processes need not factor through independent event marks.  Direct coherent or squeezed waveform synthesis requires explicit accounting of the parameter-dependent encoding resource.  It is also natural to ask whether other compact groups or other semibounded generators admit analogous survival laws for perturbations of their mixing distributions.
+
+\section{Conclusion}
+
+For a fixed semibounded-energy excitation whose temporal waveform is encoded in the distribution of a random translation, we have derived a sharp operational resource law.  Every finite-copy collective measurement obeys a harmonic Fisher ceiling equal to a paired spectral population and no larger than the upper energy tail.  The resulting continuum law,
+\begin{equation}
+ R(\nu)\leq\Pr(\Omega\geq\nu),
+\end{equation}
+implies both a sharp integrated budget $\int_{\mathbb R}R\leq2\bar E^+/\hbar$ and the pointwise Planck-scale constraint $\bar E^+\geq hfR(2\pi f)$.  The bound is exactly attainable and is inherited by independent compound-Poisson sources under arbitrary parameter-independent field formation and detector processing.  The result defines a precise resource limit for random-event temporal information while also identifying why arbitrary waveform-state engineering requires additional control-resource accounting.
+
+\begin{acknowledgments}
+Acknowledgments, funding, and disclosure statements will be inserted only when factual metadata are supplied.
+\end{acknowledgments}
+
+\bibliography{references}
+
+\end{document}
