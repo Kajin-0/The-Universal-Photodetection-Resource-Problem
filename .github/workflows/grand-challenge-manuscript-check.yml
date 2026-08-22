@@ -1,0 +1,48 @@
+name: Grand Challenge LaTeX check
+
+on:
+  push:
+    branches:
+      - agent/temporal-information-resource-law
+    paths:
+      - 'grand_challenge/manuscript/**'
+      - '.github/workflows/grand-challenge-manuscript-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile-grand-challenge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile Grand Challenge Rev1
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: energy_survival_temporal_fisher_rev1.tex
+          working_directory: grand_challenge/manuscript
+          latexmk_use_xelatex: false
+
+      - name: Check for unresolved references, citations, or box overflow
+        working-directory: grand_challenge/manuscript
+        run: |
+          LOG=energy_survival_temporal_fisher_rev1.log
+          if grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|Package natbib Warning:.*undefined" "$LOG"; then
+            echo "Unresolved LaTeX references/citations detected"
+            exit 1
+          fi
+          if grep -E "Overfull \\hbox|Overfull \\vbox" "$LOG"; then
+            echo "Overfull LaTeX boxes detected"
+            exit 1
+          fi
+
+      - name: Upload Grand Challenge Rev1 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: energy-survival-temporal-fisher-rev1
+          path: |
+            grand_challenge/manuscript/energy_survival_temporal_fisher_rev1.pdf
+            grand_challenge/manuscript/energy_survival_temporal_fisher_rev1.tex
+            grand_challenge/manuscript/references.bib
