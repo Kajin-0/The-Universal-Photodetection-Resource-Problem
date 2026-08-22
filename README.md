@@ -8,55 +8,47 @@
 
 1. **Paper 1 / Rev11** — frozen.
 2. **Paper 2 / Rev7** — frozen.
-3. **Grand Challenge** — science frontier **WP27**; **Rev10 frozen as the preferred PRX Quantum manuscript**.
+3. **Grand Challenge** — science frontier **WP28**; **Rev11 frozen as the preferred PRX Quantum manuscript**.
 
 Authoritative handoff: active-branch `grand_challenge/AGENTS.md`.
 
 # Grand Challenge headline
 
-For exact periodic random-time encoding, any finite-copy joint POVM obeys
+The exact periodic random-time experiment obeys
 
-`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`,
+`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`
 
-where `T_k=sum_(m>=k)q_m`.
+for any finite `N` and arbitrary joint POVM, including entangled collective measurements.
 
-Controlled periodic-to-continuum limits give
+Rev11 establishes that this is **not a harmonic-ladder artifact**. For an arbitrary semibounded pure-point Hamiltonian, long-window random-time averaging at a requested frequency `nu` isolates exact Bohr pairs and gives
 
-`R(nu) <= Pr(Omega>=nu)`,
+`Tr F_N^(nu)/N <= min(D_nu,U_nu) <= Pr(Omega>=nu)`
 
-with `Ebar+=hbar<Omega>` the mean excess energy above the participating lower edge.
+with no global equal-spacing or commensurability assumption.
+
+Controlled periodic-to-continuum limits give the same survival law
+
+`R(nu)<=Pr(Omega>=nu)`.
+
+The continuum spectral measure need not have a density; atomic, absolutely continuous, singular-continuous, and mixed measures are allowed.
 
 ## One physical measurement imposes cross-frequency structure
 
-For **one fixed one-copy POVM**, the entire retention sequence has a Herglotz representation
+For **one fixed one-copy POVM**, the retention sequence is positive definite:
 
-`R_M(k)=int cos(k theta) J_M(dtheta)`,
+`R_M(k)=int cos(k theta)J_M(dtheta)`.
 
-so every Toeplitz matrix `[R_M(i-j)]` is positive semidefinite.
+The same Herglotz/Toeplitz structure applies across exact multiples of a chosen Bohr gap for arbitrary semibounded pure-point spectra. Combining it with the energy tails gives
 
-Combining this spectral consistency with the energy tails gives
+`Ebar+>=hbar nu A(R)`,
 
-`Ebar+ >= hbar nu A(R_M(nu))`,
+with `A(R)~1/sqrt(2(1-R))` as `R->1`.
 
-with `A(q) ~ 1/sqrt(2(1-q))` as `q->1`.
-
-Thus near-unit retention at nonzero frequency requires divergent mean excess energy in the fixed-one-copy/common-measurement setting.
-
-Rev10 proves that this exponent is **sharp**: the finite sine-profile family under canonical phase measurement has
-
-`R_L(1)=cos^2(pi/(L+1))`,
-
-`nbar_L=(L-1)/2`,
-
-hence
-
-`nbar_L ~ pi/[2 sqrt(1-R_L(1))]`.
-
-The optimal asymptotic constant is not claimed.
+A finite sine-profile family proves the inverse-square-root divergence exponent is **sharp**; the optimal prefactor is not claimed.
 
 ## Complete one-copy extremizers
 
-On the full contiguous pure-sector chain:
+The converse remains narrower. On the full contiguous pure-sector chain:
 
 `first-harmonic equality`
 
@@ -64,33 +56,27 @@ On the full contiguous pure-sector chain:
 
 `<=> Hausdorff-moment survival tails`
 
-`<=> one common source-adapted POVM saturates every harmonic simultaneously`.
+`<=> one source-adapted POVM saturates every harmonic simultaneously`.
 
-Controlled continuum limits of exponential mixtures give the completely monotone equality cone.
+Controlled exponential mixtures give the completely monotone continuum equality cone.
 
 ## Scope
 
-The finite-copy tail theorem allows arbitrary finite-copy entangled collective measurements. The Herglotz/divergence theorem is specifically a **fixed one-copy common-POVM** statement.
+The modewise tail theorem includes arbitrary finite-copy collective measurements. The Herglotz/divergence theorem is a **fixed one-copy common-POVM** statement. The extremizer converse is not claimed for arbitrary anharmonic/sparse spectra.
 
-For the continuum Herglotz extension, Bochner is invoked only after continuity at the origin is assumed.
+Independent quantum-marked Poisson sources inherit the modewise law through arbitrary **parameter-independent** source-to-field and detector processing. Arbitrary parameter-dependent waveform synthesis remains outside the theorem.
 
-Independent quantum-marked Poisson sources inherit the modewise survival law through arbitrary **parameter-independent** source-to-field and detector processing. Arbitrary parameter-dependent waveform synthesis remains outside the theorem and requires additional control-resource accounting.
+# Rev11 publication gate
 
-# Manuscript
-
-Working title: **Spectral Resource Laws for Temporal Fisher Information**.
-
-Rev10 passed the full local publication gate:
-
-- **11 pages**;
+- **12 pages**;
 - full LaTeX/BibTeX compile: **PASS**;
 - unresolved references/citations: **0**;
 - overfull boxes: **0**;
-- all 11 pages rendered at 200 dpi and visually inspected: **PASS**;
-- sine-profile sharpness validator: **PASS**;
-- PDF SHA-256: `a5c2d9e12bba045b76bbfb710428e5424e2c5cb5eb83d6aec6215a5996dbc6fb`.
-
-An external extreme adversarial re-review found no central mathematical failure and judged the PRX Quantum case well justified. Rev10 implements the review's two remaining formal/scope fixes plus its one worthwhile optional scientific enhancement, proving the near-lossless divergence exponent is sharp.
+- all pages rendered at 200 dpi and inspected: **PASS**;
+- all six numerical validators: **PASS**;
+- PDF SHA-256: `5e0ac0132a7f4a3f7b07e9c4ba86b046b23bc89c1f7635efe9f737019396d0f0`;
+- source ZIP SHA-256: `208fd7a2e932507366797658c84dff1666257477143a433bf81d7741a8d0c8a1`;
+- fresh source-package recompile visually pixel-identical on all 12 pages.
 
 **First target:** PRX Quantum — Research Article.
 
@@ -103,14 +89,13 @@ An external extreme adversarial re-review found no central mathematical failure 
 Switch to `agent/temporal-information-resource-law` and read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV10_REFEREE_CLOSURE_PREFLIGHT_2026-08-22.md`
-3. `grand_challenge/notes/WP27_SHARP_HIGH_RETENTION_EXPONENT_AND_REV10_REFEREE_CLOSURE.md`
-4. `grand_challenge/notes/MANUSCRIPT_REV9_SPECTRAL_RESOURCE_PREFLIGHT_2026-08-22.md`
-5. `grand_challenge/notes/WP26_HERGLOTZ_COMMON_MEASUREMENT_RETENTION.md`
-6. `grand_challenge/notes/WP25_COMPLETE_MONOTONE_SATURATION_CLASSIFICATION.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV11_ANHARMONIC_PREFLIGHT_2026-08-22.md`
+3. `grand_challenge/notes/WP28_ANHARMONIC_PURE_POINT_GAP_EXTENSION_AND_CONTINUUM_ATTACK.md`
+4. `docs/CURRENT_RESEARCH_STATE.md`
+5. `ROADMAP.md`
 
 # Workflow rule
 
-**Freeze Rev10.** Do not start another prefactor-optimization or theory-extension cycle without a concrete defect or referee-level reason.
+**Freeze Rev11.** Reopen only for a concrete theorem defect, priority collision, substantive referee objection, build/render regression, or unavoidable journal-format issue.
 
-Do not reintroduce “human verification” as a research/manuscript completion gate. The finished package is produced as far as possible and then submitted by a human. Unknown administrative facts remain placeholders rather than being invented.
+Do not reintroduce “human verification” as a research/manuscript completion gate. The finished package is produced as far as possible and then submitted by a human. Unknown administrative facts remain placeholders.
