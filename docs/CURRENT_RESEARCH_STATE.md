@@ -6,59 +6,56 @@
 
 **Active scientific branch:** `agent/temporal-information-resource-law`
 
-Paper 1 Rev11 and Paper 2 Rev7 are frozen. The Grand Challenge latest checkpoint is **WP24**.
+Paper 1 Rev11 and Paper 2 Rev7 are frozen. Grand Challenge science checkpoint: **WP24**. Preferred Grand Challenge manuscript: **Rev4**, locally build-verified and frozen unless a concrete defect appears.
 
 ## Replacement-agent recovery
 
 Switch to `agent/temporal-information-resource-law`, then read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-3. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
-4. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
-5. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
-6. `grand_challenge/notes/WP21_TARGETED_PRIORITY_AUDIT_SURVIVAL_FUNCTION_LAW.md`
-7. active-branch `ROADMAP.md`.
+2. `grand_challenge/notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
+3. `grand_challenge/notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
+4. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+5. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+6. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+7. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+8. active-branch `ROADMAP.md`.
 
 Do not resume historical HgCdTe/Kane work unless a later theorem explicitly requires it.
 
 # Strongest current theorem
 
-For periodic random-time encoding of a fixed semibounded-energy excitation with sector probabilities `q_n`, define
+For the exact periodic random-time model with sector probabilities `q_n`, define
 
 `T_k=sum_(m>=k)q_m`.
 
-For any finite number `N` of independently encoded excitations and **any joint POVM**,
+For any finite `N` and **any joint POVM**,
 
-`boxed: Tr F_N^(k)<=N T_k`.
+`Tr F_N^(k)<=N min(D_k,U_k)<=N T_k`.
 
 Thus
 
-`boxed: R_N(k)=Tr F_N^(k)/N<=T_k`,
+`R_N(k)=Tr F_N^(k)/N<=T_k`,
 
 and
 
-`boxed: sum_(k>=1)R_N(k)<=nbar`.
+`sum_(k>=1)R_N(k)<=nbar`.
 
-A support-sensitive form is
+`R_N(k)` is the two-quadrature / phase-averaged source-normalized retention. WP20 proves the result directly for arbitrary finite-copy collective measurements.
 
-`R_N(k)<=min(D_k,U_k)<=T_k`.
+# Controlled continuum form
 
-WP20 proves the result directly by Hilbert--Schmidt Cauchy--Schwarz for arbitrary finite-copy collective measurements.
+For a positive excitation-frequency spectral probability measure `mu` with finite mean, controlled large-period limits of exact periodic approximants satisfy
 
-# Continuum
-
-For a positive excitation-frequency spectral probability measure `mu` with finite mean,
-
-`boxed: R(nu)<=mu([nu,infinity))`.
+`R(nu)<=mu([nu,infinity))`.
 
 Consequently
 
-`boxed: int_R R(nu)dnu<=2Ebar^+/hbar`,
+`int_R R(nu)dnu<=2Ebar^+/hbar`,
 
 and
 
-`boxed: Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
+`Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
 
 The geometric/exponential canonical phase-time family attains the bound exactly.
 
@@ -70,7 +67,7 @@ This is not a theorem for every source with Poisson count statistics.
 
 # Secondary QFI envelope
 
-WP10/WP12/WP15 remain correct as separately optimized SLD-QFI bounds:
+WP10/WP12/WP15 remain correct as separately optimized SLD-QFI metric bounds:
 
 `sum_(k>=1)G_Q(k)<=2nbar`,
 
@@ -82,21 +79,33 @@ They are secondary to the sharp operational `2E/hbar` law. WP16 records the clas
 
 WP14 excludes arbitrary coherent waveform synthesis based only on baseline energy.
 
-Marvian--Spekkens, Phys. Rev. A 90, 062110 (2014), already establish `U(1)` gap modes and weighted twirling `sigma^(k)=p_(-k)rho^(k)`. Canonical phase measurements, energy-constrained phase estimation, arbitrary collective Fisher/Holevo bounds, random-unitary estimation, and asymmetry resource theory are also prior art.
+Weighted `U(1)` twirling/gap modes, canonical phase measurements, energy-constrained phase estimation, arbitrary collective Fisher/Holevo bounds, random-unitary estimation, waveform QFI, positive-frequency sharp inequalities, and Hardy--Hilbert mathematics are prior art.
 
-The candidate contribution is narrowly the **operational Fisher tail/survival law** for perturbations of the latent random-time mixing distribution and its sharp mean-energy/source-to-record consequences.
+The candidate contribution is narrowly the **operational classical-Fisher tail/survival law** for perturbations of the latent random-time mixing distribution and its sharp mean-energy/source-to-record consequences.
 
 Targeted searches have not located an exact predecessor. **Priority remains unverified, not certified.**
 
-# Publication status
+# Preferred manuscript — Rev4
 
-WP24 integrated hostile review: **PASS** after support-gap repair, continuum hardening, explicit field embedding, and prior-art narrowing.
+Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
-The project has reached a reasonable standalone-manuscript formation threshold.
+On the active branch Rev4 has passed:
+
+- full local LaTeX/BibTeX build;
+- seven-page visual inspection;
+- unresolved-reference/citation and overfull-box gates;
+- deterministic random-POVM numerical checks;
+- DOI/title/provenance bibliography audit.
+
+The bibliography audit corrected a real Pocovnicu title mismatch while retaining the scientifically correct DOI/source, and upgraded Gill to the published 2008 chapter metadata.
+
+The branch-push GitHub Actions job is not exposed by the current connector, so remote-job inspection is not claimed. Equivalent full local build verification is complete.
+
+**Rev4 is frozen unless a concrete theorem, priority, build, or referee-level defect is found.**
 
 ## Immediate next action
 
-Create a manuscript architecture centered on the operational survival-function theorem while continuing focused historical priority checking.
+No new theorem accumulation by default. Continue publication engineering only: remote CI inspection if accessible, a figure only if materially useful, conservative priority language, and factual submission metadata when supplied.
 
 ## Documentation requirement
 
