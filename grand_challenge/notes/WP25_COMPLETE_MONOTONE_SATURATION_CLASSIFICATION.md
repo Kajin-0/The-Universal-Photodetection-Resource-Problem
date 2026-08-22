@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-22
 
-**Status:** new theorem candidate; direct derivation complete at the one-copy level, continuum equality cone identified; finite-copy collective converse remains open and is **not** claimed.
+**Status:** one-copy rigidity theorem derived and general-outcome POVM Radon--Nikodym gate closed; continuum equality cone identified. The finite-copy entangled-collective **converse** remains open and is not claimed.
 
 ## Motivation
 
@@ -16,7 +16,7 @@ and exhibits the geometric spectrum
 
 with the canonical phase POVM as one family saturating every harmonic simultaneously.
 
-The new observation is that the geometric family is only an extreme point of a much larger equality cone.  Exact one-copy saturation is governed by the classical Hausdorff moment / complete-monotonicity structure.
+The new observation is that the geometric family is only an extreme point of a much larger equality cone. Exact one-copy saturation is governed by the classical Hausdorff moment / complete-monotonicity structure.
 
 This materially strengthens the equality story: the spectral distributions for which the operational tail ceiling is exactly attainable can be characterized, rather than merely exemplified.
 
@@ -40,7 +40,7 @@ For harmonic `k`, let
 
 `V_k=sum_(n>=0) |n+k><n| = V^k`,
 
-where `V` is the unilateral forward shift.  Then
+where `V` is the unilateral forward shift. Then
 
 `A_k=rho0^(1/2) V_k rho0^(1/2)`
 
@@ -56,33 +56,41 @@ Thus the active one-copy operational bound is
 
 ---
 
-# 2. Posterior-state form of the Cauchy--Schwarz proof
+# 2. General-outcome posterior-state form of the proof
 
-For an arbitrary POVM with baseline outcome measure `p(dy)`, define the positive trace-class operator-valued measure
+Let `M(B)` be an arbitrary POVM on a measurable outcome space. Define the positive trace-class operator-valued measure
 
-`tau(dy)=rho0^(1/2) M(dy) rho0^(1/2)`.
+`tau(B)=rho0^(1/2) M(B) rho0^(1/2)`.
 
-Its scalar trace is the baseline probability measure:
+Because `tau(B)>=0`,
 
-`p(dy)=Tr tau(dy)`.
+`||tau(B)||_1=Tr tau(B)=:p(B)`,
 
-On outcomes of nonzero baseline probability, write the Radon--Nikodym posterior state as
+so its trace-norm variation is exactly the baseline output probability measure `p`. In particular `tau` is absolutely continuous with respect to `p` and has finite variation.
 
-`tau(dy)=X_y p(dy)`,
+For a separable Hilbert space, the trace-class Banach space has the Radon--Nikodym property. Therefore there is a Bochner-integrable positive trace-class density `X_y` such that
 
-with `X_y>=0`, `Tr X_y=1`, and
+`tau(dy)=X_y p(dy)`.
+
+Taking the trace shows
+
+`Tr X_y=1`
+
+for `p`-almost every outcome, and completeness gives the posterior-ensemble identity
 
 `int X_y p(dy)=rho0`.
 
-For harmonic `k`,
+This closes the measure-theoretic gate: the equality argument does not require a discrete POVM or a rank-one-refinement assumption.
 
-`z_k(y)=Tr(A_k M(dy))/p(dy)=Tr(V_k X_y)`
+For harmonic `k`, the complex derivative measure is
 
-in density form, and therefore
+`Tr[A_k M(dy)] = Tr[V_k tau(dy)] = Tr(V_k X_y) p(dy)`.
+
+Hence the two-quadrature Fisher trace is exactly
 
 `Tr F_1^(k)=int |Tr(V_k X_y)|^2 p(dy)`.
 
-The range-side Cauchy--Schwarz inequality becomes the elementary state inequality
+For every density operator `X`, state Cauchy--Schwarz gives
 
 `|Tr(V_k X)|^2 <= Tr(X V_k V_k^dagger)`.
 
@@ -90,7 +98,7 @@ Integrating gives
 
 `Tr F_1^(k) <= Tr(rho0 V_k V_k^dagger)=T_k`.
 
-This form makes the equality condition transparent.
+Useful external functional-analysis provenance for the Radon--Nikodym step includes modern treatments explicitly stating that trace-class/Schatten-1 operator spaces possess the Radon--Nikodym property and that trace-class positive operator-valued measures admit trace-class densities.
 
 ---
 
@@ -102,21 +110,23 @@ For `k=1`, equality in
 
 is equality in Cauchy--Schwarz for the semi-inner product
 
-`<A,B>_X = Tr(X A^dagger B)`.
+`<A,B>_X = Tr(X A^dagger B)`
 
-Hence equality holds iff
+with `A=I` and `B=V^dagger` (using the modulus to conjugate `Tr(VX)` when convenient).
+
+Thus equality holds iff
 
 `(V^dagger-c I) X^(1/2)=0`
 
 for some complex `c`.
 
-Therefore the support of `X` lies in an eigenspace of the backward unilateral shift `V^dagger`.
+Therefore the range of `X^(1/2)` lies in an eigenspace of the backward unilateral shift `V^dagger`.
 
 For `|c|<1`, the normalized eigenvector is
 
-`|psi_c> = sqrt(1-|c|^2) sum_(n>=0) c^n |n>`
+`|psi_c> = sqrt(1-|c|^2) sum_(n>=0) c^n |n>`.
 
-and the eigenspace is one-dimensional.  Consequently every posterior state appearing in an exactly saturating measurement must be
+The eigenspace is one-dimensional. Consequently every posterior state appearing with nonzero probability in an exactly saturating measurement is
 
 `X=|psi_c><psi_c|`.
 
@@ -128,11 +138,13 @@ the corresponding sector probabilities are exactly geometric:
 
 `|<n|psi_c>|^2=(1-r)r^n`.
 
+If the integrated Fisher bound is saturated, the nonnegative pointwise Cauchy--Schwarz deficit has integral zero and therefore vanishes `p`-almost everywhere. Hence the above equality structure holds almost everywhere in the posterior ensemble.
+
 Since the posterior ensemble averages back to `rho0`, exact first-harmonic saturation implies
 
 `q_n = int_[0,1) (1-r) r^n pi(dr)`
 
-for a probability measure `pi`.
+for a probability measure `pi` obtained as the pushforward of `p(dy)` under `r=|c_y|^2`.
 
 Thus the sector distribution must be a **mixture of geometric pmfs**.
 
@@ -156,7 +168,7 @@ This ensemble induces the valid source-adapted POVM
 
 `M(dr,dtheta) = rho0^(-1/2) [pi(dr)dtheta/(2pi) |psi_(r,theta)><psi_(r,theta)|] rho0^(-1/2)`
 
-on the support of `rho0` (plus the orthogonal complement projector if needed).
+on the support of `rho0` (plus the orthogonal-complement projector if needed).
 
 Because
 
@@ -176,7 +188,7 @@ Therefore
 
 for **every k simultaneously under one common POVM**.
 
-A product of this one-copy POVM also saturates the per-copy bound for every finite number of independent copies.  This is only a sufficiency statement for finite `N`; the converse for arbitrary entangled collective POVMs at `N>1` is not yet proved.
+A product of this one-copy POVM also saturates the per-copy bound for every finite number of independent copies. This is a sufficiency statement for finite `N`; the converse for arbitrary entangled collective POVMs at `N>1` is not yet proved.
 
 ---
 
@@ -202,7 +214,7 @@ for all `j,k>=0`.
 
 Likewise `q_n` itself is a completely monotone pmf, equivalently a mixture of geometric pmfs.
 
-The classical equivalence between completely monotone pmfs and geometric mixtures is prior mathematics (Hausdorff moment theorem; Steutel and later statistical literature).  The new candidate contribution is the connection between that structure and **exact saturation of the arbitrary-POVM temporal Fisher-tail law**.
+The classical equivalence between completely monotone pmfs and geometric mixtures is prior mathematics (Hausdorff moment theorem; Steutel and later statistical literature). The new candidate contribution is the connection between that structure and **exact saturation of the arbitrary-POVM temporal Fisher-tail law**.
 
 For the full contiguous one-copy chain, the following are therefore equivalent:
 
@@ -246,7 +258,7 @@ Hence the controlled continuum limit satisfies the exact equality
 
 for the entire mixture-of-exponentials class.
 
-By the Hausdorff--Bernstein--Widder theorem, normalized completely monotone survival functions on `[0,infinity)` are precisely Laplace transforms of positive probability measures.  Thus the continuum equality cone is naturally the class of **completely monotone survival laws / mixtures of exponential spectra**, subject to the finite-mean condition
+By the Hausdorff--Bernstein--Widder theorem, normalized completely monotone survival functions on `[0,infinity)` are precisely Laplace transforms of positive probability measures. Thus the continuum equality cone is naturally the class of **completely monotone survival laws / mixtures of exponential spectra**, subject to the finite-mean condition
 
 `int_0^infinity S(nu)dnu = int beta^(-1) Pi(dbeta) < infinity`
 
@@ -258,7 +270,7 @@ The exponential spectrum in Rev8 is the extreme-point case `Pi=delta_beta`.
 
 # 7. Non-exponential exact equality examples
 
-A gamma mixing distribution for `beta` produces algebraic survival.  For example, if
+A gamma mixing distribution for `beta` produces algebraic survival. For example, if
 
 `beta ~ Gamma(alpha, rate=a)`,
 
@@ -278,22 +290,23 @@ is finite.
 
 Thus the exact Fisher-survival equality class contains heavy-tailed algebraic retention laws, not only the exponential/Cauchy extreme point.
 
-The saturating POVM can be interpreted as a rate-resolved mixture of the exponential-spectrum equality measurements.  Conditional on `beta`, the corresponding transform-limited spectral amplitude produces a Cauchy timing kernel; retaining the `beta` outcome label is part of the optimal generalized measurement.
+The saturating POVM can be interpreted as a rate-resolved mixture of the exponential-spectrum equality measurements. Conditional on `beta`, the corresponding transform-limited spectral amplitude produces a Cauchy timing kernel; retaining the `beta` outcome label is part of the optimal generalized measurement.
 
 ---
 
 # 8. Why this matters for significance
 
-Rev8 currently exhibits one exact equality family.  WP25 instead supplies a **classification theorem** and connects the operational quantum-metrology extremizers to classical moment theory:
+Rev8 currently exhibits one exact equality family. WP25 instead supplies a **classification theorem** and connects the operational quantum-metrology extremizers to classical moment theory:
 
 - quantum arbitrary-POVM Fisher saturation;
+- posterior-state equality in Hilbert--Schmidt/state Cauchy--Schwarz;
 - unilateral-shift eigenvectors;
 - mixtures of geometric distributions;
 - Hausdorff moment sequences;
 - complete monotonicity;
 - Bernstein/Laplace mixtures in the continuum.
 
-This is qualitatively deeper than adding another physical example or detector extension.  It changes the equality result from “there exists a sharp family” to “the one-copy exact saturators are characterized by a classical rigidity structure.”
+This is qualitatively deeper than adding another physical example or detector extension. It changes the equality result from “there exists a sharp family” to “the one-copy exact saturators are characterized by a classical rigidity structure.”
 
 ---
 
@@ -307,27 +320,28 @@ Do **not** claim novelty for:
 - mixtures of exponential densities;
 - Bernstein--Widder representation;
 - unilateral/backward-shift eigenvectors;
+- trace-class Radon--Nikodym theory;
 - canonical phase POVMs.
 
-Targeted web searches on 2026-08-22 did not identify a prior quantum-metrology result connecting these classical structures to exact saturation of an arbitrary-POVM temporal Fisher-tail resource law.  Priority remains **unverified, not certified**.
+Targeted web searches on 2026-08-22 did not identify a prior quantum-metrology result connecting these classical structures to exact saturation of an arbitrary-POVM temporal Fisher-tail resource law. Priority remains **unverified, not certified**.
 
-Useful classical provenance found:
+Useful provenance found:
 
-- F. Balabdaoui and G. de Fournas-Labrosse, *Least squares estimation of a completely monotone pmf: From Analysis to Statistics*, J. Stat. Plann. Inference 204, 55--71 (2020), DOI `10.1016/j.jspi.2019.04.006`.  Explicitly states the Hausdorff-theorem equivalence between completely monotone pmfs and mixtures of geometric pmfs.
+- F. Balabdaoui and G. de Fournas-Labrosse, *Least squares estimation of a completely monotone pmf: From Analysis to Statistics*, J. Stat. Plann. Inference 204, 55--71 (2020), DOI `10.1016/j.jspi.2019.04.006`. Explicitly states the Hausdorff-theorem equivalence between completely monotone pmfs and mixtures of geometric pmfs.
 - F. Balabdaoui and Y. Kulagina, *Completely monotone distributions: Mixing, approximation and estimation of number of species*, Comput. Stat. Data Anal. 150, 107014 (2020), DOI `10.1016/j.csda.2020.107014`.
-- R. L. Schilling, R. Song, and Z. Vondracek, *Bernstein Functions: Theory and Applications*, De Gruyter (2nd ed. 2012; later editions available), Chapter 1: Laplace transforms and completely monotone functions, DOI `10.1515/9783110269338.1`.
+- R. L. Schilling, R. Song, and Z. Vondracek, *Bernstein Functions: Theory and Applications*, De Gruyter, Chapter 1: Laplace transforms and completely monotone functions, DOI `10.1515/9783110269338.1`.
+- Modern functional-analysis sources explicitly record that trace-class/Schatten-1 spaces have the Radon--Nikodym property and that trace-class positive operator-valued measures admit trace-class densities; this is standard prior mathematics, used only to make the arbitrary-outcome equality proof rigorous.
 
 ---
 
-# 10. Next theorem gates
+# 10. Remaining theorem gates
 
 Before promotion into a manuscript revision:
 
-1. hostile-audit the operator-valued Radon--Nikodym step for fully general POVMs;
-2. write the equality proof first for dominated/countable POVMs, then determine the cleanest general-outcome formulation;
-3. test the equivalence numerically for finite truncations approaching the infinite chain;
-4. verify the continuum mixture construction exactly at the lower-bin level;
-5. decide whether the finite-`N` **converse** can be proved.  Do not claim it unless established;
-6. run a targeted literature search specifically for quantum phase/Fisher extremizer classifications involving completely monotone or geometric-mixture spectra.
+1. add an independent symbolic/numerical validator for geometric mixtures, Hausdorff finite differences, and continuum lower-bin identities;
+2. run a targeted literature search specifically for quantum phase/Fisher extremizer classifications involving completely monotone or geometric-mixture spectra;
+3. decide whether the finite-`N` **converse** can be proved. Do not claim it unless established;
+4. hostile-audit the source-adapted POVM normalization in the infinite-dimensional support and the zero-eigenvalue/trivial-ground edge case;
+5. determine whether the theorem belongs in the main text or End Matter/Supplement without diluting the operational story.
 
-If these gates pass, WP25 is strong enough to justify a genuine Rev9 scientific revision rather than another polish pass.
+The general-outcome Radon--Nikodym gate is now closed. If the remaining gates pass, WP25 justifies a genuine Rev9 scientific revision rather than another polish pass.
