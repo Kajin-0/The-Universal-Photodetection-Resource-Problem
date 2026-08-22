@@ -19,6 +19,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install numerical validation dependency
+        run: python -m pip install --disable-pip-version-check numpy
+
       - name: Generate Grand Challenge Rev2 mechanical repair
         working-directory: grand_challenge/manuscript
         run: python apply_rev2_mechanical.py
@@ -50,7 +57,7 @@ jobs:
             echo "Overfull LaTeX boxes detected"
             exit 1
           fi
-          if grep -F '\\boxed{' energy_survival_temporal_fisher_rev3.tex; then
+          if grep -F '\boxed{' energy_survival_temporal_fisher_rev3.tex; then
             echo "APS-incompatible boxed markup remains"
             exit 1
           fi
