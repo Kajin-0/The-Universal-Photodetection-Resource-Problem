@@ -15,7 +15,7 @@ def replace_once(text: str, old: str, new: str) -> str:
     return text.replace(old, new, 1)
 
 
-# Rev10 is a narrow referee-closure revision on top of Rev9.  It keeps the
+# Rev10 is a narrow referee-closure revision on top of Rev9. It keeps the
 # finite-copy theorem, continuum survival theorem, Herglotz theorem, and
 # extremizer theorem unchanged, but closes two scope/formal issues and adds a
 # clean achievability witness proving the high-retention divergence exponent
@@ -24,6 +24,11 @@ main = replace_once(
     main,
     r"\input{rev9_spectral_theorems.tex}",
     r"\input{rev10_spectral_theorems.tex}",
+)
+main = replace_once(
+    main,
+    r"\newtheorem{corollary}{Corollary}",
+    "\\newtheorem{corollary}{Corollary}\n\\newtheorem{proposition}{Proposition}",
 )
 main = replace_once(
     main,
@@ -37,7 +42,7 @@ main = replace_once(
 )
 
 # Continuum Bochner step: normalized positive definiteness alone does not imply
-# the standard finite-measure representation on R.  State continuity at zero
+# the standard finite-measure representation on R. State continuity at zero
 # explicitly (which also implies continuity everywhere for a pd function).
 spec = replace_once(
     spec,
@@ -97,6 +102,7 @@ assert "continuous at the origin" in spec
 assert r"\begin{proposition}[Sharp high-retention exponent]" in spec
 assert "one fixed one-copy detector POVM is held fixed across frequencies" in main
 assert "this divergence exponent is sharp" in main
+assert r"\newtheorem{proposition}{Proposition}" in main
 assert r"\input{rev10_spectral_theorems.tex}" in main
 assert r"\input{rev9_spectral_theorems.tex}" not in main
 
