@@ -6,62 +6,73 @@
 
 **Active branch:** `agent/temporal-information-resource-law`
 
-**Grand Challenge science checkpoint:** WP24.
+**Grand Challenge science frontier:** **WP27**.
 
-**Preferred manuscript:** **Rev7 PRX Quantum**.
+**Preferred manuscript:** **Rev10 — Spectral Resource Laws for Temporal Fisher Information**, frozen.
 
-## Theorem frontier
+## Established theorem hierarchy
 
-Exact periodic random-time encoding:
+1. **Finite-copy arbitrary-POVM tail law**
+   
+   `Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`
+   
+   for any finite `N`, including entangled collective measurements.
 
-`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`
+2. **Controlled continuum survival law**
+   
+   `R(nu)<=Pr(Omega>=nu)`.
 
-for any finite-copy joint POVM.
+3. **Fixed-one-copy common-measurement Herglotz law**
+   
+   `R_M(k)=int cos(k theta)J_M(dtheta)`, so `[R_M(i-j)]` is PSD.
 
-Controlled periodic-to-continuum limit:
+4. **Near-lossless energy divergence**
+   
+   `Ebar+>=hbar nu A(R)`, with `A(R)~1/sqrt(2(1-R))` as `R->1`.
 
-`R(nu) <= Pr(Omega>=nu)`.
+5. **Sharp divergence exponent**
+   
+   A finite sine-profile source under canonical phase measurement has
+   `R_L(1)=cos^2(pi/(L+1))` and `nbar_L=(L-1)/2`, hence
+   `nbar_L~pi/[2sqrt(1-R_L(1))]`.
+   The inverse-square-root exponent is sharp; the optimal prefactor is not claimed.
 
-The survival law is the main continuum theorem. `Ebar+=hbar<Omega>` is excess energy above the participating lower edge; integrated and `hfR` inequalities are first-moment corollaries.
+6. **Complete one-copy extremizers**
+   
+   `first-harmonic equality <=> geometric-mixture populations <=> Hausdorff-moment tails <=> one common source-adapted POVM saturates all harmonics`.
 
-## Rev7 changes
+7. **Completely monotone continuum equality cone** through exponential mixtures.
 
-Rev7 addresses the latest adversarial-review risks without changing the finite-copy theorem:
+8. **Nonextremal photon relevance**, **independent-Poisson source inheritance**, and the **coherent-sideband no-go boundary** remain in force.
 
-1. controlled continuum qualification explicit;
-2. excess-energy terminology explicit;
-3. survival law emphasized over the `hf` corollary;
-4. modes-of-asymmetry distinction strengthened;
-5. one transform-limited truncated-Gaussian single-photon example added;
-6. Figure 1 hardened accordingly.
+## Scope discipline
 
-The new photon example reaches ~96.6% of the ceiling at `0.5 sigma` and ~88.5% at `sigma` under canonical timing.
+The modewise tail theorem is finite-copy and collective-measurement general. The Herglotz/divergence theorem is a **fixed one-copy common-POVM** result. Bochner in the continuum extension requires continuity at the origin of the normalized positive-definite controlled limit.
 
-Final local build: **PASS**, 8 pages, zero unresolved references/citations, zero overfull boxes, all pages visually inspected at 200 dpi.
-
-## Priority
-
-The candidate contribution is the operational **classical-Fisher population-tail/survival law**, including arbitrary finite-copy collective measurement, all-mode budget, sharp simultaneous attainability, and source-to-record consequences.
-
-Generic `U(1)` mode/twirl theory, phase estimation, QFI/Holevo machinery, waveform QFI, Hardy--Hilbert mathematics, and generic Poisson/CPTP processing are prior art.
+Do not claim novelty for `U(1)` mode decomposition, Herglotz/Bochner, Hausdorff/Bernstein theory, geometric/exponential mixtures, canonical phase POVMs, sine states, generic QFI/Holevo machinery, or generic Poisson/CPTP processing.
 
 **Priority remains unverified, not certified.**
+
+## Rev10 gate
+
+- 11 pages;
+- full LaTeX/BibTeX build: **PASS**;
+- unresolved citations/references: **0**;
+- overfull boxes: **0**;
+- 11/11 pages rendered at 200 dpi and inspected: **PASS**;
+- sharpness validator: **PASS**;
+- PDF SHA-256: `a5c2d9e12bba045b76bbfb710428e5424e2c5cb5eb83d6aec6215a5996dbc6fb`.
+
+Detailed preflight lives on the active branch:
+`grand_challenge/notes/MANUSCRIPT_REV10_REFEREE_CLOSURE_PREFLIGHT_2026-08-22.md`.
 
 ## Journal ladder
 
 1. **PRX Quantum — Research Article**.
 2. **Physical Review A — Regular Article**.
 3. Physical Review Research — secondary alternative.
-4. PRL — only after a deliberate Letter rewrite.
+4. PRL only after a deliberate Letter rewrite.
 
 ## Current work order
 
-**Freeze Rev7.** No new theorem scope, detector technologies, source classes, or examples by default.
-
-Reopen only for a concrete theorem defect, historical-priority collision, build/rendering defect, unavoidable journal-format requirement, or new referee-level objection.
-
-Do not reintroduce “human verification” as a manuscript/research gate. The finished package is handed to a human for submission; unknown administrative facts may remain placeholders and must not be invented.
-
-## Documentation policy
-
-Detailed derivations live on `agent/temporal-information-resource-law`; `main` must always show the current frontier.
+**Freeze Rev10.** Reopen only for a concrete theorem defect, historical-priority collision, build/journal-format defect, or new referee-level objection. Do not introduce a human-verification research gate.
