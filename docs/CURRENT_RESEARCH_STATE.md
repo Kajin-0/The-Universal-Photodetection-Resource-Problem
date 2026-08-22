@@ -4,31 +4,23 @@
 
 **Active scientific branch:** `agent/temporal-information-resource-law`
 
-The repository, not chat history, is authoritative.
+Paper 1 Rev11 and Paper 2 Rev7 are frozen. The Grand Challenge is active through **WP18**.
 
-## Project status
-
-1. **Paper 1 / Rev11** — frozen and technically validated.
-2. **Paper 2 / Rev7** — frozen preferred science draft.
-3. **Grand Challenge** — active theorem stack through **WP17**.
-
-## Replacement-agent recovery
-
-Read:
+## Read first
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/WP17_SINGLE_MEASUREMENT_OPERATIONAL_MODE_BUDGET.md`
-3. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
-4. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
-5. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
-6. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
-7. `grand_challenge/notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
-8. `grand_challenge/notes/WP11_WP10_FACTOR_AUDIT_AND_PRIOR_ART.md`
+2. `grand_challenge/notes/WP18_TWO_SECTOR_COLLECTIVE_HOLEVO_CLOSURE.md`
+3. `grand_challenge/notes/WP17_SINGLE_MEASUREMENT_OPERATIONAL_MODE_BUDGET.md`
+4. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
+5. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
+6. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
+7. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
+8. `grand_challenge/notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
 9. `grand_challenge/notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
 
-# Current theorem hierarchy
+## Current theorem hierarchy
 
-## Modewise QFI envelope — WP10/WP12/WP15
+### QFI envelope
 
 Periodic:
 
@@ -38,66 +30,73 @@ Periodic:
 
 Continuum:
 
-`int_R G_Q(nu)dnu <=pi Ebar^+/hbar`.
+`int_R G_Q(nu)dnu<=pi Ebar^+/hbar`.
 
-This remains a valid separately optimized quantum envelope.
+This is a separately optimized modewise SLD envelope. WP16 establishes that the sharp `pi/4` operator norm used in WP15 is classical Hardy–Hilbert mathematics.
 
-WP16 establishes that the sharp `pi/4` operator constant in the continuum proof is established Hardy–Hilbert mathematics and must not be claimed as new mathematics.
+### Fixed/separable operational theorem — WP17
 
-## Sharp fixed-measurement/separable operational law — WP17
-
-For one fixed arbitrary POVM, with `F_M^(k)` the cosine/sine classical Fisher block,
+For one fixed arbitrary POVM,
 
 `boxed: sum_{k>=1}Tr F_M^(k)<=nbar`.
 
-No covariance or reference-free assumption is imposed on the POVM. The proof uses POVM positivity and Cauchy–Schwarz.
-
-The bound extends to arbitrary adaptive/separable measurements of independent quantum-marked events by the classical Fisher chain rule.
+The theorem extends to adaptive/separable independent-event detection.
 
 Continuum:
 
-`boxed: int_0^infinity R_M(nu)dnu<=omega_bar`,
-
 `boxed: int_R R_M(nu)dnu<=2Ebar^+/hbar`.
 
-A full two-quadrature band guarantee
-
-`F_M(nu)>=(q0/2)I_2`, `|f|<=B`,
-
-requires
+A two-quadrature flat-band guarantee implies
 
 `boxed: Ebar^+>=hBq0`.
 
-The coefficient is sharp. The Cauchy/exponential covariant timestamp family saturates the continuum area law.
+The coefficient is sharp and attained by the Cauchy/exponential covariant timestamp family.
 
-Therefore, for single-copy/separable readout, the factor `pi/2` between the QFI and operational area constants is an incompatibility gap.
+### Two-sector collective theorem — WP18
 
-# Remaining collective loophole
+For `q_0=1-p`, `q_1=p`, let `j=p(1-p)`. The random-time cosine/sine model is a two-parameter mixed-qubit transverse estimation problem with SLD QFI `J=jI_2`.
 
-WP17 does not yet constrain arbitrary entangled collective measurements across multiple independently twirled event excitations. The baseline twirled state is generally mixed, and collective mixed-state measurements can outperform separable multiparameter bounds.
+Direct Holevo optimization gives
 
-The immediate operational problem is to compute the Holevo/collective limit, beginning with the two-sector qubit random-time model, and determine whether `2E/hbar` remains the universal operational coefficient.
+`C_H(I)=2[1+|1-2p|]/[p(1-p)]`.
 
-# Physical source scope
+The asymptotically attainable isotropic source-normalized collective retention is
 
-WP13 covers total-energy sectors, fixed-number multiphoton/entangled/multimode excitations, independent quantum-marked Poisson events, and parameter-independent downstream field mapping.
+`boxed: q_coll=min(p,1-p)`.
 
-WP14 blocks extension to arbitrary coherent waveform state engineering based only on baseline mean energy.
+For `p<=1/2`,
 
-# Priority status
+`boxed: q_coll=p=nbar`.
 
-Generic random-unitary mixing-weight estimation, U(1) asymmetry, multiparameter incompatibility, Gill–Massar/Holevo theory, QFI, covariant POVMs, and Hardy–Hilbert mathematics are prior art.
+Thus the first collective-measurement hostile test passes exactly: collective readout improves over separable readout but does not violate the energy resource coefficient; it saturates it on the low-excitation branch.
 
-No exact predecessor has yet been located for the specific random-time `G_Q(k)` formula, `2nbar` QFI sum rule, WP17 `nbar` operational trace budget, or the corresponding temporal-information resource interpretation. **Priority remains uncertified.**
+For a gap of `k` sectors, `nbar=kp` and `q_coll<=nbar/k`.
 
-# Immediate gates
+The generic mixed-qubit Holevo calculation is prior art; the candidate contribution is the temporal random-distribution/resource mapping.
 
-1. Collective mixed-state/Holevo analysis of the two-sector model, then general modes.
-2. Continue exact priority search for WP10/WP17.
-3. Strengthen realistic incoherent optical-field embedding.
-4. Clarify direct provenance of the harmonic-mean density inequality.
-5. Only then decide on a foundational manuscript.
+## Current highest-value problem
 
-# Documentation rule
+The remaining operational frontier is **multimode collective measurement** for multilevel excitations.
 
-Every material theorem/gate change must update the WP notes, `grand_challenge/AGENTS.md`, top-level landing docs, and `main`. Do not allow secondary entry points to become stale.
+Target statement to prove or falsify:
+
+`sum_{k>=1}R_coll(k)<=nbar`
+
+for the asymptotically attainable collective information of all random-time modes, which would imply
+
+`int_R R_coll(nu)dnu<=2Ebar^+/hbar`.
+
+Start with three sectors and modes `k=1,2`, then seek a Holevo-dual/general proof.
+
+## Other gates
+
+- continue exact priority audit for WP10/WP17/WP18 mappings;
+- strengthen the independent quantum-marked Poisson-to-field embedding;
+- determine explicit analysis provenance of the harmonic-mean density functional;
+- retain WP14's no-go against arbitrary coherent waveform synthesis.
+
+Do not draft a foundational manuscript yet.
+
+## Documentation rule
+
+Every material result must update the WP note, active handoff/landing documents, and `main`.
