@@ -16,69 +16,145 @@ Active branch: `agent/temporal-information-resource-law`.
 
 ## Grand question
 
-> For an arbitrary physically realizable autonomous measurement apparatus with memory, what physical resources constrain the temporal spectrum of information transferable from a weak time-dependent perturbation to an accessible measurement record?
+> For a physically realizable measurement of temporal structure, what fundamental resources constrain the source-to-record temporal Fisher-information transfer spectrum?
 
-Paper 2 supplies the classical local observable:
+Paper 2 supplies the classical local observable
 
-`F_out[u,v] = Phi0/(2*pi) int G(omega) U*(omega)V(omega) domega`,
+`F_out[u,v] = Phi0/(2*pi) int G(nu) U*(nu)V(nu) dnu`,
 
-with `0 <= G <= 1` a.e. for autonomous parameter-independent classical Poisson detector channels.
+with `0 <= G <= 1` a.e. for parameter-independent autonomous classical Poisson detector channels.
 
-The goal here is not merely to extend that theorem. It is to determine whether physical realizability imposes additional universal structure or resource costs on `G(omega)` (or on a quantum generalization), and to identify sharp counterexamples when it does not.
+The grand-challenge program asks what additional restrictions follow from physical realizability.
 
-## Current decisive literature constraints
+## Read first — current authoritative order
 
-1. **Entropy production alone is not a universal information-acquisition resource.** Barato, Hartich, and Seifert (PRE 87, 042104, 2013) explicitly found no universal inequality forcing sensory-network information acquisition rate below thermodynamic entropy production.
-2. **Frequency-domain nonequilibrium response/resource theory already exists.** Kwon et al. (arXiv:2605.05038, 2026) derive frequency-domain fluctuation-response identities and kinetic/thermodynamic uncertainty relations for Langevin and Markov jump systems.
-3. **Dynamical activity already bounds generic Markov response precision.** Liu and Gu (Commun. Phys. 8, 62, 2025) derive response kinetic uncertainty relations using path Fisher information and dynamical activity.
-4. **Autonomous quantum detector thermodynamics is an active frontier.** Schwarzhans et al., PRX Quantum 7, 033001 (2026), construct a minimal autonomous quantum detector thermal machine and find model-dependent tradeoffs among entropy production, efficiency, jitter, dead time, and dark counts.
-5. Quantum continuous-measurement work already studies retrieval of output-field quantum Fisher information, so a generic claim that QFI should be optimized over temporally nonlocal measurements is not new.
+1. `grand_challenge/notes/WP06_POSITIVE_ENERGY_TEMPORAL_FISHER_AREA_LAW.md`
+2. `grand_challenge/notes/WP05_OPERATIONAL_CLOSURE_AND_LOCAL_LANDAUER_BASELINE.md`
+3. `grand_challenge/notes/WP04_QUANTUM_WAVEFORM_PRIOR_ART_COLLISION.md`
+4. `grand_challenge/notes/WP03_COVARIANT_TIMESTAMP_REGULARITY_AND_QFI_BOUND.md`
+5. `grand_challenge/notes/WP02_QUANTUM_TIMING_BANDWIDTH_CANDIDATE.md`
+6. `grand_challenge/notes/WP01_LANDSCAPE_AND_FIRST_NO_GOS.md`
+7. `grand_challenge/README.md`
 
-Therefore the program must not claim novelty for generic FI-vs-dissipation, frequency-domain response uncertainty, dynamical-activity bounds, or autonomous-detector thermodynamics.
+## Current strongest theorem candidate — WP06
 
-## Immediate research strategy
+Let `Omega=(H-E0)/hbar >=0` generate an unknown time shift of a quantum excitation, and let a fixed covariant event-time sub-POVM have click effect
 
-### Gate G1 — destroy naive resource laws
+`Q=int M(dt)`, `0<=Q<=I`, `[Q,Omega]=0`.
 
-Construct explicit abstract detector/channel counterexamples against proposed universal lower bounds involving only:
+For state `rho`, define
 
-- housekeeping entropy production;
-- total entropy production;
-- average power;
-- ordinary dynamical activity;
-- dead time / mean recovery time;
-- finite-dimensional memory size.
+`eta=Tr[rho Q]`,
 
-Any surviving law must state the operational assumptions that exclude these counterexamples (durable record, reset, amplification, fixed input-event energy, finite timing reference, etc.).
+`omega_det=Tr[rho Q Omega]`,
 
-### Gate G2 — classify information singularities
+`E_det=hbar omega_det`.
 
-Study operating points where static/local homogeneous FI vanishes but dynamic Fisher spectrum is nonzero. Determine which structural mechanisms can create such zeros:
+The covariant POVM admits a positive-frequency Hardy-space timing amplitude. Pocovnicu's sharp positive-frequency Gagliardo--Nirenberg inequality, extended to vector-valued multiplicity, gives
 
-- non-injective stationary parameter maps;
-- branch coalescence;
-- conservation/symmetry constraints;
-- hidden-state cancellation;
-- quantum measurement-accessibility loss.
+`int p(t)^2 dt <= eta omega_det/pi`.
 
-Seek a theorem beyond Type-II counters.
+For the corresponding event timing transfer spectrum
 
-### Gate G3 — test causal spectral-factor structure
+`G(nu)=eta |F(nu)|^2`,
 
-For causal autonomous channels, determine whether the conditional-score projection admits a causal factorization `A = B* B` and what, if anything, physical finite-memory/Markov assumptions add beyond arbitrary nonnegative Fourier multipliers. Do not assume causality alone constrains `G`; spectral factorization may make the class nearly arbitrary.
+this yields the sharp spectral-area candidate
 
-### Gate G4 — quantum accessibility gap
+`boxed: int_{R} G(nu)dnu <= 2 omega_det = 2 E_det/hbar`.
 
-Formulate a careful quantum analogue only after the classical no-go structure is clear. Highest-interest target:
+Therefore
 
-`G_accessible(omega) < G_quantum(omega)`
+`boxed: int G <= 2 E_exc/hbar`,
 
-at an information singularity, with a physically meaningful alternative measurement recovering information inaccessible to a conventional detector record.
+where `E_exc=Tr[rho(H-E0)]`.
+
+In Paper-1 timing-bandwidth notation,
+
+`boxed: eta B_FI <= E_det/h`.
+
+If the click effect is energy independent, `Q=eta I`, then
+
+`boxed: B_FI <= E_exc/h`.
+
+If `G(2*pi*f)>=q` for all `|f|<=B`, then
+
+`boxed: E_det >= h B q`.
+
+The scalar ideal bound is sharp. Equality is attained by a one-pole Hardy amplitude, corresponding to a Cauchy timestamp density and exponential positive-energy spectrum:
+
+`f_a(t)=a/[pi(t^2+a^2)]`,
+
+`G_a(nu)=exp(-2a|nu|)` for `eta=1`.
+
+### Mandatory caution
+
+The sharp Hardy inequality and covariant time POVM machinery are prior art. Novelty, if any, is the **event-channel Fisher spectral-area interpretation, exact efficiency/detected-energy bookkeeping, and inverse information-bandwidth resource law**. Priority is not certified.
+
+This is an end-to-end quantum timing resource theorem, not yet a detector-internal dissipation law.
+
+## Previous routes closed or downgraded
+
+### Entropy production / thermodynamic cost
+
+Rejected as universal scalar resource. Information-acquisition rate is not generically bounded by entropy production; actual dissipation is implementation-dependent; thermodynamic channel capacity additionally depends on Hamiltonians/physical embedding. WP01/WP05 document the no-gos.
+
+### Generic quantum waveform Fisher spectrum
+
+Substantially preempted by Tsang--Wiseman--Caves (PRL 106, 090401, 2011) and later continuous quantum sensing. Do not claim novelty for a quantum waveform QFI kernel/spectrum. See WP04.
+
+### QFI/energy-variance timestamp bound
+
+WP03 remains valid/useful:
+
+`B_FI <= sqrt(F_Q)/(4 sqrt(3)) <= Delta H/(2 sqrt(3) hbar)`.
+
+But WP06's positive-energy mean-resource law is currently the more distinctive frontier.
+
+### Information singularities
+
+Remain a useful diagnostic, but generic static non-identifiability restored by dynamic excitation overlaps classical system-identification/persistent-excitation theory. Do not make this the lead grand theorem absent a stronger classification result.
+
+## Decisive literature boundaries
+
+Do not claim novelty for:
+
+- Fisher data processing / QFI monotonicity;
+- arbitrary waveform QFI kernels/spectral QCRBs;
+- covariant time POVMs / Naimark dilation;
+- QFI as time-translation asymmetry resource;
+- sharp Gagliardo--Nirenberg/Hardy inequality itself;
+- generic time-energy uncertainty relations;
+- generic FI-vs-dissipation/dynamical-activity bounds;
+- thermodynamic work cost of abstract quantum channels;
+- finite-time Landauer bounds.
+
+Important close sources include:
+
+- Pocovnicu, Analysis & PDE 4, 379--404 (2011), sharp `H_+^{1/2}` GN inequality;
+- Skulimowski, Phys. Lett. A 297, 129--136 (2002), covariant time POVMs;
+- Tsang, Wiseman, Caves, PRL 106, 090401 (2011), waveform QCRB/QFI kernel;
+- Hall, Entropy 24, 1679 (2022), strong Heisenberg/Renyi energy-time tradeoffs;
+- Faist et al./Faist--Renner/Faist--Berta--Brandao, thermodynamic channel costs;
+- Barato--Hartich--Seifert, PRE 87, 042104 (2013), no simple universal information-vs-dissipation law;
+- recent response/activity/clock literature recorded in WP01/WP05.
+
+## Immediate hostile gates for WP06
+
+1. **Energy-origin audit:** determine precisely whether `E0` must be the global Hamiltonian lower edge, the lower edge of an invariant support subspace, or another gauge-invariant excitation reference. For optical wavepackets, distinguish carrier energy from temporal-envelope/sideband resource.
+2. **Covariant POVM theorem:** write the intertwiner/direct-integral representation with theorem-grade hypotheses and prove the first-moment identity/bound `omega_det=Tr[rho Q Omega]`.
+3. **Mixed states:** formalize purification without changing the energy moment.
+4. **General marks:** extend finite/countable mark proof to general measurable mark spaces.
+5. **Prior-art collision:** search specifically for a collision/Renyi-2 time-density bound of the form `int p(t)^2 <= <Omega>/pi` and its quantum timing interpretation.
+6. **Sharpness:** verify physical attainability of the Cauchy timestamp/exponential positive-energy extremal and characterize equality under inefficiency/multiplicity.
+7. **End-to-end normalization:** independently rederive `int G=4*pi*eta B_FI` and all Fourier/Planck constants.
+8. **Memory extension:** only after gates 1--7, test whether a trajectory-level area law survives detector memory.
+
+Do not draft a new paper or describe WP06 as Nobel-level until these gates are closed.
 
 ## Documentation rule
 
-After every material theorem, counterexample, literature collision, or change in strategy:
+After every material theorem, counterexample, proof repair, prior-art collision, numerical result used in an argument, or strategy change:
 
 1. update/create `grand_challenge/notes/WP*.md` immediately;
-2. update this file if the active gates or central hypothesis change;
+2. update this file when the active theorem/gates change;
 3. do not rely on chat history as the only record.
