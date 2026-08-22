@@ -13,8 +13,13 @@ def replace_once(old: str, new: str):
     text = text.replace(old, new, 1)
 
 
-# 1. Abstract: avoid overloading N with copy number / event number / energy index,
-# and state the continuum result as the controlled periodic limit actually proved.
+# 1. Abstract: state the exact finite-copy theorem on its periodic sector
+# model, avoid overloading N, and identify the continuum statement as the
+# controlled large-period limit actually proved.
+replace_once(
+    "We consider a different question: a fixed quantum excitation with a semibounded generator is emitted at a latent random time, and weak temporal structure is encoded in Fourier coefficients of the probability distribution of that random translation.  For the two real quadratures of harmonic $k$, we prove that every joint measurement on any finite number $N$ of independently encoded excitations obeys",
+    "We consider a different question: a fixed quantum excitation is emitted at a latent random time, and weak temporal structure is encoded in Fourier coefficients of the probability distribution of that random translation.  We first formulate the exact finite-copy theorem on a periodic time coordinate, with the semibounded translation generator resolved into equally spaced sectors.  For the two real quadratures of harmonic $k$, every joint measurement on any finite number $N$ of independently encoded excitations obeys",
+)
 replace_once(
     r"\frac{1}{N}\Tr F_N^{(k)}\leq \Pr(N_E\geq k),",
     r"\frac{1}{N}\Tr F_N^{(k)}\leq \sum_{m\geq k}q_m,",
@@ -53,6 +58,7 @@ replace_once(
 
 # 5. Final source assertions for the intended claim discipline.
 assert "N_E" not in text
+assert "equally spaced sectors" in text
 assert "controlled large-period" in text
 assert r"characteristic function is $\e^{-a|\nu|}$" in text
 assert "obvious measure-theoretic replacement" not in text
