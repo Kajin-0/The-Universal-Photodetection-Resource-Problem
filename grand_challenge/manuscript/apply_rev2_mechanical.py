@@ -10,18 +10,21 @@ assert anchor in text, "Expected hyperref preamble anchor not found"
 assert r"\begin{theorem}" in text, "Expected theorem environment not found"
 assert r"\begin{corollary}" in text, "Expected corollary environment not found"
 assert r"\begin{proof}" in text, "Expected proof environment not found"
+assert r"\cK" in text, "Expected event-register macro use not found"
 
 insertion = r"""\newtheorem{theorem}{Theorem}
 \newtheorem{corollary}{Corollary}
 % REVTeX permits \newtheorem but APS production guidance excludes amsthm.
 % REVTeX 4.2 already defines \endproof but not the opening \proof command.
 \providecommand{\proof}{\par\noindent\textit{Proof.}\ }
+% Mechanical repair of the event-register shorthand used in Rev1.
+\providecommand{\cK}{\mathcal{K}}
 """
 
 text = text.replace(anchor, anchor + insertion, 1)
 
 
-def unwrap_balanced_command(source: str, command: str) -> str:
+def unwrap_balanced_command(source: str, command: str):
     """Replace every command{balanced content} by balanced content."""
     needle = command + "{"
     out = []
@@ -47,11 +50,10 @@ def unwrap_balanced_command(source: str, command: str) -> str:
         out.append(source[content_start : i - 1])
         pos = i
         count += 1
-    repaired = "".join(out)
-    return repaired, count
+    return "".join(out), count
 
 
-# APS REVTeX production guidance excludes \boxed markup.  Remove only the
+# APS REVTeX production guidance excludes \boxed markup. Remove only the
 # presentation wrapper; the enclosed mathematical expression is unchanged.
 text, n_boxed = unwrap_balanced_command(text, r"\boxed")
 assert n_boxed > 0, "Expected boxed expressions were not found"
