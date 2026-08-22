@@ -118,6 +118,7 @@ jobs:
             grand_challenge/manuscript/apply_rev6_prxquantum_packaging.py
             grand_challenge/manuscript/apply_rev7_referee_hardening.py
             grand_challenge/manuscript/figure1_operational_architecture_body.tex
+            grand_challenge/manuscript/figure1_operational_architecture_body_rev7.tex
             grand_challenge/manuscript/references.bib
             grand_challenge/numerics/verify_operational_tail_bound.py
             grand_challenge/numerics/verify_truncated_gaussian_photon_example.py
