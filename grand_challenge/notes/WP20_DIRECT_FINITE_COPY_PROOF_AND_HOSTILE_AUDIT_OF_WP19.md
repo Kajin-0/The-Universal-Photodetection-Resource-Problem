@@ -4,7 +4,7 @@
 
 ## Status
 
-**WP19 survives hostile audit and is strengthened substantially.**
+**WP19 survives hostile audit and is strengthened substantially. A support-gap notation issue found in the integrated audit is repaired here.**
 
 The collective survival-function theorem does not require the Holevo Cramer--Rao bound, asymptotic attainability, local asymptotic normality, a repeated-block construction, or finite-dimensional regularity assumptions.
 
@@ -32,31 +32,31 @@ This is the same theorem claimed in WP19, now with a much shorter and more robus
 
 ---
 
-## 1. One-copy factorization
+## 1. One-copy factorization with arbitrary support gaps
 
 At the uniform random-time baseline, for the purified pure excitation write
 
 `rho0 = sum_n q_n |phi_n><phi_n|`,
 
-where the participating `|phi_n>` lie in mutually orthogonal total-energy sectors.
+where the nonzero participating `|phi_n>` lie in mutually orthogonal total-energy sectors.
 
-Define the unilateral sector shift
+A previous version of this note wrote a unilateral shift as though every intermediate energy sector necessarily existed and participated. That is unnecessarily strong. For arbitrary support, define the **paired partial shift**
 
-`V_k = sum_{n>=0} |phi_{n+k}><phi_n|`.
+`V_k = sum_(n: q_n q_(n+k)>0) |phi_(n+k)><phi_n|`.
 
-On the participating subspace,
+Then `V_k` is a partial isometry with
 
-`V_k^dagger V_k = I`,
+`V_k^dagger V_k = P_dom,k <= I`,
 
-while
+and
 
-`V_k V_k^dagger = P_>=k`,
+`V_k V_k^dagger = P_ran,k <= P_>=k`,
 
-where `P_>=k` projects onto participating sectors with index at least `k`.
+where `P_>=k` projects onto all participating sectors with index at least `k`.
 
 The complex mode tangent is
 
-`A_k = sum_n sqrt(q_n q_{n+k}) |phi_{n+k}><phi_n|`.
+`A_k = sum_n sqrt(q_n q_(n+k)) |phi_(n+k)><phi_n|`.
 
 It factorizes exactly as
 
@@ -86,6 +86,8 @@ so the contribution of this outcome to the two-parameter Fisher trace is
 
 `[(partial_c p_y)^2+(partial_s p_y)^2]/p_y = |z_y|^2/p_y`.
 
+Zero-probability outcomes are understood in the standard limiting convention; DQM/positivity forces zero derivative on any outcome with zero baseline mass in a regular finite-FI experiment.
+
 ---
 
 ## 2. Direct one-copy Cauchy--Schwarz bound
@@ -114,7 +116,9 @@ The first is
 
 `=Tr[M_y rho0^(1/2) V_k V_k^dagger rho0^(1/2)]`
 
-`=Tr[M_y rho0 P_>=k]`.
+`=Tr[M_y rho0 P_ran,k]`
+
+`<=Tr[M_y rho0 P_>=k]`.
 
 Therefore
 
@@ -126,11 +130,13 @@ Summing/integrating over all POVM outcomes and using `int M(dy)=I`,
 
 `<= Tr(rho0 P_>=k)`
 
-`= sum_{m>=k}q_m`
+`= sum_(m>=k)q_m`
 
 `=T_k`.
 
 Thus the pointwise tail bound follows directly for one arbitrary POVM, with no Fisher/QFI optimization theorem required.
+
+The support-gap repair can only make the intermediate bound tighter because `P_ran,k` may be strictly smaller than `P_>=k`.
 
 ---
 
@@ -142,11 +148,11 @@ For `N` independently encoded copies,
 
 The complex derivative of the product state is
 
-`A_(k,N)=sum_{j=1}^N rho0^tensor(j-1) tensor A_k tensor rho0^tensor(N-j)`.
+`A_(k,N)=sum_(j=1)^N rho0^tensor(j-1) tensor A_k tensor rho0^tensor(N-j)`.
 
 Define
 
-`B_(k,N)=sum_{j=1}^N V_k^(j)`.
+`B_(k,N)=sum_(j=1)^N V_k^(j)`.
 
 Because `rho0^(1/2) I rho0^(1/2)=rho0`,
 
@@ -164,11 +170,17 @@ Summing over outcomes gives
 
 Expand the right side:
 
-`B B^dagger = sum_j V_j V_j^dagger + sum_{i!=j} V_i V_j^dagger`.
+`B B^dagger = sum_j V_j V_j^dagger + sum_(i!=j) V_i V_j^dagger`.
 
 For each diagonal term,
 
-`Tr[rho_N V_j V_j^dagger]=Tr[rho0 V_k V_k^dagger]=T_k`.
+`Tr[rho_N V_j V_j^dagger]`
+
+`=Tr[rho0 V_k V_k^dagger]`
+
+`=Tr(rho0 P_ran,k)`
+
+`<=T_k`.
 
 For `i!=j`, product structure gives
 
@@ -184,13 +196,17 @@ because a nonzero sector shift has zero diagonal expectation in the twirled stat
 
 Hence
 
-`Tr[rho_N B B^dagger]=N T_k`.
+`Tr[rho_N B B^dagger]`
+
+`=N Tr(rho0 P_ran,k)`
+
+`<=N T_k`.
 
 Therefore
 
 `boxed: Tr F_N^(k) <= N T_k`.
 
-This is an exact finite-copy inequality for arbitrary entangled collective POVMs.
+This is an exact finite-copy inequality for arbitrary entangled collective POVMs and arbitrary gaps in the participating energy support.
 
 ---
 
@@ -225,9 +241,9 @@ For a normalized sector distribution `q_n`,
 
 `A_k` is trace class because
 
-`sum_n sqrt(q_nq_{n+k}) <= sqrt[(sum_n q_n)(sum_n q_{n+k})] <=1`.
+`sum_n sqrt(q_nq_(n+k)) <= sqrt[(sum_n q_n)(sum_n q_(n+k))] <=1`.
 
-The shift `V_k` is bounded with operator norm `1` on the participating sector chain.
+The paired shift `V_k` is a bounded partial isometry with operator norm at most `1`, regardless of support gaps.
 
 Therefore the factorization
 
@@ -259,23 +275,17 @@ Therefore the same bound holds for arbitrary mixed excitations.
 
 Summing the exact finite-copy tail bound over positive modes gives
 
-`(1/N) sum_{k>=1} Tr F_N^(k)`
+`(1/N) sum_(k>=1) Tr F_N^(k)`
 
-`<= sum_{k>=1}T_k`
+`<= sum_(k>=1)T_k`
 
 `=sum_m m q_m`
 
 `=nbar`.
 
-Under the WP12 controlled periodic-to-continuum limit,
+WP22 supplies the publication-grade periodic-to-continuum statement for arbitrary positive spectral probability measures. In particular, every controlled modewise continuum limit obeys
 
-`T_k -> S_q(nu)=P(Omega>=nu)`
-
-for `k delta -> nu`.
-
-Therefore
-
-`boxed: R(nu)<=S_q(nu)`.
+`boxed: R(nu)<=S_mu(nu)=P(Omega>=nu)`.
 
 Integrating,
 
@@ -297,17 +307,17 @@ and hence at ordinary modulation frequency `f`,
 
 ## 8. Equality audit
 
-WP19's geometric equality family remains correct.
+WP19's geometric equality family remains correct because it has contiguous full support.
 
 For
 
 `q_n=(1-r)r^n`,
 
-`T_k=r^k`.
+`T_k=r^k` and `P_ran,k=P_>=k`.
 
 The canonical phase POVM has
 
-`Tr F_1^(k)=|sum_n sqrt(q_nq_{n+k})|^2=r^k=T_k`.
+`Tr F_1^(k)=|sum_n sqrt(q_nq_(n+k))|^2=r^k=T_k`.
 
 Thus the direct Cauchy--Schwarz inequality is simultaneously saturated for every mode by the same one-copy measurement.
 
@@ -327,6 +337,8 @@ recovering the Cauchy timestamp equality family.
 
 Independent finite-dimensional random-POVM checks were performed for representative finite sector distributions at `N=1` and `N=2`. In every case the directly computed two-quadrature classical Fisher trace was below `N T_k`, as required. These calculations are validation only; the theorem is analytic.
 
+The support-gap repair is also immediate numerically: deleting an intermediate occupied sector removes terms from `V_k V_k^dagger` and cannot increase the Cauchy--Schwarz resource trace.
+
 ---
 
 ## 10. Prior-art update
@@ -342,9 +354,11 @@ The direct ingredients are standard:
 
 Close quantum-statistics literature also contains general finite-copy information inequalities and dual Holevo bounds for arbitrary collective measurements; see Richard D. Gill, *Conciliation of Bayes and Pointwise Quantum State Estimation: Asymptotic information bounds in quantum statistics* (arXiv:math/0512443; World Scientific 2008), which explicitly develops upper bounds on Fisher-information matrices for arbitrary measurements.
 
+The `U(1)` coherence-mode decomposition itself is also established prior art; see Marvian and Spekkens, Phys. Rev. A **90**, 062110 (2014), DOI `10.1103/PhysRevA.90.062110`.
+
 Targeted searches still have not located the specific random-time translation theorem
 
-`Tr F_N^(k) <= N sum_{m>=k}q_m`,
+`Tr F_N^(k) <= N sum_(m>=k)q_m`,
 
 its all-mode mean-generator budget, or the continuum source-to-record survival-function law.
 
@@ -354,15 +368,12 @@ Priority remains **unverified**, not certified.
 
 ## 11. Decision
 
-WP19's main theorem is retained, but its original Holevo proof should be treated as superseded by WP20.
+WP19's main theorem is retained, but its original Holevo proof should be treated as superseded by this repaired WP20 proof.
 
-The current strongest operational statement is now supported by a direct finite-copy proof:
+The current strongest operational statement is supported by a direct finite-copy proof:
 
-> For independent random-time encoding of a fixed semibounded-energy excitation, every parameter-independent collective detector measurement obeys a pointwise temporal-mode Fisher-retention ceiling equal to the excitation-energy survival probability above that modulation frequency.
+> For independent random-time encoding of a fixed semibounded-energy excitation, every parameter-independent collective detector measurement obeys a pointwise temporal-mode Fisher-retention ceiling no larger than the excitation-energy survival probability above that modulation frequency.
 
-The next highest-value gates are:
+For spectra with gaps, the actual paired-sector projector `P_ran,k` can make the ceiling stricter than the coarse survival tail `T_k`; `T_k` is the universal energy-only version.
 
-1. continue the exact-priority search for the tail/survival theorem;
-2. harden the periodic-to-continuum convergence statement;
-3. harden WP13's quantum-marked Poisson-to-bosonic-field channel map;
-4. then reconsider manuscript formation.
+WP22 and WP23 now close the continuum and source-to-bosonic-field formulation gates. The remaining tasks are an integrated hostile review and final priority/manuscript decision.
