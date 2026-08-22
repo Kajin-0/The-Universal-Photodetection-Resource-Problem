@@ -10,32 +10,53 @@ Seek a foundational autonomous resource principle for temporal information. The 
 
 ### WP01 — prior-art and model boundary
 
-Status: **ACTIVE / largely complete**.
+Status: **PASS**.
 
-Tasks:
+Established collisions:
 
-- distinguish new target from modes-of-asymmetry/reference-frame theory;
-- distinguish it from quantum speed limits, generic QFI asymmetry monotones, autonomous clock thermodynamics, and energy-constrained multistep metrology;
-- define what must count as a physical clock/control/reference resource;
-- identify whether any state-only formulation is impossible when arbitrary Hamiltonian strength is free.
+- modes-of-asymmetry/reference-frame support laws are prior art;
+- mode trace-norm monotones are prior art;
+- QFI/Fisher asymmetry resource measures are prior art;
+- autonomous finite clocks/control are prior art;
+- generic energy-constrained multistep metrology is active prior art.
 
-### WP02 — state-only no-go and minimal autonomous counterexamples
+Novelty must be a quantitative temporal-information performance/resource law, not mode existence.
 
-Target theorem/no-go:
+### WP02 — local-Fisher no-go and robust tangent radius
 
-> No nontrivial upper bound on internally generated temporal frequency can depend only on the initial state resource if arbitrary time-independent interaction Hamiltonians with unbounded spectral scale are admitted for free.
+Status: **ANALYTIC PASS; numerical adversarial checks PASS; priority unverified**.
 
-Use the smallest possible autonomous systems first (qubit / two-qubit models), then formulate a representation-independent statement.
+Main no-go:
 
-Deliverables:
+At fixed baseline mean excess energy, arbitrary local state synthesis can place fixed Fisher information at arbitrarily high Bohr frequency by shrinking the physical neighborhood of the tangent. Therefore **local Fisher information alone is too local** for a universal energy-frequency law.
 
-- exact counterexample family;
-- statement of the minimum dynamical resource any universal theorem must charge;
-- adversarial search for loopholes (energy expectation, energy variance, interaction energy, operator norm, spectral diameter, action).
+New quantity:
+
+`R_lin` = largest disk radius over which the two-quadrature linearized tangent remains a positive density operator.
+
+For stationary `rho0` and exact positive-gap tangent `A_nu`,
+
+`R_lin = 1 / w(rho0^(-1/2) A_nu rho0^(-1/2))`,
+
+where `w` is numerical radius.
+
+For arbitrary finite `N` and any joint POVM,
+
+`(R_lin^2/4) [Tr F_N^(nu)/N] <= min(D_nu,U_nu) <= T(nu)`.
+
+Hence
+
+`Ebar+ >= (hbar nu R_lin^2/4) [Tr F_N^(nu)/N]`.
+
+The two-level fixed-energy/high-frequency counterexample asymptotically saturates this robust energy law.
+
+This is the current strongest theorem of the new branch.
 
 ## Stage B — finite-reference temporal-information conversion
 
-### WP03 — reference-assisted parameter-to-time conversion experiment
+### WP03 — reference-assisted parameter-to-time conversion
+
+Status: **NEXT / ACTIVE**.
 
 Minimal systems:
 
@@ -50,46 +71,46 @@ Established infrastructure:
 
 Do **not** claim this as new; it follows from Marvian--Spekkens mode theory.
 
-Research target:
+Research targets:
 
-define an operational temporal-information performance functional that is:
-
-1. frequency resolved;
-2. monotone under free autonomous processing;
-3. finite and informative for physically useful pure clock states;
-4. linked to actual classical Fisher information, finite discrimination, or channel simulation error;
-5. quantitatively constrained by a clock/reference resource.
+1. Determine how `R_lin` transforms under reference-assisted covariant processing.
+2. Find an operational performance functional for parameter information converted into temporal mode `nu`.
+3. Derive a finite-reference upper bound stronger than mere mode trace-norm monotonicity.
+4. Determine whether near-perfect temporal conversion at fixed `nu` forces divergence of a physical clock/reference resource.
+5. Search for exact or asymptotically optimal reference states.
 
 Candidate mathematical tools:
 
+- tangent numerical radius;
 - trace-norm mode monotones;
-- Petz/monotone quantum Fisher metrics;
-- Bures/Hellinger geometry;
-- channel distinguishability / diamond norm;
+- monotone quantum Fisher metrics;
+- channel/measurement simulation norms;
 - positive-definite characteristic functions;
 - semibounded moment/tail inequalities.
 
-### WP04 — sharp finite-clock performance law
+### WP04 — nonlinear synthesis loophole
 
-Desired form:
+Parallel target:
 
-`performance_at_nu <= C_nu(reference state, reference Hamiltonian)`.
+`R_lin=0` families can remain physical through curvature/second-order population (coherent-sideband type synthesis).
 
-Then seek a resource moment law, e.g.
+Determine the weakest additional physical datum that restores a theorem:
 
-`total reference resource >= Phi(nu, performance)`.
+- fixed finite parameter amplitude;
+- finite distinguishability at nonzero amplitude;
+- bounded curvature/state acceleration;
+- explicit preparation/control dynamics;
+- energy/action paid by the controller.
 
-Critical success criterion:
+A purely local finite-derivative law may itself be impossible; test this aggressively.
 
-`performance -> 1` at fixed nonzero `nu` should force divergence of an explicitly physical resource, unless a finite exact implementation is possible and thereby falsifies the conjecture.
-
-## Stage C — add autonomous control/action
+## Stage C — autonomous control/action
 
 ### WP05 — control-generator resource
 
-If covariant operations alone are too restrictive, explicitly include a finite autonomous controller and its interaction Hamiltonian.
+A state-only law cannot be universal if arbitrary static interaction Hamiltonians of unbounded spectral scale are free.
 
-Determine the correct charged quantity among or beyond:
+Determine the correct charged dynamical quantity among or beyond:
 
 - Hamiltonian spectral diameter;
 - mean excess energy;
@@ -137,6 +158,6 @@ Do not continue a route if it reduces to:
 - a standard quantum speed limit;
 - generic energy-time uncertainty;
 - an existing finite-clock simulation-error theorem;
-- merely adding the energy of preparation/control without a new structural law.
+- merely adding preparation/control energy without a new structural law.
 
-Record negative results. A killed conjecture is part of the research program, not a failure of documentation.
+Record negative results. A killed conjecture is part of the research program, not a documentation failure.
