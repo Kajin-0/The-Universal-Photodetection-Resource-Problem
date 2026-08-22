@@ -6,23 +6,23 @@
 
 1. **Paper 1 / Rev11** — frozen and technically validated.
 2. **Paper 2 / Rev7** — frozen preferred science draft.
-3. **Grand Challenge** — science checkpoint **WP24**; preferred manuscript **Rev4**, locally build-verified and frozen unless a concrete defect appears.
+3. **Grand Challenge** — science checkpoint **WP24**; preferred publication draft **Rev5**, frozen unless a concrete defect appears.
 
 Active Grand Challenge branch: `agent/temporal-information-resource-law`.
 
 Authoritative handoff: `grand_challenge/AGENTS.md`.
 
-# Strongest current result — operational survival-function law
+# Strongest result — operational survival-function law
 
-For periodic random-time encoding of a fixed excitation with total-generator sector probabilities `q_n`, define
+For the exact periodic random-time experiment with sector probabilities `q_n`, define
 
 `T_k=sum_(m>=k)q_m`.
 
-For **any finite number N of independent encoded excitations and any joint POVM**, including arbitrary entangled collective measurements,
+For any finite number `N` of independent encoded excitations and any joint POVM,
 
-`Tr F_N^(k) <= N T_k`.
+`Tr F_N^(k)<=N min(D_k,U_k)<=N T_k`.
 
-Thus the per-event two-quadrature / phase-averaged temporal-mode retention obeys
+Thus
 
 `R_N(k)=Tr F_N^(k)/N<=T_k`,
 
@@ -30,15 +30,11 @@ and
 
 `sum_(k>=1)R_N(k)<=nbar`.
 
-A support-sensitive refinement is
+`R_N(k)` is the two-quadrature / phase-averaged source-normalized Fisher retention. WP20 proves the result directly for arbitrary entangled finite-copy collective measurements.
 
-`R_N(k)<=min(D_k,U_k)<=T_k`.
+## Controlled continuum form
 
-WP20 proves this directly by Hilbert--Schmidt Cauchy--Schwarz; no detector covariance, separability, Holevo asymptotics, or SLD attainability assumption is required.
-
-## Continuum form — WP22
-
-For a positive excitation-frequency spectral probability measure `mu` with finite mean `omega_bar`, **controlled large-period limits of the exact periodic models** satisfy
+For a positive excitation-frequency probability measure `mu` with finite mean, controlled large-period limits of exact periodic approximants obey
 
 `R(nu)<=mu([nu,infinity))=P(Omega>=nu)`.
 
@@ -46,112 +42,88 @@ Therefore
 
 `int_R R(nu)dnu<=2Ebar^+/hbar`,
 
-and pointwise
+and
 
 `Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
 
-A phase-averaged retention `q0`, or a scalar-retention guarantee `q0` for every sinusoidal phase, at ordinary frequency `B` requires
-
-`Ebar^+>=hBq0`.
-
-No smooth density is required in the spectral measure used by the periodic approximation.
+A phase-averaged retention `q0`, or a scalar-retention guarantee `q0` for every sinusoidal phase, at ordinary frequency `B` requires `Ebar^+>=hBq0`.
 
 ## Exact equality family
 
-For geometric energy sectors
-
-`q_n=(1-r)r^n`,
-
-the canonical phase POVM gives
-
-`R(k)=r^k=T_k`
-
-for every harmonic simultaneously and saturates the sum rule.
-
-The controlled continuum limit is an exponential excitation spectrum with
-
-`R(nu)=exp(-beta|nu|)`.
-
-With `beta=2a`, the associated Cauchy timestamp has characteristic function `exp(-a|nu|)` and Fisher retention `exp(-2a|nu|)`.
+Geometric sectors `q_n=(1-r)r^n` with the canonical phase POVM give `R(k)=r^k=T_k` for every harmonic simultaneously. The controlled continuum limit is exponential. With `beta=2a`, the Cauchy timestamp characteristic function is `exp(-a|nu|)` and its Fisher retention is `exp(-2a|nu|)`.
 
 ## Independent Poisson source to common bosonic field — WP23
 
-For an independent quantum-marked Poisson event source with mean event count `Lambda`, revealing the parameter-independent event number gives
+For independent quantum-marked Poisson events with mean `Lambda`, event-number side information gives `Tr F^(k)<=Lambda T_k`. Any subsequent parameter-independent source-to-field/detector CPTP map can be pulled back to the event register, so bosonic overlap, mode mixing, coherent detector memory, ancillas, and final measurement cannot evade the same normalized tail law.
 
-`Tr F^(k)<=Lambda T_k`.
+This is an explicit independent-event source class, not a theorem for every quantum field with Poisson photocount statistics.
 
-Any subsequent physical emission/source-to-field process and detector are a parameter-independent CPTP channel plus measurement once the random-time parameter is encoded upstream. Pulling the final POVM back through that channel proves that bosonic wavepacket overlap, mode mixing, coherent detector memory, ancillas, and arbitrary final measurement cannot evade the same source-normalized tail law.
+# Secondary QFI envelope and scope boundary
 
-This is a theorem for the independent-event source class, not for every quantum field with Poisson photocount statistics.
-
-# Secondary QFI envelope — WP10/WP12/WP15
-
-The separately optimized SLD-QFI results remain correct:
-
-`G_Q(k)=2 sum_n q_nq_(n+k)/(q_n+q_(n+k))`,
+WP10/WP12/WP15 remain valid as separately optimized SLD-QFI metric bounds:
 
 `sum_(k>=1)G_Q(k)<=2nbar`,
 
-and
-
 `int_R G_Q(nu)dnu<=pi Ebar^+/hbar`.
 
-They are interpreted as an incompatible modewise quantum-metric envelope, not as the main operational broadband theorem. WP16 records that the sharp `pi/4` continuum operator constant is classical Hardy--Hilbert mathematics.
+They are secondary to the sharp operational `2E/hbar` law. WP16 records that the `pi/4` analytic constant is classical Hardy--Hilbert mathematics.
 
-# Scope boundary — WP14
+WP14 proves baseline mean energy does not constrain arbitrary parameter-dependent waveform-state synthesis; a broader theorem needs encoding/control/action resource accounting.
 
-The theorem concerns random temporal-distribution encoding of a fixed excitation in the stated periodic/controlled-limit source class. Baseline mean energy does not constrain arbitrary parameter-dependent coherent waveform synthesis; a broader theorem requires explicit encoding/control/action resource accounting.
+# Prior-art boundary
 
-# Prior-art boundary — WP21/WP24
+Weighted `U(1)` twirling/energy-gap modes, canonical phase measurements, number/energy-constrained phase estimation, arbitrary-measurement quantum-information bounds, random-unitary probability estimation, waveform QFI, positive-frequency sharp inequalities, Hardy--Hilbert best constants, and generic Poisson/CPTP machinery are prior art.
 
-Weighted `U(1)` twirling, energy-gap modes, canonical phase measurements, phase estimation under photon-number constraints, arbitrary-measurement Fisher/Holevo bounds, random-unitary probability estimation, and asymmetry resource theory are prior art.
+The candidate contribution is narrowly the arbitrary-measurement **classical-Fisher tail/survival law** for Fourier perturbations of a latent random-time distribution and its paired-population/mean-energy/source-to-record consequences.
 
-Marvian--Spekkens (Phys. Rev. A 90, 062110, 2014) already show that weighted `U(1)` twirling acts modewise through Fourier coefficients of the mixing distribution.
+Targeted searches have not found an exact predecessor. **Priority remains unverified, not certified.**
 
-The candidate contribution is narrower: the arbitrary-measurement **classical Fisher** ceiling for Fourier perturbations of that mixing distribution, its explicit paired-population/upper-tail value, the all-mode mean-energy sum rule, and the source-to-record photodetection interpretation.
+# Preferred Grand Challenge manuscript — Rev5
 
-Targeted searches have not found an exact predecessor of the tail/survival theorem. **Priority remains unverified, not certified.**
+Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
-# Preferred Grand Challenge manuscript — Rev4
+Deterministic generation:
 
-Working title:
+`Rev1 -> Rev2 -> Rev3 -> Rev4 -> Rev5`.
 
-**A Sharp Energy-Survival Law for Temporal Fisher Information**
+Rev5 adds only one conceptual architecture figure and `hidelinks` to the frozen Rev4 science.
 
-Generation chain:
-
-`Rev1 -> apply_rev2_mechanical.py -> apply_rev3_hostile_review.py -> apply_rev4_final_polish.py`.
-
-Rev4 status:
+Final Rev5 preflight:
 
 - full local LaTeX/BibTeX build: PASS;
-- 7 pages;
-- unresolved citations/references: 0;
-- overfull boxes: 0;
-- undefined controls/fatal TeX errors: 0;
-- all pages rendered and visually inspected: PASS;
-- deterministic one-/two-copy random-POVM theorem validation committed;
-- DOI/title-level bibliography audit completed;
-- one real bibliography error repaired: Pocovnicu DOI `10.2140/apde.2011.4.379` is *Traveling waves for the cubic Szegő equation on the real line*, which is also the correct sharp positive-frequency inequality source.
+- pages: **7**;
+- final local PDF: **393,530 bytes**;
+- unresolved citations/references: **0**;
+- overfull boxes: **0**;
+- undefined controls/fatal errors: **0**;
+- all seven pages rendered at 160 dpi and visually inspected: PASS;
+- Figure 1 readable and materially useful without increasing page count;
+- visible hyperlink boxes: **0**;
+- bibliography page: PASS;
+- deterministic random-POVM theorem validation committed;
+- DOI/title/provenance bibliography audit completed.
 
-The GitHub connector does not expose the relevant branch-push Actions run, so direct remote-job inspection remains unavailable; equivalent full local build verification is complete.
+Figure 1 shows the source-class/theorem architecture: latent random-time law -> fixed excitation -> arbitrary parameter-independent field/detector channel -> accessible record, with the survival-tail/energy ceiling and the excluded arbitrary waveform-synthesis class.
 
-**Rev4 is frozen unless a concrete theorem, priority, build, or referee-level defect is found.**
+The current connector does not expose the relevant branch-push GitHub Actions run. Direct remote-job inspection is therefore not claimed; equivalent full local build verification is complete.
+
+**Rev5 is frozen unless a concrete theorem, priority, build/rendering, referee, or factual-submission defect appears.**
 
 ## Read first
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
-3. `grand_challenge/notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
-4. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-5. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
-6. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
-7. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
+3. `grand_challenge/notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
+4. `grand_challenge/notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
+5. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+6. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+7. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+8. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
 
-## Immediate work order
+## Current work order
 
-Do not accumulate another theorem by default. The next work is publication engineering: remote CI inspection if accessible, optional figure only if it materially improves comprehension, and factual submission metadata when supplied.
+Do not accumulate another theorem or polish revision by default. Proceed with journal targeting/submission engineering, conservative priority language, remote CI inspection only if accessible, and factual submission metadata when supplied.
 
 ## Documentation discipline
 
-Every material result or status change must be recorded in the repository and mirrored onto `main`; do not rely on chat history.
+Every material result/status change must be recorded in the repository and mirrored onto `main`; do not rely on chat history.
