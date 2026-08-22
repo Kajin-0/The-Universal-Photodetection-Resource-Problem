@@ -1,119 +1,105 @@
 # The Universal Photodetection Resource Problem
 
-**Current status: 2026-08-21**
+**Current status: 2026-08-22**
 
-`main` is the repository landing/index branch. Detailed active derivations live on `agent/temporal-information-resource-law`.
+`main` is the repository landing/index branch. Detailed derivations live on `agent/temporal-information-resource-law`.
 
-The project consists of two frozen papers plus one active high-risk theoretical program.
+## Project split
 
-## Current branches and deliverables
+1. **Paper 1 / Rev11** — frozen and technically validated.
+2. **Paper 2 / Rev7** — frozen preferred science draft.
+3. **Grand Challenge** — ACTIVE on `agent/temporal-information-resource-law`; latest checkpoint **WP24**.
 
-### Paper 1 — Rev11 frozen
+Authoritative active handoff: `grand_challenge/AGENTS.md` on the active branch.
 
-Autonomous low-overlap marked-event photodetection resource theorem. Scientifically frozen and technically validated; remaining work is factual/personal submission metadata and compliance statements.
+# Strongest current theorem
 
-Primary science branch: `agent/uprp-core-theorem-round10`.
+For random temporal-distribution encoding of a fixed semibounded-energy excitation with periodic total-generator sector probabilities `q_n`, define
 
-### Paper 2 — Rev7 frozen
+`T_k=sum_(m>=k)q_m`.
 
-**Fisher Spectra and Information Singularities in Photodetectors with Memory**.
+For **any finite number N of independently encoded excitations and any joint POVM**, including arbitrary entangled collective measurements,
 
-Paper 2 extends temporal Fisher analysis to arbitrary parameter-independent autonomous detector channels with memory and develops the deterministic/random Type-II information-singularity results. Rev7 is the preferred frozen science draft and has been locally build-verified and visually inspected.
+`boxed: Tr F_N^(k)<=N T_k`.
 
-Primary science branch: `agent/uprp-core-theorem-round10`.
+Therefore
 
-### Grand Challenge — ACTIVE
+`boxed: R_N(k)=Tr F_N^(k)/N<=T_k`,
 
-The current scientific frontier is on:
+and
 
-`agent/temporal-information-resource-law`
+`boxed: sum_(k>=1)R_N(k)<=nbar`.
 
-The authoritative handoff there is:
+The active branch WP20 gives a direct finite-copy Cauchy--Schwarz proof. A support-sensitive refinement is
 
-`grand_challenge/AGENTS.md`
+`R_N(k)<=min(D_k,U_k)<=T_k`.
 
-The active question is:
+## Continuum
 
-> **For a physically realizable measurement of temporal structure, what fundamental quantum resources constrain source-to-record temporal Fisher-information transfer?**
+For a general positive excitation-frequency spectral probability measure `mu` with finite mean,
 
-The **theorem stack is through WP15**. The **latest research checkpoint is WP16**, a deep priority audit.
+`boxed: R(nu)<=mu([nu,infinity))=P(Omega>=nu)`.
 
-## Strongest current grand-challenge result
+Hence
 
-For a normalized positive excitation-frequency density `q(omega)` with finite first moment `omega_bar`, define the random-time Fourier-mode quantum retention
+`boxed: int_R R(nu)dnu<=2Ebar^+/hbar`,
 
-`G_Q(nu)=2 int_0^infinity q(omega)q(omega+nu)/[q(omega)+q(omega+nu)]domega`, `nu>0`,
+and pointwise
 
-with even extension.
+`boxed: Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
 
-WP15 proves for every finite-first-moment density:
+Retention `q0` at ordinary frequency `B` therefore requires
 
-`boxed: int_0^infinity G_Q(nu)dnu <= (pi/2) omega_bar`,
+`boxed: Ebar^+>=hBq0`.
 
-or equivalently
+The geometric sector / exponential continuum canonical phase-time family attains the bound exactly.
 
-`boxed: int_R G_Q(nu)dnu <= pi E_bar^+/hbar`.
+# Physical source-to-record scope
 
-For a guaranteed flat temporal-information band,
+WP23 proves the same normalized law for an independent quantum-marked compound-Poisson source followed by arbitrary parameter-independent source-to-bosonic-field formation, wavepacket overlap, coherent detector memory, ancillas, and final measurement. The final POVM pulls back through the CPTP field/detector channel to the upstream event register.
 
-`G_Q(2*pi*f)>=q0` for every `|f|<=B`,
+This is an independent-event source theorem, not a theorem for every field with Poisson photocount statistics.
 
-this implies
+# Secondary QFI envelope
 
-`boxed: E_bar^+ >= (2/pi) h B q0`.
+WP10/WP12/WP15 remain correct as separately optimized modewise SLD-QFI bounds:
 
-The constant is sharp as a supremum.
+`sum_(k>=1)G_Q(k)<=2nbar`,
 
-## WP16 priority correction
+`int_R G_Q(nu)dnu<=pi Ebar^+/hbar`.
 
-WP16 establishes that the sharp WP15 operator norm
+They are now secondary to the sharp jointly operational `2E/hbar` law. WP16 records that the `pi/4` continuum operator norm is established Hardy--Hilbert mathematics.
 
-`||T||=pi/4`, for `L(s,t)=2st/(s+t)^3`,
+# Scope boundary
 
-is an explicit specialization of classical parameterized Hardy–Hilbert integral inequalities. With `lambda=3`, `f(x)=xr(x)`, `g(y)=yr(y)`, the classical best constant is `B(3/2,3/2)=pi/8`; the factor `2` in the WP15 kernel produces `pi/4`.
+WP14 proves baseline mean energy does not constrain arbitrary parameter-dependent coherent waveform synthesis. The positive theorem requires random-time distribution encoding of a fixed excitation with parameter-independent downstream processing.
 
-Therefore **do not claim mathematical novelty for the `pi/4` operator norm, Mellin/Hilbert inequality, or Beta/Gamma sharp constant**.
+# Prior-art boundary
 
-The remaining priority question is quantum-statistical: targeted searches have not yet found an exact predecessor for estimating a Fourier coefficient of a latent random `U(1)` translation distribution with
+Marvian--Spekkens, Phys. Rev. A **90**, 062110 (2014), already establish `U(1)` energy-gap modes and weighted twirling `sigma^(k)=p_(-k)rho^(k)`. Canonical phase measurements, photon-number-constrained phase estimation, arbitrary collective Fisher/Holevo bounds, random-unitary estimation, and asymmetry resource theory are also prior art.
 
-`G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`
+The candidate contribution is narrowly the arbitrary-measurement **Fisher** ceiling for Fourier perturbations of the latent random-time mixing distribution, its population-tail/mean-energy law, and source-to-record photodetection consequence.
 
-or the summed law
+Targeted searches have not located the exact tail/survival theorem. **Priority remains unverified, not certified.**
 
-`sum_{k>=1}G_Q(k)<=2 nbar`.
+# Current gate
 
-**Quantum priority is not certified.**
+WP24 integrated hostile review: **PASS**, after support-gap repair and prior-art narrowing.
 
-## Important scope boundary
+The collective-measurement, continuum, and independent event-to-bosonic-field gates are addressed. The project has reached a reasonable standalone-manuscript formation threshold with conservative novelty language.
 
-The strongest theorem applies to **random temporal-distribution encoding of a fixed semibounded-energy excitation**. It is not currently a theorem for arbitrary parameter-dependent quantum waveform synthesis.
+## Replacement-agent recovery
 
-WP14 gives an explicit coherent-field no-go showing that baseline mean energy alone cannot bound arbitrary high-frequency waveform tangents; a broader theorem would need an encoding/control/action resource.
-
-## Current gates
-
-Before a new foundational manuscript is drafted:
-
-1. search specifically for estimation of Fourier coefficients/mixing weights of `U(1)` random-unitary channels and probability measures on compact groups;
-2. determine whether the harmonic-mean density inequality itself appears explicitly in classical analysis; its sharp operator constant is already classical;
-3. determine operational attainability of the integrated `pi` coefficient by one measurement family;
-4. strengthen the independent quantum-marked Poisson/event-to-field embedding;
-5. preserve the WP14 source-encoding boundary and claim discipline.
-
-## Where to read the live state
-
-Switch to branch:
-
-`agent/temporal-information-resource-law`
-
-Then read:
+Switch to `agent/temporal-information-resource-law`, then read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
-3. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
-4. `docs/CURRENT_RESEARCH_STATE.md`
-5. `ROADMAP.md`
+2. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+3. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+4. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+5. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+6. `docs/CURRENT_RESEARCH_STATE.md`
+7. `ROADMAP.md`
 
 ## Documentation policy
 
-The default `main` branch is the repository landing/index branch and must always advertise the current active branch and checkpoint. Detailed in-progress derivations may remain on agent branches, but the project-level state must never again be hidden from the default repository view.
+`main` must always advertise the active branch and latest checkpoint. Detailed in-progress derivations may remain on the active branch, but project-level state must never again be hidden from the default view.
