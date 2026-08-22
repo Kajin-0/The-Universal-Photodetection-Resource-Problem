@@ -1,0 +1,300 @@
+\section{Common-measurement spectral consistency}
+\label{sec:herglotz}
+
+Theorem~\ref{thm:finite-copy} is modewise and remains valid even if a different measurement is contemplated for each $k$.  A physical detector, however, normally supplies one fixed record whose Fisher response can be evaluated against many hypothetical source harmonics.  For one copy this common-measurement requirement imposes a second, independent structure across frequencies.
+
+After the purification used in Section~\ref{sec:model}, complete the sector labels by harmless zero-population basis vectors when necessary and write
+\begin{equation}
+ \rho_0=\sum_{n\geq0}q_n|n\rangle\langle n|,
+ \qquad
+ V=\sum_{n\geq0}|n+1\rangle\langle n|.
+ \label{eq:full-shift-completion}
+\end{equation}
+Then, irrespective of gaps in the nonzero populations,
+$A_k=\rho_0^{1/2}V^k\rho_0^{1/2}$.  A POVM on the original system may be lifted trivially to the purification; the resulting outcome probabilities and Fisher information are unchanged.  Thus the following consistency law applies to every fixed one-copy POVM in the exact periodic random-time experiment, not only to an optimal measurement or to an equality family.
+
+Fix one POVM $M$ and let $R_M(k)$ denote its one-copy two-quadrature retention for harmonic $k$.  Define $R_M(0)=1$ and extend evenly, $R_M(-k)=R_M(k)$.
+
+\begin{theorem}[Herglotz retention spectrum]
+\label{thm:herglotz}
+For any fixed one-copy POVM in the periodic random-time experiment, there exists a symmetric probability measure $J_M$ on the circle such that
+\begin{equation}
+ R_M(k)=\int_{-\pi}^{\pi}\cos(k\vartheta)\,J_M(\dd\vartheta),
+ \qquad k\in\mathbb Z.
+ \label{eq:Herglotz-retention}
+\end{equation}
+Consequently $\{R_M(k)\}_{k\in\mathbb Z}$ is positive definite: every finite Toeplitz matrix $[R_M(i-j)]_{i,j=0}^{L}$ is positive semidefinite.
+\end{theorem}
+
+\begin{proof}
+Let $p(\dd y)$ be the baseline outcome law and use the trace-class Radon--Nikodym decomposition
+\begin{equation}
+ \rho_0^{1/2}M(\dd y)\rho_0^{1/2}=X_y p(\dd y),
+ \qquad
+ X_y\geq0,
+ \quad
+ \Tr X_y=1
+ \label{eq:posterior-Herglotz}
+\end{equation}
+for $p$-almost every $y$.  The complex harmonic score is
+\begin{equation}
+ \frac{\Tr[A_kM(\dd y)]}{p(\dd y)}
+ =\Tr(V^kX_y).
+\end{equation}
+For the canonical phase POVM, let $P_y(\dd\theta)$ be the phase distribution of $X_y$.  Its $k$th Fourier coefficient is, up to the sign convention,
+\begin{equation}
+ \varphi_y(k)=\Tr(V^kX_y).
+\end{equation}
+Therefore
+\begin{equation}
+ R_M(k)=\int |\varphi_y(k)|^2p(\dd y).
+ \label{eq:retention-posterior-phase}
+\end{equation}
+If $\widetilde P_y$ is the reflected phase law, the difference distribution $J_y=P_y*\widetilde P_y$ has Fourier coefficient $|\varphi_y(k)|^2$.  Hence
+$J_M=\int J_y p(\dd y)$ is a symmetric probability measure satisfying Eq.~\eqref{eq:Herglotz-retention}.  Toeplitz positivity is the classical Herglotz structure~\cite{BhattacharyaWaymire2016}.
+\end{proof}
+
+The theorem gives cross-harmonic constraints that are invisible in the separate modewise ceilings.  For example, a $3\times3$ principal minor yields
+\begin{equation}
+ R_M(2k)\geq2R_M(k)^2-1.
+ \label{eq:twoharmonic-Toeplitz}
+\end{equation}
+A stronger all-multiple form follows from the geometry of the Herglotz representation.  Put
+\begin{equation}
+ \theta_q=\arccos q,
+ \qquad q=R_M(k).
+\end{equation}
+In the real Hilbert space underlying $L^2(J_M)$, the unit vectors
+$u_j(\vartheta)=\exp(ijk\vartheta)$ obey
+$\langle u_{j-1},u_j\rangle_{\mathbb R}=q$.  The spherical angle is a metric, so
+\begin{equation}
+ \arccos R_M(mk)\leq m\arccos q.
+ \label{eq:spherical-angle}
+\end{equation}
+Whenever $m\theta_q\leq\pi$, monotonicity of cosine on $[0,\pi]$ gives
+$R_M(mk)\geq\cos(m\theta_q)$.  In particular, on the positive-cosine range
+$1\leq m\leq\lfloor\pi/(2\theta_q)\rfloor$,
+\begin{equation}
+ R_M(mk)\geq\cos(m\theta_q)\geq0.
+ \label{eq:angle-propagation}
+\end{equation}
+No later positive lobes of the cosine are inferred once $m\theta_q>\pi$; the angle bound is then only trivial.  The elementary inequality $1-\cos(mx)\leq m^2[1-\cos x]$ gives the weaker but sometimes convenient consequence
+$1-R_M(mk)\leq m^2[1-R_M(k)]$.
+
+\begin{corollary}[High-retention energy blow-up]
+\label{cor:high-retention}
+Let $q=R_M(k)<1$ for a nonzero harmonic $k$ of one fixed one-copy POVM.  Define
+\begin{align}
+ \theta_q&=\arccos q,\\
+ M_q&=\left\lfloor\frac{\pi}{2\theta_q}\right\rfloor,\\
+ A(q)&=\sum_{m=1}^{M_q}\cos(m\theta_q)
+ =\frac{\sin(M_q\theta_q/2)\cos[(M_q+1)\theta_q/2]}
+ {\sin(\theta_q/2)}.
+ \label{eq:Aq}
+\end{align}
+Then
+\begin{equation}
+ \bar n\geq k A(q).
+ \label{eq:high-retention-nbar}
+\end{equation}
+Equivalently, with $\nu=k\omega_0$,
+\begin{equation}
+ \bar E^+\geq\hbar\nu A(q).
+ \label{eq:high-retention-energy}
+\end{equation}
+Exact $q=1$ at nonzero $k$ is impossible for a normalized semibounded source: Eq.~\eqref{eq:spherical-angle} would force $R_M(mk)=1$ for every $m$, whereas $T_{mk}\to0$.  The following divergence therefore describes the asymptotic approach $q\uparrow1$:
+\begin{equation}
+ A(q)=\frac{1}{\sqrt{2(1-q)}}[1+o(1)],
+ \label{eq:Aq-asymptotic}
+\end{equation}
+so finite mean excess energy forbids perfect retention at any nonzero harmonic and
+\begin{equation}
+ \bar E^+\geq
+ \frac{\hbar\nu}{\sqrt{2(1-q)}}[1+o(1)].
+ \label{eq:high-retention-divergence}
+\end{equation}
+Equivalently, in the high-resource limit,
+$1-q\geq\tfrac12(\hbar\nu/\bar E^+)^2[1+o(1)]$.
+\end{corollary}
+
+\begin{proof}
+Equation~\eqref{eq:angle-propagation} gives
+$R_M(mk)\geq\cos(m\theta_q)$ for $1\leq m\leq M_q$.  The tail sequence is nonincreasing, so for each such $m$ and every
+$(m-1)k<j\leq mk$,
+\begin{equation}
+ T_j\geq T_{mk}\geq R_M(mk).
+\end{equation}
+Using the exact tail-sum identity therefore gives
+\begin{align}
+ \bar n
+ &=\sum_{j\geq1}T_j\\
+ &\geq k\sum_{m=1}^{M_q}T_{mk}
+ \geq k\sum_{m=1}^{M_q}R_M(mk)
+ \geq kA(q),
+ \label{eq:block-tail-proof}
+\end{align}
+which proves Eqs.~\eqref{eq:high-retention-nbar}--\eqref{eq:high-retention-energy}.  As $q\uparrow1$, $\theta_q\sim\sqrt{2(1-q)}$ and the positive cosine sum is a Riemann sum over $[0,\pi/2]$:
+$A(q)\sim\theta_q^{-1}\int_0^{\pi/2}\cos x\,\dd x=\theta_q^{-1}$, proving Eq.~\eqref{eq:Aq-asymptotic}.
+\end{proof}
+
+The $m=1$ term gives $A(q)\geq q$, so the original pointwise law is contained in Eq.~\eqref{eq:high-retention-energy}; the cross-harmonic constraint becomes strictly stronger once additional positive cosine terms enter.  In a controlled periodic-to-continuum family whose one-copy common-measurement retention functions converge while preserving normalized positive definiteness, Bochner's theorem gives
+$R(\nu)=\int\cos(\nu t)J(\dd t)$.  Repeating the block-tail argument with
+$\bar E^+/\hbar=\int_0^\infty S(\omega)\dd\omega$ gives the same scale-stable continuum inequality
+\begin{equation}
+ \bar E^+\geq\hbar\nu A(R(\nu)),
+ \label{eq:continuum-high-retention}
+\end{equation}
+with the same $(1-R)^{-1/2}$ divergence.  This continuum statement retains the common-measurement and controlled-limit hypotheses explicitly.
+
+\section{Exact saturation and complete extremizers}
+\label{sec:equality}
+
+The tail coefficient is not only sharp; on the full contiguous pure-sector chain its exact one-copy extremizers have a rigid structure.  This section assumes $q_n>0$ for all $n\geq0$ and identifies $|\phi_n\rangle$ with $|n\rangle$.  Then
+\begin{equation}
+ V=\sum_{n\geq0}|n+1\rangle\langle n|,
+ \qquad V_k=V^k,
+\end{equation}
+so $D_k=1$ and $U_k=T_k$.  The result therefore classifies equality in the active one-copy ceiling $\Tr F_1^{(k)}\leq T_k$ for the pure-sector experiment used in the proof of Theorem~\ref{thm:finite-copy}.  Consequently, saturation by any less informative unpurified source must satisfy the same necessary population condition; sufficiency below is established by an explicit pure-sector source and POVM.
+
+\begin{theorem}[Complete one-copy extremizers]
+\label{thm:extremizers}
+For the full contiguous pure-sector chain with $q_n>0$, the following statements are equivalent:
+\begin{enumerate}
+ \item some POVM attains the first-harmonic tail ceiling, $\Tr F_1^{(1)}=T_1$;
+ \item the sector law is a mixture of geometric distributions,
+ \begin{equation}
+  q_n=\int_{[0,1)}(1-r)r^n\,\pi(\dd r);
+  \label{eq:geometric-mixture}
+ \end{equation}
+ \item the tail sequence $T_0=1$, $T_k=\sum_{n\geq k}q_n$ is a Hausdorff moment sequence,
+ \begin{equation}
+  T_k=\int_{[0,1)}r^k\,\pi(\dd r),
+  \label{eq:Hausdorff-tail}
+ \end{equation}
+ equivalently $(-1)^j\Delta^jT_k\geq0$ for all $j,k\geq0$;
+ \item one common source-adapted POVM attains $\Tr F_1^{(k)}=T_k$ for every $k\geq1$ simultaneously.
+\end{enumerate}
+If $\bar n<\infty$, these conditions also imply exact saturation of the all-mode budget, $\sum_{k\geq1}\Tr F_1^{(k)}=\bar n$.  The same product POVM saturates the per-copy bound for every finite number of independent copies.  No converse for arbitrary entangled $N>1$ collective POVMs is asserted.
+\end{theorem}
+
+\begin{proof}
+Let $M(\dd y)$ be an arbitrary POVM and define the baseline posterior operator measure
+\begin{equation}
+ \tau(\dd y)=\rho_0^{1/2}M(\dd y)\rho_0^{1/2}
+             =X_y\,p(\dd y),
+ \label{eq:posterior-RN}
+\end{equation}
+where $p(B)=\Tr\tau(B)$ and $X_y$ is a density operator for $p$-almost every outcome.  The trace-class space has the Radon--Nikodym property, so this density exists for the positive finite-variation operator measure~\cite{FulscheGalke2025}; moreover $\int X_y p(\dd y)=\rho_0$.  The complex harmonic score density is $\Tr(V_kX_y)$, hence
+\begin{align}
+ \Tr F_1^{(k)}
+ &=\int |\Tr(V_kX_y)|^2p(\dd y)\\
+ &\leq\int\Tr(X_yV_kV_k^\dagger)p(\dd y)=T_k.
+ \label{eq:posterior-bound}
+\end{align}
+For $k=1$, equality of the integral forces equality in the pointwise Cauchy--Schwarz inequality almost everywhere.  Its equality condition is
+\begin{equation}
+ (V^\dagger-c_y I)X_y^{1/2}=0.
+ \label{eq:shift-equality}
+\end{equation}
+The backward unilateral shift has one-dimensional normalizable eigenspaces for $|c|<1$, spanned by the geometric phase states~\cite{FuSasaki1997}
+\begin{equation}
+ |\psi_c\rangle=\sqrt{1-|c|^2}\sum_{n\geq0}c^n|n\rangle.
+ \label{eq:geometric-state}
+\end{equation}
+Thus $X_y=|\psi_{c_y}\rangle\langle\psi_{c_y}|$ almost everywhere.  With $r=|c_y|^2$ and $\pi$ the induced distribution of $r$, the diagonal identity $\int X_y p(\dd y)=\rho_0$ gives Eq.~\eqref{eq:geometric-mixture}.
+
+Conversely, suppose Eq.~\eqref{eq:geometric-mixture} holds.  For measurable $C\subset[0,1)\times[0,2\pi)$ define a POVM weakly by
+\begin{multline}
+ \langle n|M(C)|m\rangle=\frac{1}{\sqrt{q_nq_m}}\\
+ \times\int_C(1-r)r^{(n+m)/2}\e^{i(n-m)\theta}
+ \pi(\dd r)\frac{\dd\theta}{2\pi}.
+ \label{eq:mixture-POVM}
+\end{multline}
+The associated quadratic form is an integral of a modulus square and is positive.  Phase integration and Eq.~\eqref{eq:geometric-mixture} give $M([0,1)\times[0,2\pi))=I$, so every measurable effect satisfies $0\leq M(C)\leq I$; this avoids any unbounded $\rho_0^{-1/2}$ shorthand in infinite dimension.  The baseline outcome law is $\pi(\dd r)\dd\theta/(2\pi)$, while direct substitution gives the complex score $r^{k/2}\e^{-ik\theta}$.  Therefore
+\begin{equation}
+ \Tr F_1^{(k)}=\int r^k\pi(\dd r)=T_k
+ \label{eq:allmode-mixture-equality}
+\end{equation}
+for every $k$ under the same POVM.
+
+Finally, the equivalence between Eq.~\eqref{eq:geometric-mixture}, Hausdorff moments, and discrete complete monotonicity is classical~\cite{BalabdaouiFournas2020}.  Summing Eq.~\eqref{eq:allmode-mixture-equality} and using the tail-sum identity gives the all-mode statement.  Product measurements give the finite-copy sufficiency claim.
+\end{proof}
+
+The single geometric law
+\begin{equation}
+ q_n=(1-r)r^n
+ \label{eq:geometric}
+\end{equation}
+is the extreme-point case $\pi=\delta_r$.  Then the source-adapted POVM reduces to the canonical phase POVM
+\begin{equation}
+ M(\dd\theta)=\frac{\dd\theta}{2\pi}|\theta\rangle\langle\theta|,
+ \qquad |\theta\rangle=\sum_{n\geq0}\e^{in\theta}|n\rangle,
+ \label{eq:canonical-phase}
+\end{equation}
+and
+\begin{equation}
+ R(k)=r^k=T_k,
+ \qquad
+ \sum_{k\geq1}R(k)=\bar n.
+ \label{eq:discrete-equality}
+\end{equation}
+The geometric states and their relation to Susskind--Glogower phase states are established quantum-optical constructions~\cite{FuSasaki1997}; their role here is as the extreme points selected by equality in the Fisher-tail theorem.
+
+\subsection{Completely monotone continuum equality cone}
+
+The classification lifts exactly through the same lower-bin construction used in Theorem~\ref{thm:continuum}.  Let $\Pi$ be a probability measure on rates $\beta>0$ and consider the exponential mixture
+\begin{equation}
+ q(\omega)=\int_0^\infty \beta\e^{-\beta\omega}\,\Pi(\dd\beta),
+ \qquad \omega\geq0.
+ \label{eq:exp-mixture-spectrum}
+\end{equation}
+Its survival function is
+\begin{equation}
+ S(\nu)=\int_0^\infty\e^{-\beta\nu}\Pi(\dd\beta).
+ \label{eq:CM-survival}
+\end{equation}
+For every lattice spacing $\delta$, the exact lower-bin law is
+\begin{equation}
+ q_n^{(\delta)}
+ =\int[1-\e^{-\beta\delta}]\e^{-\beta n\delta}\Pi(\dd\beta),
+ \label{eq:lower-bin-mixture}
+\end{equation}
+a mixture of geometric distributions with $r=\e^{-\beta\delta}$.  Theorem~\ref{thm:extremizers} therefore supplies one POVM at each periodic approximant for which
+\begin{equation}
+ R_\delta(k)=T_k^{(\delta)}=S(k\delta).
+\end{equation}
+Hence the controlled continuum limit attains
+\begin{equation}
+ R(\nu)=S(\nu).
+ \label{eq:CM-continuum-equality}
+\end{equation}
+By the Bernstein--Widder representation, completely monotone survival functions are precisely Laplace mixtures of exponentials~\cite{SchillingSongVondracek2012}.  Thus Eq.~\eqref{eq:exp-mixture-spectrum} gives a broad exact equality cone.  Finite excess energy requires
+\begin{equation}
+ \bar\omega=\int_0^\infty S(\nu)\dd\nu
+ =\int_0^\infty\frac{\Pi(\dd\beta)}{\beta}<\infty.
+ \label{eq:CM-mean}
+\end{equation}
+
+The exponential spectrum of the previous equality example is the extreme point $\Pi=\delta_\beta$,
+\begin{equation}
+ \mu(\dd\omega)=\beta\e^{-\beta\omega}\dd\omega,
+ \qquad
+ R(\nu)=\e^{-\beta|\nu|}.
+ \label{eq:continuum-equality}
+\end{equation}
+With $\beta=2a$, the associated canonical covariant time density is the Cauchy law
+\begin{equation}
+ f_a(t)=\frac{a}{\pi(t^2+a^2)},
+ \label{eq:Cauchy}
+\end{equation}
+whose characteristic function is $\e^{-a|\nu|}$ and whose timestamp Fisher retention is $\e^{-2a|\nu|}$.  Theorem~\ref{thm:herglotz} explains this pair structurally: $R(\nu)=\e^{-\beta|\nu|}$ is itself the characteristic function of the difference of two independent Cauchy timing variables of scale $a=\beta/2$.  More generally, exponential mixtures in energy correspond to mixtures of Cauchy phase-difference laws.
+
+The equality cone is substantially larger.  For example, gamma mixing of the rate,
+$\beta\sim\operatorname{Gamma}(\alpha,\text{rate }a)$, gives
+\begin{equation}
+ S(\nu)=\left(\frac{a}{a+\nu}\right)^\alpha,
+ \qquad
+ q(\omega)=\frac{\alpha a^\alpha}{(a+\omega)^{\alpha+1}},
+ \label{eq:algebraic-equality}
+\end{equation}
+with finite mean $\bar\omega=a/(\alpha-1)$ for $\alpha>1$.  Exact Fisher-survival equality therefore includes algebraic as well as exponential retention laws.
