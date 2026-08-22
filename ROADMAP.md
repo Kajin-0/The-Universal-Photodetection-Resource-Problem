@@ -4,96 +4,82 @@
 
 **Active scientific branch:** `agent/temporal-information-resource-law`
 
-- Paper 1 Rev11: frozen.
-- Paper 2 Rev7: frozen.
-- Grand Challenge: active theorem stack through **WP17**.
+Paper 1 Rev11 and Paper 2 Rev7 are frozen. Grand Challenge theorem stack: **WP18**.
 
-# Current result hierarchy
+## Established hierarchy
 
-## G8 — periodic random-time QFI budget — WP10/WP11
+### WP10/WP12/WP15 — modewise QFI envelope
 
-`G_Q(k)=2 sum_n q_nq_{n+k}/(q_n+q_{n+k})`,
-
-`sum_{k>=1}G_Q(k)<=2nbar`.
-
-This is a modewise SLD-QFI envelope with incompatible mode/quadrature optima.
-
-## G11 — continuum QFI area — WP12/WP15
+`sum_{k>=1}G_Q(k)<=2nbar`,
 
 `int_R G_Q(nu)dnu<=pi Ebar^+/hbar`.
 
-Flat-band QFI envelope:
+This is a separately optimized SLD-QFI envelope. WP16 identifies the sharp `pi/4` operator constant as classical Hardy–Hilbert prior art.
 
-`Ebar^+>=(2/pi)hBq0`.
+### WP17 — fixed/separable operational law
 
-WP16: the sharp `pi/4` operator constant is classical Hardy–Hilbert prior art.
+For one fixed arbitrary POVM,
 
-## G13 — single-measurement operational budget — WP17
+`sum_{k>=1}Tr F_M^(k)<=nbar`.
 
-**PASSED for arbitrary fixed POVM and adaptive/separable independent-event readout.**
-
-For the cosine/sine classical Fisher block `F_M^(k)` of one fixed POVM,
-
-`boxed: sum_{k>=1}Tr F_M^(k)<=nbar`.
+For adaptive/separable independent-event detection the same source-normalized budget survives.
 
 Continuum:
 
-`boxed: int_R R_M(nu)dnu<=2Ebar^+/hbar`.
+`int_R R_M(nu)dnu<=2Ebar^+/hbar`,
 
-Full-quadrature flat-band guarantee:
+with flat-band inverse law
 
-`boxed: Ebar^+>=hBq0`.
+`Ebar^+>=hBq0`.
 
-The coefficient is sharp; the Cauchy/exponential covariant timestamp family saturates the continuum area law.
+The coefficient is sharp.
 
-Interpretation: for single-copy/separable readout, the `pi/2` gap between WP15's QFI coefficient `pi` and WP17's operational coefficient `2` is an incompatibility gap.
+### WP18 — two-sector collective closure
 
-# Remaining active gates
+For `q_0=1-p`, `q_1=p`, asymptotically optimal collective measurement gives
 
-## G14 — collective mixed-state readout
+`q_coll=min(p,1-p)`.
 
-**OPEN; highest-priority operational gate.**
+For `p<=1/2`,
 
-WP17 does not cover entangled collective measurements across multiple independently twirled event excitations. Because the baseline twirled state is generally mixed, standard Gill–Massar separable tradeoffs do not by themselves exclude a collective advantage.
+`q_coll=p=nbar`.
 
-Work order:
+Thus collective measurement can recover incompatibility loss but does not exceed the energy resource ceiling in the minimal model.
 
-1. solve the two-sector qubit model with the Holevo bound / quantum local asymptotic limit;
-2. determine whether the per-event operational coefficient `2E/hbar` survives collective readout;
-3. if it survives, seek a general proof for the full energy-sector model;
-4. if it fails, quantify the collective advantage and revise the resource hierarchy.
+## Highest-priority active gate — multimode collective theorem
 
-## Priority audit
+Prove or falsify an asymptotic collective bound of the form
 
-Continue searching random-unitary/group-distribution estimation for exact equivalents of WP10 and WP17. Generic random-unitary probability estimation, U(1) mode decomposition, QFI, and multiparameter complementarity are already occupied.
+`boxed: sum_{k>=1}R_coll(k)<=nbar`
 
-## Source embedding
+for multilevel random-time encoding.
 
-Strengthen the independent quantum-marked Poisson model into realistic incoherent bosonic optical-field language.
+If true, the sharp fully collective continuum operational law would be
 
-# Manuscript gate
+`int_R R_coll(nu)dnu<=2Ebar^+/hbar`,
 
-Do **not** draft the foundational manuscript yet.
+with the same `Ebar^+>=hBq0` Planck-scale coefficient already attained by covariant timestamps.
 
-Required:
+### Attack order
 
-1. collective-measurement gate resolved or sharply bounded;
-2. exact priority audit survives;
-3. source-to-field mapping hardened;
-4. Hardy–Hilbert and other standard ingredients properly attributed;
-5. WP14 arbitrary-waveform no-go retained as a scope boundary.
+1. Three energy sectors, modes `k=1,2`.
+2. Exact SLD commutator/Holevo geometry.
+3. Finite-copy collective numerical optimization where tractable.
+4. Search for a Holevo-dual inequality weighted by generator excitation.
+5. Test D-invariant decomposition of energy-gap tangent sectors.
+6. Quantum local asymptotic normality if direct finite-dimensional analysis stalls.
 
-# Candidate manuscript spine if gates survive
+## Parallel gates
 
-- random-time distribution encoding;
-- exact discrete mode QFI and `2nbar` envelope;
-- fixed-measurement operational `nbar` theorem;
-- continuum operational `2E/hbar` law and sharp equality family;
-- separately optimized QFI `pi E/hbar` envelope and incompatibility interpretation;
-- collective-measurement boundary;
-- Poisson/photodetection embedding;
-- coherent-waveform no-go.
+- Continue exact prior-art search for the random-time QFI and operational sum rules.
+- Harden the independent quantum-marked Poisson-to-bosonic-field mapping.
+- Locate explicit classical-analysis provenance of the harmonic-mean density functional.
+- Preserve WP14's arbitrary-waveform no-go.
 
-# Documentation discipline
+## Manuscript gate
 
-Every material result must update the WP note, active handoff, landing files, and `main`.
+Do not draft the foundational paper until the multimode collective question is resolved or sharply bounded, priority survives, and the optical source embedding is publication-grade.
+
+## Documentation discipline
+
+Every material theorem, no-go, proof repair, priority collision, or strategy change must update the active WP notes, handoff/landing files, and `main`.
