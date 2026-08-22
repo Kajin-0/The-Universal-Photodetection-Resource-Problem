@@ -4,160 +4,165 @@
 
 ## Goal
 
-Seek a foundational autonomous resource principle for temporal information. The finished Rev11 random-time law is a special-source result and remains frozen on its parent branch.
+Seek a foundational physical resource principle for temporal information when clock, signal, controller, detector, and memory are all internal quantum systems. The finished Rev11 random-time law remains frozen on its parent branch.
 
-## Stage A — destroy naive formulations
+## Completed foundations
 
-### WP01 — prior-art and model boundary
+### WP01 — prior-art and model boundary — PASS
 
-Status: **PASS**.
+Do not claim novelty for:
 
-Established collisions:
+- modes-of-asymmetry / reference-frame support laws;
+- mode trace-norm monotones;
+- QFI as an asymmetry resource;
+- finite autonomous clocks/control per se;
+- quantitative WAY tradeoffs;
+- generic quantum speed limits;
+- standard phase-estimation sine states / Heisenberg scaling;
+- simply charging preparation/control energy.
 
-- modes-of-asymmetry/reference-frame support laws are prior art;
-- mode trace-norm monotones are prior art;
-- QFI/Fisher asymmetry resource measures are prior art;
-- autonomous finite clocks/control are prior art;
-- generic energy-constrained multistep metrology is active prior art.
+The program must produce an operational temporal-information resource law.
 
-Novelty must be a quantitative temporal-information performance/resource law, not mode existence.
+### WP02 — local-Fisher no-go and robust tangent radius — PASS
 
-### WP02 — local-Fisher no-go and robust tangent radius
+At fixed baseline mean energy, arbitrary local state synthesis can retain fixed local Fisher information at arbitrarily high Bohr frequency by shrinking the physical tangent neighborhood.
 
-Status: **ANALYTIC PASS; numerical adversarial checks PASS; priority unverified**.
+Define `R_lin` as the largest disk over which the linearized two-quadrature tangent remains positive.
 
-Main no-go:
+For stationary `rho0` and exact gap `nu`, arbitrary finite-copy collective measurements obey
 
-At fixed baseline mean excess energy, arbitrary local state synthesis can place fixed Fisher information at arbitrarily high Bohr frequency by shrinking the physical neighborhood of the tangent. Therefore **local Fisher information alone is too local** for a universal energy-frequency law.
+`(R_lin^2/4)[Tr F_N^(nu)/N] <= min(D_nu,U_nu) <= T(nu)`.
 
-New quantity:
+Therefore
 
-`R_lin` = largest disk radius over which the two-quadrature linearized tangent remains a positive density operator.
+`Ebar+ >= (hbar nu R_lin^2/4)[Tr F_N^(nu)/N]`.
 
-For stationary `rho0` and exact positive-gap tangent `A_nu`,
+The counterexample asymptotically saturates this robust law.
 
-`R_lin = 1 / w(rho0^(-1/2) A_nu rho0^(-1/2))`,
+### WP03 — relational dual-energy survival — PASS
 
-where `w` is numerical radius.
+For clock `C` and signal `S`, take a globally stationary energy-exchange tangent
 
-For arbitrary finite `N` and any joint POVM,
+`[H_S,A_nu]=+hbar nu A_nu`,
 
-`(R_lin^2/4) [Tr F_N^(nu)/N] <= min(D_nu,U_nu) <= T(nu)`.
+`[H_C,A_nu]=-hbar nu A_nu`.
 
-Hence
+Then, with
 
-`Ebar+ >= (hbar nu R_lin^2/4) [Tr F_N^(nu)/N]`.
+`K_N=(R_lin^2/4)[Tr F_N/N]`,
 
-The two-level fixed-energy/high-frequency counterexample asymptotically saturates this robust energy law.
+for any finite N and arbitrary joint POVM,
 
-This is the current strongest theorem of the new branch.
+`K_N(nu) <= min{T_C(nu),T_S(nu)}`.
 
-## Stage B — finite-reference temporal-information conversion
+Thus
 
-### WP03 — reference-assisted parameter-to-time conversion
+`Ebar_C^+ + Ebar_S^+ >= 2 hbar nu K_N`.
 
-Status: **NEXT / ACTIVE**.
+The factor `2` is asymptotically sharp: a symmetric two-qubit exchange model satisfies weak multiparameter commutativity, so collective measurements asymptotically attain both local tail bounds simultaneously.
 
-Minimal systems:
+All-mode lattice budget:
 
-- `D`: time-symmetric data/program register carrying unknown parameter;
-- `R`: finite quantum reference/clock/controller;
-- `S`: target temporal signal/memory;
-- globally time-translation-covariant, parameter-independent processing.
+`sum_k K_N(k) <= min(nbar_C,nbar_S)`.
 
-Established infrastructure:
+### WP04 — exact hard total-energy cap law — PASS
 
-`dot rho_out^(nu) = Phi(eta_R^(nu) tensor dot tau_D)`.
+For a structured relative-time experiment inside a fixed/hard-capped total-excitation shell `N_C+N_S<=L`, the exchange shift is finite.
 
-Do **not** claim this as new; it follows from Marvian--Spekkens mode theory.
+For one fixed one-copy POVM,
 
-Research targets:
+`R_M(k) <= cos^2{pi/[floor(L/k)+2]}`.
 
-1. Determine how `R_lin` transforms under reference-assisted covariant processing.
-2. Find an operational performance functional for parameter information converted into temporal mode `nu`.
-3. Derive a finite-reference upper bound stronger than mere mode trace-norm monotonicity.
-4. Determine whether near-perfect temporal conversion at fixed `nu` forces divergence of a physical clock/reference resource.
-5. Search for exact or asymptotically optimal reference states.
+With `nu=k omega0` and `E_max=hbar omega0 L`,
 
-Candidate mathematical tools:
+`R_M(nu) <= cos^2{pi/[floor(E_max/(hbar nu))+2]}`.
 
-- tangent numerical radius;
-- trace-norm mode monotones;
-- monotone quantum Fisher metrics;
-- channel/measurement simulation norms;
-- positive-definite characteristic functions;
-- semibounded moment/tail inequalities.
+For the fundamental mode,
 
-### WP04 — nonlinear synthesis loophole
+`E_max >= hbar nu[pi/arccos(sqrt R)-2]`.
 
-Parallel target:
+Near unit retention,
 
-`R_lin=0` families can remain physical through curvature/second-order population (coherent-sideband type synthesis).
+`E_max >= pi hbar nu/sqrt(1-R)[1+o(1)]`.
 
-Determine the weakest additional physical datum that restores a theorem:
+This bound is exactly sharp. A globally stationary fixed-total-energy sine-chain history state and canonical relative-phase POVM attain equality.
 
-- fixed finite parameter amplitude;
-- finite distinguishability at nonzero amplitude;
-- bounded curvature/state acceleration;
-- explicit preparation/control dynamics;
-- energy/action paid by the controller.
+The finite-shift/sine-state constant is phase-estimation prior art. Candidate novelty is the exact arbitrary-POVM **Fisher-retention** law for autonomous relational time.
 
-A purely local finite-derivative law may itself be impossible; test this aggressively.
+## Current frontier — WP05
 
-## Stage C — autonomous control/action
+### A. Sharp mean-total-energy law
 
-### WP05 — control-generator resource
+Hard cap is solved exactly; mean total energy only is not.
 
-A state-only law cannot be universal if arbitrary static interaction Hamiltonians of unbounded spectral scale are free.
+Questions:
 
-Determine the correct charged dynamical quantity among or beyond:
+1. What is
+   `sup R_M(1)`
+   at fixed `Ebar_C+Ebar_S` for a globally stationary relative-time experiment?
+2. Does the optimal asymptotic constant coincide with known Airy-function phase-estimation constants, or does the Fisher-retention functional have a different optimizer because it averages squared posterior sharpness?
+3. Can the optimization be reduced to a convex envelope over fixed-total-energy shells?
+4. Is there an exact or asymptotic extremizer family?
 
-- Hamiltonian spectral diameter;
-- mean excess energy;
-- energy variance/QFI;
-- time-integrated interaction norm (action);
-- thermodynamic free energy / entropy production;
-- spectral asymmetry distribution.
+Known phase-estimation mean-generator bounds (Berry--Hall--Zwierz--Wiseman, PRA 86, 053813 (2012)) are prior art and cannot simply be relabeled.
 
-Avoid assuming the answer.
+### B. Pre-existing relational coherence
 
-### WP06 — unified state + control temporal resource law
+WP03 assumes a baseline separately stationary under clock and signal Hamiltonians, with the unknown parameter introducing the relational exchange coherence.
 
-Attempt a theorem for the complete apparatus:
+Extend to general Page--Wootters/history states that are already relationally coherent at baseline while remaining globally stationary.
+
+This is likely essential for a genuinely autonomous clock law.
+
+### C. Nonlinear `R_lin=0` synthesis
+
+Determine the weakest additional physical datum that restores a theorem when second-order population/curvature keeps the exact nonlinear family physical despite zero linear tangent radius.
+
+Candidate resources:
+
+- finite parameter amplitude;
+- finite trace distance / hypothesis-testing performance;
+- curvature or second derivative;
+- explicit control Hamiltonian/action.
+
+### D. Many-body cut law
+
+Test the conjecture:
+
+> temporal information crossing any autonomous bipartition requires matched energy-exchange resources on both sides of the cut.
+
+Seek a cut-set / network generalization of WP03.
+
+### E. Autonomous control-generator resource
+
+If operations do not obey the energy-conserving/covariant structure, arbitrary interaction strength is a loophole. Determine which dynamical resource must be charged: spectral diameter, interaction norm, action, power, or another invariant.
+
+## Later stages
+
+### WP06 — unified apparatus law
+
+Combine reference-state, relational exchange, and control-generator resources into one theorem for
 
 `source + clock + controller + detector + memory`.
 
-The ideal endpoint would bound temporal statistical information by a total resource that cannot be hidden in a classical timing reference or free external control.
-
-## Stage D — beyond local Fisher
-
 ### WP07 — finite distinguishability
 
-Move from local Fisher geometry to trace distance / hypothesis-testing error for finite waveform amplitudes.
+Replace local Fisher by finite-amplitude trace distance / hypothesis testing.
 
-### WP08 — mutual information / temporal channel capacity
+### WP08 — temporal channel capacity
 
-If earlier stages succeed, formulate a temporal-information capacity law with physically explicit clock/control resources.
+If the preceding structure survives, seek mutual-information/channel-capacity consequences.
 
-## Stage E — significance and publication gate
+## Publication / significance gate
 
-Only after a theorem survives hostile review:
+Do not draft a new foundational manuscript merely because WP02--WP04 are mathematically interesting. First require:
 
-- exhaustive priority audit;
-- exact equality/near-equality constructions;
-- independent numerical adversarial checks;
-- identify experimentally testable consequence;
-- decide whether the result merits a distinct foundational manuscript.
+- deep priority audit;
+- at least one theorem that is clearly not reducible to known phase estimation/WAY/asymmetry statements;
+- hostile mathematical review;
+- sharp or near-sharp constructions;
+- explicit physical consequence or thought experiment.
 
-## Stop conditions
+## Documentation discipline
 
-Do not continue a route if it reduces to:
-
-- known mode-support monotonicity;
-- generic QFI data processing;
-- a standard quantum speed limit;
-- generic energy-time uncertainty;
-- an existing finite-clock simulation-error theorem;
-- merely adding preparation/control energy without a new structural law.
-
-Record negative results. A killed conjecture is part of the research program, not a documentation failure.
+Every material theorem, failed conjecture, prior-art collision, or validation result must be recorded immediately in the branch. The repository, not chat history, is authoritative.
