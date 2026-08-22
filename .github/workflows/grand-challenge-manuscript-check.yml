@@ -62,6 +62,10 @@ jobs:
         working-directory: grand_challenge/manuscript
         run: python apply_rev9_spectral_resource_theory.py
 
+      - name: Compress Rev9 abstract
+        working-directory: grand_challenge/manuscript
+        run: python apply_rev9_abstract_compression.py
+
       - name: Run operational-tail numerical validation
         working-directory: grand_challenge
         run: python numerics/verify_operational_tail_bound.py
@@ -114,6 +118,10 @@ jobs:
             echo "Rev9 title missing"
             exit 1
           fi
+          if ! grep -F 'usually summarized by a response time or transfer function' "$TEX"; then
+            echo "Compressed Rev9 abstract missing"
+            exit 1
+          fi
           if ! grep -F '\section{Controlled periodic-to-continuum survival law}' "$TEX"; then
             echo "Controlled continuum qualification missing"
             exit 1
@@ -152,6 +160,7 @@ jobs:
             grand_challenge/manuscript/energy_survival_temporal_fisher_rev9_prxq.tex
             grand_challenge/manuscript/energy_survival_temporal_fisher_rev8_prxq.tex
             grand_challenge/manuscript/apply_rev9_spectral_resource_theory.py
+            grand_challenge/manuscript/apply_rev9_abstract_compression.py
             grand_challenge/manuscript/rev9_spectral_theorems.tex
             grand_challenge/manuscript/figure1_operational_architecture_body_rev9.tex
             grand_challenge/manuscript/figure1_operational_architecture_body_rev7.tex
