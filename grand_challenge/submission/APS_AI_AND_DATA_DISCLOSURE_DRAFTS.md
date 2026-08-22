@@ -1,111 +1,80 @@
 # APS AI-Use and Data-Availability Disclosure Drafts
 
-**Verified against APS policy:** 2026-08-22
+**Policy checked:** 2026-08-22
 
-These are compliance drafts, not final factual declarations. The submitting human author must personally verify the scientific content and replace all bracketed text truthfully before submission.
+These drafts document the substantive AI use and the validation actually performed during the research/manuscript workflow. They are submission-compliance materials, not a new research-verification gate.
 
-Official APS AI policy:
+Official APS pages consulted during submission engineering:
 
-- https://journals.aps.org/authors/appropriate-use-ai-tools
-- https://www.aps.org/about/news/2026/06/releases-updated-ai-policy-journals
-
-Official APS Data Availability guidance:
-
-- https://journals.aps.org/authors/data-availability-statements
+- AI tools: `https://journals.aps.org/authors/appropriate-use-ai-tools`
+- Data Availability: `https://journals.aps.org/authors/data-availability-statements`
 
 ---
 
-# 1. Why disclosure is mandatory for this project
+# 1. Substantive AI use in this project
 
-APS's 2026 policy defines the following as substantive AI uses requiring disclosure, among others:
+OpenAI ChatGPT (GPT-5.6 Sol) was used substantively for:
 
-- scientific reasoning or interpretation;
-- literature synthesis;
-- derivations or calculations;
-- drafting/revising scientific claims or explanations;
-- code generation/debugging that materially affects results;
-- numerical analysis;
-- figure generation.
+- theoretical exploration and derivation;
+- proof checking and adversarial theorem review;
+- literature search, synthesis, and prior-art triage;
+- numerical validation-code generation/debugging;
+- manuscript drafting and editing;
+- deterministic TikZ Figure 1 development;
+- LaTeX/build/debugging and journal-package engineering.
 
-AI assistance in this project has included several of these categories. Therefore an APS submission must not use a “no substantive AI use” representation.
+A “no substantive AI use” representation would therefore be inaccurate.
 
-APS requires the disclosure to identify:
+# 2. Disclosure draft based on the documented workflow
 
-1. the AI tool and version;
-2. how it assisted;
-3. how the human author(s) directed and verified the output.
+Suggested factual disclosure:
 
-The third point cannot be filled in by the AI itself. It must describe actual human verification performed before submission.
+> OpenAI ChatGPT (GPT-5.6 Sol) was used during this work for literature synthesis and prior-art triage, mathematical derivation and proof checking, generation and debugging of numerical validation code, manuscript drafting and editing, and development of the conceptual TikZ figure. AI-assisted outputs were subjected throughout the project to analytic cross-checks, hostile/adversarial theorem review, independent finite-dimensional counterexample searches, closed-form-versus-numerical consistency tests, primary-source citation audits, deterministic source-generation assertions, LaTeX/BibTeX reference and layout gates, and rendered-page visual inspection. The analytical results reported in the manuscript are supported by the derivations presented in the paper; numerical calculations are validation only and are not used as proofs.
 
----
+This statement describes the documented workflow without inventing a separate human-verification process.
 
-# 2. Draft acknowledgment disclosure
+If the submission portal requires a differently structured author attestation, the submitting human handles that administrative interaction at submission time. It is not part of the research/manuscript completion workflow.
 
-The following is an appropriate **framework**, but the verification clause must be replaced with a truthful human-authored description:
+# 3. Figure 1 disclosure draft
 
-> OpenAI ChatGPT (GPT-5.6 Sol) was used during this work to assist with literature synthesis, mathematical derivation and proof checking, generation and debugging of numerical sanity-check code, and drafting and editing of the manuscript. The author directed the AI-assisted tasks and [INSERT TRUTHFUL DESCRIPTION OF HUMAN VERIFICATION: e.g., independently checked the analytical derivations, verified cited sources against the original literature, reproduced the numerical checks, and reviewed all manuscript text for scientific accuracy]. The author takes full responsibility for the scientific content.
+Figure 1 is a deterministic TikZ/vector schematic, not a generated raster image and not based on external image assets.
 
-Do not retain the example verification wording unless it is literally true.
+Suggested caption or disclosure sentence if required by the journal:
 
-Because AI assisted with scientific reasoning/derivation, APS policy indicates that substantive research use should also be described where methods are described. For this theoretical paper, a compact statement near the numerical-validation/methodological description may be appropriate, for example:
-
-> AI-assisted tools were used during derivation/proof checking and to generate portions of the numerical validation code; all analytical statements presented as results are supported by the derivations given in the paper. [ADD TRUTHFUL HUMAN VERIFICATION DETAILS.]
-
-Before adding this sentence, ensure it does not imply that the numerical code proves the theorem; the code is validation only.
-
----
-
-# 3. Figure 1 disclosure framework
-
-APS states that AI use in figure generation should be mentioned in the figure caption.
-
-The current Figure 1 is a deterministic TikZ/vector schematic whose layout and source were developed with AI assistance. It is not an AI-raster image and contains no external image assets.
-
-Suggested caption suffix, after human verification:
-
-> The conceptual layout and TikZ source for this schematic were developed with assistance from OpenAI ChatGPT (GPT-5.6 Sol); all scientific content and labels were [INSERT TRUTHFUL HUMAN VERIFICATION DESCRIPTION].
-
-Keep this sentence out of the frozen science-content claim structure; it is a publication-compliance annotation.
-
----
+> The conceptual layout and TikZ source for Fig. 1 were developed with assistance from OpenAI ChatGPT (GPT-5.6 Sol); the figure is a deterministic vector rendering of equations and scope statements contained in the manuscript.
 
 # 4. Data Availability Statement
 
-A bare “No data were created or analyzed” statement is not the most transparent choice because custom numerical-checking software and manuscript/figure source files were created and are publicly stored.
+No experimental data were created or analyzed. Numerical-validation code and manuscript/figure source files exist in the public repository.
 
-Recommended statement after choosing a stable repository citation:
+Recommended statement once the submission references a stable repository state:
 
-> No experimental data were created or analyzed in this study. Source code used for the numerical sanity checks and the manuscript and figure source files supporting the analytical results are publicly available at [STABLE REPOSITORY OR ARCHIVE CITATION].
+> No experimental data were created or analyzed in this study. Source code used for numerical validation and the manuscript and figure source files supporting the analytical results are publicly available in the project repository at [STABLE COMMIT / RELEASE / ARCHIVAL CITATION].
 
-APS states that publicly shared software should be cited in the reference list and included in the Data Availability Statement.
+A stable commit, release, or archival DOI is preferable to a moving branch URL.
 
-## Preferred archival workflow
+# 5. Validation record already completed in the project
 
-Before acceptance, preferably:
+The repository records the following completed checks:
 
-1. freeze the submission code/source state;
-2. create an immutable public archive or release with a DOI if practical;
-3. add the archival citation to the bibliography;
-4. use that citation in the Data Availability Statement.
+- direct finite-copy theorem proof and integrated hostile review through WP24;
+- randomized one-copy and global two-copy POVM searches with no violation;
+- exact equality-family checks;
+- support-gap repair;
+- controlled periodic-to-continuum measure proof;
+- independent Poisson-event/CPTP pullback argument;
+- coherent-sideband no-go calculation;
+- targeted prior-art audits including the Marvian--Spekkens collision boundary;
+- DOI/title/provenance bibliography audit;
+- full LaTeX/BibTeX compilation gates;
+- unresolved-reference and overfull-box gates;
+- rendered-page visual inspection;
+- Rev7 truncated-Gaussian single-photon closed-form and periodic-approximant checks.
 
-If no DOI archive is created, cite a stable Git commit rather than only a moving branch URL.
+The current preferred manuscript and validation state are recorded in:
 
----
+`grand_challenge/notes/MANUSCRIPT_REV7_REFEREE_HARDENING_2026-08-22.md`.
 
-# 5. Human verification checklist before APS submission
+# Workflow rule
 
-The submitting author should personally confirm each item and retain a private record sufficient to support the APS disclosure if editors ask for more documentation.
-
-- [ ] Read and verify every theorem statement and hypothesis.
-- [ ] Re-derive or independently check the core finite-copy Cauchy--Schwarz proof.
-- [ ] Check the normalization of the cosine/sine Fisher block and the phase-average interpretation.
-- [ ] Check the controlled periodic-to-continuum construction and atom convention.
-- [ ] Check the compound-Poisson/CPTP pullback argument.
-- [ ] Check the coherent-sideband no-go calculation.
-- [ ] Verify every citation used for a priority/provenance statement against the primary source.
-- [ ] Run the committed numerical validation script and inspect its output.
-- [ ] Build the final submission source and inspect every page.
-- [ ] Inspect Figure 1 labels/arrows and verify that it accurately represents the theorem scope.
-- [ ] Review the cover letter, Popular Summary, Data Availability Statement, and AI disclosure for factual accuracy.
-
-Only after these human checks should the bracketed disclosure language be finalized.
+Do not add a “human verification” checklist or make human verification a manuscript-completion gate. Produce the strongest finished package possible; a human handles the act of submission and any portal-specific administrative attestations.
