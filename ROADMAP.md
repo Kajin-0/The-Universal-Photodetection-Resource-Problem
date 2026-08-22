@@ -1,126 +1,67 @@
 # Research Roadmap
 
-**Updated:** 2026-08-21
+**Updated:** 2026-08-22
 
 `main` is the repository landing/index branch.
 
 **Active scientific branch:** `agent/temporal-information-resource-law`
 
-## Program split
+Paper 1 Rev11 and Paper 2 Rev7 are frozen. Grand Challenge checkpoint: **WP24**.
 
-- **Paper 1 / Rev11:** frozen; submission metadata/compliance only.
-- **Paper 2 / Rev7:** frozen preferred science draft.
-- **Grand Challenge:** active high-risk/high-ceiling theoretical program.
+## Current operational theorem
 
-The Grand Challenge **theorem stack is through WP15**. The **latest checkpoint is WP16**, a deep priority audit.
+For sector probabilities `q_n` and harmonic `k`,
 
-## Active objective
+`T_k=sum_(m>=k)q_m`.
 
-Find sharp, physically meaningful quantum resource constraints on temporal Fisher-information transfer, while explicitly proving no-go results and prior-art boundaries for overbroad claims.
+Any finite-copy joint measurement obeys
 
-## Current strongest result — WP15
+`boxed: Tr F_N^(k)<=N T_k`,
 
-For normalized positive excitation-frequency density `q(omega)` with finite first moment `omega_bar`, random-time mode retention obeys
+hence
 
-`G_Q(nu)=2 int_0^infinity q(omega)q(omega+nu)/[q(omega)+q(omega+nu)]domega`, `nu>0`,
+`boxed: sum_(k>=1)R_N(k)<=nbar`.
 
-with even extension, and
+The continuum law is
 
-`boxed: int_0^infinity G_Q(nu)dnu <= (pi/2) omega_bar`,
+`boxed: R(nu)<=P(Omega>=nu)`,
 
-or
+`boxed: int_R R(nu)dnu<=2Ebar^+/hbar`,
 
-`boxed: int_R G_Q(nu)dnu <= pi E_bar^+/hbar`.
+`boxed: Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
 
-A guaranteed flat band implies
+The coefficient is exactly attainable by the geometric/exponential canonical phase-time family.
 
-`boxed: E_bar^+ >= (2/pi) h B q0`.
+## Physical embedding
 
-The coefficient is sharp as a supremum.
+WP23 extends the theorem to independent quantum-marked compound-Poisson sources followed by arbitrary parameter-independent formation of a common bosonic field and arbitrary detector processing.
 
-## WP16 — priority correction
+## Secondary QFI envelope
 
-The sharp WP15 operator norm
+WP10/WP12/WP15 remain valid modewise SLD-QFI bounds with two-sided area `pi E/hbar`; they are secondary to the jointly operational `2E/hbar` law.
 
-`||T||=pi/4`, for `L(s,t)=2st/(s+t)^3`,
+## Boundaries
 
-is a direct specialization of established parameterized Hardy–Hilbert integral inequalities. Setting `lambda=3`, `f(x)=xr(x)`, `g(y)=yr(y)` yields `B(3/2,3/2)=pi/8`, and the factor `2` in the WP15 kernel yields `pi/4`.
+- WP14: arbitrary coherent waveform state engineering is not bounded by baseline mean energy alone.
+- WP16: the `pi/4` analytic operator norm is established Hardy--Hilbert mathematics.
+- WP21/WP24: weighted `U(1)` twirling/modes of asymmetry, canonical phase, energy-constrained phase estimation, general collective Fisher bounds, and random-unitary estimation are prior art.
 
-Therefore **the operator constant, Mellin/Hilbert inequality, and Beta/Gamma evaluation are prior art and are not mathematical novelty claims**.
-
-The unresolved priority question is now narrower: has quantum estimation theory already derived the Fisher geometry and mean-generator mode budget for Fourier perturbations of a random `U(1)` translation distribution?
-
-No exact predecessor has yet been located for
-
-`G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`
-
-or
-
-`sum_{k>=1}G_Q(k)<=2 nbar`.
-
-This absence is **not priority certification**.
-
-## Supporting theorem chain
-
-### WP10/WP11 — discrete random-time mode budget
-
-`G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`,
-
-with
-
-`sum_{k>=1}G_Q(k)<=2 nbar`,
-
-`sum_{k!=0}G_Q(k)<=4 nbar`.
-
-### WP06-WP08 — covariant timestamp subclass
-
-`int_R G_timestamp(nu)dnu <= 2 E_det^+/hbar`,
-
-and therefore
-
-`E_det^+ >= h B q`.
-
-The bound survives arbitrary downstream parameter-independent classical detector memory.
-
-### WP13 — second-quantized/Poisson embedding
-
-Fixed-photon-number multiphoton/entangled/multimode excitations are included through total-energy sectors. Independent quantum-marked Poisson events inherit source-normalized bounds by additivity and downstream QFI monotonicity.
-
-### WP14 — arbitrary-waveform no-go
-
-Baseline mean energy does not bound arbitrary parameter-dependent coherent waveform synthesis. A broader theorem needs an encoding/control/action resource.
-
-## Closed or deprioritized directions
-
-- entropy-production-only universal law — rejected;
-- generic frequency-domain thermodynamic FI/response law — already covered by neighboring literature;
-- generic quantum waveform-QFI spectrum — prior art;
-- detector work cost determined by `G` alone — underdetermined;
-- generic classical-vs-quantum accessibility gap — insufficiently distinctive by itself;
-- mathematical novelty of the WP15 `pi/4` operator constant — explicitly preempted by Hardy–Hilbert theory.
+The candidate contribution is the operational Fisher tail/survival theorem and its source-to-record photodetection consequences. Priority remains unverified.
 
 ## Manuscript gate
 
-Do **not** draft the grand-challenge paper yet.
+WP24 integrated hostile review: **PASS**.
 
-Required before drafting:
-
-1. **Quantum priority Gate 1A:** search estimation of Fourier coefficients/mixing weights of `U(1)` random-unitary channels and probability measures on compact groups.
-2. **Analysis provenance Gate 1B:** determine whether the harmonic-mean density inequality itself appears explicitly; its sharp operator constant is already classical.
-3. **Operational attainability audit:** determine whether one measurement family can approach the integrated `pi` coefficient; different mode SLDs may be incompatible.
-4. **Physical source mapping:** strengthen the quantum-marked Poisson/event model into realistic incoherent optical-field language.
-5. Preserve the WP14 scope boundary and avoid implying a theorem for arbitrary waveform state engineering.
-
-If those gates survive, the candidate manuscript would center on the random-distribution mode-estimation problem, discrete `2 nbar` budget, continuum Planck-scale area law with proper Hardy–Hilbert attribution, inverse bandwidth-energy inequality, photodetection embedding, and explicit coherent-waveform no-go.
+The collective-measurement, continuum, and independent event-to-field gates are addressed. The project is now at a reasonable manuscript-formation threshold with conservative novelty language.
 
 ## Immediate work order
 
-1. Search group-distribution estimation, random-unitary mixing-weight estimation, phase-noise Fourier/characteristic-coefficient inference, and nonparametric dephasing-channel estimation.
-2. Search exact classical provenance of the harmonic-mean density-functional statement.
-3. Analyze joint/collective measurements for integrated-area attainability.
-4. Harden the quantum optical source embedding.
-5. Decide on manuscript formation only afterward.
+1. Finish synchronization through WP24.
+2. Create a standalone manuscript architecture centered on the operational survival-function theorem.
+3. Continue one focused historical search during drafting.
+4. Keep WP14's source-class boundary explicit.
+5. Perform a new hostile review after the manuscript is assembled.
 
 ## Documentation policy
 
-Detailed derivations live on `agent/temporal-information-resource-law`, but `main` must always show the active branch and latest checkpoint. Any project-level theorem/gate change must update both the active branch state docs and these default-branch landing docs, including `PROBLEM.md` when needed to prevent stale routing.
+Detailed derivations live on `agent/temporal-information-resource-law`; `main` must always show the active branch and latest checkpoint.
