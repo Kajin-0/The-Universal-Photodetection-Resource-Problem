@@ -2,121 +2,111 @@
 
 **Science checkpoint: WP24 — 2026-08-22**
 
-**Frozen science content: Rev4. Frozen publication content: Rev5. Current journal package: Rev6 PRX Quantum.**
-
-This directory contains the active theoretical program launched from the frozen Paper-2 result on Fisher spectra of autonomous detector channels.
+**Preferred PRX Quantum manuscript: Rev7.**
 
 ## Grand question
 
 > For a physically realizable measurement of temporal structure, what fundamental resources constrain source-to-record temporal Fisher-information transfer?
 
-## Current strongest theorem
+## Strongest theorem
 
-For the exact periodic random-time model with sector probabilities `q_n`, let
+For exact periodic random-time encoding with sector probabilities `q_n`, define
 
 `T_k=sum_(m>=k)q_m`.
 
-For any finite number `N` of independently encoded excitations and any joint POVM,
+For any finite `N` and any joint POVM,
 
-`Tr F_N^(k)<=N min(D_k,U_k)<=N T_k`.
+`Tr F_N^(k) <= N min(D_k,U_k) <= N T_k`.
 
 Hence
 
-`R_N(k)=Tr F_N^(k)/N<=T_k`,
+`R_N(k)=Tr F_N^(k)/N <= T_k`,
 
-`sum_(k>=1)R_N(k)<=nbar`.
+`sum_(k>=1)R_N(k) <= nbar`.
 
-`R_N(k)` is the two-quadrature / phase-averaged source-normalized Fisher retention. WP20 proves the theorem directly for arbitrary entangled finite-copy collective measurements.
+The theorem includes arbitrary finite-copy entangled collective measurements.
 
-## Controlled continuum limit
+## Controlled periodic-to-continuum survival law
 
-For a positive excitation-frequency spectral probability measure `mu` with finite mean, controlled large-period limits of exact lower-bin periodic approximants satisfy
+For controlled periodic-to-continuum limits,
 
-`R(nu)<=mu([nu,infinity))`.
+`R(nu) <= Pr(Omega>=nu)`.
 
-Therefore
+This is the principal continuum result. `Omega` is excess generator frequency above the participating lower edge; the common edge/carrier offset is irrelevant.
 
-`int_R R(nu)dnu<=2Ebar^+/hbar`,
+The energy relations
 
-and
+`int_R R <= 2Ebar+/hbar`,
 
-`Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
+`Ebar+ >= hbar nu R(nu) = h f R(2pi f)`
 
-The geometric-sector / exponential-spectrum canonical phase-time family saturates the bound exactly.
+are first-moment corollaries, with `Ebar+=hbar<Omega>`.
 
-## Physical source scope
+## Sharpness and nonextremal photon example
 
-WP23 extends the theorem to an independent quantum-marked compound-Poisson event source followed by arbitrary parameter-independent formation of a common bosonic field, wavepacket overlap, coherent detector memory, ancillas, and measurement.
+The geometric/canonical-phase family gives `R(k)=T_k=r^k` for every harmonic simultaneously and yields the exponential/Cauchy equality family in the controlled continuum limit.
 
-This is not a theorem for every field with Poisson photocount statistics and not a theorem for arbitrary coherent waveform synthesis.
+Rev7 adds one transform-limited truncated-Gaussian single-photon example. Canonical covariant timing reaches approximately 96.6% of the survival ceiling at `nu=0.5 sigma` and 88.5% at `nu=sigma`.
 
-## Secondary QFI envelope
+## Physical scope
 
-WP10/WP12/WP15 remain correct as separately optimized SLD-QFI metric bounds:
+WP23 transfers the normalized law to independent quantum-marked Poisson events followed by arbitrary **parameter-independent** source-to-field and detector processing.
 
-`sum_(k>=1)G_Q(k)<=2nbar`,
-
-`int_R G_Q(nu)dnu<=pi Ebar^+/hbar`.
-
-They are secondary to the operational theorem. WP16 identifies the `pi/4` analytic operator norm as established Hardy--Hilbert mathematics.
+WP14/Rev7 retain the coherent-sideband no-go: arbitrary parameter-dependent waveform-state synthesis cannot be bounded by baseline mean energy alone.
 
 ## Prior-art boundary
 
-Weighted `U(1)` twirling/energy-gap modes, canonical phase measurements, phase Fourier methods, photon-number-constrained phase estimation, arbitrary-measurement information bounds, random-unitary probability estimation, waveform QFI, sharp positive-frequency inequalities, and Hardy--Hilbert mathematics are prior art.
+`U(1)` modes of asymmetry and weighted twirling are prior art. Their role is kinematic: they identify available energy-gap components. The candidate contribution here is operational:
 
-The candidate contribution is narrowly the arbitrary-measurement **classical-Fisher tail law** for perturbations of the latent random-time mixing distribution, its paired-population/mean-energy evaluation, and source-to-record consequences.
+> a sharp bound on the **classical Fisher information extractable by any actual POVM** about Fourier perturbations of the random-time mixing law, expressed through participating population tails and valid for arbitrary finite-copy collective measurements.
 
-Targeted searches have not located an exact predecessor. **Priority remains unverified, not certified.**
+Canonical phase POVMs, energy-constrained phase estimation, generic QFI/Holevo machinery, random-unitary estimation, waveform QFI, Hardy--Hilbert/positive-frequency mathematics, and generic Poisson/CPTP data processing are also prior art.
 
-## Manuscript / target package
+**Priority remains unverified, not certified.**
+
+## Preferred manuscript — Rev7
 
 Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
-Generation chain:
+Rev7 was produced in direct response to an external adversarial review. It:
 
-`Rev1 -> Rev2 mechanical -> Rev3 hostile-review repair -> Rev4 science/claim polish -> Rev5 publication figure/link pass -> Rev6 PRX Quantum style package`.
+- makes the continuum theorem explicitly controlled periodic-to-continuum;
+- defines the resource as excess energy above the participating edge;
+- makes the survival law primary and `hfR` a first-moment corollary;
+- sharpens the distinction from modes-of-asymmetry theory;
+- adds one nonextremal transform-limited single-photon example;
+- revises Figure 1 to match those claims.
 
-- **Rev4:** frozen science/claim checkpoint.
-- **Rev5:** frozen publication content; one conceptual two-column figure and hidden hyperlink decorations only.
-- **Rev6:** target packaging only; changes REVTeX journal option from `pra` to `prx` and changes no scientific content.
+Final local preflight:
 
-Rev5 has passed the complete local LaTeX/BibTeX, visual, figure, numerical, and bibliography preflight.
-
-Rev6 target-style preflight has also passed: seven pages, no target-style layout regression, no local overfull/fatal-control issue, dedicated CI generation/compile gate, and a fresh numerical hostile check with 11,825 one-copy and 936 global two-copy random POVMs showing no violation. The geometric equality family was verified at machine precision.
-
-The current connector does not expose the relevant branch-push GitHub Actions run, so direct remote-job inspection is not claimed.
-
-## Journal target
-
-**First target: PRX Quantum — Research Article.**
-
-**Preferred fallback: Physical Review A — Regular Article.**
-
-PRL is a stretch only after a deliberate Letter rewrite; do not force the seven-page theorem into a four-page core by hiding essential hypotheses or proof structure.
-
-## APS submission compliance
-
-APS's June 2026 AI policy requires disclosure of substantive AI use. This project used AI substantively in reasoning/literature synthesis, proof checking, code assistance, manuscript drafting/editing, and conceptual figure development. Final submission therefore requires a truthful human verification record and disclosure.
-
-Submission support files:
-
-1. `submission/PRX_QUANTUM_TARGET_AND_CHECKLIST_2026-08-22.md`
-2. `submission/PRX_QUANTUM_COVER_LETTER_DRAFT.md`
-3. `submission/PRX_QUANTUM_POPULAR_SUMMARY_DRAFT.md`
-4. `submission/APS_AI_AND_DATA_DISCLOSURE_DRAFTS.md`
-5. `notes/MANUSCRIPT_REV6_PRXQ_PACKAGING_PREFLIGHT_2026-08-22.md`
+- full LaTeX/BibTeX build: **PASS**;
+- **8 pages**;
+- PDF size: **403,102 bytes**;
+- SHA-256: `d168c3901faa6f29bda0eba71abe8049cc9819d91843273beeeeffb9443818ae`;
+- unresolved citations/references: **0**;
+- overfull boxes: **0**;
+- all pages rendered at 200 dpi and visually inspected: **PASS**;
+- new photon example and periodic-approximant convergence: **PASS**.
 
 ## Read first
 
 1. `AGENTS.md`
-2. `notes/MANUSCRIPT_REV6_PRXQ_PACKAGING_PREFLIGHT_2026-08-22.md`
-3. `submission/PRX_QUANTUM_TARGET_AND_CHECKLIST_2026-08-22.md`
-4. `submission/APS_AI_AND_DATA_DISCLOSURE_DRAFTS.md`
-5. `notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
-6. `notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+2. `notes/MANUSCRIPT_REV7_REFEREE_HARDENING_2026-08-22.md`
+3. `notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+4. `notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+5. `notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+6. `notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+
+## Journal target
+
+**First target:** PRX Quantum — Research Article.
+
+**Fallback:** Physical Review A — Regular Article.
 
 ## Current work order
 
-Do not accumulate another theorem or polish revision by default. Remaining work is human submission completion: verification for APS AI disclosure, author/affiliation/contact/funding metadata, stable code/archive citation for Data Availability, optional referee/preprint information, APC coverage, and final submission.
+**Freeze Rev7.** Do not add more theory or examples by default. Reopen only for a concrete theorem defect, historical-priority collision, build defect, unavoidable journal-format issue, or new referee-level objection.
 
-The repository handoff files must remain sufficient for full context recovery; do not rely on chat history.
+Do not reintroduce “human verification” as a research/manuscript gate. The finished package is handed to a human for submission; unknown administrative facts remain placeholders rather than being invented.
+
+The repository handoff files must remain sufficient for recovery; do not rely on chat history.
