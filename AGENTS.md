@@ -4,103 +4,101 @@
 
 Durable repository handoff for **The Universal Photodetection Resource Problem (UPRP)**. The repository, not chat history, is authoritative.
 
-Research is analytical/theoretical. Numerical work is allowed for validation. Do not make experiments, fabrication, procurement, or laboratory campaigns necessary next steps.
+`main` is the landing/index branch. Active derivations live on `agent/temporal-information-resource-law`.
+
+Research is analytical/theoretical. Paper 1 Rev11 and Paper 2 Rev7 are frozen.
 
 ## Current status
 
-The default branch `main` is the **landing/index branch**, not the active derivation branch.
+**Grand Challenge latest checkpoint: WP24.**
 
-Current project split:
-
-1. **Paper 1 / Rev11** — frozen; submission metadata/compliance only.
-2. **Paper 2 / Rev7** — frozen preferred science draft.
-3. **Grand Challenge** — ACTIVE on `agent/temporal-information-resource-law`.
-
-The Grand Challenge **theorem stack is through WP15**. The **latest checkpoint is WP16**, a deep priority audit.
-
-## Mandatory first action for a replacement agent
-
-Switch to:
+Mandatory first action for a replacement agent: switch to
 
 `agent/temporal-information-resource-law`
 
-Then read:
+and read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
-3. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
-4. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
-5. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
-6. `grand_challenge/notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
-7. `grand_challenge/notes/WP11_WP10_FACTOR_AUDIT_AND_PRIOR_ART.md`
-8. `grand_challenge/notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
-9. `docs/CURRENT_RESEARCH_STATE.md`
-10. `ROADMAP.md`
+2. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+3. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+4. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+5. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+6. `grand_challenge/notes/WP21_TARGETED_PRIORITY_AUDIT_SURVIVAL_FUNCTION_LAW.md`
+7. `docs/CURRENT_RESEARCH_STATE.md`
+8. `ROADMAP.md`
 
-Do **not** resume the old HgCdTe/Kane WP24 frontier shown in historical main-branch commits. That is not the current program.
+Do not resume the historical HgCdTe/Kane frontier shown in older `main` commits.
 
-## Current strongest result
+# Strongest current theorem
 
-For random temporal-distribution encoding of a fixed semibounded-energy excitation,
+For periodic random-time encoding of a fixed semibounded-energy excitation with sector probabilities `q_n`, define
 
-`G_Q(nu)=2 int_0^infinity q(omega)q(omega+nu)/[q(omega)+q(omega+nu)]domega`, `nu>0`,
+`T_k=sum_(m>=k)q_m`.
 
-with even extension, and
+For any finite number `N` of independently encoded excitations and **any joint POVM**,
 
-`boxed: int_0^infinity G_Q(nu)dnu <= (pi/2) omega_bar`,
+`boxed: Tr F_N^(k)<=N T_k`.
 
-hence
+Therefore
 
-`boxed: int_R G_Q(nu)dnu <= pi E_bar^+/hbar`.
+`boxed: R_N(k)=Tr F_N^(k)/N<=T_k`,
 
-A flat-band guarantee gives
+`boxed: sum_(k>=1)R_N(k)<=nbar`.
 
-`boxed: E_bar^+ >= (2/pi) h B q0`.
+A support-sensitive refinement is
 
-The coefficient is sharp as a supremum.
+`R_N(k)<=min(D_k,U_k)<=T_k`.
 
-## WP16 priority correction
+WP20 proves this directly by Hilbert--Schmidt Cauchy--Schwarz, including arbitrary entangled collective measurements.
 
-The WP15 operator norm
+## Continuum
 
-`||T||=pi/4`, for `L(s,t)=2st/(s+t)^3`,
+For a positive excitation-frequency spectral probability measure `mu` with finite first moment,
 
-is a direct specialization of established parameterized Hardy–Hilbert integral inequalities. With `lambda=3`, `f(x)=xr(x)`, `g(y)=yr(y)`, the classical best constant is `B(3/2,3/2)=pi/8`; the kernel factor `2` gives `pi/4`.
+`boxed: R(nu)<=mu([nu,infinity))`.
 
-Therefore **do not claim mathematical novelty for the sharp operator constant, Mellin/Hilbert inequality, or Beta/Gamma evaluation**.
+Consequently
 
-The remaining priority question is quantum-statistical: targeted searches have not yet found an exact predecessor for
+`boxed: int_R R(nu)dnu<=2Ebar^+/hbar`,
 
-`G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`
+and
 
-as Fisher retention of the `k`th Fourier coefficient of a latent random `U(1)` translation distribution, nor the sum rule
+`boxed: Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
 
-`sum_{k>=1}G_Q(k)<=2 nbar`.
+The geometric/exponential canonical phase-time family attains the bound exactly.
 
-Priority remains uncertified.
+## Physical scope
 
-## Critical scope boundary
+WP23 extends this source-normalized theorem to an independent quantum-marked compound-Poisson source followed by arbitrary parameter-independent source-to-bosonic-field formation, wavepacket overlap, coherent detector memory, ancillas, and measurement.
 
-WP14 proves baseline mean energy does **not** bound arbitrary parameter-dependent coherent waveform synthesis. The strongest theorem is therefore about random-time distribution encoding of fixed semibounded-energy excitations. Any broader theorem needs an explicit encoding/control/action resource.
+WP14 excludes arbitrary coherent waveform state synthesis based only on baseline mean energy.
 
-## Immediate active gates
+# Secondary QFI envelope
 
-1. Search estimation of Fourier coefficients/mixing weights of `U(1)` random-unitary channels and probability measures on compact groups.
-2. Determine whether the harmonic-mean density inequality itself has appeared explicitly; its sharp operator constant is already classical.
-3. Determine whether a single measurement family can approach the integrated `pi` coefficient; separately optimized temporal-mode SLDs need not be compatible.
-4. Strengthen the quantum-marked Poisson/event-to-field embedding.
-5. Only after those gates decide whether to draft a standalone foundational manuscript.
+WP10/WP12/WP15 remain valid separately optimized SLD-QFI bounds:
 
-## Documentation discipline
+`sum_(k>=1)G_Q(k)<=2nbar`,
 
-The user must be able to open `main` and immediately see the active branch/checkpoint.
+`int_R G_Q(nu)dnu<=pi Ebar^+/hbar`.
 
-After every project-level theorem/gate change:
+They are secondary to the sharp jointly operational theorem. WP16 records that the `pi/4` operator norm is classical Hardy--Hilbert mathematics.
 
-- update the active `grand_challenge/notes/WP*.md`;
-- update `grand_challenge/AGENTS.md`;
-- update the active-branch top-level `README.md`, `AGENTS.md`, `docs/CURRENT_RESEARCH_STATE.md`, and `ROADMAP.md`;
-- keep `PROBLEM.md` and `grand_challenge/README.md` from becoming stale secondary entry points;
-- mirror the active branch/checkpoint into these landing files on `main`.
+# Prior-art discipline
 
-Never leave the current scientific state visible only on an agent branch or in chat.
+Do not claim novelty for `U(1)` modes of asymmetry, weighted random phase/time twirling, canonical phase POVMs, photon-number-constrained phase estimation, arbitrary-measurement Fisher/Holevo/RLD/SLD bounds, random-unitary probability estimation, QFI/asymmetry resource theory, Hardy--Hilbert analysis, or generic CPTP/Poisson machinery.
+
+Marvian--Spekkens, Phys. Rev. A **90**, 062110 (2014), already establish weighted `U(1)` twirling `sigma^(k)=p_(-k)rho^(k)`.
+
+The candidate contribution is narrowly the **operational Fisher tail/survival law** for perturbations of the latent random-time mixing distribution and its sharp source-to-record energy consequences.
+
+Priority remains unverified.
+
+# Publication status
+
+WP24 integrated hostile review: **PASS** after support-gap repair and prior-art narrowing.
+
+The project is at a reasonable standalone-manuscript formation threshold. Immediate next work is manuscript architecture plus continued focused historical priority checking.
+
+# Documentation discipline
+
+Every project-level theorem/gate change must update the active WP notes and active landing files, then be mirrored onto `main`. Never leave the scientific frontier only on an agent branch or in chat.
