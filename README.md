@@ -6,7 +6,7 @@
 
 1. **Paper 1 / Rev11** — frozen and technically validated.
 2. **Paper 2 / Rev7** — frozen preferred science draft.
-3. **Grand Challenge** — science checkpoint **WP24**; preferred publication draft **Rev5**, frozen unless a concrete defect appears.
+3. **Grand Challenge** — science checkpoint **WP24**; Rev4 freezes science; Rev5 freezes publication content; **Rev6 is the current PRX Quantum target package**.
 
 Active Grand Challenge branch: `agent/temporal-information-resource-law`.
 
@@ -78,51 +78,61 @@ The candidate contribution is narrowly the arbitrary-measurement **classical-Fis
 
 Targeted searches have not found an exact predecessor. **Priority remains unverified, not certified.**
 
-# Preferred Grand Challenge manuscript — Rev5
+# Manuscript and journal target
 
 Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
 Deterministic generation:
 
-`Rev1 -> Rev2 -> Rev3 -> Rev4 -> Rev5`.
+`Rev1 -> Rev2 -> Rev3 -> Rev4 -> Rev5 -> Rev6 PRX Quantum style package`.
 
-Rev5 adds only one conceptual architecture figure and `hidelinks` to the frozen Rev4 science.
+- **Rev4:** frozen science/claim content.
+- **Rev5:** preferred publication content; adds one conceptual architecture figure and `hidelinks` only.
+- **Rev6:** changes only the REVTeX journal option `pra -> prx`; no scientific content changes.
 
-Final Rev5 preflight:
+Rev5 complete build/visual/bibliography preflight: PASS.
 
-- full local LaTeX/BibTeX build: PASS;
-- pages: **7**;
-- final local PDF: **393,530 bytes**;
-- unresolved citations/references: **0**;
-- overfull boxes: **0**;
-- undefined controls/fatal errors: **0**;
-- all seven pages rendered at 160 dpi and visually inspected: PASS;
-- Figure 1 readable and materially useful without increasing page count;
-- visible hyperlink boxes: **0**;
-- bibliography page: PASS;
-- deterministic random-POVM theorem validation committed;
-- DOI/title/provenance bibliography audit completed.
+Rev6 target-style preflight:
 
-Figure 1 shows the source-class/theorem architecture: latent random-time law -> fixed excitation -> arbitrary parameter-independent field/detector channel -> accessible record, with the survival-tail/energy ceiling and the excluded arbitrary waveform-synthesis class.
+- pages remain **7**;
+- no overfull boxes or fatal controls in local target-style reproduction;
+- visual page-flow regression: none found;
+- Figure 1 remains readable;
+- dedicated CI now generates/compiles Rev6;
+- fresh randomized theorem check: 11,825 one-copy and 936 global two-copy POVMs, no violation; equality family verified at machine precision.
 
-The current connector does not expose the relevant branch-push GitHub Actions run. Direct remote-job inspection is therefore not claimed; equivalent full local build verification is complete.
+**First target: PRX Quantum, Research Article.**
 
-**Rev5 is frozen unless a concrete theorem, priority, build/rendering, referee, or factual-submission defect appears.**
+**Preferred fallback: Physical Review A, Regular Article.**
+
+PRL is a stretch only after a deliberate Letter rewrite; do not force the seven-page theorem into PRL by hiding essential assumptions or proof structure.
+
+PRX Quantum is fully open access; APS lists a 2026 APC of USD 3,590, subject to institutional agreements/eligible waivers.
+
+# APS submission compliance
+
+APS's June 2026 AI policy requires disclosure of substantive AI use. This project used AI substantively in scientific reasoning/literature synthesis, proof checking, code assistance, manuscript drafting/editing, and conceptual figure development. Final submission therefore requires a truthful human verification record and disclosure.
+
+See:
+
+- `grand_challenge/submission/PRX_QUANTUM_TARGET_AND_CHECKLIST_2026-08-22.md`
+- `grand_challenge/submission/PRX_QUANTUM_COVER_LETTER_DRAFT.md`
+- `grand_challenge/submission/PRX_QUANTUM_POPULAR_SUMMARY_DRAFT.md`
+- `grand_challenge/submission/APS_AI_AND_DATA_DISCLOSURE_DRAFTS.md`
+
+Do not invent author, affiliation, funding, conflict, ORCID, prior-submission, referee, preprint, or APC-coverage facts.
 
 ## Read first
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
-3. `grand_challenge/notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
-4. `grand_challenge/notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV6_PRXQ_PACKAGING_PREFLIGHT_2026-08-22.md`
+3. `grand_challenge/submission/PRX_QUANTUM_TARGET_AND_CHECKLIST_2026-08-22.md`
+4. `grand_challenge/notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
 5. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-6. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
-7. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
-8. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
 
 ## Current work order
 
-Do not accumulate another theorem or polish revision by default. Proceed with journal targeting/submission engineering, conservative priority language, remote CI inspection only if accessible, and factual submission metadata when supplied.
+Do not accumulate another theorem or polish revision by default. Remaining work is human submission completion: verification for APS AI disclosure, author/affiliation/contact/funding metadata, stable code/archive citation for Data Availability, optional referee/preprint information, APC coverage, and final submission.
 
 ## Documentation discipline
 
