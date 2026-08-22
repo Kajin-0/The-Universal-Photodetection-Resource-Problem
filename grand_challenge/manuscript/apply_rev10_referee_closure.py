@@ -30,6 +30,11 @@ main = replace_once(
     "A second resource effect appears when the detector measurement is held fixed across frequencies.",
     "A second resource effect appears when one fixed one-copy detector POVM is held fixed across frequencies.",
 )
+main = replace_once(
+    main,
+    "thus approaching unit retention at any nonzero frequency requires divergent mean excess energy.",
+    "thus approaching unit retention at any nonzero frequency requires divergent mean excess energy.  A finite-chain sine-profile family attains the same $(1-q)^{-1/2}$ scaling, so this divergence exponent is sharp.",
+)
 
 # Continuum Bochner step: normalized positive definiteness alone does not imply
 # the standard finite-measure representation on R.  State continuity at zero
@@ -91,6 +96,7 @@ spec = spec.replace(anchor, sharpness + "\n\n" + anchor, 1)
 assert "continuous at the origin" in spec
 assert r"\begin{proposition}[Sharp high-retention exponent]" in spec
 assert "one fixed one-copy detector POVM is held fixed across frequencies" in main
+assert "this divergence exponent is sharp" in main
 assert r"\input{rev10_spectral_theorems.tex}" in main
 assert r"\input{rev9_spectral_theorems.tex}" not in main
 
