@@ -4,178 +4,96 @@
 
 **Active scientific branch:** `agent/temporal-information-resource-law`
 
-## Program split
+- Paper 1 Rev11: frozen.
+- Paper 2 Rev7: frozen.
+- Grand Challenge: active theorem stack through **WP17**.
 
-- **Paper 1 / Rev11:** frozen; submission metadata/compliance only.
-- **Paper 2 / Rev7:** frozen science draft; no open theorem-development gate.
-- **Grand Challenge:** active program seeking fundamental quantum resource laws for temporal information transfer.
+# Current result hierarchy
 
-The **theorem stack is through WP15**. The **latest checkpoint is WP16**, a deep priority audit.
+## G8 — periodic random-time QFI budget — WP10/WP11
 
-# Grand Challenge objective
+`G_Q(k)=2 sum_n q_nq_{n+k}/(q_n+q_{n+k})`,
 
-Determine whether physically realizable temporal measurement obeys sharp, architecture-independent information-transfer resource laws, while explicitly classifying which broader formulations fail.
+`sum_{k>=1}G_Q(k)<=2nbar`.
 
-The program is falsification-first. A theorem is promoted only after counterexample, proof, priority, and operational audits.
+This is a modewise SLD-QFI envelope with incompatible mode/quadrature optima.
 
-# Closed/redirected directions
+## G11 — continuum QFI area — WP12/WP15
 
-## G0 — entropy-production-only resource law
+`int_R G_Q(nu)dnu<=pi Ebar^+/hbar`.
 
-**REJECTED as universal.** Existing sensory-network and quantum-clock results show entropy production alone does not universally control temporal information/precision.
+Flat-band QFI envelope:
 
-## G1 — generic frequency-domain FI/response thermodynamic law
+`Ebar^+>=(2/pi)hBq0`.
 
-**LITERATURE-COVERED / TOO BROAD.** Frequency-domain response uncertainty and dynamical-activity relations already exist.
+WP16: the sharp `pi/4` operator constant is classical Hardy–Hilbert prior art.
 
-## G2 — generic quantum waveform Fisher spectrum
+## G13 — single-measurement operational budget — WP17
 
-**LITERATURE-COVERED.** Continuous-time waveform QFI kernels/spectral QCRBs are established.
+**PASSED for arbitrary fixed POVM and adaptive/separable independent-event readout.**
 
-## G3 — detector thermodynamic cost determined by `G`
+For the cosine/sine classical Fisher block `F_M^(k)` of one fixed POVM,
 
-**REJECTED.** The same logical information-transfer spectrum can be embedded in physically different Hamiltonian/work-cost implementations; `G` alone is thermodynamically incomplete.
+`boxed: sum_{k>=1}Tr F_M^(k)<=nbar`.
 
-## G4 — baseline mean energy bounds arbitrary waveform state engineering
+Continuum:
 
-**REJECTED by WP14.** Infinitesimal high-frequency coherent sidebands can be generated at first order while added energy enters at second order. A broader waveform theorem requires an encoding/control/action resource.
+`boxed: int_R R_M(nu)dnu<=2Ebar^+/hbar`.
 
-# Active theorem chain
+Full-quadrature flat-band guarantee:
 
-## G5 — covariant timestamp positive-energy law — WP06/WP07
+`boxed: Ebar^+>=hBq0`.
 
-**PASSED for covariant timestamp class.**
+The coefficient is sharp; the Cauchy/exponential covariant timestamp family saturates the continuum area law.
 
-`int_R G_timestamp(nu)dnu <= 2 E_det^+/hbar`.
+Interpretation: for single-copy/separable readout, the `pi/2` gap between WP15's QFI coefficient `pi` and WP17's operational coefficient `2` is an incompatibility gap.
 
-Flat-band inverse form:
+# Remaining active gates
 
-`E_det^+ >= h B q`.
+## G14 — collective mixed-state readout
 
-The energy is measured above the lower spectral edge participating in the detected state, making the statement invariant to arbitrary Hamiltonian energy offsets.
+**OPEN; highest-priority operational gate.**
 
-## G6 — arbitrary downstream detector memory — WP08
+WP17 does not cover entangled collective measurements across multiple independently twirled event excitations. Because the baseline twirled state is generally mixed, standard Gill–Massar separable tradeoffs do not by themselves exclude a collective advantage.
 
-**PASSED for downstream parameter-independent classical processing.**
+Work order:
 
-The covariant timestamp bound is inherited by arbitrary later detector memory/coarse graining through FI data processing. Finite quantum timing energy therefore regularizes the ideal classical Type-II infinite-frequency plateau.
+1. solve the two-sector qubit model with the Holevo bound / quantum local asymptotic limit;
+2. determine whether the per-event operational coefficient `2E/hbar` survives collective readout;
+3. if it survives, seek a general proof for the full energy-sector model;
+4. if it fails, quantify the collective advantage and revise the resource hierarchy.
 
-## G7 — external time-reference boundary — WP09
+## Priority audit
 
-**PASSED as a no-go/boundary result.**
+Continue searching random-unitary/group-distribution estimation for exact equivalents of WP10 and WP17. Generic random-unitary probability estimation, U(1) mode decomposition, QFI, and multiparameter complementarity are already occupied.
 
-Mean energy does not bound deterministic global time-shift QFI if an external phase/time reference and sparse high-energy coherence are allowed. Random-event-time encoding removes this free absolute-phase resource and motivates the next theorem class.
+## Source embedding
 
-## G8 — discrete random-time quantum mode budget — WP10/WP11
+Strengthen the independent quantum-marked Poisson model into realistic incoherent bosonic optical-field language.
 
-**PASSED analytically; quantum priority audit open.**
+# Manuscript gate
 
-For periodic temporal Fourier mode `k`:
+Do **not** draft the foundational manuscript yet.
 
-`G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`.
+Required:
 
-Resource sums:
+1. collective-measurement gate resolved or sharply bounded;
+2. exact priority audit survives;
+3. source-to-field mapping hardened;
+4. Hardy–Hilbert and other standard ingredients properly attributed;
+5. WP14 arbitrary-waveform no-go retained as a scope boundary.
 
-`sum_{k>=1}G_Q(k)<=2 nbar`,
+# Candidate manuscript spine if gates survive
 
-`sum_{k!=0}G_Q(k)<=4 nbar`.
-
-Constants are sharp as suprema. Mixed-state and arbitrary downstream detector/measurement extensions follow by purification and QFI monotonicity.
-
-## G9 — continuum random-time mode law — WP12
-
-**PASSED for regular densities; generalized by WP15.**
-
-For `nu>0`:
-
-`G_Q(nu)=2 int_0^infinity q(omega)q(omega+nu)/[q(omega)+q(omega+nu)]domega`.
-
-## G10 — second-quantized/Poisson embedding — WP13
-
-**PASSED at current theorem scope; further physical mapping open.**
-
-Total-energy sectors include fixed-photon-number multiphoton/entangled/multimode pulses. Independent quantum-marked Poisson events inherit the source-normalized bound by additivity; downstream parameter-independent field mappings and detector memory cannot increase QFI.
-
-## G11 — general-density sharp `pi` area theorem — WP15
-
-**PASSED analytically; current strongest theorem.**
-
-For every normalized `q(omega)>=0` with finite first moment `omega_bar`:
-
-`boxed: int_0^infinity G_Q(nu)dnu <= (pi/2) omega_bar`,
-
-hence
-
-`boxed: int_R G_Q(nu)dnu <= pi E_bar^+/hbar`.
-
-Flat-band inverse law:
-
-`boxed: E_bar^+ >= (2/pi) h B q0`.
-
-WP15 removes smoothness assumptions using rearrangement and an exact positive-kernel/layer-cake reduction. The coefficient is sharp as a supremum.
-
-## G12 — deep priority audit / Hardy–Hilbert collision — WP16
-
-**MATERIAL CLAIM-DISCIPLINE CORRECTION; theorem unchanged.**
-
-WP16 identifies the exact WP15 operator norm
-
-`||T||=pi/4`, for `L(s,t)=2st/(s+t)^3`,
-
-as a direct specialization of established parameterized Hardy–Hilbert integral inequalities.
-
-Using the classical sharp kernel `(x+y)^(-lambda)` inequality with
-
-`lambda=3`, `f(x)=xr(x)`, `g(y)=yr(y)`
-
-gives
-
-`B(3/2,3/2)=pi/8`,
-
-and the factor `2` in the WP15 kernel gives `pi/4`.
-
-Therefore the sharp operator constant, Mellin/Hilbert inequality, and Beta/Gamma evaluation are **not mathematical novelty claims**.
-
-The surviving priority question is narrower and quantum-statistical: has prior work already derived the exact Fisher geometry and mean-generator mode budget for Fourier perturbations of a random `U(1)` translation distribution?
-
-Targeted generic searches of `U(1)` asymmetry, phase diffusion/dephasing estimation, random-unitary/noise-channel estimation, and noise spectroscopy have not yet located the exact WP10 formula or `2 nbar` sum rule. This is **not** priority certification.
-
-# Current publication gate
-
-Do **not** draft the grand-challenge paper yet.
-
-A manuscript decision requires all of:
-
-1. **Quantum priority survival:** no exact prior theorem/formula equivalent to the WP10 random-distribution mode formula and `2 nbar` sum rule.
-2. **Analysis provenance discipline:** cite Hardy–Hilbert theory for the `pi/4` sharp constant; determine whether the harmonic-mean density inequality has appeared explicitly.
-3. **Operational interpretation:** clarify whether a single measurement can approach the integrated `pi` coefficient, since different temporal-mode SLDs are generally incompatible.
-4. **Physical source mapping:** strengthen the independent quantum-marked Poisson/event model into realistic incoherent optical-field language without adding hidden resources.
-5. **Claim discipline:** retain the WP14 boundary; do not state the theorem for arbitrary state-valued waveform encoding.
-
-If these gates survive, the likely manuscript spine is:
-
-- random-time encoding problem and why ordinary deterministic time-shift/QFI intuition is insufficient;
-- exact discrete mode-retention formula and `2 nbar` sum rule;
-- controlled continuum reduction and sharp `pi E/hbar` area law, explicitly citing classical Hardy–Hilbert mathematics for the sharp constant;
-- Planck-scale inverse bandwidth/resource inequality;
-- second-quantized/Poisson photodetection embedding;
-- covariant timestamp subclass and comparison with Paper 2's classical memory plateau;
-- explicit no-go for arbitrary coherent waveform encoding.
-
-# Immediate work order
-
-1. **Gate 1A:** search estimation/tomography of probability measures on `U(1)` and compact groups, random-unitary mixing-weight estimation, phase-noise Fourier/characteristic-coefficient estimation, and nonparametric dephasing-channel inference.
-2. **Gate 1B:** locate direct classical-analysis provenance, if any, for the harmonic-mean density inequality itself.
-3. Analyze joint/collective measurements and the operationally attainable integrated FI area.
-4. Harden source-to-field embedding for realistic incoherent optical events.
-5. Only then make a manuscript decision.
+- random-time distribution encoding;
+- exact discrete mode QFI and `2nbar` envelope;
+- fixed-measurement operational `nbar` theorem;
+- continuum operational `2E/hbar` law and sharp equality family;
+- separately optimized QFI `pi E/hbar` envelope and incompatibility interpretation;
+- collective-measurement boundary;
+- Poisson/photodetection embedding;
+- coherent-waveform no-go.
 
 # Documentation discipline
 
-Every material theorem, proof repair, no-go, prior-art collision, numerical result, or gate change must update:
-
-- `grand_challenge/notes/WP*.md`;
-- `grand_challenge/AGENTS.md`;
-- top-level `README.md`, `AGENTS.md`, `docs/CURRENT_RESEARCH_STATE.md`, and this roadmap when project-level state changes;
-- `PROBLEM.md` and `grand_challenge/README.md` when needed to prevent stale secondary entry points;
-- the default `main` landing documents so the active branch/checkpoint is visible without branch hunting.
+Every material result must update the WP note, active handoff, landing files, and `main`.
