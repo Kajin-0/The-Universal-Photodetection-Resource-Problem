@@ -46,21 +46,29 @@ jobs:
         working-directory: grand_challenge/manuscript
         run: python apply_rev6_prxquantum_packaging.py
 
+      - name: Generate Grand Challenge Rev7 referee hardening
+        working-directory: grand_challenge/manuscript
+        run: python apply_rev7_referee_hardening.py
+
       - name: Run operational-tail numerical validation
         working-directory: grand_challenge
         run: python numerics/verify_operational_tail_bound.py
 
-      - name: Compile Grand Challenge Rev6 PRX Quantum package
+      - name: Validate Rev7 truncated-Gaussian photon example
+        working-directory: grand_challenge
+        run: python numerics/verify_truncated_gaussian_photon_example.py
+
+      - name: Compile Grand Challenge Rev7 PRX Quantum package
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: energy_survival_temporal_fisher_rev6_prxq.tex
+          root_file: energy_survival_temporal_fisher_rev7_prxq.tex
           working_directory: grand_challenge/manuscript
           latexmk_use_xelatex: false
 
       - name: Check for unresolved references, citations, or box overflow
         working-directory: grand_challenge/manuscript
         run: |
-          LOG=energy_survival_temporal_fisher_rev6_prxq.log
+          LOG=energy_survival_temporal_fisher_rev7_prxq.log
           if grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|Package natbib Warning:.*undefined" "$LOG"; then
             echo "Unresolved LaTeX references/citations detected"
             exit 1
@@ -69,25 +77,34 @@ jobs:
             echo "Overfull LaTeX boxes detected"
             exit 1
           fi
-          if grep -F '\boxed{' energy_survival_temporal_fisher_rev6_prxq.tex; then
+          if grep -F '\boxed{' energy_survival_temporal_fisher_rev7_prxq.tex; then
             echo "APS-incompatible boxed markup remains"
             exit 1
           fi
-          if grep -F '\documentclass[aps,pra,' energy_survival_temporal_fisher_rev6_prxq.tex; then
+          if grep -F '\documentclass[aps,pra,' energy_survival_temporal_fisher_rev7_prxq.tex; then
             echo "PRA journal option remains in PRX Quantum package"
             exit 1
           fi
-          if ! grep -F '\documentclass[aps,prx,' energy_survival_temporal_fisher_rev6_prxq.tex; then
+          if ! grep -F '\documentclass[aps,prx,' energy_survival_temporal_fisher_rev7_prxq.tex; then
             echo "PRX journal option missing from target package"
             exit 1
           fi
+          if ! grep -F '\section{Controlled periodic-to-continuum survival law}' energy_survival_temporal_fisher_rev7_prxq.tex; then
+            echo "Controlled continuum qualification missing"
+            exit 1
+          fi
+          if ! grep -F '\section{Nonextremal single-photon wavepacket}' energy_survival_temporal_fisher_rev7_prxq.tex; then
+            echo "Single-photon significance example missing"
+            exit 1
+          fi
 
-      - name: Upload Grand Challenge Rev6 PRX Quantum artifact
+      - name: Upload Grand Challenge Rev7 PRX Quantum artifact
         uses: actions/upload-artifact@v4
         with:
-          name: energy-survival-temporal-fisher-rev6-prxq
+          name: energy-survival-temporal-fisher-rev7-prxq
           path: |
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev6_prxq.pdf
+            grand_challenge/manuscript/energy_survival_temporal_fisher_rev7_prxq.pdf
+            grand_challenge/manuscript/energy_survival_temporal_fisher_rev7_prxq.tex
             grand_challenge/manuscript/energy_survival_temporal_fisher_rev6_prxq.tex
             grand_challenge/manuscript/energy_survival_temporal_fisher_rev5.tex
             grand_challenge/manuscript/energy_survival_temporal_fisher_rev4.tex
@@ -99,6 +116,8 @@ jobs:
             grand_challenge/manuscript/apply_rev4_final_polish.py
             grand_challenge/manuscript/apply_rev5_publication_figure.py
             grand_challenge/manuscript/apply_rev6_prxquantum_packaging.py
+            grand_challenge/manuscript/apply_rev7_referee_hardening.py
             grand_challenge/manuscript/figure1_operational_architecture_body.tex
             grand_challenge/manuscript/references.bib
             grand_challenge/numerics/verify_operational_tail_bound.py
+            grand_challenge/numerics/verify_truncated_gaussian_photon_example.py
