@@ -1,0 +1,17 @@
+\begin{tikzpicture}[font=\sffamily\small, >=Latex, node distance=7mm,
+box/.style={draw, rounded corners=1pt, align=center, inner sep=5pt, minimum height=18mm, text width=31mm},
+wide/.style={draw, rounded corners=1pt, align=center, inner sep=5pt, minimum height=18mm, text width=43mm}]
+\node[box] (p) {\textbf{Latent random time}\\[2pt]$p_{\boldsymbol\epsilon}(t)$\\Fourier mode $k$};
+\node[wide, right=of p] (s) {\textbf{Fixed excitation}\\[2pt]$\rho_{\boldsymbol\epsilon}=\int p_{\boldsymbol\epsilon}(t)U_t\sigma U_t^\dagger\,dt$\\$T_k=\sum_{m\ge k}q_m$};
+\node[wide, right=of s] (g) {\textbf{Parameter-independent $\Gamma$}\\[2pt]field formation, overlap,\\propagation, detector memory};
+\node[box, right=of g] (m) {\textbf{Accessible record}\\[2pt]POVM $M(dy)$\\Fisher block $F_N^{(k)}$};
+\draw[->, thick] (p) -- (s);
+\draw[->, thick] (s) -- (g);
+\draw[->, thick] (g) -- (m);
+
+\node[draw, thick, below=9mm of s.south east, anchor=north, align=center, inner sep=5pt, text width=128mm] (law) {\textbf{Operational resource law}\\[3pt]
+$R_N(k)=\dfrac{1}{N}\operatorname{Tr}F_N^{(k)}\le \min(D_k,U_k)\le T_k$\\[4pt]
+controlled large-period limit:\quad $R(\nu)\le \Pr(\Omega\ge\nu)$,\qquad $\bar E^+\ge\hbar\nu R(\nu)$};
+
+\node[below=5mm of law, align=center, text width=142mm] {\textit{Outside this theorem:} arbitrary parameter-dependent waveform-state synthesis $\boldsymbol\epsilon\mapsto\sigma_{\boldsymbol\epsilon}$ rather than modulation of the latent random-time law.};
+\end{tikzpicture}
