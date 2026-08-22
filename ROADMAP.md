@@ -6,7 +6,7 @@
 
 **Active scientific branch:** `agent/temporal-information-resource-law`
 
-Paper 1 Rev11 and Paper 2 Rev7 are frozen. Grand Challenge science checkpoint: **WP24**. Preferred Grand Challenge manuscript: **Rev4**, frozen unless a concrete defect appears.
+Paper 1 Rev11 and Paper 2 Rev7 are frozen. Grand Challenge science checkpoint: **WP24**. **Rev4 freezes the science content; Rev5 is the preferred frozen publication draft.**
 
 ## Current operational theorem
 
@@ -55,25 +55,28 @@ The candidate contribution is the operational classical-Fisher tail/survival the
 
 Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
-Rev4 on the active branch has passed:
+Rev4 is the frozen science-content checkpoint. Rev5 is the preferred publication draft and adds only one conceptual architecture figure plus hidden hyperlink decorations.
+
+Rev5 on the active branch has passed:
 
 - full local LaTeX/BibTeX build;
 - seven-page visual inspection;
 - unresolved-reference/citation and overfull-box gates;
 - deterministic one-/two-copy random-POVM sanity checks;
+- Figure 1 readability/scope-value review;
 - DOI/title/provenance bibliography audit.
-
-A real Pocovnicu title mismatch was corrected while retaining the scientifically correct DOI/source. Gill was upgraded to the published 2008 chapter metadata.
 
 The current connector does not expose the branch-push GitHub Actions run; direct remote-job inspection is not claimed. Equivalent full local build verification is complete.
 
-## Immediate work order — publication engineering
+## Immediate work order — journal targeting and submission engineering
 
-1. **Freeze Rev4 science.** Reopen only for a concrete theorem, priority, build, or referee defect.
-2. Inspect remote Rev4 CI if it becomes accessible.
-3. Add at most one conceptual figure, and only if it materially improves comprehension.
-4. Keep novelty claims conservative while historical priority remains uncertified.
-5. Prepare submission metadata/compliance only from factual user-supplied information.
+1. **Freeze Rev5.** Reopen science only for a concrete theorem, priority, build, or referee defect.
+2. Select the strongest realistic journal whose scope matches foundational quantum measurement / quantum optics / information theory.
+3. Verify current journal scope, article type, length/style requirements, preprint policy, data/code statements, AI/disclosure rules, and cover-letter expectations from primary journal sources.
+4. Create a submission-target note and checklist on the active branch.
+5. Draft journal-specific cover-letter language with conservative priority wording.
+6. Prepare author/affiliation/ORCID/funding/conflict/AI-use metadata only from factual user-supplied information.
+7. Maintain exact scope qualifiers: two-quadrature/phase-averaged retention, controlled continuum limit, independent-event source class, and WP14 waveform no-go.
 
 ## Documentation policy
 
