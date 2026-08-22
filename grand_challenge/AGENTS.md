@@ -1,5 +1,7 @@
 # AGENTS — Temporal Information Resource Law Program
 
+**Last synchronized: 2026-08-21**
+
 ## Purpose
 
 Durable handoff for the high-risk/high-ceiling theoretical program launched from Paper 2. This program is deliberately separate from the frozen Paper-2 manuscript.
@@ -172,4 +174,6 @@ After every material theorem, counterexample, proof repair, prior-art collision,
 
 1. update/create `grand_challenge/notes/WP*.md` immediately;
 2. update this file when the active theorem/gates change;
-3. do not rely on chat history as the only record.
+3. update active-branch top-level `README.md`, `AGENTS.md`, `docs/CURRENT_RESEARCH_STATE.md`, and `ROADMAP.md` for every project-level change;
+4. mirror the active branch/checkpoint into the same landing files on `main` so the repository default view remains current;
+5. do not rely on chat history as the only record.
