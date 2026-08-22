@@ -4,123 +4,116 @@
 
 ## Project split
 
-1. **Paper 1 / Rev11** — frozen and technically validated.
-2. **Paper 2 / Rev7** — frozen preferred science draft.
-3. **Grand Challenge** — science checkpoint **WP24**; preferred PRX Quantum manuscript **Rev7**.
+1. **Paper 1 / Rev11** — frozen.
+2. **Paper 2 / Rev7** — frozen.
+3. **Grand Challenge** — science frontier **WP27**; Rev10 referee-closure manuscript in final build gate.
 
 Active branch: `agent/temporal-information-resource-law`.
 
 Authoritative handoff: `grand_challenge/AGENTS.md`.
 
-# Grand Challenge headline result
+# Grand Challenge — spectral resource laws for temporal Fisher information
 
-For exact periodic random-time encoding with sector probabilities `q_n`, define
+For exact periodic random-time encoding with sector probabilities `q_n`, any finite number `N` of independently encoded excitations and **any joint POVM**, including entangled collective measurements, obey
 
-`T_k = sum_(m>=k) q_m`.
+`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`,
 
-For any finite `N` and **any joint POVM**, including entangled collective measurements,
+where
 
-`Tr F_N^(k) <= N min(D_k,U_k) <= N T_k`.
+`T_k=sum_(m>=k)q_m`.
 
-Thus
+Therefore
 
-`R_N(k)=Tr F_N^(k)/N <= T_k`,
+`sum_(k>=1) R_N(k) <= nbar`.
 
-and
+The controlled periodic-to-continuum theorem is
 
-`sum_(k>=1)R_N(k) <= nbar`.
+`R(nu) <= Pr(Omega>=nu)`,
 
-WP20 proves this directly by Hilbert--Schmidt Cauchy--Schwarz.
+with `Ebar+=hbar<Omega>` the mean excess energy above the participating lower edge. The familiar `hfR` inequality is only a first-moment corollary.
 
-## Controlled periodic-to-continuum survival law
+## New Rev9/Rev10 layer: one detector record has global spectral geometry
 
-For a positive excess-frequency measure `mu`, controlled periodic-to-continuum limits satisfy
+For **one fixed one-copy POVM**, the complete harmonic retention sequence is a Herglotz sequence:
 
-`R(nu) <= mu([nu,infinity)) = Pr(Omega>=nu)`.
+`R_M(k)=int cos(k theta) J_M(dtheta)`.
 
-This **survival law is the principal continuum theorem**.
+Thus every Toeplitz matrix `[R_M(i-j)]` is positive semidefinite: the temporal-information retained at different harmonics by one actual measurement cannot be selected independently.
 
-`Ebar+ = hbar <Omega>` is mean excitation/excess energy above the participating lower edge, not a common optical carrier offset. The relations
+Combining this cross-harmonic consistency with the semibounded energy tails gives
 
-`int_R R(nu)dnu <= 2Ebar+/hbar`,
+`Ebar+ >= hbar nu A(R_M(nu))`,
 
-`Ebar+ >= hbar nu R(nu) = h f R(2pi f)`
+with
 
-are first-moment corollaries of the survival law.
+`A(q) ~ 1/sqrt(2(1-q))` as `q->1`.
 
-## Exact sharpness and realistic photon example
+Hence near-unit retention at any nonzero frequency requires divergent mean excess energy in the fixed-one-copy/common-measurement setting.
 
-Geometric sectors with one canonical phase POVM give
+Rev10 proves the exponent is **sharp**. For the finite sine profile
 
-`R(k)=T_k=r^k`
+`a_n=sqrt(2/(L+1)) sin((n+1)pi/(L+1))`,
 
-for every harmonic simultaneously. The controlled continuum equality family is exponential in excess frequency with a Cauchy canonical timestamp.
+canonical phase measurement gives
 
-Rev7 additionally analyzes a transform-limited truncated-Gaussian single photon. Canonical covariant timing reaches about **96.6%** of the survival ceiling at `nu=0.5 sigma` and **88.5%** at `nu=sigma`, demonstrating that the bound remains restrictive away from the extremal equality family.
+`R_L(1)=cos^2(pi/(L+1))`,
+
+`nbar_L=(L-1)/2`,
+
+so
+
+`nbar_L ~ pi/[2 sqrt(1-R_L(1))]`.
+
+The lower and upper constructions therefore match in the `(1-R)^(-1/2)` exponent. The optimal prefactor is not claimed.
+
+## Complete one-copy extremizers
+
+On the full contiguous pure-sector chain, exact first-harmonic saturation is equivalent to
+
+`q_n=int (1-r)r^n pi(dr)`,
+
+or equivalently
+
+`T_k=int r^k pi(dr)`.
+
+Thus:
+
+`first-harmonic equality`
+
+`<=> geometric-mixture populations`
+
+`<=> Hausdorff-moment survival tails`
+
+`<=> one common source-adapted POVM saturates every harmonic simultaneously`.
+
+Controlled continuum limits of exponential mixtures give the completely monotone equality cone, including algebraic exact-retention laws.
 
 ## Physical source-to-record scope
 
-For independent quantum-marked Poisson events, the same normalized law survives arbitrary **parameter-independent** source-to-bosonic-field and detector processing through POVM pullback. This includes wavepacket overlap, propagation, loss, mode mixing, coherent detector memory, ancillas, and final joint readout.
+Independent quantum-marked Poisson sources inherit the modewise survival law through arbitrary **parameter-independent** source-to-field and detector processing. Bosonic overlap, propagation, loss, mode mixing, coherent detector memory, ancillas, and final joint measurement cannot evade the source ceiling within this source class.
 
-The theorem does not apply merely because detector counts are Poisson, and it does not cover arbitrary parameter-dependent waveform-state synthesis. The coherent-sideband no-go remains the explicit boundary.
+The theorem does not cover arbitrary parameter-dependent waveform-state synthesis; the coherent-sideband counterexample remains the explicit boundary.
 
-# Prior-art boundary
+# Rev10 referee closure
 
-Weighted `U(1)` twirling and energy-gap modes, canonical phase measurements, energy-constrained phase estimation, generic quantum-Fisher/Holevo machinery, random-unitary estimation, waveform QFI, positive-frequency inequalities, Hardy--Hilbert constants, and generic Poisson/CPTP data processing are prior art.
+The external Rev9 re-review found no central mathematical failure and recommended only two mandatory-looking repairs plus one optional significance enhancement. Rev10 implements all three:
 
-The candidate contribution is narrower:
+- Bochner is invoked only after continuity at the origin is assumed;
+- the high-retention divergence is consistently labeled **fixed one-copy/common-POVM**;
+- a finite-chain sine-profile family proves the divergence exponent is sharp.
 
-> an arbitrary-measurement **classical-Fisher population-tail/survival law** for Fourier perturbations of a latent random-time mixing distribution, including arbitrary finite-copy collective measurements, an exact all-mode budget, sharp simultaneous attainability, and source-to-record consequences.
-
-Modes-of-asymmetry theory identifies which gap components exist; this theorem bounds how much **classical Fisher information any actual POVM can extract** about the mixing-law perturbation.
-
-**Priority remains unverified, not certified.**
-
-# Preferred manuscript — Rev7
-
-Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
-
-Rev7 was produced after an external adversarial review of Rev6. It implements the high-value recommendations without changing the finite-copy theorem:
-
-- makes the continuum result explicitly controlled periodic-to-continuum;
-- defines the resource consistently as excess energy above the participating edge;
-- makes the survival law primary and `hfR` a first-moment corollary;
-- sharpens the distinction from `U(1)` modes-of-asymmetry theory;
-- adds one transform-limited single-photon example;
-- hardens Figure 1 accordingly.
-
-Final local Rev7 preflight:
-
-- full LaTeX/BibTeX build: **PASS**;
-- **8 pages**;
-- PDF size: **403,102 bytes**;
-- SHA-256: `d168c3901faa6f29bda0eba71abe8049cc9819d91843273beeeeffb9443818ae`;
-- unresolved references/citations: **0**;
-- overfull boxes: **0**;
-- all pages rendered at 200 dpi and visually inspected: **PASS**;
-- photon closed forms and periodic-approximant convergence: **PASS**.
-
-See:
-
-1. `grand_challenge/notes/MANUSCRIPT_REV7_REFEREE_HARDENING_2026-08-22.md`
-2. `grand_challenge/AGENTS.md`
-3. `grand_challenge/submission/PRX_QUANTUM_COVER_LETTER_DRAFT.md`
-4. `grand_challenge/submission/PRX_QUANTUM_POPULAR_SUMMARY_DRAFT.md`
+The sine state itself is established phase-estimation prior art; only its role as a sharpness witness for this new retention--energy law is used here.
 
 # Journal target
 
-**First target:** PRX Quantum, Research Article.
+**First target:** PRX Quantum — Research Article.
 
-**Fallback:** Physical Review A, Regular Article.
+**Fallback:** Physical Review A — Regular Article.
 
-Do not force a PRL rewrite by hiding assumptions or proof structure.
-
-# Workflow rule
-
-Do not reintroduce “human verification” as a manuscript-completion gate. The research, validation, writing, build, and submission engineering are carried as far as possible; the finished package is handed to a human for submission. Unknown administrative facts may remain placeholders and must not be invented.
+**Priority remains unverified, not certified.**
 
 # Current work order
 
-**Freeze Rev7.** Do not add more theorem scope, detector technologies, source classes, or examples unless a concrete defect or new referee-level objection appears.
+Complete the Rev10 CI/build/render gate, then freeze Rev10. Do not start a new asymptotic-constant optimization project or add further examples unless a concrete referee objection, theorem defect, priority collision, or journal-format requirement appears.
 
-Every material project-level change must be mirrored onto `main`.
+Do not reintroduce “human verification” as a research/manuscript completion gate. The finished package is produced as far as possible and then submitted by a human.
