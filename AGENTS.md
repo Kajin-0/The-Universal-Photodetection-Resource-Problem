@@ -4,188 +4,122 @@
 
 Durable project handoff for **The Universal Photodetection Resource Problem (UPRP)**. The repository, not chat history, is authoritative.
 
-Active branch: `agent/uprp-core-theorem-round10`.
+Research is analytical/theoretical. Numerical work is allowed for validation. Do not make experiments, fabrication, procurement, or laboratory campaigns necessary next steps.
 
-Research is analytical/theoretical. Numerical analysis is used for validation, calibration, and published-data analysis. Do not make experiments, fabrication, procurement, or laboratory campaigns necessary next steps.
+## Current project split
 
-## Critical project split
+1. **Paper 1 / Rev11** — scientifically frozen and technically validated; submission metadata/compliance only.
+2. **Paper 2 / Rev7** — preferred frozen science draft; locally build-verified and visually inspected.
+3. **Grand Challenge** — active high-risk/high-ceiling theory program on quantum resources for temporal information transfer.
 
-There are now two publication tracks:
+**Active scientific branch:** `agent/temporal-information-resource-law`.
 
-1. **Paper 1 / Rev11** — scientifically frozen, technically validated, awaiting factual/personal submission metadata.
-2. **Paper 2** — active research frontier: arbitrary autonomous detector channels, high-flux hidden memory, Type-II information spectra, recovery-law identifiability, and resource-completeness no-go results.
+## Read first — current frontier
 
-Do not assume the active scientific state is contained in the Paper-1 files.
+1. `grand_challenge/AGENTS.md`
+2. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
+3. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
+4. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
+5. `grand_challenge/notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
+6. `grand_challenge/notes/WP11_WP10_FACTOR_AUDIT_AND_PRIOR_ART.md`
+7. `grand_challenge/notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
+8. `grand_challenge/notes/WP09_EXTERNAL_TIME_REFERENCE_NO_GO_AND_ASYMMETRY_BOUNDARY.md`
+9. `grand_challenge/notes/WP08_ARBITRARY_MEMORY_LIFT_AND_QUANTUM_REGULARIZATION.md`
+10. `paper2/AGENTS_PAPER2.md` only if frozen Paper-2 context is needed.
 
-## Read first — active research
+## Current strongest grand-challenge theorem stack
 
-1. `docs/CURRENT_RESEARCH_STATE.md`
-2. `paper2/AGENTS_PAPER2.md`
-3. `paper2/notes/RESEARCH_LOG_ROUND03_WP13_WP20_CHECKPOINT.md`
-4. `ROADMAP.md`
-5. `paper2/notes/WP20_CESARO_VISIBLE_EVENT_RESIDUE.md`
-6. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
-7. `paper2/notes/WP18_LAPLACE_PROOF_REPAIR_FOR_RECOVERY_SINGULARITY.md`
-8. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
-9. `paper2/notes/WP16_HOSTILE_RANDOM_TYPEII_PRIOR_ART_AUDIT.md`
-10. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
+### WP10/WP11 — discrete/periodic random-time quantum mode budget
 
-## Paper 1 / Rev11 — frozen publication state
+For a random temporal-distribution mode `k`, source-normalized maximal quantum retention is
 
-Preferred first-paper submission candidate: **Rev11**.
+`G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`.
 
-The theorem class is autonomous/time-translation-invariant, independent-event/low-overlap, one-primary-registration photodetection under weak coherent/Poisson direct-detection intensity modulation, retaining complete accessible primary-event marks.
+Mode sum:
 
-Core exact transfer:
+`sum_{k>=1} G_Q(k) <= 2 nbar`,
 
-`G(omega)=int |H_m(omega)|^2 kappa(dm)`.
+`sum_{k!=0} G_Q(k) <= 4 nbar`.
 
-Complete local weak-waveform Fisher operator:
+The constants are sharp as suprema. The bound is detector-independent because all subsequent parameter-independent detector dynamics and measurements are downstream of encoded-state QFI.
 
-`[F_out]_{ab}=Phi0/(2*pi) int G(omega)S_a*(omega)S_b(omega)domega`.
+### WP12/WP15 — sharp continuum positive-energy area law
 
-For square-integrable timing densities:
+For normalized `q(omega)>=0` with finite first moment `omega_bar`, define
 
-`R2=2 int kappa(dm) int f_m(t)^2 dt`,
+`G_Q(nu)=2 int_0^infinity q(omega)q(omega+nu)/[q(omega)+q(omega+nu)] d omega`, `nu>0`,
 
-`B_FI=R2/(4 eta)<=H/(4 eta)`.
+with even extension.
 
-For one unresolved mark,
+WP15 proves for every finite-first-moment density:
 
-`B_FI=int_0^infty |H(2*pi*f)|^2 df=B_ENBW`.
+`boxed: int_0^infinity G_Q(nu)dnu <= (pi/2) omega_bar`,
 
-Do not claim novelty for that scalar ENBW integral or the familiar first-order `pi/2` ratio.
+hence
 
-Canonical Rev11:
+`boxed: int_R G_Q(nu)dnu <= pi E_bar^+/hbar`.
 
-- 33 pages;
-- source SHA-256 `fe966f4ab3fa067bb94d200ed09605a1ed3a2cdef9b4488fd0d18a55e95ccb6e`;
-- PDF SHA-256 `9eedbf562ed5fa70b78a8c1c63627e1c578f149074f7f25f3fd3988c8668ecef`.
+Flat-band inverse law:
 
-PRApplied Rev11:
+`boxed: E_bar^+ >= (2/pi) h B q0`.
 
-- 33 pages;
-- PDF SHA-256 `d9e4a3330543106a272d4aa7b26cf6187bbd2f6ef170db4a8927b06edb824db7`;
-- package ZIP SHA-256 `b9f1abff76bbcc7a97ca8b2c3038f1e44e5adbb68f230cdb7d13c02431b6183e`.
+The proof uses rearrangement/layer cake and a positive Mellin-convolution operator with exact norm `pi/4`. The constant is sharp as a supremum, approached by truncated critical densities proportional to `(1+omega)^(-2)`.
 
-Remaining Paper-1 blockers are human metadata/compliance only: author/order, affiliations, corresponding email, ORCID, truthful AI disclosure, funding/conflict/prior-submission declarations.
+### WP06-WP08 — covariant timestamp subclass
 
-Do not add more Paper-1 science unless a concrete defect or referee request appears.
+For reference-free covariant timestamp readouts:
 
-## Paper 2 — active theorem stack
+`int_R G_timestamp(nu)dnu <= 2 E_det^+/hbar`,
 
-### General autonomous-channel theorem — WP10/WP17
+or
 
-For homogeneous Poisson baseline flux `Phi0`, any parameter-independent stochastic detector channel gives output score
+`E_det^+ >= h B q`.
 
-`S_u^out=E[S_u|Y]`.
+WP08 lifts this through arbitrary downstream classical detector memory and gives finite-energy quantum regularization of Paper 2's ideal Type-II infinite-frequency plateau.
 
-This defines a positive contraction on scalar `L2(R)`. Autonomy/time-translation covariance forces exact Fourier diagonalization:
+## Scope/no-go boundaries
 
-`F_out[u,v]=Phi0/(2*pi) int G_{Phi0,K}(omega)U*(omega)V(omega)domega`,
+The strongest general theorem applies to **random temporal-distribution encoding of a fixed semibounded-energy excitation**.
 
-`0<=G<=1` a.e.
+WP14 proves baseline mean energy does **not** bound arbitrary parameter-dependent quantum waveform state engineering: infinitesimal high-frequency coherent sidebands can enter at first order while added energy is second order. A broader waveform theorem needs an explicit encoding/control/action resource.
 
-WP17 closes the main formal proof gaps through standard-Borel trajectory spaces, stochastic-kernel randomization, DQM under statistics, the classical `L2` multiplier theorem, and narrowband wavepacket limits.
+Do not use entropy production, ordinary dynamical activity, or detector thermodynamic cost inferred from `G` as a universal scalar resource; explicit literature/counterexamples already rule out those naive formulations.
 
-Candidate message: **spectral completeness is symmetry-driven, not independent-event-driven.**
+## Novelty discipline
 
-All abstract statistical/harmonic-analysis ingredients are prior art.
+Do not claim novelty for generic:
 
-### Continuous Type-II spectral escape — WP07
+- SLD QFI or monotonicity;
+- waveform QFI kernels;
+- time-covariant POVMs;
+- time-translation asymmetry;
+- Hardy/Gagliardo-Nirenberg inequalities;
+- rearrangement/layer-cake/Mellin analysis;
+- time-energy uncertainty relations.
 
-For deterministic paralyzable dead time at `lambda*tau=1`:
+Close literature includes Tsang-Wiseman-Caves, Marvian-Spekkens, Pocovnicu, Kiukas-Ruschhaupt-Werner, Hall, WAY/asymmetry, and random-unitary/phase-noise estimation.
 
-`G_1(0)=0`,
+Targeted searches have not yet found the exact WP10/WP12/WP15 random-time mode formula, `2 nbar` sum rule, or sharp `pi E/hbar` continuum transfer law. **Priority is not certified.**
 
-`G_1(omega)>0` for every nonzero frequency,
+## Immediate gates
 
-`G_1(infty)=1/e`.
+1. Deep priority audit for an exact equivalent of WP10/WP12/WP15.
+2. Determine whether one measurement family can operationally approach the integrated `pi` coefficient; separately optimized per-mode SLDs are generally incompatible.
+3. Strengthen the independent quantum-marked Poisson-to-field embedding.
+4. Only then decide whether WP10-WP15 justify a standalone foundational manuscript.
+5. Explore general waveform-encoding resource laws only if the extra control/action resource is explicit and noncircular.
 
-At `omega=pi/tau`, rigorous lower bound `0.516975...`; independent complete-record Volterra value about `0.52814`.
+## Frozen papers
 
-### General iid-recovery Fisher singularity — WP18
+Paper 1 Rev11 and Paper 2 Rev7 are not active theorem-development branches. Reopen only for a concrete defect, referee objection, or submission requirement.
 
-For iid recovery `T` of fixed mean `m`, every law has the same conventional curve
+## Mandatory documentation rule
 
-`r(lambda)=lambda exp(-lambda m)`.
+After every material theorem, counterexample, proof repair, prior-art collision, numerical result, or strategy change:
 
-The renewal density `U_lambda(t)=lambda F(t)exp[-lambda A(t)]` is classical prior art.
+- update/create `grand_challenge/notes/WP*.md` immediately;
+- update `grand_challenge/AGENTS.md` when the theorem stack/gates change;
+- update top-level `README.md`, this file, `docs/CURRENT_RESEARCH_STATE.md`, and `ROADMAP.md` when project-level status changes;
+- keep `main` current enough that a user opening the repository can immediately see the active branch and checkpoint.
 
-For the homogeneous static experiment use `G_DC`, not an unjustified point value of the a.e. WP10 multiplier.
-
-Under renewal DQM/window regularity, WP18's bounded-Laplace-statistic proof yields at `lambda*m=1`:
-
-`G_DC=0 iff T=m almost surely`.
-
-This is currently a serious novelty candidate but priority is not certified.
-
-### Recovery moment insufficiency — WP19
-
-Two exact recovery laws have identical `E[T]=1`, `Var(T)=1/4`, `CV=0.5`, and identical entire conventional saturation curve but different timestamp information channels.
-
-A common coarse-graining has zero FI for one and normalized FI `~0.00443520488427` for the other. Converged full static FI differs by about `8.78%`.
-
-Conclusion: mean and variance/CV are not resource-complete.
-
-### Visible-event residue — WP20
-
-WP20 supersedes the original WP08 as the robust theorem.
-
-If an exact-timestamp selector has conditional-score covariance measure
-
-`Gamma_M=r delta_0+nu`,
-
-with finite-total-variation `nu` and no zero atom, then for every fixed `0<a<b`:
-
-`lim_{Omega->infty} 1/[(b-a)Omega] int_{aOmega}^{bOmega}G(omega)domega=r/lambda`.
-
-Atomless `nu` gives mean-square/Cesaro convergence; Rajchman/L1 `nu` gives the pointwise limit.
-
-Interpretation: exact visible timestamps produce a zero-lag Fisher covariance atom whose coefficient fixes the high-frequency averaged residue.
-
-## Mandatory Paper-2 novelty boundaries
-
-Do not claim novelty for:
-
-- random Type-II/paralyzable recovery or `M/G/infinity` modeling;
-- busy-period/busy-cycle renewal theory;
-- the classical generalized renewal density;
-- random-paralyzable pair-correlation formulas;
-- `g_Y^(2)(t)=F(t)exp[lambda E[(T-t)_+]]`;
-- pair-correlation dead-time inversion generally;
-- infinite-server service/recovery inference generally;
-- renewal-process FI or generic timing-vs-rate FI;
-- conditional-score projection / Fisher data processing;
-- function-valued FI operators;
-- translation-invariant Fourier multipliers;
-- stationary random-measure spectral theory / Wiener atom results;
-- dead-time information theory generally;
-- modulated paralyzable photocounting generally.
-
-WP15 is supporting/operational only after the Apanasovich–Paltsev 1995 prior-art correction.
-
-## Historical blocker
-
-Afanaseva & Mikhailova (1973), approximately `On recovering characteristics of some queueing systems from the output flow`, is cited in the direct Type-II lineage but a readable theorem text has not yet been obtained. Older infinite-server output-identifiability literature also exists.
-
-Absence of accessible full text is not evidence of novelty.
-
-## Immediate active work
-
-1. Finish the historical inverse-output audit.
-2. Audit WP20's detector-specific covariance-atom/Cesaro formulation against dependent-thinning, missing-event, stationary-score, and information-spectrum literature.
-3. Recheck WP18 renewal-DQM/window-censoring assumptions for atomic and heavy-tailed recovery.
-4. Decide on Paper-2 manuscript drafting only after those gates.
-
-## Documentation discipline — mandatory
-
-Do not allow material research state to exist only in chat.
-
-After every material theorem, proof repair, prior-art collision, numerical result used in an argument, or change in next-gate decision:
-
-- commit/update the relevant work package or dated research log;
-- update `paper2/AGENTS_PAPER2.md` when the active recovery order, novelty hierarchy, or gates change;
-- update `docs/CURRENT_RESEARCH_STATE.md` and `ROADMAP.md` when project-level status changes.
-
-A new agent must be able to recover the full active state from the repository alone.
+Do not allow the authoritative state to exist only on a hidden branch or in chat.
