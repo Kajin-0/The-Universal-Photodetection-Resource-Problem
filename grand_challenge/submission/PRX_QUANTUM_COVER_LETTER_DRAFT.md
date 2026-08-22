@@ -1,6 +1,6 @@
 # PRX Quantum Cover Letter Draft
 
-**Manuscript:** *A Sharp Energy-Survival Law for Temporal Fisher Information*
+**Manuscript:** *Spectral Resource Laws for Temporal Fisher Information*
 
 **Article type:** Research Article
 
@@ -8,25 +8,31 @@
 
 Dear Editors of PRX Quantum,
 
-Please consider our manuscript, **“A Sharp Energy-Survival Law for Temporal Fisher Information,”** for publication as a Research Article in PRX Quantum.
+Please consider our manuscript, **“Spectral Resource Laws for Temporal Fisher Information,”** for publication as a Research Article in PRX Quantum.
 
-The manuscript addresses a basic quantum-metrology question for temporal signals: when temporal structure is encoded in the probability distribution of the random emission time of a fixed quantum excitation, what source resource limits the Fisher information that any physically allowed downstream measurement can recover?
+The manuscript asks an operational quantum-metrology question: when temporal structure is encoded in the probability distribution of the random emission time of a fixed quantum excitation, what spectral resource constrains the Fisher information that can reach an actual downstream measurement record?
 
-For the exact periodic random-time experiment, we prove a finite-copy operational bound that applies to **any joint POVM on any finite number of independently encoded excitations**, including entangled collective measurements. The accessible two-quadrature Fisher information in temporal harmonic `k` is bounded by paired spectral populations and, universally, by the excitation-population tail above the corresponding generator gap. Summing these modewise ceilings gives an exact mean-excitation budget. For controlled periodic-to-continuum limits, the result becomes the survival law
+The first result is a finite-copy theorem. For any finite number of independently encoded excitations and **any joint POVM**, including arbitrary entangled collective measurements, the accessible two-quadrature Fisher information in temporal harmonic `k` is bounded by paired generator-sector populations and, universally, by the excitation-population tail above the corresponding semibounded gap. Controlled periodic-to-continuum limits give the survival law
 
-`R(nu) <= Pr(Omega >= nu)`.
+`R(nu) <= Pr(Omega >= nu)`,
 
-Here `Omega` is excess generator frequency above the participating lower edge; a common carrier-energy offset is not the resource. The familiar pointwise `hf` relation is only a first-moment corollary of this stronger survival-function statement.
+where `Omega` is excess generator frequency above the participating lower edge. The integrated energy budget and the pointwise `hfR` relation follow as first-moment corollaries.
 
-The bound is sharp. A geometric excitation spectrum with a canonical phase measurement saturates every discrete harmonic simultaneously, and its controlled continuum limit gives the exponential-spectrum/Cauchy-time equality family. To show that the result is not confined to that extremal construction, the revised manuscript also analyzes a transform-limited truncated-Gaussian single-photon wavepacket. Canonical covariant timing retains about 96.6% of the survival ceiling at half a Gaussian spectral width and 88.5% at one width.
+The revised manuscript then establishes a second, independent resource layer for **one fixed one-copy POVM** used across all harmonics. Its complete Fisher-retention sequence is a positive-definite Herglotz sequence, so the information retained at different temporal frequencies by one actual measurement cannot be chosen independently. Combining this cross-harmonic consistency with semibounded spectral tails yields a near-lossless resource law:
 
-We believe the work is particularly appropriate for PRX Quantum because it establishes a direct operational connection among quantum metrology, `U(1)` asymmetry, time-frequency quantum optics, and photodetection. Modes-of-asymmetry theory identifies which energy-gap components can occur under the symmetry; the present theorem instead bounds the **classical Fisher information extractable by any actual measurement**, with a sharp coefficient determined solely by participating populations. The distinction survives arbitrary finite-copy collective readout.
+`Ebar+ >= hbar nu A(R(nu))`,
 
-For an independent quantum-marked compound-Poisson source, the bound is inherited under arbitrary parameter-independent source-to-bosonic-field dynamics and detector processing. Wavepacket overlap, propagation, loss, mode mixing, coherent detector memory, ancillas, and final joint measurement can all be absorbed into the downstream channel. The manuscript also states the source-class boundary explicitly and gives a coherent-sideband counterexample showing why baseline mean energy alone cannot constrain arbitrary parameter-dependent waveform-state synthesis.
+with `A(q) ~ [2(1-q)]^(-1/2)` as `q -> 1`. Thus approaching unit retention at any nonzero harmonic requires divergent mean excess energy. A finite-chain sine-profile family under the canonical phase POVM has `R(1)=cos^2[pi/(L+1)]` and mean excitation `(L-1)/2`, proving that the `(1-R)^(-1/2)` divergence exponent is achievable and therefore sharp. We do not claim the globally optimal asymptotic prefactor.
 
-The paper is deliberately conservative about prior art. Weighted `U(1)` twirling, energy-gap mode decompositions, canonical phase measurements, energy-constrained phase estimation, quantum Fisher information, random-unitary estimation, and the classical inequalities used in a secondary comparison are explicitly credited rather than presented as new. The candidate contribution is the operational classical-Fisher population-tail/survival law, its all-mode resource budget, its exact sharpness, and its source-to-record consequence.
+A third result classifies all exact one-copy saturators on the full contiguous pure-sector chain. First-harmonic equality is equivalent to the sector populations being a mixture of geometric distributions, equivalently to the survival sequence being a Hausdorff moment sequence. The same source-adapted POVM then saturates every harmonic simultaneously. Controlled continuum limits of exponential mixtures produce a completely monotone equality cone, including algebraic as well as exponential exact-retention laws.
 
-The work is analytical. Numerical scripts are used only to adversarially test finite-dimensional instances and to verify the closed-form nonextremal photon example; the principal results are proved analytically. One conceptual figure summarizes the parameter-entry point, downstream data processing, the survival law, and the excluded waveform-synthesis class.
+These results connect quantum statistical inference, `U(1)` harmonic structure, semibounded energy, classical positive-definite functions, and moment theory. Established modes-of-asymmetry theory identifies which energy-gap components are present; the finite-copy theorem here instead bounds the **classical Fisher information extractable by any actual POVM** about perturbations of the random-time mixing law. Herglotz/Bochner theory and Hausdorff/Bernstein moment theory are likewise used as established mathematics rather than claimed as new; their role is to expose previously hidden structure in the operational Fisher-retention problem.
+
+For independent quantum-marked compound-Poisson sources, the modewise resource law is inherited under arbitrary parameter-independent source-to-bosonic-field dynamics and detector processing. Wavepacket overlap, propagation, loss, mode mixing, coherent detector memory, ancillas, and final joint readout can therefore be absorbed into the downstream channel. The manuscript also gives a coherent-sideband counterexample showing why baseline mean energy alone cannot constrain arbitrary parameter-dependent waveform-state synthesis.
+
+The work is analytical. Numerical scripts serve as adversarial consistency checks for the finite-copy theorem, the nonextremal truncated-Gaussian photon example, the complete-monotone extremizer structure, the Herglotz high-retention law, and the sine-profile sharpness witness. The manuscript explicitly distinguishes the finite-copy collective-measurement theorem from the fixed-one-copy/common-POVM divergence theorem and states the continuity-at-origin hypothesis before invoking Bochner in the continuum extension.
+
+We believe PRX Quantum is an appropriate first target because the manuscript now supplies not only a sharp modewise resource ceiling but also a global consistency law for one physical measurement, a divergent near-lossless energetic cost with a sharp exponent, and a complete saturation classification.
 
 **Submission history:** [insert if applicable]
 
