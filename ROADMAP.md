@@ -2,72 +2,66 @@
 
 **Updated:** 2026-08-22
 
-`main` is the repository landing/index branch.
+`main` is landing/index only.
 
-**Active scientific branch:** `agent/temporal-information-resource-law`
+**Active branch:** `agent/temporal-information-resource-law`
 
-Paper 1 Rev11 and Paper 2 Rev7 are frozen.
+**Grand Challenge science checkpoint:** WP24.
 
-Grand Challenge science checkpoint: **WP24**.
+**Preferred manuscript:** **Rev7 PRX Quantum**.
 
-- Rev4: frozen science content.
-- Rev5: frozen publication content.
-- Rev6: current PRX Quantum style package.
+## Theorem frontier
 
-## Theorem state
+Exact periodic random-time encoding:
 
-For exact periodic random-time encoding with sector probabilities `q_n`, any finite-copy joint POVM obeys
+`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`
 
-`Tr F_N^(k)<=N min(D_k,U_k)<=N T_k`,
+for any finite-copy joint POVM.
 
-`T_k=sum_(m>=k)q_m`,
+Controlled periodic-to-continuum limit:
 
-and hence `sum_(k>=1)R_N(k)<=nbar`.
+`R(nu) <= Pr(Omega>=nu)`.
 
-Controlled large-period limits obey
+The survival law is the main continuum theorem. `Ebar+=hbar<Omega>` is excess energy above the participating lower edge; integrated and `hfR` inequalities are first-moment corollaries.
 
-`R(nu)<=P(Omega>=nu)`,
+## Rev7 changes
 
-`int_R R(nu)dnu<=2Ebar^+/hbar`,
+Rev7 addresses the latest adversarial-review risks without changing the finite-copy theorem:
 
-`Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
+1. controlled continuum qualification explicit;
+2. excess-energy terminology explicit;
+3. survival law emphasized over the `hf` corollary;
+4. modes-of-asymmetry distinction strengthened;
+5. one transform-limited truncated-Gaussian single-photon example added;
+6. Figure 1 hardened accordingly.
 
-WP23 gives the independent-event source-to-field embedding; WP14 gives the arbitrary-waveform no-go. The separately optimized QFI envelope remains secondary.
+The new photon example reaches ~96.6% of the ceiling at `0.5 sigma` and ~88.5% at `sigma` under canonical timing.
+
+Final local build: **PASS**, 8 pages, zero unresolved references/citations, zero overfull boxes, all pages visually inspected at 200 dpi.
 
 ## Priority
 
-The candidate contribution is the operational classical-Fisher tail/survival theorem and its energy/source-to-record consequences. Generic `U(1)` modes, phase estimation, general quantum-information bounds, random-unitary estimation, waveform QFI, Hardy--Hilbert analysis, and generic Poisson/CPTP machinery are prior art.
+The candidate contribution is the operational **classical-Fisher population-tail/survival law**, including arbitrary finite-copy collective measurement, all-mode budget, sharp simultaneous attainability, and source-to-record consequences.
+
+Generic `U(1)` mode/twirl theory, phase estimation, QFI/Holevo machinery, waveform QFI, Hardy--Hilbert mathematics, and generic Poisson/CPTP processing are prior art.
 
 **Priority remains unverified, not certified.**
 
-## Manuscript / journal gate
+## Journal ladder
 
-Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
+1. **PRX Quantum — Research Article**.
+2. **Physical Review A — Regular Article**.
+3. Physical Review Research — secondary alternative.
+4. PRL — only after a deliberate Letter rewrite.
 
-Rev5 passed complete local publication preflight. Rev6 changes only REVTeX style `pra -> prx` and remains seven pages with no local target-style page-flow regression. Dedicated CI is configured to compile Rev6.
+## Current work order
 
-**First target:** PRX Quantum — Research Article.
+**Freeze Rev7.** No new theorem scope, detector technologies, source classes, or examples by default.
 
-**Preferred fallback:** Physical Review A — Regular Article.
+Reopen only for a concrete theorem defect, historical-priority collision, build/rendering defect, unavoidable journal-format requirement, or new referee-level objection.
 
-PRL is a stretch only after a separate Letter rewrite.
-
-## Current work order — human submission completion
-
-No new theorem or autonomous polish work by default.
-
-1. Human author personally verifies the AI-assisted science/manuscript sufficiently to make a truthful APS disclosure.
-2. Supply final author name/order, affiliation(s), contact email, optional ORCID(s), funding/conflict/submission-history facts.
-3. Decide preprint/e-print status.
-4. Select a stable repository/archive citation for Data Availability.
-5. Decide optional referee recommendations/exclusions.
-6. Confirm PRX Quantum APC coverage/institutional agreement.
-7. Generate the final administrative Rev6 submission package.
-8. Run one final build/checksum/visual pass.
-9. Submit to PRX Quantum.
-
-If PRX Quantum declines on selectivity rather than correctness, prefer APS transfer to PRA rather than broadening claims.
+Do not reintroduce “human verification” as a manuscript/research gate. The finished package is handed to a human for submission; unknown administrative facts may remain placeholders and must not be invented.
 
 ## Documentation policy
 
-Detailed derivations and manuscript generation live on `agent/temporal-information-resource-law`; `main` must always show the current target/status.
+Detailed derivations live on `agent/temporal-information-resource-law`; `main` must always show the current frontier.
