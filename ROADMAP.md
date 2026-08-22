@@ -2,229 +2,153 @@
 
 **Updated:** 2026-08-21
 
-Active branch: `agent/uprp-core-theorem-round10`.
+**Active scientific branch:** `agent/temporal-information-resource-law`
 
 ## Program split
 
-The project now has two separate tracks:
+- **Paper 1 / Rev11:** frozen; submission metadata/compliance only.
+- **Paper 2 / Rev7:** frozen science draft; no open theorem-development gate.
+- **Grand Challenge:** active program seeking fundamental quantum resource laws for temporal information transfer.
 
-- **Paper 1 / Rev11:** scientifically frozen; technically validated for Physical Review Applied; only human metadata/compliance remain.
-- **Paper 2:** active theoretical program on arbitrary autonomous detector channels and hidden-memory/high-flux information transfer.
+The current frontier is `grand_challenge/`, not the older Paper-2 work packages.
 
-Do not reopen Paper 1 merely because Paper 2 advances.
+# Grand Challenge objective
 
----
+Determine whether physically realizable temporal measurement obeys sharp, architecture-independent information-transfer resource laws, while explicitly classifying which broader formulations fail.
 
-# Paper 1 — closed scientific gates
+The program is falsification-first. A theorem is promoted only after counterexample and priority audits.
 
-The first-paper autonomous marked-event theorem stack has passed theorem construction, hostile review, proof hardening, weak-waveform completion, empirical grounding, published-IRF demonstration, ENBW positioning correction, package generation, and validation.
+# Closed/redirected directions
 
-Core closed results include:
+## G0 — entropy-production-only resource law
 
-- exact marked-event transfer `G(omega)=int |H_m(omega)|^2 kappa(dm)`;
-- complete local weak-waveform Fisher operator;
-- necessary-and-sufficient pointwise local Fisher ordering;
-- exact band-subspace guarantee;
-- collision/hazard resource hierarchy and inverse bandwidth costs;
-- timing-width no-go results within stated scope;
-- CTMC microscopic-rate repair and thermodynamic bridge;
-- existing-data histogram estimator and finite-count bootstrap;
-- Spinelli 1998 worked published-IRF ranking reversal;
-- explicit recognition that single-mark `B_FI` is conventional one-sided ENBW.
+**REJECTED as universal.** Existing sensory-network and quantum-clock results show entropy production alone does not universally control temporal information/precision.
 
-Preferred submission candidate: **Rev11**.
+## G1 — generic frequency-domain FI/response thermodynamic law
 
-Canonical Rev11 PDF SHA-256:
+**LITERATURE-COVERED / TOO BROAD.** Frequency-domain response uncertainty and dynamical-activity relations already exist.
 
-`9eedbf562ed5fa70b78a8c1c63627e1c578f149074f7f25f3fd3988c8668ecef`.
+## G2 — generic quantum waveform Fisher spectrum
 
-PRApplied Rev11 PDF SHA-256:
+**LITERATURE-COVERED.** Continuous-time waveform QFI kernels/spectral QCRBs are established.
 
-`d9e4a3330543106a272d4aa7b26cf6187bbd2f6ef170db4a8927b06edb824db7`.
+## G3 — detector thermodynamic cost determined by `G`
 
-Package ZIP SHA-256:
+**REJECTED.** The same logical information-transfer spectrum can be embedded in physically different Hamiltonian/work-cost implementations; `G` alone is thermodynamically incomplete.
 
-`b9f1abff76bbcc7a97ca8b2c3038f1e44e5adbb68f230cdb7d13c02431b6183e`.
+## G4 — baseline mean energy bounds arbitrary waveform state engineering
 
-Remaining Paper-1 work is factual/personal only: author/order, affiliation, corresponding email, ORCID, truthful AI disclosure, funding/conflict/prior-submission declarations, then final metadata-stage validation.
+**REJECTED by WP14.** Infinitesimal high-frequency coherent sidebands can be generated at first order while added energy enters at second order. A broader waveform theorem requires an encoding/control/action resource.
 
----
+# Active theorem chain
 
-# Paper 2 — active gates
+## G5 — covariant timestamp positive-energy law — WP06/WP07
 
-## P2-G0 — General arbitrary-channel retention operator
+**PASSED for covariant timestamp class.**
 
-**PASSED at proof-architecture level.**
+`int_R G_timestamp(nu)dnu <= 2 E_det^+/hbar`.
 
-For a parameter-independent detector channel, output score is conditional expectation of the Poisson source score, yielding a positive contraction on the temporal source tangent space.
+Flat-band inverse form:
 
-## P2-G1 — Autonomy forces spectral diagonalization
+`E_det^+ >= h B q`.
 
-**PASSED at proof-architecture level; novelty audit remains.**
+The energy is measured above the lower spectral edge participating in the detected state, making the statement invariant to arbitrary Hamiltonian energy offsets.
 
-WP10/WP17 show that time-translation covariance makes the retention operator commute with temporal shifts, hence
+## G6 — arbitrary downstream detector memory — WP08
 
-`F_out[u,v]=Phi0/(2*pi) int G_{Phi0,K}(omega) U*(omega)V(omega)domega`,
+**PASSED for downstream parameter-independent classical processing.**
 
-`0<=G<=1` a.e.
+The covariant timestamp bound is inherited by arbitrary later detector memory/coarse graining through FI data processing. Finite quantum timing energy therefore regularizes the ideal classical Type-II infinite-frequency plateau.
 
-WP17 closes the main formal gaps using standard-Borel trajectory spaces, stochastic-kernel randomization, DQM under statistics, the classical translation-invariant `L2` multiplier theorem, and narrowband wavepacket interpretation.
+## G7 — external time-reference boundary — WP09
 
-**Open gate:** determine whether the photodetection-specific synthesis is genuinely distinct from stationary-channel/statistical-experiment prior art.
+**PASSED as a no-go/boundary result.**
 
-## P2-G2 — Discrete Type-II information high-pass
+Mean energy does not bound deterministic global time-shift QFI if an external phase/time reference and sparse high-energy coherence are allowed. Random-event-time encoding removes this free absolute-phase resource and motivates the next theorem class.
 
-**PASSED.**
+## G8 — discrete random-time quantum mode budget — WP10/WP11
 
-At the symmetric point of the one-bin paralyzable model,
+**PASSED analytically; priority audit open.**
 
-`G(omega)=1-1/(2x)+ln(1+4x)/(8x^2)`, `x=1-cos(omega)`.
+For periodic temporal Fourier mode `k`:
 
-It rises strictly from `G(0)=0` to
+`G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`.
 
-`G(pi)=3/4+ln(3)/16=0.818663268...`.
+Resource sums:
 
-Retain as exact prototype, not primary physical evidence.
+`sum_{k>=1}G_Q(k)<=2 nbar`,
 
-## P2-G3 — Continuous deterministic Type-II spectral escape
+`sum_{k!=0}G_Q(k)<=4 nbar`.
 
-**PASSED analytically; novelty still under audit.**
+Constants are sharp as suprema. Mixed-state and arbitrary downstream detector/measurement extensions follow by purification and QFI monotonicity.
 
-For deterministic paralyzable dead time at `lambda*tau=1`:
+## G9 — continuum random-time mode law — WP12
 
-`G_1(0)=0`,
+**PASSED for regular densities; generalized by WP15.**
 
-`G_1(omega)>0` for every nonzero frequency,
+For `nu>0`:
 
-`G_1(infty)=1/e`.
+`G_Q(nu)=2 int_0^infinity q(omega)q(omega+nu)/[q(omega)+q(omega+nu)]domega`.
 
-At `omega=pi/tau`, rigorous lower bound `0.516975...`; independent complete-record Volterra calculation approximately `0.52814`.
+The conjectured/derived integrated resource coefficient is `pi` in two-sided angular-frequency area.
 
-This is the strongest current concrete physical spectral theorem.
+## G10 — second-quantized/Poisson embedding — WP13
 
-## P2-G4 — General iid-recovery static Fisher singularity
+**PASSED at current theorem scope; further physical mapping open.**
 
-**PASSED under explicit renewal-DQM/window regularity; historical novelty unresolved.**
+Total-energy sectors include fixed-photon-number multiphoton/entangled/multimode pulses. Independent quantum-marked Poisson events inherit the source-normalized bound by additivity; downstream parameter-independent field mappings and detector memory cannot increase QFI.
 
-Every recovery law of fixed mean `m` shares
+## G11 — general-density sharp `pi` area theorem — WP15
 
-`r(lambda)=lambda exp(-lambda m)`.
+**PASSED analytically; current strongest result.**
 
-At `lambda*m=1`, WP18's bounded-Laplace-statistic proof gives
+For every normalized `q(omega)>=0` with finite first moment `omega_bar`:
 
-`G_DC=0 iff T=m almost surely`.
+`boxed: int_0^infinity G_Q(nu)dnu <= (pi/2) omega_bar`,
 
-This replaces the older pointwise-density necessity argument.
+hence
 
-Quantitative witness:
+`boxed: int_R G_Q(nu)dnu <= pi E_bar^+/hbar`.
 
-`G_DC >= (4/e)W_s^2/(1+u_s)^4`.
+Flat-band inverse law:
 
-**Open gate:** historical inverse-output literature, especially Afanaseva–Mikhailova (1973), must be exhausted before priority language.
+`boxed: E_bar^+ >= (2/pi) h B q0`.
 
-## P2-G5 — Global equal-rate branch aliasing uniqueness
+WP15 removes smoothness assumptions using rearrangement, layer cake, and an exact positive Mellin-convolution operator of norm `pi/4`. The constant is sharp as a supremum, approached by truncated critical densities proportional to `(1+omega)^(-2)`.
 
-**PASSED as an identifiability corollary; do not oversell.**
+# Current publication gate
 
-For fixed known recovery law, distinct incident rates with the same conventional output rate produce identical complete registered-timestamp experiments iff recovery is deterministic.
+Do **not** draft the grand-challenge paper yet.
 
-Because the underlying renewal and pair-correlation formulas are classical, position this as a corollary of the Fisher/identifiability structure rather than new queueing theory.
+A manuscript decision requires all of:
 
-## P2-G6 — Recovery mean/variance sufficiency
+1. **Priority survival:** no exact prior theorem/formula equivalent to WP10/WP12/WP15.
+2. **Operational interpretation:** clarify whether a single measurement can approach the integrated `pi` coefficient, since different temporal-mode SLDs are generally incompatible.
+3. **Physical source mapping:** strengthen the independent quantum-marked Poisson/event model into realistic incoherent optical-field language without adding hidden resources.
+4. **Claim discipline:** retain the WP14 boundary; do not state the theorem for arbitrary state-valued waveform encoding.
 
-**FAILED by exact counterexample; no-go closed.**
+If these gates survive, the likely manuscript spine is:
 
-WP19 constructs two recovery laws with identical
-
-`E[T]=1`, `Var(T)=1/4`, `CV=0.5`,
-
-and identical entire conventional saturation curve, but different timestamp experiments and different FI for a common coarse-graining.
-
-Analytic witness for one law: normalized per-time FI `~0.00443520488427` versus zero for the other.
-
-Converged full static FI differs by about `8.78%`.
-
-Conclusion: mean and variance/CV are not resource-complete. **Do not continue searching for a universal variance-only law by default.**
-
-## P2-G7 — Visible-event high-frequency residue
-
-**WP08 pointwise theorem demoted; WP20 Cesaro theorem PASSED under weaker covariance-measure assumptions.**
-
-For exact-timestamp selector `Y<=N`, if conditional-score covariance measure is
-
-`Gamma_M=r delta_0+nu`,
-
-with finite-total-variation `nu` and no zero atom, then
-
-`lim_{Omega->infty} 1/[(b-a)Omega] int_{aOmega}^{bOmega}G(omega)domega=r/lambda`
-
-for every fixed `0<a<b`.
-
-If `nu` is atomless, high-frequency mean-square/Cesaro convergence follows from Wiener. If `nu` is Rajchman, e.g. has `L1` density, the stronger pointwise limit follows.
-
-**Open gate:** targeted novelty audit of the detector-specific zero-lag Fisher-covariance formulation.
-
----
-
-# Prior-art corrections that constrain all Paper-2 claims
-
-The following are established and must not be claimed as new:
-
-- random Type-II/paralyzable dead time;
-- `M/G/infinity` representation and busy-cycle theory;
-- the generalized renewal density `U_lambda(t)=lambda F(t)exp[-lambda A(t)]`;
-- random-paralyzable pair-correlation formulas;
-- `g_Y^(2)(t)=F(t)exp[lambda E[(T-t)_+]]`;
-- pair-correlation dead-time inversion in general;
-- infinite-server service/recovery inference generally;
-- renewal-process FI / generic timing-versus-rate FI;
-- conditional-score projection, Fisher data processing, function-valued FI operators;
-- translation-invariant Fourier multipliers;
-- stationary random-measure spectral theory and Wiener's theorem;
-- dead-time information theory generally;
-- modulated paralyzable photocounting generally.
-
-WP15 is supporting/operational only after the Apanasovich–Paltsev 1995 prior-art correction.
-
----
-
-# Current manuscript decision gate
-
-Do **not** draft Paper 2 yet.
-
-Draft only after all three conditions are met:
-
-1. the historical inverse-output audit does not directly preempt WP18's fixed-recovery-law Fisher singularity;
-2. WP20's detector-specific covariance-atom/Cesaro formulation survives targeted novelty review;
-3. WP18's DQM/window assumptions are stated at manuscript-grade scope, including treatment/exclusion of atomic and heavy-tailed recovery laws.
-
-If those gates survive, the intended core manuscript stack is:
-
-- WP10/WP17 general autonomous-channel theorem;
-- WP07 continuous Type-II spectral escape;
-- WP18 deterministic-recovery Fisher singularity;
-- WP20 visible-event Cesaro residue;
-- WP19 recovery-moment insufficiency no-go.
-
----
+- random-time encoding problem and why ordinary time-shift/QFI intuition is insufficient;
+- exact discrete mode-retention formula and `2 nbar` sum rule;
+- sharp continuum `pi E/hbar` area law;
+- Planck-scale inverse bandwidth/resource inequality;
+- second-quantized/Poisson photodetection embedding;
+- covariant timestamp subclass and comparison with Paper 2's classical memory plateau;
+- explicit no-go for arbitrary coherent waveform encoding.
 
 # Immediate work order
 
-1. Historical inverse-output audit: Afanaseva–Mikhailova and old Type-II/infinite-server identifiability literature.
-2. WP20-specific novelty audit: dependent thinning, missing-event point processes, stationary score spectra, information-spectrum literature.
-3. WP18 regularity audit: renewal DQM, censoring, atomic/heavy-tailed recovery.
-4. Manuscript decision only after 1–3.
-
----
+1. Deep priority audit in random-unitary/group-distribution estimation, phase-noise estimation, Rényi/time-observable inequalities, and harmonic-analysis literature.
+2. Analyze joint-measurement/attainability of the integrated QFI-area coefficient.
+3. Harden source-to-field embedding for realistic incoherent optical events.
+4. Only then make a manuscript decision.
 
 # Documentation discipline
 
-Every material theorem, proof repair, prior-art collision, numerical result used in an argument, or change in the next-gate decision must be committed as it occurs.
+Every material theorem, proof repair, no-go, prior-art collision, numerical result, or gate change must update:
 
-Keep synchronized:
-
-- the relevant `paper2/notes/WP*.md` or dated research log;
-- `paper2/AGENTS_PAPER2.md` whenever recovery order/claim hierarchy/gates change;
-- `docs/CURRENT_RESEARCH_STATE.md` and this roadmap whenever project-level status changes.
-
-The repository must remain sufficient for a new agent to recover the full active state without chat history.
+- `grand_challenge/notes/WP*.md`;
+- `grand_challenge/AGENTS.md`;
+- top-level `README.md`, `AGENTS.md`, `docs/CURRENT_RESEARCH_STATE.md`, and this roadmap when project-level state changes;
+- the default `main` landing documents so the active branch/checkpoint is visible without branch hunting.
