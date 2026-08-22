@@ -2,7 +2,7 @@
 
 **Science checkpoint: WP24 — 2026-08-22**
 
-**Frozen science content: Rev4. Preferred publication draft: Rev5.**
+**Frozen science content: Rev4. Frozen publication content: Rev5. Current journal package: Rev6 PRX Quantum.**
 
 This directory contains the active theoretical program launched from the frozen Paper-2 result on Fisher spectra of autonomous detector channels.
 
@@ -68,48 +68,55 @@ The candidate contribution is narrowly the arbitrary-measurement **classical-Fis
 
 Targeted searches have not located an exact predecessor. **Priority remains unverified, not certified.**
 
-## Preferred publication manuscript — Rev5
+## Manuscript / target package
 
 Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
 Generation chain:
 
-`manuscript/energy_survival_temporal_fisher_rev1.tex`
+`Rev1 -> Rev2 mechanical -> Rev3 hostile-review repair -> Rev4 science/claim polish -> Rev5 publication figure/link pass -> Rev6 PRX Quantum style package`.
 
-`-> manuscript/apply_rev2_mechanical.py`
+- **Rev4:** frozen science/claim checkpoint.
+- **Rev5:** frozen publication content; one conceptual two-column figure and hidden hyperlink decorations only.
+- **Rev6:** target packaging only; changes REVTeX journal option from `pra` to `prx` and changes no scientific content.
 
-`-> manuscript/apply_rev3_hostile_review.py`
+Rev5 has passed the complete local LaTeX/BibTeX, visual, figure, numerical, and bibliography preflight.
 
-`-> manuscript/apply_rev4_final_polish.py`
+Rev6 target-style preflight has also passed: seven pages, no target-style layout regression, no local overfull/fatal-control issue, dedicated CI generation/compile gate, and a fresh numerical hostile check with 11,825 one-copy and 936 global two-copy random POVMs showing no violation. The geometric equality family was verified at machine precision.
 
-`-> manuscript/apply_rev5_publication_figure.py`.
+The current connector does not expose the relevant branch-push GitHub Actions run, so direct remote-job inspection is not claimed.
 
-Rev4 is the frozen science/claim checkpoint. Rev5 changes no theorem, proof, coefficient, source hypothesis, or novelty claim. It adds a single two-column conceptual architecture figure and hides hyperlink decorations.
+## Journal target
 
-Rev5 has passed:
+**First target: PRX Quantum — Research Article.**
 
-- full local LaTeX/BibTeX build;
-- seven-page render/visual inspection;
-- unresolved-reference/citation and overfull-box gates;
-- Figure 1 readability/scope-value review;
-- deterministic random-POVM theorem validation;
-- DOI/title/provenance bibliography audit.
+**Preferred fallback: Physical Review A — Regular Article.**
 
-The current connector does not expose the relevant branch-push GitHub Actions run, so direct remote-job inspection is not claimed. Equivalent full local build verification is complete.
+PRL is a stretch only after a deliberate Letter rewrite; do not force the seven-page theorem into a four-page core by hiding essential hypotheses or proof structure.
+
+## APS submission compliance
+
+APS's June 2026 AI policy requires disclosure of substantive AI use. This project used AI substantively in reasoning/literature synthesis, proof checking, code assistance, manuscript drafting/editing, and conceptual figure development. Final submission therefore requires a truthful human verification record and disclosure.
+
+Submission support files:
+
+1. `submission/PRX_QUANTUM_TARGET_AND_CHECKLIST_2026-08-22.md`
+2. `submission/PRX_QUANTUM_COVER_LETTER_DRAFT.md`
+3. `submission/PRX_QUANTUM_POPULAR_SUMMARY_DRAFT.md`
+4. `submission/APS_AI_AND_DATA_DISCLOSURE_DRAFTS.md`
+5. `notes/MANUSCRIPT_REV6_PRXQ_PACKAGING_PREFLIGHT_2026-08-22.md`
 
 ## Read first
 
 1. `AGENTS.md`
-2. `notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
-3. `notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
-4. `notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
-5. `notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-6. `notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
-7. `notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
-8. `notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+2. `notes/MANUSCRIPT_REV6_PRXQ_PACKAGING_PREFLIGHT_2026-08-22.md`
+3. `submission/PRX_QUANTUM_TARGET_AND_CHECKLIST_2026-08-22.md`
+4. `submission/APS_AI_AND_DATA_DISCLOSURE_DRAFTS.md`
+5. `notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
+6. `notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
 
 ## Current work order
 
-Do not accumulate another theorem by default. Continue with journal targeting and submission engineering only. Reopen science only for a concrete theorem, priority, build, or referee defect.
+Do not accumulate another theorem or polish revision by default. Remaining work is human submission completion: verification for APS AI disclosure, author/affiliation/contact/funding metadata, stable code/archive citation for Data Availability, optional referee/preprint information, APC coverage, and final submission.
 
 The repository handoff files must remain sufficient for full context recovery; do not rely on chat history.
