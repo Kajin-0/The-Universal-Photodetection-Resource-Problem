@@ -1,168 +1,148 @@
 # Current Research State
 
-**Date:** 2026-08-21
+**Last synchronized:** 2026-08-21
 
-Active branch: `agent/uprp-core-theorem-round10`
+**Active scientific branch:** `agent/temporal-information-resource-law`
 
-## Project-level status
+This is the first-stop replacement-agent summary. The repository, not chat history, is authoritative.
 
-1. **Paper 1 / Rev11:** scientifically frozen and technically validated for Physical Review Applied; only factual/personal submission metadata remain.
-2. **Paper 2 / Rev7:** preferred frozen science draft. Rev7 is locally build-verified, preflighted, source-diff inspected, and visually inspected. It incorporates the latest favorable external adversarial review without changing any theorem, proof conclusion, figure data, or numerical result.
+## Project status
 
-Do not reopen broad Paper-2 theorem exploration unless a concrete defect, referee objection, or serious novelty collision appears.
+1. **Paper 1 / Rev11:** scientifically frozen and technically validated; submission metadata/compliance only.
+2. **Paper 2 / Rev7:** preferred frozen science draft; locally build-verified, preflighted, source-diff inspected, and visually inspected.
+3. **Grand Challenge:** active theoretical frontier. Current authoritative handoff is `grand_challenge/AGENTS.md` and the active theorem stack is through **WP15**.
 
 ## Read first
 
-1. `AGENTS.md`
-2. `paper2/AGENTS_PAPER2.md`
-3. `paper2/notes/PAPER2_REV7_LOCAL_VALIDATION.md`
-4. `paper2/notes/REVIEW_RESPONSE_REV6_APPLIED_READABILITY_2026-08-21.md`
-5. `paper2/notes/PAPER2_REV6_LOCAL_VALIDATION.md`
-6. `paper2/notes/WP28_MANUSCRIPT_LEVEL_HOSTILE_REVIEW.md`
-7. `paper2/notes/WP27_INTEGRATED_HOSTILE_REVIEW_AND_MANUSCRIPT_GATE.md`
-8. `paper2/notes/WP26_FINITE_MEAN_STATIONARY_WINDOW_FISHER_RATE.md`
-9. `paper2/notes/WP25_FINITE_MEAN_CYCLE_DQM_AND_HEAVY_TAIL_HARDENING.md`
-10. `paper2/notes/WP19_EXACT_VARIANCE_INSUFFICIENCY_COUNTEREXAMPLE.md`
-11. `paper2/notes/WP07_CONTINUOUS_PARALYZABLE_SPECTRAL_SURVIVAL.md`
-12. `paper2/notes/WP17_PUBLICATION_GRADE_WP10_FORMALIZATION.md`
-13. `paper2/MANUSCRIPT_ARCHITECTURE.md`
+1. `grand_challenge/AGENTS.md`
+2. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
+3. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
+4. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
+5. `grand_challenge/notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
+6. `grand_challenge/notes/WP11_WP10_FACTOR_AUDIT_AND_PRIOR_ART.md`
+7. `grand_challenge/notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
+8. `grand_challenge/notes/WP09_EXTERNAL_TIME_REFERENCE_NO_GO_AND_ASYMMETRY_BOUNDARY.md`
+9. `grand_challenge/notes/WP08_ARBITRARY_MEMORY_LIFT_AND_QUANTUM_REGULARIZATION.md`
+10. `paper2/AGENTS_PAPER2.md` only if Paper-2 context is needed.
 
-# Paper 1 — frozen Rev11
+# Current grand question
 
-Preferred candidate remains Rev11. Do not reopen science absent a concrete defect or referee request.
+> For a physically realizable measurement of temporal structure, what fundamental resources constrain source-to-record temporal Fisher-information transfer?
 
-# Paper 2 — preferred Rev7 science draft
+The program is falsification-first. It does not assume that a single thermodynamic or energetic scalar controls all temporal information tasks.
 
-Working title:
+# Strongest current result — WP12/WP15
 
-> **Fisher Spectra and Information Singularities in Photodetectors with Memory**
+For a normalized positive excitation-frequency density `q(omega)` with finite mean
 
-Revision chain:
+`omega_bar = int_0^infinity omega q(omega)domega`,
 
-- Rev1 — first complete science draft;
-- Rev2 — Latin `u_s` notation repair;
-- Rev3 — mechanical polish and stopped-counting-process references;
-- Rev4 — final-form publication figures;
-- Rev5 — manuscript-level hostile-review proof/exposition hardening;
-- Rev6 — conservative queue-output prior-art positioning;
-- **Rev7 — applied-readability/scope-protection revision:** one technology-neutral dimensionful Type-II scale example, tighter scope qualifiers around `complete`, and one short future-validation paragraph. No theorem/data changes.
+the random-time temporal-mode quantum retention is
 
-The dedicated Paper-2 CI now generates through Rev7 and compiles Rev7. Paper-1 CI remains untouched.
+`G_Q(nu)=2 int_0^infinity q(omega)q(omega+nu)/[q(omega)+q(omega+nu)]domega`, `nu>0`,
 
-## Rev7 local validation
+with even extension.
 
-Validated result:
+WP15 proves without smoothness assumptions:
 
-- **21 pages**;
-- letter page size `612 x 792 pt`;
-- all citations and cross-references resolved;
-- zero overfull/underfull boxes;
-- no clipping, equation/text overlap, margin overflow, figure changes, broken glyphs, or abnormal page breaks;
-- only benign `nameref` warning remains;
-- full 21-page render inspected;
-- changed pages 8, 9, 15, and 16 inspected at readable scale.
+`boxed: int_0^infinity G_Q(nu)dnu <= (pi/2) omega_bar`,
 
-Generated Rev7 source SHA-256:
+and therefore
 
-`a317663c626a1d0597d047ec99da55f2779bc376c320ce609d7ae6ae6cce67b3`
+`boxed: int_R G_Q(nu)dnu <= pi E_bar^+/hbar`.
 
-Generated Rev7 PDF SHA-256:
+If a source guarantees
 
-`edc4ea88d644b20196ba09f77c993ed25d9fe82a0f51877b74ffe69f4daa1db2`
+`G_Q(2*pi*f)>=q0` for every `|f|<=B`,
 
-Rev7 source ZIP SHA-256:
+then
 
-`81b33249a784b7ddafe6073c9c05a57e1529245fc6b3e5a3638f5f0a7fb6378b`
+`boxed: E_bar^+ >= (2/pi) h B q0`.
 
-Details: `paper2/notes/PAPER2_REV7_LOCAL_VALIDATION.md`.
+This is currently the strongest detector-independent Planck-scale temporal-information resource law in the program.
 
-**Verification boundary:** the actual push-triggered GitHub Actions Rev7 run has not been directly inspected through the connector.
+## Proof status
 
-# Scientific core
+WP15 gives a publication-grade general-density proof:
 
-## WP10/WP17 — autonomous-channel Fisher spectrum
+- rearrangement reduces to decreasing densities;
+- the superlevel-length function `r(s)` satisfies `omega_bar=(1/2)||r||_2^2`;
+- the exact kernel identity converts the area functional into `<r,Tr>`;
+- the positive Mellin-convolution operator has multiplier `|Gamma(3/2+i xi)|^2` and exact norm `pi/4`;
+- the constant is sharp as a supremum, approached by truncated critical densities proportional to `(1+omega)^(-2)`.
 
-For homogeneous Poisson baseline `Phi0`, any parameter-independent autonomous detector channel has output score
+# Discrete precursor — WP10/WP11
 
-`S_u^out=E[S_u|Y]`
+For periodic random-time modes:
 
-and a bounded translation-invariant Fisher operator on the temporal tangent completion. Hence
+`G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`.
 
-`F_out[u,v]=Phi0/(2*pi) int G(omega)U*(omega)V(omega)domega`,
+The mode budget obeys
 
-with `0<=G<=1` a.e.
+`sum_{k>=1}G_Q(k)<=2 nbar`,
 
-Rev7 explicitly qualifies completeness to the admitted classical Poisson weak-intensity-waveform tangent model and stated accessible-record definition.
+`sum_{k!=0}G_Q(k)<=4 nbar`.
 
-## WP07 — deterministic Type-II dynamic spectral escape
+The constants are sharp as suprema. Mixed-state extensions follow through purification/QFI monotonicity. Per-mode cosine/sine SLDs need not be jointly compatible, so integrated QFI upper bounds are not automatically jointly attainable.
 
-At `lambda*tau=1`:
+# Physical source scope — WP13/WP14
 
-- `G_DC=0` for the homogeneous/static timestamp experiment;
-- every nonzero temporal frequency has positive model-specific narrowband FI retention;
-- `lim_|omega|->infinity G(omega)=1/e`;
-- at `omega*tau=pi`, rigorous lower bound `0.516975...`, exact Volterra value about `0.52814`.
+The theorem includes fixed-photon-number multiphoton/entangled/multimode excitations by using the total time-translation generator and its total-energy sectors.
 
-Rev7 adds the technology-neutral scale translation:
+For independent quantum-marked Poisson events, QFI and excess energy are additive in event number, so the source-normalized mode budget is inherited by any downstream parameter-independent field mapping, coherent detector memory, and measurement.
 
-`tau=10 ns -> lambda_*=100 MHz`,
+However, WP14 proves a major no-go: baseline mean energy alone cannot constrain **arbitrary waveform state engineering**. Infinitesimal high-frequency coherent sidebands can appear at first order in the encoded amplitude while added energy enters only at second order. Any broader theorem must include an encoding-map/control/action resource.
 
-and
+# Covariant timestamp subclass — WP06-WP08
 
-`omega*tau=pi -> f=50 MHz`.
+For a reference-free covariant timestamp measurement:
 
-The manuscript explicitly says this does not assert that a particular detector technology realizes the ideal Type-II model.
+`boxed: int_R G_timestamp(nu)dnu <= 2 E_det^+/hbar`,
 
-## WP25/WP26 — finite-mean recovery singularity
+or equivalently
 
-For iid recovery with only `0<E[T]=m<infinity`, all laws share
+`boxed: E_det^+ >= h B q`.
 
-`r(lambda)=lambda exp(-lambda m)`.
+The correct energy is measured above the participating lower spectral edge, making the theorem gauge invariant under `H -> H+cI`.
 
-For the complete stationary timestamp record,
+WP08 lifts this timestamp law through arbitrary downstream classical detector memory and shows that finite-energy quantum timing removes the exact infinite-frequency atomic plateau allowed by Paper 2's ideal classical Type-II model.
 
-`G_DC=G_cyc=(r/lambda)I_D`
+# Important no-gos already established
 
-throughout the finite-mean iid Type-II class, including atomic, singular, infinite-variance, and heavy-tailed recovery laws.
+Do not restart these failed universal-law directions:
 
-At `lambda*m=1`:
+- entropy production alone does not universally bound information acquisition;
+- generic frequency-domain response/dynamical-activity uncertainty relations already exist;
+- temporal waveform QFI kernels already exist;
+- detector thermodynamic cost is not determined by `G` alone;
+- finite-QFI or classical-vs-quantum accessibility gaps alone are not sufficiently novel;
+- baseline mean energy does not bound arbitrary state-valued waveform encoding.
 
-`G_DC=0 iff T=m almost surely`.
+# Prior-art boundary
 
-## WP19 — exact resource incompleteness
+Do not claim novelty for generic QFI/SLD theory, waveform-QFI kernels, covariant time POVMs, time-translation asymmetry, Hardy/Gagliardo-Nirenberg inequalities, rearrangement/layer-cake/Mellin methods, or time-energy uncertainty relations.
 
-Recovery mean + variance/CV + the entire conventional mean saturation curve do not determine the timestamp information experiment. The exact common-statistic construction proves this; the ~`8.78%` complete-FI numerical difference is supporting calibration only.
+Targeted searches have not yet found an exact equivalent of the WP10 random-time mode formula, the discrete `2 nbar` sum rule, or the sharp WP12/WP15 continuum `pi E/hbar` integrated-transfer law. **Priority remains unverified.**
 
-# Latest adversarial-review decision
+# Immediate gates
 
-The latest external adversarial review was favorable and found no central mathematical failure. Its useful recommendations have been implemented in Rev7:
+1. Deep historical/modern priority audit for exact equivalents of WP10/WP12/WP15.
+2. Operational attainability: determine whether one measurement can approach the integrated `pi` coefficient despite incompatible per-mode SLDs.
+3. Strengthen the independent quantum-marked Poisson-to-field embedding for realistic incoherent optical sources.
+4. Decide whether WP10-WP15 justify a standalone foundational manuscript if the first three gates survive.
+5. Do not broaden to arbitrary waveform encoding unless the extra control/action resource can be stated noncircularly.
 
-1. a dimensionful Type-II scale conversion for applied readers;
-2. stronger qualification of `complete` to the declared source/record model;
-3. a short experimental-outlook paragraph that is explicitly not a required research step.
+# Frozen Paper 2
 
-The review explicitly advised **against** adding more recovery families, higher-moment examples, nonparalyzable calculations, arrays, quantum-source extensions, thermodynamic resource theory, or simulations. The project adopts that recommendation.
+Preferred Paper-2 draft remains Rev7: **Fisher Spectra and Information Singularities in Photodetectors with Memory**. Science is frozen unless a concrete defect/referee issue appears.
 
-# Novelty position
+# Documentation rule
 
-No exact predecessor has been located for the combined narrow claims in WP07, WP25/WP26, and WP19. Priority is **not certified**.
+After every material theorem, proof repair, no-go, prior-art collision, numerical result, or strategy change:
 
-Do not claim novelty for generic Fisher data processing, function-valued FI operators, translation-invariant multipliers, point-process likelihood martingales, renewal FI, random Type-II cycle laws, generic queue-output identifiability, Bartlett spectra, pair-correlation inversion, or dead-time information theory generally.
+- update the relevant `grand_challenge/notes/WP*.md` immediately;
+- update `grand_challenge/AGENTS.md` whenever the active theorem hierarchy/gates change;
+- update top-level `README.md`, `AGENTS.md`, this file, and `ROADMAP.md` for every project-level frontier change;
+- keep `main` visibly synchronized with the active branch and latest checkpoint.
 
-Afanaseva & Mikhailova 1973 remains an inaccessible direct Type-II-lineage historical risk.
-
-# Immediate next actions
-
-Science is frozen again at Rev7 unless a concrete defect appears.
-
-Remaining work is submission-stage:
-
-1. inspect the actual Rev7 GitHub Actions run when connector access permits;
-2. insert factual author/affiliation/correspondence/ORCID metadata;
-3. add truthful funding/conflict/data-code/AI-disclosure statements as required;
-4. choose/finalize target-journal formatting and submission package;
-5. perform one final referee-style read after metadata are inserted.
-
-# Documentation requirement
-
-Material theorem results, proof repairs, prior-art collisions, numerical results used in arguments, build/visual-validation changes, external review responses, or changes in manuscript strategy must be committed immediately. Keep `paper2/AGENTS_PAPER2.md` and this file synchronized.
+Do not let the current research state exist only on an agent branch or in chat.
