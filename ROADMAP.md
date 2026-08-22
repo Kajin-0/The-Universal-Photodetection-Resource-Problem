@@ -4,7 +4,7 @@
 
 **Active scientific branch:** `agent/temporal-information-resource-law`
 
-Paper 1 Rev11 and Paper 2 Rev7 are frozen. Grand Challenge science checkpoint: **WP24**. Preferred Grand Challenge manuscript: **Rev4**, frozen unless a concrete defect appears.
+Paper 1 Rev11 and Paper 2 Rev7 are frozen. Grand Challenge science checkpoint: **WP24**. **Rev4 freezes the science content; Rev5 is the preferred frozen publication draft.**
 
 # Established theorem hierarchy
 
@@ -74,21 +74,11 @@ This is a modewise SLD-QFI metric envelope, not the jointly accessible operation
 
 ## G6 — arbitrary coherent waveform synthesis — WP14
 
-**NO-GO.** Baseline mean energy alone does not constrain arbitrary state-valued coherent waveform engineering. Rev4 contains an explicit coherent-sideband counterexample. A broader theorem requires an encoding/control/action resource.
+**NO-GO.** Baseline mean energy alone does not constrain arbitrary state-valued coherent waveform engineering. The frozen science content includes an explicit coherent-sideband counterexample. A broader theorem requires an encoding/control/action resource.
 
 # Prior-art status
 
-Occupied areas include:
-
-- `U(1)` modes of asymmetry / weighted group twirling;
-- canonical phase measurements and phase Fourier moments;
-- photon-number/energy-constrained phase estimation;
-- arbitrary-measurement Fisher/Holevo/RLD/SLD bounds;
-- random-unitary probability estimation;
-- waveform QFI;
-- positive-frequency sharp Gagliardo--Nirenberg inequalities;
-- Hardy--Hilbert best-constant mathematics;
-- compound-Poisson and CPTP/Stinespring data processing.
+Occupied areas include `U(1)` modes of asymmetry / weighted group twirling, canonical phase measurements and phase Fourier moments, photon-number/energy-constrained phase estimation, arbitrary-measurement Fisher/Holevo/RLD/SLD bounds, random-unitary probability estimation, waveform QFI, positive-frequency sharp Gagliardo--Nirenberg inequalities, Hardy--Hilbert best-constant mathematics, and compound-Poisson/CPTP/Stinespring data processing.
 
 The candidate contribution remains the exact operational Fisher tail theorem
 
@@ -100,30 +90,34 @@ its paired-support refinement, mean-generator harmonic budget, and controlled co
 
 # Manuscript gate — PASSED
 
-Preferred draft: `energy_survival_temporal_fisher_rev4.tex`, generated deterministically from Rev1.
+Science-content checkpoint: `energy_survival_temporal_fisher_rev4.tex`.
 
-Rev4 has passed:
+Preferred publication draft: `energy_survival_temporal_fisher_rev5.tex` generated deterministically from Rev1 through Rev5.
 
-- integrated scientific hostile review;
+Rev5 adds only one conceptual two-column architecture figure and hidden hyperlink decorations. It changes no theorem, proof, coefficient, source hypothesis, or novelty claim relative to Rev4.
+
+Rev5 has passed:
+
+- integrated scientific hostile review inherited from Rev4/WP24;
 - full local LaTeX/BibTeX compilation;
 - unresolved-reference/citation gate;
 - overfull-box gate;
 - seven-page visual inspection;
+- Figure 1 readability and scope-value review;
 - deterministic numerical theorem sanity checks;
 - DOI/title/provenance bibliography audit.
 
-The bibliography audit found and corrected one genuine metadata defect: DOI `10.2140/apde.2011.4.379` is Pocovnicu's *Traveling waves for the cubic Szegő equation on the real line*. That paper remains the correct source because it contains the sharp positive-frequency Gagliardo--Nirenberg inequality. Gill's citation was upgraded from the 2005 arXiv preprint to the published 2008 World Scientific chapter while retaining the arXiv identifier.
-
 The remote push-triggered GitHub Actions job is not exposed by the current connector; equivalent full local build verification is complete.
 
-# Current work order — publication engineering, not theorem accumulation
+# Current work order — journal targeting and submission engineering
 
-1. **Freeze Rev4 science.** Reopen only for a concrete theorem, priority, build, or referee defect.
-2. Inspect remote Rev4 CI if it becomes accessible.
-3. Decide whether **one** conceptual figure materially improves comprehension; do not add decorative figures by default.
-4. Maintain conservative novelty language while historical priority remains uncertified.
-5. Prepare journal submission metadata/compliance only from factual user-supplied information.
-6. If a reviewer or new source exposes a collision, update WP24/prior-art notes before changing claims.
+1. **Freeze Rev5.** Reopen science only for a concrete theorem, priority, build, or referee defect.
+2. Select the strongest realistic journal whose scope matches foundational quantum measurement / quantum optics / information theory.
+3. Verify the journal's current article type, length/style requirements, preprint policy, data/code statements, AI/disclosure requirements, and cover-letter expectations from primary journal sources.
+4. Build a submission checklist and cover-letter draft with conservative novelty language.
+5. Prepare author/affiliation/ORCID/funding/conflict/AI-use metadata only from factual user-supplied information; never invent administrative facts.
+6. Maintain the exact scope qualifiers: two-quadrature/phase-averaged retention, controlled continuum limit, independent-event source class, and WP14 waveform no-go.
+7. If a reviewer or new historical source exposes a priority collision, update WP24/prior-art notes before changing manuscript claims.
 
 # Documentation discipline
 
