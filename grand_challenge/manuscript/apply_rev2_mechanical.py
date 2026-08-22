@@ -10,22 +10,28 @@ assert anchor in text, "Expected hyperref preamble anchor not found"
 assert r"\begin{theorem}" in text, "Expected theorem environment not found"
 assert r"\begin{corollary}" in text, "Expected corollary environment not found"
 assert r"\begin{proof}" in text, "Expected proof environment not found"
-assert r"\cK" in text, "Expected event-register macro use not found"
 
 insertion = r"""\newtheorem{theorem}{Theorem}
 \newtheorem{corollary}{Corollary}
 % REVTeX permits \newtheorem but APS production guidance excludes amsthm.
 % REVTeX 4.2 already defines \endproof but not the opening \proof command.
 \providecommand{\proof}{\par\noindent\textit{Proof.}\ }
-% Mechanical repair of the event-register shorthand used in Rev1.
-\providecommand{\cK}{\mathcal{K}}
 """
 
 text = text.replace(anchor, anchor + insertion, 1)
 
+# Rev1 used \cK in the compound-Poisson section without declaring it.
+macro_anchor = r"\newcommand{\cF}{\mathcal{F}}" + "\n"
+assert macro_anchor in text, "Expected cF macro anchor not found"
+text = text.replace(
+    macro_anchor,
+    macro_anchor + r"\newcommand{\cK}{\mathcal{K}}" + "\n",
+    1,
+)
+
 
 def unwrap_balanced_command(source: str, command: str):
-    """Replace every command{balanced content} by balanced content."""
+    """Replace every command{balanced content} by its balanced content."""
     needle = command + "{"
     out = []
     pos = 0
@@ -47,13 +53,17 @@ def unwrap_balanced_command(source: str, command: str):
             i += 1
         if depth != 0:
             raise ValueError(f"Unbalanced braces while unwrapping {command} at {start}")
-        out.append(source[content_start : i - 1])
+        # Wrapper-only line breaks are presentation artifacts.  Keeping both
+        # them and the surrounding equation line breaks creates a blank
+        # paragraph inside display math, which is a fatal TeX error.
+        out.append(source[content_start : i - 1].strip())
         pos = i
         count += 1
-    return "".join(out), count
+    repaired = "".join(out)
+    return repaired, count
 
 
-# APS REVTeX production guidance excludes \boxed markup. Remove only the
+# APS REVTeX production guidance excludes \boxed markup.  Remove only the
 # presentation wrapper; the enclosed mathematical expression is unchanged.
 text, n_boxed = unwrap_balanced_command(text, r"\boxed")
 assert n_boxed > 0, "Expected boxed expressions were not found"
