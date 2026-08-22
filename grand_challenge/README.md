@@ -1,14 +1,16 @@
 # Grand Challenge — Temporal Information Resource Law
 
-**Science checkpoint: WP24 — 2026-08-22**
+**Science frontier: WP27 — 2026-08-22**
 
-**Preferred PRX Quantum manuscript: Rev7.**
+**Preferred PRX Quantum manuscript: Rev10 — frozen.**
+
+Working title: **Spectral Resource Laws for Temporal Fisher Information**.
 
 ## Grand question
 
 > For a physically realizable measurement of temporal structure, what fundamental resources constrain source-to-record temporal Fisher-information transfer?
 
-## Strongest theorem
+## Finite-copy modewise theorem
 
 For exact periodic random-time encoding with sector probabilities `q_n`, define
 
@@ -24,78 +26,105 @@ Hence
 
 `sum_(k>=1)R_N(k) <= nbar`.
 
-The theorem includes arbitrary finite-copy entangled collective measurements.
+This includes arbitrary finite-copy entangled collective measurements.
 
 ## Controlled periodic-to-continuum survival law
 
-For controlled periodic-to-continuum limits,
+`R(nu)<=Pr(Omega>=nu)`.
 
-`R(nu) <= Pr(Omega>=nu)`.
+`Omega` is excess generator frequency above the participating lower edge, and `Ebar+=hbar<Omega>`. The area law and pointwise `hfR` relation are first-moment corollaries.
 
-This is the principal continuum result. `Omega` is excess generator frequency above the participating lower edge; the common edge/carrier offset is irrelevant.
+## One fixed measurement: cross-frequency resource law
 
-The energy relations
+For **one fixed one-copy POVM**,
 
-`int_R R <= 2Ebar+/hbar`,
+`R_M(k)=int cos(k theta)J_M(dtheta)`.
 
-`Ebar+ >= hbar nu R(nu) = h f R(2pi f)`
+Therefore every Toeplitz matrix `[R_M(i-j)]` is positive semidefinite. A single detector record cannot retain independently chosen amounts of Fisher information at different harmonics.
 
-are first-moment corollaries, with `Ebar+=hbar<Omega>`.
+Combining this Herglotz consistency with the spectral tails gives
 
-## Sharpness and nonextremal photon example
+`Ebar+>=hbar nu A(R)`,
 
-The geometric/canonical-phase family gives `R(k)=T_k=r^k` for every harmonic simultaneously and yields the exponential/Cauchy equality family in the controlled continuum limit.
+with
 
-Rev7 adds one transform-limited truncated-Gaussian single-photon example. Canonical covariant timing reaches approximately 96.6% of the survival ceiling at `nu=0.5 sigma` and 88.5% at `nu=sigma`.
+`A(R)~1/sqrt(2(1-R))` as `R->1`.
 
-## Physical scope
+Exact unit retention at a nonzero harmonic is impossible for a normalized semibounded source. The continuum Herglotz extension invokes Bochner only when the controlled normalized positive-definite limit is continuous at the origin.
 
-WP23 transfers the normalized law to independent quantum-marked Poisson events followed by arbitrary **parameter-independent** source-to-field and detector processing.
+## Sharp near-lossless exponent
 
-WP14/Rev7 retain the coherent-sideband no-go: arbitrary parameter-dependent waveform-state synthesis cannot be bounded by baseline mean energy alone.
+For the finite sine profile
+
+`a_n=sqrt(2/(L+1))sin((n+1)pi/(L+1))`,
+
+canonical phase measurement gives
+
+`R_L(1)=cos^2(pi/(L+1))`,
+
+`nbar_L=(L-1)/2`.
+
+Hence
+
+`nbar_L~pi/[2sqrt(1-R_L(1))]`.
+
+The `(1-R)^(-1/2)` divergence exponent is therefore sharp. The optimal asymptotic prefactor is not claimed. Finite sine states are established phase-estimation prior art; their role here is only to witness achievability of the new retention--energy scaling.
+
+## Complete one-copy extremizers
+
+On the full contiguous pure-sector chain with positive populations:
+
+`first-harmonic saturation`
+
+`<=> geometric-mixture populations`
+
+`<=> Hausdorff-moment survival tails`
+
+`<=> one common source-adapted POVM saturates every harmonic simultaneously`.
+
+Controlled continuum limits of exponential mixtures produce the completely monotone equality cone, including algebraic exact-retention laws.
+
+## Nonextremal physical example
+
+A transform-limited truncated-Gaussian single photon reaches about 96.6% of the survival ceiling at `nu=0.5 sigma` and 88.5% at `nu=sigma` under canonical covariant timing.
+
+## Source-to-record scope and no-go
+
+Independent quantum-marked Poisson events inherit the modewise law through arbitrary **parameter-independent** field formation and detector processing by POVM pullback.
+
+Arbitrary parameter-dependent waveform-state synthesis remains outside the theorem. The coherent-sideband counterexample shows why baseline mean energy alone cannot bound that broader class.
 
 ## Prior-art boundary
 
-`U(1)` modes of asymmetry and weighted twirling are prior art. Their role is kinematic: they identify available energy-gap components. The candidate contribution here is operational:
+Do not claim novelty for `U(1)` mode decomposition or weighted twirling, Herglotz/Bochner theory, Hausdorff/Bernstein moment theory, canonical phase POVMs, geometric/exponential mixtures, finite sine states, generic QFI/Holevo machinery, or generic Poisson/CPTP processing.
 
-> a sharp bound on the **classical Fisher information extractable by any actual POVM** about Fourier perturbations of the random-time mixing law, expressed through participating population tails and valid for arbitrary finite-copy collective measurements.
-
-Canonical phase POVMs, energy-constrained phase estimation, generic QFI/Holevo machinery, random-unitary estimation, waveform QFI, Hardy--Hilbert/positive-frequency mathematics, and generic Poisson/CPTP data processing are also prior art.
+The candidate contribution is the operational synthesis: arbitrary-POVM Fisher-tail coefficients, common-measurement positive-definite retention geometry, semibounded near-lossless divergence with sharp exponent, complete one-copy equality classification, and source-to-record inheritance.
 
 **Priority remains unverified, not certified.**
 
-## Preferred manuscript — Rev7
-
-Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
-
-Rev7 was produced in direct response to an external adversarial review. It:
-
-- makes the continuum theorem explicitly controlled periodic-to-continuum;
-- defines the resource as excess energy above the participating edge;
-- makes the survival law primary and `hfR` a first-moment corollary;
-- sharpens the distinction from modes-of-asymmetry theory;
-- adds one nonextremal transform-limited single-photon example;
-- revises Figure 1 to match those claims.
-
-Final local preflight:
+## Rev10 preflight
 
 - full LaTeX/BibTeX build: **PASS**;
-- **8 pages**;
-- PDF size: **403,102 bytes**;
-- SHA-256: `d168c3901faa6f29bda0eba71abe8049cc9819d91843273beeeeffb9443818ae`;
+- **11 pages**;
+- PDF size: **444,063 bytes**;
 - unresolved citations/references: **0**;
 - overfull boxes: **0**;
-- all pages rendered at 200 dpi and visually inspected: **PASS**;
-- new photon example and periodic-approximant convergence: **PASS**.
+- all 11 pages rendered at 200 dpi and inspected: **PASS**;
+- sine-profile sharpness validator: **PASS**;
+- PDF SHA-256: `a5c2d9e12bba045b76bbfb710428e5424e2c5cb5eb83d6aec6215a5996dbc6fb`;
+- source ZIP SHA-256: `cfa2452f9ce4e99d0cd56f931151f6bb166fd90d4332d86faf3ea2485dec1db9`.
 
 ## Read first
 
 1. `AGENTS.md`
-2. `notes/MANUSCRIPT_REV7_REFEREE_HARDENING_2026-08-22.md`
-3. `notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-4. `notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
-5. `notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
-6. `notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+2. `notes/MANUSCRIPT_REV10_REFEREE_CLOSURE_PREFLIGHT_2026-08-22.md`
+3. `notes/WP27_SHARP_HIGH_RETENTION_EXPONENT_AND_REV10_REFEREE_CLOSURE.md`
+4. `notes/WP26_HERGLOTZ_COMMON_MEASUREMENT_RETENTION.md`
+5. `notes/WP25_COMPLETE_MONOTONE_SATURATION_CLASSIFICATION.md`
+6. `notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+7. `notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+8. `notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+9. `notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
 
 ## Journal target
 
@@ -105,8 +134,6 @@ Final local preflight:
 
 ## Current work order
 
-**Freeze Rev7.** Do not add more theory or examples by default. Reopen only for a concrete theorem defect, historical-priority collision, build defect, unavoidable journal-format issue, or new referee-level objection.
+**Freeze Rev10.** Do not optimize the asymptotic prefactor, add more theory/examples, or broaden the source class by default. Reopen only for a concrete theorem defect, priority collision, build/journal-format issue, or new referee-level objection.
 
 Do not reintroduce “human verification” as a research/manuscript gate. The finished package is handed to a human for submission; unknown administrative facts remain placeholders rather than being invented.
-
-The repository handoff files must remain sufficient for recovery; do not rely on chat history.
