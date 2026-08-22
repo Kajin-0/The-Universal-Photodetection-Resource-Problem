@@ -1,82 +1,137 @@
 # The Universal Photodetection Resource Problem
 
-**Status synchronized: 2026-08-21**
+**Status synchronized: 2026-08-22**
 
 ## Project split
 
 1. **Paper 1 / Rev11** — frozen and technically validated.
 2. **Paper 2 / Rev7** — frozen preferred science draft.
-3. **Grand Challenge** — ACTIVE on `agent/temporal-information-resource-law`, theorem stack through **WP18**.
+3. **Grand Challenge** — ACTIVE on `agent/temporal-information-resource-law`; current checkpoint **WP24**.
 
 Authoritative handoff: `grand_challenge/AGENTS.md`.
 
-## Current theorem hierarchy
+# Strongest current result — operational survival-function law
 
-### Modewise QFI envelope — WP10/WP12/WP15
+For periodic random-time encoding of a fixed semibounded-energy excitation with total-generator sector probabilities `q_n`, define
 
-`G_Q(k)=2 sum_n q_nq_{n+k}/(q_n+q_{n+k})`, with
+`T_k=sum_(m>=k)q_m`.
 
-`sum_{k>=1}G_Q(k)<=2nbar`.
+For **any finite number N of independent encoded excitations and any joint POVM**, including arbitrary entangled collective measurements,
 
-Continuum:
+`boxed: Tr F_N^(k) <= N T_k`.
+
+Thus the per-event two-quadrature temporal-mode retention obeys
+
+`boxed: R_N(k)<=T_k`,
+
+and summing over positive harmonics gives
+
+`boxed: sum_(k>=1)R_N(k)<=nbar`.
+
+WP20 proves this directly by Hilbert--Schmidt Cauchy--Schwarz; no detector covariance, separability, Holevo asymptotics, or SLD attainability assumption is required.
+
+A support-sensitive refinement is
+
+`R_N(k)<=min(D_k,U_k)<=T_k`,
+
+where `D_k` and `U_k` are the probability masses in the paired source/range sectors separated by `k`.
+
+## Continuum form — WP22
+
+For a general positive excitation-frequency spectral probability measure `mu` with finite mean `omega_bar`, every controlled continuum limit satisfies
+
+`boxed: R(nu)<=mu([nu,infinity))=P(Omega>=nu)`.
+
+Therefore
+
+`boxed: int_R R(nu)dnu<=2Ebar^+/hbar`,
+
+and pointwise
+
+`boxed: Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
+
+A guaranteed retention `q0` at ordinary frequency `B` requires
+
+`boxed: Ebar^+>=hBq0`.
+
+No smooth density is required.
+
+## Exact equality family
+
+For geometric energy sectors
+
+`q_n=(1-r)r^n`,
+
+the canonical phase POVM gives
+
+`R(k)=r^k=T_k`
+
+for every harmonic simultaneously and saturates the sum rule.
+
+The continuum limit is an exponential excitation spectrum with
+
+`R(nu)=exp(-beta|nu|)`,
+
+which is the Cauchy timestamp equality family. Thus the operational coefficient `2E/hbar` is sharp and attainable.
+
+## Independent Poisson source to common bosonic field — WP23
+
+For an independent quantum-marked Poisson event source, the event number can be revealed as side information to obtain
+
+`Tr F^(k)<=mu T_k`.
+
+Any subsequent physical emission/source-to-field process and detector are a parameter-independent CPTP channel plus measurement once the random-time parameter is encoded upstream. Pulling the final POVM back through that channel proves that bosonic wavepacket overlap, mode mixing, coherent detector memory, ancillas, and arbitrary final measurement cannot evade the same source-normalized tail law.
+
+This is a theorem for the independent-event source class, not for every quantum field with Poisson photocount statistics.
+
+# Secondary QFI envelope — WP10/WP12/WP15
+
+The separately optimized SLD-QFI results remain correct:
+
+`G_Q(k)=2 sum_n q_nq_(n+k)/(q_n+q_(n+k))`,
+
+`sum_(k>=1)G_Q(k)<=2nbar`,
+
+and
 
 `int_R G_Q(nu)dnu<=pi Ebar^+/hbar`.
 
-This is a separately optimized QFI envelope. WP16 shows the sharp `pi/4` operator constant is classical Hardy–Hilbert prior art.
+They are now interpreted as an incompatible modewise quantum envelope, not as the main operational broadband theorem. WP16 records that the sharp `pi/4` continuum operator constant is classical Hardy--Hilbert mathematics.
 
-### Sharp fixed/separable operational law — WP17
+# Scope boundary — WP14
 
-For one fixed arbitrary POVM,
+The theorem concerns **random temporal-distribution encoding of a fixed semibounded-energy excitation**. Baseline mean energy does not constrain arbitrary parameter-dependent coherent waveform synthesis; a broader theorem requires explicit encoding/control/action resource accounting.
 
-`sum_{k>=1}Tr F_M^(k)<=nbar`.
+# Prior-art boundary — WP21/WP24
 
-For adaptive/separable independent-event detection the same source-normalized law survives by the classical FI chain rule.
+Weighted `U(1)` twirling, energy-gap modes, canonical phase measurements, phase estimation under photon-number constraints, arbitrary-measurement Fisher/Holevo bounds, random-unitary probability estimation, and asymmetry resource theory are all prior art.
 
-Continuum:
+Marvian--Spekkens (Phys. Rev. A 90, 062110, 2014) already show that weighted `U(1)` twirling multiplies the `k`th energy-gap mode by the `k`th Fourier coefficient of the mixing distribution.
 
-`int_R R_M(nu)dnu<=2Ebar^+/hbar`.
+The candidate contribution is narrower: the arbitrary-measurement **Fisher** ceiling for perturbations of that mixing distribution, its explicit population-tail value, the all-mode mean-energy sum rule, and the photodetection source-to-record interpretation.
 
-A full-quadrature band guarantee requires
+Targeted searches have not found an exact predecessor of the tail/survival theorem. **Priority remains unverified, not certified.**
 
-`Ebar^+>=hBq0`.
+# Current status
 
-The coefficient is sharp and saturated by the Cauchy/exponential covariant timestamp family.
+WP24 integrated hostile review: **PASS**, after a support-gap repair and stronger prior-art fencing.
 
-### Minimal collective closure — WP18
+The former main scientific gates are now addressed:
 
-For a two-sector state with `q_0=1-p`, `q_1=p`, the asymptotic Holevo optimum for simultaneous cosine/sine estimation is
+- arbitrary collective measurement — WP20;
+- continuum limit — WP22;
+- independent event to physical bosonic field — WP23.
 
-`boxed: q_coll=min(p,1-p)`.
-
-For `p<=1/2`,
-
-`boxed: q_coll=p=nbar`.
-
-Thus collective measurements can beat separable readout but cannot exceed the mean-excitation resource ceiling in the minimal model; on the resource-sharp branch they exactly saturate it.
-
-The generic mixed-qubit Holevo calculation is prior art. The candidate contribution is the mapping to the random-time Fourier-mode resource problem.
-
-## Current highest-value gate
-
-The unsolved problem is now **multimode collective readout**:
-
-> Does arbitrary collective measurement on many independently twirled multilevel excitations obey `sum_k R_coll(k)<=nbar`, and hence the continuum operational law `int_R R_coll<=2E/hbar`?
-
-The immediate attack is three energy sectors with modes `k=1,2`, followed by a Holevo-dual/general proof attempt.
-
-## Scope boundary
-
-WP14 blocks any claim that baseline mean energy controls arbitrary coherent waveform state engineering. The current theorem concerns random temporal-distribution encoding of a fixed semibounded-energy excitation.
+The project has reached a reasonable standalone-manuscript formation threshold with conservative novelty language.
 
 ## Read first
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/WP18_TWO_SECTOR_COLLECTIVE_HOLEVO_CLOSURE.md`
-3. `grand_challenge/notes/WP17_SINGLE_MEASUREMENT_OPERATIONAL_MODE_BUDGET.md`
-4. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
-5. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
-6. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
-7. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
+2. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+3. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+4. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+5. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+6. `grand_challenge/notes/WP21_TARGETED_PRIORITY_AUDIT_SURVIVAL_FUNCTION_LAW.md`
 
 ## Documentation discipline
 
