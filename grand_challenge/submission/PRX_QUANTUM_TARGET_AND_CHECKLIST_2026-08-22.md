@@ -4,7 +4,7 @@
 
 **Science frontier:** WP27
 
-**Preferred submission manuscript:** **Rev10 — Spectral Resource Laws for Temporal Fisher Information** once the Rev10 CI/build/render gate passes.
+**Preferred submission manuscript:** **Rev10 — Spectral Resource Laws for Temporal Fisher Information**.
 
 ## Decision
 
@@ -131,21 +131,37 @@ Validation scripts:
 
 Dedicated CI generates Rev10, compiles the PRX source, and rejects unresolved references, overfull boxes, loss of the local-Fisher qualifier, loss of one-copy/common-POVM scope, missing continuity-at-zero before Bochner, missing sharp-exponent proposition, or regression to the invalid recycled-cosine-lobe claim.
 
-## Submission materials
+## Submission materials and publication gate
 
 - [x] Rev10 cover letter updated.
 - [x] Rev10 Popular Summary updated.
 - [x] AI-use / Data Availability disclosure draft retained.
 - [x] Bibliography includes current 2026 temporal-Fisher/time-frequency literature and Berry--Wiseman provenance for the sine-state witness.
 - [x] WP25/WP26/WP27 theorem notes committed.
-- [x] Rev10 deterministic generator committed.
-- [x] Rev10 numerical sharpness validator committed.
-- [ ] Rev10 CI compile gate confirmed.
-- [ ] Rev10 final rendered-page visual inspection recorded.
-- [ ] Rev10 final PDF/source package checksum recorded.
+- [x] Rev10 deterministic generator committed and proposition-environment compile defect repaired.
+- [x] Rev10 numerical sharpness validator committed and passed locally.
+- [x] Full local `pdflatex -> BibTeX -> pdflatex -> pdflatex` compile gate passed.
+- [x] Rev10 final rendered-page visual inspection recorded: 11/11 pages PASS at 200 dpi.
+- [x] Rev10 final PDF/source package checksums recorded.
+
+Final local PDF:
+
+- pages: **11**;
+- size: **444,063 bytes**;
+- SHA-256: `a5c2d9e12bba045b76bbfb710428e5424e2c5cb5eb83d6aec6215a5996dbc6fb`.
+
+Minimal source ZIP SHA-256:
+
+`cfa2452f9ce4e99d0cd56f931151f6bb166fd90d4332d86faf3ea2485dec1db9`.
+
+Detailed preflight:
+
+`grand_challenge/notes/MANUSCRIPT_REV10_REFEREE_CLOSURE_PREFLIGHT_2026-08-22.md`.
+
+The current connector does not expose branch-push GitHub Actions runs through its available run lookup. Do not represent the remote run as inspected; the full equivalent generation/build/render gate passed locally and this is not a separate research-completion blocker.
 
 Administrative facts that cannot be known without user input remain placeholders. Do not invent affiliation, funding, conflicts, or submission history.
 
 ## Current action
 
-Complete the three unchecked mechanical gates above. If they pass, **freeze Rev10**. Do not start a new prefactor-optimization project or add another example unless a concrete mathematical or referee-level issue appears.
+**Freeze Rev10.** Do not start a new prefactor-optimization project or add another example unless a concrete mathematical defect, priority collision, build/journal-format issue, or new referee-level objection appears.
