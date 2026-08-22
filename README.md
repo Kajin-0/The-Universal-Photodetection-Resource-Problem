@@ -2,13 +2,13 @@
 
 **Current status: 2026-08-22**
 
-`main` is the repository landing/index branch. Detailed Grand Challenge derivations live on `agent/temporal-information-resource-law`.
+`main` is the repository landing/index branch. Detailed Grand Challenge derivations and manuscript generation live on `agent/temporal-information-resource-law`.
 
 ## Project split
 
 1. **Paper 1 / Rev11** — frozen and technically validated.
 2. **Paper 2 / Rev7** — frozen preferred science draft.
-3. **Grand Challenge** — science checkpoint **WP24**; preferred manuscript **Rev4**, locally build-verified and frozen unless a concrete defect appears.
+3. **Grand Challenge** — science checkpoint **WP24**; **Rev4 freezes the science content; Rev5 is the preferred frozen publication draft.**
 
 Authoritative active handoff: `grand_challenge/AGENTS.md` on `agent/temporal-information-resource-law`.
 
@@ -76,15 +76,17 @@ The candidate contribution is narrowly the arbitrary-measurement **classical-Fis
 
 Targeted searches have not located an exact predecessor. **Priority remains unverified, not certified.**
 
-# Preferred Grand Challenge manuscript — Rev4
+# Preferred Grand Challenge publication draft — Rev5
 
 Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
-On the active branch, Rev4 is generated deterministically by
+On the active branch:
 
-`Rev1 -> Rev2 mechanical -> Rev3 hostile-review repair -> Rev4 final polish`.
+`Rev1 -> Rev2 mechanical -> Rev3 hostile-review repair -> Rev4 science/claim polish -> Rev5 publication figure/hidelinks`.
 
-Verified status:
+**Rev4 freezes the scientific content. Rev5 changes no theorem, proof, coefficient, source hypothesis, or novelty claim.** Rev5 adds one conceptual two-column architecture figure and removes visible hyperlink decorations.
+
+Verified Rev5 status:
 
 - full local LaTeX/BibTeX build: PASS;
 - 7 pages;
@@ -92,29 +94,29 @@ Verified status:
 - overfull boxes: 0;
 - undefined controls/fatal TeX errors: 0;
 - seven-page visual inspection: PASS;
+- Figure 1 readability/scope-value review: PASS;
 - deterministic random-POVM theorem validation committed;
 - DOI/title/provenance bibliography audit completed.
 
-The bibliography audit corrected one real metadata defect: DOI `10.2140/apde.2011.4.379` is Oana Pocovnicu's *Traveling waves for the cubic Szegő equation on the real line*, which is also the correct source for the sharp positive-frequency Gagliardo--Nirenberg inequality used as mathematical prior art.
-
 The current connector does not expose the relevant branch-push GitHub Actions run, so direct remote-job inspection is not claimed. Equivalent full local build verification is complete.
 
-**Rev4 is frozen unless a concrete theorem, priority, build, or referee-level defect is found.**
+**Rev5 is frozen unless a concrete theorem, priority, build, or referee-level defect is found.**
 
 ## Replacement-agent recovery
 
 Switch to `agent/temporal-information-resource-law`, then read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
-3. `grand_challenge/notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
-4. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-5. `docs/CURRENT_RESEARCH_STATE.md`
-6. `ROADMAP.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
+3. `grand_challenge/notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
+4. `grand_challenge/notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
+5. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+6. `docs/CURRENT_RESEARCH_STATE.md`
+7. `ROADMAP.md`
 
 ## Current work order
 
-Do not accumulate another theorem by default. Continue with publication engineering only: remote CI inspection if accessible, a figure only if it materially improves comprehension, conservative priority language, and factual submission metadata when supplied.
+Do not accumulate another theorem by default. Continue with **journal targeting and submission engineering**, conservative priority language, and factual submission metadata only.
 
 ## Documentation policy
 
