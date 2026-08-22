@@ -9,13 +9,15 @@ Research is analytical/theoretical and falsification-first. Paper 1 Rev11 and Pa
 ## Current status
 
 - **Science frontier:** WP27.
-- **Preferred PRX Quantum manuscript:** **Rev10** once the Rev10 CI/build gate passes; Rev9 remains the last fully rendered local baseline.
+- **Preferred PRX Quantum manuscript:** **Rev10 — frozen**.
 - **Working title:** **Spectral Resource Laws for Temporal Fisher Information**.
 - **Primary target:** PRX Quantum, Research Article.
 - **Fallback:** Physical Review A, Regular Article.
 - **Priority:** unverified, not certified.
 
-Rev9 changed the significance class by adding common-measurement cross-frequency structure and a complete one-copy extremizer classification. Rev10 is a narrow referee-closure revision: it adds the Bochner continuity-at-zero hypothesis, tightens the one-copy/common-POVM scope wording, and proves that the near-lossless `(1-R)^(-1/2)` energy-divergence exponent is sharp using a finite-chain sine-profile witness.
+Rev9 changed the significance class by adding common-measurement cross-frequency structure and a complete one-copy extremizer classification. Rev10 closes the final external-review issues: Bochner continuity at zero, explicit one-copy/common-POVM scope, and a proof that the near-lossless `(1-R)^(-1/2)` energy-divergence exponent is sharp using a finite-chain sine-profile witness.
+
+The full Rev10 local publication gate passed: 11 pages, zero unresolved references/citations, zero overfull boxes, all pages rendered at 200 dpi and inspected, and the sine-profile sharpness validator passed. The GitHub connector does not expose branch-push Actions runs, so no direct remote-run result is claimed or required as a new completion gate.
 
 ## Workflow rule
 
@@ -23,14 +25,15 @@ Carry theorem development, hostile review, literature audit, numerical validatio
 
 ## Read first
 
-1. `grand_challenge/notes/WP27_SHARP_HIGH_RETENTION_EXPONENT_AND_REV10_REFEREE_CLOSURE.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV9_SPECTRAL_RESOURCE_PREFLIGHT_2026-08-22.md`
-3. `grand_challenge/notes/WP26_HERGLOTZ_COMMON_MEASUREMENT_RETENTION.md`
-4. `grand_challenge/notes/WP25_COMPLETE_MONOTONE_SATURATION_CLASSIFICATION.md`
-5. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-6. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
-7. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
-8. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+1. `grand_challenge/notes/MANUSCRIPT_REV10_REFEREE_CLOSURE_PREFLIGHT_2026-08-22.md`
+2. `grand_challenge/notes/WP27_SHARP_HIGH_RETENTION_EXPONENT_AND_REV10_REFEREE_CLOSURE.md`
+3. `grand_challenge/notes/MANUSCRIPT_REV9_SPECTRAL_RESOURCE_PREFLIGHT_2026-08-22.md`
+4. `grand_challenge/notes/WP26_HERGLOTZ_COMMON_MEASUREMENT_RETENTION.md`
+5. `grand_challenge/notes/WP25_COMPLETE_MONOTONE_SATURATION_CLASSIFICATION.md`
+6. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+7. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+8. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+9. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
 
 # I. Finite-copy operational survival law
 
@@ -193,11 +196,23 @@ Numerical gates:
 - `verify_herglotz_high_retention.py`
 - `verify_sine_profile_divergence_sharpness.py`
 
-The dedicated GitHub Actions workflow now generates and compiles Rev10 and explicitly rejects loss of the continuity-at-zero hypothesis, one-copy/common-POVM scope, sharp-exponent proposition, local-Fisher qualifier, and prior Herglotz hostile-audit fixes.
+Final local Rev10 preflight:
+
+- full LaTeX/BibTeX build: **PASS**;
+- pages: **11**;
+- PDF size: **444,063 bytes**;
+- PDF SHA-256: `a5c2d9e12bba045b76bbfb710428e5424e2c5cb5eb83d6aec6215a5996dbc6fb`;
+- unresolved references/citations: **0**;
+- overfull boxes: **0**;
+- all pages rendered at 200 dpi and visually inspected: **PASS**;
+- sine-profile sharpness validator: **PASS**;
+- minimal source ZIP SHA-256: `cfa2452f9ce4e99d0cd56f931151f6bb166fd90d4332d86faf3ea2485dec1db9`.
+
+The dedicated GitHub Actions workflow generates and compiles Rev10 and explicitly rejects loss of the continuity-at-zero hypothesis, one-copy/common-POVM scope, sharp-exponent proposition, local-Fisher qualifier, and prior Herglotz hostile-audit fixes. The current connector does not expose the branch-push run, so do not claim direct remote-run inspection.
 
 ## Freeze rule
 
-After the Rev10 build/render gate passes, freeze Rev10. Do not optimize the asymptotic constant or add another example unless a concrete referee objection, mathematical defect, priority collision, or journal-format requirement appears.
+**Rev10 is frozen as the preferred PRX Quantum manuscript.** Do not optimize the asymptotic constant, add another example, or broaden the source class by default. Reopen only for a concrete referee objection, mathematical defect, priority collision, build defect, or unavoidable journal-format requirement.
 
 ## Documentation rule
 
