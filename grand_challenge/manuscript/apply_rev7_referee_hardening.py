@@ -13,6 +13,13 @@ def replace_once(old: str, new: str):
     text = text.replace(old, new, 1)
 
 
+# 0. Rev7-specific Figure 1 keeps the continuum qualification and excess-energy
+# meaning visible without retroactively changing the frozen Rev5/Rev6 artwork.
+replace_once(
+    r"\input{figure1_operational_architecture_body.tex}",
+    r"\input{figure1_operational_architecture_body_rev7.tex}",
+)
+
 # 1. Abstract: keep the continuum hypothesis and excess-energy meaning visible,
 # and make clear that the survival law—not its Markov/first-moment corollary—is
 # the principal theorem.
@@ -80,7 +87,7 @@ The equality family is mathematically extremal, so it is useful to check that th
 \end{equation}
 The common energy $\hbar\omega_*$ contributes only a global phase to this sector, so the relevant resource is the excess energy $\bar E^+=\hbar\langle\Omega\rangle$.
 
-Consider a Gaussian spectral density centered one rms width above the active edge and truncated only by semiboundedness,
+Consider a Gaussian spectral density centered one Gaussian width above the active edge and truncated only by semiboundedness,
 \begin{equation}
  q_\sigma(\Omega)
  =\frac{\sqrt{2/\pi}}{\sigma Z}
@@ -130,6 +137,7 @@ replace_once(
 )
 
 # Guardrails.
+assert r"\input{figure1_operational_architecture_body_rev7.tex}" in text
 assert r"\section{Controlled periodic-to-continuum survival law}" in text
 assert "first-moment corollaries" in text
 assert "Nonextremal single-photon wavepacket" in text
