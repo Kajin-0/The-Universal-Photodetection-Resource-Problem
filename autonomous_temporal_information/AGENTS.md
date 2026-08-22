@@ -23,60 +23,110 @@ The target is not merely another bandwidth or quantum-speed-limit inequality. Th
 
 ## Current frontier
 
-**WP01 — foundational scope and prior-art boundary.**
+**WP02 — local-Fisher no-go and robust tangent-radius law: analytic PASS.**
 
-The first literature gate establishes that the qualitative statement
+Read:
+
+`autonomous_temporal_information/notes/WP02_LOCAL_FISHER_NO_GO_AND_ROBUST_TANGENT_RADIUS_LAW.md`
+
+### Prior-art boundary from WP01
+
+The qualitative statement
 
 `a quantum reference frame can simulate only channel/measurement modes contained in the reference-frame state`
 
-is already prior art: Marvian and Spekkens, *Phys. Rev. A* 90, 062110 (2014), DOI `10.1103/PhysRevA.90.062110`, especially their mode decomposition of states/channels and reference-frame simulation result.
+is already prior art: Marvian and Spekkens, *Phys. Rev. A* 90, 062110 (2014), DOI `10.1103/PhysRevA.90.062110`.
 
-Likewise, finite autonomous quantum clocks/control are established topics, including:
+Likewise, finite autonomous quantum clocks/control, QFI as an asymmetry resource, generic mode trace-norm monotones, and energy-constrained multistep metrology are established. Do not claim novelty for them.
 
-- Woods, Silva, Oppenheim, *Autonomous quantum machines and the finite-sized Quasi-Ideal clock*, arXiv:1607.04591;
-- Erker et al., *Phys. Rev. X* 7, 031022 (2017), autonomous clock thermodynamic cost;
-- Woods and Horodecki, *Phys. Rev. X* 13, 011016 (2023), autonomous implementation of quantum devices/control;
-- Yamaguchi and Tajima, *Phys. Rev. Lett.* 131, 200203 (2023), energetic coherence/asymmetry conversion;
-- Kudo and Tajima, *Phys. Rev. A* 107, 062418 (2023), Fisher information as an asymmetry resource measure;
-- Hu et al., *Phys. Rev. Lett.* 137, 070201 (2026), Gaussian time-translation-covariant operations.
+### WP02 no-go
 
-Therefore **mode existence**, generic asymmetry monotonicity, QFI as an asymmetry measure, and the mere idea of adding a finite clock/controller are not candidate breakthroughs.
+Local Fisher information by itself cannot obey a universal high-frequency mean-energy ceiling for arbitrary state synthesis.
 
-## Immediate scientific target
+For a two-level Hamiltonian with gap `hbar nu`, choose baseline excited population
 
-Find a quantitative **information-performance law** rather than a support law.
+`p=E/(hbar nu)`
 
-Minimal conversion setting:
+so the mean excess energy is exactly `E`. There exists an affine two-quadrature family whose Fisher trace under one fixed equatorial POVM is independent of `nu`. As `nu` increases, the physical disk on which the tangent can be extended linearly shrinks as `nu^(-1/2)`.
 
-1. `D` — a time-symmetric data/program register carrying an unknown parameter;
-2. `R` — finite clock/reference/controller with generator `H_R` and asymmetric state `eta_R`;
-3. `S` — signal/output system;
-4. a parameter-independent globally time-translation-covariant channel `Phi` on `D+R+S`;
-5. no free asymmetric final measurement: any readout reference must be included in `R`/apparatus.
+Thus the hidden resource discarded by a purely local Fisher metric is the **physical robustness/radius of the tangent**.
 
-For a time-translation mode `nu`, covariance gives the exact structural identity
+### WP02 theorem
 
-`dot rho_out^(nu) = Phi( eta_R^(nu) tensor dot tau_D )`
+Let `rho0` be stationary under a semibounded Hamiltonian and let `A_nu` be a positive exact-Bohr-gap tangent. Define
 
-when the data register carries only zero-frequency asymmetry. This is an immediate consequence of established modes-of-asymmetry theory, so it is **baseline infrastructure only**.
+`D_c=(A_nu+A_nu^dagger)/2`,
 
-The open target is an inequality of the schematic form
+`D_s=(A_nu-A_nu^dagger)/(2i)`.
 
-`temporal statistical information generated at nu <= quantitative finite-reference resource at nu`,
+Define `R_lin` as the largest radius such that
 
-ideally followed by a semibounded-energy/action law and a divergent resource requirement as temporal fidelity approaches one.
+`rho0 + eps_c D_c + eps_s D_s >= 0`
 
-## Critical no-go to test
+for every `eps_c^2+eps_s^2 <= R_lin^2`.
 
-A state-only law cannot be universal if arbitrary static interaction Hamiltonians are free. Scaling a time-independent interaction Hamiltonian by an arbitrarily large constant scales its internally generated oscillation frequencies while leaving the initial state unchanged. Any genuinely universal autonomous law must therefore account for at least one **dynamical generator/control resource** (Hamiltonian spectral scale, action, interaction norm, or equivalent), unless the allowed operations are restricted by a covariance/energy-conservation principle.
+For `R_lin>0`, with
 
-This no-go is a high-priority theorem/counterexample target for WP02.
+`B_nu=rho0^(-1/2) A_nu rho0^(-1/2)`,
+
+positivity gives the exact numerical-radius identity
+
+`R_lin = 1/w(B_nu)`.
+
+Using `||B||<=2w(B)` plus the Rev11-style Hilbert--Schmidt argument yields, for **any finite N and any joint POVM**, including entangled collective measurements,
+
+`(R_lin^2/4) [Tr F_N^(nu)/N] <= min(D_nu,U_nu) <= T(nu)`.
+
+Hence
+
+`Ebar+ >= (hbar nu R_lin^2/4) [Tr F_N^(nu)/N]`.
+
+This does **not** assume random-time encoding. It applies to arbitrary exact-gap tangents about a stationary baseline.
+
+The two-level no-go family asymptotically saturates the robust energy law as `nu->infinity` at fixed mean energy, showing that the missing `R_lin` factor is not cosmetic.
+
+### Important boundary
+
+`R_lin` is the radius of the **linearized tangent**, not the physical range of an arbitrary nonlinear family. Coherent-sideband synthesis can remain physical through second-order population even when its linear tangent radius is zero.
+
+Therefore the grand autonomous problem is not solved. WP02 identifies why arbitrary local Fisher geometry escapes energy bounds and provides a robust law for the nonzero-linear-radius sector.
+
+## Current next target — WP03
+
+Reference-assisted parameter-to-time conversion:
+
+1. `D` — time-symmetric data/program register carrying unknown parameter;
+2. `R` — finite clock/reference/controller;
+3. `S` — target signal/output;
+4. parameter-independent globally time-translation-covariant processing;
+5. no free asymmetric readout.
+
+Established modes-of-asymmetry theory gives only the structural identity
+
+`dot rho_out^(nu) = Phi(eta_R^(nu) tensor dot tau_D)`.
+
+The candidate new target is a **quantitative autonomous performance law** connecting the generated temporal Fisher/finite distinguishability at `nu` to a finite reference/controller resource, ideally using or generalizing the WP02 robust tangent quantity.
+
+In parallel, attack the nonlinear loophole: determine the weakest finite-amplitude/curvature/control assumption that yields a nontrivial theorem when `R_lin=0`.
+
+## Numerical gate
+
+`autonomous_temporal_information/numerics/verify_robust_tangent_radius_law.py`
+
+checks:
+
+- fixed-energy/high-frequency local-Fisher no-go;
+- tangent-radius positivity/numerical-radius relation;
+- random one-copy POVM bounds;
+- random two-copy collective POVM bounds;
+- asymptotic two-level sharpness of the energy corollary.
 
 ## Read first
 
-1. `autonomous_temporal_information/notes/WP01_FOUNDATIONAL_SCOPE_AND_PRIOR_ART_BOUNDARY.md`
-2. `autonomous_temporal_information/ROADMAP.md`
-3. frozen parent-program handoff: `grand_challenge/AGENTS.md`
+1. `autonomous_temporal_information/notes/WP02_LOCAL_FISHER_NO_GO_AND_ROBUST_TANGENT_RADIUS_LAW.md`
+2. `autonomous_temporal_information/notes/WP01_FOUNDATIONAL_SCOPE_AND_PRIOR_ART_BOUNDARY.md`
+3. `autonomous_temporal_information/ROADMAP.md`
+4. frozen parent-program handoff: `grand_challenge/AGENTS.md`
 
 ## Documentation rule
 
