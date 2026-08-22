@@ -16,190 +16,175 @@ Active branch: `agent/temporal-information-resource-law`.
 
 ## Grand question
 
-> For a physically realizable measurement of temporal structure, what fundamental resources constrain the source-to-record temporal Fisher-information transfer spectrum?
+> For a physically realizable measurement of temporal structure, what fundamental resources constrain source-to-record temporal Fisher-information transfer?
 
-Paper 2 supplies the classical local observable
+Paper 2 supplies the classical autonomous-channel Fisher spectrum. The grand-challenge program asks what stricter limits follow from quantum/physical realizability.
 
-`F_out[u,v] = Phi0/(2*pi) int G(nu) U*(nu)V(nu) dnu`,
+## Read first — authoritative order
 
-with `0 <= G <= 1` a.e. for parameter-independent autonomous classical Poisson detector channels.
+1. `grand_challenge/notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
+2. `grand_challenge/notes/WP09_EXTERNAL_TIME_REFERENCE_NO_GO_AND_ASYMMETRY_BOUNDARY.md`
+3. `grand_challenge/notes/WP08_ARBITRARY_MEMORY_LIFT_AND_QUANTUM_REGULARIZATION.md`
+4. `grand_challenge/notes/WP07_ENERGY_EDGE_AND_COVARIANT_POVM_PROOF_REPAIR.md`
+5. `grand_challenge/notes/WP06_POSITIVE_ENERGY_TEMPORAL_FISHER_AREA_LAW.md`
+6. `grand_challenge/notes/WP05_OPERATIONAL_CLOSURE_AND_LOCAL_LANDAUER_BASELINE.md`
+7. `grand_challenge/notes/WP04_QUANTUM_WAVEFORM_PRIOR_ART_COLLISION.md`
+8. `grand_challenge/notes/WP03_COVARIANT_TIMESTAMP_REGULARITY_AND_QFI_BOUND.md`
+9. `grand_challenge/notes/WP02_QUANTUM_TIMING_BANDWIDTH_CANDIDATE.md`
+10. `grand_challenge/notes/WP01_LANDSCAPE_AND_FIRST_NO_GOS.md`
+11. `grand_challenge/README.md`
 
-The grand-challenge program asks what additional restrictions follow from physical realizability.
+## Current strongest theorem candidate — WP10
 
-## Read first — current authoritative order
+### Random-time Fourier-mode encoding
 
-1. `grand_challenge/notes/WP08_ARBITRARY_MEMORY_LIFT_AND_QUANTUM_REGULARIZATION.md`
-2. `grand_challenge/notes/WP07_ENERGY_EDGE_AND_COVARIANT_POVM_PROOF_REPAIR.md`
-3. `grand_challenge/notes/WP06_POSITIVE_ENERGY_TEMPORAL_FISHER_AREA_LAW.md`
-4. `grand_challenge/notes/WP05_OPERATIONAL_CLOSURE_AND_LOCAL_LANDAUER_BASELINE.md`
-5. `grand_challenge/notes/WP04_QUANTUM_WAVEFORM_PRIOR_ART_COLLISION.md`
-6. `grand_challenge/notes/WP03_COVARIANT_TIMESTAMP_REGULARITY_AND_QFI_BOUND.md`
-7. `grand_challenge/notes/WP02_QUANTUM_TIMING_BANDWIDTH_CANDIDATE.md`
-8. `grand_challenge/notes/WP01_LANDSCAPE_AND_FIRST_NO_GOS.md`
-9. `grand_challenge/README.md`
+Use a periodic time coordinate of period `T`, `omega0=2*pi/T`, and a nonnegative excitation ladder
 
-## Current strongest theorem stack — WP06/WP07/WP08
+`H=hbar*omega0*N`, `N=sum_{n>=0}nP_n`.
 
-### A. Gauge-invariant positive-energy event-time area law
+A latent event time `t` shifts a quantum excitation by `U_t=exp(-i omega0 N t)`. The uniform event-time prior is weakly modulated in cosine/sine mode `k`.
 
-Let a time-covariant event sub-POVM have total click effect `Q<=I` for a state `rho`. Let the detected energy measure have lower participating spectral edge `E_*`, event probability
+For a pure excitation with energy-sector populations `q_n`, the SLD QFI matrix for the two real quadratures is exactly
 
-`eta=Tr[rho Q]`,
+`F_Q^(k)=S_k I_2`,
 
-and finite detected excess-energy moment
+`S_k=sum_n q_n q_{n+k}/(q_n+q_{n+k})`.
 
-`E_det^+=Tr[rho Q(H-E_*)]`.
+The latent classical event-time Fisher matrix is `(1/2)I_2`. Hence the maximal source-normalized quantum retention of mode `k` is
 
-Under the absolutely-continuous-spectrum covariant-time hypotheses, the event timing distribution admits a positive-frequency vector Hardy amplitude. Pocovnicu's sharp positive-frequency Gagliardo--Nirenberg inequality then gives
+`boxed: G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`.
 
-`boxed: int_R G_primary(nu)dnu <= 2 E_det^+/hbar`.
+It satisfies
 
-Equivalent forms:
+`0<=G_Q(k)<=1`.
 
-`boxed: eta B_FI <= E_det^+/h`,
+For mixed states with the same energy-sector probabilities, purification plus QFI monotonicity gives the same population expression as an upper bound.
 
-and if `G_primary(2*pi*f)>=q` for all `|f|<=B`,
+### Sharp mode-sum / mean-energy law
 
-`boxed: E_det^+ >= h B q`.
+Let
 
-The result is gauge invariant under `H -> H+cI` because `E_*` shifts with `H`.
+`nbar=sum_n n q_n`.
 
-### B. Sharpness
+Then
 
-For an ideal covariant timestamp, the extremal family is a one-pole positive-frequency Hardy amplitude. Its conditional timestamp density is Cauchy,
+`boxed: sum_{k>=1}G_Q(k)<=2 nbar`,
 
-`f_a(t)=a/[pi(t^2+a^2)]`,
+and, counting the even negative-frequency partners,
 
-with
+`boxed: sum_{k!=0}G_Q(k)<=4 nbar`.
 
-`G(nu)=exp(-2a|nu|)`
+The constant is sharp as a supremum: `q_0=1-epsilon`, `q_1=epsilon` gives ratio `->1` as `epsilon->0`.
 
-for unit efficiency. It saturates
+If the first `K` positive modes all obey `G_Q(k)>=q`, then
 
-`int G = 2 E^+/hbar`
+`boxed: nbar>=Kq/2`.
 
-and
+With `B=K/T` and `Ebar=h nbar/T`,
 
-`B_FI=E^+/h`.
+`boxed: Ebar >= (h/2) B q`.
 
-### C. General marks
+### Arbitrary quantum detector/memory inheritance
 
-The area law extends to arbitrary standard-Borel accessible marks by direct-integral disintegration and a fiberwise vector Hardy inequality. Mark resolution cannot evade the total detected excess-energy bound.
+The modulation parameter is encoded in the quantum mixed state **before any detector is chosen**. Appending an arbitrary parameter-independent apparatus/reference state does not change QFI. Any joint quantum channel, coherent memory, amplification, saturation, feedback internal to the parameter-independent channel, and final measurement are downstream of QFI.
 
-### D. Arbitrary downstream detector memory — WP08
+Therefore for every final classical record `Y`, mode by mode,
 
-Suppose the physical architecture factorizes as
+`boxed: G_Y(k)<=G_Q(k)`.
 
-`incident Poisson excitation centers -> independent covariant quantum timing/mark layer Z -> arbitrary parameter-independent autonomous classical memory channel K -> accessible record Y`.
+Thus the mean-energy mode-sum law survives arbitrary subsequent quantum detector processing. No timestamp-first/classical-memory factorization is required.
 
-Independent thinning/marking/displacement keeps `Z` Poisson at arbitrary incident flux. The primary Fisher multiplier is the exact event-timing multiplier `G_Z`.
+This is the current highest-ceiling result.
 
-Fisher data processing gives
+### Why WP09 does not defeat WP10
 
-`A_Y <= A_Z`.
+WP09 shows fixed mean energy does not bound QFI for a **deterministic global time shift** if a high-energy tail and an external phase reference are allowed.
 
-Since both operators are translation invariant,
+WP10 estimates Fourier amplitudes of a **random latent event-time distribution**. Uniform baseline randomization twirls the quantum state. Rare high-energy tails contribute only through overlap/harmonic-mean terms with other occupied sectors, yielding the finite linear mean-energy mode budget. An external phase reference may help attain QFI but cannot create additional parameter information beyond the encoded-state QFI.
 
-`boxed: G_Y(nu) <= G_Z(nu) a.e.`
+## Earlier theorem stack — WP06/WP07/WP08
 
-Therefore
+For a reference-free covariant continuous timestamp readout with detected excess energy above the participating lower spectral edge `E_*`, WP06/WP07 prove the sharp area law
 
-`boxed: int G_Y(nu)dnu <= 2 E_det^+/hbar`,
-
-and the inverse flat-band law `E_det^+ >= hBq` survives **arbitrary downstream classical detector memory**, including dead time, saturation, afterpulsing, state-dependent capture, hidden state, nonlinear history dependence, and output coarse graining.
-
-### E. Quantum regularization of Paper-2's classical plateau
-
-Paper 2's ideal deterministic Type-II model has `G -> 1/e` at infinite frequency because mathematically exact latent point events are primitive. WP08 proves that this cannot be the literal infinite-frequency behavior after a finite-excess-energy covariant quantum timing layer:
-
-`0<=G_final<=G_primary`,
-
-and `G_primary(nu)->0` by Riemann--Lebesgue. Hence the physical final spectrum must eventually decay. The classical `1/e` plateau can survive only as an intermediate-frequency regime when the quantum timing scale is much faster than the dead-time scale.
-
-This is the current most important bridge between Paper 2 and the grand-challenge program.
-
-## Mandatory caution / current boundary
-
-WP08 is **not** yet a theorem for arbitrary coherently intertwined quantum detector memory.
-
-The source-only mean-energy bound can also fail if the measurement apparatus supplies a free external clock/time-translation-asymmetry resource. The positive-energy law is a covariant timing-readout theorem, not a bound on arbitrary noncovariant phase-referenced measurements.
-
-A fully universal quantum-memory theorem would have to either:
-
-1. assume global time-translation covariance with no free apparatus asymmetry; or
-2. explicitly include apparatus clock/asymmetry resources in the budget.
-
-## Previous routes closed or downgraded
-
-### Entropy production / thermodynamic cost
-
-Rejected as universal scalar resource. Information-acquisition rate is not generically bounded by entropy production; actual dissipation is implementation-dependent; thermodynamic channel capacity additionally depends on Hamiltonians/physical embedding. WP01/WP05 document the no-gos.
-
-### Generic quantum waveform Fisher spectrum
-
-Substantially preempted by Tsang--Wiseman--Caves (PRL 106, 090401, 2011) and later continuous quantum sensing. Do not claim novelty for a quantum waveform QFI kernel/spectrum. See WP04.
-
-### QFI/energy-variance timestamp bound
-
-WP03 remains valid/useful:
-
-`B_FI <= sqrt(F_Q)/(4 sqrt(3)) <= Delta H/(2 sqrt(3) hbar)`.
-
-But WP06--WP08's positive-mean-energy area law is the more distinctive frontier.
-
-### Information singularities
-
-Remain a useful diagnostic, but generic static non-identifiability restored by dynamic excitation overlaps classical system-identification/persistent-excitation theory. Do not make this the lead grand theorem absent a stronger classification result.
-
-## Decisive literature boundaries
-
-Do not claim novelty for:
-
-- Fisher data processing / QFI monotonicity;
-- arbitrary waveform QFI kernels/spectral QCRBs;
-- covariant time POVMs / Naimark dilation;
-- QFI as time-translation asymmetry resource;
-- sharp Gagliardo--Nirenberg/Hardy inequality itself;
-- generic time-energy uncertainty relations;
-- generic FI-vs-dissipation/dynamical-activity bounds;
-- thermodynamic work cost of abstract quantum channels;
-- finite-time Landauer bounds;
-- Poisson displacement/thinning/marking.
-
-Important close sources include:
-
-- Pocovnicu, Analysis & PDE 4, 379--404 (2011), sharp `H_+^{1/2}` GN inequality;
-- Kiukas--Ruschhaupt--Werner, covariant arrival-time/dilation work (2009--2013);
-- Kiukas et al., J. Phys. A 45, 185301 (2012), exact energy-time uncertainty for absorptive arrival times;
-- Tsang, Wiseman, Caves, PRL 106, 090401 (2011), waveform QCRB/QFI kernel;
-- Hall, Entropy 24, 1679 (2022), strong Heisenberg/Renyi energy-time tradeoffs;
-- Faist et al./Faist--Renner/Faist--Berta--Brandao, thermodynamic channel costs;
-- Barato--Hartich--Seifert, PRE 87, 042104 (2013), no simple universal information-vs-dissipation law;
-- recent response/activity/clock literature recorded in WP01/WP05.
-
-Targeted searches have not yet located the exact source-to-record statements
-
-`int G dnu <= 2 E_det^+/hbar`
+`boxed: int G_timestamp(nu)dnu <= 2E_det^+/hbar`,
 
 or
 
-`E_det^+ >= hBq`,
+`boxed: eta B_FI<=E_det^+/h`,
 
-nor the WP08 arbitrary-downstream-memory inheritance theorem. **Priority is not certified.**
+with flat-band inverse law
+
+`boxed: E_det^+>=hBq`.
+
+The sharp equality family is a one-pole positive-frequency Hardy amplitude / Cauchy timestamp density.
+
+WP08 proves this bound is inherited by arbitrary **downstream classical detector memory** at arbitrary flux through Fisher-operator data processing. It also implies that Paper 2's ideal deterministic Type-II `1/e` infinite-frequency plateau must eventually be quantum-regularized after a finite-energy physical timing layer.
+
+WP10 is broader in detector scope but currently rigorous only for the periodic random-time encoding model.
+
+## WP09 boundary — external time reference
+
+Fixed mean energy alone cannot bound arbitrary deterministic time-shift QFI. The family
+
+`|psi_epsilon>=sqrt(1-epsilon)|0>+sqrt(epsilon)|Ebar/epsilon>`
+
+has fixed mean `Ebar` but time-shift QFI diverging as `1/epsilon`.
+
+This identifies time-translation asymmetry/external clock reference as the missing resource for unrestricted deterministic-shift metrology. Do not claim the WP06 timestamp bound for arbitrary noncovariant measurements.
+
+## Major prior-art boundaries
+
+Do not claim novelty for:
+
+- Fisher/QFI data processing;
+- standard SLD QFI harmonic-mean denominators;
+- U(1)/time-translation mode decomposition;
+- mode preservation under covariant processing;
+- generic waveform QFI kernels/spectral QCRBs;
+- covariant time POVMs / Naimark dilation;
+- time-translation asymmetry as a resource;
+- sharp Hardy/Gagliardo--Nirenberg inequality;
+- generic time-energy uncertainty relations;
+- generic FI-vs-dissipation/activity bounds;
+- thermodynamic channel work costs;
+- Poisson displacement/thinning/marking.
+
+Important close sources:
+
+- Marvian & Spekkens, PRA 90, 062110 (2014), modes of asymmetry;
+- Lostaglio et al., PRX 5, 021001 (2015), quantum coherence/asymmetry under thermodynamic symmetries;
+- Tsang, Wiseman, Caves, PRL 106, 090401 (2011), waveform QFI kernel;
+- Pocovnicu, Analysis & PDE 4, 379--404 (2011), sharp positive-frequency inequality;
+- Kiukas--Ruschhaupt--Werner arrival-time/covariant POVM work;
+- Hall, Entropy 24, 1679 (2022), mean-resource/Renyi Heisenberg bounds;
+- WAY/resource-theory asymmetry literature noted in WP09.
+
+Targeted searches have **not yet located** the exact WP10 formula
+
+`G_Q(k)=2 sum_n q_nq_{n+k}/(q_n+q_{n+k})`
+
+as a random-time waveform-retention law, nor the sharp summed theorem
+
+`sum_{k>=1}G_Q(k)<=2nbar`
+
+or inverse `Ebar>=(h/2)Bq`. Priority is not certified.
 
 ## Immediate hostile gates
 
-1. **External-clock/no-covariance counterexample:** formalize a fixed-mean-energy family with unbounded time-shift QFI and show why it does not contradict the covariant area law.
-2. **Global-covariance question:** determine whether a theorem can survive coherently intertwined quantum memory when the entire apparatus starts time-translation invariant and the full instrument is covariant.
-3. **Deep prior-art audit:** search continuous-spectrum Rényi-2/collision-entropy time-energy inequalities and any equivalent integrated transfer-area formulation.
-4. **Equality under multiplicity/inefficiency:** make the equality characterization theorem-grade.
-5. **Low-energy-tail robustness:** study alternatives to the essential lower edge `E_*` when arbitrarily small low-energy tails make the exact theorem loose.
-6. **Type-II crossover:** derive quantitative non-factorized bounds/crossover scales for a deterministic Type-II memory stage preceded by finite-energy timing blur.
-7. Only after these decide whether WP06--WP08 justify a standalone manuscript.
+1. Independently audit every factor of two in WP10, including cosine/sine QFIM and source-FI normalization.
+2. Deep-search asymmetry, phase-diffusion, random-unitary-channel and reference-frame literature for the exact mode-QFI/mode-sum theorem.
+3. Prove the mixed-state bound publication-grade, including degenerate energy sectors and QFIM monotonicity.
+4. Distinguish SLD-QFIM upper bounds from simultaneous attainability of cosine/sine quadratures.
+5. Prove a controlled periodic-to-continuum limit. Candidate continuum form:
+   `G_Q(nu)=2 int_0^infinity q(w)q(w+nu)/(q(w)+q(w+nu)) dw`,
+   with `int_R G_Q<=4 Ebar^+/hbar`.
+6. Map the independent quantum-marked Poisson extension onto physically relevant second-quantized optical fields; do not assume distinguishable-event tensor factors cover every overlapping bosonic state.
+7. Determine whether the factor-of-two gap between arbitrary-measurement WP10 and covariant-timestamp WP07 is fundamental and operationally saturable.
+8. Only after these gates decide whether a standalone manuscript is justified.
 
 ## Documentation rule
 
-After every material theorem, counterexample, proof repair, prior-art collision, numerical result used in an argument, or strategy change:
+After every material theorem, counterexample, proof repair, prior-art collision, numerical result, or strategy change:
 
 1. update/create `grand_challenge/notes/WP*.md` immediately;
 2. update this file when the active theorem/gates change;
