@@ -2,7 +2,7 @@
 
 **Science checkpoint: WP24 — 2026-08-22**
 
-**Preferred manuscript: Rev4 — locally build-verified and frozen unless a concrete theorem, priority, build, or referee-level defect is found.**
+**Frozen science content: Rev4. Preferred publication draft: Rev5.**
 
 This directory contains the active theoretical program launched from the frozen Paper-2 result on Fisher spectra of autonomous detector channels.
 
@@ -68,7 +68,7 @@ The candidate contribution is narrowly the arbitrary-measurement **classical-Fis
 
 Targeted searches have not located an exact predecessor. **Priority remains unverified, not certified.**
 
-## Preferred manuscript — Rev4
+## Preferred publication manuscript — Rev5
 
 Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
@@ -80,32 +80,36 @@ Generation chain:
 
 `-> manuscript/apply_rev3_hostile_review.py`
 
-`-> manuscript/apply_rev4_final_polish.py`.
+`-> manuscript/apply_rev4_final_polish.py`
 
-Rev4 has passed:
+`-> manuscript/apply_rev5_publication_figure.py`.
+
+Rev4 is the frozen science/claim checkpoint. Rev5 changes no theorem, proof, coefficient, source hypothesis, or novelty claim. It adds a single two-column conceptual architecture figure and hides hyperlink decorations.
+
+Rev5 has passed:
 
 - full local LaTeX/BibTeX build;
 - seven-page render/visual inspection;
 - unresolved-reference/citation and overfull-box gates;
+- Figure 1 readability/scope-value review;
 - deterministic random-POVM theorem validation;
 - DOI/title/provenance bibliography audit.
-
-The bibliography audit corrected a real Pocovnicu title mismatch while preserving the scientifically correct DOI/source and upgraded Gill to the published 2008 chapter metadata.
 
 The current connector does not expose the relevant branch-push GitHub Actions run, so direct remote-job inspection is not claimed. Equivalent full local build verification is complete.
 
 ## Read first
 
 1. `AGENTS.md`
-2. `notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
-3. `notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
-4. `notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-5. `notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
-6. `notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
-7. `notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+2. `notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
+3. `notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
+4. `notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
+5. `notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+6. `notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+7. `notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+8. `notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
 
 ## Current work order
 
-Do not accumulate another theorem by default. Continue with publication engineering only. Add a figure only if it materially improves comprehension.
+Do not accumulate another theorem by default. Continue with journal targeting and submission engineering only. Reopen science only for a concrete theorem, priority, build, or referee defect.
 
 The repository handoff files must remain sufficient for full context recovery; do not rely on chat history.
