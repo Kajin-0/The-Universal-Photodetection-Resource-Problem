@@ -1,0 +1,85 @@
+\section{Fixed-Hamiltonian Bohr-gap extension}
+\label{sec:anharmonic}
+
+The equally spaced sectors above provide an exact compact-periodic experiment and are especially convenient for simultaneous all-harmonic statements.  They are not, however, essential to the modewise factorization.  Consider instead one fixed semibounded Hamiltonian with countable pure-point spectrum on the participating subspace,
+\begin{equation}
+ H=E_*I+\hbar\sum_{\alpha}\omega_\alpha P_\alpha,
+ \qquad \omega_\alpha\geq0,
+ \label{eq:anharmonic-H}
+\end{equation}
+where the distinct frequencies $\omega_\alpha$ need not be commensurate.  After purification write
+\begin{equation}
+ |\Psi\rangle=\sum_\alpha\sqrt{q_\alpha}|\phi_\alpha\rangle,
+ \qquad \sum_\alpha q_\alpha=1,
+ \label{eq:anharmonic-pure}
+\end{equation}
+with $|\phi_\alpha\rangle$ in mutually orthogonal total-energy eigenspaces.
+
+Fix a requested modulation angular frequency $\nu>0$.  For $M\in\mathbb N$, choose an observation window containing an integer number of modulation periods,
+\begin{equation}
+ T_M=\frac{2\pi M}{\nu},
+\end{equation}
+and the normalized latent density on $[0,T_M]$
+\begin{equation}
+ p_{\bm\epsilon,M}(t)=\frac1{T_M}
+ [1+\epsilon_c\cos(\nu t)+\epsilon_s\sin(\nu t)].
+ \label{eq:long-window-density}
+\end{equation}
+Its latent Fisher block at the origin remains $(1/2)I_2$.  Random-time evolution is a standard dephasing mechanism: matrix elements are multiplied by Fourier coefficients of the time distribution~\cite{BoixoKnillSomma2009}.  Here the large-$M$ limit completely dephases unequal energies at baseline and selects only the exact Bohr gaps $\pm\nu$ in the tangent.  Thus
+\begin{align}
+ \rho_0&=\sum_\alpha q_\alpha|\phi_\alpha\rangle\langle\phi_\alpha|,\\
+ A_\nu&=\sum_{\alpha,\beta:\,\omega_\beta-\omega_\alpha=\nu}
+ \sqrt{q_\alpha q_\beta}
+ |\phi_\beta\rangle\langle\phi_\alpha|.
+ \label{eq:anharmonic-A}
+\end{align}
+For a finite spectrum this convergence is immediate in every matrix norm.  For a countable pure-point spectrum, finite-rank spectral truncation plus trace-norm contractivity of the random-unitary and signed tangent averages gives trace-norm convergence of the local experiment.
+
+Define the exact-gap partial isometry
+\begin{equation}
+ V_\nu=\sum_{\alpha,\beta:\,
+ \omega_\beta-\omega_\alpha=\nu,\;q_\alpha q_\beta>0}
+ |\phi_\beta\rangle\langle\phi_\alpha|.
+ \label{eq:anharmonic-V}
+\end{equation}
+Translation by $\nu$ is one-to-one, so its domain and range vectors are orthonormal sets and
+\begin{equation}
+ A_\nu=\rho_0^{1/2}V_\nu\rho_0^{1/2}.
+ \label{eq:anharmonic-factorization}
+\end{equation}
+Let
+\begin{align}
+ D_\nu&=\Tr(\rho_0V_\nu^\dagger V_\nu),\\
+ U_\nu&=\Tr(\rho_0V_\nu V_\nu^\dagger),\\
+ S(\nu)&=\sum_{\alpha:\,\omega_\alpha\geq\nu}q_\alpha.
+ \label{eq:anharmonic-DUS}
+\end{align}
+Every vector in the range of $V_\nu$ lies at excess frequency at least $\nu$, so $U_\nu\leq S(\nu)$.
+
+\begin{theorem}[Bohr-gap Fisher bound]
+\label{thm:anharmonic-gap}
+For any finite $N$ and any joint POVM,
+\begin{equation}
+ \frac1N\Tr F_N^{(\nu)}
+ \leq\min(D_\nu,U_\nu)
+ \leq S(\nu).
+ \label{eq:anharmonic-bound}
+\end{equation}
+No global equal-spacing or commensurability assumption on the Hamiltonian is required.
+\end{theorem}
+
+\begin{proof}
+Equation~\eqref{eq:anharmonic-factorization} is identical in form to Eq.~\eqref{eq:tangent-factorization}.  The Hilbert--Schmidt Cauchy--Schwarz proof of Theorem~\ref{thm:finite-copy} therefore applies verbatim, including the finite-copy cross-term cancellation $\Tr(\rho_0V_\nu)=0$.  The final inequality is Eq.~\eqref{eq:anharmonic-DUS}.
+\end{proof}
+
+Anharmonicity can therefore strengthen rather than invalidate the restriction: if the spectrum contains no pair with separation $\hbar\nu$, then $A_\nu=0$ and the limiting Fisher response at that exact modulation frequency vanishes.  The arbitrary-Bohr-frequency decomposition itself is established symmetry structure~\cite{MarvianSpekkens2014Modes}; the content of Theorem~\ref{thm:anharmonic-gap} is the measurement-accessible Fisher coefficient determined by the paired populations and the semibounded tail.
+
+The common-measurement structure also survives.  For fixed $\nu$, partition the spectrum into residue classes modulo $\nu$ and append zero-population placeholders at missing integer positions in each semibounded chain.  These placeholders are annihilated by $\rho_0^{1/2}$ and do not change any physical score or Fisher information.  On the direct sum of completed chains, one shift $V$ satisfies
+$A_{m\nu}=\rho_0^{1/2}V^m\rho_0^{1/2}$ for every integer $m\geq1$.  Applying the Herglotz argument of Section~\ref{sec:herglotz} to one fixed one-copy POVM gives a positive-definite retention sequence across the exact gaps $m\nu$.  Since
+\begin{equation}
+ \frac{\bar E^+}{\hbar}=\int_0^\infty S(x)\,\dd x
+ \geq \nu\sum_{m\geq1}S(m\nu),
+ \label{eq:anharmonic-block-tail}
+\end{equation}
+the same high-retention law $\bar E^+\geq\hbar\nu A(q)$ and the same sharp $(1-q)^{-1/2}$ divergence follow for this fixed-Hamiltonian pure-point setting.  The complete extremizer classification of Section~\ref{sec:equality} remains deliberately narrower: it concerns the full contiguous pure-sector chain.
+
