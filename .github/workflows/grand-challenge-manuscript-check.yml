@@ -50,6 +50,10 @@ jobs:
         working-directory: grand_challenge/manuscript
         run: python apply_rev7_referee_hardening.py
 
+      - name: Repair Rev7 two-column layout
+        working-directory: grand_challenge/manuscript
+        run: python apply_rev7_layout_repair.py
+
       - name: Run operational-tail numerical validation
         working-directory: grand_challenge
         run: python numerics/verify_operational_tail_bound.py
@@ -117,6 +121,7 @@ jobs:
             grand_challenge/manuscript/apply_rev5_publication_figure.py
             grand_challenge/manuscript/apply_rev6_prxquantum_packaging.py
             grand_challenge/manuscript/apply_rev7_referee_hardening.py
+            grand_challenge/manuscript/apply_rev7_layout_repair.py
             grand_challenge/manuscript/figure1_operational_architecture_body.tex
             grand_challenge/manuscript/figure1_operational_architecture_body_rev7.tex
             grand_challenge/manuscript/references.bib
