@@ -4,153 +4,130 @@
 
 **Active scientific branch:** `agent/temporal-information-resource-law`
 
-Paper 1 Rev11 and Paper 2 Rev7 are frozen. The Grand Challenge science checkpoint is **WP24**. **Rev4 is the frozen science-content checkpoint; Rev5 is the preferred frozen publication draft.**
+Paper 1 Rev11 and Paper 2 Rev7 are frozen.
+
+**Grand Challenge science checkpoint:** WP24.
+
+**Science freeze:** Rev4.
+
+**Publication-content freeze:** Rev5.
+
+**Current journal package:** Rev6 PRX Quantum style package.
 
 ## Read first
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
-3. `grand_challenge/notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
-4. `grand_challenge/notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
-5. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-6. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
-7. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
-8. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
-9. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV6_PRXQ_PACKAGING_PREFLIGHT_2026-08-22.md`
+3. `grand_challenge/submission/PRX_QUANTUM_TARGET_AND_CHECKLIST_2026-08-22.md`
+4. `grand_challenge/submission/APS_AI_AND_DATA_DISCLOSURE_DRAFTS.md`
+5. `grand_challenge/notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
+6. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+7. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+8. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+9. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
 
-# Strongest theorem — operational survival law
+# Strongest theorem
 
-For the exact periodic random-time model with sector probabilities `q_n`, define
+For exact periodic random-time encoding with sector probabilities `q_n`, harmonic `k`, and tail
 
-`T_k=sum_(m>=k)q_m`.
+`T_k=sum_(m>=k)q_m`,
 
-For **any finite N and any joint POVM** on `N` independently encoded excitations,
+any finite number `N` of independently encoded excitations and any joint POVM obey
 
-`Tr F_N^(k)<=N T_k`.
+`Tr F_N^(k)<=N min(D_k,U_k)<=N T_k`.
 
-More sharply,
+Thus
 
-`R_N(k):=Tr F_N^(k)/N<=min(D_k,U_k)<=T_k`.
-
-Summing positive harmonics,
+`R_N(k)=Tr F_N^(k)/N<=T_k`,
 
 `sum_(k>=1)R_N(k)<=nbar`.
 
-WP20 provides a direct finite-copy Hilbert--Schmidt Cauchy--Schwarz proof including arbitrary entangled collective measurements. The Holevo route of WP19 is superseded.
+`R_N(k)` is the two-quadrature / phase-averaged source-normalized Fisher retention. The theorem includes arbitrary finite-copy entangled collective measurements.
 
-## Normalization
+# Controlled continuum theorem
 
-The latent source cosine/sine Fisher block is `(1/2)I_2`, so `R_N(k)` is the **phase-average of the source-normalized scalar Fisher retention**. A uniform scalar-retention guarantee over every sinusoidal phase obeys the same ceiling. A pre-known single quadrature is a different task.
+For a positive excitation-frequency probability measure `mu` with finite first moment, controlled large-period limits of exact lower-bin periodic approximants satisfy
 
-# Controlled continuum limit — WP22
-
-For a positive excitation-frequency spectral probability measure `mu` with finite mean
-
-`omega_bar=int omega mu(domega)`,
-
-exact lower-bin periodic approximants give, for controlled large-period limits,
-
-`R(nu)<=mu([nu,infinity))=P(Omega>=nu)`.
+`R(nu)<=mu([nu,infinity))`.
 
 Therefore
 
-`int_0^infinity R(nu)dnu<=omega_bar`,
-
 `int_R R(nu)dnu<=2Ebar^+/hbar`,
-
-and
 
 `Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
 
-The manuscript explicitly retains the controlled-limit qualification; do not broaden it into an unqualified direct theorem for every nonperiodic continuous-spectrum detector experiment.
+Do not remove the controlled-limit qualification.
 
-# Equality family
+# Equality / field embedding / scope
 
-For geometric sectors
+Geometric sector populations with the canonical phase POVM saturate every discrete harmonic simultaneously. The controlled continuum equality family is exponential-energy/Cauchy-time.
 
-`q_n=(1-r)r^n`,
+WP23 transfers the bound to an independent quantum-marked compound-Poisson source followed by arbitrary parameter-independent source-to-bosonic-field and detector processing through POVM pullback.
 
-the canonical phase POVM satisfies
-
-`R(k)=r^k=T_k`
-
-for every harmonic simultaneously and saturates the full sum rule.
-
-The controlled continuum limit is exponential in excitation frequency. With `beta=2a`, the corresponding Cauchy timing density has characteristic function `exp(-a|nu|)` and Fisher retention `exp(-2a|nu|)`.
-
-# Independent Poisson event source to physical field — WP23
-
-For an independent quantum-marked compound-Poisson source with mean event count `Lambda`, revealing the parameter-independent event number gives
-
-`Tr F^(k)<=Lambda T_k`.
-
-Any subsequent parameter-independent source/emission/field/detector process is a CPTP map. Pulling the final POVM back through that map proves the same source-normalized tail law after arbitrary bosonic overlap, mode mixing, coherent detector memory, ancillas, and final readout.
-
-This is an explicit independent-event source class. Poisson photocount statistics alone do not imply its assumptions.
+WP14 blocks extension to arbitrary parameter-dependent coherent waveform synthesis using baseline mean energy alone.
 
 # Secondary QFI envelope
 
-WP10/WP12/WP15 remain mathematically correct:
+WP10/WP12/WP15 remain correct but secondary:
 
 `sum_(k>=1)G_Q(k)<=2nbar`,
 
 `int_R G_Q(nu)dnu<=pi Ebar^+/hbar`.
 
-They are separately optimized SLD-QFI metric envelopes, not the main jointly accessible detector theorem. WP16 identifies the sharp `pi/4` analytic operator norm as classical Hardy--Hilbert mathematics.
+WP16 identifies the `pi/4` continuum analytic constant as established Hardy--Hilbert mathematics.
 
-# Prior-art boundary
+# Priority status
 
-WP21/WP24 and the bibliography audit substantially narrow novelty.
+Weighted `U(1)` twirling/modes, canonical phase POVMs, number-constrained phase estimation, generic QFI/Holevo/RLD/SLD bounds, random-unitary estimation, waveform QFI, positive-frequency inequalities, Hardy--Hilbert mathematics, and generic Poisson/CPTP machinery are prior art.
 
-Established prior art includes weighted `U(1)` twirling and energy-gap modes, Fourier/number-constrained phase estimation, canonical phase POVMs, arbitrary collective quantum-information bounds, random-unitary probability estimation, waveform QFI, sharp positive-frequency Gagliardo--Nirenberg analysis, Hardy--Hilbert beta-function best constants, and compound-Poisson/CPTP data processing.
+The candidate contribution is the arbitrary-measurement **classical-Fisher tail/survival theorem** for Fourier perturbations of a latent random-time distribution and its paired-population/mean-energy/source-to-record consequences.
 
-The candidate contribution is specifically the **arbitrary-measurement classical-Fisher ceiling for Fourier perturbations of a latent random-time distribution**, its paired-population/upper-tail evaluation, mean-energy harmonic budget, and source-to-record photodetection consequences.
+**Priority remains unverified, not certified.**
 
-Targeted searches have not located the exact tail/survival theorem. **Priority remains unverified, not certified.**
-
-# Scope boundary
-
-WP14 remains mandatory. Baseline mean energy cannot bound arbitrary parameter-dependent coherent waveform synthesis. The frozen science content includes an explicit coherent-sideband counterexample; broader waveform theorems need encoding/control/action resource accounting.
-
-# Preferred publication manuscript — Rev5
+# Manuscript and target status
 
 Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
-Generation chain:
+`Rev1 -> Rev2 -> Rev3 -> Rev4 -> Rev5 -> Rev6 PRX Quantum package`.
 
-`Rev1 -> Rev2 mechanical -> Rev3 hostile-review repair -> Rev4 science/claim polish -> Rev5 publication figure/hidelinks`.
+- Rev4: frozen science/claim content.
+- Rev5: publication content; one conceptual figure plus hidden hyperlinks only.
+- Rev6: target style only, `pra -> prx` REVTeX option.
 
-**Rev4 freezes the science content. Rev5 changes no theorem, proof, coefficient, source hypothesis, or novelty claim.** Rev5 adds one conceptual two-column figure explaining the parameter-entry/source-to-record architecture and hides hyperlink decorations.
+Rev5 complete local build/visual/reference preflight: PASS.
 
-Rev5 verification:
+Rev6 PRX target-style preflight: PASS. Pages remain 7; no target-style layout regression; dedicated CI compiles Rev6; fresh numerical check sampled 11,825 one-copy and 936 global two-copy POVMs with no violation, and the equality family matched at machine precision.
 
-- full local `pdflatex -> BibTeX -> pdflatex -> pdflatex`: PASS;
-- 7 pages, 393.5 kB in the final reproduced build;
-- unresolved citations/references: 0;
-- overfull boxes: 0;
-- undefined controls/fatal errors: 0;
-- residual APS-incompatible `boxed` markup: 0;
-- seven-page render/visual inspection: PASS;
-- Figure 1 readability/scope value: PASS;
-- deterministic random-POVM theorem validation: PASS;
-- DOI/title/provenance bibliography audit: PASS after correction.
+# Journal target
 
-The remote branch-push GitHub Actions run is not directly visible through the current connector. Equivalent full local build verification is complete; do not claim remote-job inspection unless it later becomes available.
+1. **PRX Quantum — Research Article:** first target.
+2. **Physical Review A — Regular Article:** preferred fallback.
+3. Physical Review Research: secondary alternative.
+4. PRL: stretch only after a deliberate Letter rewrite.
 
-# Publication gate
+PRX Quantum is fully open access; APS lists a 2026 APC of USD 3,590, subject to institutional agreements/eligible waivers.
 
-**PASSED.**
+# APS compliance
 
-Rev5 is the preferred frozen publication draft. Reopen science only for a concrete theorem defect, priority collision, build failure, or referee-level objection.
+The June 2026 APS AI policy requires disclosure of substantive AI use. This project used AI substantively; final submission requires truthful human verification and disclosure. See `grand_challenge/submission/APS_AI_AND_DATA_DISCLOSURE_DRAFTS.md`.
 
-## Immediate next action
+Data Availability should state that no experimental data were created while citing a stable public source for numerical-validation and manuscript/figure code.
 
-1. no new theorem accumulation by default;
-2. journal targeting and submission engineering;
-3. prepare submission metadata/compliance only from factual information;
-4. retain conservative priority language;
-5. inspect remote CI only if it becomes accessible.
+# Remaining blockers
+
+All remaining blockers are human/administrative rather than scientific:
+
+- human verification for APS AI disclosure;
+- author name/order and affiliation(s);
+- contact email and optional ORCID(s);
+- funding/conflict/submission-history facts;
+- preprint identifier if used;
+- stable repository/archive citation;
+- optional referee recommendations/exclusions;
+- APC coverage decision.
+
+After these are supplied: generate final administrative Rev6 package, rebuild once, inspect every page, and submit to PRX Quantum.
 
 ## Documentation rule
 
-Every material result/status change must update the detailed note, active handoff/landing documents, and `main`. The repository—not chat history—is authoritative.
+Every material status change must update the detailed note, active landing/handoff files, and `main`. The repository—not chat history—is authoritative.
