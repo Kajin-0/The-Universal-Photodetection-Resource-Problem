@@ -1,10 +1,10 @@
 # AGENTS — Temporal Information Resource Law Program
 
-**Last synchronized: 2026-08-21**
+**Last synchronized: 2026-08-22**
 
 Active branch: `agent/temporal-information-resource-law`.
 
-Research is analytical/theoretical, falsification-first. Paper 1 Rev11 and Paper 2 Rev7 are frozen.
+Research is analytical/theoretical and falsification-first. Paper 1 Rev11 and Paper 2 Rev7 are frozen.
 
 ## Grand question
 
@@ -12,122 +12,196 @@ Research is analytical/theoretical, falsification-first. Paper 1 Rev11 and Paper
 
 ## Read first
 
-1. `grand_challenge/notes/WP18_TWO_SECTOR_COLLECTIVE_HOLEVO_CLOSURE.md`
-2. `grand_challenge/notes/WP17_SINGLE_MEASUREMENT_OPERATIONAL_MODE_BUDGET.md`
-3. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
-4. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
-5. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
-6. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
-7. `grand_challenge/notes/WP12_SHARP_CONTINUUM_QUANTUM_MODE_AREA_LAW.md`
-8. `grand_challenge/notes/WP11_WP10_FACTOR_AUDIT_AND_PRIOR_ART.md`
-9. `grand_challenge/notes/WP10_QUANTUM_RANDOM_TIME_MODE_BUDGET.md`
+1. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+2. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+3. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+4. `grand_challenge/notes/WP21_TARGETED_PRIORITY_AUDIT_SURVIVAL_FUNCTION_LAW.md`
+5. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+6. `grand_challenge/notes/WP19_FULL_COLLECTIVE_SURVIVAL_FUNCTION_RESOURCE_LAW.md`
+7. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
+8. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
+9. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
+10. `grand_challenge/notes/WP13_SECOND_QUANTIZED_SCOPE_AND_POISSON_EVENT_EMBEDDING.md`
 
-## Current theorem hierarchy
+WP17/WP18 are useful historical steps toward WP20 but are no longer needed for the strongest proof.
 
-### WP10/WP12/WP15 — separately optimized QFI envelope
+# Current strongest theorem — operational survival law
 
-Periodic:
+For a periodic semibounded excitation with total-generator sector probabilities `q_n`, define
 
-`G_Q(k)=2 sum_n q_nq_{n+k}/(q_n+q_{n+k})`,
+`T_k=sum_(m>=k)q_m`.
 
-`sum_{k>=1}G_Q(k)<=2nbar`.
+For **any finite number N of independently random-time-encoded excitations and any joint POVM**, including arbitrary entangled collective measurements,
 
-Continuum:
+`boxed: Tr F_N^(k) <= N T_k`.
+
+Here `F_N^(k)` is the `2 x 2` classical Fisher block for the cosine/sine amplitudes of temporal harmonic `k` at the uniform random-time baseline.
+
+Therefore
+
+`boxed: R_N(k):=Tr F_N^(k)/N <= T_k`,
+
+and
+
+`boxed: sum_(k>=1)R_N(k)<=nbar`.
+
+WP20 gives a direct finite-copy Hilbert--Schmidt Cauchy--Schwarz proof. No covariance restriction on the detector, Holevo asymptotics, SLD attainability, or separable-measurement assumption is used.
+
+## Bilateral support refinement
+
+With the paired partial energy shift `V_k`, define
+
+`D_k=Tr(rho P_dom,k)`,
+
+`U_k=Tr(rho P_ran,k)`.
+
+Then
+
+`boxed: R_N(k)<=min(D_k,U_k)<=T_k`.
+
+The coarse tail `T_k` is the universal semibounded-energy form; the paired-support form can be tighter for gaps or finite upper support.
+
+# Continuum theorem — WP22
+
+Let `mu` be the positive excitation-frequency spectral probability measure, with finite first moment
+
+`omega_bar=int omega mu(domega)`.
+
+Using exact lower-bin periodic approximants, every modewise continuum limit satisfies
+
+`boxed: R(nu)<=S_mu(nu):=mu([nu,infinity))`.
+
+Thus
+
+`boxed: int_0^infinity R(nu)dnu<=omega_bar`,
+
+and two-sided
+
+`boxed: int_R R(nu)dnu<=2Ebar^+/hbar`.
+
+The pointwise inverse law is
+
+`boxed: Ebar^+>=hbar nu R(nu)=h f R(2pi f)`.
+
+Hence a guaranteed retention `q0` at ordinary frequency `B` requires
+
+`boxed: Ebar^+>=h B q0`.
+
+No smooth spectral density is required. Atoms, singular-continuous components, and mixtures are allowed through the measure formulation.
+
+# Exact equality family
+
+For geometric sectors
+
+`q_n=(1-r)r^n`,
+
+the canonical phase POVM gives
+
+`R(k)=r^k=T_k`
+
+for **every harmonic simultaneously**, so
+
+`sum_(k>=1)R(k)=nbar`.
+
+Under `r=exp(-beta delta)`, the continuum limit is
+
+`mu(domega)=beta exp(-beta omega)domega`,
+
+`R(nu)=exp(-beta|nu|)=S_mu(|nu|)`.
+
+With `beta=2a`, this is the Cauchy timestamp equality family from WP06/WP07. Therefore the operational coefficient `2E/hbar` is exactly attainable.
+
+# Independent Poisson source to physical bosonic field — WP23
+
+For a compound-Poisson source with mean event count `mu`, represent the independently encoded event marks on the direct-sum event register
+
+`Sigma_epsilon=directsum_N p_mu(N) rho_epsilon^tensor N`.
+
+For nonzero temporal Fourier modes, the Poisson number weights are parameter independent. Revealing `N` can only increase FI, so WP20 gives
+
+`boxed: Tr F_compound^(k)<=mu T_k`.
+
+Any physical source-to-field/emission process whose parameter dependence is already encoded in those event marks is a parameter-independent CPTP map `Gamma` from the upstream event register to the outgoing bosonic field and other downstream degrees of freedom.
+
+Pulling the final detector POVM backward through `Gamma` gives a POVM on the event register. Therefore arbitrary bosonic wavepacket overlap, mode mixing, coherent detector memory, ancillas, and final measurement cannot evade
+
+`boxed: R_final(k)<=T_k`
+
+or the continuum survival law.
+
+This does **not** follow merely from Poisson photocount statistics; it is a theorem for an independent quantum-marked event source class.
+
+# Secondary theorem — separately optimized QFI envelope
+
+WP10/WP12/WP15 remain mathematically correct:
+
+`G_Q(k)=2 sum_n q_nq_(n+k)/(q_n+q_(n+k))`,
+
+`sum_(k>=1)G_Q(k)<=2nbar`,
+
+and
 
 `int_R G_Q(nu)dnu<=pi Ebar^+/hbar`.
 
-This is a modewise SLD-QFI envelope, not generally jointly attainable.
+But this is a separately optimized SLD-QFI envelope, not the headline operational theorem. WP20 proves that one actual detector, even with arbitrary finite-copy collective readout, obeys the smaller sharp operational coefficient `2E/hbar`.
 
-WP16 establishes that the sharp `pi/4` continuum operator norm is classical Hardy–Hilbert mathematics, not a novelty claim.
+WP16 establishes that the `pi/4` Mellin/operator constant in the continuum QFI proof is classical Hardy--Hilbert mathematics.
 
-### WP17 — sharp fixed/separable operational law
+# Scope boundary — WP14
 
-For one fixed arbitrary POVM, with `F_M^(k)` the cosine/sine classical Fisher block,
+The operational survival theorem concerns **random temporal-distribution encoding of a fixed semibounded-energy excitation**.
 
-`boxed: sum_{k>=1}Tr F_M^(k)<=nbar`.
+Baseline mean energy does not constrain arbitrary parameter-dependent coherent waveform synthesis. WP14 constructs a high-frequency coherent-sideband counterexample. A broader state-valued waveform theorem requires explicit encoding/control/action resource accounting.
 
-The theorem requires no covariance or reference-free restriction on the POVM and extends to adaptive/separable measurement of independent quantum-marked events.
+# Prior-art boundary — strengthened by WP21/WP24
 
-Continuum:
+Do not claim novelty for:
 
-`boxed: int_R R_M(nu)dnu<=2Ebar^+/hbar`.
+- `U(1)` energy-gap/modes-of-asymmetry decompositions;
+- weighted random phase/time twirling multiplying gap modes by Fourier coefficients;
+- canonical phase POVMs or exponential phase moments;
+- phase/time estimation under photon-number/energy constraints;
+- generic arbitrary-measurement Fisher/Holevo/RLD/SLD bounds;
+- random-unitary probability estimation;
+- QFI/asymmetry resource theory;
+- Hardy--Hilbert/Mellin/rearrangement methods;
+- compound Poisson models, Stinespring dilation, or CPTP data processing.
 
-A full-quadrature band guarantee implies
+Especially close is Marvian--Spekkens, Phys. Rev. A 90, 062110 (2014): for weighted `U(1)` twirling they already show `sigma^(k)=p_(-k)rho^(k)` and develop modewise asymmetry monotones.
 
-`boxed: Ebar^+>=hBq0`.
+The candidate contribution is narrower:
 
-The Cauchy/exponential covariant timestamp family saturates the continuum coefficient.
+> the arbitrary-measurement Fisher ceiling for perturbations of the latent random-time distribution, whose `k`-mode resource evaluates to a paired population mass and hence to the semibounded survival tail, with sharp mean-energy and source-to-record photodetection consequences.
 
-Thus the `pi/2` gap between the QFI coefficient `pi` and fixed/separable operational coefficient `2` is an incompatibility gap.
+Targeted searches have not found an exact predecessor of
 
-### WP18 — exact collective closure for the two-sector model
+`Tr F_N^(k)/N <= sum_(m>=k)q_m`,
 
-Take
+its all-mode mean-generator sum rule, or
 
-`q_0=1-p`, `q_1=p`, `j=p(1-p)`.
+`R(nu)<=P(Omega>=nu)`.
 
-The twirled two-sector state is a mixed qubit. Its random-time cosine/sine derivatives are transverse Bloch directions with SLD QFI matrix
+**Priority remains unverified, not certified.**
 
-`J=jI_2`.
+# Current publication status
 
-Direct Holevo optimization gives
+WP24 integrated hostile review: **PASS**, after the support-gap repair and narrowed prior-art language.
 
-`boxed: C_H(I)=2[1+|1-2p|]/[p(1-p)]`.
+The former scientific blockers are now addressed:
 
-The asymptotically attainable isotropic source-normalized collective retention is
+1. collective/joint-measurement attainability — closed by WP20;
+2. continuum rigor — closed at the periodic-approximation level by WP22;
+3. independent event-to-bosonic-field mapping — closed by WP23.
 
-`boxed: q_coll=min(p,1-p)`.
+The remaining external-risk gate is historical priority.
 
-For the resource-relevant branch `p<=1/2`,
+## Immediate work order
 
-`boxed: q_coll=p=nbar`.
-
-Therefore arbitrary collective measurements can improve over separable readout but cannot exceed the WP17 energy budget in the minimal model; they exactly saturate it for low upper-sector occupation.
-
-For sectors separated by harmonic `k`, `nbar=kp` and the same result gives
-
-`q_coll<=nbar/k`,
-
-or equivalently at the collective optimum on `p<=1/2`,
-
-`Ebar^+=h f_k q_coll`.
-
-The generic mixed-qubit Holevo result is prior art (Suzuki; Conlon et al.); the candidate contribution is the random-time/resource mapping.
-
-## Current highest-value open problem
-
-WP18 closes only one mode supported by two energy sectors. It does **not** prove a multimode collective sum/area law.
-
-The next target is:
-
-> Does arbitrary collective measurement on many independently twirled multilevel excitations obey an asymptotic resource inequality equivalent to `sum_k R_coll(k)<=nbar`, and hence `int_R R_coll<=2E/hbar`?
-
-Recommended attack order:
-
-1. three-sector models with modes `k=1,2`;
-2. finite-copy collective POVM/Holevo numerical optimization;
-3. search for a Holevo-dual inequality weighted by generator excitation;
-4. test D-invariant/block structure of the full tangent model;
-5. quantum local asymptotic normality / Gaussian-mode reduction if needed.
-
-## Physical scope
-
-The random-time theorem class includes total-energy sectors, fixed-number multiphoton/entangled/multimode pulses, and independent quantum-marked Poisson events. WP14 excludes arbitrary parameter-dependent coherent waveform synthesis unless the encoding/control resource is counted.
-
-## Prior-art discipline
-
-Do not claim novelty for generic QFI, random-unitary probability estimation, U(1) modes, multiparameter incompatibility, Gill–Massar/Nagaoka/Holevo theory, covariant time POVMs, Hardy/Gagliardo–Nirenberg/Hardy–Hilbert inequalities, Mellin methods, or time-energy uncertainty relations.
-
-Priority remains uncertified for the specific random-time mode formulas, energy-weighted operational sum rules, and their photodetection interpretation.
-
-## Immediate gates
-
-1. **Multimode collective gate** — now the dominant theorem problem.
-2. Continue exact priority search for WP10/WP17/WP18 mappings.
-3. Harden the quantum-marked Poisson-to-field embedding.
-4. Determine explicit classical-analysis provenance of the harmonic-mean density functional if available.
-5. Draft no foundational manuscript until these gates survive.
+1. synchronize all landing documents through WP24 and mirror `main`;
+2. create a standalone manuscript architecture centered on the operational survival-function theorem;
+3. perform one final focused historical search while drafting, especially number-phase, group-distribution inference, and asymmetry-mode literature;
+4. keep the `pi` QFI envelope secondary and the WP14 scope boundary explicit.
 
 ## Documentation rule
 
-Every material result must be recorded in a WP note, reflected in active landing/handoff files, and mirrored onto `main`. The repository—not chat history—must remain sufficient for recovery.
+Every material result must be recorded in a WP note, reflected in active landing/handoff files, and mirrored onto `main`. The repository—not chat history—must remain sufficient for full recovery.
