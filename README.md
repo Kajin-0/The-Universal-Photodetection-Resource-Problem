@@ -8,7 +8,7 @@
 
 1. **Paper 1 / Rev11** — frozen and technically validated.
 2. **Paper 2 / Rev7** — frozen preferred science draft.
-3. **Grand Challenge** — science checkpoint **WP24**; preferred PRX Quantum manuscript **Rev7**.
+3. **Grand Challenge** — science checkpoint **WP24**; preferred PRX Quantum manuscript **Rev8**.
 
 Authoritative handoff: active-branch `grand_challenge/AGENTS.md`.
 
@@ -44,17 +44,21 @@ The area and `hfR` relations are first-moment corollaries:
 
 `Ebar+ >= hbar nu R(nu) = h f R(2pi f)`.
 
+Rev8 additionally states explicitly that the theorem is **local in the waveform-perturbation parameters**: it bounds Fisher information at the uniform random-time baseline and is not by itself a global finite-amplitude estimation-error or risk bound.
+
 ## Sharpness and physical relevance
 
-The geometric/canonical-phase family saturates every discrete harmonic simultaneously and gives the exponential-spectrum/Cauchy-time equality family in the controlled continuum limit.
+The geometric/canonical-phase family saturates every discrete harmonic simultaneously and gives the **exponential excess-frequency / Cauchy-time** equality family in the controlled continuum limit.
 
-Rev7 additionally analyzes a transform-limited truncated-Gaussian single photon. Canonical covariant timing reaches about **96.6%** of the survival ceiling at half a Gaussian width and **88.5%** at one width.
+Do not identify this equality family with the ordinary spontaneous-emission Fourier pair. Approximate Weisskopf--Wigner spontaneous emission is commonly Lorentzian in emission frequency and exponential in temporal decay.
+
+Rev7/Rev8 also analyze a transform-limited truncated-Gaussian single photon. Canonical covariant timing reaches about **96.6%** of the survival ceiling at half a Gaussian width and **88.5%** at one width.
 
 ## Scope
 
 WP23 carries the normalized bound through arbitrary **parameter-independent** source-to-bosonic-field and detector processing for an independent quantum-marked Poisson event source.
 
-WP14/Rev7 retain the coherent-sideband no-go: baseline mean energy cannot constrain arbitrary parameter-dependent waveform-state synthesis.
+WP14/Rev8 retain the coherent-sideband no-go: baseline mean energy cannot constrain arbitrary parameter-dependent waveform-state synthesis.
 
 # Prior-art boundary
 
@@ -66,27 +70,25 @@ Canonical phase POVMs, energy-constrained phase estimation, generic QFI/Holevo m
 
 **Priority remains unverified, not certified.**
 
-# Preferred manuscript — Rev7
+# Preferred manuscript — Rev8
 
 Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
-Rev7 follows an external adversarial review and directly repairs the strongest remaining PRX Quantum positioning risks:
+Rev7 implemented the substantive external-review hardening: controlled-continuum wording, excess-energy terminology, survival-law-first framing, sharper modes-of-asymmetry distinction, one nonextremal single-photon example, and Figure 1 repair.
 
-- continuum result labeled explicitly controlled periodic-to-continuum;
-- resource defined as excess energy above the participating edge;
-- survival law made primary and `hfR` demoted to a first-moment corollary;
-- distinction from modes-of-asymmetry theory sharpened;
-- one nonextremal transform-limited single-photon example added;
-- Figure 1 revised accordingly.
+Rev8 responds to a second favorable external review with one additional scope clarification only: the Fisher theorem is local and is not a global finite-amplitude risk theorem.
 
-Final local preflight:
+Final local Rev8 preflight:
 
 - full LaTeX/BibTeX build: **PASS**;
 - **8 pages**;
 - unresolved references/citations: **0**;
 - overfull boxes: **0**;
-- all 8 pages rendered at 200 dpi and visually inspected: **PASS**;
-- local PDF SHA-256: `d168c3901faa6f29bda0eba71abe8049cc9819d91843273beeeeffb9443818ae`.
+- all 8 pages rendered at 200 dpi: **PASS**;
+- visual diff against Rev7 changes only pages 7--8 from the one-sentence Discussion insertion and bibliography reflow;
+- local PDF SHA-256: `22f64f4760531aa5304d98c418a185bd187d7d07b666f6e1f7b7c1de94a5242a`.
+
+The 2026 Folge et al. citation is verified as *Optica* **13**, 548--557 (2026), DOI `10.1364/OPTICA.579459`.
 
 # Journal target
 
@@ -99,9 +101,10 @@ Final local preflight:
 Switch to `agent/temporal-information-resource-law` and read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV7_REFEREE_HARDENING_2026-08-22.md`
-3. `docs/CURRENT_RESEARCH_STATE.md`
-4. `ROADMAP.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV8_SECOND_EXTERNAL_REVIEW_RESPONSE_2026-08-22.md`
+3. `grand_challenge/notes/MANUSCRIPT_REV7_REFEREE_HARDENING_2026-08-22.md`
+4. `docs/CURRENT_RESEARCH_STATE.md`
+5. `ROADMAP.md`
 
 # Workflow rule
 
