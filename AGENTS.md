@@ -4,77 +4,69 @@
 
 Durable repository handoff for **The Universal Photodetection Resource Problem (UPRP)**. The repository, not chat history, is authoritative.
 
-`main` is the landing/index branch. Active derivations and Grand Challenge manuscript generation live on `agent/temporal-information-resource-law`.
+`main` is the landing/index branch. Active derivations and manuscript generation live on `agent/temporal-information-resource-law`.
 
-Research is analytical/theoretical. Paper 1 Rev11 and Paper 2 Rev7 are frozen.
+## Current frontier
 
-## Current status
+- Paper 1 Rev11: frozen.
+- Paper 2 Rev7: frozen.
+- Grand Challenge science checkpoint: **WP24**.
+- Preferred Grand Challenge manuscript: **Rev7 PRX Quantum**.
+- First target: **PRX Quantum — Research Article**.
+- Fallback: **Physical Review A — Regular Article**.
 
-**Grand Challenge science checkpoint: WP24.**
-
-**Rev4 freezes science. Rev5 freezes publication content. Rev6 is the current PRX Quantum style package.**
-
-Mandatory first action for a replacement agent: switch to `agent/temporal-information-resource-law` and read:
+A replacement agent must switch to `agent/temporal-information-resource-law` and read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV6_PRXQ_PACKAGING_PREFLIGHT_2026-08-22.md`
-3. `grand_challenge/submission/PRX_QUANTUM_TARGET_AND_CHECKLIST_2026-08-22.md`
-4. `grand_challenge/submission/APS_AI_AND_DATA_DISCLOSURE_DRAFTS.md`
-5. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-6. `docs/CURRENT_RESEARCH_STATE.md`
-7. `ROADMAP.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV7_REFEREE_HARDENING_2026-08-22.md`
+3. `docs/CURRENT_RESEARCH_STATE.md`
+4. `ROADMAP.md`
 
-# Strongest theorem
+## Theorem
 
-For exact periodic random-time encoding with sector probabilities `q_n`,
+For exact periodic random-time encoding,
 
-`T_k=sum_(m>=k)q_m`,
+`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`,
 
-and any finite number `N` of independently encoded excitations and any joint POVM,
+for any finite number of independently encoded copies and any joint POVM, including arbitrary entangled collective measurements.
 
-`Tr F_N^(k)<=N min(D_k,U_k)<=N T_k`.
+Controlled periodic-to-continuum limits satisfy
 
-Hence `R_N(k)=Tr F_N^(k)/N<=T_k` and `sum_(k>=1)R_N(k)<=nbar`.
+`R(nu) <= Pr(Omega>=nu)`.
 
-`R_N(k)` is the two-quadrature / phase-averaged source-normalized Fisher retention. Controlled large-period limits obey `R(nu)<=P(Omega>=nu)`, `int_R R<=2Ebar^+/hbar`, and `Ebar^+>=hbar nu R(nu)`.
+This survival law is the principal continuum statement. `Ebar+=hbar<Omega>` is mean excess energy above the participating lower edge; the area and `hfR` relations are first-moment corollaries.
 
-WP23 extends the source-normalized law to an independent quantum-marked compound-Poisson source under arbitrary parameter-independent bosonic-field/detector processing. WP14 excludes arbitrary parameter-dependent waveform-state synthesis from baseline-energy-only control.
+## Rev7 significance hardening
 
-# Priority discipline
+Rev7 responds directly to an external adversarial review:
 
-Do not claim novelty for weighted `U(1)` twirling, energy-gap modes, canonical phase POVMs, number/energy-constrained phase estimation, generic QFI/Holevo/RLD/SLD bounds, random-unitary estimation, waveform QFI, Hardy--Hilbert/positive-frequency inequalities, or generic Poisson/CPTP machinery.
+- continuum scope explicitly labeled controlled periodic-to-continuum;
+- excess-energy meaning explicit;
+- survival law promoted above `hfR`;
+- distinction from `U(1)` modes-of-asymmetry theory sharpened;
+- one transform-limited truncated-Gaussian single-photon example added;
+- Figure 1 revised consistently.
 
-The candidate contribution is narrowly the operational **classical-Fisher tail/survival law** and its energy/source-to-record consequences. **Priority remains unverified, not certified.**
+The photon example reaches about 96.6% of the survival ceiling at half a Gaussian width and 88.5% at one width under canonical covariant timing.
 
-# Manuscript / target state
+Final local Rev7 preflight: **8 pages, complete LaTeX/BibTeX PASS, zero unresolved citations/references, zero overfull boxes, full 200-dpi visual inspection PASS**.
 
-Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
+## Priority discipline
 
-- Rev4: frozen science content.
-- Rev5: frozen publication content; one conceptual figure + hidden links only.
-- Rev6: PRX Quantum packaging only; REVTeX `pra -> prx`.
+Do not claim novelty for weighted `U(1)` twirling, energy-gap modes, canonical phase POVMs, number/energy-constrained phase estimation, generic QFI/Holevo/RLD/SLD bounds, random-unitary estimation, waveform QFI, Hardy--Hilbert/positive-frequency mathematics, or generic Poisson/CPTP data processing.
 
-Rev5 passed complete local build/visual/bibliography/numerical preflight. Rev6 remains seven pages and has no target-style layout regression in local reproduction; dedicated CI is configured to compile it. Do not claim direct remote Actions inspection.
+The candidate contribution is the operational **classical-Fisher population-tail/survival law** for perturbations of a random-time mixing distribution, including arbitrary finite-copy collective measurements, an exact all-mode budget, sharp simultaneous attainability, and source-to-record consequences.
 
-**First target: PRX Quantum — Research Article.**
+**Priority remains unverified, not certified.**
 
-**Fallback: Physical Review A — Regular Article.**
+## Workflow rule
 
-# Human-only blockers
+Do **not** reintroduce “human verification” as a research/manuscript completion gate. Carry the work autonomously through hostile review, research, derivation, code checks, manuscript, figures, builds, and submission engineering. The finished package is handed to a human for submission.
 
-No new theorem work by default. Remaining blockers are:
+Unknown administrative facts may remain placeholders; never invent affiliation, funding, conflicts, or similar metadata.
 
-1. human verification sufficient for truthful APS AI disclosure;
-2. author name/order and affiliation(s);
-3. contact email and optional ORCID(s);
-4. funding/conflict/submission-history facts;
-5. preprint/e-print decision;
-6. stable repository/archive citation for Data Availability;
-7. optional referee recommendations/exclusions;
-8. APC coverage/institutional agreement.
+## Freeze
 
-APS's June 2026 AI policy requires substantive AI-use disclosure for this project. Never fabricate human verification or administrative facts.
+**Freeze Rev7** unless a concrete theorem defect, historical-priority collision, build defect, unavoidable journal-format problem, or new referee-level objection appears.
 
-# Documentation discipline
-
-Every material project-status change must update the active branch and then be mirrored onto `main`.
+Every material state change must be reflected on the active branch and mirrored onto `main`.
