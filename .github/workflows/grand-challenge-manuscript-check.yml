@@ -66,6 +66,10 @@ jobs:
         working-directory: grand_challenge/manuscript
         run: python apply_rev9_abstract_compression.py
 
+      - name: Generate Rev10 referee closure
+        working-directory: grand_challenge/manuscript
+        run: python apply_rev10_referee_closure.py
+
       - name: Run operational-tail numerical validation
         working-directory: grand_challenge
         run: python numerics/verify_operational_tail_bound.py
@@ -82,18 +86,23 @@ jobs:
         working-directory: grand_challenge
         run: python numerics/verify_herglotz_high_retention.py
 
-      - name: Compile Grand Challenge Rev9 PRX Quantum package
+      - name: Validate sine-profile divergence sharpness
+        working-directory: grand_challenge
+        run: python numerics/verify_sine_profile_divergence_sharpness.py
+
+      - name: Compile Grand Challenge Rev10 PRX Quantum package
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: energy_survival_temporal_fisher_rev9_prxq.tex
+          root_file: energy_survival_temporal_fisher_rev10_prxq.tex
           working_directory: grand_challenge/manuscript
           latexmk_use_xelatex: false
 
-      - name: Check Rev9 references, scope, and layout
+      - name: Check Rev10 references, scope, and layout
         working-directory: grand_challenge/manuscript
         run: |
-          LOG=energy_survival_temporal_fisher_rev9_prxq.log
-          TEX=energy_survival_temporal_fisher_rev9_prxq.tex
+          LOG=energy_survival_temporal_fisher_rev10_prxq.log
+          TEX=energy_survival_temporal_fisher_rev10_prxq.tex
+          SPEC=rev10_spectral_theorems.tex
           if grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|Package natbib Warning:.*undefined" "$LOG"; then
             echo "Unresolved LaTeX references/citations detected"
             exit 1
@@ -115,34 +124,50 @@ jobs:
             exit 1
           fi
           if ! grep -F '\title{Spectral Resource Laws for Temporal Fisher Information}' "$TEX"; then
-            echo "Rev9 title missing"
+            echo "Rev10 title missing"
             exit 1
           fi
           if ! grep -F 'usually summarized by a response time or transfer function' "$TEX"; then
-            echo "Compressed Rev9 abstract missing"
+            echo "Compressed abstract missing"
+            exit 1
+          fi
+          if ! grep -F 'this divergence exponent is sharp' "$TEX"; then
+            echo "Sharp-divergence abstract statement missing"
             exit 1
           fi
           if ! grep -F '\section{Controlled periodic-to-continuum survival law}' "$TEX"; then
             echo "Controlled continuum qualification missing"
             exit 1
           fi
-          if ! grep -F '\input{rev9_spectral_theorems.tex}' "$TEX"; then
-            echo "Rev9 spectral theorem input missing"
+          if ! grep -F '\input{rev10_spectral_theorems.tex}' "$TEX"; then
+            echo "Rev10 spectral theorem input missing"
             exit 1
           fi
-          if ! grep -F '\section{Common-measurement spectral consistency}' rev9_spectral_theorems.tex; then
+          if ! grep -F '\section{Common-measurement spectral consistency}' "$SPEC"; then
             echo "Herglotz section missing"
             exit 1
           fi
-          if ! grep -F '\section{Exact saturation and complete extremizers}' rev9_spectral_theorems.tex; then
+          if ! grep -F '\section{Exact saturation and complete extremizers}' "$SPEC"; then
             echo "Extremizer section missing"
             exit 1
           fi
-          if ! grep -F 'Exact $q=1$ at nonzero $k$ is impossible' rev9_spectral_theorems.tex; then
+          if ! grep -F 'continuous at the origin' "$SPEC"; then
+            echo "Bochner continuity-at-origin hypothesis missing"
+            exit 1
+          fi
+          if ! grep -F '\begin{proposition}[Sharp high-retention exponent]' "$SPEC"; then
+            echo "Sharp high-retention exponent witness missing"
+            exit 1
+          fi
+          if ! grep -F 'one fixed one-copy detector POVM is held fixed across frequencies' "$TEX"; then
+            echo "One-copy/common-POVM Discussion scope missing"
+            exit 1
+          fi
+          if ! grep -F 'Exact $q=1$ at nonzero $k$ is impossible' "$SPEC"; then
             echo "Near-lossless endpoint qualification missing"
             exit 1
           fi
-          if grep -F '[\cos(m\theta_q)]_+' rev9_spectral_theorems.tex; then
+          if grep -F '[\cos(m\theta_q)]_+' "$SPEC"; then
             echo "Invalid recycled positive-cosine lobe claim remains"
             exit 1
           fi
@@ -151,16 +176,18 @@ jobs:
             exit 1
           fi
 
-      - name: Upload Grand Challenge Rev9 PRX Quantum artifact
+      - name: Upload Grand Challenge Rev10 PRX Quantum artifact
         uses: actions/upload-artifact@v4
         with:
-          name: spectral-resource-laws-temporal-fisher-rev9-prxq
+          name: spectral-resource-laws-temporal-fisher-rev10-prxq
           path: |
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev9_prxq.pdf
+            grand_challenge/manuscript/energy_survival_temporal_fisher_rev10_prxq.pdf
+            grand_challenge/manuscript/energy_survival_temporal_fisher_rev10_prxq.tex
             grand_challenge/manuscript/energy_survival_temporal_fisher_rev9_prxq.tex
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev8_prxq.tex
+            grand_challenge/manuscript/apply_rev10_referee_closure.py
             grand_challenge/manuscript/apply_rev9_spectral_resource_theory.py
             grand_challenge/manuscript/apply_rev9_abstract_compression.py
+            grand_challenge/manuscript/rev10_spectral_theorems.tex
             grand_challenge/manuscript/rev9_spectral_theorems.tex
             grand_challenge/manuscript/figure1_operational_architecture_body_rev9.tex
             grand_challenge/manuscript/figure1_operational_architecture_body_rev7.tex
@@ -169,3 +196,4 @@ jobs:
             grand_challenge/numerics/verify_truncated_gaussian_photon_example.py
             grand_challenge/numerics/verify_complete_monotone_saturation.py
             grand_challenge/numerics/verify_herglotz_high_retention.py
+            grand_challenge/numerics/verify_sine_profile_divergence_sharpness.py
