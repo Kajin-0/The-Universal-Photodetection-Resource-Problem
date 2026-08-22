@@ -8,185 +8,196 @@ Research is analytical/theoretical and falsification-first. Paper 1 Rev11 and Pa
 
 ## Current status
 
-- **Science frontier:** WP27.
-- **Preferred PRX Quantum manuscript:** **Rev10 — frozen**.
+- **Science frontier:** WP28.
+- **Preferred PRX Quantum manuscript:** **Rev11 — frozen**.
 - **Working title:** **Spectral Resource Laws for Temporal Fisher Information**.
 - **Primary target:** PRX Quantum, Research Article.
 - **Fallback:** Physical Review A, Regular Article.
 - **Priority:** unverified, not certified.
 
-Rev9 changed the significance class by adding common-measurement cross-frequency structure and a complete one-copy extremizer classification. Rev10 closes the final external-review issues: Bochner continuity at zero, explicit one-copy/common-POVM scope, and a proof that the near-lossless `(1-R)^(-1/2)` energy-divergence exponent is sharp using a finite-chain sine-profile witness.
+Rev11 converts the strongest post-Rev10 adversarial objection into a theorem-level strengthening: the arbitrary-POVM modewise Fisher-tail mechanism does **not** require a globally equally spaced Hamiltonian. For an arbitrary semibounded pure-point Hamiltonian, long-window random-time averaging isolates exact Bohr gaps and the same partial-isometry factorization gives a spectral-tail Fisher ceiling. The fixed-one-copy Herglotz/divergence law extends along integer multiples of any chosen Bohr gap. The peripheral separately optimized SLD-QFI section was removed to make room for this result without bloating the manuscript.
 
-The full Rev10 local publication gate passed: 11 pages, zero unresolved references/citations, zero overfull boxes, all pages rendered at 200 dpi and inspected, and the sine-profile sharpness validator passed. The GitHub connector does not expose branch-push Actions runs, so no direct remote-run result is claimed or required as a new completion gate.
+Final Rev11 local publication gate: **PASS** — 12 pages, zero unresolved references/citations, zero overfull boxes, all pages rendered at 200 dpi and inspected, all six numerical validators pass. The self-contained source package recompiles to a visually pixel-identical 12-page PDF; differing PDF hashes arise from nondeterministic metadata, not content.
 
 ## Workflow rule
 
-Carry theorem development, hostile review, literature audit, numerical validation, manuscript drafting, figures, build verification, journal targeting, and submission-package engineering as far as possible. Do not reintroduce a separate human-verification research gate. A human receives and submits the finished package. Do not invent affiliation, funding, conflicts, submission history, or other unknown administrative facts.
+Carry theorem development, hostile review, literature audit, numerical validation, manuscript drafting, figures, build verification, journal targeting, and submission-package engineering as far as possible. Do not reintroduce a separate human-verification research gate. A human receives and submits the finished package. Never invent affiliation, funding, conflicts, submission history, or other unknown administrative facts.
 
 ## Read first
 
-1. `grand_challenge/notes/MANUSCRIPT_REV10_REFEREE_CLOSURE_PREFLIGHT_2026-08-22.md`
-2. `grand_challenge/notes/WP27_SHARP_HIGH_RETENTION_EXPONENT_AND_REV10_REFEREE_CLOSURE.md`
-3. `grand_challenge/notes/MANUSCRIPT_REV9_SPECTRAL_RESOURCE_PREFLIGHT_2026-08-22.md`
-4. `grand_challenge/notes/WP26_HERGLOTZ_COMMON_MEASUREMENT_RETENTION.md`
-5. `grand_challenge/notes/WP25_COMPLETE_MONOTONE_SATURATION_CLASSIFICATION.md`
-6. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+1. `grand_challenge/notes/MANUSCRIPT_REV11_ANHARMONIC_PREFLIGHT_2026-08-22.md`
+2. `grand_challenge/notes/WP28_ANHARMONIC_PURE_POINT_GAP_EXTENSION_AND_CONTINUUM_ATTACK.md`
+3. `grand_challenge/notes/MANUSCRIPT_REV10_REFEREE_CLOSURE_PREFLIGHT_2026-08-22.md`
+4. `grand_challenge/notes/WP27_SHARP_HIGH_RETENTION_EXPONENT_AND_REV10_REFEREE_CLOSURE.md`
+5. `grand_challenge/notes/WP26_HERGLOTZ_COMMON_MEASUREMENT_RETENTION.md`
+6. `grand_challenge/notes/WP25_COMPLETE_MONOTONE_SATURATION_CLASSIFICATION.md`
 7. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
 8. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
 9. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
 
-# I. Finite-copy operational survival law
+# I. Exact periodic finite-copy theorem
 
 For exact periodic random-time encoding with sector probabilities `q_n`, define
 
-`T_k = sum_(m>=k) q_m`.
+`T_k=sum_(m>=k)q_m`.
 
 For any finite number `N` of independently encoded excitations and **any joint POVM**, including arbitrary entangled collective measurements,
 
-`Tr F_N^(k) <= N min(D_k,U_k) <= N T_k`.
+`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`.
 
 Thus
 
-`R_N(k) := Tr F_N^(k)/N <= T_k`,
+`sum_(k>=1)R_N(k)<=nbar`.
 
-and
+This exact compact formulation is especially useful for simultaneous all-harmonic and extremizer statements.
 
-`sum_(k>=1) R_N(k) <= nbar`.
+# II. Arbitrary semibounded pure-point Bohr-gap theorem
 
-This is the most general operational theorem in the paper. It does not require detector covariance, separable measurement, Holevo asymptotics, or SLD attainability.
+Let
 
-# II. Controlled continuum survival law
+`H=E_* I + hbar sum_alpha omega_alpha P_alpha`, `omega_alpha>=0`,
 
-For a positive excess-frequency measure `mu` with finite first moment, controlled periodic-to-continuum limits satisfy
+with no commensurability assumption. Fix `nu>0` and use windows
 
-`R(nu) <= mu([nu,infinity)) = Pr(Omega>=nu)`.
+`T_M=2 pi M/nu`.
 
-The resource
+Long-window averaging dephases unequal energies at baseline and selects only exact Bohr pairs
 
-`Ebar+ = hbar <Omega>`
+`omega_beta-omega_alpha=nu`.
 
-is mean excitation/excess energy above the participating lower edge, not common carrier energy. The relations
+The limiting positive-gap tangent is
 
-`int_R R(nu)dnu <= 2 Ebar+/hbar`,
+`A_nu=sum_(alpha,beta: omega_beta-omega_alpha=nu) sqrt(q_alpha q_beta)|phi_beta><phi_alpha|`.
 
-`Ebar+ >= hbar nu R(nu) = h f R(2 pi f)`
+Define the partial isometry
 
-are first-moment corollaries. The theorem is local in the waveform-perturbation parameters and is not a global finite-amplitude risk theorem.
+`V_nu=sum_(paired alpha,beta)|phi_beta><phi_alpha|`.
 
-# III. Fixed one-copy common-measurement spectral consistency
+Then
 
-For **one fixed one-copy POVM** used to evaluate all harmonics, define `R_M(0)=1` and extend evenly. Then
+`A_nu=rho0^(1/2)V_nu rho0^(1/2)`
 
-`R_M(k) = int cos(k theta) J_M(dtheta)`
+and for every finite `N` and arbitrary joint POVM,
 
-for a symmetric probability measure `J_M` on the circle. Therefore every Toeplitz matrix
+`Tr F_N^(nu)/N <= min(D_nu,U_nu) <= S(nu)=Pr(Omega>=nu)`.
 
-`[R_M(i-j)]`
+**No global equal spacing or commensurability is required.** If there is no exact Bohr pair at `hbar nu`, the limiting tangent and Fisher response at that gap vanish.
 
-is positive semidefinite.
+Arbitrary Bohr-frequency decomposition itself is established modes-of-asymmetry / spectral theory. The candidate contribution is the arbitrary-measurement Fisher coefficient and semibounded tail ceiling.
 
-The information retained at different temporal harmonics by one actual detector record cannot be chosen independently.
+# III. Controlled continuum survival law
+
+For an **arbitrary Borel probability measure** `mu` on `[0,infinity)` with finite first moment, controlled periodic-to-continuum limits satisfy
+
+`R(nu)<=mu([nu,infinity))=Pr(Omega>=nu)`.
+
+No density or smoothness is assumed. Atomic, absolutely continuous, singular-continuous, and mixed measures are allowed.
+
+`Ebar+=hbar<Omega>` is mean excess energy above the participating lower edge. The area and pointwise relations
+
+`int_R R <= 2Ebar+/hbar`,
+
+`Ebar+ >= hbar nu R(nu)=h f R(2pi f)`
+
+are first-moment corollaries.
+
+The genuine continuum qualification is convergence of the chosen physical periodic measurement schemes; the theorem is local in the waveform perturbation and not a global finite-amplitude risk theorem.
+
+# IV. Fixed one-copy common-measurement spectral consistency
+
+For one fixed one-copy POVM in the periodic model,
+
+`R_M(k)=int cos(k theta) J_M(dtheta)`.
+
+Every Toeplitz matrix `[R_M(i-j)]` is PSD. Zero-population completion cannot create Fisher information because `rho0^(1/2)` and the posterior operator measure annihilate every appended null sector.
 
 For `q=R_M(k)` and `theta_q=arccos q`,
 
-`R_M(mk) >= cos(m theta_q)`
+`R_M(mk)>=cos(m theta_q)`
 
-while `m theta_q <= pi/2`.
+on the positive-cosine range. Combining this forced retention ladder with semibounded tails gives
 
-Combining this forced retention ladder with the semibounded energy tails gives
+`Ebar+>=hbar nu A(q)`,
 
-`nbar >= k A(q)`,
+`A(q)~1/sqrt(2(1-q))` as `q->1`.
 
-`Ebar+ >= hbar nu A(q)`,
+Exact unit retention at nonzero frequency is impossible for a normalized semibounded source.
 
-where
+For an arbitrary pure-point Hamiltonian, partitioning the spectrum into residue classes modulo a chosen `nu` gives the same Herglotz/Toeplitz law across exact gaps `m nu`, and the same near-lossless energy divergence.
 
-`A(q)=sum_(m=1)^(floor(pi/(2 arccos q))) cos(m arccos q)`.
+For the controlled continuum Herglotz extension, invoke Bochner only when the normalized positive-definite limit is **continuous at the origin**.
 
-As `q -> 1`,
+# V. Sharp high-retention exponent
 
-`A(q) ~ 1/sqrt(2(1-q))`.
+The finite sine profile
 
-Hence, for the fixed-one-copy/common-POVM setting,
+`a_n=sqrt(2/(L+1)) sin((n+1)pi/(L+1))`
 
-`Ebar+ >= hbar nu / sqrt(2(1-R)) [1+o(1)]`.
-
-Exact unit retention at nonzero harmonic is impossible for a normalized semibounded source.
-
-For the continuum Herglotz extension, invoke Bochner only when the controlled limit is normalized positive definite **and continuous at the origin**.
-
-# IV. Sharpness of the high-retention exponent
-
-WP27/Rev10 uses the finite sine profile
-
-`a_n = sqrt(2/(L+1)) sin((n+1) pi/(L+1))`, `n=0,...,L-1`.
-
-With the canonical phase POVM,
+under canonical phase measurement satisfies
 
 `R_L(1)=cos^2(pi/(L+1))`,
 
 `nbar_L=(L-1)/2`,
 
-so exactly
-
-`nbar_L = pi/[2 arccos sqrt(R_L(1))] - 1`
-
-and asymptotically
+so
 
 `nbar_L ~ pi/[2 sqrt(1-R_L(1))]`.
 
-Therefore the `(1-R)^(-1/2)` divergence exponent is **sharp**. Do not claim the optimal asymptotic prefactor: the universal lower constant and sine-family achievability constant do not coincide.
+Therefore the `(1-R)^(-1/2)` divergence exponent is **sharp**. Do not claim the optimal asymptotic prefactor. The sine state is established phase-estimation prior art; its role here is only as an achievability witness for the new retention-energy law.
 
-The sine state itself is established phase-estimation prior art (Berry--Wiseman 2000); its new role here is only as a sharpness witness for the retention--energy law.
+# VI. Complete one-copy extremizers — narrower scope
 
-# V. Complete one-copy extremizers
+On the **full contiguous pure-sector chain with positive populations**, the following are equivalent:
 
-On the full contiguous pure-sector chain with `q_n>0`, the following are equivalent:
+1. some POVM attains first-harmonic tail equality;
+2. the sector population law is a mixture of geometric pmfs;
+3. the tail sequence is a Hausdorff moment sequence;
+4. one source-adapted POVM saturates every harmonic simultaneously.
 
-1. some POVM attains `Tr F_1^(1)=T_1`;
-2. `q_n` is a mixture of geometric pmfs,
-   `q_n=int (1-r)r^n pi(dr)`;
-3. `T_k` is a Hausdorff moment sequence,
-   `T_k=int r^k pi(dr)`;
-4. one common source-adapted POVM saturates `Tr F_1^(k)=T_k` for every harmonic simultaneously.
+With finite mean the all-mode budget is saturated as well. Product measurements give finite-copy sufficiency. **Do not broaden this converse to arbitrary anharmonic spectra, sparse spectra, arbitrary mixed sector blocks, or arbitrary entangled `N>1` equality cases.**
 
-With finite mean, the all-mode budget is saturated too. The product POVM gives finite-copy sufficiency. **No converse is claimed for arbitrary entangled `N>1` collective POVMs, sparse spectra, or arbitrary mixed sector blocks.**
+Controlled continuum limits of exponential mixtures give the completely monotone equality cone.
 
-Controlled continuum limits of exponential mixtures give the completely monotone equality cone. Gamma mixing gives algebraic exact equality laws.
+# VII. Physical embedding and boundary
 
-# VI. Physical embedding and boundary
+Independent quantum-marked Poisson events inherit the modewise survival law. Arbitrary subsequent **parameter-independent** source-to-field/detector CPTP processing cannot evade the upstream ceiling; this includes bosonic overlap, propagation, loss, mode mixing, coherent detector memory, ancillas, and arbitrary final measurement.
 
-Independent quantum-marked Poisson events inherit the modewise survival law. Any subsequent **parameter-independent** source-to-field/detector CPTP map is data processing, so bosonic overlap, propagation, loss, mode mixing, coherent detector memory, ancillas, and arbitrary final measurement cannot evade the normalized source ceiling within this source class.
+The coherent-sideband no-go remains the explicit boundary: baseline mean energy alone cannot constrain arbitrary parameter-dependent waveform-state synthesis. Broader waveform laws require encoding/control/action resource accounting.
 
-WP14 retains the coherent-sideband no-go: baseline mean energy alone cannot bound arbitrary parameter-dependent waveform-state synthesis. Broader waveform laws require encoding/control/action resource accounting.
-
-# VII. Prior-art boundary
+# VIII. Prior-art discipline
 
 Do not claim novelty for:
 
-- `U(1)` mode decomposition or weighted twirling;
+- arbitrary Bohr-frequency or `U(1)` mode decompositions / weighted twirling;
+- random-time dephasing itself;
 - Herglotz/Bochner theorems;
-- Hausdorff moment or Bernstein--Widder theory;
-- geometric/exponential mixtures;
+- Hausdorff/Bernstein-Widder moment theory;
+- geometric or exponential mixtures;
 - unilateral-shift eigenvectors;
 - canonical phase POVMs or sine states;
-- energy-constrained phase estimation;
 - generic QFI/Holevo/RLD/SLD machinery;
 - generic Poisson/CPTP data processing.
 
-Candidate contribution is the operational combination: arbitrary-POVM Fisher-tail coefficients, fixed-measurement positive-definite retention geometry, semibounded-energy near-lossless divergence, sharp exponent, complete one-copy saturation classification, and source-to-record inheritance.
+Candidate contribution: arbitrary-POVM Fisher-tail coefficients, their extension to exact Bohr gaps of arbitrary semibounded pure-point Hamiltonians, fixed-measurement positive-definite retention geometry, sharp near-lossless energy divergence, complete one-copy extremizer classification in the contiguous model, and source-to-record inheritance.
 
 **Priority remains unverified, not certified.**
 
-# Rev10 generation and validation
+# IX. Rev11 generation and validation
 
 Generation chain:
 
-`Rev1 -> Rev2 -> Rev3 -> Rev4 -> Rev5 -> Rev6 -> Rev7 -> Rev8 -> Rev9 spectral theory -> Rev9 abstract compression -> Rev10 referee closure`.
+`Rev1 -> Rev2 -> Rev3 -> Rev4 -> Rev5 -> Rev6 -> Rev7 -> Rev8 -> Rev9 spectral theory -> Rev9 abstract compression -> Rev10 referee closure -> Rev11 anharmonic extension`.
 
-Rev10 generator:
+Generator:
 
-`grand_challenge/manuscript/apply_rev10_referee_closure.py`
+`grand_challenge/manuscript/apply_rev11_anharmonic_extension.py`
+
+Key Rev11 inputs:
+
+- `rev11_anharmonic_extension.tex`
+- `rev11_spectral_theorems.tex`
+- `figure1_operational_architecture_body_rev11.tex`
+- `references_rev11.bib`
 
 Numerical gates:
 
@@ -195,24 +206,26 @@ Numerical gates:
 - `verify_complete_monotone_saturation.py`
 - `verify_herglotz_high_retention.py`
 - `verify_sine_profile_divergence_sharpness.py`
+- `verify_anharmonic_pure_point_gap_extension.py`
 
-Final local Rev10 preflight:
+Final local preflight:
 
 - full LaTeX/BibTeX build: **PASS**;
-- pages: **11**;
-- PDF size: **444,063 bytes**;
-- PDF SHA-256: `a5c2d9e12bba045b76bbfb710428e5424e2c5cb5eb83d6aec6215a5996dbc6fb`;
+- pages: **12**;
+- PDF size: **452,384 bytes**;
+- PDF SHA-256: `5e0ac0132a7f4a3f7b07e9c4ba86b046b23bc89c1f7635efe9f737019396d0f0`;
 - unresolved references/citations: **0**;
 - overfull boxes: **0**;
 - all pages rendered at 200 dpi and visually inspected: **PASS**;
-- sine-profile sharpness validator: **PASS**;
-- minimal source ZIP SHA-256: `cfa2452f9ce4e99d0cd56f931151f6bb166fd90d4332d86faf3ea2485dec1db9`.
+- source ZIP SHA-256: `208fd7a2e932507366797658c84dff1666257477143a433bf81d7741a8d0c8a1`;
+- fresh source-package compile: **PASS**;
+- original vs source-package recompile at 200 dpi: **0 changed pages / 0 changed pixels**.
 
-The dedicated GitHub Actions workflow generates and compiles Rev10 and explicitly rejects loss of the continuity-at-zero hypothesis, one-copy/common-POVM scope, sharp-exponent proposition, local-Fisher qualifier, and prior Herglotz hostile-audit fixes. The current connector does not expose the branch-push run, so do not claim direct remote-run inspection.
+The dedicated workflow now builds Rev11 and regression-tests the anharmonic theorem, continuum-measure scope, null-sector invariance, Bochner continuity, sharp-exponent statement, local-Fisher scope, and removal of the peripheral QFI section. The connector does not expose the relevant branch-push Actions run, so do not claim remote-run inspection.
 
 ## Freeze rule
 
-**Rev10 is frozen as the preferred PRX Quantum manuscript.** Do not optimize the asymptotic constant, add another example, or broaden the source class by default. Reopen only for a concrete referee objection, mathematical defect, priority collision, build defect, or unavoidable journal-format requirement.
+**Rev11 is frozen as the preferred PRX Quantum manuscript.** Do not add the optional finite-amplitude trace-distance observation, optimize constants, or broaden the extremizer theorem by default. Reopen only for a concrete mathematical defect, priority collision, substantive referee objection, build/render regression, or unavoidable journal-format requirement.
 
 ## Documentation rule
 
