@@ -10,98 +10,88 @@ Durable repository handoff for **The Universal Photodetection Resource Problem (
 
 - Paper 1 Rev11: frozen.
 - Paper 2 Rev7: frozen.
-- Grand Challenge science frontier: **WP27**.
-- Preferred Grand Challenge manuscript: **Rev10 — Spectral Resource Laws for Temporal Fisher Information**, frozen.
+- Grand Challenge science frontier: **WP28**.
+- Preferred Grand Challenge manuscript: **Rev11 — Spectral Resource Laws for Temporal Fisher Information**, frozen.
 - First target: **PRX Quantum — Research Article**.
 - Fallback: **Physical Review A — Regular Article**.
 
 A replacement agent must switch to `agent/temporal-information-resource-law` and read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV10_REFEREE_CLOSURE_PREFLIGHT_2026-08-22.md`
-3. `grand_challenge/notes/WP27_SHARP_HIGH_RETENTION_EXPONENT_AND_REV10_REFEREE_CLOSURE.md`
-4. `grand_challenge/notes/WP26_HERGLOTZ_COMMON_MEASUREMENT_RETENTION.md`
-5. `grand_challenge/notes/WP25_COMPLETE_MONOTONE_SATURATION_CLASSIFICATION.md`
-6. `docs/CURRENT_RESEARCH_STATE.md`
-7. `ROADMAP.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV11_ANHARMONIC_PREFLIGHT_2026-08-22.md`
+3. `grand_challenge/notes/WP28_ANHARMONIC_PURE_POINT_GAP_EXTENSION_AND_CONTINUUM_ATTACK.md`
+4. `docs/CURRENT_RESEARCH_STATE.md`
+5. `ROADMAP.md`
 
 ## Theorem hierarchy
 
-### Finite-copy modewise theorem
+### Exact periodic finite-copy law
 
-For exact periodic random-time encoding,
+For any finite number of independently encoded copies and any joint POVM,
 
-`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`
+`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`.
 
-for any finite number of independently encoded copies and any joint POVM, including arbitrary entangled collective measurements.
+### Arbitrary pure-point Bohr-gap law
 
-Controlled periodic-to-continuum limits satisfy
+For an arbitrary semibounded pure-point Hamiltonian, long-window random-time averaging at requested frequency `nu` isolates exact Bohr pairs and gives
+
+`Tr F_N^(nu)/N <= min(D_nu,U_nu) <= Pr(Omega>=nu)`
+
+for arbitrary finite-copy joint POVMs. No global equal-spacing or commensurability assumption is required.
+
+### Controlled continuum law
 
 `R(nu)<=Pr(Omega>=nu)`.
 
-`Ebar+=hbar<Omega>` is mean excess energy above the participating lower edge; the area law and `hfR` relation are first-moment corollaries.
+The spectral measure may be atomic, absolutely continuous, singular-continuous, or mixed.
 
-### Fixed-one-copy common-measurement theorem
+### Fixed-one-copy common-measurement law
 
 For one fixed one-copy POVM,
 
 `R_M(k)=int cos(k theta)J_M(dtheta)`.
 
-Thus every finite Toeplitz matrix `[R_M(i-j)]` is PSD. Combining this with semibounded energy tails gives
+Thus every finite Toeplitz block is PSD. The same structure applies across exact multiples of a chosen Bohr gap for arbitrary semibounded pure-point spectra.
+
+Combining with energy tails gives
 
 `Ebar+>=hbar nu A(R)`,
 
-`A(R)~1/sqrt(2(1-R))` as `R->1`.
+`A(R)~1/sqrt(2(1-R))`.
 
-This is specifically a fixed-one-copy/common-POVM result, not an arbitrary collective-`N` theorem. The continuum Herglotz extension invokes Bochner only when the controlled normalized positive-definite limit is continuous at the origin.
-
-### Sharp divergence exponent
-
-The finite sine-profile family under canonical phase measurement has
-
-`R_L(1)=cos^2(pi/(L+1))`, `nbar_L=(L-1)/2`,
-
-hence `nbar_L~pi/[2sqrt(1-R_L(1))]`. The inverse-square-root divergence exponent is sharp; the globally optimal prefactor is not claimed.
+The finite sine-profile witness proves the inverse-square-root divergence exponent is sharp; the optimal prefactor is not claimed.
 
 ### Complete one-copy extremizers
 
-On the full contiguous pure-sector chain:
+Only on the full contiguous pure-sector chain:
 
-`first-harmonic saturation`
+`first-harmonic equality <=> geometric-mixture populations <=> Hausdorff-moment tails <=> one common source-adapted POVM saturates all harmonics`.
 
-`<=> geometric-mixture populations`
-
-`<=> Hausdorff-moment tails`
-
-`<=> one source-adapted POVM saturates every harmonic simultaneously`.
-
-Controlled exponential mixtures give the completely monotone continuum equality cone.
+Do not broaden this converse to arbitrary anharmonic/sparse spectra or arbitrary collective-copy equality cases.
 
 ## Physical scope
 
-Independent quantum-marked Poisson sources inherit the modewise tail law through arbitrary parameter-independent source-to-field and detector processing by POVM pullback.
-
-Arbitrary parameter-dependent waveform-state synthesis remains outside the theorem; the coherent-sideband no-go shows that baseline mean energy alone is insufficient for that broader class.
+Independent quantum-marked Poisson sources inherit the modewise law through arbitrary parameter-independent source-to-field and detector processing. Arbitrary parameter-dependent waveform-state synthesis remains outside the theorem.
 
 ## Priority discipline
 
-Do not claim novelty for weighted `U(1)` twirling, Herglotz/Bochner, Hausdorff/Bernstein moment theory, canonical phase POVMs, geometric/exponential mixtures, finite sine states, generic QFI/Holevo/RLD/SLD machinery, or generic Poisson/CPTP data processing.
+Do not claim novelty for arbitrary Bohr-frequency / `U(1)` mode decomposition, random-time dephasing, Herglotz/Bochner, Hausdorff/Bernstein theory, canonical phase POVMs, geometric/exponential mixtures, sine states, generic QFI/Holevo machinery, or generic Poisson/CPTP processing.
 
-The candidate contribution is the operational combination: arbitrary-POVM Fisher-tail coefficients, fixed-measurement positive-definite retention geometry, semibounded near-lossless divergence with sharp exponent, complete one-copy saturation classification, and source-to-record inheritance.
+Candidate contribution: arbitrary-POVM Fisher-tail coefficients, their exact-Bohr-gap extension to arbitrary semibounded pure-point Hamiltonians, common-measurement spectral geometry, sharp near-lossless energy divergence, contiguous-chain extremizer classification, and source-to-record inheritance.
 
 **Priority remains unverified, not certified.**
 
-## Rev10 preflight
+## Rev11 preflight
 
-- 11 pages;
+- 12 pages;
 - full LaTeX/BibTeX build: **PASS**;
 - unresolved references/citations: **0**;
 - overfull boxes: **0**;
 - all pages rendered at 200 dpi and inspected: **PASS**;
-- sine-profile sharpness validator: **PASS**;
-- PDF SHA-256: `a5c2d9e12bba045b76bbfb710428e5424e2c5cb5eb83d6aec6215a5996dbc6fb`.
-
-The current connector does not expose branch-push Actions runs; do not claim direct remote-run inspection. The equivalent local generation/build/render gate passed.
+- all six numerical validators: **PASS**;
+- PDF SHA-256: `5e0ac0132a7f4a3f7b07e9c4ba86b046b23bc89c1f7635efe9f737019396d0f0`;
+- source ZIP SHA-256: `208fd7a2e932507366797658c84dff1666257477143a433bf81d7741a8d0c8a1`;
+- fresh source-package recompile visually pixel-identical at 200 dpi.
 
 ## Workflow rule
 
@@ -111,6 +101,6 @@ Unknown administrative facts may remain placeholders; never invent affiliation, 
 
 ## Freeze
 
-**Freeze Rev10** unless a concrete theorem defect, historical-priority collision, build/journal-format problem, or new referee-level objection appears.
+**Freeze Rev11** unless a concrete theorem defect, historical-priority collision, substantive referee objection, build/journal-format problem, or render regression appears.
 
 Every material state change must be reflected on the active branch and mirrored onto `main`.
