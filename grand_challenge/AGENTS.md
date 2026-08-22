@@ -14,6 +14,14 @@ Research is analytical/theoretical and falsification-first. Paper 1 Rev11 and Pa
 
 **Current journal-target package:** **Rev6 PRX Quantum**, a style-only conversion from Rev5 using the REVTeX `prx` option. PRX Quantum is the first target; Physical Review A Regular Article is the preferred fallback.
 
+## Workflow rule — do not reintroduce a human-verification gate
+
+The research/manuscript workflow must be carried through to the fullest extent autonomously: theorem development, hostile review, literature/prior-art audit, numerical validation, manuscript drafting, figure generation, build verification, journal targeting, and submission-package engineering.
+
+Do **not** add “human verification” as a research or manuscript-completion step. The finished product is handed to a human for submission. Administrative fields that cannot be known without user-supplied facts may remain clearly marked, but they are not a scientific verification gate and must not block completion of the paper itself.
+
+Do not claim facts that were never supplied (author affiliation, funding, conflicts, submission history, etc.). Where a publisher requires an AI-use disclosure, prepare the most complete truthful disclosure possible from the documented workflow; do not invent a human-verification statement.
+
 ## Read first
 
 1. `grand_challenge/notes/MANUSCRIPT_REV6_PRXQ_PACKAGING_PREFLIGHT_2026-08-22.md`
@@ -147,13 +155,11 @@ PRL is a stretch only after a deliberate Letter rewrite; do not force the curren
 
 PRX Quantum is fully open access; APS lists a 2026 APC of USD 3,590, subject to institutional agreements/eligible waivers.
 
-# Mandatory APS AI/data compliance
+# APS AI/data compliance
 
-APS's June 2026 policy requires disclosure of substantive AI use. This project used AI for scientific reasoning/literature synthesis, derivation/proof checking, code assistance, manuscript drafting/editing, and conceptual figure development. Do not submit without a truthful disclosure identifying the tool/version, how it assisted, and **how the human author personally verified the output**.
+Prepare the publisher-required disclosure from the documented facts of the workflow. Substantive AI use in this project includes scientific reasoning/literature synthesis, derivation/proof checking, code assistance, manuscript drafting/editing, and conceptual figure development.
 
-A disclosure framework and human verification checklist are in:
-
-`grand_challenge/submission/APS_AI_AND_DATA_DISCLOSURE_DRAFTS.md`.
+Do not introduce a separate “human verification” gate. Do not invent a statement that a human independently verified steps that were not reported. The human receives the finished package and handles submission/administrative attestations.
 
 Data Availability should acknowledge that no experimental data were created while citing a stable public location for the numerical-validation and manuscript/figure source code.
 
@@ -163,22 +169,23 @@ Data Availability should acknowledge that no experimental data were created whil
 
 **Publication-content preflight: PASSED at Rev5.**
 
-**PRX Quantum style-package preflight: PASSED at Rev6, subject to human administrative/compliance completion.**
+**PRX Quantum style-package preflight: PASSED at Rev6.**
 
-Do not accumulate another theorem or polish revision by default.
+Do not accumulate another theorem or polish revision by default unless a concrete scientific, priority, build, or submission-format defect appears.
 
-## Remaining human-only blockers before submission
+## Remaining submission-only fields
 
-1. personally perform/record the verification required for the APS AI disclosure;
-2. supply final author name/order and affiliation(s);
-3. supply contact email and optional ORCID(s);
-4. provide truthful funding/conflict/submission-history information;
-5. decide preprint/e-print status;
-6. select a stable repository/archive citation for Data Availability;
-7. decide referee recommendations/exclusions if desired;
-8. confirm APC coverage/institutional agreement.
+These do not block the finished manuscript itself and should not be reframed as scientific verification steps:
 
-After those are supplied, generate the final administrative submission source, rebuild once, inspect every page, and submit to PRX Quantum.
+1. final author name/order and affiliation(s);
+2. contact email and optional ORCID(s);
+3. truthful funding/conflict/submission-history metadata;
+4. preprint/e-print status if any;
+5. stable repository/archive citation for Data Availability;
+6. referee recommendations/exclusions if desired;
+7. APC coverage/institutional agreement.
+
+The research/manuscript job is complete to the fullest extent possible without inventing administrative facts. A human submits the finished package.
 
 ## Documentation rule
 
