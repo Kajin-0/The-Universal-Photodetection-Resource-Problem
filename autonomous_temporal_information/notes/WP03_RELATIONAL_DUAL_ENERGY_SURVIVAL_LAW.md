@@ -4,7 +4,7 @@
 
 **Branch:** `agent/autonomous-temporal-information-law`
 
-**Status:** analytic theorem PASS at the local robust-Fisher level; targeted priority screen has not identified an exact predecessor. Priority remains **unverified, not certified**.
+**Status:** analytic theorem PASS; pointwise dual-tail coefficient sharp and total-energy factor 2 asymptotically sharp under collective measurements; targeted priority screen has not identified an exact predecessor. Priority remains **unverified, not certified**.
 
 ## 1. Motivation: global asymmetry is not the autonomous clock resource
 
@@ -244,21 +244,69 @@ If one side is the bottleneck, e.g. `a/b ->0`, then
 
 showing the **dual minimum-tail coefficient is pointwise sharp** when one subsystem is resource limiting.
 
-For `a=b`, the simple two-qubit measurement yields `K=a/2`; simultaneous saturation of both local tails is not achieved by this minimal model. The sharp total-energy prefactor remains open.
+## 11. Sharp total-energy coefficient from asymptotic collective attainability
 
-## 11. Relation to Page--Wootters and prior art
+The symmetric case `a=b=p` proves more.
+
+Inside the one-excitation subspace the baseline is `p I_2`. The SLDs for the two tangent coordinates are
+
+`L_c=(c/p) sigma_x`,
+
+`L_s=(c/p) sigma_y`.
+
+Although these SLDs do not commute as operators,
+
+`Tr[rho0 [L_c,L_s]]=0`
+
+because the baseline is proportional to the identity on the active subspace. Thus the model satisfies the standard **weak-commutativity / asymptotic compatibility condition** of multiparameter quantum estimation.
+
+The Holevo bound therefore coincides with the SLD bound and is asymptotically attainable using collective measurements on many copies. This attainability criterion is established prior quantum-metrology mathematics and is not claimed as new.
+
+The two-quadrature SLD-QFI trace is
+
+`Tr F_Q = 4 c^2/p`.
+
+Consequently an asymptotically optimal sequence of collective measurements satisfies
+
+`lim_(N->infinity) Tr F_N/N = 4 c^2/p`.
+
+Since
+
+`R_lin^2=p^2/c^2`,
+
+we obtain
+
+`K_infinity = (R_lin^2/4)(4c^2/p)=p`.
+
+But in the symmetric model
+
+`T_C(nu)=T_S(nu)=p`,
+
+and
+
+`Ebar_C^+=Ebar_S^+=hbar nu p`.
+
+Hence **both dual tails are saturated simultaneously in the asymptotic collective-measurement limit**, and
+
+> `Ebar_C^+ + Ebar_S^+ = 2 hbar nu K_infinity`.
+
+Therefore the coefficient `2` in the total autonomous energy law is **asymptotically sharp**. It is not an artifact of separately adding two loose one-sided inequalities.
+
+The one-copy equatorial POVM attains only `K_1=p/2`; collective multiparameter readout closes that factor-of-two incompatibility gap.
+
+## 12. Relation to Page--Wootters and prior art
 
 Page--Wootters and related relational-time frameworks establish that a globally stationary state can encode nontrivial internal evolution through clock--system correlations. Recent work continues to analyze finite clocks, interactions, time of arrival, and informational/conditional dynamics.
 
 The present theorem does **not** claim relational time itself is new. Its candidate contribution is narrower and quantitative:
 
-> robust classical Fisher information encoded in a globally time-symmetric energy-exchange mode is bounded simultaneously by the clock and signal energy survival functions, for arbitrary finite-copy collective measurements.
+> robust classical Fisher information encoded in a globally time-symmetric energy-exchange mode is bounded simultaneously by the clock and signal energy survival functions, for arbitrary finite-copy collective measurements, with a sharp two-sided mean-energy coefficient.
 
-Targeted searches found work on Page--Wootters relational time, Fisher-geometric clock quality, energy--time uncertainty, finite-clock errors, and relative-phase estimation, but did not identify this specific dual survival/tail theorem.
+Targeted searches found work on Page--Wootters relational time, Fisher-geometric clock quality, energy--time uncertainty, finite-clock errors, relative-phase estimation, and quantitative WAY theorems, but did not identify this specific dual survival/tail theorem.
 
 Priority remains **unverified, not certified**.
 
-## 12. Why this matters for the autonomous grand question
+## 13. Why this matters for the autonomous grand question
 
 WP01 showed that global asymmetry/resource-frame mode support is insufficiently novel and conceptually incomplete for a closed autonomous description.
 
@@ -270,15 +318,16 @@ This suggests a broader principle:
 
 > Autonomous temporal information is an energy-exchange resource. A usable relative temporal mode must be backed by matched spectral resources on both sides of the relational cut.
 
+The sharp symmetric two-qubit construction shows that the required two-sided energetic contribution is operational, not merely bookkeeping.
+
 Whether this extends beyond separately stationary baselines and nonzero linear tangent radius is now the central open problem.
 
-## 13. Next work
+## 14. Next work
 
 WP04 priorities:
 
-1. derive the sharp total-energy coefficient for relational exchange, beyond the simple sum of two one-sided bounds;
-2. search for equality/extremizer families on finite fixed-total-energy chains;
-3. test whether a Herglotz/positive-definite consistency law exists for one common relational record across multiple exchange gaps;
-4. extend from separately stationary baselines to pre-existing relationally coherent Page--Wootters history states;
-5. attack the `R_lin=0` nonlinear synthesis loophole in a globally stationary setting;
-6. perform a deeper priority audit against quantitative WAY, clock synchronization, and relational-phase metrology.
+1. establish the structured multi-gap relational Herglotz law and determine whether near-perfect **relative** Fisher retention forces divergent energy in both clock and signal;
+2. search for equality/extremizer families on fixed-total-energy exchange chains;
+3. extend from separately stationary baselines to pre-existing relationally coherent Page--Wootters history states;
+4. attack the `R_lin=0` nonlinear synthesis loophole in a globally stationary setting;
+5. perform a deeper priority audit against quantitative WAY, clock synchronization, relative-phase metrology, and finite-clock Page--Wootters bounds.
