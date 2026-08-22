@@ -4,18 +4,19 @@
 
 **Active scientific branch:** `agent/temporal-information-resource-law`
 
-Paper 1 Rev11 and Paper 2 Rev7 are frozen. The Grand Challenge science checkpoint is **WP24** and its preferred science manuscript is **Rev4**.
+Paper 1 Rev11 and Paper 2 Rev7 are frozen. The Grand Challenge science checkpoint is **WP24**. **Rev4 is the frozen science-content checkpoint; Rev5 is the preferred frozen publication draft.**
 
 ## Read first
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
-3. `grand_challenge/notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
-4. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
-5. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
-6. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
-7. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
-8. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
+2. `grand_challenge/notes/MANUSCRIPT_REV5_PUBLICATION_PREFLIGHT_2026-08-22.md`
+3. `grand_challenge/notes/MANUSCRIPT_REV4_LOCAL_BUILD_AND_HOSTILE_REVIEW_2026-08-22.md`
+4. `grand_challenge/notes/MANUSCRIPT_REV4_BIBLIOGRAPHY_PROVENANCE_AUDIT_2026-08-22.md`
+5. `grand_challenge/notes/WP24_INTEGRATED_HOSTILE_REVIEW_AND_SYMMETRY_PRIOR_ART_BOUNDARY.md`
+6. `grand_challenge/notes/WP23_RIGOROUS_COMPOUND_POISSON_TO_BOSONIC_FIELD_CHANNEL_MAP.md`
+7. `grand_challenge/notes/WP22_CONTINUUM_LIMIT_RIGOR_FOR_OPERATIONAL_SURVIVAL_LAW.md`
+8. `grand_challenge/notes/WP20_DIRECT_FINITE_COPY_PROOF_AND_HOSTILE_AUDIT_OF_WP19.md`
+9. `grand_challenge/notes/WP14_COHERENT_FIELD_BASELINE_ENERGY_NO_GO.md`
 
 # Strongest theorem — operational survival law
 
@@ -99,19 +100,9 @@ They are separately optimized SLD-QFI metric envelopes, not the main jointly acc
 
 # Prior-art boundary
 
-WP21/WP24 and the Rev4 bibliography audit substantially narrow novelty.
+WP21/WP24 and the bibliography audit substantially narrow novelty.
 
-Established prior art includes:
-
-- weighted `U(1)` twirling and energy-gap modes (Marvian--Spekkens);
-- Fourier/number-constrained phase estimation;
-- canonical phase POVMs;
-- arbitrary collective quantum-information bounds;
-- random-unitary probability estimation;
-- waveform QFI;
-- sharp positive-frequency Gagliardo--Nirenberg analysis;
-- Hardy--Hilbert beta-function best constants;
-- compound-Poisson/CPTP data processing.
+Established prior art includes weighted `U(1)` twirling and energy-gap modes, Fourier/number-constrained phase estimation, canonical phase POVMs, arbitrary collective quantum-information bounds, random-unitary probability estimation, waveform QFI, sharp positive-frequency Gagliardo--Nirenberg analysis, Hardy--Hilbert beta-function best constants, and compound-Poisson/CPTP data processing.
 
 The candidate contribution is specifically the **arbitrary-measurement classical-Fisher ceiling for Fourier perturbations of a latent random-time distribution**, its paired-population/upper-tail evaluation, mean-energy harmonic budget, and source-to-record photodetection consequences.
 
@@ -119,44 +110,46 @@ Targeted searches have not located the exact tail/survival theorem. **Priority r
 
 # Scope boundary
 
-WP14 remains mandatory. Baseline mean energy cannot bound arbitrary parameter-dependent coherent waveform synthesis. Rev4 includes an explicit coherent-sideband counterexample; broader waveform theorems need encoding/control/action resource accounting.
+WP14 remains mandatory. Baseline mean energy cannot bound arbitrary parameter-dependent coherent waveform synthesis. The frozen science content includes an explicit coherent-sideband counterexample; broader waveform theorems need encoding/control/action resource accounting.
 
-# Preferred manuscript — Rev4
+# Preferred publication manuscript — Rev5
 
 Working title: **A Sharp Energy-Survival Law for Temporal Fisher Information**.
 
 Generation chain:
 
-`Rev1 -> Rev2 mechanical -> Rev3 hostile-review repair -> Rev4 final conservative polish`.
+`Rev1 -> Rev2 mechanical -> Rev3 hostile-review repair -> Rev4 science/claim polish -> Rev5 publication figure/hidelinks`.
 
-Rev4 verification:
+**Rev4 freezes the science content. Rev5 changes no theorem, proof, coefficient, source hypothesis, or novelty claim.** Rev5 adds one conceptual two-column figure explaining the parameter-entry/source-to-record architecture and hides hyperlink decorations.
+
+Rev5 verification:
 
 - full local `pdflatex -> BibTeX -> pdflatex -> pdflatex`: PASS;
-- 7 pages;
+- 7 pages, 393.5 kB in the final reproduced build;
 - unresolved citations/references: 0;
 - overfull boxes: 0;
 - undefined controls/fatal errors: 0;
+- residual APS-incompatible `boxed` markup: 0;
 - seven-page render/visual inspection: PASS;
-- deterministic random-POVM theorem validation committed;
+- Figure 1 readability/scope value: PASS;
+- deterministic random-POVM theorem validation: PASS;
 - DOI/title/provenance bibliography audit: PASS after correction.
-
-Concrete manuscript defects found and repaired during preflight included missing REVTeX theorem/proof setup, APS-incompatible `boxed` markup, a generated-math blank-line failure, undefined `cK`, notation collision between spectral measure and Poisson mean, continuum-atoms wording, two-quadrature ambiguity, a verbal-only sideband no-go, two-column heading overflow, and a wrong Pocovnicu title paired with the correct DOI.
 
 The remote branch-push GitHub Actions run is not directly visible through the current connector. Equivalent full local build verification is complete; do not claim remote-job inspection unless it later becomes available.
 
 # Publication gate
 
-**PASSED for science-draft formation.**
+**PASSED.**
 
-Rev4 is the preferred frozen science draft. Reopen only for a concrete theorem defect, priority collision, build failure, or referee-level objection.
+Rev5 is the preferred frozen publication draft. Reopen science only for a concrete theorem defect, priority collision, build failure, or referee-level objection.
 
 ## Immediate next action
 
 1. no new theorem accumulation by default;
-2. inspect remote Rev4 CI if accessible;
-3. add a figure only if it materially improves comprehension;
-4. prepare submission metadata only from factual information;
-5. retain conservative priority language.
+2. journal targeting and submission engineering;
+3. prepare submission metadata/compliance only from factual information;
+4. retain conservative priority language;
+5. inspect remote CI only if it becomes accessible.
 
 ## Documentation rule
 
