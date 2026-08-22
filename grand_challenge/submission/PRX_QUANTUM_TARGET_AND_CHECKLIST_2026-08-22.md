@@ -2,40 +2,35 @@
 
 **Updated:** 2026-08-22
 
-**Science checkpoint:** WP24
+**Science frontier:** WP27
 
-**Preferred submission manuscript:** **Rev7 PRX Quantum**
+**Preferred submission manuscript:** **Rev10 — Spectral Resource Laws for Temporal Fisher Information** once the Rev10 CI/build/render gate passes.
 
 ## Decision
 
 ### First target: PRX Quantum — Research Article
 
-PRX Quantum remains the strongest realistic first target. The manuscript sits directly at the intersection of quantum metrology/sensing, quantum measurement, resource-style constraints, `U(1)` time-translation structure, photon wavepackets, and detector/source physics.
+PRX Quantum is now well justified on an **exceptional connection / exceptional insight** case. The manuscript combines:
 
-The strongest editorial case is an **exceptional connection/insight**:
+- a sharp finite-copy arbitrary-POVM Fisher-tail ceiling;
+- controlled continuum spectral-survival law;
+- a Herglotz/Toeplitz consistency law for one fixed one-copy measurement across all harmonics;
+- divergent near-lossless energetic cost;
+- proof that the `(1-R)^(-1/2)` divergence exponent is sharp;
+- complete one-copy saturation classification by geometric mixtures / Hausdorff moments;
+- a completely monotone continuum equality cone;
+- quantitative tightness for a smooth truncated-Gaussian single photon;
+- source-to-record inheritance for independent quantum-marked Poisson sources.
 
-- modes-of-asymmetry theory identifies available energy-gap components;
-- the manuscript converts that kinematic structure into a sharp **operational classical-Fisher ceiling for any actual POVM**;
-- the result remains valid for arbitrary finite-copy collective measurements;
-- one common measurement saturates the full geometric harmonic hierarchy;
-- an explicit nonextremal single-photon example approaches the survival ceiling closely;
-- the normalized source law survives arbitrary parameter-independent field formation and detector processing for the stated independent-event source class.
+### Fallback
 
-Do not pitch the paper merely as “mean energy bounds temporal Fisher information.” The principal theorem is the population-survival law.
+Physical Review A — Regular Article.
 
-### Preferred fallback: Physical Review A — Regular Article
+Do not force a PRL rewrite by hiding assumptions or proof structure.
 
-If PRX Quantum declines on selectivity rather than correctness, Physical Review A is the preferred fallback/transfer target. Do not broaden the claims to chase editorial novelty.
+## Claim hierarchy
 
-### PRL
-
-PRL remains a stretch requiring a deliberate Letter rewrite. Do not compress Rev7 by hiding essential hypotheses or proof structure.
-
----
-
-# Rev7 scientific framing for submission
-
-## Exact finite-copy theorem
+### Finite-copy theorem
 
 For exact periodic random-time encoding,
 
@@ -43,125 +38,114 @@ For exact periodic random-time encoding,
 
 for any finite number of independently encoded copies and any joint POVM, including entangled collective measurements.
 
-## Controlled continuum theorem
-
-For controlled periodic-to-continuum limits,
+### Controlled continuum survival law
 
 `R(nu) <= Pr(Omega>=nu)`.
 
-This is the main continuum statement.
+`Ebar+=hbar<Omega>` is mean excess energy above the participating lower edge. `hfR` and the area law are first-moment corollaries.
 
-`Ebar+=hbar<Omega>` is mean **excess energy above the participating lower edge**, not a common carrier offset.
+### Fixed-one-copy common-measurement law
 
-The integrated and pointwise energy inequalities are first-moment corollaries, not the independent core theorem.
+For one fixed one-copy POVM,
 
-## Modes-of-asymmetry distinction
+`R_M(k)=int cos(k theta) J_M(dtheta)`.
 
-Acceptable submission framing:
+Therefore the retention sequence is positive definite and its Toeplitz matrices are PSD.
 
-> Established modes-of-asymmetry theory identifies which `U(1)` energy-gap components can occur. The present theorem instead bounds the classical Fisher information that any actual measurement can extract about a perturbation of the random-time mixing distribution, with a sharp coefficient determined by participating energy populations.
+With `q=R_M(nu)`,
 
-## Nonextremal photon example
+`Ebar+ >= hbar nu A(q)`,
 
-Rev7 includes a transform-limited truncated-Gaussian single-photon spectrum. Canonical covariant timing reaches approximately:
+`A(q) ~ 1/sqrt(2(1-q))`.
 
-- 96.6% of the survival ceiling at `nu=0.5 sigma`;
-- 88.5% at `nu=sigma`.
+This divergence statement must always retain the **fixed one-copy/common-POVM** qualifier.
 
-This is a physical significance example, not a new theorem or equality claim.
+For the continuum Herglotz extension, the controlled limit must be normalized positive definite **and continuous at the origin** before Bochner is invoked.
 
----
+### Sharp exponent
 
-# Claim discipline
+The finite sine profile
 
-Use:
+`a_n=sqrt(2/(L+1)) sin((n+1)pi/(L+1))`
 
-- “operational Fisher-information ceiling”;
-- “for the random-time source class considered here”;
-- “controlled periodic-to-continuum limit”;
-- “mean excess energy above the participating lower edge”;
-- “targeted searches did not identify an exact predecessor”;
-- “sharp within the stated model and attained by…”
+under canonical phase measurement has
 
-Avoid:
+`R_L(1)=cos^2(pi/(L+1))`,
 
-- “universal law for arbitrary optical waveforms”;
-- “all quantum detectors obey…” without the source hypothesis;
-- “new `U(1)` mode decomposition”;
-- “new Hardy--Hilbert inequality”;
-- treating the `hfR` first-moment corollary as the deepest theorem;
-- treating `Ebar+` as total laboratory/carrier energy;
-- unqualified direct-continuum claims outside the controlled construction.
+`nbar_L=(L-1)/2`,
+
+hence
+
+`nbar_L ~ pi/[2 sqrt(1-R_L(1))]`.
+
+Therefore the inverse-square-root divergence exponent is sharp. Do **not** claim the globally optimal asymptotic constant.
+
+### Complete extremizers
+
+On the full contiguous pure-sector one-copy chain with positive populations:
+
+`first-harmonic saturation`
+
+`<=> geometric-mixture populations`
+
+`<=> Hausdorff-moment tails`
+
+`<=> one source-adapted POVM saturates every harmonic simultaneously`.
+
+No converse is claimed for arbitrary entangled `N>1` collective POVMs, sparse spectra, or arbitrary mixed sector blocks.
+
+## Prior-art discipline
+
+Do not claim novelty for:
+
+- `U(1)` mode decomposition / weighted twirling;
+- Herglotz or Bochner theorems;
+- Hausdorff or Bernstein--Widder moment theory;
+- geometric/exponential mixtures;
+- canonical phase POVMs;
+- finite sine states;
+- generic QFI/Holevo/RLD/SLD machinery;
+- generic Poisson/CPTP data processing.
+
+Berry--Wiseman 2000 is cited for the established sine-state phase-estimation construction. Its role here is only as a sharpness witness for the new retention--energy divergence law.
 
 **Priority remains unverified, not certified.**
 
----
-
-# Rev7 package status
+## Rev10 package
 
 Generation chain:
 
-`Rev1 -> Rev2 -> Rev3 -> Rev4 -> Rev5 -> Rev6 PRX packaging -> Rev7 referee hardening -> Rev7 layout repair`.
+`Rev1 -> Rev2 -> Rev3 -> Rev4 -> Rev5 -> Rev6 -> Rev7 -> Rev8 -> Rev9 spectral theory -> Rev9 abstract compression -> Rev10 referee closure`.
 
-Final local Rev7 preflight:
+Rev10 generator:
 
-- full `pdflatex -> BibTeX -> pdflatex -> pdflatex`: **PASS**;
-- **8 pages**;
-- file size: **403,102 bytes**;
-- SHA-256: `d168c3901faa6f29bda0eba71abe8049cc9819d91843273beeeeffb9443818ae`;
-- unresolved citations/references: **0**;
-- overfull boxes: **0**;
-- fatal/undefined controls: **0**;
-- all pages rendered at 200 dpi and visually inspected: **PASS**;
-- Figure 1: **PASS**;
-- photon-example closed forms and periodic-approximant convergence: **PASS**.
+`grand_challenge/manuscript/apply_rev10_referee_closure.py`
 
-Dedicated CI generates Rev7, runs the finite-copy theorem validator and photon-example validator, compiles the PRX source, and applies reference/layout/style gates.
+Validation scripts:
 
-Detailed preflight:
+- `grand_challenge/numerics/verify_operational_tail_bound.py`
+- `grand_challenge/numerics/verify_truncated_gaussian_photon_example.py`
+- `grand_challenge/numerics/verify_complete_monotone_saturation.py`
+- `grand_challenge/numerics/verify_herglotz_high_retention.py`
+- `grand_challenge/numerics/verify_sine_profile_divergence_sharpness.py`
 
-`grand_challenge/notes/MANUSCRIPT_REV7_REFEREE_HARDENING_2026-08-22.md`.
+Dedicated CI generates Rev10, compiles the PRX source, and rejects unresolved references, overfull boxes, loss of the local-Fisher qualifier, loss of one-copy/common-POVM scope, missing continuity-at-zero before Bochner, missing sharp-exponent proposition, or regression to the invalid recycled-cosine-lobe claim.
 
----
+## Submission materials
 
-# Submission materials
+- [x] Rev10 cover letter updated.
+- [x] Rev10 Popular Summary updated.
+- [x] AI-use / Data Availability disclosure draft retained.
+- [x] Bibliography includes current 2026 temporal-Fisher/time-frequency literature and Berry--Wiseman provenance for the sine-state witness.
+- [x] WP25/WP26/WP27 theorem notes committed.
+- [x] Rev10 deterministic generator committed.
+- [x] Rev10 numerical sharpness validator committed.
+- [ ] Rev10 CI compile gate confirmed.
+- [ ] Rev10 final rendered-page visual inspection recorded.
+- [ ] Rev10 final PDF/source package checksum recorded.
 
-- [x] Rev7 PRX Quantum manuscript source generated.
-- [x] Figure 1 source committed and visually verified.
-- [x] Bibliography DOI/title audit completed.
-- [x] Added single-photon/time-frequency context references audited.
-- [x] Finite-copy numerical adversarial validator committed.
-- [x] Truncated-Gaussian photon validator committed.
-- [x] PRX Quantum cover letter updated for Rev7.
-- [x] PRX Quantum Popular Summary updated for Rev7.
-- [x] AI-use/Data Availability disclosure draft prepared from the documented workflow.
-- [x] Full local build and visual gate passed.
+Administrative facts that cannot be known without user input remain placeholders. Do not invent affiliation, funding, conflicts, or submission history.
 
-Administrative fields that cannot be known without user-supplied facts may remain placeholders and are handled at submission. Do not invent author affiliation, funding, conflicts, prior-submission history, or similar metadata.
+## Current action
 
----
-
-# AI-use / Data Availability package
-
-The repository contains a factual disclosure draft documenting OpenAI ChatGPT (GPT-5.6 Sol) use for theoretical exploration, literature synthesis, proof checking, code assistance, manuscript editing, figure development, and build engineering, together with the validation actually performed in the workflow.
-
-Do **not** add a separate “human verification” project gate. Any portal-specific author attestation is part of the human act of submission, not another research cycle.
-
-Recommended Data Availability form once a stable repository state is cited:
-
-> No experimental data were created or analyzed in this study. Source code used for numerical validation and the manuscript and figure source files supporting the analytical results are publicly available in the project repository at [STABLE COMMIT / RELEASE / ARCHIVAL CITATION].
-
----
-
-# Journal ladder
-
-1. **PRX Quantum — Research Article**.
-2. **Physical Review A — Regular Article**.
-3. Physical Review Research — secondary alternative.
-4. PRL — only after a separate deliberate Letter rewrite.
-
-Do not shotgun-submit the same manuscript simultaneously to multiple journals.
-
-# Current action
-
-**Freeze Rev7.** The manuscript and submission materials are complete to the fullest extent currently justified. Reopen only for a concrete theorem defect, historical-priority collision, build/rendering defect, unavoidable journal-format requirement, or new referee-level objection.
+Complete the three unchecked mechanical gates above. If they pass, **freeze Rev10**. Do not start a new prefactor-optimization project or add another example unless a concrete mathematical or referee-level issue appears.
