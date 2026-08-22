@@ -4,8 +4,6 @@
 
 **Article type:** Research Article
 
-**Status:** Draft. Administrative placeholders must be completed truthfully by the submitting author.
-
 ---
 
 Dear Editors of PRX Quantum,
@@ -14,19 +12,27 @@ Please consider our manuscript, **“A Sharp Energy-Survival Law for Temporal Fi
 
 The manuscript addresses a basic quantum-metrology question for temporal signals: when temporal structure is encoded in the probability distribution of the random emission time of a fixed quantum excitation, what source resource limits the Fisher information that any physically allowed downstream measurement can recover?
 
-For a periodic random-time experiment, we derive a finite-copy operational bound that applies to **any joint POVM on any finite number of independently encoded excitations**, including entangled collective measurements. The accessible two-quadrature Fisher information in temporal harmonic `k` is bounded by a paired spectral population and, universally, by the excitation-energy survival probability above the corresponding generator gap. Summing the harmonic bounds gives an exact mean-excitation budget. A controlled large-period construction then yields a pointwise continuum survival law and an integrated energy-information bound. The constants are sharp: a geometric excitation spectrum with a canonical phase measurement saturates every discrete harmonic simultaneously, with an exponential-spectrum/Cauchy-time continuum equality family.
+For the exact periodic random-time experiment, we prove a finite-copy operational bound that applies to **any joint POVM on any finite number of independently encoded excitations**, including entangled collective measurements. The accessible two-quadrature Fisher information in temporal harmonic `k` is bounded by paired spectral populations and, universally, by the excitation-population tail above the corresponding generator gap. Summing these modewise ceilings gives an exact mean-excitation budget. For controlled periodic-to-continuum limits, the result becomes the survival law
 
-We believe the work is particularly appropriate for PRX Quantum because it connects several areas within the journal’s scope: quantum metrology and sensing, quantum measurement, resource-style constraints, random-unitary/time-translation mixing, and photon-source/detector physics. The result is operational rather than a separately optimized quantum-Fisher-information envelope: it bounds the classical Fisher information of one actual measurement even when arbitrary finite-copy collective readout is permitted. We also show how the bound is inherited by an independent quantum-marked compound-Poisson source under arbitrary parameter-independent source-to-bosonic-field dynamics and detector processing.
+`R(nu) <= Pr(Omega >= nu)`.
 
-The manuscript is deliberately conservative about scope and priority. Established `U(1)` mode decompositions, weighted twirling, canonical phase measurements, quantum Fisher information, random-unitary parameter estimation, and the classical Hardy--Hilbert mathematics used in a secondary comparison are explicitly credited as prior art. The positive theorem is restricted to random temporal-distribution encoding of a fixed excitation, and the paper includes an explicit coherent-sideband counterexample showing why baseline mean energy alone cannot bound arbitrary parameter-dependent waveform-state synthesis. Targeted literature searches have not identified an exact predecessor of the operational population-tail/survival Fisher bound, but we do not claim priority beyond what can be supported by that review.
+Here `Omega` is excess generator frequency above the participating lower edge; a common carrier-energy offset is not the resource. The familiar pointwise `hf` relation is only a first-moment corollary of this stronger survival-function statement.
 
-The manuscript is analytical. A deterministic numerical script provides only sanity checks of the finite-dimensional inequality; the theorem itself is proved analytically. One conceptual figure summarizes the parameter-entry point, the arbitrary parameter-independent downstream channel, and the scope boundary.
+The bound is sharp. A geometric excitation spectrum with a canonical phase measurement saturates every discrete harmonic simultaneously, and its controlled continuum limit gives the exponential-spectrum/Cauchy-time equality family. To show that the result is not confined to that extremal construction, the revised manuscript also analyzes a transform-limited truncated-Gaussian single-photon wavepacket. Canonical covariant timing retains about 96.6% of the survival ceiling at half a Gaussian spectral width and 88.5% at one width.
 
-**Submission history:** [State any previous consideration by an APS/Physical Review journal, or write truthfully that there is none. If a preprint has been posted, provide the e-print identifier.]
+We believe the work is particularly appropriate for PRX Quantum because it establishes a direct operational connection among quantum metrology, `U(1)` asymmetry, time-frequency quantum optics, and photodetection. Modes-of-asymmetry theory identifies which energy-gap components can occur under the symmetry; the present theorem instead bounds the **classical Fisher information extractable by any actual measurement**, with a sharp coefficient determined solely by participating populations. The distinction survives arbitrary finite-copy collective readout.
 
-**Recommended referees:** [Optional; provide names, affiliations, and email addresses only if the submitting author wishes to recommend referees.]
+For an independent quantum-marked compound-Poisson source, the bound is inherited under arbitrary parameter-independent source-to-bosonic-field dynamics and detector processing. Wavepacket overlap, propagation, loss, mode mixing, coherent detector memory, ancillas, and final joint measurement can all be absorbed into the downstream channel. The manuscript also states the source-class boundary explicitly and gives a coherent-sideband counterexample showing why baseline mean energy alone cannot constrain arbitrary parameter-dependent waveform-state synthesis.
 
-**Excluded referees/institutions:** [Optional; provide only if there is a concrete conflict or other defensible reason.]
+The paper is deliberately conservative about prior art. Weighted `U(1)` twirling, energy-gap mode decompositions, canonical phase measurements, energy-constrained phase estimation, quantum Fisher information, random-unitary estimation, and the classical inequalities used in a secondary comparison are explicitly credited rather than presented as new. The candidate contribution is the operational classical-Fisher population-tail/survival law, its all-mode resource budget, its exact sharpness, and its source-to-record consequence.
+
+The work is analytical. Numerical scripts are used only to adversarially test finite-dimensional instances and to verify the closed-form nonextremal photon example; the principal results are proved analytically. One conceptual figure summarizes the parameter-entry point, downstream data processing, the survival law, and the excluded waveform-synthesis class.
+
+**Submission history:** [insert if applicable]
+
+**Recommended referees:** [optional]
+
+**Excluded referees/institutions:** [optional]
 
 Thank you for your consideration.
 
