@@ -2,7 +2,9 @@
 
 **Current status: 2026-08-21**
 
-This repository has progressed beyond the original broad resource-search phase. The current project consists of two frozen papers plus one active high-risk theoretical program.
+`main` is the repository landing/index branch. Detailed active derivations live on `agent/temporal-information-resource-law`.
+
+The project consists of two frozen papers plus one active high-risk theoretical program.
 
 ## Current branches and deliverables
 
@@ -34,9 +36,9 @@ The active question is:
 
 > **For a physically realizable measurement of temporal structure, what fundamental quantum resources constrain source-to-record temporal Fisher-information transfer?**
 
-## Strongest current grand-challenge result
+The **theorem stack is through WP15**. The **latest research checkpoint is WP16**, a deep priority audit.
 
-The active theorem stack is through **WP15**.
+## Strongest current grand-challenge result
 
 For a normalized positive excitation-frequency density `q(omega)` with finite first moment `omega_bar`, define the random-time Fourier-mode quantum retention
 
@@ -60,11 +62,31 @@ this implies
 
 `boxed: E_bar^+ >= (2/pi) h B q0`.
 
-The constant is sharp as a supremum. The proof is based on rearrangement/layer-cake reduction and a positive Mellin-convolution operator with exact norm `pi/4`.
+The constant is sharp as a supremum.
+
+## WP16 priority correction
+
+WP16 establishes that the sharp WP15 operator norm
+
+`||T||=pi/4`, for `L(s,t)=2st/(s+t)^3`,
+
+is an explicit specialization of classical parameterized Hardy–Hilbert integral inequalities. With `lambda=3`, `f(x)=xr(x)`, `g(y)=yr(y)`, the classical best constant is `B(3/2,3/2)=pi/8`; the factor `2` in the WP15 kernel produces `pi/4`.
+
+Therefore **do not claim mathematical novelty for the `pi/4` operator norm, Mellin/Hilbert inequality, or Beta/Gamma sharp constant**.
+
+The remaining priority question is quantum-statistical: targeted searches have not yet found an exact predecessor for estimating a Fourier coefficient of a latent random `U(1)` translation distribution with
+
+`G_Q(k)=2 sum_n q_n q_{n+k}/(q_n+q_{n+k})`
+
+or the summed law
+
+`sum_{k>=1}G_Q(k)<=2 nbar`.
+
+**Quantum priority is not certified.**
 
 ## Important scope boundary
 
-This strongest theorem applies to **random temporal-distribution encoding of a fixed semibounded-energy excitation**. It is not currently a theorem for arbitrary parameter-dependent quantum waveform synthesis.
+The strongest theorem applies to **random temporal-distribution encoding of a fixed semibounded-energy excitation**. It is not currently a theorem for arbitrary parameter-dependent quantum waveform synthesis.
 
 WP14 gives an explicit coherent-field no-go showing that baseline mean energy alone cannot bound arbitrary high-frequency waveform tangents; a broader theorem would need an encoding/control/action resource.
 
@@ -72,10 +94,11 @@ WP14 gives an explicit coherent-field no-go showing that baseline mean energy al
 
 Before a new foundational manuscript is drafted:
 
-1. complete a deep priority audit for exact equivalents of WP10/WP12/WP15;
-2. determine operational attainability of the integrated `pi` coefficient by one measurement family;
-3. strengthen the independent quantum-marked Poisson/event-to-field embedding;
-4. preserve the WP14 source-encoding boundary and claim discipline.
+1. search specifically for estimation of Fourier coefficients/mixing weights of `U(1)` random-unitary channels and probability measures on compact groups;
+2. determine whether the harmonic-mean density inequality itself appears explicitly in classical analysis; its sharp operator constant is already classical;
+3. determine operational attainability of the integrated `pi` coefficient by one measurement family;
+4. strengthen the independent quantum-marked Poisson/event-to-field embedding;
+5. preserve the WP14 source-encoding boundary and claim discipline.
 
 ## Where to read the live state
 
@@ -86,9 +109,10 @@ Switch to branch:
 Then read:
 
 1. `grand_challenge/AGENTS.md`
-2. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
-3. `docs/CURRENT_RESEARCH_STATE.md`
-4. `ROADMAP.md`
+2. `grand_challenge/notes/WP16_DEEP_PRIORITY_AUDIT_RANDOM_TIME_QFI_AND_HARDY_HILBERT_COLLISION.md`
+3. `grand_challenge/notes/WP15_GENERAL_DENSITY_PROOF_OF_SHARP_PI_AREA_INEQUALITY.md`
+4. `docs/CURRENT_RESEARCH_STATE.md`
+5. `ROADMAP.md`
 
 ## Documentation policy
 
