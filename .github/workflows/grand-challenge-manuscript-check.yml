@@ -38,21 +38,25 @@ jobs:
         working-directory: grand_challenge/manuscript
         run: python apply_rev4_final_polish.py
 
+      - name: Generate Grand Challenge Rev5 publication figure pass
+        working-directory: grand_challenge/manuscript
+        run: python apply_rev5_publication_figure.py
+
       - name: Run operational-tail numerical validation
         working-directory: grand_challenge
         run: python numerics/verify_operational_tail_bound.py
 
-      - name: Compile Grand Challenge Rev4
+      - name: Compile Grand Challenge Rev5
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: energy_survival_temporal_fisher_rev4.tex
+          root_file: energy_survival_temporal_fisher_rev5.tex
           working_directory: grand_challenge/manuscript
           latexmk_use_xelatex: false
 
       - name: Check for unresolved references, citations, or box overflow
         working-directory: grand_challenge/manuscript
         run: |
-          LOG=energy_survival_temporal_fisher_rev4.log
+          LOG=energy_survival_temporal_fisher_rev5.log
           if grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|Package natbib Warning:.*undefined" "$LOG"; then
             echo "Unresolved LaTeX references/citations detected"
             exit 1
@@ -61,17 +65,18 @@ jobs:
             echo "Overfull LaTeX boxes detected"
             exit 1
           fi
-          if grep -F '\boxed{' energy_survival_temporal_fisher_rev4.tex; then
+          if grep -F '\boxed{' energy_survival_temporal_fisher_rev5.tex; then
             echo "APS-incompatible boxed markup remains"
             exit 1
           fi
 
-      - name: Upload Grand Challenge Rev4 artifact
+      - name: Upload Grand Challenge Rev5 artifact
         uses: actions/upload-artifact@v4
         with:
-          name: energy-survival-temporal-fisher-rev4
+          name: energy-survival-temporal-fisher-rev5
           path: |
-            grand_challenge/manuscript/energy_survival_temporal_fisher_rev4.pdf
+            grand_challenge/manuscript/energy_survival_temporal_fisher_rev5.pdf
+            grand_challenge/manuscript/energy_survival_temporal_fisher_rev5.tex
             grand_challenge/manuscript/energy_survival_temporal_fisher_rev4.tex
             grand_challenge/manuscript/energy_survival_temporal_fisher_rev3.tex
             grand_challenge/manuscript/energy_survival_temporal_fisher_rev2.tex
@@ -79,5 +84,7 @@ jobs:
             grand_challenge/manuscript/apply_rev2_mechanical.py
             grand_challenge/manuscript/apply_rev3_hostile_review.py
             grand_challenge/manuscript/apply_rev4_final_polish.py
+            grand_challenge/manuscript/apply_rev5_publication_figure.py
+            grand_challenge/manuscript/figure1_operational_architecture_body.tex
             grand_challenge/manuscript/references.bib
             grand_challenge/numerics/verify_operational_tail_bound.py
