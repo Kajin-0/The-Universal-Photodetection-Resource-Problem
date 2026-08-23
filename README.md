@@ -9,13 +9,13 @@ The repository is authoritative; chat history is not.
 1. Paper 1 / Rev11 — frozen.
 2. Paper 2 / Rev7 — frozen.
 3. Random-time spectral-resource Rev11 — frozen on `agent/temporal-information-resource-law`.
-4. Autonomous temporal-information program — active on `agent/autonomous-temporal-information-law`.
+4. Autonomous temporal-information program — theorem frontier frozen at WP32/WP33; separate dynamical follow-up now at final PRA R1 publication state on `agent/autonomous-temporal-information-law`.
 
-**Active autonomous frontier: WP32; hostile audit: WP33.**
+The PRX Quantum R3 two-regime manuscript is build-verified, standalone, and science-frozen.
 
-The PRX Quantum R3 two-regime manuscript is build-verified, standalone, and science-frozen while a separate dynamical/infinite-dimensional follow-up is evaluated.
+The separate follow-up manuscript is also now scientifically frozen at the audited D2 theorem/proof baseline, with PRA R1 as its journal-facing publication layer.
 
-Authoritative handoff: `autonomous_temporal_information/AGENTS.md`.
+Authoritative current handoff: `manuscript/dynamical_implementation_cost/MANUSCRIPT_HANDOFF.md`.
 
 ## Current strongest autonomous theorem
 
@@ -25,13 +25,42 @@ For a stationary rank-changing temporal model with a prescribed feasible positiv
 
 For the clean single-gap endpoint action,
 
-`boxed: V_min=A_ex^(2)/(hbar nu)`.
+`boxed: A_ex^(2)=hbar nu V_min`.
 
 WP32 proves this optimum even for separable infinite-dimensional targets and arbitrary stationary spectator curvature, including curvature in target-energy shells unoccupied at baseline, while conserving total energy exactly with a semibounded ancilla.
 
 The construction uses a classical mixture of ancilla-labelled baseline branches, proportional replication of the horizontal tangent, and nonnegative input/output ancilla-energy compensation for excess curvature flags. Finite state-weighted quadratic cost suffices for trace-norm `C^2` regularity; no fourth-moment condition is required.
 
 **WP31 is superseded** because its zero-energy-ancilla construction omitted unoccupied target-energy spectator sectors.
+
+## Publication status
+
+The post-R3 theorem chain has been developed as a separate paper:
+
+> **Exact minimum dynamical cost of prescribed rank-changing quantum-state curvature**
+
+Canonical publication package:
+
+- `manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_pra_r1.tex`;
+- `manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_supplement_pra_r1.tex`;
+- `manuscript/dynamical_implementation_cost/MANUSCRIPT_HANDOFF.md`;
+- `manuscript/dynamical_implementation_cost/PRA_R1_FINAL_PUBLICATION_AUDIT_2026-08-23.md`.
+
+Final observable CI run `32667189807`: **PASS** across deterministic D2 regeneration, PRA transforms, committed-source freshness, theorem/proof freeze, main compile, supplement compile, final LaTeX quality gate, and artifact upload.
+
+Final artifact `9500374374` has SHA-256 `7bc86f37407f1a4875e0f4a6cd3aaa14db4cf61166afd2efd5df8c1f3fa7e7b4`.
+
+The exact final PDFs are 11 pages (main) and 10 pages (supplement) and were render-inspected with no clipping, overlap, broken glyph, title mismatch, or theorem-layout defect.
+
+## Final publication-facing audit
+
+No theorem defect or direct known prior-art collision was identified. Priority remains **unverified, not certified**.
+
+A current nearby result, Huang et al. (2026), arXiv:2605.27907, studies the **Riemannian curvature of the Bures metric** near rank-changing states. PRA R1 now explicitly distinguishes that geometry from this paper's prescribed state-family kernel Hessian contraction `C`.
+
+The final publication layer also contains a methods-level `AI-Assisted Research and Verification` disclosure for substantive OpenAI ChatGPT / GPT-5.6-series use and software-aware Data Availability wording for internal numerical-validation scripts.
+
+The D2 theorem/proof body remains unchanged by these publication-layer corrections.
 
 ## Supporting post-R3 chain
 
@@ -47,19 +76,17 @@ The construction uses a classical mixture of ancilla-labelled baseline branches,
 
 ## Prior-art boundary
 
-Covariant/energy-conserving Stinespring dilation, Bures/Uhlmann horizontal geometry, QFI convex-roof variance, generic quantum speed limits/control norms, infinite-dimensional QFI/Bures theory, classical nonregular boundary statistics, and standard second-order PSD-cone/operator mathematics are prior art.
+Covariant/energy-conserving Stinespring dilation, Bures/Uhlmann horizontal geometry, Riemannian Bures curvature, QFI convex-roof variance, generic quantum speed limits/control norms, infinite-dimensional QFI/Bures theory, classical nonregular boundary statistics, and standard second-order PSD-cone/operator mathematics are prior art.
 
-The narrow candidate contribution is the **frequency-resolved endpoint synthesis action as the exact minimum state-weighted quadratic implementation-coupling cost for a prescribed feasible rank-changing local kernel 2-jet under globally conserving relational dynamics**, together with controlled detuning and infinite-dimensional extensions.
-
-Priority remains **unverified, not certified**.
+The narrow candidate contribution is the **exact minimum state-weighted quadratic implementation-coupling cost for an independently prescribed feasible rank-changing target-kernel curvature under globally conserving relational dynamics**, together with the autonomous spectral endpoint identity.
 
 ## Current work order
 
-1. freeze a minimal follow-up-paper theorem stack;
-2. run a dedicated significance/prior-art gate on that stack;
-3. keep R3 frozen unless an editorial need justifies one compact dynamical corollary;
-4. if the follow-up gate passes, create a separate standalone manuscript workspace;
-5. only then resume new theorem work, prioritizing noisy/CPTP implementation cost or approximate-exchange dynamical cost.
+1. keep PRX Quantum R3 and D2 scientifically frozen;
+2. treat PRA R1 as the canonical journal-facing package;
+3. do not reopen theorem development merely to enlarge the paper;
+4. at submission time, re-check then-current APS requirements and replace anonymous author/affiliation metadata in the submission package only;
+5. resume theory only for a genuine proof/prior-art/referee issue or as a deliberately separate new research program.
 
 ## Manuscript integrity
 
