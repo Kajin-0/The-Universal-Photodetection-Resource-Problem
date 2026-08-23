@@ -5,7 +5,7 @@ import sys
 HERE = Path(__file__).resolve().parent
 logs = [
     HERE / "dynamical_rank_boundary_implementation_cost_pra_r1.log",
-    HERE / "dynamical_rank_boundary_implementation_cost_supplement_d2.log",
+    HERE / "dynamical_rank_boundary_implementation_cost_supplement_pra_r1.log",
 ]
 
 forbidden = [
