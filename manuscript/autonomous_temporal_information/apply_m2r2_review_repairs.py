@@ -109,6 +109,15 @@ def generate_main() -> None:
         raise RuntimeError("expected one Fcl macro")
     text = text.replace(old_macro, r"\newcommand{\Fcl}{F^{\mathrm{tan}}}", 1)
 
+    # The R1 source used a superscript to label the Bohr mode. With the R2
+    # tangent-Fisher superscript this would create a TeX double superscript;
+    # move the mode label into the subscript: F^tan_{N,nu}.
+    old_mode = r"\Fcl_N^{(\nu)}"
+    mode_count = text.count(old_mode)
+    if mode_count == 0:
+        raise RuntimeError("expected at least one frequency-labelled Fisher block")
+    text = text.replace(old_mode, r"\Fcl_{N,\nu}")
+
     anchor = "For $N$ independently encoded copies, $\\Fcl_N$ denotes the Fisher matrix of an arbitrary joint POVM; no separability or asymptotic assumption is imposed unless stated explicitly. For multiple modes, the coordinate space is the direct sum of these cosine--sine planes with its Euclidean metric. Accordingly, the Fisher and Hessian traces below refer to this fixed physical quadrature normalization; invariance under arbitrary anisotropic reparameterizations is not claimed."
     if text.count(anchor) != 1:
         raise RuntimeError("quadrature-metric anchor changed")
@@ -123,7 +132,7 @@ def generate_main() -> None:
         raise RuntimeError(f"expected one mixed section replacement, got {n}")
 
     MAIN_OUT.write_text(text, encoding="utf-8")
-    print(f"generated {MAIN_OUT.name}")
+    print(f"generated {MAIN_OUT.name}; relabelled {mode_count} frequency Fisher blocks")
 
 
 def generate_supplement() -> None:
