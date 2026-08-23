@@ -46,6 +46,10 @@ jobs:
           working_directory: manuscript/dynamical_implementation_cost
           latexmk_use_xelatex: false
 
+      - name: Final LaTeX quality gate
+        working-directory: manuscript/dynamical_implementation_cost
+        run: python check_build_logs.py
+
       - name: Upload standalone D2 manuscript build
         uses: actions/upload-artifact@v4
         with:
