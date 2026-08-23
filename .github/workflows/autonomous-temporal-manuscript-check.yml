@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   compile:
@@ -61,3 +61,23 @@ jobs:
             manuscript/autonomous_temporal_information/MANUSCRIPT_HANDOFF.md
             manuscript/autonomous_temporal_information/M2_HOSTILE_THEOREM_LANGUAGE_AND_DIMENSION_AUDIT.md
             manuscript/autonomous_temporal_information/M2R1_POST_REWRITE_HOSTILE_AUDIT.md
+
+      - name: Publish compiled PDFs to branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build_artifacts
+          cp manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_prxq_r1.pdf \
+             build_artifacts/autonomous_temporal_resource_law_prxq_r1.pdf
+          cp manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_supplement_m2r1.pdf \
+             build_artifacts/autonomous_temporal_resource_law_supplement_m2r1.pdf
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add build_artifacts/autonomous_temporal_resource_law_prxq_r1.pdf \
+                  build_artifacts/autonomous_temporal_resource_law_supplement_m2r1.pdf
+          if git diff --cached --quiet; then
+            echo "Compiled PDFs unchanged; nothing to publish."
+          else
+            git commit -m "Publish PRXQ R1 compiled PDFs [skip ci]"
+            git push origin HEAD:agent/autonomous-temporal-information-law
+          fi
