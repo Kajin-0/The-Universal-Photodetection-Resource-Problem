@@ -25,10 +25,10 @@ jobs:
           working_directory: manuscript/autonomous_temporal_information
           latexmk_use_xelatex: false
 
-      - name: Compile theorem-first supplement
+      - name: Compile canonical M2 supplement
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: autonomous_temporal_resource_law_supplement.tex
+          root_file: autonomous_temporal_resource_law_supplement_m2.tex
           working_directory: manuscript/autonomous_temporal_information
           latexmk_use_xelatex: false
 
@@ -39,7 +39,9 @@ jobs:
           path: |
             manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_draft.pdf
             manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_draft.tex
-            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_supplement.pdf
-            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_supplement.tex
+            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_supplement_m2.pdf
+            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_supplement_m2.tex
+            manuscript/autonomous_temporal_information/proofs/*.tex
             manuscript/autonomous_temporal_information/references.bib
             manuscript/autonomous_temporal_information/THEOREM_PROVENANCE_MATRIX.md
+            manuscript/autonomous_temporal_information/MANUSCRIPT_HANDOFF.md
