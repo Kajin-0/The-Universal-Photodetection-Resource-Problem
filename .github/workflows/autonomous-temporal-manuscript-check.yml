@@ -36,7 +36,7 @@ jobs:
         working-directory: manuscript/autonomous_temporal_information
         run: python apply_m2r3_boundary_strengthening.py
 
-      - name: Generate PRX Quantum R3 front matter and figure
+      - name: Generate frozen PRX Quantum R3 baseline
         working-directory: manuscript/autonomous_temporal_information
         run: python apply_prxq_frontmatter_r3.py
 
@@ -44,10 +44,18 @@ jobs:
         working-directory: manuscript/autonomous_temporal_information
         run: python check_m2_tex_static.py
 
-      - name: Compile PRX Quantum R3 main manuscript
+      - name: Generate narrow PRX Quantum R4 dynamical bridge
+        working-directory: manuscript/autonomous_temporal_information
+        run: python apply_prxq_r4_dynamical_bridge.py
+
+      - name: Verify R4 changes only late scope and discussion
+        working-directory: manuscript/autonomous_temporal_information
+        run: python check_prxq_r4_bridge.py
+
+      - name: Compile PRX Quantum R4 main manuscript
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: autonomous_temporal_resource_law_prxq_r3.tex
+          root_file: autonomous_temporal_resource_law_prxq_r4.tex
           working_directory: manuscript/autonomous_temporal_information
           latexmk_use_xelatex: false
 
@@ -58,12 +66,13 @@ jobs:
           working_directory: manuscript/autonomous_temporal_information
           latexmk_use_xelatex: false
 
-      - name: Upload standalone submission build
+      - name: Upload standalone R4 submission build
         uses: actions/upload-artifact@v4
         with:
-          name: autonomous-temporal-information-prxq-r3-standalone
+          name: autonomous-temporal-information-prxq-r4-dynamical-bridge
           path: |
-            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_prxq_r3.pdf
+            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_prxq_r4.pdf
+            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_prxq_r4.tex
             manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_prxq_r3.tex
             manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_supplement_m2r3.pdf
             manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_supplement_m2r3.tex
