@@ -2,213 +2,239 @@
 
 **Branch:** `agent/autonomous-temporal-information-law`
 
-The frozen Rev11 paper on `agent/temporal-information-resource-law` must remain untouched absent a concrete defect. The current PRX Quantum manuscript on this branch is also **science-frozen at R3** while the new dynamical/robustness work is audited.
+The repository, not chat history, is authoritative. Research is analytical/theoretical; numerical work is allowed for validation. Do not make experiments, fabrication, procurement, or laboratory campaigns necessary next steps.
 
 ## Current phase
 
-Research was explicitly reopened to attack the paper's remaining physical limitations.
+The PRX Quantum manuscript through R3 is **build-verified and scientifically frozen while the post-manuscript theorem chain is audited**. Research was explicitly reopened to address the paper's remaining physical limitations.
 
-The original theorem chain through WP20 has already passed:
+**Current research frontier: WP31.**
 
-- hostile literature/significance gate: **PROVISIONAL PASS for a narrow theorem paper**;
-- hostile mathematical audit: **PASS after targeted corrections**;
-- manuscript R3: build-verified and standalone, with an SLD-QFI boundary corollary and spectator-curvature no-go.
+The old instruction “do not create WP21” is obsolete.
 
-The active frontier is now **WP21–WP25**.
+Do not modify the R3 manuscript merely because new results exist. Add WP21–WP31 only after a dedicated proof/prior-art/significance decision shows that an R4 improves the paper more than it destabilizes it. A separate follow-up paper is a live alternative.
 
-Priority is always **unverified, not certified** until a dedicated prior-art audit says otherwise.
+Priority remains **unverified, not certified**.
 
-## Read first
+## Mandatory first read
 
-1. `notes/WP25_APPROXIMATE_BOHR_GAP_ROBUST_SURVIVAL_LAW.md`
-2. `notes/WP24_INDEPENDENT_PSI_ENVELOPE_AND_CLASSICAL_NONREGULAR_AUDIT.md`
-3. `notes/WP23_EXACT_PRESCRIBED_2JET_DYNAMICAL_IMPLEMENTATION_COST.md`
-4. `notes/WP22_EXACT_MINIMUM_ENERGY_CONSERVING_IMPLEMENTATION_COST.md`
-5. `notes/WP21_DYNAMICAL_IMPLEMENTATION_COUPLING_COST.md`
-6. `notes/PUBLICATION_THEOREM_STACK_AFTER_AUDITS.md`
-7. `README.md`
-8. `ROADMAP.md`
+1. `notes/WP31_EXACT_INFINITE_DIMENSIONAL_ENERGY_CONSERVING_2JET_COST.md`
+2. `notes/WP30_INFINITE_DIMENSIONAL_DYNAMICAL_2JET_COST_AND_ENERGY_DOMAIN_BOUNDARY.md` — historical obstruction, resolved by WP31
+3. `notes/WP29_INFINITE_DIMENSIONAL_BOUNDARY_SYNTHESIS_ACTION_LAW.md`
+4. `notes/WP28_INFINITE_DIMENSIONAL_FINITE_RADIUS_SURVIVAL_LAW.md`
+5. `notes/WP27_APPROXIMATE_EXCHANGE_BOUNDARY_SYNTHESIS_ACTION_LAW.md`
+6. `notes/WP26_HOSTILE_AUDIT_WP23_AND_SECOND_ORDER_PRIOR_ART_BOUNDARY.md`
+7. `notes/WP25_APPROXIMATE_BOHR_GAP_ROBUST_SURVIVAL_LAW.md`
+8. `notes/WP24_INDEPENDENT_PSI_ENVELOPE_AND_CLASSICAL_NONREGULAR_AUDIT.md`
+9. `notes/WP23_EXACT_PRESCRIBED_2JET_DYNAMICAL_IMPLEMENTATION_COST.md`
+10. `notes/WP22_EXACT_MINIMUM_ENERGY_CONSERVING_IMPLEMENTATION_COST.md`
+11. `notes/WP21_DYNAMICAL_IMPLEMENTATION_COUPLING_COST.md`
+12. `manuscript/autonomous_temporal_information/MANUSCRIPT_HANDOFF.md`
 
-## Frozen paper theorem arc through WP20
+## Frozen R3 manuscript story through WP20
 
-The publication claim remains narrowly:
+The manuscript distinguishes two spectral-resource regimes for a globally stationary relative temporal mode.
 
-> Globally stationary relative temporal information has two complementary spectral-resource regimes. Finite-radius information requires pre-existing spectral survival; rank-changing zero-radius information requires positive second-order spectral synthesis action. The clean laws are finite-copy/arbitrary-POVM and sharp in fixed-total-energy shells.
+### Finite affine radius
 
-Do **not** claim a new resource theory of time, new Page–Wootters mechanism, generic QFI theory, or generic control/QSL mathematics.
+For an exact gap `nu`, finite `N`, and arbitrary collective POVM,
 
-Key results:
+`(R_lin^2/4)[Tr F_N^tan/N] <= T(nu)`.
 
-- WP02: `(R_lin^2/4)[Tr F_N/N] <= T(nu)`.
-- WP03/WP06: autonomous dual survival `<=min{T_C,T_S}`.
-- WP07/WP09: one-sided and bilateral rank-boundary synthesis laws.
-- WP18: clean action coefficients `hbar nu/4` bilateral and `hbar nu/2` one-sided.
-- WP19: arbitrary coherent-support shorted-geometry bridge with `Psi_a`.
-- WP20: multi-gap shared-Hessian action sum with one common Fourier measurement saturating the clean star-shell construction.
+For autonomous clock--signal exchange,
 
-R3 additionally proves for a clean pure-boundary tangent
+`(R_lin^2/4)[Tr F_N^tan/N] <= min{T_C(nu),T_S(nu)}`.
+
+### Rank-changing zero radius
+
+One-sided boundary:
+
+`Tr F_N^tan/N <= J <= Delta T`.
+
+Bilateral boundary:
+
+`sqrt(Tr F_N^tan/N) <= sqrt(J_+)+sqrt(J_-)`.
+
+Clean autonomous synthesis action:
+
+- bilateral: `A_C^(2)+A_S^(2) >= (hbar nu/4)[Tr F_N^tan/N]`;
+- one-sided: `A_C^(2)+A_S^(2) >= (hbar nu/2)[Tr F_N^tan/N]`.
+
+R3 additionally records
 
 `A_C^(2)+A_S^(2) >= (hbar nu/4) Tr H_SLD`
 
-and shows that arbitrary spectator second-order curvature can increase the continuous Bures boundary metric without changing the selected first-order temporal tangent or its mode-specific action.
+for the pure-boundary SLD tangent and proves that arbitrary extra Bures boundary curvature can be injected in a spectator sector without changing the selected temporal tangent.
 
-## New dynamical theorem chain
+The manuscript also contains the WP19 coherent-support bridge, the audited `Psi_a` envelope, the `12 > 43/4 > 55/8` qutrit hierarchy, and the WP20 multi-gap shared-Hessian law.
 
-### WP21 — supplied unitary implementation
+## Post-manuscript theorem chain
 
-For a smooth unitary dilation with tangent generators `K_j`,
+### WP21 — supplied implementation coupling identity
+
+For a smooth unitary dilation with baseline `Omega_0` and tangent generators `K_j`,
 
 `Q partial_j^2 rho Q = 2 Tr_E[(Q⊗I)K_j Omega_0 K_j(Q⊗I)]`.
 
 For any positive kernel price `G`,
 
-`A_G^(2)=(1/2) sum_j Tr[(G⊗I)K_j Omega_0 K_j]`.
+`A_G^(2)=(1/2)sum_j Tr[(G⊗I)K_j Omega_0 K_j]`.
 
-Thus the kinematic endpoint action is exactly a state-weighted squared implementation coupling into the priced empty sectors.
+Thus the previously kinematic synthesis action is exactly a state-weighted squared dynamical coupling into priced empty sectors.
 
-In the clean single-gap exchange,
+### WP22 — exact minimum for a prescribed pure-boundary tangent
 
-`A_ex^(2) <= hbar nu [Var(K_x)+Var(K_y)]`.
+The energy-conserving horizontal generator realizes the tangent and gives
 
-The coefficient is sharp. Net bare-energy change is not the resource: the sharp constructions stay in one exact total-energy shell while this coupling cost is positive.
+`V_min=(1/4)Tr H_SLD`,
 
-### WP22 — exact first-order minimum
+`A_min^(2)=hbar nu V_min=(hbar nu/4)Tr H_SLD`.
 
-For the pure-boundary exact relational tangent,
+Generic Bures/Uhlmann `QFI/4` horizontal-lift geometry is prior art; candidate novelty is only the energy-conserving relational specialization and endpoint-action equality.
 
-`K_j^hor=i(QD_jP rho_0^+ - rho_0^+ P D_jQ)`
+### WP23 — exact prescribed kernel 2-jet cost
 
-satisfies
+For a prescribed feasible metric-contracted target-kernel Hessian
 
-`-i[K_j^hor,rho_0]=D_j`,
+`C >= C_min`,
 
-`[K_j^hor,H_C+H_S]=0`.
+finite-dimensional clean pure-boundary dilations obey and attain
 
-The exact minimum over all smooth unitary dilations is
+`boxed: V_min=(1/2)Tr C=A_ex^(2)/(hbar nu)`.
 
-`boxed: V_min=(1/4)Tr H_SLD`.
+Excess curvature is realized in an orthogonal ancilla flag sector without changing the first derivative.
 
-The minimum is attained target-only and energy-conservingly. In the clean exchange,
+### WP24 — independent mixed-envelope audit + classical boundary prior art
 
-`boxed: A_min^(2)=hbar nu V_min=(hbar nu/4)Tr H_SLD`.
+The manuscript's piecewise `Psi_a(e;p,q)` envelope was independently re-derived and brute-force validated. No defect was found.
 
-The generic first-order Bures/Uhlmann horizontal-lift identity is prior art. Candidate novelty is only the autonomous spectral specialization.
+Boundary nonregularity itself is **not quantum novelty**. Chernoff/Self--Liang/Shapiro-type nonregular classical statistics must be acknowledged in any future revision. The quantum-specific content is the operator PSD-cone support/kernel geometry, coherent orientation interference, spectral pricing, autonomous exchange structure, and dynamical implementation results.
 
-### WP23 — exact prescribed kernel-2-jet minimum
+### WP25 — approximate-gap finite-radius robustness
 
-Let the prescribed target kernel Laplacian obey
-
-`C_Delta >= C_min := 2 sum_j QD_jP rho_0^+ P D_jQ`
-
-and `[C_Delta,H_T]=0`.
-
-For every unitary dilation,
-
-`V_impl >= (1/2)Tr C_Delta`.
-
-Conversely, write
-
-`S=(C_Delta-C_min)/2 >=0`.
-
-Purify `S` into an ancilla flag sector orthogonal to the baseline purification. This adds the desired second-order population without changing the first derivative. Assign flag energies sector-by-sector so every baseline/horizontal/flag vector lies in one global energy shell.
-
-Therefore
-
-`boxed: inf V_impl=(1/2)Tr C_Delta`
-
-**even over the exactly total-energy-conserving class**.
-
-In the clean single-gap endpoint geometry `G_ex=2hbar nu Q`, hence
-
-`boxed: V_min(full kernel 2-jet)=A_ex^(2)/(hbar nu)`.
-
-This is the strongest dynamical result so far.
-
-Permanent validator:
-
-`numerics/verify_wp23_prescribed_2jet_implementation_cost.py`
-
-Twenty random multi-energy mixed-baseline stress tests passed privately before commit.
-
-## External-critique audit
-
-### WP24 — `Psi_a` re-derivation
-
-The WP19 scalar envelope was independently derived from the ellipse optimization
-
-`max (sqrt u+sqrt v)^2`, `p u+q v=e+pa`, `u>=a`, `v>=0`.
-
-Result:
-
-`Psi_a=(sqrt a+sqrt(e/q))^2` for `e<=a p^2/q`,
-
-`Psi_a=(e+pa)(1/p+1/q)` for `e>=a p^2/q`.
-
-No defect found. A 100-case brute-force audit agreed to `<2e-11` relative error.
-
-Permanent validator:
-
-`numerics/verify_wp24_psi_envelope.py`
-
-### Classical nonregular statistics
-
-Boundary nonregularity itself is **not quantum novelty**. Future manuscript positioning must explicitly acknowledge at least:
-
-- Chernoff (1954), likelihood-ratio boundary asymptotics;
-- Self & Liang (1987), nonstandard MLE/LR boundary theory;
-- Shapiro (1985), cone/chi-bar-square inequality-constrained asymptotics.
-
-The candidate quantum contribution is the noncommutative PSD-cone coherence constraint, exact spectral pricing, autonomous exchange structure, and dynamical endpoint-cost theorem—not the mere fact that zero-probability outcomes can appear nonregularly.
-
-## WP25 — approximate Bohr-gap robustness
-
-For `[rho_0,H]=0`, `R=R_lin>0`, and residual
+With commutator residual
 
 `R_nu=[H,A]-hbar nu A`,
 
 `eta_nu^2=Tr(R_nu rho_0^+ R_nu^dagger)`,
 
-then for every `0<delta<nu`, every finite `N`, and every collective POVM,
+one obtains for every `0<delta<nu`
+
+`(R_lin^2/4)[Tr F_N^tan/N]
+ <= T(nu-delta)+(R_lin^2 eta_nu^2)/(4 hbar^2 delta^2)`.
+
+Thus exact resonance is not an all-or-nothing assumption.
+
+### WP26 — hostile audit / second-order prior-art boundary
+
+WP23's lower bound, flag construction, and finite-dimensional exact energy-conserving realization passed a dedicated hostile audit. The theorem prescribes the physical metric contraction of the kernel Hessian, not an arbitrary full mixed-second-derivative tensor.
+
+### WP27 — approximate-exchange boundary robustness
+
+For bilateral rank-boundary synthesis, the Fisher score amplitude satisfies a near-resonant endpoint-curvature bound plus explicit off-resonant residual penalties. Schematically,
+
+`sqrt(Tr F_N^tan/N)
+ <= sqrt(Delta T_+^(delta))+sqrt(Delta T_-^(delta))+epsilon_delta`.
+
+The corresponding autonomous action law approaches the exact `hbar nu/4` coefficient continuously as detuning vanishes.
+
+### WP28 — infinite-dimensional finite-radius survival
+
+For a separable Hilbert space, trace-class baseline, and bounded relative tangent
+
+`A=rho_0^(1/2) B rho_0^(1/2)`, `B` bounded,
+
+the finite-radius arbitrary-POVM/finite-copy theorem extends exactly. Using the covariance form of an exact Bohr gap and the spectral theorem removes the pure-point restriction on the ambient Hamiltonian.
+
+### WP29 — infinite-dimensional rank-boundary synthesis
+
+If
+
+`X rho_0^(-1/2)` and `Y rho_0^(-1/2)`
+
+are Hilbert--Schmidt, finite-rank support truncations and monotone positive quadratic forms give
+
+`C_Delta >= X rho_0^+ X^dagger + Y rho_0^+ Y^dagger`
+
+in the rigorous trace-class sense. The arbitrary-POVM Minkowski law, clean autonomous action coefficients, and SLD relation survive.
+
+### WP30 — unrestricted infinite-dimensional dynamical 2-jet cost
+
+Under WP29 finite-information regularity,
+
+`inf_(smooth unitary dilations) V_impl=(1/2)Tr C`.
+
+WP30 initially left exact semibounded energy conservation open for unbounded stationary target-energy support because one coherent fixed-shell purification created a domain/fourth-moment issue.
+
+### WP31 — exact infinite-dimensional energy-conserving 2-jet cost
+
+WP31 resolves that obstruction by using a **classically mixed energy-shell dilation** rather than one coherent purification across target energies.
+
+A stationary trace-class state has countable pure-point support on the part occupied by the state. Decompose
+
+`rho_0=direct_sum_E rho_E`.
+
+Within each target-energy shell, build the WP23 optimal dilation and use a zero-energy ancilla. Form the global baseline as the incoherent mixture
+
+`Omega_0=direct_sum_E p_E |Omega_E><Omega_E|`.
+
+Finite quadratic cost already dominates all first and mixed second trace-norm derivatives. The global direct-sum generator may be unbounded, but no fourth-moment condition is required.
+
+Therefore, even with unbounded occupied target energies,
 
 `boxed:
-(R^2/4)[Tr F_N^tan/N]
- <= T(nu-delta)+R^2 eta_nu^2/(4hbar^2 delta^2).`
+inf_(semibounded exactly energy-conserving smooth unitary dilations)
+V_impl=(1/2)Tr C.`
 
-Optimize over `delta` if desired.
+For the clean single-gap endpoint price,
 
-This decomposes the tangent into near-resonant matrix elements paid by a slightly lower spectral tail and off-resonant leakage paid by the commutator residual.
+`boxed: V_min=A_ex^(2)/(hbar nu).`
 
-Exact gap is recovered as `eta_nu->0`, `delta->0`.
+The ancilla Hamiltonian may be chosen `H_E=0`.
 
-A locally stationary clock-signal pair has the corresponding two-sided minimum of signal and clock leakage-corrected tails.
+## Validators
 
-Permanent validator:
+Permanent validators include:
 
-`numerics/verify_wp25_approximate_gap_robustness.py`
+- `numerics/verify_wp21_dynamical_implementation_cost.py`
+- `numerics/verify_wp22_exact_minimum_implementation_cost.py`
+- `numerics/verify_wp23_prescribed_2jet_implementation_cost.py`
+- `numerics/verify_wp24_psi_envelope.py`
+- `numerics/verify_wp25_approximate_gap_robustness.py`
+- `numerics/verify_wp27_approximate_boundary_action.py`
+- `numerics/verify_wp28_wp29_infinite_truncation.py`
+- `numerics/verify_wp31_infinite_energy_conserving_shell_dilation.py`
 
-A private 100-random-instance check passed before commit.
-
-## Mandatory prior-art boundary for WP21–WP25
+## Prior-art discipline
 
 Do not claim novelty for:
 
-- `QFI/4 = minimum horizontal purification/Fubini–Study metric`;
-- Bures/Uhlmann geometry;
-- generic Mandelstam–Tamm/quantum-speed-limit bounds;
-- generic integrated Hamiltonian/control norms;
-- standard boundary likelihood asymptotics;
-- approximate-eigenvector spectral leakage as a generic mathematical idea.
+- Page--Wootters relational time or modes of asymmetry;
+- generic Fisher/QFI/Bures/Holevo theory;
+- Bures/Uhlmann horizontal purification geometry or `QFI/4=min purification speed`;
+- classical nonregular boundary statistics;
+- shorted operators, numerical radius, PSD-cone/Schur-complement mathematics;
+- generic quantum speed limits or integrated Hamiltonian norms;
+- energy-conserving/covariant Stinespring dilation theory;
+- Tajima--Shiraishi--Saito external coherence cost;
+- infinite-dimensional QFI/Bures functional analysis.
 
-Important current neighbor: Carrasco & Spehner, arXiv:2606.06759 (2026), derives Bures geodesics for non-faithful states and quantum-speed-limit consequences. This makes the first-order Bures/QSL boundary even more clearly prior art. The WP23 prescribed second-order kernel-jet construction remains the narrower candidate distinction; priority unverified.
+The candidate post-R3 contribution is narrowly the **frequency-resolved endpoint synthesis action as the exact minimum state-weighted quadratic coupling cost for a prescribed feasible rank-changing local kernel 2-jet under globally conserving relational dynamics**, together with controlled approximate-gap and infinite-dimensional extensions.
 
-## Immediate research order
+Priority is not certified.
 
-1. Hostile-audit WP23's energy-shell flag construction and search second-order constrained Stinespring/purification prior art.
-2. Search approximate eigenoperator/Bohr-mode robustness literature for WP25 collisions.
-3. Extend **zero-radius synthesis/action** to approximate exchange if possible; this directly attacks the remaining exact-resonance idealization in the paper's headline boundary regime.
-4. Then attempt the infinite-dimensional theorem, beginning with trace-class `rho_0`, semibounded pure-point `H`, and bounded relative tangent before continuous spectra/unbounded generators.
-5. Only after these pass decide whether a manuscript R4 is justified. Do not destabilize R3 merely because new research exists.
+## Current work order
+
+1. hostile-audit WP31's stationary trace-class energy-support lemma and trace-norm dominated-convergence proof;
+2. targeted priority search for state-specific prescribed-second-order-jet implementation-cost theorems and energy-shell dilation equivalents;
+3. run/expand WP31 validators, including mixed/degenerate shell cases;
+4. make a deliberate publication decision: R4 of the current PRXQ paper versus a separate dynamical follow-up;
+5. if continuing theory, prioritize noisy/CPTP implementation cost or unbounded-relative-tangent quadratic-form extensions, not more formal branch bookkeeping.
+
+## Manuscript integrity rule
+
+Every public-facing paper must be scientifically standalone. Never include personal GitHub URLs, repository names, usernames, development history, or instructions that require the reader to consult the repository. The repository is internal research infrastructure only.
 
 ## Documentation rule
 
-Every material theorem, proof repair, prior-art collision, validator, or strategy change must be recorded in `notes/`, then synchronized into this file, `README.md`, and `ROADMAP.md`. The repository is authoritative; chat is not.
+Every material theorem, counterexample, proof repair, prior-art collision, or strategy change must update the relevant WP note and these landing files. Do not allow the authoritative research state to exist only in chat.
