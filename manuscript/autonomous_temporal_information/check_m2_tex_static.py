@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static integrity checks for the autonomous temporal-information M2R1 manuscript.
+"""Static integrity checks for the autonomous temporal-information manuscript.
 
 This is deliberately lightweight and uses only the Python standard library.
 It is not a TeX parser. It catches repository-level mistakes that should fail
@@ -17,6 +17,7 @@ HERE = Path(__file__).resolve().parent
 ROOTS = [
     HERE / "autonomous_temporal_resource_law_m2r1.tex",
     HERE / "autonomous_temporal_resource_law_supplement_m2r1.tex",
+    HERE / "autonomous_temporal_resource_law_prxq_r1.tex",
 ]
 BIB = HERE / "references.bib"
 
@@ -104,7 +105,7 @@ def check_root(root: Path, keys: set[str]) -> list[str]:
 
     for marker in BANNED_MARKERS:
         if marker in text:
-            errors.append(f"{root.name}: canonical M2R1 source still contains draft marker {marker!r}")
+            errors.append(f"{root.name}: canonical source still contains draft marker {marker!r}")
 
     if re.search(r"\\nu_y\s*=\s*\\frac\{\\Tr\(XM_y\)", text):
         errors.append(f"{root.name}: found \\nu_y where bilateral score vector must be u_y")
@@ -130,7 +131,7 @@ def main() -> int:
             print(f"ERROR: {err}", file=sys.stderr)
         return 1
 
-    print(f"M2R1 static TeX integrity PASS; BibTeX keys={len(keys)}")
+    print(f"Static TeX integrity PASS; BibTeX keys={len(keys)}")
     return 0
 
 
