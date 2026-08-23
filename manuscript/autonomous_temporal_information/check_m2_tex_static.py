@@ -15,10 +15,10 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-M2R1_MAIN = HERE / "autonomous_temporal_resource_law_m2r1.tex"
-SUPPLEMENT = HERE / "autonomous_temporal_resource_law_supplement_m2r1.tex"
-PRXQ_MAIN = HERE / "autonomous_temporal_resource_law_prxq_r1.tex"
-ROOTS = [M2R1_MAIN, SUPPLEMENT, PRXQ_MAIN]
+M2R2_MAIN = HERE / "autonomous_temporal_resource_law_m2r2.tex"
+SUPPLEMENT = HERE / "autonomous_temporal_resource_law_supplement_m2r2.tex"
+PRXQ_MAIN = HERE / "autonomous_temporal_resource_law_prxq_r2.tex"
+ROOTS = [M2R2_MAIN, SUPPLEMENT, PRXQ_MAIN]
 BIB = HERE / "references.bib"
 
 INPUT_RE = re.compile(r"\\input\{([^}]+)\}")
@@ -119,6 +119,9 @@ def inspect_root(root: Path, keys: set[str]) -> tuple[list[str], str, set[str]]:
     if re.search(r"\\nu_y\s*=\s*\\frac\{\\Tr\(XM_y\)", text):
         errors.append(f"{root.name}: found \\nu_y where bilateral score vector must be u_y")
 
+    if root in (M2R2_MAIN, PRXQ_MAIN) and "F^{\\mathrm{tan}}" not in text:
+        errors.append(f"{root.name}: R2 boundary score-Fisher notation missing")
+
     print(
         f"{root.name}: labels={len(labels)} refs={len(refs)} "
         f"citations={len(cites)} expanded_chars={len(text)}"
@@ -140,9 +143,6 @@ def main() -> int:
         errors.extend(root_errors)
         inspected[root] = (text, cites)
 
-    # PRX Quantum packaging rule: every reference used by Supplemental Material
-    # must also be represented in the main paper's reference list. BibTeX prints
-    # cited/nocited entries only, so enforce this at the citation-key level.
     if SUPPLEMENT in inspected and PRXQ_MAIN in inspected:
         supp_cites = inspected[SUPPLEMENT][1]
         main_cites = inspected[PRXQ_MAIN][1]
