@@ -16,6 +16,7 @@ Do not claim novelty for:
 - mode trace-norm monotones;
 - QFI as an asymmetry resource;
 - finite autonomous clocks/control per se;
+- Page--Wootters relational time per se;
 - quantitative WAY tradeoffs;
 - generic quantum speed limits;
 - standard phase-estimation sine states / Heisenberg scaling;
@@ -47,11 +48,11 @@ For clock `C` and signal `S`, take a globally stationary energy-exchange tangent
 
 `[H_C,A_nu]=-hbar nu A_nu`.
 
-Then, with
+With
 
 `K_N=(R_lin^2/4)[Tr F_N/N]`,
 
-for any finite N and arbitrary joint POVM,
+for any finite `N` and arbitrary joint POVM,
 
 `K_N(nu) <= min{T_C(nu),T_S(nu)}`.
 
@@ -87,82 +88,178 @@ Near unit retention,
 
 This bound is exactly sharp. A globally stationary fixed-total-energy sine-chain history state and canonical relative-phase POVM attain equality.
 
-The finite-shift/sine-state constant is phase-estimation prior art. Candidate novelty is the exact arbitrary-POVM **Fisher-retention** law for autonomous relational time.
+### WP05 — exact mean-total-energy law — PASS
 
-## Current frontier — WP05
+For the structured one-copy relative-time experiment, let
 
-### A. Sharp mean-total-energy law
+`g_L=cos^2[pi/(L+2)]`.
 
-Hard cap is solved exactly; mean total energy only is not.
+If the baseline total-energy shell distribution is `W_L`, arbitrary measurement-dependent posterior reshuffling obeys
 
-Questions:
+`R_M(1) <= sum_L W_L g_L`.
 
-1. What is
-   `sup R_M(1)`
-   at fixed `Ebar_C+Ebar_S` for a globally stationary relative-time experiment?
-2. Does the optimal asymptotic constant coincide with known Airy-function phase-estimation constants, or does the Fisher-retention functional have a different optimizer because it averages squared posterior sharpness?
-3. Can the optimization be reduced to a convex envelope over fixed-total-energy shells?
-4. Is there an exact or asymptotic extremizer family?
+The sequence `{g_L}` is discretely concave. For
 
-Known phase-estimation mean-generator bounds (Berry--Hall--Zwierz--Wiseman, PRA 86, 053813 (2012)) are prior art and cannot simply be relabeled.
+`Lbar=m+lambda`, `m=floor(Lbar)`, `0<=lambda<1`,
 
-### B. Pre-existing relational coherence
+the exact sharp envelope is
 
-WP03 assumes a baseline separately stationary under clock and signal Hamiltonians, with the unknown parameter introducing the relational exchange coherence.
+`R_M(1) <= G(Lbar)=(1-lambda)g_m+lambda g_(m+1)`.
 
-Extend to general Page--Wootters/history states that are already relationally coherent at baseline while remaining globally stationary.
+Equality is achieved by an adjacent-shell mixture of sine-chain extremizers, followed by total-energy-shell resolution and canonical relative-phase readout.
 
-This is likely essential for a genuinely autonomous clock law.
+Therefore, under a **mean** total-energy constraint,
 
-### C. Nonlinear `R_lin=0` synthesis
+`Ebar_C^+ + Ebar_S^+ >= pi hbar nu/sqrt(1-R)[1+o(1)]`
 
-Determine the weakest additional physical datum that restores a theorem when second-order population/curvature keeps the exact nonlinear family physical despite zero linear tangent radius.
+with sharp leading constant `pi` in the solved one-copy structured setting.
 
-Candidate resources:
+### WP06 — nonstationary robust tail / pre-existing history state — PASS
 
-- finite parameter amplitude;
-- finite trace distance / hypothesis-testing performance;
-- curvature or second derivative;
-- explicit control Hamiltonian/action.
+The robust tail theorem does not require baseline stationarity.
 
-### D. Many-body cut law
+For arbitrary density operator `rho`, positive linear tangent radius `R_lin`, and complex tangent `A`, positivity implies on `supp(rho)`
+
+`R_lin=1/w(rho^(-1/2) A rho^(-1/2))`.
+
+For any one-copy POVM,
+
+`Tr F_1 <= Tr(A rho^+ A^dagger)`.
+
+If the range of `A` lies in a projector `P_U`, then
+
+`(R_lin^2/4)Tr F_1 <= Tr(P_U rho)`.
+
+For `N` independently encoded copies and arbitrary collective readout,
+
+`(R_lin^2/4)[Tr F_N/N] <= Tr(P_U rho)`.
+
+For an exact positive energy gap, this is the same upper-tail energy-survival theorem as WP02 without any commutation assumption on `rho`.
+
+Consequently the relational law survives a globally stationary but locally coherent history state:
+
+`[rho_CS,H_C+H_S]=0`,
+
+while generally
+
+`[rho_CS,H_C] != 0`, `[rho_CS,H_S] != 0`.
+
+Pre-existing relational clock coherence therefore does not evade
+
+`K_N(nu) <= min{T_C(nu),T_S(nu)}`.
+
+## Current frontier — WP07: nonlinear `R_lin=0` synthesis
+
+This is the highest-priority unresolved sector.
+
+### A. Minimal boundary-family theorem
+
+Construct the smallest exact physical family with:
+
+- rank-deficient baseline `rho_0`;
+- a nonzero first-order tangent `A_nu` connecting the baseline support to a high-energy subspace;
+- `R_lin=0` for the affine tangent;
+- second-order population/curvature that restores positivity of the exact nonlinear family.
+
+The two-level pure-state family
+
+`|psi(theta)>=sqrt(1-|z(theta)|^2)|0>+z(theta)|1>`
+
+is the canonical starting point. For `z(theta)=a theta+O(theta^2)`, the coherence is first order while upper-level population is `|a|^2 theta^2+O(theta^3)`.
+
+The work package should isolate the general PSD constraint behind this mechanism rather than relying on one qubit example.
+
+### B. Curvature-population inequality
+
+Seek a general second-order positivity theorem of the schematic form
+
+`P_U rho''(0) P_U >= 2 A rho_0^+ A^dagger`
+
+or its correct Schur-complement / shorted-operator variant for a smooth state curve
+
+`rho(theta)=rho_0+theta D+(theta^2/2)C+o(theta^2)`
+
+when the first-order tangent reaches the kernel of `rho_0`.
+
+Determine the exact coefficient, support conditions, and matrix/operator generalization.
+
+If successful, combine it with energy weighting to show that high-gap first-order Fisher information is paid for by **second-order energy injection** even when `R_lin=0`.
+
+### C. Decide whether a local curvature law is genuinely operational
+
+A curvature bound is useful only if it controls an observable information quantity without arbitrary reparameterization pathologies.
+
+Test:
+
+1. SLD/Bures QFI at boundary states;
+2. Hellinger/Bures finite differences;
+3. trace distance and Helstrom discrimination at finite amplitude;
+4. quantum Chernoff / hypothesis-testing exponents;
+5. finite-difference Fisher or chi-square divergence.
+
+A likely robust target is a finite-amplitude theorem rather than another purely differential quantity.
+
+### D. Finite-amplitude spectral-energy law
+
+For a family `rho_theta` and baseline `rho_0`, define a physically meaningful amplitude scale `delta` and seek inequalities of the form
+
+`distinguishability(rho_delta,rho_0)`
+
+`<= function[upper-tail population or energy injected at order delta^2]`.
+
+The theorem must survive coherent-sideband families and arbitrary POVMs.
+
+### E. Autonomous relational extension
+
+After the one-system boundary geometry is understood, lift it to a globally stationary clock--signal pair where first-order coherence exchanges `hbar nu` while second-order populations appear on both sides.
+
+Test whether positivity forces **matched second-order population injection** into the local endpoint sectors and therefore a nonlinear analogue of the WP03/WP06 dual-tail law.
+
+### F. Priority audit for WP07
+
+Search specifically against:
+
+- perturbation theory of positive semidefinite matrices and Schur-complement positivity;
+- tangent cones / second-order tangent sets of the PSD cone;
+- boundary quantum Fisher information and rank-changing statistical models;
+- Bures/Hellinger geometry at rank-deficient states;
+- quantum local asymptotic theory with changing support;
+- quantum speed limits and finite-amplitude distinguishability;
+- asymmetry robustness / coherence cost;
+- coherent-state and sideband phase estimation;
+- Page--Wootters and autonomous clock models with finite-amplitude interactions.
+
+Do not claim a new theorem until this collision boundary is explicit.
+
+## Secondary open directions
+
+### WP08 — collective-N mean-energy retention
+
+Determine whether entangled collective measurements can beat the one-copy exact envelope `G(Lbar)` per copy and characterize the asymptotic limit.
+
+### WP09 — many-body cut law
 
 Test the conjecture:
 
 > temporal information crossing any autonomous bipartition requires matched energy-exchange resources on both sides of the cut.
 
-Seek a cut-set / network generalization of WP03.
+Seek a cut-set/network generalization of WP03/WP06.
 
-### E. Autonomous control-generator resource
+### WP10 — autonomous control-generator resource
 
 If operations do not obey the energy-conserving/covariant structure, arbitrary interaction strength is a loophole. Determine which dynamical resource must be charged: spectral diameter, interaction norm, action, power, or another invariant.
 
-## Later stages
-
-### WP06 — unified apparatus law
-
-Combine reference-state, relational exchange, and control-generator resources into one theorem for
-
-`source + clock + controller + detector + memory`.
-
-### WP07 — finite distinguishability
-
-Replace local Fisher by finite-amplitude trace distance / hypothesis testing.
-
-### WP08 — temporal channel capacity
-
-If the preceding structure survives, seek mutual-information/channel-capacity consequences.
-
 ## Publication / significance gate
 
-Do not draft a new foundational manuscript merely because WP02--WP04 are mathematically interesting. First require:
+Do not draft a new foundational manuscript merely because WP02--WP06 are mathematically interesting. First require:
 
 - deep priority audit;
-- at least one theorem that is clearly not reducible to known phase estimation/WAY/asymmetry statements;
+- a successful resolution or sharply characterized impossibility result for WP07;
+- at least one theorem clearly not reducible to known phase estimation/WAY/asymmetry statements;
 - hostile mathematical review;
 - sharp or near-sharp constructions;
 - explicit physical consequence or thought experiment.
 
 ## Documentation discipline
 
-Every material theorem, failed conjecture, prior-art collision, or validation result must be recorded immediately in the branch. The repository, not chat history, is authoritative.
+Every material theorem, failed conjecture, prior-art collision, or validation result must be recorded immediately in the branch and reflected in `README.md`, `AGENTS.md`, and this file. The repository, not chat history, is authoritative.
