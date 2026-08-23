@@ -28,6 +28,10 @@ jobs:
         working-directory: manuscript/autonomous_temporal_information
         run: python apply_m2r2_review_repairs.py
 
+      - name: Apply final R2 submission cleanup
+        working-directory: manuscript/autonomous_temporal_information
+        run: python apply_submission_cleanup_r2.py
+
       - name: Generate PRX Quantum R2 front matter and figure
         working-directory: manuscript/autonomous_temporal_information
         run: python apply_prxq_frontmatter_r2.py
@@ -53,7 +57,7 @@ jobs:
       - name: Upload manuscript builds
         uses: actions/upload-artifact@v4
         with:
-          name: autonomous-temporal-information-prxq-r2
+          name: autonomous-temporal-information-prxq-r2-final
           path: |
             manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_prxq_r2.pdf
             manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_prxq_r2.tex
@@ -63,6 +67,7 @@ jobs:
             manuscript/autonomous_temporal_information/sections/*.tex
             manuscript/autonomous_temporal_information/proofs/*.tex
             manuscript/autonomous_temporal_information/apply_m2r2_review_repairs.py
+            manuscript/autonomous_temporal_information/apply_submission_cleanup_r2.py
             manuscript/autonomous_temporal_information/apply_prxq_frontmatter_r2.py
             manuscript/autonomous_temporal_information/check_m2_tex_static.py
             manuscript/autonomous_temporal_information/references.bib
