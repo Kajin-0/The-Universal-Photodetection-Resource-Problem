@@ -2,30 +2,149 @@
 
 This directory contains the new post-Rev11 foundational research program.
 
+**Branch:** `agent/autonomous-temporal-information-law`
+
+The frozen Rev11 paper remains untouched on `agent/temporal-information-resource-law`.
+
 ## Grand challenge
 
 Determine whether there exists a general physical resource law governing temporal information when **all timing and control resources are internal physical systems**, rather than ideal classical clocks or free time-dependent Hamiltonians.
 
-The intended hierarchy is:
+The emerging hierarchy is
 
-`state/reference-frame asymmetry`
+`local Fisher information`
 
-`+ autonomous control/generator resource`
+`x physical tangent robustness`
 
-`+ parameter-information source`
+`-> spectral survival resource`
 
-`-> temporal information generated/transmitted at frequency nu`
+and, for autonomous relational clock--signal information,
 
-`-> accessible detector/memory record`.
+`matching exchange resource on clock and signal`
 
-The highest-value target is a theorem showing that near-perfect temporal-information transfer at a nonzero frequency requires an unbounded total autonomous resource once the clock/reference/control apparatus is included.
+`-> finite-resource temporal-information retention`.
 
-## Current status
+## Current theorem stack
 
-**WP01:** prior-art and model boundary established.
+### WP01 — prior-art and model boundary
 
-The qualitative mode-support law is already known from resource theory of asymmetry. The research must therefore produce a **quantitative information-performance theorem**, not repackage mode support or generic QFI monotonicity.
+Qualitative mode support, QFI-as-asymmetry, finite quantum clocks, WAY tradeoffs, Page--Wootters relational time, and standard phase-estimation sine states are prior art. The target must be a quantitative operational temporal-information law.
 
-A second foundational boundary is being tested: if arbitrary time-independent interactions of arbitrarily large norm are free, then no nontrivial state-only temporal-frequency law can be universal. A valid general theory must either charge the dynamical generator/control resource or explicitly restrict allowed processing to a covariant/energy-conserving class.
+### WP02 — local Fisher no-go and robust tangent radius
 
-See `AGENTS.md` and `ROADMAP.md`.
+Fixed baseline mean energy does **not** bound arbitrarily high-frequency local Fisher information for general state synthesis: the physical parameter neighborhood can shrink with frequency.
+
+For linear tangent radius `R_lin`, arbitrary finite-copy collective measurements satisfy
+
+`(R_lin^2/4)[Tr F_N^(nu)/N] <= T(nu)`.
+
+Hence
+
+`Ebar+ >= (hbar nu R_lin^2/4)[Tr F_N^(nu)/N]`.
+
+The fixed-energy/high-frequency counterexample asymptotically saturates the corrected law.
+
+### WP03 — autonomous relational dual-survival law
+
+For an exact globally stationary clock--signal exchange tangent,
+
+`[H_S,A_nu]=+hbar nu A_nu`,
+
+`[H_C,A_nu]=-hbar nu A_nu`,
+
+and
+
+`K_N(nu)=(R_lin^2/4)[Tr F_N^(nu)/N]`,
+
+one has
+
+`K_N(nu) <= min{T_C(nu),T_S(nu)}`,
+
+so
+
+`Ebar_C^+ + Ebar_S^+ >= 2 hbar nu K_N(nu)`.
+
+The coefficient `2` is asymptotically sharp under collective measurements.
+
+### WP04 — exact hard-cap autonomous retention
+
+For a globally stationary relative-time experiment with hard total excitation cap `L`,
+
+`R_M(k) <= cos^2{pi/[floor(L/k)+2]}`
+
+for any fixed one-copy POVM.
+
+At the fundamental frequency,
+
+`E_max >= hbar nu[pi/arccos(sqrt R)-2]`,
+
+and near perfect retention
+
+`E_max >= pi hbar nu/sqrt(1-R)[1+o(1)]`.
+
+Sine-chain history states attain equality.
+
+### WP05 — exact mean-total-energy autonomous retention
+
+Let
+
+`g_L=cos^2[pi/(L+2)]`
+
+and write the mean total excitation as
+
+`Lbar=m+lambda`, `m=floor(Lbar)`, `0<=lambda<1`.
+
+Because `{g_L}` is discretely concave, the exact sharp envelope is
+
+`R_M(1) <= G(Lbar)=(1-lambda)g_m+lambda g_(m+1)`.
+
+Equality is achieved by mixing the two adjacent-shell sine-chain extremizers and resolving the shell before canonical relative-phase readout.
+
+Thus the sharp mean-energy asymptotic is also
+
+`Ebar_C^+ + Ebar_S^+ >= pi hbar nu/sqrt(1-R)[1+o(1)]`.
+
+### WP06 — arbitrary coherent baselines / history states
+
+The robust upper-tail theorem does **not** require the baseline to commute with the relevant Hamiltonian.
+
+For arbitrary baseline `rho`, positive `R_lin`, tangent `A` with upper-endpoint range projector `P_U`, and arbitrary finite-copy collective POVMs,
+
+`(R_lin^2/4)[Tr F_N/N] <= Tr(P_U rho)`.
+
+Therefore the relational dual-survival law remains valid for globally stationary clock--signal states that already contain Page--Wootters/history-state relational coherence:
+
+`[rho_CS,H_C+H_S]=0`
+
+while generally
+
+`[rho_CS,H_C] != 0`, `[rho_CS,H_S] != 0`.
+
+Pre-existing clock coherence does not evade the robust law.
+
+## Current frontier — nonlinear `R_lin=0` synthesis
+
+The highest-value unresolved sector is a smooth physical family whose first-order tangent reaches a new high-energy subspace from a rank-deficient baseline while second-order curvature supplies the population needed for positivity. Such families can have
+
+`R_lin=0`
+
+while remaining exactly physical for finite parameter amplitude.
+
+The next target is a finite-amplitude/curvature-aware resource law that covers coherent-sideband-style arbitrary waveform synthesis without assuming a nonzero linear tangent radius.
+
+Candidate operational quantities include finite trace distance, hypothesis-testing performance, Bures/Hellinger geometry at finite amplitude, second-order population injection, and explicit autonomous control action.
+
+## Validation
+
+Independent numerical/adversarial validators:
+
+- `numerics/verify_robust_tangent_radius_law.py`
+- `numerics/verify_relational_autonomous_laws.py`
+
+They check the fixed-energy no-go, robust-tail inequality, finite-copy collective POVMs, dual-tail relations, weak-commutativity sharpness, finite-shift numerical radii, sine extremizers, and higher-harmonic cosine laws.
+
+## Priority discipline
+
+The mathematical ingredients overlap strongly with phase estimation, modes of asymmetry, quantitative WAY/reference-frame theory, Page--Wootters relational time, numerical-radius theory, and quantum statistical geometry. Targeted searches have not identified exact predecessors for the combined operational laws above, but **priority remains unverified, not certified**.
+
+Read `AGENTS.md`, `ROADMAP.md`, and the WP01--WP06 notes before continuing. Record every material theorem, counterexample, prior-art collision, or killed conjecture immediately; do not rely on chat history.
