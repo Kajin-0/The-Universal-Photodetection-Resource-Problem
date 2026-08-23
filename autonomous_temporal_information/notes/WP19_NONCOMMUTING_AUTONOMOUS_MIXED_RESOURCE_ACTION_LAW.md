@@ -1,14 +1,14 @@
 # WP19 — Noncommuting-support autonomous mixed resource/action law
 
-**Date:** 2026-08-22
+**Date:** 2026-08-22; hostile action-definition audit 2026-08-23
 
 **Branch:** `agent/autonomous-temporal-information-law`
 
-**Status:** analytic PASS as a universal finite-copy arbitrary-POVM autonomous exact-exchange bound with arbitrary coherent baseline support. The theorem unifies WP03/WP06 finite-radius dual survival, WP11 noncommuting support geometry, WP13 positive spectral action, and WP18 zero-radius dual synthesis action. It uses one combined clock+signal endpoint-incidence cost operator, avoiding a separate clock-versus-signal curvature double count. The clean WP18 coefficients are recovered exactly. In the shared-kernel qutrit benchmark, the combined action reduction reproduces the WP12 abstract resource ceiling `12` with no additional looseness. Generic global sharpness is not claimed; priority remains **unverified, not certified**.
+**Status:** analytic PASS as a universal finite-copy arbitrary-POVM exact-exchange bound for arbitrary coherent baseline support. The 2026-08-23 audit replaces the earlier noncanonical sum of four chosen local endpoint projectors by a **canonical joint domain/range endpoint-incidence operator** built directly from the exact-gap tangent. All clean coefficients and the shared-kernel qutrit benchmark remain unchanged.
 
 ## 1. Exact autonomous exchange with arbitrary coherent support
 
-Let clock `C` and signal `S` have semibounded Hamiltonians and let the full complex tangent satisfy
+Let
 
 `[H_S,A_nu]=+hbar nu A_nu`,
 
@@ -22,21 +22,21 @@ Let
 
 `P=supp(rho0)`, `Q=I-P`.
 
-Do **not** assume `[P,H_C]=0` or `[P,H_S]=0`.
+No commutation between `P` and either local Hamiltonian is assumed.
 
 Two-sided first-order physicality gives
 
 `Q A_nu Q=0`.
 
-Decompose as in WP11:
+Decompose
 
 `B=P A_nu P`,
 
 `K_+=Q A_nu P`,
 
-`K_-=Q A_nu^dagger P`.
+`K_-=Q A_nu^dagger P`,
 
-Then
+so
 
 `A_nu=B+K_+ + K_-^dagger`.
 
@@ -50,7 +50,7 @@ Define
 
 `J_-=Tr(K_- rho0^+ K_-^dagger)`.
 
-For every finite `N` and every arbitrary collective POVM,
+For every finite `N` and arbitrary joint POVM,
 
 `sqrt[Tr F_N/N]`
 
@@ -60,93 +60,76 @@ For every finite `N` and every arbitrary collective POVM,
 
 ## 2. Two-sided pre-existing exchange resource
 
-Let the participating signal endpoint projectors be
+The support-preserving piece `B` must be backed by both local sides of the exact exchange.
 
-`Pi_(S,U)`, `Pi_(S,D)`
+Let the participating signal upper/lower and clock upper/lower spectral projectors be chosen minimally for the actual support-preserving transition content. Compress them to `P` and define the corresponding WP11 shorting constants on the output supports of
 
-and the participating clock endpoint projectors be
+`B rho0^+ B^dagger`
 
-`Pi_(C,U)`, `Pi_(C,D)`.
+and
 
-For the positive exchange orientation `A_nu`, the internal output is associated with
+`B^dagger rho0^+ B`.
 
-- signal upper endpoint `Pi_(S,U)`;
-- clock lower endpoint `Pi_(C,D)`.
+This gives rigorous ceilings
 
-For the conjugate orientation it is associated with
+`J_B^+<=a_+`,
 
-- signal lower endpoint `Pi_(S,D)`;
-- clock upper endpoint `Pi_(C,U)`.
+`J_B^-<=a_-`,
 
-Define support compressions
+where `a_+` is the minimum of the signal-upper and clock-lower shorted survival ceilings, and `a_-` is the minimum of the signal-lower and clock-upper ceilings.
 
-`S_(S,U)=P Pi_(S,U) P`,
-
-`S_(S,D)=P Pi_(S,D) P`,
-
-`S_(C,U)=P Pi_(C,U) P`,
-
-`S_(C,D)=P Pi_(C,D) P`.
-
-Let
-
-`R_B^+=supp(B rho0^+ B^dagger)`,
-
-`R_B^-=supp(B^dagger rho0^+ B)`.
-
-Define shorting constants
-
-`lambda_(S,U)=sup{lambda:S_(S,U)>=lambda R_B^+}`,
-
-`lambda_(C,D)=sup{lambda:S_(C,D)>=lambda R_B^+}`,
-
-`lambda_(S,D)=sup{lambda:S_(S,D)>=lambda R_B^-}`,
-
-`lambda_(C,U)=sup{lambda:S_(C,U)>=lambda R_B^-}`.
-
-Let baseline endpoint populations be
-
-`T_(X,E)=Tr(Pi_(X,E) rho0)`.
-
-Let `R_B` be the physical linear radius of the support-preserving sub-tangent `B`.
-
-WP11 applied from the signal and clock viewpoints gives
-
-`J_B^+<=4T_(S,U)/(R_B^2 lambda_(S,U))`,
-
-`J_B^+<=4T_(C,D)/(R_B^2 lambda_(C,D))`,
-
-and therefore
-
-> `a_+:=min{`
->
-> `4T_(S,U)/(R_B^2 lambda_(S,U)),`
->
-> `4T_(C,D)/(R_B^2 lambda_(C,D))`
->
-> `}`
->
-> `>=J_B^+`.
-
-Similarly
-
-> `a_-:=min{`
->
-> `4T_(S,D)/(R_B^2 lambda_(S,D)),`
->
-> `4T_(C,U)/(R_B^2 lambda_(C,U))`
->
-> `}`
->
-> `>=J_B^-`.
-
-Thus the pre-existing internal exchange coherence is already forced to be backed on both sides of the relational cut, including arbitrary support/energy principal-angle penalties.
+In the commuting clean limit the shorting constants are `1`, and this reduces to the WP03/WP06 two-sided pre-existing survival law.
 
 If `B=0`, set `a_+=a_-=0`.
 
-## 3. One combined clock+signal synthesis cost operator
+## 3. Canonical endpoint-role projectors for synthesis
 
-Let the exact physical family be `C^2` and define the global kernel curvature
+The original WP19 note expressed the synthesis cost through a sum of four local endpoint projectors. That is valid if those projectors are fixed, but unnecessarily noncanonical: broad choices can inflate the resource while leaving the theorem true.
+
+For a single exact exchange mode there is a canonical replacement.
+
+Define the joint range and domain projectors of the full tangent
+
+> `Pi_out=supp(A_nu A_nu^dagger)`,
+>
+> `Pi_in=supp(A_nu^dagger A_nu)`.
+
+Because
+
+`[H_X,A_nu]=s_X hbar nu A_nu`,
+
+with `s_S=+1`, `s_C=-1`,
+
+one has
+
+`[H_X,A_nu A_nu^dagger]=0`,
+
+`[H_X,A_nu^dagger A_nu]=0`
+
+for `X=C,S`.
+
+Therefore `Pi_out` and `Pi_in` are invariant joint local-energy endpoint-role subspaces.
+
+Interpretation:
+
+- `Pi_out`: signal-upper / clock-lower endpoint role of `A_nu`;
+- `Pi_in`: signal-lower / clock-upper endpoint role of `A_nu`.
+
+A joint endpoint incidence costs one absolute gap `hbar nu` on the signal and one on the clock, hence `2 hbar nu` in total.
+
+Define the canonical positive clock+signal endpoint-incidence operator
+
+> **Canonical exchange cost operator**
+>
+> `boxed: G_ex`
+>
+> `=2 hbar nu Q(Pi_out+Pi_in)Q`.
+
+If a joint energy state belongs to both the domain and range of the full ladder operator, it is counted twice because it genuinely plays two endpoint roles. This is role multiplicity, not arbitrary double counting.
+
+## 4. Shared kernel curvature is charged once
+
+For a `C^2` exact physical family define
 
 `C_Delta=Q(partial_x^2 rho+partial_y^2 rho)Q`.
 
@@ -160,67 +143,41 @@ where
 
 `Z_-=K_- rho0^+ K_-^dagger`.
 
-Instead of bounding clock and signal synthesis separately and then adding two potentially overlapping curvature charges, define one positive **endpoint-incidence cost operator**
+Define the canonical kernel-resolved endpoint-incidence action
 
-> `G_CS=hbar nu Q[`
->
-> `Pi_(S,U)+Pi_(S,D)+Pi_(C,U)+Pi_(C,D)`
->
-> `]Q`.
-
-This counts one absolute exchange gap for every participating local endpoint incidence. If one Hilbert-space sector plays more than one endpoint role, the multiplicity is retained; this is intentional and should not be confused with signed subsystem mean energy.
-
-Define the total positive autonomous synthesis action
-
-> `A_CS^(2)=(1/4)Tr(G_CS C_Delta)`.
-
-This equals the sum of the corresponding clock and signal endpoint-incidence actions defined from the same curvature operator.
+> `A_ex^(2)=(1/4)Tr(G_ex C_Delta)`.
 
 Let
 
-`R_+=supp(Z_+)`,
+`R_+=supp Z_+`,
 
-`R_-=supp(Z_-)`.
+`R_-=supp Z_-`,
 
-Define exact restricted combined costs
+and define restricted costs
 
-> `g_+=lambda_min[R_+ G_CS R_+ |_(R_+)]`,
->
-> `g_-=lambda_min[R_- G_CS R_- |_(R_-)]`.
+`g_+=lambda_min[R_+ G_ex R_+ |_(R_+)]`,
 
-If a corresponding synthesized component vanishes, its `g` is unnecessary. If a nonzero component has `g=0`, no finite scalar action-only bound exists for that orientation.
+`g_-=lambda_min[R_- G_ex R_- |_(R_-)]`.
 
-## 4. Combined action charges the shared curvature once
+Then
 
-Because
+`4A_ex^(2)=Tr(G_ex C_Delta)`
 
-`C_Delta>=Z_+ + Z_-`
+`>=Tr(G_ex Z_+)+Tr(G_ex Z_-)`
 
-and `G_CS>=0`,
+`>=g_+J_+ + g_-J_-`.
 
-`4A_CS^(2)=Tr(G_CS C_Delta)`
+Hence
 
-`>=Tr(G_CS Z_+)+Tr(G_CS Z_-)`.
+> `boxed: g_+J_+ + g_-J_- <=4A_ex^(2)`.
 
-By the restricted minimum costs,
+The same global curvature operator is charged once.
 
-`Tr(G_CS Z_+)>=g_+ J_+`,
-
-`Tr(G_CS Z_-)>=g_- J_-`.
-
-Therefore
-
-> `boxed: g_+ J_+ + g_- J_- <= 4A_CS^(2)`.
-
-This is the autonomous two-sided specialization of WP13, using the **same global curvature once**.
+If a nonzero orientation has zero restricted cost, no finite scalar action-only bound follows from this cost operator, exactly as in WP13.
 
 ## 5. Full mixed autonomous Fisher theorem
 
-Write
-
-`e=4A_CS^(2)`.
-
-For positive `p,q` and internal resource `a>=0`, use the WP13 exact action-only envelope
+For positive `p,q`, internal resource `a>=0`, and `e>=0`, define the WP13 envelope
 
 `Psi_a(e;p,q)=`
 
@@ -233,17 +190,17 @@ Since
 
 and
 
-`g_+J_+ + g_-J_-<=e`,
+`g_+J_+ + g_-J_-<=4A_ex^(2)`,
 
-the upper-oriented WP11 score bound gives
+the upper orientation gives
 
-`Tr F_N/N<=Psi_(a_+)(e;g_+,g_-)`.
+`Tr F_N/N<=Psi_(a_+)(4A_ex^(2);g_+,g_-)`.
 
 The conjugate orientation gives
 
-`Tr F_N/N<=Psi_(a_-)(e;g_-,g_+)`.
+`Tr F_N/N<=Psi_(a_-)(4A_ex^(2);g_-,g_+)`.
 
-Hence:
+Therefore
 
 > **Noncommuting autonomous mixed resource/action law**
 >
@@ -251,112 +208,68 @@ Hence:
 >
 > `<=min{`
 >
-> `Psi_(a_+)(4A_CS^(2);g_+,g_-),`
+> `Psi_(a_+)(4A_ex^(2);g_+,g_-),`
 >
-> `Psi_(a_-)(4A_CS^(2);g_-,g_+)`
+> `Psi_(a_-)(4A_ex^(2);g_-,g_+)`
 >
 > `}`.
 
 This is valid for arbitrary coherent baseline support, arbitrary finite copy number, and arbitrary collective POVMs.
 
-No SLD/Holevo attainability assumption enters.
+## 6. Pure-boundary and finite-radius limits
 
-## 6. Pure-boundary corollary
+### Pure bilateral boundary
 
-If
+If `B=0`,
 
-`B=0`,
+`a_+=a_-=0`.
 
-then `a_+=a_-=0`.
+With both restricted costs positive,
 
-For bilateral synthesis with both `g_+,g_->0`,
+`Tr F_N/N<=4A_ex^(2)(1/g_+ +1/g_-)`.
 
-`Psi_0(e;g_+,g_-)=e(1/g_+ + 1/g_-)`.
+Equivalently, with
 
-Define the harmonic combined endpoint price
+`g_parallel=(1/g_+ +1/g_-)^(-1)`,
 
-`g_parallel=(1/g_+ + 1/g_-)^(-1)`.
+> `A_ex^(2)>=(g_parallel/4)[Tr F_N/N]`.
 
-Then
+### Pure one-sided boundary
 
-> `boxed: A_CS^(2)`
->
-> `>= (g_parallel/4)[Tr F_N/N]`.
+If only `K_+` is nonzero,
 
-If only the `+` orientation is synthesized,
+> `A_ex^(2)>=(g_+/4)[Tr F_N/N]`.
 
-`Tr F_N/N<=J_+`
+### Finite radius
 
-and
+If `K_+=K_-=0`, the synthesis action vanishes and the theorem reduces to
 
-`g_+J_+<=4A_CS^(2)`, so
+`Tr F_N/N<=min(a_+,a_-)`,
 
-> `boxed: A_CS^(2)>=(g_+/4)[Tr F_N/N]`.
-
-These are the arbitrary-support versions of WP18.
+the noncommuting-support two-sided survival law.
 
 ## 7. Clean WP18 limit
 
-In the clean globally stationary exchange of WP18, each synthesized orientation lands entirely in
+In a clean exact exchange,
 
-- one signal endpoint costing `hbar nu`;
-- one opposite clock endpoint costing `hbar nu`.
-
-Therefore
-
-`G_CS` acts as
-
-`2 hbar nu I`
-
-on each information-bearing synthesized endpoint range, so
-
-`g_+=g_-=2 hbar nu`.
-
-The bilateral harmonic cost is
-
-`g_parallel=hbar nu`.
+- every `K_+` output lies in `Pi_out` and not `Pi_in`;
+- every `K_-` output lies in `Pi_in` and not `Pi_out`.
 
 Thus
 
-`A_CS^(2)>=(hbar nu/4)[Tr F_N/N]`,
+`g_+=g_-=2hbar nu`.
 
-exactly WP18.
+The bilateral harmonic price is `hbar nu`, giving
+
+`A_ex^(2)>=(hbar nu/4)[Tr F_N/N]`.
 
 For one-sided synthesis,
 
-`A_CS^(2)>=(2hbar nu/4)[Tr F_N/N]`
+`A_ex^(2)>=(hbar nu/2)[Tr F_N/N]`.
 
-`=(hbar nu/2)[Tr F_N/N]`,
+These are exactly WP18's sharp coefficients.
 
-again exactly WP18.
-
-Because WP18 supplies exact extremizers, these clean-limit coefficients remain globally sharp.
-
-## 8. Finite-radius limit
-
-If no new kernel population is synthesized,
-
-`K_+=K_-=0`,
-
-then
-
-`A_CS^(2)=0`.
-
-The piecewise envelope reduces to
-
-`Psi_a(0;p,q)=a`.
-
-Hence
-
-`Tr F_N/N<=min(a_+,a_-)`.
-
-This is precisely the noncommuting-support two-sided finite-radius survival structure of WP03/WP06/WP11.
-
-Thus WP19 provides a single mathematical bridge between the finite-radius and zero-radius autonomous resource regimes.
-
-## 9. Shared-kernel qutrit becomes an autonomous fixed-shell benchmark
-
-The WP12/WP15 qutrit can be reinterpreted as a globally stationary exchange model.
+## 8. Shared-kernel qutrit benchmark reconstructed canonically
 
 Use the fixed-total-excitation-2 basis
 
@@ -366,39 +279,35 @@ Use the fixed-total-excitation-2 basis
 
 `|U>=|0_C,2_S>`.
 
-Set
-
-`H_S/hbar nu=diag(0,1,2)`,
-
-`H_C/hbar nu=diag(2,1,0)`.
-
-Then
-
-`H_C+H_S=2 hbar nu I`.
-
 Take
 
-`|q>=(1/2)|L> + sqrt(5/8)|M> + [1/(2sqrt(2))]|U>`,
+`|q>=(1/2)|L>+sqrt(5/8)|M>+[1/(2sqrt(2))]|U>`,
 
 `P=I-|q><q|`,
 
 `rho0=P/2`,
 
-and
+`A_nu=|M><L|-sqrt(2)|U><M|`.
 
-> `A_nu=|M><L|-sqrt(2)|U><M|`.
+Then
 
-This obeys
+`Pi_out=|M><M|+|U><U|`,
 
-`[H_S,A_nu]=+hbar nu A_nu`,
+`Pi_in=|L><L|+|M><M|`.
 
-`[H_C,A_nu]=-hbar nu A_nu`,
+Therefore, before kernel compression,
 
-and
+`G_ex/(hbar nu)`
 
-`Q A_nu Q=0`.
+`=2(Pi_out+Pi_in)`
 
-WP12 gives
+`=diag(2,4,2)`
+
+in the `{L,M,U}` basis.
+
+This is exactly the operator used numerically in the original WP19 benchmark, but it is now derived canonically rather than from a chosen list of four local projectors.
+
+The reconstructed tangent norms remain
 
 `J_B^+=J_B^-=5/4`,
 
@@ -406,96 +315,45 @@ WP12 gives
 
 `J_-=3`.
 
-The relevant endpoint-incidence operator before kernel compression is
+Both synthesized weighted operators have range `Q`, and
 
-`G_CS/(hbar nu)=diag(2,4,2)`.
-
-Since both synthesized weighted operators have the same rank-one range `Q`,
-
-`g_+=g_-=<q|G_CS|q>`
-
-`=(13/4)hbar nu`.
+`g_+=g_-=(13/4)hbar nu`.
 
 For the minimal curvature
 
-`C_Delta=Z_++Z_-=(19/4)Q`,
+`C_Delta=(19/4)Q`,
 
-one has
+`4A_ex^(2)=(247/16)hbar nu`.
 
-`4A_CS^(2)=Tr(G_CS C_Delta)`
+Using units `hbar nu=1`, `a_+=a_-=5/4`, the second branch of `Psi` gives
 
-`=(247/16)hbar nu`.
+`Psi_(5/4)(247/16;13/4,13/4)=12`.
 
-Take units `hbar nu=1` and use the exact internal value
+Thus the canonical audited WP19 action still reproduces the WP12 physical resource ceiling exactly.
 
-`a=5/4`.
+## 9. Interpretation boundary
 
-The threshold is
+`A_ex^(2)` is a **kernel-resolved positive endpoint-incidence action**.
 
-`a p^2/q=a p=65/16`,
+It is not generally:
 
-while
+- the full Laplacian of a local endpoint population;
+- signed clock or signal mean-energy curvature;
+- total global energy curvature;
+- the physical implementation energy of probe preparation, control, or measurement.
 
-`e=247/16`,
+The action is a kinematic necessary resource of the local encoded state family.
 
-so the second branch applies:
+In a fixed-total-energy shell, signed total energy can be exactly constant while `A_ex^(2)>0`.
 
-`Psi_(5/4)(247/16;13/4,13/4)`
+## 10. Audit result
 
-`=[247/16+(13/4)(5/4)] x [8/13]`
+The 2026-08-23 hostile audit found no algebraic defect in the WP19 Fisher/action inequality or benchmark.
 
-`=(312/16)(8/13)`
+It did identify a **definition-quality issue**: the earlier four-projector cost representation depended on a choice of participating local endpoint projectors and could be inflated by unnecessarily broad choices.
 
-`=12`.
+The canonical `Pi_in/Pi_out` construction above removes that ambiguity for a single exact exchange mode while preserving the theorem and all reported constants.
 
-Therefore
+Generic global sharpness remains unclaimed.
 
-> `boxed: WP19 autonomous action envelope =12`
-
-exactly equal to the original WP12 abstract resource-allocation ceiling.
-
-The autonomous endpoint-action reduction introduces **no additional resource-layer looseness** in this noncommuting coherent-support benchmark.
-
-WP15 then supplies the lower accessibility layer:
-
-`resource 12 > SLD 43/4 > common-record 55/8`.
-
-This places the entire benchmark inside one globally stationary relational-time experiment.
-
-## 10. Meaning of the combined action
-
-`A_CS^(2)` is not ordinary total mean-energy curvature.
-
-In a fixed-total-energy shell the signed total energy is constant and can have zero curvature identically.
-
-Instead `G_CS` counts absolute endpoint incidences of the exact exchange gap on both subsystems. It is a positive kinematic resource attached to the exchange structure.
-
-This is why globally stationary relative temporal information can have nonzero resource cost even when global asymmetry and total-energy curvature both vanish.
-
-## 11. Prior-art boundary
-
-Do not claim novelty for:
-
-- Page--Wootters relational time;
-- fixed-total-number relative-phase metrology;
-- energy-conserving exchange interactions;
-- shorted operators and principal angles;
-- SDP/action-budget duality;
-- harmonic resource allocation;
-- QFI/Holevo/Gill--Massar measurement compatibility.
-
-Candidate novelty is restricted to the combined theorem:
-
-> arbitrary finite-copy relative temporal Fisher information in a globally stationary exact exchange is jointly bounded by two-sided pre-existing endpoint survival and one positive shared clock+signal synthesis action, with the clean finite-radius and zero-radius laws recovered as exact limits.
-
-Priority remains unverified.
-
-## 12. Next work
-
-Highest-value next steps:
-
-1. perform a hostile proof audit of WP19, especially endpoint-projector overlap/multiplicity and the definition of `G_CS`;
-2. search prior art specifically for two-sided energy-conserving metrology bounds in fixed-total-energy sectors;
-3. derive a multi-gap autonomous version using a single combined spectral action operator;
-4. test whether `G_CS` can be replaced by a smaller orientation-labelled operator resource without losing positivity or reintroducing curvature double counting;
-5. decide manuscript significance only after these audits.
+Priority remains **unverified, not certified**.
