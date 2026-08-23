@@ -10,20 +10,23 @@ The frozen Rev11 paper remains on `agent/temporal-information-resource-law` and 
 
 > When signal, clock/reference, controller, detector, and memory are finite physical systems and no ideal externally timed operation is free, what resource constrains creation, transmission, and recovery of temporal information at frequency `nu`?
 
-Research is analytical/theoretical, falsification-first, and documentation-first. Standard asymmetry/reference-frame theory, phase estimation, WAY, Page--Wootters, PSD-cone geometry, singular QFI/Bures geometry, shorted operators, principal angles, SDP/SOCP theory, energy-constrained metrology, Gaussian metrology, and Holevo compatibility are infrastructure unless a distinct operational temporal-information theorem is isolated.
+Research is analytical/theoretical, falsification-first, and documentation-first. Standard asymmetry/reference-frame theory, phase estimation, WAY, Page--Wootters, PSD-cone geometry, singular QFI/Bures geometry, shorted operators, principal angles, SDP/SOCP theory, energy-constrained metrology, Gaussian metrology, numerical-radius theory, Gill--Massar/Fisher-symmetric bounds, and Holevo compatibility are infrastructure unless a distinct operational temporal-information theorem is isolated.
 
 ## Current status
 
-**WP14 — rank-one curvature-metric principal-angle law: analytic PASS.**
+**WP15 — exact common-record Fisher supremum in the shared-kernel qutrit: analytic PASS and independently validated.**
 
-The local resource hierarchy now has four layers:
+The local hierarchy now has three logically distinct layers:
 
-1. **pre-existing support survival** weighted by finite tangent robustness;
-2. **second-order kernel curvature** when the physical tangent radius collapses to zero;
-3. **positive spectral action** obtained by pricing shared curvature with one positive endpoint-cost operator;
-4. **operator overlap geometry** determining how multiple synthesized score directions compete for the same curvature.
+1. **physical temporal-resource geometry** — survival, kernel curvature, positive spectral action, and operator overlap;
+2. **quantum-statistical tangent geometry** — SLD/Bures-type ceilings;
+3. **single-record measurement accessibility** — the classical Fisher information attainable by one common POVM.
 
-The next target is measurement compatibility and/or a two-sided autonomous relational lift, not another scalar patch.
+In the WP12 shared-kernel qutrit these ceilings are respectively
+
+`12 > 43/4 > 55/8`.
+
+Do not collapse these layers into one another.
 
 ## Compact theorem stack
 
@@ -89,7 +92,7 @@ For
 
 `       sqrt(J_B^- + J_-) + sqrt(J_+)}`.
 
-Compressed endpoint projectors are essential. A four-level exact-gap model gives `lambda_U=1/4`, `mu_U=3/4`; dropping the geometry produces an actually false observable Fisher bound.
+Compressed endpoint projectors are essential. A four-level exact-gap example gives `lambda_U=1/4`, `mu_U=3/4`; dropping the geometry produces an actually false observable Fisher bound.
 
 ### WP12 — exact shared-curvature allocation
 
@@ -97,19 +100,13 @@ Compressed endpoint projectors are essential. A four-level exact-gap model gives
 
 Define
 
-`Phi_a(C;R_+,R_-)`
-
-`=sup [sqrt(a+Tr Z_+) + sqrt(Tr Z_-)]^2`.
+`Phi_a(C;R_+,R_-)=sup [sqrt(a+Tr Z_+) + sqrt(Tr Z_-)]^2`.
 
 Then
 
 `Phi_a=inf_(0<eta<1){a/eta+h_(1/eta,1/(1-eta))}`,
 
-where
-
-`h_(alpha,beta)=max alpha Tr Z_+ + beta Tr Z_-`
-
-is an SDP with dual
+where `h_(alpha,beta)` is an SDP with dual
 
 `min_(W>=0) Tr(CW)`
 
@@ -119,7 +116,7 @@ subject to
 
 `R_- W R_->=beta R_-`.
 
-This eliminates the WP11 double counting of shared curvature.
+This removes the WP11 double counting of shared curvature.
 
 ### WP13 — positive spectral-action law
 
@@ -139,41 +136,17 @@ For synthesized ranges,
 
 Then
 
-`boxed: g_+J_+ + g_-J_- <= 4A_G^(2)`.
+`g_+J_+ + g_-J_- <= 4A_G^(2)`.
 
-If a relevant `g` is zero, there is no finite action-only bound for that orientation.
+For pure bilateral synthesis the effective endpoint price is harmonic:
 
-For `e=4A_G^(2)`, `p=g_+`, `q=g_-`, internal resource `a`,
+`epsilon_parallel=(1/g_+ + 1/g_-)^(-1)`.
 
-`boxed: Psi_a(e;p,q)=`
-
-- `(sqrt(a)+sqrt(e/q))^2` if `e<=a p^2/q`;
-- `(e+p a)(1/p+1/q)` if `e>=a p^2/q`.
-
-Pure bilateral synthesis gives
-
-`Psi_0=e(1/p+1/q)`.
-
-For clean equal costs `p=q=hbar nu`,
-
-`A_G^(2) >= (hbar nu/8)[Tr F_N/N]`.
-
-One-sided synthesis recovers the `hbar nu/4` law. An unequal-cost exact-gap qutrit plus one Fourier measurement saturates the harmonic coefficient for arbitrary positive `p,q`.
-
-Read:
-`notes/WP13_POSITIVE_SPECTRAL_ACTION_ALLOCATION_LAW.md`.
+Clean equal gap costs recover the sharp `hbar nu/8` bilateral coefficient; one-sided synthesis recovers `hbar nu/4`.
 
 ### WP14 — rank-one curvature-metric angle law
 
-For
-
-`R_+=|u><u|`, `R_-=|v><v|`,
-
-short the curvature to
-
-`C_S=Short_span{u,v}(C)`.
-
-Define
+For rank-one synthesized ranges, short the curvature to their span and define
 
 `s_u=1/<u|C_S^(-1)|u>`,
 
@@ -181,28 +154,50 @@ Define
 
 `c=|<u|C_S^(-1)|v>|/sqrt(<u|C_S^(-1)|u><v|C_S^(-1)|v>)`.
 
-The exact feasible boundary is
+The exact feasible frontier is
 
-`boxed: y_max(x)=s_v[1-x/s_u]/[1-(1-c^2)x/s_u]`.
+`y_max(x)=s_v[1-x/s_u]/[1-(1-c^2)x/s_u]`.
+
+The overlap invariant is the principal angle in the inverse shorted-curvature metric, not the ordinary Hilbert-space angle.
+
+### WP15 — exact common-record Fisher supremum in the shared-kernel qutrit
 
 For
 
-`r=alpha s_u/(beta s_v)`,
+`rho0=(I-|q><q|)/2`,
 
-the exact WP12 linear allocation is
+`|q>=(1/2)|0>+sqrt(5/8)|1>+[1/(2sqrt(2))]|2>`,
 
-`boxed: h_(alpha,beta)=`
+`A=|1><0|-sqrt(2)|2><1|`,
 
-- `beta s_v` if `r<=c^2`;
-- `[alpha s_u+beta s_v-2c sqrt(alpha beta s_u s_v)]/(1-c^2)` if `c^2<r<c^(-2)`;
-- `alpha s_u` if `r>=c^(-2)`.
+WP12 gives physical resource ceiling `12`, while the SLD trace is `43/4`.
 
-Thus rank-one WP12 instances require no SDP; only the outer scalar `eta` minimization remains.
+WP15 proves the exact one-copy arbitrary-POVM result
 
-The angle `c` is curvature-whitened, not the ordinary Hilbert-space principal angle. The same ordinary overlap `1/2` can yield `c=1/sqrt(13)` or `c=2/sqrt(7)` under different positive curvature operators.
+`boxed: sup_POVM Tr F_1 = 55/8`.
+
+The upper bound is certified by the Hermitian quadratic witness
+
+`Y=[[9/16,0,0],[0,9/16,3sqrt(15)/8],[0,3sqrt(15)/8,23/4]]`,
+
+which satisfies
+
+`|<phi|A|phi>|^2 <= <phi|rho0|phi><phi|Y|phi>`
+
+for every vector. The associated `lambda,theta` LMI factors exactly into manifestly nonnegative polynomials.
+
+A sequence of ordinary three-outcome projective measurements with strictly positive baseline probabilities approaches `55/8`; exact regular attainment is not required.
+
+The hierarchy in this benchmark is therefore
+
+`physical resource 12`
+
+`> SLD quantum-statistical 43/4`
+
+`> common-record Fisher 55/8`.
 
 Read:
-`notes/WP14_RANK_ONE_CURVATURE_METRIC_PRINCIPAL_ANGLE_LAW.md`.
+`notes/WP15_EXACT_COMMON_RECORD_FISHER_SUPREMUM_SHARED_KERNEL_QUTRIT.md`.
 
 ## Numerical gates
 
@@ -216,35 +211,57 @@ Read:
 - `numerics/verify_operator_curvature_allocation_law.py`
 - `numerics/verify_positive_spectral_action_allocation_law.py`
 - `numerics/verify_rank_one_curvature_metric_angle_law.py`
+- `numerics/verify_exact_common_record_fisher_supremum.py`
 
 ## Current frontier
 
-### 1. Measurement compatibility — highest immediate priority
+### 1. WP16 — generic rank-one-kernel common-record theorem — highest priority
 
-The WP12 shared-kernel benchmark has resource ceiling `12` but SLD-QFI trace `10.75`. Determine whether the exact common-record/Holevo optimum accounts for the entire residual gap. If yes, separate the final theorem cleanly into
+Generalize the WP15 optimization for
 
-`physical resource ceiling x measurement compatibility`.
+`rho0=P/r`, `rank(Q)=1`, `Q=|q><q|`,
 
-### 2. Operator + action Pareto law
+and
 
-WP13 intentionally compresses `C_Delta` to one scalar action and therefore loses the WP14 overlap invariant `c`. Derive the sharp Pareto relation retaining both spectral action and operator curvature geometry.
+`A=[[B,b],[a^dagger,0]]`
+
+with `QAQ=0`.
+
+The singular boundary invariant is
+
+`kappa=max_(||t||=1)|<q|A|t>+<t|A|q>|^2`
+
+`      =||a||^2+||b||^2+2|a^dagger b|`.
+
+Do **not** assume the full optimum is simply the support-only optimum plus `r kappa`: early adversarial random qutrit tests show mixed support/kernel outcomes can exceed that naive sum.
+
+Required work:
+
+- derive the exact POVM-dual/semi-infinite witness problem for general `B,a,b`;
+- determine whether it reduces to a finite SDP/numerical-radius problem;
+- identify a nontrivial closed class containing WP15;
+- record explicit counterexamples to any false additive compatibility conjecture.
+
+### 2. Operator + spectral-action Pareto law
+
+Retain both WP14 operator overlap and WP13 positive spectral action instead of compressing either away.
 
 ### 3. Autonomous relational lift
 
-Apply the operator/action hierarchy from both clock and signal viewpoints to a globally stationary exact exchange tangent. Determine whether matching positive action resources are unavoidable on both sides of the relational cut.
+Apply the operator/action hierarchy simultaneously to clock and signal sides of a globally stationary exact exchange tangent.
 
 ### 4. Gaussian covariance-changing synthesis
 
-Test squeezed-vacuum and mixed Gaussian temporal families. Determine whether the relevant resource remains kernel curvature priced by a positive spectral operator or requires a covariance-specific extension.
+Test squeezed-vacuum and mixed Gaussian rank-changing temporal families.
 
 ### 5. Priority audit
 
-Explicitly compare against Longyun Chen and Yuxiang Yang, *Optimal Quantum Metrology under Energy Constraints*, Phys. Rev. Lett. 136, 070801 (2026), DOI `10.1103/6ghs-frtx`, plus rank-one semidefinite packing/SOCP and waveform-Holevo literature.
+Explicitly compare against energy-constrained metrology, generalized numerical-radius/Ando-type operator inequalities, POVM design duality, Gill--Massar/Fisher-symmetric bounds, rank-changing QFI, and waveform-Holevo literature.
 
 ## Priority status
 
-Shorted operators, SDP/SOCP duality, weighted principal angles, harmonic costs, energy-constrained metrology, and multiparameter Holevo theory are established. Candidate novelty is restricted to their frequency-resolved **rank-changing temporal-information resource** consequences. Priority remains **unverified, not certified**.
+All generic matrix-analysis and quantum-estimation ingredients above are prior art unless demonstrated otherwise. Candidate novelty remains restricted to their frequency-resolved **rank-changing temporal-information resource** consequences and exact bridge theorems between resource, QFI, and accessible Fisher information. Priority remains **unverified, not certified**.
 
 ## Documentation rule
 
-Every material theorem, counterexample, prior-art collision, or killed conjecture must be recorded immediately and reflected in `README.md`, `AGENTS.md`, and `ROADMAP.md`. The repository, not chat history, is authoritative.
+Every material theorem, counterexample, priority collision, or killed conjecture must be recorded immediately and reflected in `README.md`, `AGENTS.md`, and `ROADMAP.md`. The repository, not chat history, is authoritative.
