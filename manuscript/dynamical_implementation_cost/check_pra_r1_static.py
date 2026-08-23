@@ -24,11 +24,13 @@ supp = SUPP.read_text(encoding="utf-8")
 d2 = D2.read_text(encoding="utf-8")
 bib = BIB.read_text(encoding="utf-8")
 
-# Standalone/public identity lock.
+# Standalone/public identity lock. Match actual project/provenance identifiers,
+# not generic substrings such as "repo" that occur inside ordinary words
+# (for example, "Reports" in bibliography journal titles).
 forbidden = [
     "GitHub", "github.com", "Kajin-0", "The-Universal-Photodetection-Resource-Problem",
     "WP21", "WP22", "WP23", "WP24", "WP25", "WP26", "WP27", "WP28", "WP29",
-    "WP30", "WP31", "WP32", "WP33", "work package", "repository", "repo",
+    "WP30", "WP31", "WP32", "WP33", "work package",
 ]
 for name, text in [(MAIN.name, main), (SUPP.name, supp), (BIB.name, bib)]:
     lower = text.lower()
@@ -60,10 +62,19 @@ else:
         "exact total-energy conservation",
         "separable infinite-dimensional",
         r"\hbar\nu V_{\min}",
-        "not a thermodynamic-work bound",
     ]:
         if marker not in abstract:
             errors.append(f"abstract missing scope/result marker: {marker}")
+
+    thermodynamic_disclaimers = [
+        "not a thermodynamic-work bound",
+        "neither a thermodynamic-work bound",
+    ]
+    if not any(marker in abstract for marker in thermodynamic_disclaimers):
+        errors.append(
+            "abstract missing thermodynamic-work disclaimer "
+            "('not a thermodynamic-work bound' or 'neither a thermodynamic-work bound')"
+        )
 
 # APS-required substantive AI disclosure and standalone data statement.
 for marker in [
