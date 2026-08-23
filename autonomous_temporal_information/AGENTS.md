@@ -4,166 +4,92 @@
 
 **Started:** 2026-08-22
 
-This is a distinct post-Rev11 foundational program. The frozen Rev11 paper remains on `agent/temporal-information-resource-law` and must not be rewritten from this branch absent a concrete defect.
+The frozen Rev11 paper remains on `agent/temporal-information-resource-law` and is not to be rewritten absent a concrete defect.
 
 ## Grand question
 
 > When signal, clock/reference, controller, detector, and memory are all finite physical systems and no ideal externally timed operation is free, what resource constrains creation, transmission, and recovery of temporal information at frequency `nu`?
 
-Research is analytical/theoretical, falsification-first, and documentation-first. Established asymmetry/reference-frame theory, phase estimation, WAY, Page--Wootters, PSD-cone geometry, singular QFI/Bures geometry, principal angles/shorted operators, Fisher-symmetric measurements, and Gaussian metrology are infrastructure unless a distinct operational temporal-information theorem is isolated.
+Research is analytical/theoretical, falsification-first, and documentation-first. Standard asymmetry/reference-frame theory, phase estimation, WAY, Page--Wootters, PSD-cone geometry, singular QFI/Bures geometry, shorted operators, principal angles, SDP duality, Fisher-symmetric measurements, Gaussian metrology, and multiparameter compatibility theory are infrastructure unless a distinct operational temporal-information theorem is isolated.
 
 ## Current frontier
 
-**WP11 — noncommuting-support shorted-endpoint master law: analytic PASS and independently validated.**
+**WP12 — exact operator curvature-allocation law: analytic PASS and independently validated.**
 
-The local theorem hierarchy now covers:
+The local theorem stack now treats the resource as naturally **operator-valued**:
 
-1. pre-existing finite-radius information;
-2. one-sided boundary synthesis;
-3. multimode synthesis budgets;
-4. bilateral synthesis interference;
-5. one-sided mixed pre-existing+synthesis information;
-6. arbitrary coherent noncommuting baseline support through endpoint shorting geometry.
+- pre-existing support resource;
+- second-order kernel-curvature synthesis resource;
+- endpoint/support geometry through shorting/principal angles;
+- joint allocation of shared curvature between opposite temporal orientations.
 
-The next high-value target is to replace WP11's scalar shorting constants and separately charged kernel curvatures by the **tight operator-valued allocation problem**.
+The next target is a positive **spectral-energy/action allocation** that incorporates energy endpoint contractions directly into the WP12 SDP.
 
-## Completed work packages
+## Compact theorem stack
 
-### WP02 — robust tangent-radius law
+### WP02 — finite-radius survival
 
-For exact gap `nu`, finite `N`, and arbitrary collective POVM,
+`(R_lin^2/4)[Tr F_N^(nu)/N] <= T(nu)`.
 
-`(R_lin^2/4)[Tr F_N^(nu)/N] <= min(D_nu,U_nu) <= T(nu)`.
+### WP03 / WP06 — autonomous relational dual survival
 
-Hence
+`K_N=(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`,
 
-`Ebar+ >= (hbar nu R_lin^2/4)[Tr F_N^(nu)/N]`.
-
-### WP03 / WP06 — relational dual survival and coherent-history extension
-
-For a globally stationary clock--signal exchange tangent,
-
-`K_N=(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`.
-
-The total-energy coefficient `2` is asymptotically sharp. WP06 removes separate local stationarity: pre-existing Page--Wootters/history-state coherence does not evade the law.
+including arbitrary pre-existing Page--Wootters/history-state relational coherence.
 
 ### WP04 / WP05 — exact structured autonomous retention
 
-Hard total-excitation cap:
+Hard cap:
 
 `R_M(k) <= cos^2{pi/[floor(L/k)+2]}`.
 
-Mean-total-energy envelope:
+Mean total excitation:
 
 `R_M(1) <= (1-lambda)g_m+lambda g_(m+1)`,
 
 `g_L=cos^2[pi/(L+2)]`.
 
-Sine-chain extremizers make the near-lossless coefficient `pi` exactly sharp under both hard and mean total energy.
+The near-lossless coefficient `pi` is exactly sharp under both hard and mean total energy.
 
 ### WP07 — one-sided zero-radius synthesis
 
-For `P=supp(rho0)` and baseline-empty endpoint `P_U`, with
+For `A=P_U A P`, baseline-empty `P_U`,
 
-`A=P_U A P`,
+`boxed: Tr F_N/N <= Tr(A rho0^+ A^dagger) <= Delta T_U(0)`.
 
-define
+### WP08 — multimode synthesis budget
 
-`J=Tr(A rho0^+ A^dagger)`.
+For one common arbitrary collective measurement,
 
-Then for every finite `N` and arbitrary entangled collective POVM,
+`boxed: sum_k w_k Tr F_(N,k)/N <= sum_k w_k Delta_k T_k(0)`.
 
-`boxed: Tr F_N/N <= J <= Delta T_U(0)`.
+### WP09 — bilateral synthesis / Minkowski geometry
 
-The minimal qubit and coherent-sideband constructions saturate the coefficient.
-
-### WP08 — multimode quadratic synthesis budget
-
-For mutually orthogonal baseline-empty modes and one common arbitrary collective measurement,
-
-`boxed: sum_k w_k Tr F_(N,k)/N <= sum_k w_k Delta_k T_k(0)`
-
-for every nonnegative weight sequence.
-
-Gap weighting gives
-
-`boxed: sum_k hbar nu_k Tr F_(N,k)/(4N) <= E_gap,syn^(2)`.
-
-Multimode coherent sidebands with common heterodyne readout saturate every positive weighted sum simultaneously.
-
-### WP09 — bilateral zero-radius Minkowski law
-
-For arbitrary rank-deficient baseline,
-
-`A=X+Y^dagger`,
-
-`X=A P`, `Y=Q A^dagger P`,
-
-with weighted norms `J_X,J_Y`,
+For `A=X+Y^dagger`,
 
 `boxed: sqrt[Tr F_N/N] <= sqrt(J_X)+sqrt(J_Y)`.
 
-For orthogonal empty upper/lower endpoints,
+For clean empty endpoints,
 
 `boxed: Tr F_N/N <= [sqrt(Delta T_+)+sqrt(Delta T_-)]^2`.
 
-An exact-gap qutrit Fourier experiment proves ordinary additive endpoint accounting false by exactly factor two and saturates the Minkowski law. Equal positive gap costs obey the sharp `hbar nu/8` synthesis-action coefficient.
+The factor-two departure from additive synthesis is exactly sharp.
 
-### WP10 — one-sided mixed survival+synthesis law
+### WP10 — one-sided mixed survival+synthesis
 
-Assume `[P,H]=0` and no lower-endpoint synthesis. Write
-
-`A_nu=B+K`,
-
-`B=P A_nu P`, `K=Q A_nu P`.
-
-Then
-
-`boxed: Tr F_N/N <= J_B+J_K`
-
-with
-
-`J_B <= 4T_pre/R_B^2`,
-
-`J_K <= Delta T_syn(0)`.
-
-Therefore
+For energy-invariant baseline support and one-sided upper synthesis,
 
 `boxed: Tr F_N/N <= 4T_pre/R_B^2 + Delta T_syn(0)`.
 
-A qutrit normalized-congruence family plus one Fourier measurement simultaneously saturates all terms. The sharp positive energy/action law is
+The additive composition and energy/action coefficient are exactly sharp.
 
-`boxed: Ebar+/R_B^2 + E_syn^(2) >= (hbar nu/4)[Tr F_N/N]`.
+### WP11 — noncommuting-support shorted-endpoint master law
 
-### WP11 — noncommuting baseline support / shorted endpoints
+For arbitrary coherent support, decompose
 
-Let the **full** tangent be exact gap,
+`B=PAP`, `K_+=QAP`, `K_-=QA^dagger P`.
 
-`[H,A_nu]=hbar nu A_nu`,
-
-with arbitrary rank-deficient baseline
-
-`P=supp(rho0)`, `Q=I-P`.
-
-First-order physicality gives `Q A_nu Q=0`. Decompose
-
-`B=P A_nu P`,
-
-`K_+=Q A_nu P`,
-
-`K_-=Q A_nu^dagger P`.
-
-Define
-
-`J_B^+=Tr(B rho0^+ B^dagger)`,
-
-`J_B^-=Tr(B^dagger rho0^+ B)`,
-
-`J_+=Tr(K_+ rho0^+ K_+^dagger)`,
-
-`J_-=Tr(K_- rho0^+ K_-^dagger)`.
-
-The finite-copy arbitrary-POVM measurement law is
+The finite-copy arbitrary-POVM information law is
 
 `boxed: sqrt[Tr F_N/N]`
 
@@ -171,106 +97,106 @@ The finite-copy arbitrary-POVM measurement law is
 
 `       sqrt(J_B^- + J_-) + sqrt(J_+)}`.
 
-Let `Pi_U,Pi_D` be participating energy endpoint projectors and set
+Compressed energy endpoint projectors and shorting/principal-angle constants reduce the tangent norms to physical spectral resources. An exact four-level example gives
 
-`S_U=P Pi_U P`, `S_D=P Pi_D P`,
+`lambda_U=1/4`, `mu_U=3/4`
 
-`W_U=Q Pi_U Q`, `W_D=Q Pi_D Q`.
+and proves the geometric correction operationally necessary:
 
-For the internal information-bearing range projectors `R_B^+,R_B^-`, define
+`Tr F=7/4 > 13/8`
 
-`lambda_U=sup{lambda:S_U >= lambda R_B^+}`,
+for the naive no-geometry resource ceiling.
 
-`lambda_D=sup{lambda:S_D >= lambda R_B^-}`.
+### WP12 — exact operator curvature allocation
 
-For synthesized range projectors `R_+,R_-`, define
+Second-order positivity gives the **joint** kernel constraint
 
-`mu_U=sup{mu:W_U >= mu R_+}`,
+`Z_+ + Z_- <= C_Delta`.
 
-`mu_D=sup{mu:W_D >= mu R_-}`.
+Define the feasible positive-operator allocation set by
 
-With
+`Z_+=R_+ Z_+ R_+`,
 
-`C_Delta=Q(partial_x^2 rho+partial_y^2 rho)Q`,
+`Z_-=R_- Z_- R_-`,
 
-`Gamma_U=Tr(W_U C_Delta)`,
+`Z_+ + Z_- <= C`.
 
-`Gamma_D=Tr(W_D C_Delta)`,
+For internal nonnegative `a`, define
 
-one obtains
+`Phi_a(C;R_+,R_-)`
 
-`J_B^+ <= 4T_U/(R_B^2 lambda_U)`,
+`= sup [sqrt(a+Tr Z_+) + sqrt(Tr Z_-)]^2`.
 
-`J_B^- <= 4T_D/(R_B^2 lambda_D)`,
+The exact variational representation is
 
-`J_+ <= Gamma_U/mu_U`,
+`boxed: Phi_a`
 
-`J_- <= Gamma_D/mu_D`.
+`= inf_(0<eta<1) {a/eta`
 
-Define
+`+ h_(1/eta,1/(1-eta))(C;R_+,R_-)}`,
 
-`B_U=4T_U/(R_B^2 lambda_U)`,
+where
 
-`B_D=4T_D/(R_B^2 lambda_D)`,
+`h_(alpha,beta)=max alpha Tr Z_+ + beta Tr Z_-`
 
-`S_U=Gamma_U/mu_U`,
+is an SDP with dual
 
-`S_D=Gamma_D/mu_D`.
+`boxed: h_(alpha,beta)=min_(W>=0) Tr(CW)`
 
-Then
+subject to
+
+`R_+ W R_+ >= alpha R_+`,
+
+`R_- W R_- >= beta R_-`.
+
+Hence the curvature allocation is exactly one scalar minimization over an SDP value.
+
+Important closed forms:
+
+- one-sided:
+  `Phi_a(C;R,0)=a+Tr Short_R(C)`;
+- coincident synthesized subspaces, `s=Tr Short_R(C)`:
+  `Phi=(sqrt(a)+sqrt(s))^2` for `s<=a`,
+  `Phi=2(a+s)` for `s>=a`;
+- decoupled orthogonal subspaces:
+  `Phi=[sqrt(a+s_+)+sqrt(s_-)]^2`.
+
+The physical finite-copy bound is
 
 `boxed: Tr F_N/N`
 
-`<= min{[sqrt(B_U+S_U)+sqrt(S_D)]^2,`
+`<= min{Phi_(J_B^+)(C_Delta;R_+,R_-),`
 
-`       [sqrt(B_D+S_D)+sqrt(S_U)]^2}`.
+`       Phi_(J_B^-)(C_Delta;R_-,R_+)}`.
 
-The generic master ceiling is not claimed globally sharp, but it reduces exactly to WP06, WP07, WP09, and WP10 in their solved limits.
+Replacing `J_B^+/-` by their WP11 endpoint-resource ceilings gives a fully resource-reduced theorem.
 
-#### Explicit necessity counterexample
+#### Shared-kernel benchmark
 
-Take
+For
 
-`H=hbar omega diag(0,1,2,3)`, `nu=2omega`,
+`rho0=(I-|q><q|)/2`,
 
-`|r>=(1/2)|2>+(sqrt(3)/2)|3>`,
+`|q>=(1/2)|0>+sqrt(5/8)|1>+[1/(2sqrt(2))]|2>`,
 
-`rho0=(1/2)|0><0|+(1/2)|r><r|`,
+`A=|1><0|-sqrt(2)|2><1|`,
 
-`A_nu=|2><0|`.
+one has
 
-Then `[P,H]!=0` and
+`J_B^+=5/4`, `J_+=7/4`, `J_-=3`, `s=19/4`.
 
-`B=(1/2)|r><0|`,
+The exact allocation gives
 
-`K_+=(sqrt(3)/2)|q><0|`.
+`Phi=12`,
 
-The true internal norm is `J_B=1/2`. The naive WP10-style term without geometric correction is only
+while separately charging the same curvature to both orientations gives approximately
 
-`4T_U/R_B^2=1/8`.
+`21.427`.
 
-But
-
-`lambda_U=1/4`,
-
-which repairs the internal bound to equality. On the kernel side
-
-`mu_U=3/4`
-
-also repairs the curvature term exactly.
-
-This is operationally necessary: a fixed one-copy POVM formed by classical randomization of scalar-SLD-optimal cosine and sine measurements has
-
-`Tr F=7/4`,
-
-while the naive no-geometry total resource ceiling is
-
-`13/8`.
-
-Thus omitting endpoint-support geometry gives a false observable Fisher bound.
+The allocation law removes about `43.996%` of that resource overcount. The SLD-QFI trace is `10.75`; that residual gap is measurement compatibility, not resource allocation.
 
 Read:
-`notes/WP11_SHORTED_ENDPOINT_MASTER_LAW_NONCOMMUTING_SUPPORT.md`.
+`notes/WP12_EXACT_OPERATOR_CURVATURE_ALLOCATION_SDP_LAW.md`.
 
 ## Numerical gates
 
@@ -281,43 +207,58 @@ Read:
 - `numerics/verify_bilateral_synthesis_minkowski_law.py`
 - `numerics/verify_one_sided_mixed_survival_synthesis_law.py`
 - `numerics/verify_shorted_endpoint_master_law.py`
+- `numerics/verify_operator_curvature_allocation_law.py`
 
-WP11 validation uses randomized noncommuting rank-2 qutrit supports, exact-gap tangents satisfying `Q A Q=0`, arbitrary one-copy POVMs, random two-copy collective POVMs, support/kernel shorting inequalities, and the explicit four-level operational counterexample.
+WP12 validation checks the scalar variational identity, random two-dimensional rank-one allocation problems, one-sided/identical/orthogonal closed forms, and the exact shared-kernel qutrit benchmark.
 
-## Current open frontier — WP12 operator-valued curvature allocation
+## Current open frontier — spectral-energy allocation
 
-WP11 converts endpoint geometry to scalar constants, but this can be loose because the same kernel curvature can contribute to both `Gamma_U` and `Gamma_D`.
+### 1. Put endpoint energy into the SDP itself
 
-Highest priority:
+WP12 allocates total kernel curvature. For an exact temporal gap, define endpoint contractions
 
-1. retain Anderson--Trapp shorted operators instead of reducing immediately to `lambda,mu`;
-2. formulate the joint feasible allocation
-   `Z_+>=0, Z_->=0, Z_++Z_-<=C_Delta`
-   with the required range/endpoint constraints;
-3. maximize the measurement-side Minkowski functional over that feasible set;
-4. derive a finite-dimensional SDP/variational expression for the tightest curvature-only resource ceiling;
-5. solve overlapping-subspace special cases analytically and seek exact extremizers;
-6. lift the final operator law to both sides of an autonomous clock--signal cut.
+`W_U=Q Pi_U Q`,
+
+`W_D=Q Pi_D Q`.
+
+Seek a positive operator cost whose value on `Z_+` and `Z_-` measures the actual upper/lower spectral population or energy action required by each orientation.
+
+### 2. Candidate weighted allocation
+
+Study optimization problems of the form
+
+`max [sqrt(a+Tr Z_+) + sqrt(Tr Z_-)]^2`
+
+subject to
+
+`Z_+ + Z_- <= C_Delta`
+
+plus a fixed energy/action budget
+
+`Tr(G_+ Z_+) + Tr(G_- Z_-) <= E`.
+
+Determine the optimal dual and whether the effective scalar coefficient is a harmonic/parallel sum of positive endpoint cost operators.
+
+### 3. Rank-one principal-angle solution
+
+Solve the case `R_+,R_-` rank one with arbitrary angle and arbitrary positive `C`. This should expose the exact interpolation between:
+
+- decoupled additive allocation;
+- coincident-subspace factor-two enhancement;
+- singular principal-angle suppression.
+
+### 4. Measurement compatibility
+
+Test whether combining WP12 with a Holevo/RLD/SLD-compatible common-record bound can close the residual resource-versus-attainability gap without losing arbitrary-POVM rigor.
+
+### 5. Autonomous relational lift
+
+Apply the operator allocation from both clock and signal Hamiltonian viewpoints. Determine whether a globally stationary exchange requires matching shorted/allocation resources on both sides of the relational cut.
 
 ## Priority status
 
-Shorted operators, principal angles, rank-deficient QFI, PSD-cone geometry, and scalar SLD attainability are established. Candidate novelty is restricted to the frequency-resolved temporal-information use of these objects and the necessity/sharpness statements above. **Priority remains unverified, not certified.**
-
-## Read first
-
-1. `notes/WP11_SHORTED_ENDPOINT_MASTER_LAW_NONCOMMUTING_SUPPORT.md`
-2. `notes/WP10_SHARP_ONE_SIDED_MIXED_SURVIVAL_SYNTHESIS_LAW.md`
-3. `notes/WP09_SHARP_BILATERAL_SYNTHESIS_MINKOWSKI_LAW.md`
-4. `notes/WP08_QUADRATIC_SPECTRAL_SYNTHESIS_SUM_AND_ENERGY_LAW.md`
-5. `notes/WP07_NONLINEAR_ZERO_RADIUS_CURVATURE_AND_FINITE_AMPLITUDE_LAW.md`
-6. `notes/WP06_NONSTATIONARY_ROBUST_TAIL_AND_HISTORY_STATE_EXTENSION.md`
-7. `notes/WP05_EXACT_MEAN_ENERGY_AUTONOMOUS_RELATIONAL_RETENTION.md`
-8. `notes/WP04_EXACT_HARD_CAP_AUTONOMOUS_RELATIONAL_RETENTION.md`
-9. `notes/WP03_RELATIONAL_DUAL_ENERGY_SURVIVAL_LAW.md`
-10. `notes/WP02_LOCAL_FISHER_NO_GO_AND_ROBUST_TANGENT_RADIUS_LAW.md`
-11. `notes/WP01_FOUNDATIONAL_SCOPE_AND_PRIOR_ART_BOUNDARY.md`
-12. `ROADMAP.md`
+Shorted operators, parallel addition, SDP duality, minimax theory, PSD-cone curvature, rank-deficient QFI, and Holevo compatibility mathematics are established. Candidate novelty is restricted to their frequency-resolved temporal-information resource use. **Priority remains unverified, not certified.**
 
 ## Documentation rule
 
-Every material theorem, counterexample, priority collision, or killed conjecture must be recorded immediately in this directory and reflected in `README.md`, `AGENTS.md`, and `ROADMAP.md`. Do not depend on chat history. Keep Rev11 frozen and separately advertised until this branch reaches its own publication gate.
+Every material theorem, counterexample, priority collision, or killed conjecture must be recorded immediately in this directory and reflected in `README.md`, `AGENTS.md`, and `ROADMAP.md`. Do not depend on chat history.
