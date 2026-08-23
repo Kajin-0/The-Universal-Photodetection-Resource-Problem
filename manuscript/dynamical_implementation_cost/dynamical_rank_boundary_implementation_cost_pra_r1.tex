@@ -1,0 +1,275 @@
+\documentclass[aps,pra,preprint,nofootinbib]{revtex4-2}
+
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cA}{\mathcal A}
+\newcommand{\rhozero}{\rho_0}
+\newcommand{\Omegazero}{\Omega_0}
+\newcommand{\Vimpl}{V_{\rm impl}}
+\newcommand{\Vmin}{V_{\min}}
+\newcommand{\Cmin}{C_{\min}}
+\newcommand{\Cker}{C}
+\newcommand{\Htot}{H_{\rm tot}}
+\newcommand{\HT}{H_T}
+
+\begin{document}
+
+\title{Exact minimum dynamical cost of prescribed rank-changing quantum-state curvature}
+\author{Anonymous}
+\affiliation{Anonymous affiliation}
+
+\begin{abstract}
+At a rank-changing boundary of quantum state space, a first-order tangent fixes only a minimum amount of second-order population that must enter the baseline-empty sector; additional positive curvature may be prescribed independently. We determine the least state-weighted quadratic coupling required to implement that complete local datum. For a prescribed feasible metric-contracted kernel Hessian $C$, every finite-cost unitary dilation obeys $V_{\min}=\tfrac12\operatorname{Tr}C$, and the bound is attained by combining the Bures-horizontal first-order motion with an orthogonal ancillary flag that realizes arbitrary excess curvature without changing the first derivative. Under stationary energy covariance, the same optimum is attainable with exact total-energy conservation and a semibounded ancillary Hamiltonian, including for separable infinite-dimensional targets with unbounded occupied energy support. For an autonomous temporal exchange at Bohr frequency $\nu$, the frequency-resolved endpoint synthesis action is exactly $\hbar\nu V_{\min}$. Thus nonzero implementation coupling can be required even when the total bare-energy distribution is unchanged. The result concerns a prescribed contraction of the kernel second-order curvature; it is neither a thermodynamic-work bound nor a new first-order quantum-Fisher variational principle.
+\end{abstract}
+
+\maketitle
+
+\section{Problem and scope}
+
+At a rank-changing boundary, first-order distinguishability and second-order physical realizability separate. Probability may enter outcomes that are empty at the baseline only at second order, a generic source of nonregular statistical behavior \cite{Chernoff1954,Shapiro1985,SelfLiang1987}. For quantum states, positivity additionally constrains how support--kernel coherences may be completed by population in the kernel; rank changes also produce familiar subtleties in quantum-Fisher and Bures geometry \cite{Safranek2017}.
+
+The minimum cost of a \emph{first-order} quantum tangent is already part of established purification geometry. The Bures/SLD metric is obtained by minimizing purification motion \cite{BraunsteinCaves1994}; related fibre/Kraus-gauge formulations underlie channel Fisher information and noisy-metrology bounds \cite{FujiwaraImai2008,EscherEtAl2011,DemkowiczKolodynskiGuta2012}. Covariant Stinespring dilation is likewise established \cite{Scutaru1979}. These results do not determine the cost of an independently prescribed, nonminimal positive second-order population in the target kernel.
+
+Here we solve that local second-order implementation problem exactly. If $C$ denotes the prescribed physical-metric contraction of the target kernel Hessian, positivity requires $C\succeq C_{\min}$, where $C_{\min}$ is fixed by the first derivative. We prove that every finite-cost unitary dilation obeys $V_{\rm impl}\ge\tfrac12\Tr C$ and construct a dilation attaining equality for every feasible $C$. The construction separates the horizontal first-order motion from an ancillary flag carrying precisely the excess $C-C_{\min}$. Exact total-energy conservation does not increase the optimum: a semibounded conserving dilation exists even in separable infinite dimension with unbounded occupied target energies. An autonomous temporal exchange then converts the general result into the spectral identity $\mathcal A_{\rm ex}^{(2)}=\hbar\nu V_{\min}$.
+
+We consider a real parameter vector $\bm\theta=(\theta_1,\ldots,\theta_d)$ with a fixed physical Euclidean metric; a coordinate-covariant version is given below. The target family is trace-norm $C^2$ at the origin and satisfies
+\begin{equation}
+ \rho(\bm\theta)=\rhozero+\sum_j \theta_j D_j+O(\|\bm\theta\|^2),
+\end{equation}
+where $\rhozero\ge0$, $\Tr\rhozero=1$, and
+\begin{equation}
+ P D_jP=0,\qquad QD_jQ=0.
+ \label{eq:pureboundary}
+\end{equation}
+The prescribed kernel Hessian contraction is
+\begin{equation}
+ \Cker:=Q\sum_j \partial_j^2\rho(0)Q.
+ \label{eq:Cdef}
+\end{equation}
+We optimize only this metric contraction, not an arbitrary full tensor of mixed second derivatives.
+
+A unitary implementation may use an arbitrary ancillary/controller Hilbert space $E$ and a global baseline $\Omegazero$ with $\Tr_E\Omegazero=\rhozero$. For each coordinate let $K_j=K_j^\dagger$ be the self-adjoint tangent generator on the baseline domain. We require finite second moments $\Tr(\Omegazero K_j^2)<\infty$ and a reduced state family that is trace-norm $C^2$ at the origin. For bounded generators this is the usual operator expansion $\partial_jU(0)=-iK_j$; for the unbounded direct-sum construction below the derivatives are understood statewise, with trace-norm differentiation justified explicitly in the Supplemental Material. Define the state-weighted quadratic coupling cost
+\begin{equation}
+ \Vimpl:=\sum_j \Var_{\Omegazero}(K_j).
+ \label{eq:Vdef}
+\end{equation}
+This is a local implementation-strength functional. It is not identified with thermodynamic work, battery depletion, switching work, or reset cost.
+
+\section{Kernel curvature is implementation coupling}
+
+The first result converts the apparently kinematic kernel Hessian into an exact dynamical quantity.
+
+\begin{proposition}[Unitary kernel-curvature identity]
+Let $\Omega(\bm\theta)=U(\bm\theta)\Omegazero U(\bm\theta)^\dagger$ be an implementation in the finite-cost class above. If $\Tr_E\Omegazero=\rhozero$ and $Q\rhozero Q=0$, then, for bounded generators and by quadratic-form approximation for the finite-second-moment extension,
+\begin{equation}
+ Q\partial_j^2\rho(0)Q
+ =2\Tr_E\!\left[(Q\otimes I)K_j\Omegazero K_j(Q\otimes I)\right].
+ \label{eq:kernelidentity}
+\end{equation}
+Consequently, for any positive target operator $G$ supported in $Q$,
+\begin{equation}
+ \frac14\Tr(G\Cker)
+ =\frac12\sum_j\Tr\!\left[(G\otimes I)K_j\Omegazero K_j\right].
+ \label{eq:weightedidentity}
+\end{equation}
+\end{proposition}
+
+\noindent
+The proof is short. Positivity of $\Omegazero$ and $Q\rhozero Q=0$ imply that the global baseline is supported in $P\otimes E$. In the second derivative of $U\Omegazero U^\dagger$, all acceleration/commutator terms vanish after projection onto $Q$ on both target sides; only the quadratic transition term survives. Supplemental Material gives the basis-free expansion.
+
+Taking $G=Q$ and the trace of Eq.~\eqref{eq:kernelidentity} yields
+\begin{equation}
+ \frac12\Tr\Cker
+ =\sum_j\Tr[\Omegazero K_j(Q\otimes I)K_j].
+ \label{eq:kerneltrace}
+\end{equation}
+Since the baseline lies in $P\otimes E$, the variance decomposes into a nonnegative support-block variance plus the $P\to Q$ transition norm. Therefore every implementation satisfies
+\begin{equation}
+ \boxed{\Vimpl\ge\frac12\Tr\Cker.}
+ \label{eq:universal-lower}
+\end{equation}
+
+\section{Feasibility and the first-order horizontal minimum}
+
+The target state-space positivity constraint supplies the minimum curvature compatible with the prescribed first derivatives. In finite dimension define
+\begin{equation}
+ \Cmin
+ =2\sum_j QD_jP\rhozero^+PD_jQ,
+ \label{eq:Cmin}
+\end{equation}
+where $\rhozero^+$ is the support pseudoinverse. In separable infinite dimension the rigorous form is
+\begin{equation}
+ \Cmin=2\sum_j L_jL_j^\dagger,
+ \qquad
+ L_j:=QD_jP\rhozero^{-1/2},
+ \label{eq:CminHS}
+\end{equation}
+under the assumption $L_j\in\mathcal S_2$ (Hilbert--Schmidt).
+
+The second-order tangent-cone/Schur-complement condition gives
+\begin{equation}
+ \boxed{\Cker\succeq\Cmin.}
+ \label{eq:feasible}
+\end{equation}
+The finite-dimensional matrix statement is standard semidefinite tangent geometry \cite{Shapiro1997,BonnansCominettiShapiro1999}; the trace-class extension used here is proved by finite-rank support truncation and monotone convergence in the Supplemental Material.
+
+At equality, the problem reduces to familiar first-order Bures/SLD geometry. If $H^{\rm SLD}$ is the SLD-QFI matrix of the pure-boundary tangent, then
+\begin{equation}
+ \frac12\Tr\Cmin=\frac14\Tr H^{\rm SLD}.
+ \label{eq:firstorderbridge}
+\end{equation}
+We use Eq.~\eqref{eq:firstorderbridge} only as a bridge to established first-order geometry, not as a novelty claim. The new problem begins when $\Cker-\Cmin\ne0$ is prescribed independently.
+
+\section{Exact minimum for a prescribed kernel second-order jet}
+
+\begin{theorem}[Exact prescribed-kernel implementation cost]
+\label{thm:central}
+Let $\rhozero$ be rank deficient, and let $D_j$ satisfy Eq.~\eqref{eq:pureboundary}. In separable infinite dimension assume the Hilbert--Schmidt regularity in Eq.~\eqref{eq:CminHS}. Let $\Cker$ be positive trace class with $\Cker\succeq\Cmin$. Among all finite-cost unitary dilations whose reduced families are trace-norm $C^2$ at the origin and that realize the derivatives $D_j$ and kernel Hessian contraction $\Cker$,
+\begin{equation}
+ \boxed{
+ \Vmin(\Cker;D,\rhozero)
+ =\frac12\Tr\Cker.
+ }
+ \label{eq:central}
+\end{equation}
+\end{theorem}
+
+The lower bound is Eq.~\eqref{eq:universal-lower}. Attainability has a transparent decomposition. Write
+\begin{equation}
+ S:=\frac12(\Cker-\Cmin)\succeq0.
+ \label{eq:Sdef}
+\end{equation}
+A horizontal dilation realizes the prescribed first derivative with kernel curvature $\Cmin$ and cost $\Tr\Cmin/2$. Purify $S$ into an ancillary flag sector orthogonal to all baseline and horizontal ancilla labels, and add that flag to one tangent coordinate. The flag is invisible after partial trace at first order, all horizontal--flag cross terms vanish, and it contributes exactly $2S$ to the kernel Hessian. Its additional variance cost is $\Tr S$. Therefore
+\begin{equation}
+ \Vimpl=\frac12\Tr\Cmin+\Tr S
+ =\frac12\Tr\Cker,
+\end{equation}
+which saturates the universal lower bound.
+
+Equation~\eqref{eq:central} separates the two local geometric layers exactly:
+\begin{equation}
+ \boxed{
+ \Vmin
+ =\frac14\Tr H^{\rm SLD}
+ +\frac12\Tr(\Cker-\Cmin).
+ }
+ \label{eq:decomposition}
+\end{equation}
+The first term is the established horizontal cost of the first derivative. The second is the exact additional dynamical price of prescribing nonminimal rank-changing curvature.
+
+\section{Exact total-energy conservation}
+
+We now impose a physical symmetry constraint rather than a purely geometric one. Let $\HT$ be a self-adjoint semibounded target Hamiltonian and assume strong stationarity/covariance,
+\begin{align}
+ e^{-i\HT t/\hbar}\rhozero e^{i\HT t/\hbar}&=\rhozero,\\
+ e^{-i\HT t/\hbar}D_je^{i\HT t/\hbar}&=D_j,\\
+ e^{-i\HT t/\hbar}\Cker e^{i\HT t/\hbar}&=\Cker.
+ \label{eq:covariance}
+\end{align}
+
+\begin{theorem}[Energy-conserving attainability]
+\label{thm:energy}
+Under the assumptions of Theorem~\ref{thm:central} and Eq.~\eqref{eq:covariance}, the same minimum is attained by a dilation with a semibounded ancillary Hamiltonian $H_E\ge0$ and a unitary family satisfying
+\begin{equation}
+ [U(\bm\theta),\HT\otimes I+I\otimes H_E]=0
+ \quad\text{for all }\bm\theta.
+ \label{eq:energyconserve}
+\end{equation}
+Hence
+\begin{equation}
+ \boxed{
+ \inf_{\rm exact\;energy\;conservation}\Vimpl
+ =\frac12\Tr\Cker.
+ }
+ \label{eq:energyminimum}
+\end{equation}
+This remains true for separable infinite-dimensional targets with unbounded occupied target-energy support and for stationary excess curvature in target-energy sectors unoccupied at baseline. In that case $U(\bm\theta)$ is a strongly continuous blockwise unitary family; smoothness asserted here refers to the implemented global/reduced state in trace norm on the finite-cost baseline.
+\end{theorem}
+
+The infinite-dimensional construction is where the energy constraint matters. A stationary trace-class baseline has a countable occupied joint eigenbasis of the state and target time translations. Excess positive curvature likewise decomposes into countably many energy-adapted modes. An occupied baseline eigenstate is split into classically incoherent ancilla-labelled copies; each excess mode is attached to one copy. Nonnegative input/output ancilla energies compensate any target-energy difference. Each branch generator then acts entirely inside one eigenspace of the total Hamiltonian. The global state is a trace-class classical mixture, so finite quadratic cost suffices to dominate the first and mixed second trace-norm derivatives even when the direct-sum generator is unbounded. Full details are in the Supplemental Material.
+
+Theorem~\ref{thm:energy} is not a new covariant Stinespring theorem: such dilation theory is established \cite{Scutaru1979}. The distinct statement is that the exact optimum in Eq.~\eqref{eq:central} remains attainable under this symmetry constraint for the independently prescribed rank-changing kernel curvature.
+
+\section{Autonomous temporal specialization}
+
+Consider a composite clock--signal target with $\HT=H_C+H_S$ and a clean exchange mode at positive angular frequency $\nu$. The local endpoint sectors produced by the exchange carry the positive price
+\begin{equation}
+ G_{\rm ex}=2\hbar\nu\,Q
+ \label{eq:Gex}
+\end{equation}
+on the prescribed synthesized kernel curvature. Define the frequency-resolved endpoint synthesis action
+\begin{equation}
+ \cA_{\rm ex}^{(2)}:=\frac14\Tr(G_{\rm ex}\Cker)
+ =\frac{\hbar\nu}{2}\Tr\Cker.
+ \label{eq:Aex}
+\end{equation}
+The central theorem becomes the exact identity
+\begin{equation}
+ \boxed{
+ \cA_{\rm ex}^{(2)}=\hbar\nu\,\Vmin.
+ }
+ \label{eq:actionidentity}
+\end{equation}
+Thus the spectral synthesis action is not merely a kinematic Hessian weight in this implementation problem: it is $\hbar\nu$ times the least state-weighted quadratic coupling required to realize the prescribed local rank-changing jet.
+
+The equality is compatible with exact total-energy conservation. In particular, an interaction may move amplitude between clock and signal degrees of freedom inside a fixed total-energy sector while Eq.~\eqref{eq:actionidentity} remains strictly positive.
+
+\section{Net bare-energy change is not the cost}
+
+A minimal example makes the distinction explicit. Let $|L\rangle,|M\rangle,|U\rangle$ be three orthonormal states in one degenerate eigenspace of $H_C+H_S$ and take the baseline $\rhozero=|M\rangle\langle M|$. Choose two Hermitian generators satisfying
+\begin{align}
+ -iK_x|M\rangle&=\frac c2(|L\rangle+|U\rangle),\\
+ -iK_y|M\rangle&=\frac{ic}{2}(|L\rangle-|U\rangle).
+\end{align}
+Then
+\begin{equation}
+ \Vimpl=\Var(K_x)+\Var(K_y)=c^2>0,
+\end{equation}
+while the complete total-energy distribution is unchanged for the generated family. In the clean endpoint normalization, $\cA_{\rm ex}^{(2)}=\hbar\nu c^2$ and Eq.~\eqref{eq:actionidentity} is saturated.
+
+Therefore no universal law based only on net bare-energy change can represent this implementation resource: the latter can be nonzero while $\Delta\langle\Htot\rangle=0$ and, in a fixed shell, even $\Var(\Htot)=0$. This also distinguishes the problem from external coherence costs associated with implementing operations that violate a subsystem conservation law \cite{TajimaShiraishiSaito2020}.
+
+\section{Coordinate covariance and limitations}
+
+Let $g_{ij}$ be the physical parameter metric and define
+\begin{equation}
+ C_g=g^{ij}Q\partial_i\partial_j\rho(0)Q,
+ \qquad
+ V[g]=g^{ij}\operatorname{Cov}_{\rm sym}(K_i,K_j).
+\end{equation}
+Under an invertible linear reparameterization, $g$, the Fisher tensor, the Hessian tensor, and the generator covariance transform covariantly. The theorem is therefore
+\begin{equation}
+ \boxed{V_{\min}[g]=\frac12\Tr C_g,}
+\end{equation}
+not a statement tied to a particular anisotropic coordinate normalization.
+
+Several limitations are deliberate. We prescribe the metric contraction $C_g$, not a complete tensor-valued second-order jet. We optimize local unitary-dilation coupling, not thermodynamic work or control-switching cost. We do not optimize a noisy CPTP encoder over all possible input states. Boundary nonregularity itself is not a quantum discovery \cite{Chernoff1954,Shapiro1985,SelfLiang1987}. First-order Bures/QFI and channel-purification minimizations are also prior art \cite{BraunsteinCaves1994,FujiwaraImai2008,EscherEtAl2011,DemkowiczKolodynskiGuta2012,CarrascoSpehner2026}. The result is specifically the exact completion when nonminimal positive target-kernel curvature is part of the prescribed local physical data.
+
+\section{Discussion}
+
+The rank-changing boundary separates first-order distinguishability from second-order physical realizability. Once the latter is specified, the implementation problem becomes unexpectedly rigid: every unitary dilation must spend exactly enough transition variance to account for half the trace of the prescribed empty-sector curvature, and no more is fundamentally necessary. Orthogonal ancilla flags realize arbitrary excess curvature at exactly its trace cost; energy covariance does not increase the optimum.
+
+For autonomous temporal exchange this rigidity gives the direct spectral relation in Eq.~\eqref{eq:actionidentity}. The same construction shows why zero net energy consumption does not imply zero dynamical resource: relational information can be synthesized through finite coupling entirely within globally stationary energy sectors.
+
+The most direct extensions are a fully tensor-valued second-order interpolation problem and noisy/CPTP implementation cost. Approximate resonance and infinite-dimensional information-resource bounds can be developed without changing the central variational theorem; they are treated only as supporting scope in the Supplemental Material.
+
+\begin{acknowledgments}
+OpenAI ChatGPT (GPT-5.6-series models, including GPT-5.6 Sol) was used substantively to assist with derivation exploration, adversarial algebra checks, literature organization, internal numerical-validation code, and manuscript preparation. The author directed the scientific questions and proof strategy, checked the resulting claims against explicit analytic derivations, constructive examples, numerical validators, and primary literature, and takes full responsibility for the content.
+\end{acknowledgments}
+
+\section*{Data Availability}
+No data were created or analyzed in this theoretical study. All analytic results needed to support the conclusions are contained in the Article and Supplemental Material.
+
+\bibliography{references}
+
+\end{document}
