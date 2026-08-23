@@ -4,241 +4,190 @@
 
 ## Goal
 
-Seek a foundational physical resource principle for temporal information when clock, signal, controller, detector, and memory are all internal quantum systems. The finished Rev11 random-time law remains frozen on its parent branch.
+Seek a foundational physical resource principle for temporal information when clock, signal, controller, detector, and memory are finite internal quantum systems. The finished Rev11 random-time law remains frozen on its parent branch.
 
 ## Completed foundations
 
-### WP02 — robust tangent-radius law — PASS
+### WP02 / WP03 / WP06 — finite-radius survival and autonomous dual survival — PASS
 
-`(R_lin^2/4)[Tr F_N^(nu)/N] <= T(nu)`.
+`(R_lin^2/4)[Tr F_N/N] <= T(nu)`
 
-### WP03 / WP06 — autonomous dual survival and coherent-history extension — PASS
+and for a globally stationary exchange tangent
 
-`K_N=(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`.
+`(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`.
 
 ### WP04 / WP05 — exact structured autonomous retention — PASS
 
-Hard cap:
+Hard and mean total-energy constraints have exact sine-chain envelopes and sharp near-lossless coefficient `pi`.
 
-`R_M(k) <= cos^2{pi/[floor(L/k)+2]}`.
-
-Mean total excitation:
-
-`R_M(1) <= (1-lambda)g_m+lambda g_(m+1)`.
-
-The sharp near-lossless coefficient is `pi`.
-
-### WP07 / WP08 — quadratic synthesis — PASS
+### WP07 / WP08 — zero-radius quadratic synthesis — PASS
 
 One-sided boundary:
 
-`Tr F_N/N <= J <= Delta T_U(0)`.
+`Tr F_N/N <= J <= Delta T_U`.
 
-Multimode one-sided sum:
+Orthogonal mode sums admit positive spectral synthesis budgets.
 
-`sum_k w_k Tr F_(N,k)/N <= sum_k w_k Delta_k T_k(0)`.
-
-### WP09 — bilateral Minkowski synthesis — PASS
+### WP09 — bilateral synthesis — PASS
 
 `sqrt[Tr F_N/N] <= sqrt(J_X)+sqrt(J_Y)`.
-
-For clean empty endpoints,
-
-`Tr F_N/N <= [sqrt(Delta T_+)+sqrt(Delta T_-)]^2`.
 
 The factor-two departure from additive synthesis is exactly sharp.
 
 ### WP10 — one-sided mixed survival+synthesis — PASS
 
-For `[P,H]=0`,
+For energy-invariant support,
 
-`Tr F_N/N <= 4T_pre/R_B^2 + Delta T_syn(0)`.
+`Tr F_N/N <= 4T_pre/R_B^2 + Delta T_syn`.
 
-The `hbar nu/4` energy/action coefficient is exactly sharp.
+### WP11 / WP12 — noncommuting support and exact shared-curvature allocation — PASS
 
-### WP11 — noncommuting-support shorted-endpoint geometry — PASS
-
-For
-
-`B=PAP`, `K_+=QAP`, `K_-=QA^dagger P`,
-
-`sqrt[Tr F_N/N]`
-
-`<= min{sqrt(J_B^+ + J_+) + sqrt(J_-),`
-
-`       sqrt(J_B^- + J_-) + sqrt(J_+)}`.
-
-Compressed endpoint projectors and support/kernel geometry are necessary. A four-level exact-gap example proves that dropping the geometric factor gives a false observable Fisher-resource bound.
-
-### WP12 — exact shared-curvature allocation — PASS
-
-The exact second-order constraint is
+Shorting/principal-angle geometry is necessary. Shared curvature satisfies
 
 `Z_+ + Z_- <= C_Delta`.
 
+The exact allocation is one scalar minimization over an SDP dual.
+
+### WP13 / WP14 — positive spectral action and rank-one curvature geometry — PASS
+
+`A_G^(2)=(1/4)Tr(GC_Delta)`.
+
+Bilateral action costs combine harmonically. Rank-one allocation is controlled by an inverse-curvature principal angle rather than ordinary Hilbert-space overlap.
+
+### WP15 — exact shared-kernel common-record optimum — PASS
+
+Benchmark hierarchy:
+
+`physical resource 12 > SLD trace 43/4 > accessible Fisher 55/8`.
+
+### WP16 — generic rank-one-kernel common-record theorem — PASS
+
 For
 
-`Phi_a(C;R_+,R_-)=sup [sqrt(a+Tr Z_+) + sqrt(Tr Z_-)]^2`,
+`rho0=P/r`, `rank(Q)=1`,
 
-one has
+`A=[[B,b],[a^dagger,0]]`,
 
-`Phi_a=inf_(0<eta<1){a/eta+h_(1/eta,1/(1-eta))}`,
+let
 
-where `h_(alpha,beta)` is an SDP with dual
+`kappa=||a||^2+||b||^2+2|a^dagger b|`
 
-`min_(W>=0) Tr(CW)`
+and `R(B)` be the support-only common-record optimum.
 
-subject to
+Then
 
-`R_+ W R_+>=alpha R_+`,
+`boxed: sqrt(Tr F_1)<=sqrt(R(B))+sqrt(r kappa)`.
 
-`R_- W R_->=beta R_-`.
+For qutrits,
 
-### WP13 — positive spectral-action allocation — PASS
+`R(B)=4w(B)^2`,
 
-For one positive cost operator `G`,
+so
 
-`A_G^(2)=(1/4)Tr(G C_Delta)`
+`Tr F_1<=[2w(B)+sqrt(2kappa)]^2`.
 
-and restricted costs `g_+,g_-`,
+The signed three-cycle saturates at `9`; naive additivity predicts only `5`. A second model with the same scalar invariants has ceiling `6`, proving exact accessibility needs additional phase/orientation geometry.
 
-`g_+J_+ + g_-J_- <= 4A_G^(2)`.
+WP16 also gives the exact common-record Fisher-witness dual and its semi-infinite weighted numerical-radius LMI representation.
 
-Pure bilateral synthesis has harmonic effective price
+### WP17 — operator/action Pareto redundancy — NO-GO
 
-`(1/g_+ + 1/g_-)^(-1)`.
+If exact `C_Delta` is known, `Tr(GC_Delta)` is redundant. If only action is known, optimization over unspecified curvature collapses exactly to WP13. Do not pursue a generic operator+its-own-action Pareto theorem without new independent physics.
 
-Clean equal gap costs recover the sharp `hbar nu/8` coefficient; one-sided synthesis recovers `hbar nu/4`.
+### WP18 — autonomous dual synthesis-action law — PASS
 
-### WP14 — rank-one curvature-metric principal-angle law — PASS
+For a globally stationary exact exchange
 
-For rank-one synthesized ranges, short to their span and define inverse-curvature capacities `s_u,s_v` and whitened overlap `c`. The complete feasible frontier is
+`[H_S,A_nu]=+hbar nu A_nu`,
 
-`y_max(x)=s_v[1-x/s_u]/[1-(1-c^2)x/s_u]`.
+`[H_C,A_nu]=-hbar nu A_nu`,
 
-The relevant angle is defined by the inverse shorted-curvature metric, not ordinary Hilbert-space overlap.
+clean zero-radius boundary synthesis gives
 
-### WP15 — exact common-record Fisher supremum in shared-kernel qutrit — PASS
+`boxed: A_C^(2)+A_S^(2) >= (hbar nu/4)[Tr F_N/N]`
 
-For the WP12 qutrit benchmark,
+for bilateral synthesis and
 
-`rho0=(I-|q><q|)/2`,
+`boxed: A_C^(2)+A_S^(2) >= (hbar nu/2)[Tr F_N/N]`
 
-`A=|1><0|-sqrt(2)|2><1|`,
+for one-sided synthesis.
 
-one has
+Both coefficients are exactly sharp.
 
-- physical shared-curvature ceiling `12`;
-- SLD-QFI trace `43/4`;
-- exact one-copy arbitrary-POVM Fisher supremum `55/8`.
+The bilateral extremizer is the fixed-total-energy chain
 
-The theorem is
+`|2_C,0_S> <-> |1_C,1_S> <-> |0_C,2_S>`
 
-`boxed: sup_POVM Tr F_1 = 55/8`.
+with a Fourier readout. The entire nonlinear family stays inside one total-energy eigenspace, so global time-translation asymmetry is zero while nonzero relative temporal Fisher information remains.
 
-Upper bound: explicit Hermitian quadratic witness `Y` satisfying
+This closes the principal `R_lin=0` autonomous loophole left by WP03 in the clean boundary regime.
 
-`|<phi|A|phi>|^2 <= <phi|rho0|phi><phi|Y|phi>`
+## Current frontier — WP19 and beyond
 
-for every vector, with exact LMI factorization.
+### A. WP19: noncommuting-support autonomous dual action — highest priority
 
-Lower bound: a sequence of ordinary three-outcome projective measurements with positive baseline probabilities approaches `55/8`.
+Remove WP18's clean endpoint assumption.
 
-This proves the hierarchy
+Use the full exact exchange tangent but allow arbitrary coherent baseline support
 
-`physical resource > quantum-statistical ceiling > accessible common-record Fisher`
-
-can be strict at both arrows even in dimension three.
-
-## Current frontier — WP16 and beyond
-
-### A. WP16: generic rank-one-kernel common-record law — highest immediate priority
-
-Study
-
-`rho0=P/r`, `rank(Q)=1`, `Q=|q><q|`,
-
-and
-
-`A=[[B,b],[a^dagger,0]]`
-
-with `QAQ=0`.
-
-The singular near-kernel directional invariant is
-
-`kappa=max_(||t||=1)|<q|A|t>+<t|A|q>|^2`
-
-`      =||a||^2+||b||^2+2|a^dagger b|`.
-
-A tempting conjecture is
-
-`sup Tr F = support-only optimum + r kappa`.
-
-**Do not assume this. It is false in generic random qutrit tests:** mixed support/kernel projective outcomes can exceed the naive sum. This killed conjecture must be preserved.
+`P=supp(rho0)`, `[P,H_C]` and/or `[P,H_S]` nonzero.
 
 Required tasks:
 
-1. formulate the exact arbitrary-POVM dual witness problem;
-2. determine whether it reduces to a finite SDP, generalized numerical-radius inequality, or Ando-type matrix condition;
-3. identify a solvable nontrivial class containing WP15;
-4. find a compact counterexample to naive additive measurement compatibility;
-5. add an independent validator before marking WP16 PASS.
+1. apply WP11/WP12 shorted endpoint geometry from the signal Hamiltonian viewpoint;
+2. apply the conjugate geometry from the clock viewpoint;
+3. determine whether the two local reductions are independent or are coupled through the same global kernel curvature operator;
+4. derive the tightest universal two-sided action theorem without double counting shared curvature;
+5. preserve WP18 coefficients in the clean limits.
 
-### B. Operator + spectral-action Pareto law
+### B. Multi-gap autonomous synthesis-action budget
 
-WP13 compresses curvature to scalar action while WP14 retains matrix overlap. Derive a joint Pareto theorem retaining both.
+For exact exchanges at gaps `nu_k`, seek a common positive spectral-action sum law across modes using one common collective record when appropriate.
 
-### C. Autonomous relational lift
+### C. Measurement-accessibility geometry
 
-Apply the WP12--WP14 operator/action hierarchy simultaneously from clock and signal Hamiltonian viewpoints for a globally stationary exact exchange tangent.
+WP16 gives a sharp universal regular/singular Minkowski envelope but not an exact formula for every model. The exact missing invariant is phase/orientation geometry. Continue only if it feeds the autonomous theorem or publication story; avoid a detached matrix-analysis sidequest.
 
 ### D. Gaussian covariance-changing synthesis
 
-Test squeezed-vacuum, parameter-dependent covariance, thermal Gaussian baselines, and correlated multimode synthesis.
+Test whether squeezing/covariance-changing temporal families fit the same survival -> curvature -> action hierarchy.
 
-### E. Deep priority audit
+### E. Deep priority/significance audit
 
-Compare explicitly against:
+Explicitly compare WP03+WP18 against:
 
-- energy-constrained quantum metrology, including Chen--Yang (PRL 136, 070801, 2026);
-- generalized numerical radius and Ando-type operator inequalities;
-- POVM/frame design convex duality;
-- Gill--Massar and Fisher-symmetric measurement bounds;
-- singular/rank-changing QFI/Bures geometry;
-- Holevo waveform-estimation limits;
-- shorted operators and parallel addition;
-- quantitative WAY/reference-frame resource theories.
+- Page--Wootters and finite relational clocks;
+- relative-phase metrology in fixed-number sectors;
+- asymmetry/reference-frame resource theory;
+- quantitative WAY and energy-conserving measurement bounds;
+- Frerot--Roscilde symmetry-sector metrology;
+- Chen--Yang 2026 energy-constrained metrology;
+- thermodynamic/energy-cost metrology;
+- rank-changing QFI and singular Fisher geometry.
+
+Do not claim novelty for any standard ingredient.
 
 ## Publication / significance gate
 
-Do not draft a new foundational manuscript yet.
+The branch is now closer to a manuscript-worthy theorem family, but do **not** draft yet.
 
-A publication gate now requires at least:
+Require:
 
-1. a genuine class-level result beyond the benchmark-specific WP15 witness **or** a sharp autonomous two-sided action theorem;
-2. hostile mathematical review of WP11--WP15;
-3. deeper priority audit against 2025--2026 metrology and operator-inequality literature;
-4. clear separation of standard matrix/SDP ingredients from the frequency-resolved temporal-resource contribution;
-5. at least one physically interpretable sharp thought experiment beyond the current qutrit/four-level extremizers.
+1. WP19 or a proof that the clean WP18 theorem is the maximal general autonomous statement;
+2. hostile mathematical review of WP11--WP18;
+3. deep 2025--2026 priority audit;
+4. explicit comparison between WP03 finite-radius dual survival and WP18 zero-radius dual synthesis action;
+5. a clear statement of what is genuinely new versus standard asymmetry, Page--Wootters, numerical-radius, and SDP machinery.
 
-## Validation requirements
+## Validation
 
-Current independent validators:
+Current validators include all WP02--WP15 scripts plus:
 
-- `numerics/verify_robust_tangent_radius_law.py`
-- `numerics/verify_relational_autonomous_laws.py`
-- `numerics/verify_nonlinear_zero_radius_law.py`
-- `numerics/verify_quadratic_synthesis_sum_rule.py`
-- `numerics/verify_bilateral_synthesis_minkowski_law.py`
-- `numerics/verify_one_sided_mixed_survival_synthesis_law.py`
-- `numerics/verify_shorted_endpoint_master_law.py`
-- `numerics/verify_operator_curvature_allocation_law.py`
-- `numerics/verify_positive_spectral_action_allocation_law.py`
-- `numerics/verify_rank_one_curvature_metric_angle_law.py`
-- `numerics/verify_exact_common_record_fisher_supremum.py`
+- `numerics/verify_rank_one_kernel_common_record_minkowski.py`
+- `numerics/verify_autonomous_dual_synthesis_action_law.py`
 
-Every future WP must add an independent validator before being marked PASS when the theorem has nontrivial algebraic or numerical content.
+Every nontrivial theorem must receive an independent validator before PASS status.
 
 ## Documentation discipline
 
-Every material theorem, failed conjecture, prior-art collision, or validation result must be recorded immediately and reflected in `README.md`, `AGENTS.md`, and this file. The repository, not chat history, is authoritative.
+Every material theorem, failed conjecture, priority collision, or killed direction must be recorded immediately and reflected in `README.md`, `AGENTS.md`, and this file. The repository, not chat history, is authoritative.
