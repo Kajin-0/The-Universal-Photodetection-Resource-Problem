@@ -49,9 +49,35 @@ Let $\Omega(\bm\theta)=U(\bm\theta)\Omegazero U(\bm\theta)^\dagger$ be an implem
     new_thm = r"""Let $\rhozero$ be rank deficient, and let $D_j$ satisfy Eq.~\eqref{eq:pureboundary}. In separable infinite dimension assume the Hilbert--Schmidt regularity in Eq.~\eqref{eq:CminHS}. Let $\Cker$ be positive trace class with $\Cker\succeq\Cmin$. Among all finite-cost unitary dilations whose reduced families are trace-norm $C^2$ at the origin and that realize the derivatives $D_j$ and kernel Hessian contraction $\Cker$,"""
     main_text = replace_once(main_text, old_thm, new_thm, "central theorem assumptions")
 
+    old_covariance = r"""\begin{align}
+ e^{-i\HT t/\hbar}\rhozero e^{i\HT t/\hbar}&=\rhozero,\\
+ e^{-i\HT t/\hbar}D_je^{i\HT t/\hbar}&=D_j,\\
+ e^{-i\HT t/\hbar}\Cker e^{i\HT t/\hbar}&=\Cker.
+ \label{eq:covariance}
+\end{align}
+
+\begin{theorem}[Energy-conserving attainability]
+\label{thm:energy}
+Under the assumptions of Theorem~\ref{thm:central} and Eq.~\eqref{eq:covariance}, the same minimum is attained"""
+    new_covariance = r"""\begin{align}
+ e^{-i\HT t/\hbar}\rhozero e^{i\HT t/\hbar}&=\rhozero,\label{eq:covariance-rho}\\
+ e^{-i\HT t/\hbar}D_je^{i\HT t/\hbar}&=D_j,\\
+ e^{-i\HT t/\hbar}\Cker e^{i\HT t/\hbar}&=\Cker.
+ \label{eq:covariance}
+\end{align}
+
+\begin{theorem}[Energy-conserving attainability]
+\label{thm:energy}
+Under the assumptions of Theorem~\ref{thm:central} and Eqs.~\eqref{eq:covariance-rho}--\eqref{eq:covariance}, the same minimum is attained"""
+    main_text = replace_once(main_text, old_covariance, new_covariance, "energy covariance equation range")
+
     old_energy = r"""This remains true for separable infinite-dimensional targets with unbounded occupied target-energy support and for stationary excess curvature in target-energy sectors unoccupied at baseline."""
     new_energy = r"""This remains true for separable infinite-dimensional targets with unbounded occupied target-energy support and for stationary excess curvature in target-energy sectors unoccupied at baseline. In that case $U(\bm\theta)$ is a strongly continuous blockwise unitary family; smoothness asserted here refers to the implemented global/reduced state in trace norm on the finite-cost baseline."""
     main_text = replace_once(main_text, old_energy, new_energy, "energy theorem topology")
+
+    old_limits = r"""Several limitations are deliberate. We prescribe the metric contraction $C_g$, not a complete tensor-valued second-order jet. We optimize local unitary-dilation coupling, not thermodynamic work or control-switching cost. We do not optimize a noisy CPTP encoder over all possible input states."""
+    new_limits = r"""Several limitations are deliberate. We prescribe the metric contraction $C_g$, not a complete tensor-valued second-order jet. We optimize local unitary-dilation coupling, not thermodynamic work or control-switching cost. In the infinite-dimensional attaining construction the generator may be unbounded and the ancillary Hamiltonian is part of the optimization rather than externally fixed; no bound on peak or operator-norm coupling, ancilla dimension, controller bandwidth, or controller spectral complexity is claimed. Exact attainment is therefore not asserted for an externally fixed controller spectrum. We do not optimize a noisy CPTP encoder over all possible input states."""
+    main_text = replace_once(main_text, old_limits, new_limits, "ancilla and peak-coupling scope")
 
     MAIN_OUT.write_text(main_text, encoding="utf-8")
 
