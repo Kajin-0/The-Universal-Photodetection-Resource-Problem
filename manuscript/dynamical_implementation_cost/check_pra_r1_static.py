@@ -102,18 +102,24 @@ for marker in [
     if marker not in main:
         errors.append(f"PRA R1 missing rank-changing Bures-geometry separation marker: {marker}")
 
-# APS-required substantive AI disclosure and software-aware Data Availability.
+# APS substantive-AI disclosure. Research-level use is placed in its own
+# publication methods layer rather than only in Acknowledgments.
 for marker in [
+    r"\section*{AI-Assisted Research and Verification}",
     "OpenAI ChatGPT",
     "GPT-5.6",
     "derivation exploration",
     "adversarial algebra checks",
+    "generation and debugging of internal numerical-validation code",
+    "AI outputs were treated as provisional",
+    "independently checked the resulting claims",
     "primary literature",
     "takes full responsibility",
 ]:
     if marker not in main:
         errors.append(f"AI disclosure missing marker: {marker}")
 
+# Software-aware Data Availability.
 for marker in [
     "No empirical data were created or analyzed in this theoretical study.",
     "Internal numerical-validation scripts were used only to cross-check analytic identities",
@@ -124,18 +130,21 @@ for marker in [
         errors.append(f"Data Availability statement missing marker: {marker}")
 
 # Publication transform must not change the scientific theorem body after the intro.
-# Compare from the fixed setup paragraph onward through the acknowledgments boundary.
+# D2 remains frozen through its acknowledgments boundary; PRA R1 inserts only
+# the publication-level AI methods/disclosure layer after that frozen body.
 anchor = "We consider a real parameter vector"
-end_anchor = r"\begin{acknowledgments}"
-for label, text in [("D2", d2), ("PRA R1", main)]:
-    if anchor not in text or end_anchor not in text:
-        errors.append(f"{label}: theorem-body comparison anchors missing")
+d2_end_anchor = r"\begin{acknowledgments}"
+pra_end_anchor = r"\section*{AI-Assisted Research and Verification}"
+if anchor not in d2 or d2_end_anchor not in d2:
+    errors.append("D2: theorem-body comparison anchors missing")
+if anchor not in main or pra_end_anchor not in main:
+    errors.append("PRA R1: theorem-body comparison anchors missing")
 
 if not errors:
-    d2_body = d2[d2.index(anchor):d2.index(end_anchor)]
-    pra_body = main[main.index(anchor):main.index(end_anchor)]
+    d2_body = d2[d2.index(anchor):d2.index(d2_end_anchor)]
+    pra_body = main[main.index(anchor):main.index(pra_end_anchor)]
     if d2_body != pra_body:
-        errors.append("PRA R1 transform changed theorem body after the introduction")
+        errors.append("PRA R1 transform changed frozen D2 theorem body")
 
 # Supplement publication transform is title-only. Everything from the author
 # declaration onward must remain byte-for-byte identical to audited D2.
