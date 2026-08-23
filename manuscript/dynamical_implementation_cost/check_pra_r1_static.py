@@ -5,12 +5,13 @@ import sys
 
 HERE = Path(__file__).resolve().parent
 MAIN = HERE / "dynamical_rank_boundary_implementation_cost_pra_r1.tex"
-SUPP = HERE / "dynamical_rank_boundary_implementation_cost_supplement_d2.tex"
+SUPP = HERE / "dynamical_rank_boundary_implementation_cost_supplement_pra_r1.tex"
+SUPP_D2 = HERE / "dynamical_rank_boundary_implementation_cost_supplement_d2.tex"
 D2 = HERE / "dynamical_rank_boundary_implementation_cost_d2.tex"
 BIB = HERE / "references.bib"
 
 errors = []
-for p in (MAIN, SUPP, D2, BIB):
+for p in (MAIN, SUPP, SUPP_D2, D2, BIB):
     if not p.exists():
         errors.append(f"missing required file: {p.name}")
 
@@ -21,6 +22,7 @@ if errors:
 
 main = MAIN.read_text(encoding="utf-8")
 supp = SUPP.read_text(encoding="utf-8")
+supp_d2 = SUPP_D2.read_text(encoding="utf-8")
 d2 = D2.read_text(encoding="utf-8")
 bib = BIB.read_text(encoding="utf-8")
 
@@ -38,7 +40,7 @@ for name, text in [(MAIN.name, main), (SUPP.name, supp), (BIB.name, bib)]:
         if token.lower() in lower:
             errors.append(f"{name}: forbidden publication-facing token {token!r}")
 
-# Publication title should avoid the internal/geometric shorthand 'jet'.
+# Publication titles should use the PRA-facing curvature language consistently.
 title_match = re.search(r"\\title\{([^}]*)\}", main)
 if not title_match:
     errors.append("PRA R1 title not found")
@@ -50,6 +52,20 @@ else:
     for term in required_title_terms:
         if term not in title.lower():
             errors.append(f"PRA R1 title missing term {term!r}")
+
+supp_title_match = re.search(r"\\title\{([^}]*)\}", supp)
+if not supp_title_match:
+    errors.append("PRA R1 supplement title not found")
+else:
+    supp_title = supp_title_match.group(1)
+    expected_supp_title = (
+        "Supplemental Material for ``Exact minimum dynamical cost of "
+        "prescribed rank-changing quantum-state curvature''"
+    )
+    if supp_title != expected_supp_title:
+        errors.append("PRA R1 supplement title does not match main publication title")
+    if "jet" in supp_title.lower():
+        errors.append("PRA R1 supplement title still contains 'jet'")
 
 # Abstract must state the exact result and principal physical scope.
 abstract_match = re.search(r"\\begin\{abstract\}(.*?)\\end\{abstract\}", main, flags=re.S)
@@ -109,6 +125,16 @@ if not errors:
     if d2_body != pra_body:
         errors.append("PRA R1 transform changed theorem body after the introduction")
 
+# Supplement publication transform is title-only. Everything from the author
+# declaration onward must remain byte-for-byte identical to audited D2.
+supp_anchor = r"\author{Anonymous}"
+for label, text in [("D2 supplement", supp_d2), ("PRA R1 supplement", supp)]:
+    if supp_anchor not in text:
+        errors.append(f"{label}: supplement freeze anchor missing")
+if not errors:
+    if supp_d2[supp_d2.index(supp_anchor):] != supp[supp.index(supp_anchor):]:
+        errors.append("PRA R1 supplement transform changed content beyond the title")
+
 # The headline equations/scopes must still be present.
 for marker in [
     r"\Vmin(\Cker;D,\rhozero)",
@@ -148,4 +174,5 @@ if errors:
 
 print("PRA R1 STATIC GATE PASSED")
 print(f"title: {title_match.group(1)}")
+print(f"supplement title: {supp_title_match.group(1)}")
 print(f"checked publication layer against frozen D2 theorem body and {len(bib_keys)} bibliography entries")
