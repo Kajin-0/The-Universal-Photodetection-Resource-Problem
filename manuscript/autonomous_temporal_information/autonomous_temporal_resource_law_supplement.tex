@@ -1,0 +1,445 @@
+\documentclass[aps,pra,preprint,nofootinbib]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\id}{\mathbb I}
+\newcommand{\Rlin}{R_{\mathrm{lin}}}
+\newcommand{\rhozero}{\rho_0}
+\newcommand{\Aact}{\mathcal A}
+
+\begin{document}
+
+\title{Supplemental Material for ``Two spectral-resource regimes for autonomous temporal information''}
+\author{Anonymous}
+\affiliation{Anonymous}
+\maketitle
+
+% The supplement is intentionally proof-first.  Textual compression and final
+% cross-references to the main manuscript will be done after all proof blocks
+% are complete and independently audited.
+
+\section{Weighted score inequalities and finite-copy scaling}
+\label{supp:score}
+
+Let $P=\supp\rhozero$ and let $Z=ZP$ be right-supported on the baseline support.  For a POVM effect $M_y\succeq0$, define $p_y=\Tr(\rhozero M_y)$.
+
+\begin{lemma}[Weighted Hilbert--Schmidt score bound]
+\label{lem:weighted-score}
+For every outcome with $p_y>0$,
+\begin{equation}
+\frac{|\Tr(ZM_y)|^2}{p_y}
+\le
+\Tr(M_y Z\rhozero^+ Z^\dagger).
+\label{eq:weighted-score}
+\end{equation}
+Consequently,
+\begin{equation}
+\sum_y\frac{|\Tr(ZM_y)|^2}{p_y}
+\le
+\Tr(Z\rhozero^+Z^\dagger).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Set $X=M_y^{1/2}\rhozero^{1/2}$ and $Y=M_y^{1/2}Z\rhozero^{+1/2}$.  Since $Z=ZP$,
+\begin{equation}
+\Tr(X^\dagger Y)=\Tr(M_yZ).
+\end{equation}
+Hilbert--Schmidt Cauchy--Schwarz gives
+\begin{equation}
+|\Tr(M_yZ)|^2
+\le
+\Tr(M_y\rhozero)\,
+\Tr(M_yZ\rhozero^+Z^\dagger),
+\end{equation}
+and summing uses $\sum_yM_y=\id$.
+\end{proof}
+
+\begin{lemma}[Independent-copy weighted norm]
+\label{lem:copy-scaling}
+Let $Z$ be a traceless state tangent with $Z=ZP$.  Define
+\begin{equation}
+Z_N=\sum_{j=1}^N
+\rhozero^{\otimes(j-1)}\otimes Z\otimes
+\rhozero^{\otimes(N-j)}.
+\end{equation}
+Then
+\begin{equation}
+\Tr(Z_N\rhozero_N^+Z_N^\dagger)
+=N\Tr(Z\rhozero^+Z^\dagger).
+\label{eq:copy-scaling}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The diagonal copy terms give the one-copy quadratic form.  For $j\neq l$, the product factorizes through $\Tr Z\,\Tr Z^\dagger=0$.  This identity is the finite-copy mechanism used throughout the main text; it does not assume a product measurement.
+\end{proof}
+
+\section{Robust affine radius and spectral survival}
+\label{supp:robust}
+
+For a positive-radius tangent define on $P$
+\begin{equation}
+B=\rhozero^{-1/2}A\rhozero^{-1/2}.
+\end{equation}
+
+\begin{lemma}[Numerical-radius characterization]
+\label{lem:numerical-radius}
+If $\Rlin>0$, then
+\begin{equation}
+\Rlin=\frac1{w(B)},
+\qquad
+\|B\|\le\frac2{\Rlin}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Writing $\beta=x-iy$, the affine disk is congruent to
+\begin{equation}
+\id+\frac12(\beta B+\beta^*B^\dagger).
+\end{equation}
+For a unit vector $|\psi\rangle$, minimizing over the phase of $\beta$ gives $1-|\beta||\langle\psi|B|\psi\rangle|$.  Positivity over the entire radius-$R$ disk is therefore equivalent to $Rw(B)\le1$.  The operator-norm inequality $\|B\|\le2w(B)$ is standard \cite{BhatiaJain2023}.
+\end{proof}
+
+\begin{proposition}[Arbitrary-baseline upper-tail bound]
+\label{prop:nonstationary-tail}
+Suppose $\Rlin>0$ and the range of $A$ lies in a projector $P_U$, i.e. $P_UA=A$.  Then for every finite $N$ and arbitrary collective POVM,
+\begin{equation}
+\frac{\Rlin^2}{4}\frac{\Tr F_N}{N}
+\le\Tr(P_U\rhozero).
+\label{eq:nonstationary-tail}
+\end{equation}
+No commutation between $\rhozero$ and the Hamiltonian is required.
+\end{proposition}
+
+\begin{proof}
+Positive radius implies $A=PAP$.  Lemma~\ref{lem:weighted-score} bounds the Fisher trace by $\Tr(A\rhozero^+A^\dagger)$.  By Lemma~\ref{lem:numerical-radius},
+\begin{equation}
+A\rhozero^+A^\dagger
+\preceq\frac4{\Rlin^2}\rhozero.
+\end{equation}
+The left side is supported inside $P_U$; compress by $P_U$ and take the trace.  Lemma~\ref{lem:copy-scaling} supplies the finite-copy factor $N$.
+\end{proof}
+
+For an exact positive Bohr gap of a semibounded Hamiltonian one takes $P_U$ inside the upper energy tail.  Applying the same result to $A^\dagger$ gives the domain/lower endpoint version.  Applying the two local Hamiltonian viewpoints of an exact clock--signal exchange yields the main-text dual-survival theorem.
+
+\section{Second-order positive-semidefinite-cone curvature}
+\label{supp:psd}
+
+Consider one real $C^2$ curve
+\begin{equation}
+\rho(\theta)=\rhozero+\theta D+\frac{\theta^2}{2}C+o(\theta^2)
+\end{equation}
+that is physical for positive and negative sufficiently small $\theta$.  Write $P=\supp\rhozero$, $Q=\id-P$, $R=P\rhozero P$ and $K=QDP$.
+
+\begin{lemma}[Second-order support-creation condition]
+\label{lem:psd-curvature}
+Two-sided positivity implies
+\begin{equation}
+QDQ=0,
+\qquad
+QCQ\succeq2KR^{-1}K^\dagger.
+\label{eq:psd-curvature}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+In the decomposition $P\oplus Q$, the support block is $R+O(\theta)$ and the off-diagonal block is $\theta K+O(\theta^2)$.  Positivity of the Schur complement gives
+\begin{equation}
+\frac{\theta^2}{2}QCQ-\theta^2KR^{-1}K^\dagger+o(\theta^2)\succeq0,
+\end{equation}
+which yields Eq.~\eqref{eq:psd-curvature}.  This is established PSD-cone tangent geometry; no mathematical novelty is claimed.
+\end{proof}
+
+Applying Lemma~\ref{lem:psd-curvature} to the cosine and sine directions separately gives the main-text one-sided curvature bound
+\begin{equation}
+J(A|\rhozero)\le(\partial_x^2+\partial_y^2)T_U(0).
+\end{equation}
+
+\section{Bilateral boundary scores and shared curvature}
+\label{supp:bilateral}
+
+Assume $QAQ=0$.  Define right-supported operators
+\begin{equation}
+X=AP,
+\qquad
+Y=QA^\dagger P,
+\qquad
+A=X+Y^\dagger.
+\end{equation}
+For a POVM define score vectors
+\begin{equation}
+u_y=\frac{\Tr(XM_y)}{\sqrt{p_y}},\qquad
+v_y=\frac{\Tr(YM_y)^*}{\sqrt{p_y}}.
+\end{equation}
+Lemma~\ref{lem:weighted-score} gives $\|u\|_2^2\le J_X$ and $\|v\|_2^2\le J_Y$.  Therefore
+\begin{equation}
+\sqrt{\Tr F_1}=\|u+v\|_2\le\sqrt{J_X}+\sqrt{J_Y}.
+\end{equation}
+Lemma~\ref{lem:copy-scaling} gives the finite-copy result.
+
+For a pure-boundary $C^2$ family, define
+\begin{equation}
+Z_+=X\rhozero^+X^\dagger,
+\qquad
+Z_-=Y\rhozero^+Y^\dagger,
+\end{equation}
+and
+\begin{equation}
+C_\Delta=Q(\partial_x^2+\partial_y^2)\rho(0)Q.
+\end{equation}
+Summing the two quadrature versions of Lemma~\ref{lem:psd-curvature} cancels the $X/Y$ cross terms and gives
+\begin{equation}
+C_\Delta\succeq Z_++Z_-.
+\label{eq:shared-curvature}
+\end{equation}
+This operator inequality is the common source of the one-sided curvature law, the bilateral Minkowski action law, and the later allocation results.
+
+\section{Shorted endpoint geometry for coherent support}
+\label{supp:shorting}
+
+Let $B=PAP$ be the support-preserving component at an arbitrary coherent baseline.  Define
+\begin{equation}
+Z_B^+=B\rhozero^+B^\dagger,
+\qquad
+R_B^+=\supp Z_B^+.
+\end{equation}
+Let $\Pi_U$ be a physical upper endpoint projector and set $S_U=P\Pi_UP$.  Define
+\begin{equation}
+\lambda_U=\sup\{\lambda\ge0:S_U\succeq\lambda R_B^+\}.
+\label{eq:lambda-short}
+\end{equation}
+If $R_B$ is the affine radius of the support-preserving sub-tangent, then
+\begin{equation}
+J_B^+=\Tr Z_B^+
+\le\frac{4\Tr(\Pi_U\rhozero)}{R_B^2\lambda_U}.
+\label{eq:shorted-survival}
+\end{equation}
+The analogous lower/conjugate formulas define the main-text ceilings $a_+$ and $a_-$.  The constants are generalized principal-angle/shorting quantities; Anderson--Trapp shorted-operator theory is prior mathematics.
+
+A four-level exact-gap example in the research record has $J_B^+=1/2$, while omission of the geometric correction gives only $1/8$.  The exact value $\lambda_U=1/4$ repairs the inequality, and a physical POVM violates the naive no-geometry total resource bound.  This example should be retained in the final supplement because it proves that Eq.~\eqref{eq:lambda-short} is not merely proof slack.
+
+\section{Exact shared-curvature allocation}
+\label{supp:allocation}
+
+Let $C\succeq0$ and let $R_+,R_-$ be the support projectors of two synthesized weighted tangent operators.  Define the feasible allocation set
+\begin{equation}
+\mathfrak A(C;R_+,R_-)=
+\left\{(Z_+,Z_-):
+\begin{array}{l}
+Z_\pm\succeq0,\\
+Z_\pm=R_\pm Z_\pm R_\pm,\\
+Z_++Z_-\preceq C
+\end{array}
+\right\}.
+\end{equation}
+For $a\ge0$ define
+\begin{equation}
+\Phi_a(C;R_+,R_-)
+=\sup_{(Z_+,Z_-)\in\mathfrak A}
+\left[\sqrt{a+\Tr Z_+}+\sqrt{\Tr Z_-}\right]^2.
+\end{equation}
+Using
+\begin{equation}
+(\sqrt u+\sqrt v)^2
+=\inf_{0<\eta<1}\left(\frac u\eta+\frac v{1-\eta}\right),
+\end{equation}
+and convex--concave minimax,
+\begin{equation}
+\Phi_a
+=\inf_{0<\eta<1}
+\left[
+\frac a\eta+
+ h_{1/\eta,1/(1-\eta)}(C;R_+,R_-)
+\right],
+\end{equation}
+where
+\begin{align}
+h_{\alpha,\beta}
+={}&\max_{(Z_+,Z_-)\in\mathfrak A}
+\alpha\Tr Z_+ +\beta\Tr Z_-\\
+={}&\min_{W\succeq0}\Tr(CW)
+\end{align}
+subject to
+\begin{equation}
+R_+WR_+\succeq\alpha R_+,
+\qquad
+R_-WR_-\succeq\beta R_-.
+\end{equation}
+The second line is the SDP dual.  This material is technical infrastructure for the main-text mixed theorem and should not be presented as a new SDP principle.
+
+\section{Positive spectral action and the \texorpdfstring{$\Psi$}{Psi} envelope}
+\label{supp:action}
+
+Let $G\succeq0$ and suppose
+\begin{equation}
+g_+=\lambda_{\min}(R_+GR_+|_{R_+})>0,
+\qquad
+g_-=\lambda_{\min}(R_-GR_-|_{R_-})>0.
+\end{equation}
+From Eq.~\eqref{eq:shared-curvature},
+\begin{equation}
+g_+J_+ +g_-J_-
+\le \Tr(GC_\Delta)=4\Aact_G^{(2)}.
+\end{equation}
+For $e=4\Aact_G^{(2)}$, $p=g_+$, $q=g_-$ and an internal resource ceiling $a$, maximize
+\begin{equation}
+\left[\sqrt{a+j_+}+\sqrt{j_-}\right]^2
+\end{equation}
+subject to $pj_++qj_-\le e$.  Direct one-variable optimization gives
+\begin{equation}
+\Psi_a(e;p,q)=
+\begin{cases}
+(\sqrt a+\sqrt{e/q})^2,&e\le ap^2/q,\\[1mm]
+(e+pa)(p^{-1}+q^{-1}),&e\ge ap^2/q.
+\end{cases}
+\end{equation}
+For $a=0$, the effective bilateral price is the harmonic combination $(p^{-1}+q^{-1})^{-1}$.
+
+\section{Canonical autonomous endpoint-incidence operator}
+\label{supp:canonical-action}
+
+For one exact exchange tangent $A_\nu$, define
+\begin{equation}
+\Pi_{\rm out}=\supp(A_\nu A_\nu^\dagger),
+\qquad
+\Pi_{\rm in}=\supp(A_\nu^\dagger A_\nu).
+\end{equation}
+From $[H_X,A_\nu]=s_X\hbar\nu A_\nu$ it follows that
+\begin{equation}
+[H_X,A_\nu A_\nu^\dagger]=
+[H_X,A_\nu^\dagger A_\nu]=0,
+\end{equation}
+so the support projectors commute with both local Hamiltonians.  The audited canonical clock-plus-signal endpoint-incidence cost is
+\begin{equation}
+G_{\rm ex}=2\hbar\nu\,Q(\Pi_{\rm out}+\Pi_{\rm in})Q.
+\end{equation}
+If one joint state is both a domain and range endpoint of the ladder, it is counted twice because it carries two endpoint roles.  The associated action is kinematic and kernel-resolved; it is not a total protocol-energy accounting.
+
+\section{Shared-kernel qutrit: resource, QFI, and accessible Fisher}
+\label{supp:qutrit}
+
+Use the fixed-total-excitation-2 basis $\{|L\rangle,|M\rangle,|U\rangle\}$ and
+\begin{equation}
+|q\rangle=\frac12|L\rangle+\sqrt{\frac58}|M\rangle+\frac1{2\sqrt2}|U\rangle,
+\end{equation}
+\begin{equation}
+P=\id-|q\rangle\!\langle q|,
+\qquad
+\rhozero=P/2,
+\qquad
+A=|M\rangle\!\langle L|-\sqrt2|U\rangle\!\langle M|.
+\end{equation}
+The exact weighted tangent values are
+\begin{equation}
+J_B^+=J_B^-=\frac54,
+\qquad
+J_+=\frac74,
+\qquad
+J_-=3.
+\end{equation}
+The canonical cost satisfies
+\begin{equation}
+G_{\rm ex}/(\hbar\nu)=\operatorname{diag}(2,4,2),
+\qquad
+g_+=g_-=\frac{13}{4}\hbar\nu,
+\end{equation}
+and the minimal kernel curvature gives
+\begin{equation}
+4\Aact_{\rm ex}^{(2)}=\frac{247}{16}\hbar\nu.
+\end{equation}
+The mixed resource envelope is exactly $12$.  The SLD-QFI trace is $43/4$, while the exact one-copy common-record Fisher supremum is $55/8$.
+
+The final supplement should include the explicit Hermitian quadratic witness proving
+\begin{equation}
+\sup_{\rm POVM}\Tr F_1=\frac{55}{8},
+\end{equation}
+and the regular three-outcome projective sequence approaching the supremum.  This is supporting evidence that the physical resource theorem is not an attainability statement.
+
+\section{Rank-one curvature-metric angle}
+\label{supp:rankone-angle}
+
+For $R_+=|u\rangle\langle u|$ and $R_-=|v\rangle\langle v|$, short the available curvature to $S=\operatorname{span}\{u,v\}$ and write $C_S=\operatorname{Short}_S(C)$.  Define
+\begin{equation}
+s_u=\frac1{\langle u|C_S^{-1}|u\rangle},
+\quad
+s_v=\frac1{\langle v|C_S^{-1}|v\rangle},
+\end{equation}
+\begin{equation}
+c=\frac{|\langle u|C_S^{-1}|v\rangle|}
+{\sqrt{\langle u|C_S^{-1}|u\rangle\langle v|C_S^{-1}|v\rangle}}.
+\end{equation}
+The exact allocation frontier is
+\begin{equation}
+y_{\max}(x)=s_v\frac{1-x/s_u}{1-(1-c^2)x/s_u}.
+\end{equation}
+This result is not needed to state the main theorem, but it proves that ordinary Hilbert-space endpoint angles do not contain enough information to describe shared-curvature allocation.
+
+\section{Multi-gap common Hessian and Fourier readout}
+\label{supp:multigap}
+
+For one common $2m$-parameter family, apply Lemma~\ref{lem:psd-curvature} to every cosine and sine coordinate.  For mode $k$, the cosine/sine support-to-kernel blocks are
+\begin{equation}
+K_{k,c}=\frac{X_k+Y_k}{2},
+\qquad
+K_{k,s}=\frac{X_k-Y_k}{2i}.
+\end{equation}
+Adding the two PSD inequalities cancels the cross terms and gives
+\begin{equation}
+C_{\Delta,k}\succeq Z_{k,+}+Z_{k,-}.
+\end{equation}
+Summing over $k$ before applying a scalar cost yields
+\begin{equation}
+C_\Sigma\succeq\sum_k(Z_{k,+}+Z_{k,-}).
+\end{equation}
+This order of operations is essential: it ensures that one positive $G$ charges the shared Hessian only once.
+
+In the clean fixed-total-energy star shell,
+\begin{equation}
+A_k=c_k(|k\rangle\!\langle0|+|0\rangle\!\langle-k|),
+\end{equation}
+and the common nonlinear family has kernel Hessian
+\begin{equation}
+C_\Sigma=\sum_k c_k^2
+(|-k\rangle\!\langle-k|+|k\rangle\!\langle k|).
+\end{equation}
+For $d=2m+1$, the DFT vectors
+\begin{equation}
+|v_j\rangle=\frac1{\sqrt d}\sum_{n=-m}^{m}e^{in2\pi j/d}|n\rangle
+\end{equation}
+give
+\begin{align}
+F_{x_kx_l}&=2c_k^2\delta_{kl},\\
+F_{y_ky_l}&=2c_k^2\delta_{kl},\\
+F_{x_ky_l}&=0.
+\end{align}
+Thus the same common record saturates every mode block and the complete clean frequency-weighted action sum.
+
+\section{Convention erratum inherited from WP07}
+
+For $A=2c|1\rangle\langle0|$ and the convention
+\begin{equation}
+D_s=(A-A^\dagger)/(2i),
+\end{equation}
+the convention-consistent exact ket is
+\begin{equation}
+|\psi(x,y)\rangle=
+\sqrt{1-c^2(x^2+y^2)}|0\rangle+c(x-i y)|1\rangle.
+\end{equation}
+The older research-note form $x+i y$ realizes the same tangent plane with $y\mapsto-y$.  No Fisher, curvature, or action coefficient changes.  The main manuscript and this supplement use the audited sign.
+
+\bibliography{references}
+
+\end{document}
