@@ -1,0 +1,189 @@
+% Proof module for the exact common-record Fisher supremum in the shared-kernel qutrit.
+% Intended for later inclusion in the Supplemental Material.
+
+\subsection{Exact common-record Fisher supremum for the shared-kernel qutrit}
+\label{supp:wp15-exact}
+
+Use the fixed-total-excitation qutrit benchmark defined in the main supplement. Choose an orthonormal basis $\{|e_1\rangle,|e_2\rangle\}$ for the support of $\rho_0$ such that, in the ordered basis $\{|e_1\rangle,|e_2\rangle,|q\rangle\}$,
+\begin{equation}
+\rho_0=\operatorname{diag}(1/2,1/2,0)
+\end{equation}
+and
+\begin{equation}
+A=
+\begin{pmatrix}
+0 & \sqrt2/2 & \sqrt{30}/6\\
+\sqrt2/4 & 0 & \sqrt6/3\\
+\sqrt{30}/12 & -\sqrt6/3 & 0
+\end{pmatrix}.
+\label{eq:wp15-A}
+\end{equation}
+For a POVM effect $M_y$, let
+\begin{equation}
+p_y=\Tr(\rho_0M_y),\qquad z_y=\Tr(AM_y).
+\end{equation}
+The two-quadrature classical Fisher trace is
+\begin{equation}
+\Tr F_1=\sum_{y:p_y>0}\frac{|z_y|^2}{p_y}.
+\end{equation}
+
+\paragraph{Rank-one refinement.}
+If $M=\sum_jM_j$ is decomposed into positive effects and $p_j=\Tr(\rho_0M_j)$, $z_j=\Tr(AM_j)$, then quadratic-over-linear convexity gives
+\begin{equation}
+\frac{|\sum_jz_j|^2}{\sum_jp_j}
+\le\sum_j\frac{|z_j|^2}{p_j}.
+\end{equation}
+Therefore refining effects into rank-one components cannot decrease the Fisher trace. It is sufficient to establish a pointwise bound for $M=w|\phi\rangle\langle\phi|$.
+
+\paragraph{Dual quadratic witness.}
+Define
+\begin{equation}
+Y=
+\begin{pmatrix}
+9/16 & 0 & 0\\
+0 & 9/16 & 3\sqrt{15}/8\\
+0 & 3\sqrt{15}/8 & 23/4
+\end{pmatrix}.
+\label{eq:wp15-Y}
+\end{equation}
+We claim
+\begin{equation}
+|\langle\phi|A|\phi\rangle|^2
+\le
+\langle\phi|\rho_0|\phi\rangle
+\langle\phi|Y|\phi\rangle
+\label{eq:wp15-witness}
+\end{equation}
+for every vector $|\phi\rangle$.
+
+For $\lambda>0$ and phase $\theta$, define
+\begin{equation}
+\mathcal M(\lambda,\theta)
+=
+\lambda\rho_0+\lambda^{-1}Y
+-\left(e^{i\theta}A+e^{-i\theta}A^\dagger\right).
+\label{eq:wp15-LMI}
+\end{equation}
+Set $x=\lambda^2$ and $t=\cos^2\theta$. Direct symbolic reduction gives the first leading principal minor
+\begin{equation}
+\frac{8x+9}{16\lambda}>0,
+\end{equation}
+the second leading principal minor
+\begin{equation}
+\frac{
+ t(8x-9)^2+(1-t)(64x^2+112x+81)
+}{256x},
+\label{eq:wp15-minor2}
+\end{equation}
+and the determinant
+\begin{equation}
+\frac{
+ t(8x-9)^2+(1-t)(40x+81)
+}{128\lambda^3}.
+\label{eq:wp15-det}
+\end{equation}
+For $x>0$ and $0\le t\le1$, both numerators are manifestly nonnegative. They are strictly positive except at the isolated point $t=1$, $x=9/8$; positive semidefiniteness there follows by continuity. Hence
+\begin{equation}
+\mathcal M(\lambda,\theta)\succeq0
+\qquad\text{for all }\lambda>0,\ \theta\in\mathbb R.
+\end{equation}
+For an arbitrary $|\phi\rangle$, choose $\theta$ to align the phase of $\langle\phi|A|\phi\rangle$. Then
+\begin{equation}
+2|\langle\phi|A|\phi\rangle|
+\le
+\lambda\langle\phi|\rho_0|\phi\rangle
++\lambda^{-1}\langle\phi|Y|\phi\rangle.
+\end{equation}
+Minimizing over $\lambda$ proves Eq.~\eqref{eq:wp15-witness}.
+
+For a rank-one POVM, Eq.~\eqref{eq:wp15-witness} gives
+\begin{equation}
+\Tr F_1
+\le
+\sum_y w_y\langle\phi_y|Y|\phi_y\rangle
+=\Tr Y
+=\frac{55}{8}.
+\label{eq:wp15-upper}
+\end{equation}
+Rank-one refinement extends the upper bound to every POVM.
+
+\paragraph{Sharp limiting projective sequence.}
+Write Eq.~\eqref{eq:wp15-A} in block form
+\begin{equation}
+A=\begin{pmatrix}B&b\\a^\dagger&0\end{pmatrix},
+\end{equation}
+where
+\begin{equation}
+B=
+\begin{pmatrix}
+0&\sqrt2/2\\
+\sqrt2/4&0
+\end{pmatrix},
+\quad
+ a=\left(\frac{\sqrt{30}}{12},-\frac{\sqrt6}{3}\right),
+\quad
+ b=\begin{pmatrix}\sqrt{30}/6\\\sqrt6/3\end{pmatrix}.
+\end{equation}
+The numerical radius of $B$ is
+\begin{equation}
+w(B)=\frac{3\sqrt2}{8}.
+\end{equation}
+The two orthogonal support vectors
+\begin{equation}
+|s_\pm\rangle=\frac{|e_1\rangle\pm|e_2\rangle}{\sqrt2}
+\end{equation}
+therefore contribute a total
+\begin{equation}
+\frac98
+\end{equation}
+to the Fisher trace.
+
+For a vector approaching the kernel,
+\begin{equation}
+|\phi_\epsilon\rangle
+=\cos\epsilon|q\rangle+\sin\epsilon|t\rangle,
+\end{equation}
+the baseline probability is $\sin^2\epsilon/2$, while its Fisher contribution tends to
+\begin{equation}
+2|\langle q|A|t\rangle+\langle t|A|q\rangle|^2.
+\end{equation}
+Choosing
+\begin{equation}
+|t_*\rangle=i\frac{(a-b)^T}{\|a-b\|}
+\end{equation}
+gives
+\begin{equation}
+\|a-b\|^2=\frac{23}{8},
+\end{equation}
+so the near-kernel contribution tends to
+\begin{equation}
+\frac{23}{4}.
+\end{equation}
+Let $U_\epsilon$ be a unitary rotation by angle $\epsilon$ in $\operatorname{span}\{|q\rangle,|t_*\rangle\}$ and the identity on its orthogonal complement. The projective measurement
+\begin{equation}
+\left\{
+U_\epsilon|s_+\rangle,
+U_\epsilon|s_-\rangle,
+U_\epsilon|q\rangle
+\right\}
+\end{equation}
+has ordinary positive baseline probabilities for every sufficiently small $\epsilon>0$, and
+\begin{equation}
+\lim_{\epsilon\to0^+}\Tr F_1[U_\epsilon]
+=\frac98+\frac{23}{4}
+=\frac{55}{8}.
+\label{eq:wp15-lower}
+\end{equation}
+Combining Eqs.~\eqref{eq:wp15-upper} and \eqref{eq:wp15-lower},
+\begin{equation}
+\boxed{
+\sup_{\mathrm{POVM}}\Tr F_1=\frac{55}{8}.
+}
+\end{equation}
+The result is a supremum; exact attainment by a regular POVM is not required.
+
+For this benchmark the three distinct layers are therefore
+\begin{equation}
+12\quad>\quad\frac{43}{4}\quad>\quad\frac{55}{8},
+\end{equation}
+corresponding respectively to the physical shared-curvature resource ceiling, the SLD-QFI trace, and the exact accessible one-copy common-record Fisher supremum.
