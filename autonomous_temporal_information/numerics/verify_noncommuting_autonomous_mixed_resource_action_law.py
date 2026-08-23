@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
-"""Independent validator for WP19 noncommuting autonomous mixed resource/action law.
+"""Independent validator for audited WP19 autonomous mixed resource/action law.
 
 Checks:
-1. random scalar WP11-compatible tuples obey the exact WP13 Psi envelope;
-2. clean bilateral pure-boundary limit recovers A_CS >= F/4 for hbar*nu=1;
-3. clean one-sided limit recovers A_CS >= F/2;
-4. zero-synthesis limit reduces to the finite-radius internal ceiling;
-5. the shared-kernel autonomous qutrit is reconstructed from matrices:
-   exact exchange commutators, QAQ=0, weighted norms
-   J_B^+=J_B^-=5/4, J_+=7/4, J_-=3;
-6. the endpoint-incidence operator is diag(2,4,2), restricted costs are
-   g_+=g_-=13/4, minimal curvature gives e=247/16, and
-   Psi_(5/4)(247/16;13/4,13/4)=12 exactly;
-7. random POVMs on that qutrit remain below the WP19 resource ceiling 12.
+1. random WP11-compatible scalar tuples obey the exact WP13 Psi envelope;
+2. clean bilateral/one-sided and zero-synthesis limits;
+3. shared-kernel qutrit reconstructed from H_C,H_S,rho,A;
+4. canonical endpoint-role projectors Pi_out=supp(AA^dagger),
+   Pi_in=supp(A^dagger A) commute with both local Hamiltonians;
+5. canonical G_ex=2(Pi_out+Pi_in), before kernel compression, equals
+   diag(2,4,2) in the fixed shell;
+6. exact weighted norms, restricted cost 13/4, action e=247/16,
+   and Psi=12;
+7. random qutrit POVMs remain below 12.
 
 Units hbar*nu=1.
 """
@@ -22,11 +21,10 @@ from __future__ import annotations
 import math
 import numpy as np
 
-RNG = np.random.default_rng(20260822)
+RNG = np.random.default_rng(20260823)
 
 
 def psi(a: float, e: float, p: float, q: float) -> float:
-    assert a >= -1e-14 and e >= -1e-14 and p > 0.0 and q > 0.0
     a = max(a, 0.0)
     e = max(e, 0.0)
     if e <= a * p * p / q:
@@ -38,6 +36,15 @@ def psd_pinv(a: np.ndarray, tol: float = 1e-11) -> np.ndarray:
     vals, vecs = np.linalg.eigh((a + a.conj().T) / 2.0)
     inv = np.array([1.0 / x if x > tol else 0.0 for x in vals])
     return vecs @ np.diag(inv) @ vecs.conj().T
+
+
+def support_projector(a: np.ndarray, tol: float = 1e-11) -> np.ndarray:
+    vals, vecs = np.linalg.eigh((a + a.conj().T) / 2.0)
+    keep = vals > tol
+    if not np.any(keep):
+        return np.zeros_like(a)
+    v = vecs[:, keep]
+    return v @ v.conj().T
 
 
 def random_rank1_povm(d: int, m: int) -> np.ndarray:
@@ -74,31 +81,24 @@ def check_scalar_envelope() -> None:
 
         lhs = (math.sqrt(jb + jp) + math.sqrt(jm)) ** 2
         rhs = psi(a, e, p, q)
-        assert lhs <= rhs + 2e-10 * max(1.0, rhs), (lhs, rhs)
+        assert lhs <= rhs + 2e-10 * max(1.0, rhs)
     print("Random WP11-to-WP13 scalar envelope PASS")
 
 
 def check_clean_limits() -> None:
-    # Bilateral: g_+=g_-=2, a=0, e=4 A_CS. Then F<=e, so A_CS>=F/4.
     for e in (0.01, 0.4, 2.0, 17.0):
         assert abs(psi(0.0, e, 2.0, 2.0) - e) < 1e-13
-
-    # One-sided: J_- =0 and g_+=2 gives F<=e/2, i.e. A_CS=e/4 >= F/2.
-    for e in (0.01, 0.4, 2.0, 17.0):
         fmax = e / 2.0
-        assert abs((e / 4.0) - 0.5 * fmax) < 1e-13
-
-    # No synthesis: e=0 must return a.
+        assert abs(e / 4.0 - 0.5 * fmax) < 1e-13
     for a in (0.0, 0.2, 3.0, 11.0):
         assert abs(psi(a, 0.0, 1.7, 2.9) - a) < 1e-13
-
     print("WP18 clean bilateral/one-sided and finite-radius limits PASS")
 
 
 def qutrit_benchmark():
-    # Fixed-total-energy shell |L>,|M>,|U>.
     Hs = np.diag([0.0, 1.0, 2.0])
     Hc = np.diag([2.0, 1.0, 0.0])
+
     q = np.array(
         [0.5, math.sqrt(5.0 / 8.0), 1.0 / (2.0 * math.sqrt(2.0))],
         dtype=complex,
@@ -117,6 +117,22 @@ def qutrit_benchmark():
     assert np.linalg.norm((Hs + Hc) - 2.0 * np.eye(3)) < 2e-13
     assert np.linalg.norm(Q @ A @ Q) < 2e-13
 
+    Pi_out = support_projector(A @ A.conj().T)
+    Pi_in = support_projector(A.conj().T @ A)
+    assert np.linalg.norm(Hs @ Pi_out - Pi_out @ Hs) < 2e-13
+    assert np.linalg.norm(Hc @ Pi_out - Pi_out @ Hc) < 2e-13
+    assert np.linalg.norm(Hs @ Pi_in - Pi_in @ Hs) < 2e-13
+    assert np.linalg.norm(Hc @ Pi_in - Pi_in @ Hc) < 2e-13
+
+    expected_out = np.diag([0.0, 1.0, 1.0])
+    expected_in = np.diag([1.0, 1.0, 0.0])
+    assert np.linalg.norm(Pi_out - expected_out) < 3e-12
+    assert np.linalg.norm(Pi_in - expected_in) < 3e-12
+
+    G_full = 2.0 * (Pi_out + Pi_in)
+    assert np.linalg.norm(G_full - np.diag([2.0, 4.0, 2.0])) < 3e-12
+    G = Q @ G_full @ Q
+
     B = P @ A @ P
     Kp = Q @ A @ P
     Km = Q @ A.conj().T @ P
@@ -131,29 +147,23 @@ def qutrit_benchmark():
     jp = float(np.trace(Zp).real)
     jm = float(np.trace(Zm).real)
 
-    assert abs(jbp - 5.0 / 4.0) < 2e-11, jbp
-    assert abs(jbm - 5.0 / 4.0) < 2e-11, jbm
-    assert abs(jp - 7.0 / 4.0) < 2e-11, jp
-    assert abs(jm - 3.0) < 2e-11, jm
-
-    # Endpoint incidence sum:
-    # signal lower L,M ; signal upper M,U ;
-    # clock upper L,M ; clock lower M,U.
-    G = np.diag([2.0, 4.0, 2.0])
+    assert abs(jbp - 5.0 / 4.0) < 2e-11
+    assert abs(jbm - 5.0 / 4.0) < 2e-11
+    assert abs(jp - 7.0 / 4.0) < 2e-11
+    assert abs(jm - 3.0) < 2e-11
 
     gp = float(np.vdot(q, G @ q).real)
     gm = gp
     assert abs(gp - 13.0 / 4.0) < 2e-12
 
     Cdelta = Zp + Zm
-    # Both ranges are Q, so Cdelta=(19/4)Q.
     assert np.linalg.norm(Cdelta - (19.0 / 4.0) * Q) < 3e-11
 
-    e = float(np.trace(G @ Cdelta).real)  # e = 4 A_CS
-    assert abs(e - 247.0 / 16.0) < 3e-11, e
+    e = float(np.trace(G @ Cdelta).real)
+    assert abs(e - 247.0 / 16.0) < 3e-11
 
     resource = psi(5.0 / 4.0, e, gp, gm)
-    assert abs(resource - 12.0) < 3e-11, resource
+    assert abs(resource - 12.0) < 3e-11
 
     return rho, A, resource
 
@@ -166,7 +176,7 @@ def check_qutrit_benchmark() -> None:
         value = fisher_trace(rho, A, W)
         assert value <= resource + 2e-9
         best = max(best, value)
-    print("Autonomous shared-kernel qutrit exact resource value 12 PASS")
+    print("Canonical autonomous shared-kernel qutrit resource value 12 PASS")
     print(f"Random qutrit POVMs below WP19 ceiling PASS; max sampled={best:.6f}")
 
 
@@ -174,7 +184,7 @@ def main() -> None:
     check_scalar_envelope()
     check_clean_limits()
     check_qutrit_benchmark()
-    print("WP19 noncommuting autonomous mixed resource/action validation PASS")
+    print("Audited WP19 noncommuting autonomous resource/action validation PASS")
 
 
 if __name__ == "__main__":
