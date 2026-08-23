@@ -1,384 +1,69 @@
-# WP31 — Exact infinite-dimensional energy-conserving prescribed-2-jet implementation cost
+# WP31 — Infinite-dimensional energy-conserving 2-jet cost: intermediate proof and erratum
 
 ## Status
 
-**Exact theorem proved.**
+**SUPERSEDED BY WP32.**
 
-WP30 left one functional-analytic obstruction open: a stationary trace-class target state can have unbounded target-energy support, so the finite-dimensional trick of coherently purifying every target energy into one fixed total-energy shell would force the ancilla Hamiltonian to be unbounded below. A direct-sum coherent-purification generator then appeared to require a stronger fourth-moment domain condition.
+WP31 identified the correct mechanism for removing the WP30 fourth-moment/domain obstruction: use a **classical trace-class mixture** over energy-labelled implementation branches rather than one coherent purification vector spread across infinitely many target energies.
 
-That obstruction is not fundamental. The correct construction is to use a **classically mixed energy-shell dilation**, not one coherent purification across all target energies. With that construction, finite quadratic implementation cost already gives the trace-norm `C^2` control required for the reduced family, and the ancilla Hamiltonian may be chosen identically zero.
+However, the original WP31 proof contained a hidden scope defect.
 
-Consequently the exact WP23/WP30 prescribed-kernel-curvature cost equality extends to semibounded, exactly energy-conserving dilations even when the stationary target state occupies infinitely many unbounded energy shells.
+It decomposed
 
-## 1. Setup
+`rho_0=direct_sum_E rho_E`, `p_E=Tr rho_E`
 
-Let `H_T` be a self-adjoint semibounded target Hamiltonian on a separable Hilbert space.
-
-Let `rho_0>=0` be a trace-class density operator satisfying strong stationarity
-
-`[rho_0,H_T]=0`.
-
-Let `P=supp(rho_0)` and `Q=I-P`.
-
-Let `D_j`, `j=1,...,d`, be Hermitian pure-boundary target derivatives with
-
-`P D_j P=Q D_j Q=0`
-
-and exact total-energy covariance
-
-`[D_j,H_T]=0`.
-
-Assume the right-relative tangent operators
-
-`L_j=Q D_j P rho_0^{-1/2}`
-
-are Hilbert--Schmidt. Define
-
-`C_min=2 sum_j L_j L_j^dagger`,
-
-which is positive trace class.
-
-Prescribe a positive trace-class target-kernel Hessian contraction
-
-`C>=C_min`
-
-which also commutes with the target Hamiltonian,
-
-`[C,H_T]=0`.
-
-The implementation cost of a global smooth unitary dilation with global baseline `Omega_0` and Hermitian tangent generators `K_j` is
-
-`V_impl=sum_j Var_Omega0(K_j)`.
-
-The target reduction of `Omega_0` must be `rho_0`, the reduced first derivatives must be `D_j`, and the prescribed metric-contracted target kernel Hessian must be `C`.
-
-## 2. A stationary trace-class state has countable pure-point energy support
-
-This elementary compactness fact is the key to the construction.
-
-Because `rho_0` is positive trace class, it is compact and has spectral resolution
-
-`rho_0=sum_(a>=1) lambda_a P_a`,
-
-where every `lambda_a>0` and every `P_a` has finite rank.
-
-Strong commutation of `rho_0` and `H_T` implies that every finite-dimensional eigenspace `Ran P_a` reduces `H_T`. The restriction of a self-adjoint operator to a finite-dimensional reducing subspace is diagonalizable. Therefore `Ran P_a` has an orthonormal basis of genuine normalizable eigenvectors of `H_T`.
-
-Taking the union over the countably many nonzero eigenvalues of `rho_0` shows that the support `P H_T` is spanned by a countable orthonormal family of target-energy eigenvectors.
-
-Thus, even if the ambient Hamiltonian has continuous spectral components, a stationary trace-class density operator is supported on the pure-point part relevant to the state.
-
-Write the occupied target-energy decomposition as
-
-`rho_0=direct_sum_E rho_E`,
-
-where
-
-`rho_E=P_E rho_0 P_E`,
-
-`p_E=Tr rho_E`,
-
-and `sum_E p_E=1`.
-
-The set of occupied energies is countable and may be unbounded above.
-
-Because `D_j` and `C` commute with `H_T`, they decompose in the same way:
-
-`D_j=direct_sum_E D_(j,E)`,
-
-`C=direct_sum_E C_E`.
-
-The minimum curvature also decomposes,
-
-`C_min=direct_sum_E C_(min,E)`.
-
-## 3. Normalize each energy shell separately
-
-For every occupied shell `E` with `p_E>0`, define
-
-`sigma_E=rho_E/p_E`,
-
-`delta_(j,E)=D_(j,E)/p_E`,
+and then normalized every prescribed curvature block as
 
 `c_E=C_E/p_E`.
 
-The pseudoinverse rescales as
+This silently assumed
 
-`sigma_E^+=p_E rho_E^+`.
+`C_E!=0 => p_E>0`.
 
-Therefore the normalized shell minimum curvature is
+That implication is false. A feasible positive spectator curvature can commute with the target Hamiltonian and lie in a target-energy shell that has **zero baseline population**. Such second-order curvature is exactly the kind of spectator contribution already emphasized by the R3 boundary/Bures discussion.
 
-`c_(min,E)=C_(min,E)/p_E`,
+Therefore the original WP31 statement that an identically zero ancilla Hamiltonian `H_E=0` suffices for **arbitrary** prescribed `C` was too strong.
 
-and the global feasibility condition `C>=C_min` implies
+## What survives
 
-`c_E>=c_(min,E)`
+The central WP31 regularity insight is correct and is retained by WP32:
 
-for every shell.
+> the optimal infinite-dimensional dilation should be built from a trace-class **classical mixture of implementation branches**, not one coherent purification across infinitely many energies.
 
-The shellwise implementation problem is exactly the WP23/WP30 prescribed-2-jet problem for the normalized state `sigma_E`.
+That replacement changes the relevant differentiability estimate from a vector-domain/fourth-moment problem to a trace-class dominated-convergence problem controlled by the ordinary state-weighted quadratic implementation cost.
 
-## 4. Shellwise optimal dilations
+Thus no fourth-moment condition is necessary for existence of an optimal dilation.
 
-For each occupied target energy `E`, introduce a private separable ancilla sector `E_E` and choose a normalized purification
+## Corrected theorem
 
-`|Omega_E>`
+The full theorem, including arbitrary stationary spectator curvature in target-energy shells unoccupied at baseline, is proved in
 
-of `sigma_E` inside
+`WP32_REPAIRED_INFINITE_DIMENSIONAL_ENERGY_CONSERVING_2JET_COST.md`.
 
-`P_E H_T tensor E_E`.
+WP32 uses:
 
-Construct the horizontal tangent vectors `|chi_(j,E)^hor>` and an orthogonal flag purification of the excess
+1. a countable joint eigenbasis of the stationary trace-class baseline and target Hamiltonian;
+2. classical splitting of baseline eigenstate weights into orthogonal ancilla-labelled copies;
+3. proportional replication of the horizontal tangent across those copies, which leaves the minimum horizontal cost unchanged;
+4. nonnegative ancilla input/output energies that exactly compensate arbitrary target-energy differences of excess curvature flags;
+5. a classical global branch mixture, which makes finite quadratic cost sufficient for trace-norm `C^2` smoothness.
 
-`S_E=(c_E-c_(min,E))/2>=0`
-
-exactly as in WP23/WP30. Assign the excess flag to one coordinate, or distribute it among coordinates; only the metric-contracted kernel Hessian is prescribed.
-
-This gives finite-norm vectors `|chi_(j,E)>` satisfying
-
-`Tr_(E_E)(|chi_(j,E)><Omega_E|+h.c.)=delta_(j,E)`,
-
-and
-
-`2 sum_j Tr_(E_E)[Q |chi_(j,E)><chi_(j,E)| Q]=c_E`.
-
-Choose the shell generator
-
-`K_(j,E)=i(|chi_(j,E)><Omega_E|-|Omega_E><chi_(j,E)|)`
-
-on the span generated by `Omega_E` and `chi_(j,E)`, extended by zero on the orthogonal complement of the target-energy-`E` shell.
-
-It is bounded and Hermitian with
-
-`||K_(j,E)||=||chi_(j,E)||`,
-
-`<Omega_E|K_(j,E)|Omega_E>=0`,
-
-and
-
-`Var_(Omega_E)(K_(j,E))=||chi_(j,E)||^2`.
-
-The exact shell optimum is
-
-`sum_j ||chi_(j,E)||^2=(1/2)Tr c_E=(1/(2p_E))Tr C_E`.
-
-## 5. Zero-energy ancilla and exact energy conservation
-
-Let the full ancilla be the orthogonal direct sum
-
-`E=direct_sum_E E_E`
-
-and choose
-
-`H_E=0`.
-
-This is self-adjoint and semibounded.
-
-Every vector `Omega_E` and every tangent/flag vector `chi_(j,E)` has target energy exactly `E` because `D_j` and `C` preserve the target-energy shell. Hence every `K_(j,E)` acts entirely within the total-energy eigenspace
-
-`E + 0 = E`
-
-of
-
-`H_tot=H_T tensor I + I tensor H_E`.
-
-Therefore
-
-`[K_(j,E),H_tot]=0`
-
-inside each shell.
-
-Define the direct-sum unitary for a parameter vector `theta in R^d` by
-
-`U(theta)=direct_sum_E exp[-i sum_j theta_j K_(j,E)]`
-
-with identity action on the unused complement.
-
-Every block commutes with total energy, so
-
-`[U(theta),H_tot]=0`
-
-for all `theta`.
-
-No fixed global energy shell and no negative ancilla energy are required.
-
-## 6. The crucial mixed-shell global baseline
-
-Do **not** use the coherent vector
-
-`sum_E sqrt(p_E)|Omega_E>`.
-
-Instead define the global baseline density operator
-
-`boxed:
-Omega_0=direct_sum_E p_E |Omega_E><Omega_E|.`
-
-This is a positive trace-class density operator and
-
-`Tr_E Omega_0=rho_0`.
-
-The encoded global family is
-
-`Omega(theta)=U(theta) Omega_0 U(theta)^dagger`
-
-and the target family is its partial trace.
-
-Because the global baseline is block-diagonal in energy, differentiability is controlled by a **weighted sum of shellwise second-order norms**, rather than by the fourth moment of one coherent direct-sum generator acting on a single purification vector.
-
-This is the point that removes the WP30 obstruction.
-
-## 7. Finite cost implies trace-norm C^2 smoothness
-
-For a normalized rank-one shell state `omega_E=|Omega_E><Omega_E|` and a bounded shell generator `K_(j,E)`, one has
-
-`||[K_(j,E),omega_E]||_1 <= 2 ||K_(j,E)||`,
-
-and
-
-`||[K_(j,E),[K_(k,E),omega_E]]||_1
- <=4 ||K_(j,E)|| ||K_(k,E)||`.
-
-The total optimal cost is
-
-`sum_E p_E sum_j ||K_(j,E)||^2
- =sum_E (1/2)Tr C_E
- =(1/2)Tr C
- <infinity.`
-
-For first derivatives, Cauchy--Schwarz gives
-
-`sum_E p_E ||K_(j,E)||
- <=[sum_E p_E ||K_(j,E)||^2]^(1/2)<infinity.`
-
-For second derivatives,
-
-`sum_E p_E ||K_(j,E)|| ||K_(k,E)||<infinity`
-
-by Cauchy--Schwarz.
-
-Hence the first and all mixed second shell derivatives are dominated by summable trace-norm majorants. Termwise differentiation of the block-diagonal trace-class series is therefore justified by dominated convergence.
-
-Thus `Omega(theta)` is `C^2` in trace norm at the origin (indeed locally under the same bounds), and so is the reduced target family because partial trace is trace-norm contractive.
-
-No condition of the form
-
-`sum_E p_E ||K_E||^4<infinity`
-
-is required.
-
-## 8. Exact target derivatives and curvature
-
-The target first derivatives are
-
-`partial_j rho(0)
- =sum_E p_E delta_(j,E)
- =sum_E D_(j,E)
- =D_j`.
-
-The target metric-contracted kernel Hessian is
-
-`Q sum_j partial_j^2 rho(0) Q
- =sum_E p_E c_E
- =sum_E C_E
- =C`.
-
-Thus the prescribed reduced local 2-jet is realized exactly at the level claimed by WP23: the first-order tangent and the metric-contracted target kernel Hessian.
-
-No claim is made here about prescribing an arbitrary full tensor of mixed target second derivatives.
-
-## 9. Exact cost
-
-The global shellwise means vanish, hence
-
-`Var_(Omega_0)(K_j)
- =sum_E p_E Var_(Omega_E)(K_(j,E))`.
-
-Therefore
-
-`V_impl
- =sum_j sum_E p_E ||chi_(j,E)||^2
- =sum_E (1/2)Tr C_E
- =(1/2)Tr C.`
-
-WP21/WP30 already give the dimension-independent lower bound
-
-`V_impl>=(1/2)Tr C`
-
-for every smooth unitary dilation realizing the prescribed kernel curvature.
-
-The mixed-shell construction attains it while conserving total energy exactly. Hence
+The corrected result is
 
 `boxed:
 inf_(semibounded exactly energy-conserving smooth unitary dilations)
-V_impl
- =(1/2)Tr C.`
+V_impl=(1/2)Tr C`
 
-This remains true for countably infinite and unbounded occupied target-energy support.
+for every feasible positive trace-class metric-contracted kernel Hessian `C` satisfying the WP29 finite-information assumptions and strong energy covariance.
 
-## 10. Clean exact-exchange endpoint action
+In the clean single-gap endpoint geometry,
 
-When the prescribed curvature is supported on a clean single-gap exchange endpoint with
+`boxed: V_min=A_ex^(2)/(hbar nu)`.
 
-`G_ex=2 hbar nu Q`
+## Historical lesson
 
-on the relevant kernel,
+A zero-energy ancilla is sufficient when all required baseline, tangent, and excess-curvature transitions remain within the same target-energy shell. It is **not** sufficient for arbitrary spectator curvature in previously unoccupied target-energy shells.
 
-`A_ex^(2)=(1/4)Tr(G_ex C)=(hbar nu/2)Tr C`.
+The universal construction needs only a **semibounded nonnegative ancilla Hamiltonian**, with branch energies chosen to compensate target-energy differences.
 
-Therefore
-
-`boxed:
-V_min=A_ex^(2)/(hbar nu)`
-
-holds even in the infinite-dimensional, unbounded-energy-support, exactly energy-conserving setting.
-
-This completes the dynamical interpretation of the clean synthesis action under the stated finite-information regularity assumptions.
-
-## 11. Why the WP30 fourth-moment concern was an artifact
-
-For a **single coherent purification vector** spread over infinitely many energy shells, the natural direct-sum generator can be unbounded and twice differentiability of the purification vector may demand a stronger `Dom(K^2)` condition. That route indeed suggests a fourth-moment condition.
-
-But the optimization problem permits a mixed global baseline dilation. Replacing coherent shell superposition by a classical energy-shell mixture preserves the target state and all desired reduced derivatives while changing the regularity requirement from a vector-domain problem to a trace-class dominated-convergence problem.
-
-The latter is controlled exactly by the quadratic variance cost already assumed finite.
-
-Thus the stronger fourth-moment condition is sufficient for the coherent-purification construction but **not necessary for existence of an optimal energy-conserving dilation**.
-
-## 12. Prior-art boundary
-
-Energy-conserving Stinespring dilations of time-covariant quantum channels are established prior art. Covariant-channel dilation theory and thermodynamic implementations should be cited as background and not claimed as new.
-
-Likewise, infinite-dimensional QFI/Bures horizontal-lift geometry and generic direct-sum self-adjoint operator theory are established mathematics.
-
-The candidate distinct statement is narrow:
-
-> for a stationary rank-changing relational state family with a prescribed feasible target-kernel Hessian contraction, the exact minimum **state-weighted quadratic coupling cost** over energy-conserving dilations equals one half of the target kernel curvature trace, and therefore equals the clean frequency-weighted endpoint synthesis action divided by `hbar nu`.
-
-The mixed-shell construction is a state-specific local-2-jet realization, not a claim of a new general covariant-channel dilation theorem.
-
-Priority remains unverified.
-
-## 13. Consequences
-
-WP31 removes the last explicit finite-dimensional/domain obstruction in the clean dynamical branch:
-
-1. finite-dimensional pure-boundary tangent: solved (WP22);
-2. finite-dimensional prescribed kernel 2-jet: solved (WP23);
-3. infinite-dimensional unconstrained dilation: solved (WP30);
-4. infinite-dimensional semibounded exact energy conservation with unbounded stationary energy support: **solved here**.
-
-The remaining limitations are now physical/modeling limitations rather than this particular functional-analytic obstruction:
-
-- generator variance/control action is not thermodynamic work or reset cost;
-- open-system/noisy dynamical implementation cost is not yet optimized;
-- arbitrary full second-derivative tensors are not prescribed, only the physical metric contraction used by the resource law;
-- unbounded/non-Hilbert--Schmidt relative tangents remain outside the finite-information domain;
-- approximate exchange in the rank-boundary information law is handled by WP27, but an approximate-exchange version of the exact dynamical-cost identity has not yet been derived.
-
-## 14. Immediate next work
-
-1. build a shell-truncation validator demonstrating exact cost and derivative convergence for an unbounded energy ladder;
-2. hostile-audit the trace-norm `C^2` dominated-convergence step and the stationary trace-class/pure-point-support lemma;
-3. targeted prior-art search against energy-covariant Stinespring dilation and state-specific local implementation geometry;
-4. decide whether WP21--WP31 justify an R4 manuscript or are cleaner as a follow-up paper;
-5. if research continues, attack noisy/CPTP implementation cost or the unbounded-relative-tangent quadratic-form regime rather than adding formal edge-case bookkeeping.
+WP32 is canonical. Do not cite WP31 as the final theorem.
