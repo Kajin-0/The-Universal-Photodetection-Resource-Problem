@@ -1,0 +1,231 @@
+% M2 proof module: audited WP20 multi-gap shared-Hessian action sum.
+
+\subsection{Multi-gap shared-Hessian spectral-action sum}
+\label{supp:multigap-full-proof}
+
+Let $\rho(\bm x,\bm y)$ be one common $C^2$ physical family with baseline $\rho_0$, support projector $P$, and kernel projector $Q$. For each positive gap $\nu_k$, let the complex tangent be $A_k$ and assume a pure-boundary decomposition
+\begin{equation}
+P A_k P=0,
+\qquad
+Q A_k Q=0.
+\end{equation}
+Define
+\begin{equation}
+X_k=Q A_k P,
+\qquad
+Y_k=Q A_k^\dagger P,
+\end{equation}
+so
+\begin{equation}
+A_k=X_k+Y_k^\dagger.
+\end{equation}
+The cosine and sine support-to-kernel blocks are
+\begin{equation}
+K_{k,c}=\frac{X_k+Y_k}{2},
+\qquad
+K_{k,s}=\frac{X_k-Y_k}{2i}.
+\end{equation}
+
+For the $x_k$ coordinate, second-order positivity gives
+\begin{equation}
+Q\partial_{x_k}^2\rho(0)Q
+\succeq2K_{k,c}\rho_0^+K_{k,c}^\dagger.
+\end{equation}
+For the $y_k$ coordinate,
+\begin{equation}
+Q\partial_{y_k}^2\rho(0)Q
+\succeq2K_{k,s}\rho_0^+K_{k,s}^\dagger.
+\end{equation}
+Adding the two inequalities cancels the mixed $X_k/Y_k$ terms exactly:
+\begin{align}
+C_{\Delta,k}
+&:=Q(\partial_{x_k}^2+\partial_{y_k}^2)\rho(0)Q\\
+&\succeq
+X_k\rho_0^+X_k^\dagger
++Y_k\rho_0^+Y_k^\dagger\\
+&=:Z_{k,+}+Z_{k,-}.
+\label{eq:mode-shared-curvature-proof}
+\end{align}
+Now sum the operator inequalities over all mode coordinates before introducing any scalar resource:
+\begin{equation}
+\boxed{
+C_\Sigma
+:=Q\sum_k(\partial_{x_k}^2+\partial_{y_k}^2)\rho(0)Q
+\succeq
+\sum_k(Z_{k,+}+Z_{k,-}).
+}
+\label{eq:common-hessian-proof}
+\end{equation}
+No mixed second derivatives are needed because $C_\Sigma$ is the trace of the parameter Hessian in the chosen orthonormal coordinate system.
+
+Let $G\succeq0$ be one positive kernel cost operator and define
+\begin{equation}
+\Aact_{G,\Sigma}^{(2)}
+=\frac14\Tr(GC_\Sigma).
+\end{equation}
+For each nonzero orientation let
+\begin{equation}
+g_{k,+}
+=\lambda_{\min}
+(R_{k,+}GR_{k,+}|_{R_{k,+}}),
+\end{equation}
+\begin{equation}
+g_{k,-}
+=\lambda_{\min}
+(R_{k,-}GR_{k,-}|_{R_{k,-}}),
+\end{equation}
+where $R_{k,\pm}=\supp Z_{k,\pm}$. From Eq.~\eqref{eq:common-hessian-proof},
+\begin{equation}
+4\Aact_{G,\Sigma}^{(2)}
+\ge
+\sum_k(g_{k,+}J_{k,+}+g_{k,-}J_{k,-}),
+\label{eq:total-cost-proof}
+\end{equation}
+with $J_{k,\pm}=\Tr Z_{k,\pm}$.
+
+For one fixed POVM on the $N$ copies, the bilateral boundary Minkowski law applies to each Fisher block $F_{N,k}$ of that same record:
+\begin{equation}
+\sqrt{\frac{\Tr F_{N,k}}{N}}
+\le
+\sqrt{J_{k,+}}+\sqrt{J_{k,-}}.
+\end{equation}
+For positive bilateral prices, define the harmonic price
+\begin{equation}
+\gamma_k
+=\left(g_{k,+}^{-1}+g_{k,-}^{-1}\right)^{-1}.
+\end{equation}
+Weighted Cauchy--Schwarz gives
+\begin{equation}
+\gamma_k
+(\sqrt{J_{k,+}}+\sqrt{J_{k,-}})^2
+\le
+g_{k,+}J_{k,+}+g_{k,-}J_{k,-}.
+\end{equation}
+For a one-sided mode, set $\gamma_k$ equal to its one nonzero orientation cost. Hence
+\begin{equation}
+\gamma_k\frac{\Tr F_{N,k}}{N}
+\le
+g_{k,+}J_{k,+}+g_{k,-}J_{k,-}.
+\end{equation}
+Summing and using Eq.~\eqref{eq:total-cost-proof},
+\begin{equation}
+\boxed{
+\sum_k\gamma_k\frac{\Tr F_{N,k}}{N}
+\le4\Aact_{G,\Sigma}^{(2)}.
+}
+\label{eq:multigap-proof-final}
+\end{equation}
+This theorem does not require one measurement to be individually optimal for all modes. It applies to the Fisher blocks of any one common record.
+
+\subsubsection{Clean autonomous frequency weighting}
+
+Suppose each mode is an exact clock--signal exchange at gap $\nu_k$ and the clean upper/lower endpoint ranges are mode separated. Choose $G$ to assign the positive combined clock-plus-signal incidence price
+\begin{equation}
+2\hbar\nu_k
+\end{equation}
+to either orientation of mode $k$. Then
+\begin{equation}
+g_{k,+}=g_{k,-}=2\hbar\nu_k,
+\end{equation}
+so
+\begin{equation}
+\gamma_k=\hbar\nu_k.
+\end{equation}
+Equation~\eqref{eq:multigap-proof-final} becomes
+\begin{equation}
+\boxed{
+\Aact_{G,\Sigma}^{(2)}
+\ge
+\sum_k\frac{\hbar\nu_k}{4}
+\frac{\Tr F_{N,k}}{N}.
+}
+\label{eq:clean-multigap-proof-final}
+\end{equation}
+
+\subsubsection{One common sharp Fourier measurement}
+
+Take the fixed-total-excitation shell
+\begin{equation}
+|n\rangle
+\equiv|m-n\rangle_C|m+n\rangle_S,
+\qquad n=-m,\ldots,m,
+\end{equation}
+and baseline $|0\rangle$. For $k=1,\ldots,m$ choose
+\begin{equation}
+A_k=c_k(|k\rangle\langle0|+|0\rangle\langle-k|),
+\qquad
+\nu_k=k\omega_0.
+\end{equation}
+The exact common family is
+\begin{align}
+|\psi(\bm x,\bm y)\rangle={}&
+\sqrt{1-\frac12\sum_{k=1}^m c_k^2(x_k^2+y_k^2)}|0\rangle\\
+&+\sum_{k=1}^m\frac{c_k}{2}(x_k+i y_k)|-k\rangle
++\sum_{k=1}^m\frac{c_k}{2}(x_k-i y_k)|k\rangle.
+\end{align}
+It is physical on the open ellipsoid
+\begin{equation}
+\frac12\sum_kc_k^2(x_k^2+y_k^2)<1
+\end{equation}
+and lies entirely in one total-energy eigenspace. Its kernel Hessian is
+\begin{equation}
+C_\Sigma
+=\sum_{k=1}^m c_k^2
+\left(|-k\rangle\langle-k|+|k\rangle\langle k|\right).
+\end{equation}
+
+Let $d=2m+1$ and measure the discrete Fourier basis
+\begin{equation}
+|v_j\rangle
+=\frac1{\sqrt d}\sum_{n=-m}^{m}e^{in\phi_j}|n\rangle,
+\qquad
+\phi_j=\frac{2\pi j}{d}.
+\end{equation}
+At the baseline $p_j=1/d$. For mode $k$,
+\begin{equation}
+z_{j,k}
+=\langle v_j|A_k|v_j\rangle
+=\frac{2c_k}{d}e^{-ik\phi_j}.
+\end{equation}
+Therefore the cosine and sine score components are discrete harmonics. Since $1\le k,l\le m$ and $d=2m+1$,
+\begin{align}
+\sum_{j=0}^{d-1}\cos(k\phi_j)\cos(l\phi_j)
+&=\frac d2\delta_{kl},\\
+\sum_{j=0}^{d-1}\sin(k\phi_j)\sin(l\phi_j)
+&=\frac d2\delta_{kl},\\
+\sum_{j=0}^{d-1}\cos(k\phi_j)\sin(l\phi_j)
+&=0.
+\end{align}
+Thus the full common-record Fisher matrix is
+\begin{equation}
+F_{x_kx_l}=2c_k^2\delta_{kl},
+\qquad
+F_{y_ky_l}=2c_k^2\delta_{kl},
+\qquad
+F_{x_ky_l}=0.
+\end{equation}
+In particular,
+\begin{equation}
+\Tr F_{1,k}=4c_k^2
+\end{equation}
+for every $k$ simultaneously.
+
+Choose
+\begin{equation}
+G=2\hbar\omega_0
+\sum_{n\ne0}|n|\,|n\rangle\langle n|.
+\end{equation}
+Then
+\begin{equation}
+\Aact_{G,\Sigma}^{(2)}
+=\sum_{k=1}^m\hbar\nu_k c_k^2
+\end{equation}
+while
+\begin{equation}
+\sum_{k=1}^m
+\frac{\hbar\nu_k}{4}\Tr F_{1,k}
+=\sum_{k=1}^m\hbar\nu_k c_k^2.
+\end{equation}
+Hence one common measurement simultaneously saturates every mode and the complete weighted sum.
+
+For overlapping ranges in a general model, Eq.~\eqref{eq:multigap-proof-final} remains valid for any supplied $G\succeq0$, but the existence of a simple frequency-diagonal physical interpretation becomes an operator-design question. No uniqueness claim is made outside the clean mode-separated geometry.
