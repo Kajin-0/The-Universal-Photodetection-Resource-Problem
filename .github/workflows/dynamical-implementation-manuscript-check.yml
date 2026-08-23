@@ -28,14 +28,22 @@ jobs:
         working-directory: manuscript/dynamical_implementation_cost
         run: python apply_d2_audit_repairs.py
 
-      - name: Static standalone theorem and identity gate
+      - name: Static D2 theorem and identity gate
         working-directory: manuscript/dynamical_implementation_cost
         run: python check_tex_static_d2.py
 
-      - name: Compile audited D2 main manuscript
+      - name: Generate PRA R1 publication-facing main
+        working-directory: manuscript/dynamical_implementation_cost
+        run: python apply_pra_r1_frontmatter.py
+
+      - name: PRA R1 standalone and theorem-freeze gate
+        working-directory: manuscript/dynamical_implementation_cost
+        run: python check_pra_r1_static.py
+
+      - name: Compile PRA R1 main manuscript
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: dynamical_rank_boundary_implementation_cost_d2.tex
+          root_file: dynamical_rank_boundary_implementation_cost_pra_r1.tex
           working_directory: manuscript/dynamical_implementation_cost
           latexmk_use_xelatex: false
 
@@ -46,17 +54,17 @@ jobs:
           working_directory: manuscript/dynamical_implementation_cost
           latexmk_use_xelatex: false
 
-      - name: Final LaTeX quality gate
+      - name: Final PRA R1 LaTeX quality gate
         working-directory: manuscript/dynamical_implementation_cost
-        run: python check_build_logs.py
+        run: python check_pra_build_logs.py
 
-      - name: Upload standalone D2 manuscript build
+      - name: Upload standalone PRA R1 manuscript build
         uses: actions/upload-artifact@v4
         with:
-          name: dynamical-rank-boundary-implementation-cost-d2
+          name: dynamical-rank-boundary-implementation-cost-pra-r1
           path: |
-            manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_d2.pdf
-            manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_d2.tex
+            manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_pra_r1.pdf
+            manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_pra_r1.tex
             manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_supplement_d2.pdf
             manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_supplement_d2.tex
             manuscript/dynamical_implementation_cost/references.bib
