@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+"""Apply final non-scientific submission cleanup to generated M2R2 sources.
+
+This pass implements only the minor editorial items from the R2 adversarial re-review:
+1. remove rendered internal work-package nomenclature from the supplement;
+2. simplify Theorem 6 branch prose in the main manuscript.
+
+It does not alter any theorem, equation, coefficient, proof step, or citation.
+"""
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+MAIN = HERE / "autonomous_temporal_resource_law_m2r2.tex"
+SUPP = HERE / "autonomous_temporal_resource_law_supplement_m2r2.tex"
+
+
+def replace_once(path: Path, old: str, new: str, label: str) -> None:
+    text = path.read_text(encoding="utf-8")
+    if text.count(old) != 1:
+        raise RuntimeError(f"{label}: expected exactly one occurrence, found {text.count(old)}")
+    path.write_text(text.replace(old, new, 1), encoding="utf-8")
+    print(f"{path.name}: applied {label}")
+
+
+def main() -> None:
+    replace_once(
+        SUPP,
+        "which is exactly the one-sided WP18 coefficient.",
+        "which exactly recovers the one-sided autonomous coefficient stated in the main text.",
+        "remove internal WP18 label",
+    )
+
+    replace_once(
+        MAIN,
+        "When both synthesized orientations are nonzero with $g_+,g_->0$, every finite-$N$ collective POVM obeys, for each available finite internal branch,",
+        "When both synthesized orientations are nonzero with $g_+,g_->0$, the bound is the minimum over the available finite internal branches:",
+        "simplify Theorem 6 branch wording",
+    )
+    replace_once(
+        MAIN,
+        "where unavailable internal branches are omitted from the minimum. The corresponding one-sided, support-only, and zero-cost cases are stated explicitly in the Supplemental Material.",
+        "The corresponding one-sided, support-only, and zero-cost cases are stated explicitly in the Supplemental Material.",
+        "remove redundant branch sentence",
+    )
+
+
+if __name__ == "__main__":
+    main()
