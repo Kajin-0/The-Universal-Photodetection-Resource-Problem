@@ -38,8 +38,6 @@ Multimode one-sided sum:
 
 `sum_k w_k Tr F_(N,k)/N <= sum_k w_k Delta_k T_k(0)`.
 
-Gap weighting gives the WP08 positive synthesis-energy law.
-
 ### WP09 — bilateral Minkowski synthesis — PASS
 
 `sqrt[Tr F_N/N] <= sqrt(J_X)+sqrt(J_Y)`.
@@ -96,145 +94,120 @@ subject to
 
 `R_- W R_->=beta R_-`.
 
-The law removes WP11's double counting of shared curvature and has exact one-sided, orthogonal, and coincident-subspace limits.
-
 ### WP13 — positive spectral-action allocation — PASS
 
-Use one positive kernel cost operator
+For one positive cost operator `G`,
 
-`G=epsilon_U QPi_UQ + epsilon_D QPi_DQ`
+`A_G^(2)=(1/4)Tr(G C_Delta)`
 
-and define
+and restricted costs `g_+,g_-`,
 
-`A_G^(2)=(1/4)Tr(G C_Delta)`.
+`g_+J_+ + g_-J_- <= 4A_G^(2)`.
 
-For synthesized ranges,
+Pure bilateral synthesis has harmonic effective price
 
-`g_+=lambda_min[R_+ G R_+ |_(R_+)]`,
+`(1/g_+ + 1/g_-)^(-1)`.
 
-`g_-=lambda_min[R_- G R_- |_(R_-)]`.
-
-Then
-
-`boxed: g_+J_+ + g_-J_- <= 4A_G^(2)`.
-
-If a relevant `g` vanishes, no finite action-only bound exists for that orientation.
-
-For `e=4A_G^(2)`, `p=g_+`, `q=g_-`, and upper-oriented internal resource `a`,
-
-`boxed: Psi_a(e;p,q)=`
-
-- `(sqrt(a)+sqrt(e/q))^2`, if `e<=a p^2/q`;
-- `(e+p a)(1/p+1/q)`, if `e>=a p^2/q`.
-
-For pure bilateral synthesis,
-
-`Psi_0=e(1/p+1/q)`.
-
-Thus the effective endpoint price is harmonic. Clean equal gap costs `p=q=hbar nu` recover the sharp WP09 coefficient
-
-`A_G^(2) >= (hbar nu/8)[Tr F_N/N]`,
-
-while one-sided synthesis recovers the WP07/WP10 `hbar nu/4` coefficient.
-
-An exact unequal-cost qutrit and one Fourier measurement saturate the harmonic coefficient for arbitrary positive `p,q`.
+Clean equal gap costs recover the sharp `hbar nu/8` coefficient; one-sided synthesis recovers `hbar nu/4`.
 
 ### WP14 — rank-one curvature-metric principal-angle law — PASS
 
-For
+For rank-one synthesized ranges, short to their span and define inverse-curvature capacities `s_u,s_v` and whitened overlap `c`. The complete feasible frontier is
 
-`R_+=|u><u|`, `R_-=|v><v|`,
+`y_max(x)=s_v[1-x/s_u]/[1-(1-c^2)x/s_u]`.
 
-short first to
+The relevant angle is defined by the inverse shorted-curvature metric, not ordinary Hilbert-space overlap.
 
-`C_S=Short_span{u,v}(C)`.
+### WP15 — exact common-record Fisher supremum in shared-kernel qutrit — PASS
 
-Define
+For the WP12 qutrit benchmark,
 
-`s_u=1/<u|C_S^(-1)|u>`,
+`rho0=(I-|q><q|)/2`,
 
-`s_v=1/<v|C_S^(-1)|v>`,
+`A=|1><0|-sqrt(2)|2><1|`,
 
-`c=|<u|C_S^(-1)|v>|/sqrt(<u|C_S^(-1)|u><v|C_S^(-1)|v>)`.
+one has
 
-Then the complete feasible frontier is
+- physical shared-curvature ceiling `12`;
+- SLD-QFI trace `43/4`;
+- exact one-copy arbitrary-POVM Fisher supremum `55/8`.
 
-`boxed: y_max(x)=s_v[1-x/s_u]/[1-(1-c^2)x/s_u]`.
+The theorem is
 
-For
+`boxed: sup_POVM Tr F_1 = 55/8`.
 
-`r=alpha s_u/(beta s_v)`,
+Upper bound: explicit Hermitian quadratic witness `Y` satisfying
 
-the exact WP12 linear allocation becomes
+`|<phi|A|phi>|^2 <= <phi|rho0|phi><phi|Y|phi>`
 
-`boxed: h_(alpha,beta)=`
+for every vector, with exact LMI factorization.
 
-- `beta s_v`, if `r<=c^2`;
-- `[alpha s_u+beta s_v-2c sqrt(alpha beta s_u s_v)]/(1-c^2)`, if `c^2<r<c^(-2)`;
-- `alpha s_u`, if `r>=c^(-2)`.
+Lower bound: a sequence of ordinary three-outcome projective measurements with positive baseline probabilities approaches `55/8`.
 
-Therefore rank-one WP12 instances require no SDP; only the outer scalar `eta` minimization remains.
+This proves the hierarchy
 
-The governing overlap is the principal angle in the **inverse shorted-curvature metric**, not the ordinary Hilbert-space angle. The same ordinary overlap `1/2` can correspond to `c=1/sqrt(13)` or `c=2/sqrt(7)` depending solely on the available curvature.
+`physical resource > quantum-statistical ceiling > accessible common-record Fisher`
 
-This proves that matrix resource information remains irreducible even in the smallest nontrivial overlapping allocation problem.
+can be strict at both arrows even in dimension three.
 
-## Current frontier — WP15 and beyond
+## Current frontier — WP16 and beyond
 
-### A. Measurement compatibility — highest immediate priority
+### A. WP16: generic rank-one-kernel common-record law — highest immediate priority
 
-The WP12 shared-kernel qutrit benchmark has resource ceiling
+Study
 
-`Phi=12`
+`rho0=P/r`, `rank(Q)=1`, `Q=|q><q|`,
 
-but SLD-QFI trace
+and
 
-`Tr F_Q=10.75`.
+`A=[[B,b],[a^dagger,0]]`
 
-Determine the exact common-record/Holevo optimum for that two-parameter local model.
+with `QAQ=0`.
 
-The key question is whether the final gap is entirely standard measurement incompatibility:
+The singular near-kernel directional invariant is
 
-`physical resource ceiling -> quantum statistical ceiling -> attainable common-record Fisher`.
+`kappa=max_(||t||=1)|<q|A|t>+<t|A|q>|^2`
 
-If yes, the grand local theorem can be cleanly factorized into physical resource and measurement compatibility layers.
+`      =||a||^2+||b||^2+2|a^dagger b|`.
+
+A tempting conjecture is
+
+`sup Tr F = support-only optimum + r kappa`.
+
+**Do not assume this. It is false in generic random qutrit tests:** mixed support/kernel projective outcomes can exceed the naive sum. This killed conjecture must be preserved.
+
+Required tasks:
+
+1. formulate the exact arbitrary-POVM dual witness problem;
+2. determine whether it reduces to a finite SDP, generalized numerical-radius inequality, or Ando-type matrix condition;
+3. identify a solvable nontrivial class containing WP15;
+4. find a compact counterexample to naive additive measurement compatibility;
+5. add an independent validator before marking WP16 PASS.
 
 ### B. Operator + spectral-action Pareto law
 
-WP13 deliberately compresses the full curvature operator to one scalar `Tr(GC_Delta)` and therefore loses WP14's curvature-angle invariant `c`.
-
-Derive the sharp Pareto bound when both are retained:
-
-- fixed/shared operator curvature `C_Delta`;
-- positive spectral action `Tr(GC_Delta)`;
-- overlapping synthesized ranges.
-
-Determine whether the resulting dual requires only one extra scalar multiplier added to the WP12 witness operator.
+WP13 compresses curvature to scalar action while WP14 retains matrix overlap. Derive a joint Pareto theorem retaining both.
 
 ### C. Autonomous relational lift
 
 Apply the WP12--WP14 operator/action hierarchy simultaneously from clock and signal Hamiltonian viewpoints for a globally stationary exact exchange tangent.
 
-Target: determine whether sharp positive spectral-action resources must be paid on **both** sides of the relational cut, generalizing WP03/WP06 beyond finite-radius survival.
-
 ### D. Gaussian covariance-changing synthesis
 
 Test squeezed-vacuum, parameter-dependent covariance, thermal Gaussian baselines, and correlated multimode synthesis.
 
-Determine whether positive kernel curvature priced by spectral cost remains sufficient or whether Gaussian covariance geometry introduces a distinct resource.
-
 ### E. Deep priority audit
 
-Explicitly compare against:
+Compare explicitly against:
 
-- Longyun Chen and Yuxiang Yang, *Optimal Quantum Metrology under Energy Constraints*, Phys. Rev. Lett. 136, 070801 (2026), DOI `10.1103/6ghs-frtx`;
-- Holevo waveform-estimation limits;
-- rank-one semidefinite packing/SOCP results such as Sagnol (2011);
-- Anderson--Trapp shorted operators and parallel addition;
+- energy-constrained quantum metrology, including Chen--Yang (PRL 136, 070801, 2026);
+- generalized numerical radius and Ando-type operator inequalities;
+- POVM/frame design convex duality;
+- Gill--Massar and Fisher-symmetric measurement bounds;
 - singular/rank-changing QFI/Bures geometry;
+- Holevo waveform-estimation limits;
+- shorted operators and parallel addition;
 - quantitative WAY/reference-frame resource theories.
-
-Do not claim novelty for these ingredients.
 
 ## Publication / significance gate
 
@@ -242,9 +215,9 @@ Do not draft a new foundational manuscript yet.
 
 A publication gate now requires at least:
 
-1. exact resolution of the shared-kernel measurement-compatibility benchmark **or** a sharp autonomous two-sided action theorem;
-2. hostile mathematical review of WP11--WP14;
-3. deeper priority audit against 2025--2026 energy-constrained metrology;
+1. a genuine class-level result beyond the benchmark-specific WP15 witness **or** a sharp autonomous two-sided action theorem;
+2. hostile mathematical review of WP11--WP15;
+3. deeper priority audit against 2025--2026 metrology and operator-inequality literature;
 4. clear separation of standard matrix/SDP ingredients from the frequency-resolved temporal-resource contribution;
 5. at least one physically interpretable sharp thought experiment beyond the current qutrit/four-level extremizers.
 
@@ -262,6 +235,7 @@ Current independent validators:
 - `numerics/verify_operator_curvature_allocation_law.py`
 - `numerics/verify_positive_spectral_action_allocation_law.py`
 - `numerics/verify_rank_one_curvature_metric_angle_law.py`
+- `numerics/verify_exact_common_record_fisher_supremum.py`
 
 Every future WP must add an independent validator before being marked PASS when the theorem has nontrivial algebraic or numerical content.
 
