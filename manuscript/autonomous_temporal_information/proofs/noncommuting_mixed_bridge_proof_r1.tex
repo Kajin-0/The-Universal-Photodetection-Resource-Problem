@@ -81,24 +81,24 @@ Define
 \lambda_{S,D}&=\sup\{\lambda\ge0:S_{S,D}\succeq\lambda R_B^-\},\\
 \lambda_{C,U}&=\sup\{\lambda\ge0:S_{C,U}\succeq\lambda R_B^-\}.
 \end{align}
-Let $R_B$ be the affine radius of the support-preserving sub-tangent and $T_{X,E}=\Tr(\Pi_{X,E}\rho_0)$. If the relevant shorting constant is positive, the finite-radius majorization gives
+Let $R_B$ be the affine radius of the support-preserving sub-tangent and $T_{X,E}=\Tr(\Pi_{X,E}\rho_0)$. Whenever the relevant shorting constant is positive, the finite-radius majorization gives
 \begin{align}
 J_B^+&\le\frac{4T_{S,U}}{R_B^2\lambda_{S,U}},&
 J_B^+&\le\frac{4T_{C,D}}{R_B^2\lambda_{C,D}},\\
 J_B^-&\le\frac{4T_{S,D}}{R_B^2\lambda_{S,D}},&
 J_B^-&\le\frac{4T_{C,U}}{R_B^2\lambda_{C,U}}.
 \end{align}
-A bound with $\lambda=0$ is unavailable and is treated as $+\infty$, not as a division by zero. Thus, for $B\ne0$, define $a_+$ and $a_-$ as the minima over the available finite local-side ceilings. If neither local side has positive shorting constant for a nonzero $J_B^\pm$, the corresponding $a_\pm=+\infty$ and that orientation supplies no finite scalar survival bound. If $B=0$, set
+A local-side bound with $\lambda=0$ is simply unavailable; no extended-real value is inserted into later formulas. For $B\ne0$, define $a_+$ and $a_-$ as the minima over the available finite local-side ceilings for their respective orientations. If neither local side has a positive shorting constant for an orientation, declare that scalar internal-resource branch unavailable. If $B=0$, define both branches and set
 \begin{equation}
 a_+=a_-=0.
 \end{equation}
-In all cases with finite ceilings,
+Whenever a branch is available,
 \begin{equation}
-J_B^+\le a_+,
-\qquad
-J_B^-\le a_-.
-\label{eq:mixed-r1-apm}
+J_B^+\le a_+
+\quad\text{or}\quad
+J_B^-\le a_-
 \end{equation}
+as appropriate.
 
 \subsubsection{Canonical endpoint-incidence action}
 
@@ -136,12 +136,12 @@ For each nonzero synthesized orientation define $R_\pm=\supp Z_\pm$ and
 \begin{equation}
 g_\pm=\lambda_{\min}(R_\pm G_{\rm ex}R_\pm|_{R_\pm}).
 \end{equation}
-Whenever the nonzero ranges have positive prices,
+Whenever all nonzero synthesized ranges have positive prices,
 \begin{equation}
 g_+J_+ +g_-J_-\le e,
 \label{eq:mixed-r1-action-budget}
 \end{equation}
-with absent orientations simply omitted. If a nonzero orientation has $g_\pm=0$, no finite scalar action-only theorem can bound its $J_\pm$; one must retain a different cost operator or the operator-valued curvature itself.
+with absent orientations omitted. If a nonzero orientation has $g_\pm=0$, no finite scalar action-only theorem can bound its $J_\pm$; one must retain a different cost operator or the operator-valued curvature itself.
 
 \subsubsection{Bilateral scalar envelope}
 
@@ -160,7 +160,7 @@ This is the exact maximum of
 \end{equation}
 subject to $pj_++qj_-\le e$, $j_\pm\ge0$.
 
-If both synthesized orientations are nonzero and $g_+,g_->0$, Eqs.~\eqref{eq:mixed-r1-measurement}--\eqref{eq:mixed-r1-action-budget} give
+If both synthesized orientations are nonzero, $g_+,g_->0$, and both internal branches are available, Eqs.~\eqref{eq:mixed-r1-measurement}--\eqref{eq:mixed-r1-action-budget} give
 \begin{equation}
 \boxed{
 \frac{\Tr F_N}{N}
@@ -172,43 +172,49 @@ If both synthesized orientations are nonzero and $g_+,g_->0$, Eqs.~\eqref{eq:mix
 }
 \label{eq:mixed-r1-bilateral}
 \end{equation}
+If only one internal branch is available, retain only the corresponding $\Psi$ term. If neither is available, the scalar mixed reduction is vacuous even though the operator/measurement inequalities remain valid.
 
 \subsubsection{Degenerate synthesis orientations}
 
-The absent-range cases follow directly from Eq.~\eqref{eq:mixed-r1-measurement}; they are not obtained by evaluating an undefined restricted eigenvalue.
+Absent synthesized ranges are handled directly from Eq.~\eqref{eq:mixed-r1-measurement}; no restricted eigenvalue is assigned to an absent range.
 
-If $J_-=0$, $J_+>0$, and $g_+>0$,
+If $J_-=0$, $J_+>0$, and $g_+>0$, the two possible finite branches are
 \begin{equation}
-\boxed{
+\frac{\Tr F_N}{N}\le a_+ +\frac{e}{g_+}
+\label{eq:mixed-r1-plus-only-upper}
+\end{equation}
+when $a_+$ is available, and
+\begin{equation}
 \frac{\Tr F_N}{N}
 \le
-\min\!\left\{
-a_+ +\frac{e}{g_+},
 \left(\sqrt{a_-}+\sqrt{\frac{e}{g_+}}\right)^2
-\right\}.
-}
-\label{eq:mixed-r1-plus-only}
+\label{eq:mixed-r1-plus-only-lower}
 \end{equation}
-If $J_+=0$, $J_->0$, and $g_->0$,
+when $a_-$ is available. Take the minimum over the available branches. If neither internal branch is available, no finite scalar mixed bound follows.
+
+If $J_+=0$, $J_->0$, and $g_->0$, the available branches are
 \begin{equation}
-\boxed{
 \frac{\Tr F_N}{N}
 \le
-\min\!\left\{
-\left(\sqrt{a_+}+\sqrt{\frac{e}{g_-}}\right)^2,
-a_- +\frac{e}{g_-}
-\right\}.
-}
-\label{eq:mixed-r1-minus-only}
+\left(\sqrt{a_+}+\sqrt{\frac{e}{g_-}}\right)^2
+\label{eq:mixed-r1-minus-only-upper}
 \end{equation}
-If $J_+=J_-=0$,
+when $a_+$ is available, and
 \begin{equation}
-\boxed{
-\frac{\Tr F_N}{N}\le\min\{a_+,a_-\}.
-}
-\label{eq:mixed-r1-support-only}
+\frac{\Tr F_N}{N}\le a_- +\frac{e}{g_-}
+\label{eq:mixed-r1-minus-only-lower}
 \end{equation}
-In the clean pure-boundary plus-only or minus-only case, $a_+=a_-=0$ and the canonical autonomous endpoint incidence has $g=2\hbar\nu$. Since $e=4\Aact_{\rm ex}^{(2)}$, Eqs.~\eqref{eq:mixed-r1-plus-only} or \eqref{eq:mixed-r1-minus-only} reduce to
+when $a_-$ is available. Again take the minimum over available branches.
+
+If $J_+=J_-=0$, each available internal branch independently gives
+\begin{equation}
+\frac{\Tr F_N}{N}\le a_+
+\quad\text{or}\quad
+\frac{\Tr F_N}{N}\le a_-.
+\end{equation}
+Take their minimum when both are available; if neither is available, the scalar survival reduction is vacuous.
+
+In the clean pure-boundary plus-only or minus-only case, $a_+=a_-=0$ and the canonical autonomous endpoint incidence has $g=2\hbar\nu$. Since $e=4\Aact_{\rm ex}^{(2)}$, either one-sided branch reduces to
 \begin{equation}
 \Aact_{\rm ex}^{(2)}
 \ge\frac{\hbar\nu}{2}\frac{\Tr F_N}{N},
