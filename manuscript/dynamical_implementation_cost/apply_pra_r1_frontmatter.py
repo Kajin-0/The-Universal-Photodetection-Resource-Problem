@@ -29,8 +29,11 @@ Acknowledgments omitted for anonymous review.
 
 \bibliography{references}"""
 
-NEW_ACK = r"""\begin{acknowledgments}
-OpenAI ChatGPT (GPT-5.6-series models, including GPT-5.6 Sol) was used substantively to assist with derivation exploration, adversarial algebra checks, literature organization, internal numerical-validation code, and manuscript preparation. The author directed the scientific questions and proof strategy, checked the resulting claims against explicit analytic derivations, constructive examples, numerical validators, and primary literature, and takes full responsibility for the content.
+NEW_ACK = r"""\section*{AI-Assisted Research and Verification}
+OpenAI ChatGPT (GPT-5.6-series models, including GPT-5.6 Sol) was used substantively during derivation exploration, adversarial algebra checks, literature organization, generation and debugging of internal numerical-validation code, and manuscript preparation. AI outputs were treated as provisional. The author directed the scientific questions and proof strategy, independently checked the resulting claims against explicit analytic derivations, constructive examples, numerical validators, and primary literature, and takes full responsibility for the content.
+
+\begin{acknowledgments}
+Acknowledgments omitted for anonymous review.
 \end{acknowledgments}
 
 \section*{Data Availability}
@@ -66,7 +69,7 @@ def main() -> None:
     text = text[:title_start] + NEW_TITLE + text[title_end + 1:]
     text = replace_environment(text, r"\begin{abstract}", r"\end{abstract}", NEW_ABSTRACT, "abstract")
     text = replace_once(text, OLD_INTRO, NEW_INTRO, "introduction")
-    text = replace_once(text, OLD_ACK, NEW_ACK, "acknowledgments/data availability")
+    text = replace_once(text, OLD_ACK, NEW_ACK, "AI disclosure/acknowledgments/data availability")
     OUT.write_text(text, encoding="utf-8")
     print(f"generated {OUT.name}")
 
