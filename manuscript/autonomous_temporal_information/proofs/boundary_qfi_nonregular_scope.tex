@@ -1,0 +1,88 @@
+\subsection{SLD-QFI corollary and nonregular boundary information}
+\label{supp:qfi-nonregular}
+
+The main boundary theorems are stated for the baseline score-Fisher block because that is the information carried by the first-order temporal tangent under one common measurement. The same synthesis action nevertheless controls the standard symmetric-logarithmic-derivative (SLD) quantum Fisher information of the pure-boundary tangent itself.
+
+Let
+\begin{equation}
+PAP=0,\qquad QAQ=0,\qquad A=X+Y^\dagger,
+\end{equation}
+with
+\begin{equation}
+X=QAP,\qquad Y=QA^\dagger P,
+\end{equation}
+and define
+\begin{equation}
+J_+=\Tr(X\rho_0^+X^\dagger),\qquad
+J_-=\Tr(Y\rho_0^+Y^\dagger).
+\end{equation}
+For the cosine and sine tangent operators
+\begin{equation}
+D_c=\frac{A+A^\dagger}{2},\qquad
+D_s=\frac{A-A^\dagger}{2i},
+\end{equation}
+the support-to-kernel blocks are
+\begin{equation}
+K_c=\frac{X+Y}{2},\qquad
+K_s=\frac{X-Y}{2i}.
+\end{equation}
+Using the standard finite-dimensional SLD-QFI formula in an eigenbasis of $\rho_0$ gives
+\begin{equation}
+H^{\rm SLD}_{cc}=4\Tr(K_c\rho_0^+K_c^\dagger),\qquad
+H^{\rm SLD}_{ss}=4\Tr(K_s\rho_0^+K_s^\dagger).
+\end{equation}
+The weighted parallelogram identity therefore yields
+\begin{equation}
+\boxed{
+\Tr H^{\rm SLD}=2(J_++J_-).
+}
+\label{eq:sld-trace-pure-boundary}
+\end{equation}
+
+In the clean autonomous exact-exchange geometry, each orientation creates one signal endpoint and one oppositely directed clock endpoint. The second-order positivity bounds used above imply
+\begin{equation}
+\Delta T_{S,+}+\Delta T_{S,-}\ge J_++J_-,
+\end{equation}
+\begin{equation}
+\Delta T_{C,+}+\Delta T_{C,-}\ge J_++J_-.
+\end{equation}
+Consequently
+\begin{equation}
+\Aact_C^{(2)}+\Aact_S^{(2)}
+\ge\frac{\hbar\nu}{2}(J_++J_-)
+=\frac{\hbar\nu}{4}\Tr H^{\rm SLD}.
+\end{equation}
+Thus
+\begin{equation}
+\boxed{
+\Aact_C^{(2)}+\Aact_S^{(2)}
+\ge\frac{\hbar\nu}{4}\Tr H^{\rm SLD}.
+}
+\label{eq:sld-action-corollary}
+\end{equation}
+The coefficient is sharp in both fixed-shell constructions in the main text. For independent copies the SLD-QFI matrix is additive, so the same per-copy statement holds for every finite $N$.
+
+The one-sided case also makes the distinction between quantum-statistical and common-record information explicit. There $J_-=0$, so $\Tr H^{\rm SLD}=2J_+$, whereas the sharp common-record score-Fisher trace is only $J_+$. The stronger one-sided common-record action coefficient therefore reflects simultaneous-measurement incompatibility between the cosine and sine quadratures, not absence of a quantum-statistical tangent bound.
+
+The continuous Bures metric contains additional information that is not determined by the first derivative. At a rank-changing point, four times the Bures metric, denoted here by $H_c$, obeys \cite{Safranek2017}
+\begin{equation}
+H_c=H^{\rm SLD}+2\sum_{\lambda_k=0}\mathcal H_k,
+\label{eq:safranek-bures}
+\end{equation}
+where $\mathcal H_k$ is the parameter Hessian of a zero eigenvalue $\lambda_k$. The second term is genuine second-order path data.
+
+This extra term cannot be bounded by a resource assigned only to the chosen first-order temporal mode. To see this, enlarge the Hilbert space by an empty spectator state $|r\rangle\in Q$ lying outside the temporal endpoint-incidence support, choose a normalized support vector $|p\rangle\in P$ with nonzero baseline population, and modify any local physical completion by
+\begin{equation}
+\widetilde\rho_\alpha(x,y)
+=\rho(x,y)+\alpha(x^2+y^2)
+\bigl(|r\rangle\!\langle r|-|p\rangle\!\langle p|\bigr),
+\qquad \alpha>0.
+\label{eq:spectator-curvature-family}
+\end{equation}
+For a sufficiently small parameter disk this remains a density operator. Its first derivatives at the origin are unchanged, so $A$, $F^{\rm tan}$, $J_\pm$, and the SLD-QFI tangent in Eq.~\eqref{eq:sld-trace-pure-boundary} are unchanged. If the temporal endpoint cost vanishes on $|r\rangle$, the mode-specific synthesis action is unchanged as well. However the spectator eigenvalue is
+\begin{equation}
+\lambda_r(x,y)=\alpha(x^2+y^2)+O(\|(x,y)\|^3),
+\end{equation}
+with Hessian $2\alpha I_2$. Equation~\eqref{eq:safranek-bures} therefore increases $\Tr H_c$ by $8\alpha$. Since $\alpha$ is arbitrary (with the local physical radius reduced accordingly), no finite bound on the full boundary Bures metric can follow from the first-order temporal tangent and a cost that prices only its endpoint sectors.
+
+This spectator-curvature construction explains the scope of the main theorem. The score-Fisher block isolates information carried by the selected first-order temporal mode; the SLD-QFI corollary shows that support-to-kernel quantum tangent information is still action-controlled. A bound on the full continuous Bures metric requires charging all second-order parameter curvature, including curvature injected into sectors unrelated to that temporal mode.
