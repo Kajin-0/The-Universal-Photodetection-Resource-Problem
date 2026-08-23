@@ -4,86 +4,127 @@
 
 **Active branch:** `agent/autonomous-temporal-information-law`
 
-Frozen scientific layers: Paper 1 Rev11, Paper 2 Rev7, random-time spectral-resource Rev11, autonomous PRX Quantum R3, and the audited/regenerated D2 dynamical theorem/proof baseline.
+## Frozen scientific layers
 
-**Canonical post-R3 theorem:** WP32.
+- Paper 1 Rev11;
+- Paper 2 Rev7;
+- random-time spectral-resource Rev11;
+- autonomous temporal-information **R3 theorem/proof baseline**;
+- audited D2 unitary-coupling theorem/proof baseline.
+
+**Canonical post-R3 implementation theorem:** WP32.
 
 **Hostile theorem audit:** WP33 — PASS under stated assumptions.
 
-**Current publication frontier:** separate follow-up paper, **PRA R1 final reviewer-repaired publication-facing package**.
-
 **WP31 is superseded.**
 
-## Current strongest result
+## Current publication architecture
 
-For a stationary rank-changing autonomous temporal family with prescribed feasible positive metric-contracted target-kernel Hessian `C`,
+Do **not** concatenate the active temporal-information results into one omnibus paper.
 
-`V_min=(1/2)Tr C`.
+1. **PRX Quantum flagship:** *Two spectral-resource regimes for autonomous temporal information*.
+   - R3 = frozen scientific baseline.
+   - R4 = current journal-facing bridge revision.
+2. **Broad operational spectral paper:** *Spectral Resource Laws for Temporal Fisher Information*.
+   - random-time/spectral-survival and photodetection-facing theory;
+   - independent publication track.
+3. **PRA dynamical completion:** *Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature*.
+   - final reviewer-repaired PRA R1 package.
 
-For clean exact exchange,
+Architecture record:
+
+`manuscript/THREE_PAPER_PUBLICATION_ARCHITECTURE_2026-08-23.md`.
+
+## Unified scientific picture
+
+The flagship establishes
+
+`finite affine radius -> pre-existing spectral survival`
+
+versus
+
+`rank boundary -> positive second-order synthesis action`.
+
+The separate implementation paper closes the principal dynamical question:
+
+`V_min(C)=(1/2)Tr C`,
+
+and in the clean autonomous single-gap specialization,
 
 `A_ex^(2)=hbar nu V_min`.
 
-WP32 proves the same optimum under exact total-energy conservation with a semibounded ancilla in separable infinite dimension, including unbounded occupied target energies and stationary excess curvature in target-energy shells unoccupied at baseline.
+Thus the flagship's synthesis action remains kinematic in definition but has an exact minimum state-weighted quadratic unitary-coupling interpretation in the companion implementation problem.
 
-## Final publication state
+## PRX Quantum R4
 
-Journal-facing title:
+R4 is a controlled publication-layer revision generated from frozen R3 by
+
+`manuscript/autonomous_temporal_information/apply_prxq_r4_dynamical_bridge.py`.
+
+Its integrity gate requires the entire theorem/proof prefix before `Relation to prior work and scope` to remain byte-for-byte identical to R3, keeps theorem/proposition/corollary counts unchanged, and requires the scope limitations around the companion result.
+
+The bridge explicitly says the companion theorem:
+
+- is not used in any flagship proof;
+- is not a thermodynamic-work identity;
+- does not bound peak/operator-norm coupling;
+- does not optimize controller bandwidth or ancilla dimension;
+- does not claim exact attainment for an externally fixed controller spectrum.
+
+Final R4 verification:
+
+- workflow run `32674844366` — **PASS**;
+- R3 regeneration/static theorem gate — **PASS**;
+- R4 deterministic bridge/freeze gate — **PASS**;
+- R4 main compile — **PASS**;
+- unchanged M2R3 supplement compile — **PASS**;
+- artifact upload — **PASS**.
+
+Artifact:
+
+- ID `9502376602`;
+- SHA-256 `8e32c8248050ffa8be254d86f2f0a5724ef0e3edd1a9e2cf38cbc3a17ca3ed76`;
+- R4 main: **20 pages**;
+- M2R3 supplement: **25 pages**;
+- render QA: **PASS**.
+
+## PRA unitary-coupling companion
+
+Title:
 
 > **Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature**
 
-The title was narrowed from “dynamical cost” because the optimized resource is specifically the local state-weighted quadratic unitary-coupling functional `V_impl=sum_j Var(K_j)`.
+Central result:
 
-A final extreme adversarial review found no blocking mathematical error and produced three implemented repairs:
+`V_min(C;D,rho_0)=(1/2)Tr C`.
 
-1. Theorem 2 now explicitly cites `Eqs. (17)-(19)` for all stationarity/covariance assumptions.
-2. The limitations section now states that the infinite-dimensional attaining generator may be unbounded, the ancillary Hamiltonian is optimized rather than externally fixed, and no bound is claimed on peak/operator-norm coupling, ancilla dimension, controller bandwidth, or spectral complexity. Exact attainment is not asserted for an externally fixed controller spectrum.
-3. The title now says **unitary coupling cost** rather than generic dynamical cost.
+WP32 proves the exact optimum under total-energy conservation in the stated separable infinite-dimensional model, including spectator curvature in target-energy shells unoccupied at baseline.
 
-No theorem coefficient or construction changed.
-
-Canonical package:
-
-- `manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_pra_r1.tex`;
-- `manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_supplement_pra_r1.tex`;
-- `manuscript/dynamical_implementation_cost/MANUSCRIPT_HANDOFF.md`;
-- `manuscript/dynamical_implementation_cost/PRA_R1_FINAL_PUBLICATION_AUDIT_2026-08-23.md`.
-
-Final hostile-review verification:
+Final reviewer-repair verification:
 
 - workflow run `32673160217` — **PASS**;
-- canonical base commit at verification `1e03374d8ee20ca0a058b2b054acf463db3c3e08`;
-- committed-source freshness gate — **PASS**;
-- theorem/proof/title/scope publication gate — **PASS**;
-- main compile — **PASS**;
-- supplement compile — **PASS**;
-- final LaTeX-quality gate — **PASS**;
-- artifact upload — **PASS**;
 - artifact ID `9501942180`;
 - SHA-256 `4236d6f514b2f290d302062ab4c7a599c03c817da259f3d9715b787a4d37d640`;
-- main: **11 pages**, `227942` bytes;
-- supplement: **10 pages**, `229240` bytes.
+- 11-page main / 10-page supplement;
+- render QA: **PASS**.
 
-The exact PDFs were rendered at 180 dpi and visually inspected. The new title, Theorem 2 equation range, expanded limitations paragraph, equations, bibliography, disclosure page, and supplement all render cleanly with no clipping, overlap, broken glyphs, title mismatch, or theorem-layout defect.
+## Prior-art / claim boundary
 
-## Prior-art / policy boundary
+Priority remains **unverified, not certified**.
 
-No direct known collision was found for the exact prescribed-curvature unitary-coupling optimization theorem. Priority remains **unverified, not certified**.
+Do not claim novelty for Bures/Uhlmann/SLD-QFI horizontal geometry, Riemannian Bures curvature, covariant Stinespring dilation, generic QSL/control-norm results, classical nonregular boundary statistics, or standard PSD-cone second-order tangent geometry.
 
-Huang et al., arXiv:2605.27907, studies Riemannian curvature of the Bures metric near rank-changing states; the PRA introduction explicitly distinguishes that object from
+The candidate distinct content is the survival/synthesis resource split and sharp spectral laws, together with the separate exact prescribed-curvature unitary-coupling completion under its stated implementation class.
 
-`C = Q sum_j partial_j^2 rho(0) Q`.
-
-Do not claim novelty for first-order Bures/Uhlmann/SLD-QFI purification geometry, Riemannian Bures curvature, channel Fisher/Kraus-gauge geometry, covariant Stinespring dilation, generic energy-conserving dilation theory, generic quantum-speed-limit/control-norm inequalities, PSD-cone second-order tangent geometry, classical nonregular boundary statistics, or infinite-dimensional Bures/QFI theory.
-
-The PRA layer contains the current substantive-AI disclosure and software-aware Data Availability wording recorded in the final publication audit.
+Do not use Nobel/prize-level framing in scientific or submission-facing materials.
 
 ## Immediate work
 
-1. keep R3 and D2 scientifically frozen;
-2. treat the reviewer-repaired PRA R1 package as canonical;
-3. do not add theorem work merely to enlarge the paper;
-4. at actual submission time, re-check current APS metadata/disclosure requirements and replace anonymous author/affiliation metadata only in the submission package;
-5. reopen theory only for a genuine proof defect, direct prior-art collision, referee requirement, or deliberately new research program.
+1. preserve R3 theorem/proof content;
+2. treat R4 as the current PRXQ journal-facing package;
+3. keep the broad random-time paper and PRA companion independent;
+4. replace the anonymous R4 companion reference with public arXiv/DOI metadata when available;
+5. immediately before submission, re-check current journal metadata/disclosure requirements and replace anonymous author/affiliation data;
+6. reopen theory only for a genuine defect, direct prior-art collision, referee/editor requirement, or deliberately separate research program.
 
-All public-facing manuscripts must remain standalone and free of personal repository identifiers or dependencies.
+All public-facing manuscripts must remain standalone and free of personal repository identifiers or internal dependencies.
