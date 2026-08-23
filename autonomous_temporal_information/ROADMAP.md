@@ -4,73 +4,56 @@
 
 ## Goal
 
-Seek a foundational physical resource principle for temporal information when clock, signal, controller, detector, and memory are finite internal quantum systems. The finished Rev11 random-time law remains frozen on its parent branch.
+Develop and publish a rigorously scoped physical resource law for autonomous temporal information. The finished Rev11 random-time paper remains frozen on its parent branch.
 
-## Completed theorem chain
+## Research status
 
-### WP02 / WP03 / WP06 — finite-radius survival — PASS
+The theorem program through WP20 has passed the current internal gates.
+
+- Significance/literature gate: **PROVISIONAL PASS for a narrow theorem paper**.
+- Hostile mathematical gate: **PASS after minor corrections**.
+- Priority: **unverified, not certified**.
+- Main publication theorem stack: **provisionally frozen**.
+
+Authoritative gate notes:
+
+- `notes/FOUNDATIONAL_SIGNIFICANCE_PRIORITY_GATE_AFTER_WP20.md`
+- `notes/HOSTILE_MATHEMATICAL_AUDIT_WP18_WP20.md`
+- `notes/PUBLICATION_THEOREM_STACK_AFTER_AUDITS.md`
+
+## Frozen main theorem arc
+
+### Result 1 — WP02
+
+Mean baseline energy alone does not bound unrestricted synthesized local temporal Fisher information.
+
+Physical repair:
 
 `(R_lin^2/4)[Tr F_N/N] <= T(nu)`.
+
+### Result 2 — WP03 / WP06
 
 For globally stationary exact exchange,
 
 `(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`.
 
-### WP04 / WP05 — exact structured autonomous retention — PASS
+This survives arbitrary coherent/history-state support.
 
-Hard and mean total-energy constraints have exact sine-chain envelopes and sharp near-lossless coefficient `pi`.
+### Result 3 — WP07 / WP09
 
-### WP07 / WP08 — zero-radius synthesis — PASS
+At `R_lin=0`, nonlinear physical state families can remain informative. Second-order endpoint synthesis becomes the resource.
 
-One-sided boundary:
+One-sided:
 
-`Tr F_N/N <= J <= Delta T_U`.
+`Tr F_N/N<=J<=Delta T`.
 
-Orthogonal modes admit frequency-weighted quadratic synthesis budgets.
+Bilateral:
 
-### WP09 — bilateral synthesis — PASS
+`sqrt[Tr F_N/N]<=sqrt(J_+)+sqrt(J_-)`.
 
-`sqrt[Tr F_N/N] <= sqrt(J_X)+sqrt(J_Y)`.
+### Result 4 — WP18
 
-The exact qutrit extremizer proves additive endpoint synthesis false by factor two.
-
-### WP10 — one-sided mixed law — PASS
-
-For energy-invariant support,
-
-`Tr F_N/N <= 4T_pre/R_B^2 + Delta T_syn`.
-
-### WP11 / WP12 — noncommuting support and shared-curvature allocation — PASS
-
-Shorting/principal-angle geometry is necessary. The exact second-order resource is one shared operator constraint
-
-`Z_+ + Z_- <= C_Delta`.
-
-The induced allocation `Phi_a` has an exact SDP-dual representation.
-
-### WP13 / WP14 — positive action and curvature metric — PASS
-
-`A_G^(2)=(1/4)Tr(G C_Delta)`.
-
-Bilateral costs combine harmonically. Rank-one allocation is governed by inverse-curvature principal-angle geometry.
-
-### WP15 / WP16 — measurement accessibility — PASS
-
-Shared-kernel benchmark:
-
-`physical resource 12 > SLD 43/4 > accessible Fisher 55/8`.
-
-Generic rank-one-kernel common-record law:
-
-`sqrt(Tr F_1)<=sqrt(R(B))+sqrt(r kappa)`.
-
-### WP17 — operator/action Pareto target — NO-GO
-
-Exact curvature plus its own scalar action is redundant. Direction killed absent an independent physical constraint.
-
-### WP18 — clean autonomous dual synthesis action — PASS
-
-For globally stationary zero-radius exact exchange:
+Globally stationary boundary exchange requires positive action on both sides:
 
 bilateral
 
@@ -80,134 +63,148 @@ one-sided
 
 `A_C^(2)+A_S^(2)>=(hbar nu/2)[Tr F_N/N]`.
 
-Both coefficients are exactly sharp in fixed-total-energy shells with zero global time-translation asymmetry.
+Both coefficients are exactly sharp in fixed-total-energy shells.
 
-### WP19 — noncommuting autonomous mixed resource/action — PASS
+### Result 5 — WP19
 
-For arbitrary coherent support, use two-sided shorted pre-existing resources `a_+,a_-` and one combined positive clock+signal **kernel endpoint-incidence action**
+For arbitrary coherent support, use canonical endpoint roles
 
-`A_CS^(2)=(1/4)Tr(G_CS C_Delta)`.
+`Pi_out=supp(A A^dagger)`,
 
-With restricted costs `g_+,g_-`,
+`Pi_in=supp(A^dagger A)`
+
+and
+
+`G_ex=2hbar nu Q(Pi_out+Pi_in)Q`.
+
+The mixed finite-radius/synthesis bridge is
 
 `Tr F_N/N`
 
-`<=min{Psi_(a_+)(4A_CS;g_+,g_-),`
+`<=min{Psi_(a_+)(4A_ex;g_+,g_-),`
 
-`      Psi_(a_-)(4A_CS;g_-,g_+)}`.
+`      Psi_(a_-)(4A_ex;g_-,g_+)}`.
 
-The shared-kernel qutrit embeds into a fixed-total-energy exchange shell and the resource envelope is exactly `12`.
+### Result 6 — WP20
 
-### WP20 — multi-gap autonomous spectral-action sum — PASS
+For a common zero-radius multiparameter exchange family,
 
-For zero-radius pure-boundary modes in one common multiparameter family,
+`C_Sigma>=sum_k[Z_(k,+)+Z_(k,-)]`
 
-`C_Sigma>=sum_k[Z_(k,+)+Z_(k,-)]`.
+and
 
-For any positive cost `G`,
+`sum_k gamma_k Tr F_(N,k)/N<=4A_(G,Sigma)^(2)`.
 
-`sum_k gamma_k Tr F_(N,k)/N <=4A_(G,Sigma)^(2)`.
-
-For clean bilateral exact exchanges,
+Clean bilateral frequency weighting gives
 
 `A_(G,Sigma)^(2)>=sum_k(hbar nu_k/4)Tr F_(N,k)/N`.
 
-A single fixed Fourier measurement simultaneously saturates every mode and the full weighted sum in a fixed-total-energy shell.
+The full sum is simultaneously sharp with one common Fourier measurement.
 
-## Significance / priority gate after WP20 — PROVISIONAL PASS
+## Audit results incorporated
 
-Authoritative note:
+### WP18 correction
 
-`notes/FOUNDATIONAL_SIGNIFICANCE_PRIORITY_GATE_AFTER_WP20.md`.
+The one-sided exact family now uses `c(x-i y)`, consistent with the branch sine-quadrature convention. This is only a coordinate reversal from the earlier text and changes no theorem values.
 
-### Broad novelty claim — FAIL
+### WP19 correction
 
-Do not claim a new resource theory of time, Page--Wootters mechanism, asymmetry theory, multiphase metrology framework, or energy-constrained metrology theory.
+The endpoint-incidence action is now canonical for one exact exchange mode through the joint domain/range supports of `A`. This removes arbitrary local endpoint-projector broadening while preserving all reported constants.
 
-### Narrow theorem package — PROVISIONAL PASS
+### WP20 strengthening
 
-The candidate paper story is:
+The validator now reconstructs `C_Sigma` from finite differences of the actual common nonlinear family and verifies the entire Fourier Fisher matrix, including vanishing cross-mode/cos-sin blocks.
 
-> Globally stationary relative temporal information has two complementary resource regimes. Finite-radius information requires two-sided pre-existing spectral survival; rank-changing zero-radius information requires two-sided positive second-order spectral synthesis action. The laws are finite-copy and arbitrary-POVM, clean constants are sharp in fixed-total-energy shells, arbitrary coherent support requires nontrivial operator geometry, and the boundary law has a sharp frequency-weighted multi-gap sum.
+## Publication significance boundary
 
-Targeted searches through 2026-08-23 did not locate a direct predecessor with comparable scope and constants. Priority remains **unverified, not certified**.
+### Claims that are not allowed
 
-### Required prior-art boundary
+Do not claim:
 
-A future paper must explicitly distinguish itself from:
+- a new resource theory of time;
+- a new Page--Wootters mechanism;
+- new modes-of-asymmetry theory;
+- new general QFI/coherence resource theory;
+- new Fourier/multiphase measurement theory;
+- a general solution to energy-constrained metrology;
+- novelty of PSD-cone, shorted-operator, numerical-radius, SDP, or Holevo mathematics.
 
-- Marvian--Spekkens modes of asymmetry, PRA 90, 062110 (2014);
-- Carmo--Soares-Pinto Page--Wootters shared asymmetry, PRA 103, 052420 (2021);
-- Tajima--Shiraishi--Saito conservation-law coherence cost, PR Research 2, 043374 (2020);
-- Marvian QFI energetic-coherence formation cost, PRL 129, 190502 (2022);
-- rank-changing QFI/Bures geometry;
-- Gardner et al. waveform Holevo limit, PRL 132, 130801 (2024);
-- Chen--Yang total protocol energy-constrained metrology, PRL 136, 070801 (2026);
-- fixed-number relative-phase/multiphase and Fourier/covariant measurements;
-- WAY/reference-frame theory, shorted operators, SDP/SOCP, and numerical-radius mathematics.
+### Candidate paper claim
 
-## Current mandatory gate — hostile mathematical audit
+The publication should instead defend the **finite-radius / rank-changing resource bridge**:
 
-**No WP21 and no manuscript drafting until this audit is complete.**
+> pre-existing two-sided spectral survival supports finite-radius relative temporal information, while two-sided positive second-order spectral synthesis action supports rank-changing boundary information; both have sharp autonomous fixed-shell consequences and the boundary action has a sharp spectral sum.
 
-### A. WP18 independent rederivation
+## Manuscript phase — current priority
 
-1. Re-derive the two-quadrature Fisher convention from `D_c=(A+A^dagger)/2`, `D_s=(A-A^dagger)/(2i)`.
-2. Re-derive one-sided and bilateral WP07/WP09 curvature bounds with the exact factor conventions.
-3. Independently derive the clock and signal endpoint actions and the coefficients `hbar nu/2` and `hbar nu/4`.
-4. Verify fixed-shell extremizers are exactly normalized/positive on an open parameter disk and truly globally stationary.
-5. Verify the stated measurement achieves the claimed Fisher trace without a singular probability convention.
+**Do not create WP21 unless manuscript drafting identifies a concrete missing theorem.**
 
-### B. Finite-copy scaling
+### Phase M1 — skeleton and theorem statements
 
-Re-derive the `N`-copy complex tangent and show all weighted norms scale by exactly `N`. Check that the collective-POVM law therefore holds for every finite `N` without hidden i.i.d.-measurement assumptions.
+1. Create manuscript directory/files on this branch.
+2. Fix notation and assumptions globally.
+3. Write formal statements of Results 1--6 before prose expansion.
+4. Add a compact prior-art comparison section/table.
 
-### C. WP19 interpretation
+### Phase M2 — proofs and supplement split
 
-1. Audit overlapping local endpoint projectors and multiplicities in `G_CS`.
-2. Check `G_CS>=0` and that the shared global kernel curvature is charged only once.
-3. Maintain the distinction between kernel endpoint-incidence action, full endpoint-population Laplacian, signed subsystem energy, and total protocol energy.
-4. Reconstruct the fixed-shell shared-kernel benchmark independently.
+Main text should contain conceptual proof cores only.
 
-### D. WP20 common Hessian and sum
+Move to supplement:
 
-1. Start from one genuine common `2m`-parameter `C^2` state family.
-2. Sum the second-order PSD inequalities before any scalar endpoint reduction.
-3. Verify the single `C_Sigma` inequality and positive spectral cost trace.
-4. Audit frequency-dependent cost assignment when endpoint states participate in multiple mode labels; any multiplicity must have an explicit endpoint-incidence interpretation.
-5. Recompute the common Fourier readout and show `Tr F_(1,k)=4c_k^2` simultaneously for all `k` under the branch convention.
-6. Confirm the full weighted action sum is exactly saturated.
+- WP10;
+- detailed WP11 shorting counterexample;
+- WP12 SDP allocation;
+- WP13 action-envelope derivation;
+- WP14 curvature-metric angle law;
+- WP15 exact `55/8` witness;
+- WP16 generic accessibility theorem;
+- extended algebra and validator details.
 
-### E. Decision after audit
+WP04/WP05 should stay outside this manuscript unless a concrete narrative reason emerges.
 
-If any factor, physicality, or resource-interpretation defect appears, patch it before proceeding.
+### Phase M3 — extremizers and figures
 
-If the theorem chain survives intact:
+At minimum consider:
 
-1. record a hostile mathematical audit note;
-2. freeze a minimal theorem stack for publication;
-3. decide whether WP15/WP16 belong in the main paper or supplement;
-4. only then begin manuscript formation.
+1. a two-regime schematic: finite-radius pre-existing survival vs zero-radius synthesis action;
+2. fixed-total-energy WP18 qutrit exchange diagram;
+3. optional spectral WP20 star-shell diagram.
 
-## Deferred directions
+Figures must clarify the physics, not decorate the paper.
 
-Do not pursue unless directly needed for the publication story:
+### Phase M4 — hostile manuscript review
+
+Before formatting for submission:
+
+- verify all theorem assumptions against proofs;
+- verify every novelty sentence against the priority audit;
+- remove any claim that confuses kinematic synthesis action with total implementation energy;
+- verify the supplement contains enough detail to reproduce the finite-copy and operator-geometry arguments;
+- run the complete numerical validator suite.
+
+## Required prior art
+
+At minimum engage explicitly with:
+
+- Marvian--Spekkens, PRA 90, 062110 (2014);
+- Carmo--Soares-Pinto, PRA 103, 052420 (2021);
+- Tajima--Shiraishi--Saito, PR Research 2, 043374 (2020);
+- Marvian, PRL 129, 190502 (2022);
+- Safranek, PRA 95, 052320 (2017);
+- Gardner et al., PRL 132, 130801 (2024);
+- Chen--Yang, PRL 136, 070801 (2026);
+- relevant quantitative WAY/reference-frame and fixed-number relative-phase literature.
+
+## Deferred work
+
+Defer unless required by manuscript review:
 
 - mixed finite-radius + multi-gap theorem;
-- controlled continuum limit;
+- continuum spectral-action limit;
 - Gaussian covariance-changing synthesis;
-- further exact common-record geometry.
-
-## Validation
-
-All current validators remain active, particularly:
-
-- `verify_autonomous_dual_synthesis_action_law.py`
-- `verify_noncommuting_autonomous_mixed_resource_action_law.py`
-- `verify_multigap_autonomous_spectral_action_sum_law.py`
-
-Numerical validation is supporting evidence only; the current gate requires independent analytic rederivation.
+- further common-record measurement geometry.
 
 ## Documentation discipline
 
-Every material theorem, failed conjecture, priority collision, or validation result must be recorded immediately and reflected in `README.md`, `AGENTS.md`, and this file. The repository, not chat history, is authoritative.
+Manuscript formation is now part of the research record. Any change in theorem scope, assumptions, or novelty boundary must be synchronized across `README.md`, `AGENTS.md`, this roadmap, and manuscript handoff files.
