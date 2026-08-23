@@ -2,7 +2,7 @@
 """Apply final non-scientific submission cleanup to generated M2R2 sources.
 
 This pass implements only the minor editorial items from the R2 adversarial re-review:
-1. remove rendered internal work-package nomenclature from the supplement;
+1. remove rendered internal work-package nomenclature from the mixed-bridge proof module;
 2. simplify Theorem 6 branch prose in the main manuscript.
 
 It does not alter any theorem, equation, coefficient, proof step, or citation.
@@ -11,7 +11,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 MAIN = HERE / "autonomous_temporal_resource_law_m2r2.tex"
-SUPP = HERE / "autonomous_temporal_resource_law_supplement_m2r2.tex"
+MIXED_PROOF = HERE / "proofs" / "noncommuting_mixed_bridge_proof_r1.tex"
 
 
 def replace_once(path: Path, old: str, new: str, label: str) -> None:
@@ -24,7 +24,7 @@ def replace_once(path: Path, old: str, new: str, label: str) -> None:
 
 def main() -> None:
     replace_once(
-        SUPP,
+        MIXED_PROOF,
         "which is exactly the one-sided WP18 coefficient.",
         "which exactly recovers the one-sided autonomous coefficient stated in the main text.",
         "remove internal WP18 label",
