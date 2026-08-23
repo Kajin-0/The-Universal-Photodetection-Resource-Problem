@@ -17,6 +17,10 @@ MAIN_OUT = HERE / "autonomous_temporal_resource_law_m2r3.tex"
 SUPP_IN = HERE / "autonomous_temporal_resource_law_supplement_m2r2.tex"
 SUPP_OUT = HERE / "autonomous_temporal_resource_law_supplement_m2r3.tex"
 
+OLD_BASE_METRIC = r"""For $N$ independently encoded copies, $\Fcl_N$ denotes the Fisher matrix of an arbitrary joint POVM; no separability or asymptotic assumption is imposed unless stated explicitly. For multiple modes, the coordinate space is the direct sum of these cosine--sine planes with its Euclidean metric. Accordingly, the Fisher and Hessian traces below refer to this fixed physical quadrature normalization; invariance under arbitrary anisotropic reparameterizations is not claimed."""
+
+NEW_BASE_METRIC = r"""For $N$ independently encoded copies, $\Fcl_N$ denotes the Fisher matrix of an arbitrary joint POVM; no separability or asymptotic assumption is imposed unless stated explicitly. For multiple modes, the coordinate space is the direct sum of these cosine--sine planes with its canonical physical Euclidean metric. Accordingly, the Fisher and Hessian traces below refer to this physical quadrature normalization; a coordinate-covariant formulation for arbitrary invertible linear reparameterizations is given immediately below."""
+
 OLD_COORD = r"""The fixed quadrature normalization is nevertheless not an arbitrary coordinate artifact. Orthogonal rotations of the cosine--sine plane leave all traces used below unchanged. Under a common scalar rescaling $(x',y')=s(x,y)$, one has $F^{\rm tan}\mapsto s^{-2}F^{\rm tan}$ and $\Rlin\mapsto s\Rlin$, while every quadratic synthesis action defined from the parameter Hessian scales as $s^{-2}$. Hence $\Rlin^2\Tr F^{\rm tan}$ and the synthesis-action/Fisher ratios are invariant under orthogonal rotations and common scalar rescalings, although no invariance under arbitrary anisotropic reparameterizations is asserted."""
 
 NEW_COORD = r"""The fixed quadrature normalization is nevertheless not an arbitrary coordinate artifact. More generally, the scalar traces are contractions with the physical Euclidean metric on the cosine--sine amplitude plane. Under an invertible linear reparameterization $\boldsymbol\theta'=M\boldsymbol\theta$, the Fisher tensor and parameter metric transform as $F'=M^{-T}FM^{-1}$ and $g'=M^{-T}gM^{-1}$, so $\operatorname{tr}(g'^{-1}F')=\operatorname{tr}(g^{-1}F)$. The Hessian contraction $g^{ij}\partial_i\partial_j\rho$ transforms in the same way for linear coordinate changes. The formulas below use the canonical physical quadratures for which $g=I_2$. Orthogonal rotations and common scalar rescalings are therefore immediate special cases; assigning the identity metric again after an anisotropic rescaling is a change of physical parameter normalization, not a mere relabeling of coordinates."""
@@ -52,6 +56,11 @@ where $\mathcal H_k$ is the parameter Hessian of a zero eigenvalue. The second t
 
 def main() -> None:
     text = MAIN_IN.read_text(encoding="utf-8")
+
+    if text.count(OLD_BASE_METRIC) != 1:
+        raise RuntimeError(f"expected one R2 base metric paragraph, found {text.count(OLD_BASE_METRIC)}")
+    text = text.replace(OLD_BASE_METRIC, NEW_BASE_METRIC, 1)
+
     if text.count(OLD_COORD) != 1:
         raise RuntimeError(f"expected one R2 coordinate paragraph, found {text.count(OLD_COORD)}")
     text = text.replace(OLD_COORD, NEW_COORD, 1)
