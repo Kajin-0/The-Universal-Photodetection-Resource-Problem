@@ -16,10 +16,10 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-M2R2_MAIN = HERE / "autonomous_temporal_resource_law_m2r2.tex"
-SUPPLEMENT = HERE / "autonomous_temporal_resource_law_supplement_m2r2.tex"
-PRXQ_MAIN = HERE / "autonomous_temporal_resource_law_prxq_r2.tex"
-ROOTS = [M2R2_MAIN, SUPPLEMENT, PRXQ_MAIN]
+M2R3_MAIN = HERE / "autonomous_temporal_resource_law_m2r3.tex"
+SUPPLEMENT = HERE / "autonomous_temporal_resource_law_supplement_m2r3.tex"
+PRXQ_MAIN = HERE / "autonomous_temporal_resource_law_prxq_r3.tex"
+ROOTS = [M2R3_MAIN, SUPPLEMENT, PRXQ_MAIN]
 BIB = HERE / "references.bib"
 
 INPUT_RE = re.compile(r"\\input\{([^}]+)\}")
@@ -38,8 +38,6 @@ BANNED_MARKERS = (
     "TODO",
 )
 
-# Submission files must be fully standalone and must never expose a personal
-# source-control identity or rely on a private/public project repository.
 FORBIDDEN_SUBMISSION_TOKENS = (
     "github",
     "kajin-0",
@@ -140,8 +138,13 @@ def inspect_root(root: Path, keys: set[str]) -> tuple[list[str], str, set[str]]:
     if re.search(r"\\nu_y\s*=\s*\\frac\{\\Tr\(XM_y\)", text):
         errors.append(f"{root.name}: found \\nu_y where bilateral score vector must be u_y")
 
-    if root in (M2R2_MAIN, PRXQ_MAIN) and "F^{\\mathrm{tan}}" not in text:
-        errors.append(f"{root.name}: R2 boundary score-Fisher notation missing")
+    if root in (M2R3_MAIN, PRXQ_MAIN):
+        if "F^{\\mathrm{tan}}" not in text:
+            errors.append(f"{root.name}: boundary score-Fisher notation missing")
+        if "H^{\\rm SLD}" not in text:
+            errors.append(f"{root.name}: R3 SLD-QFI strengthening missing")
+        if "spectator" not in text.lower():
+            errors.append(f"{root.name}: R3 spectator-curvature scope argument missing")
 
     print(
         f"{root.name}: labels={len(labels)} refs={len(refs)} "
@@ -186,6 +189,7 @@ def main() -> int:
 
     print(f"Static TeX integrity PASS; BibTeX keys={len(keys)}")
     print("Standalone-submission identity leak gate PASS")
+    print("R3 boundary-QFI strengthening gate PASS")
     return 0
 
 
