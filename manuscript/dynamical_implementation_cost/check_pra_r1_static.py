@@ -92,7 +92,17 @@ else:
             "('not a thermodynamic-work bound' or 'neither a thermodynamic-work bound')"
         )
 
-# APS-required substantive AI disclosure and standalone data statement.
+# Publication-facing prior-art separation should explicitly distinguish the
+# prescribed state-family kernel Hessian from Bures-metric Riemannian curvature.
+for marker in [
+    "HuangEtAl2026",
+    "Riemannian curvature of the Bures metric itself",
+    "That geometric curvature is distinct from the quantity prescribed here",
+]:
+    if marker not in main:
+        errors.append(f"PRA R1 missing rank-changing Bures-geometry separation marker: {marker}")
+
+# APS-required substantive AI disclosure and software-aware Data Availability.
 for marker in [
     "OpenAI ChatGPT",
     "GPT-5.6",
@@ -104,12 +114,14 @@ for marker in [
     if marker not in main:
         errors.append(f"AI disclosure missing marker: {marker}")
 
-DATA_SENTENCE = (
-    "No data were created or analyzed in this theoretical study. "
-    "All analytic results needed to support the conclusions are contained in the Article and Supplemental Material."
-)
-if DATA_SENTENCE not in main:
-    errors.append("standalone Data Availability statement missing or changed")
+for marker in [
+    "No empirical data were created or analyzed in this theoretical study.",
+    "Internal numerical-validation scripts were used only to cross-check analytic identities",
+    "not required to reproduce the reported results",
+    "The validation scripts are available from the author upon reasonable request.",
+]:
+    if marker not in main:
+        errors.append(f"Data Availability statement missing marker: {marker}")
 
 # Publication transform must not change the scientific theorem body after the intro.
 # Compare from the fixed setup paragraph onward through the acknowledgments boundary.
