@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 """Apply final non-scientific submission cleanup to generated M2R2 sources.
 
-This pass implements only the minor editorial items from the R2 adversarial re-review:
+This pass implements only final editorial/presentation cleanup:
 1. remove rendered internal work-package nomenclature from the mixed-bridge proof module;
-2. simplify Theorem 6 branch prose in the main manuscript.
+2. simplify Theorem 6 branch prose in the main manuscript;
+3. suppress visible hyperlink-border rectangles in the submission PDFs.
 
-It does not alter any theorem, equation, coefficient, proof step, or citation.
+It does not alter any theorem, equation, coefficient, proof step, citation, or resource definition.
 """
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 MAIN = HERE / "autonomous_temporal_resource_law_m2r2.tex"
+SUPP = HERE / "autonomous_temporal_resource_law_supplement_m2r2.tex"
 MIXED_PROOF = HERE / "proofs" / "noncommuting_mixed_bridge_proof_r1.tex"
 
 
@@ -42,6 +44,14 @@ def main() -> None:
         "The corresponding one-sided, support-only, and zero-cost cases are stated explicitly in the Supplemental Material.",
         "remove redundant branch sentence",
     )
+
+    for path in (MAIN, SUPP):
+        replace_once(
+            path,
+            "\\usepackage{hyperref}",
+            "\\usepackage{hyperref}\n\\hypersetup{hidelinks}",
+            "hide hyperlink borders",
+        )
 
 
 if __name__ == "__main__":
