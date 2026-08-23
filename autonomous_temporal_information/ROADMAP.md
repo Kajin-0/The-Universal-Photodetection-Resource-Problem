@@ -4,207 +4,198 @@
 
 ## Goal
 
-Develop and publish a rigorously scoped physical resource law for autonomous temporal information. The finished Rev11 random-time paper remains frozen on its parent branch.
+Develop and publish a rigorously scoped resource law for autonomous temporal information, then determine whether the rank-boundary synthesis action admits a genuine dynamical implementation interpretation.
 
-## Research status
+The frozen Rev11 random-time paper remains untouched on its parent branch.
 
-The theorem program through WP20 has passed the current internal gates.
+## Publication state
 
-- Significance/literature gate: **PROVISIONAL PASS for a narrow theorem paper**.
-- Hostile mathematical gate: **PASS after minor corrections**.
+The theorem program through WP20 has passed the internal manuscript gates.
+
+- Significance/literature gate: **PROVISIONAL PASS** for a narrow theorem paper.
+- Hostile mathematical gate: **PASS after targeted corrections**.
+- PRX Quantum manuscript: build-verified and standalone.
 - Priority: **unverified, not certified**.
-- Main publication theorem stack: **provisionally frozen**.
+- Main publication theorem stack through WP20: **frozen unless a concrete new theorem materially improves the paper**.
 
-Authoritative gate notes:
+The user explicitly reopened research on 2026-08-23 to address the remaining **dynamical implementation cost** limitation. This produced WP21 and WP22.
 
-- `notes/FOUNDATIONAL_SIGNIFICANCE_PRIORITY_GATE_AFTER_WP20.md`
-- `notes/HOSTILE_MATHEMATICAL_AUDIT_WP18_WP20.md`
-- `notes/PUBLICATION_THEOREM_STACK_AFTER_AUDITS.md`
+## Frozen publication theorem arc
 
-## Frozen main theorem arc
-
-### Result 1 — WP02
-
-Mean baseline energy alone does not bound unrestricted synthesized local temporal Fisher information.
-
-Physical repair:
+### WP02 — finite-radius survival
 
 `(R_lin^2/4)[Tr F_N/N] <= T(nu)`.
 
-### Result 2 — WP03 / WP06
-
-For globally stationary exact exchange,
+### WP03 / WP06 — autonomous dual survival
 
 `(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`.
 
-This survives arbitrary coherent/history-state support.
-
-### Result 3 — WP07 / WP09
-
-At `R_lin=0`, nonlinear physical state families can remain informative. Second-order endpoint synthesis becomes the resource.
+### WP07 / WP09 — rank-changing boundary
 
 One-sided:
 
-`Tr F_N/N<=J<=Delta T`.
+`Tr F_N/N <= J <= Delta T`.
 
 Bilateral:
 
-`sqrt[Tr F_N/N]<=sqrt(J_+)+sqrt(J_-)`.
+`sqrt[Tr F_N/N] <= sqrt(J_+)+sqrt(J_-)`.
 
-### Result 4 — WP18
+### WP18 — clean autonomous synthesis action
 
-Globally stationary boundary exchange requires positive action on both sides:
+Bilateral:
 
-bilateral
+`A_C^(2)+A_S^(2)>=(hbar nu/4)[Tr F_N/N]`.
 
-`A_C^(2)+A_S^(2)>=(hbar nu/4)[Tr F_N/N]`,
-
-one-sided
+One-sided:
 
 `A_C^(2)+A_S^(2)>=(hbar nu/2)[Tr F_N/N]`.
 
-Both coefficients are exactly sharp in fixed-total-energy shells.
+Both are sharp in fixed-total-energy shells.
 
-### Result 5 — WP19
+### WP19 — arbitrary coherent support
 
-For arbitrary coherent support, use canonical endpoint roles
+Canonical endpoint roles:
 
 `Pi_out=supp(A A^dagger)`,
 
-`Pi_in=supp(A^dagger A)`
-
-and
+`Pi_in=supp(A^dagger A)`,
 
 `G_ex=2hbar nu Q(Pi_out+Pi_in)Q`.
 
-The mixed finite-radius/synthesis bridge is
+The mixed survival/synthesis bridge uses the audited shorted ceilings and `Psi_a` envelope.
 
-`Tr F_N/N`
+### WP20 — multi-gap action sum
 
-`<=min{Psi_(a_+)(4A_ex;g_+,g_-),`
+`C_Sigma>=sum_k[Z_(k,+)+Z_(k,-)]`,
 
-`      Psi_(a_-)(4A_ex;g_-,g_+)}`.
+`sum_k gamma_k Tr F_(N,k)/N <=4A_(G,Sigma)^(2)`.
 
-### Result 6 — WP20
-
-For a common zero-radius multiparameter exchange family,
-
-`C_Sigma>=sum_k[Z_(k,+)+Z_(k,-)]`
-
-and
-
-`sum_k gamma_k Tr F_(N,k)/N<=4A_(G,Sigma)^(2)`.
-
-Clean bilateral frequency weighting gives
+Clean bilateral frequency weighting:
 
 `A_(G,Sigma)^(2)>=sum_k(hbar nu_k/4)Tr F_(N,k)/N`.
 
-The full sum is simultaneously sharp with one common Fourier measurement.
+A single Fourier measurement saturates the complete sum in the fixed-shell star construction.
 
-## Audit results incorporated
+## New active research: dynamical implementation cost
 
-### WP18 correction
+### WP21 — implementation coupling identity and lower bound
 
-The one-sided exact family now uses `c(x-i y)`, consistent with the branch sine-quadrature convention. This is only a coordinate reversal from the earlier text and changes no theorem values.
+For a smooth unitary dilation of the encoded family with target support `P`, kernel `Q`, global baseline `Omega_0`, and tangent generators `K_j`,
 
-### WP19 correction
+`boxed:
+Q partial_j^2 rho Q
+=2 Tr_E[(Q⊗I)K_j Omega_0 K_j(Q⊗I)].`
 
-The endpoint-incidence action is now canonical for one exact exchange mode through the joint domain/range supports of `A`. This removes arbitrary local endpoint-projector broadening while preserving all reported constants.
+For any positive kernel price `G`,
 
-### WP20 strengthening
+`boxed:
+A_G^(2)
+=(1/2)sum_j Tr[(G⊗I)K_j Omega_0 K_j].`
 
-The validator now reconstructs `C_Sigma` from finite differences of the actual common nonlinear family and verifies the entire Fourier Fisher matrix, including vanishing cross-mode/cos-sin blocks.
+Thus the previously kinematic action is exactly a state-weighted squared dynamical coupling into the priced empty endpoint sectors.
 
-## Publication significance boundary
+For the clean exact-exchange single-gap geometry,
 
-### Claims that are not allowed
+`boxed:
+A_ex^(2)<=hbar nu [Var(K_x)+Var(K_y)].`
 
-Do not claim:
+This is exactly sharp in the existing bilateral and one-sided fixed-total-energy extremizers.
 
-- a new resource theory of time;
-- a new Page--Wootters mechanism;
-- new modes-of-asymmetry theory;
-- new general QFI/coherence resource theory;
-- new Fourier/multiphase measurement theory;
-- a general solution to energy-constrained metrology;
-- novelty of PSD-cone, shorted-operator, numerical-radius, SDP, or Holevo mathematics.
+The same models prove a no-go for ordinary net-energy accounting: total bare energy can remain exactly fixed while `A_ex`, generator variance, and temporal information are nonzero.
 
-### Candidate paper claim
+### WP22 — exact minimum energy-conserving tangent implementation
 
-The publication should instead defend the **finite-radius / rank-changing resource bridge**:
+For a globally stationary pure-boundary exact exchange tangent, let `D_j` be either real quadrature derivative and define
 
-> pre-existing two-sided spectral survival supports finite-radius relative temporal information, while two-sided positive second-order spectral synthesis action supports rank-changing boundary information; both have sharp autonomous fixed-shell consequences and the boundary action has a sharp spectral sum.
+`K_j^hor=i[Q D_j P rho_0^+ - rho_0^+ P D_j Q]`.
 
-## Manuscript phase — current priority
+Then
 
-**Do not create WP21 unless manuscript drafting identifies a concrete missing theorem.**
+`-i[K_j^hor,rho_0]=D_j`,
 
-### Phase M1 — skeleton and theorem statements
+and
 
-1. Create manuscript directory/files on this branch.
-2. Fix notation and assumptions globally.
-3. Write formal statements of Results 1--6 before prose expansion.
-4. Add a compact prior-art comparison section/table.
+`[K_j^hor,H_C+H_S]=0`.
 
-### Phase M2 — proofs and supplement split
+The horizontal generator variance is
 
-Main text should contain conceptual proof cores only.
+`Var(K_j^hor)=H_jj^SLD/4`.
 
-Move to supplement:
+Therefore
 
-- WP10;
-- detailed WP11 shorting counterexample;
-- WP12 SDP allocation;
-- WP13 action-envelope derivation;
-- WP14 curvature-metric angle law;
-- WP15 exact `55/8` witness;
-- WP16 generic accessibility theorem;
-- extended algebra and validator details.
+`boxed:
+V_min
+=inf [Var(K_x)+Var(K_y)]
+=(1/4)Tr H^SLD,`
 
-WP04/WP05 should stay outside this manuscript unless a concrete narrative reason emerges.
+and the infimum is attained by a target-only exact total-energy-conserving implementation.
 
-### Phase M3 — extremizers and figures
+The minimum compatible spectral action is
 
-At minimum consider:
+`boxed:
+A_min^(2)=hbar nu V_min=(hbar nu/4)Tr H^SLD.`
 
-1. a two-regime schematic: finite-radius pre-existing survival vs zero-radius synthesis action;
-2. fixed-total-energy WP18 qutrit exchange diagram;
-3. optional spectral WP20 star-shell diagram.
+Generic Bures/Uhlmann horizontal-lift minimization is prior art. The candidate new element is the exact energy-conserving relational realization and its equality to the frequency-resolved endpoint synthesis action.
 
-Figures must clarify the physics, not decorate the paper.
+## Current theorem target — full kernel 2-jet
 
-### Phase M4 — hostile manuscript review
+The next question is now sharply defined:
 
-Before formatting for submission:
+> Given the first-order temporal tangent and a prescribed nonminimal target-kernel Hessian/action, what is the exact minimum generator/control cost over all energy-conserving Stinespring dilations?
 
-- verify all theorem assumptions against proofs;
-- verify every novelty sentence against the priority audit;
-- remove any claim that confuses kinematic synthesis action with total implementation energy;
-- verify the supplement contains enough detail to reproduce the finite-copy and operator-geometry arguments;
-- run the complete numerical validator suite.
+Known:
 
-## Required prior art
+`V_impl >= A_ex/(hbar nu)` from WP21.
 
-At minimum engage explicitly with:
+At the minimal-curvature horizontal orbit:
 
-- Marvian--Spekkens, PRA 90, 062110 (2014);
-- Carmo--Soares-Pinto, PRA 103, 052420 (2021);
-- Tajima--Shiraishi--Saito, PR Research 2, 043374 (2020);
-- Marvian, PRL 129, 190502 (2022);
-- Safranek, PRA 95, 052320 (2017);
-- Gardner et al., PRL 132, 130801 (2024);
-- Chen--Yang, PRL 136, 070801 (2026);
-- relevant quantitative WAY/reference-frame and fixed-number relative-phase literature.
+`V_min=A_min/(hbar nu)` from WP22.
 
-## Deferred work
+Promising construction: purify the baseline, realize the horizontal tangent in the baseline ancilla sector, and realize excess positive kernel curvature by coupling to an orthogonal ancilla flag sector so that the added coupling has zero first-order reduced signature but exactly the desired second-order population.
 
-Defer unless required by manuscript review:
+Candidate clean result:
 
-- mixed finite-radius + multi-gap theorem;
-- continuum spectral-action limit;
-- Gaussian covariance-changing synthesis;
-- further common-record measurement geometry.
+`V_min(full kernel 2-jet)=A_ex/(hbar nu)`.
+
+**This is not yet proved.** The remaining audit is whether the orthogonal-flag construction can always be imposed sector-by-sector while preserving exact total-energy conservation.
+
+## Secondary future track — infinite-dimensional metrology
+
+Do not start this until the dynamical 2-jet question is resolved or blocked.
+
+A sensible infinite-dimensional program would proceed in stages:
+
+1. discrete semibounded pure-point Hamiltonians with trace-class `rho_0` and unbounded `H`;
+2. impose explicit domain conditions on `A`, `rho_0^+`, and energy-weighted endpoint operators;
+3. prove finite-rank spectral truncation bounds uniform in cutoff;
+4. pass to the limit by monotone convergence / closed quadratic forms;
+5. only then address continuous spectra and Gaussian/CV families.
+
+Continuous-variable Gaussian metrology already has mature QFI machinery, so novelty would have to come from extending the survival/synthesis resource law, not from generic Gaussian QFI formulas.
+
+## Prior-art constraints
+
+Do not claim novelty for:
+
+- Bures/Uhlmann horizontal purification geometry;
+- `QFI/4 = minimum purification speed`;
+- generic quantum speed limits;
+- integrated Hamiltonian/Frobenius/operator norm control cost;
+- Tajima--Shiraishi--Saito external coherence cost under conservation laws;
+- Marvian energetic-coherence formation cost;
+- generic Gaussian/CV QFI formulas.
+
+The candidate dynamical contribution is narrowly the **spectral endpoint-action / energy-conserving implementation-coupling bridge** for a relational mode whose total time-translation asymmetry can remain zero.
+
+## Immediate work order
+
+1. hostile proof audit WP21/WP22;
+2. commit a dedicated WP22 random-matrix validator;
+3. prove or kill the full kernel-2-jet equality candidate;
+4. targeted prior-art search on constrained Bures horizontal lifts and endpoint-weighted Stinespring implementation;
+5. only then decide whether the dynamical theorem belongs in the existing paper or a separate follow-up;
+6. pursue infinite-dimensional extension afterward if still valuable.
 
 ## Documentation discipline
 
-Manuscript formation is now part of the research record. Any change in theorem scope, assumptions, or novelty boundary must be synchronized across `README.md`, `AGENTS.md`, this roadmap, and manuscript handoff files.
+Every material theorem, proof repair, prior-art collision, or strategy change must be synchronized across `README.md`, `AGENTS.md`, this roadmap, and the relevant WP note. The repository is authoritative.
