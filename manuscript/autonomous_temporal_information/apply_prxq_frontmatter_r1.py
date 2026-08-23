@@ -30,7 +30,7 @@ def main() -> None:
         flags=re.DOTALL,
     )
     replacement = "\\begin{abstract}\n" + abstract + "\n\\end{abstract}"
-    updated, count = pattern.subn(replacement, base, count=1)
+    updated, count = pattern.subn(lambda _match: replacement, base, count=1)
     if count != 1:
         raise RuntimeError(f"expected exactly one abstract block, replaced {count}")
 
@@ -40,9 +40,8 @@ def main() -> None:
         raise RuntimeError("expected exactly one \\maketitle marker")
     updated = updated.replace(marker, insertion, 1)
 
-    # Guard against accidental duplicate generation if the base later changes.
-    if updated.count("\\section{Introduction}") != 0:
-        # The section is inside an input file, not literal in the generated root.
+    # The audited base deliberately has no dedicated Introduction section.
+    if "\\section{Introduction}" in updated:
         raise RuntimeError("base manuscript unexpectedly contains a literal Introduction section")
 
     OUT.write_text(updated, encoding="utf-8")
