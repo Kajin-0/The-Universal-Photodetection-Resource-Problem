@@ -4,13 +4,13 @@
 
 **Active branch:** `agent/autonomous-temporal-information-law`
 
-Frozen scientific layers: Paper 1 Rev11, Paper 2 Rev7, random-time spectral-resource Rev11, autonomous PRX Quantum R3, and the audited D2 dynamical theorem/proof baseline.
+Frozen scientific layers: Paper 1 Rev11, Paper 2 Rev7, random-time spectral-resource Rev11, autonomous PRX Quantum R3, and the audited/regenerated D2 dynamical theorem/proof baseline.
 
 **Canonical post-R3 theorem:** WP32.
 
 **Hostile theorem audit:** WP33 — PASS under stated assumptions.
 
-**Current publication frontier:** separate dynamical-cost paper, **PRA R1 final publication-facing package**.
+**Current publication frontier:** separate follow-up paper, **PRA R1 final reviewer-repaired publication-facing package**.
 
 **WP31 is superseded.**
 
@@ -26,15 +26,21 @@ For clean exact exchange,
 
 WP32 proves the same optimum under exact total-energy conservation with a semibounded ancilla in separable infinite dimension, including unbounded occupied target energies and stationary excess curvature in target-energy shells unoccupied at baseline.
 
-The repaired construction uses classically split baseline branches and nonnegative ancilla input/output energy compensation. Finite state-weighted quadratic cost suffices for trace-norm `C^2` state evolution; no fourth-moment condition is required.
-
-## Publication status
-
-The theorem has now been developed as a **separate follow-up paper**, rather than inserted into the frozen PRX Quantum R3 paper.
+## Final publication state
 
 Journal-facing title:
 
-> **Exact minimum dynamical cost of prescribed rank-changing quantum-state curvature**
+> **Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature**
+
+The title was narrowed from “dynamical cost” because the optimized resource is specifically the local state-weighted quadratic unitary-coupling functional `V_impl=sum_j Var(K_j)`.
+
+A final extreme adversarial review found no blocking mathematical error and produced three implemented repairs:
+
+1. Theorem 2 now explicitly cites `Eqs. (17)-(19)` for all stationarity/covariance assumptions.
+2. The limitations section now states that the infinite-dimensional attaining generator may be unbounded, the ancillary Hamiltonian is optimized rather than externally fixed, and no bound is claimed on peak/operator-norm coupling, ancilla dimension, controller bandwidth, or spectral complexity. Exact attainment is not asserted for an externally fixed controller spectrum.
+3. The title now says **unitary coupling cost** rather than generic dynamical cost.
+
+No theorem coefficient or construction changed.
 
 Canonical package:
 
@@ -43,62 +49,41 @@ Canonical package:
 - `manuscript/dynamical_implementation_cost/MANUSCRIPT_HANDOFF.md`;
 - `manuscript/dynamical_implementation_cost/PRA_R1_FINAL_PUBLICATION_AUDIT_2026-08-23.md`.
 
-Final observable verification:
+Final hostile-review verification:
 
-- workflow run `32667189807` — **PASS**;
+- workflow run `32673160217` — **PASS**;
+- canonical base commit at verification `1e03374d8ee20ca0a058b2b054acf463db3c3e08`;
 - committed-source freshness gate — **PASS**;
-- theorem/proof freeze gate — **PASS**;
+- theorem/proof/title/scope publication gate — **PASS**;
 - main compile — **PASS**;
 - supplement compile — **PASS**;
 - final LaTeX-quality gate — **PASS**;
 - artifact upload — **PASS**;
-- final artifact ID `9500374374`, SHA-256 `7bc86f37407f1a4875e0f4a6cd3aaa14db4cf61166afd2efd5df8c1f3fa7e7b4`.
+- artifact ID `9501942180`;
+- SHA-256 `4236d6f514b2f290d302062ab4c7a599c03c817da259f3d9715b787a4d37d640`;
+- main: **11 pages**, `227942` bytes;
+- supplement: **10 pages**, `229240` bytes.
 
-The exact final 11-page main and 10-page supplement were rendered and visually inspected. No clipping, overlap, broken glyph, title mismatch, or theorem-layout defect was found.
+The exact PDFs were rendered at 180 dpi and visually inspected. The new title, Theorem 2 equation range, expanded limitations paragraph, equations, bibliography, disclosure page, and supplement all render cleanly with no clipping, overlap, broken glyphs, title mismatch, or theorem-layout defect.
 
-## Final publication-facing audit
+## Prior-art / policy boundary
 
-No theorem defect or direct known collision was found. Priority remains **unverified, not certified**.
+No direct known collision was found for the exact prescribed-curvature unitary-coupling optimization theorem. Priority remains **unverified, not certified**.
 
-A close 2026 terminology neighbor was added and separated explicitly: Huang et al., arXiv:2605.27907, studies the **Riemannian curvature of the Bures metric** near rank-changing states. That is distinct from the paper's prescribed
+Huang et al., arXiv:2605.27907, studies Riemannian curvature of the Bures metric near rank-changing states; the PRA introduction explicitly distinguishes that object from
 
-`C = Q sum_j partial_j^2 rho(0) Q`,
+`C = Q sum_j partial_j^2 rho(0) Q`.
 
-the physical-parameter-metric contraction of a particular state family's second derivative projected into the baseline kernel.
+Do not claim novelty for first-order Bures/Uhlmann/SLD-QFI purification geometry, Riemannian Bures curvature, channel Fisher/Kraus-gauge geometry, covariant Stinespring dilation, generic energy-conserving dilation theory, generic quantum-speed-limit/control-norm inequalities, PSD-cone second-order tangent geometry, classical nonregular boundary statistics, or infinite-dimensional Bures/QFI theory.
 
-The final PRA layer also includes:
-
-- a dedicated `AI-Assisted Research and Verification` section for substantive OpenAI ChatGPT / GPT-5.6-series use;
-- explicit author verification/responsibility language;
-- software-aware Data Availability wording for internal numerical-validation scripts.
-
-These are publication-layer changes only; D2 theorem/proof text remains frozen.
-
-## Supporting theorem chain
-
-- WP21: exact implementation-coupling identity.
-- WP22: first-order minimum `Tr H_SLD/4`.
-- WP23: finite-dimensional prescribed-2-jet optimum.
-- WP24: independent `Psi_a` audit + classical nonregular prior-art correction.
-- WP25/WP27: approximate-gap robustness in finite-radius and boundary regimes.
-- WP28/WP29: infinite-dimensional survival and boundary synthesis laws.
-- WP30: unrestricted infinite-dimensional dilation optimum.
-- WP31: superseded intermediate proof.
-- WP32: repaired energy-conserving infinite-dimensional theorem.
-- WP33: hostile proof/prior-art audit.
-
-## Prior-art boundary
-
-Covariant Stinespring dilation, Bures/Uhlmann horizontal geometry, QFI convex-roof variance, Riemannian Bures curvature, generic quantum speed limits/control norms, infinite-dimensional QFI/Bures theory, classical nonregular boundary statistics, and second-order PSD-cone mathematics are prior art.
-
-The narrow candidate contribution is the exact prescribed rank-changing target-kernel-curvature implementation-cost identity, its exact globally conserving realization, and the autonomous spectral endpoint identity.
+The PRA layer contains the current substantive-AI disclosure and software-aware Data Availability wording recorded in the final publication audit.
 
 ## Immediate work
 
 1. keep R3 and D2 scientifically frozen;
-2. treat PRA R1 as the canonical journal-facing state;
+2. treat the reviewer-repaired PRA R1 package as canonical;
 3. do not add theorem work merely to enlarge the paper;
-4. at actual submission time, re-check current APS metadata/disclosure requirements and replace anonymous author/affiliation metadata in the submission package only;
-5. reopen theory only for a genuine proof defect, direct prior-art collision, referee requirement, or a deliberately new research program.
+4. at actual submission time, re-check current APS metadata/disclosure requirements and replace anonymous author/affiliation metadata only in the submission package;
+5. reopen theory only for a genuine proof defect, direct prior-art collision, referee requirement, or deliberately new research program.
 
 All public-facing manuscripts must remain standalone and free of personal repository identifiers or dependencies.
