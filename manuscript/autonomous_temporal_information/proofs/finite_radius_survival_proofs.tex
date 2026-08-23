@@ -1,0 +1,159 @@
+% M2 proof module: WP02 / WP03 / WP06 finite-radius resource laws.
+
+\subsection{Finite-radius arbitrary-POVM survival laws}
+\label{supp:finite-radius-full}
+
+We use the convention
+\begin{equation}
+D_c=(A+A^\dagger)/2,
+\qquad
+D_s=(A-A^\dagger)/(2i).
+\end{equation}
+Let $P=\supp\rho_0$ and suppose the affine disk
+\begin{equation}
+\rho_0+xD_c+yD_s\succeq0
+\qquad(x^2+y^2\le R^2)
+\end{equation}
+is physical for some $R>0$. Then positivity in both signs implies $A=PAP$.
+
+Define on $P$
+\begin{equation}
+B=\rho_0^{-1/2}A\rho_0^{-1/2}.
+\end{equation}
+Writing $\beta=x-iy$, the affine family is congruent to
+\begin{equation}
+\id+\frac12(\beta B+\beta^*B^\dagger).
+\end{equation}
+For a unit vector $|\psi\rangle$, minimizing the expectation value over the phase of $\beta$ gives
+\begin{equation}
+1-|\beta|\,|\langle\psi|B|\psi\rangle|.
+\end{equation}
+Therefore the exact affine radius is
+\begin{equation}
+R_{\rm lin}=\frac1{w(B)}.
+\label{eq:proof-Rlin}
+\end{equation}
+The standard numerical-radius inequality $\|B\|\le2w(B)$ gives
+\begin{equation}
+B B^\dagger\preceq\frac4{R_{\rm lin}^2}\id_P.
+\end{equation}
+By congruence,
+\begin{equation}
+A\rho_0^+A^\dagger
+=\rho_0^{1/2}BB^\dagger\rho_0^{1/2}
+\preceq\frac4{R_{\rm lin}^2}\rho_0.
+\label{eq:proof-operator-majorization}
+\end{equation}
+Similarly,
+\begin{equation}
+A^\dagger\rho_0^+A
+\preceq\frac4{R_{\rm lin}^2}\rho_0.
+\end{equation}
+
+For any POVM $\{M_y\}$ define
+\begin{equation}
+p_y=\Tr(\rho_0M_y),
+\qquad
+z_y=\Tr(AM_y).
+\end{equation}
+Weighted Hilbert--Schmidt Cauchy--Schwarz gives
+\begin{equation}
+\frac{|z_y|^2}{p_y}
+\le\Tr(M_yA\rho_0^+A^\dagger).
+\end{equation}
+After summing the outcomes,
+\begin{equation}
+\Tr F_1
+\le\Tr(A\rho_0^+A^\dagger).
+\label{eq:proof-score-bound}
+\end{equation}
+
+Now suppose the range of $A$ lies in a projector $P_U$: $P_UA=A$. The positive operator on the left of Eq.~\eqref{eq:proof-operator-majorization} is then supported in $P_U$, hence
+\begin{align}
+\Tr F_1
+&\le\Tr(A\rho_0^+A^\dagger)\\
+&=\Tr[P_U(A\rho_0^+A^\dagger)]\\
+&\le\frac4{R_{\rm lin}^2}\Tr(P_U\rho_0).
+\end{align}
+Thus
+\begin{equation}
+\frac{R_{\rm lin}^2}{4}\Tr F_1
+\le\Tr(P_U\rho_0).
+\label{eq:proof-upper-tail}
+\end{equation}
+The same argument applied to $A^\dagger$ yields a domain/lower-endpoint bound.
+
+\paragraph{Finite-copy extension.}
+For $N$ independently encoded copies,
+\begin{equation}
+A_N=\sum_{j=1}^N
+\rho_0^{\otimes(j-1)}\otimes A\otimes
+\rho_0^{\otimes(N-j)}.
+\end{equation}
+Because $\Tr A=0$, all cross-copy terms in
+\begin{equation}
+\Tr(A_N\rho_N^+A_N^\dagger)
+\end{equation}
+vanish, while every diagonal copy term equals the one-copy weighted norm. Therefore
+\begin{equation}
+\Tr(A_N\rho_N^+A_N^\dagger)
+=N\Tr(A\rho_0^+A^\dagger).
+\end{equation}
+The weighted score inequality is valid for an arbitrary POVM on the full $N$-copy Hilbert space, so
+\begin{equation}
+\frac{R_{\rm lin}^2}{4}\frac{\Tr F_N}{N}
+\le\Tr(P_U\rho_0).
+\label{eq:proof-upper-tail-N}
+\end{equation}
+No product-measurement assumption is used.
+
+\paragraph{Exact Bohr mode.}
+If
+\begin{equation}
+[H,A_\nu]=\hbar\nu A_\nu,
+\end{equation}
+then the range and domain of $A_\nu$ lie in upper and lower endpoint sectors separated by $\hbar\nu$. For a stationary baseline, applying Eq.~\eqref{eq:proof-upper-tail-N} to $A_\nu$ and $A_\nu^\dagger$ gives
+\begin{equation}
+\frac{R_{\rm lin}^2}{4}\frac{\Tr F_N^{(\nu)}}{N}
+\le\min\{U_\nu,D_\nu\}.
+\end{equation}
+For a semibounded Hamiltonian the upper endpoint lies inside the tail
+\begin{equation}
+T(\nu)=\Pr_{\rho_0}[H-E_*\ge\hbar\nu],
+\end{equation}
+so
+\begin{equation}
+\frac{R_{\rm lin}^2}{4}\frac{\Tr F_N^{(\nu)}}{N}
+\le T(\nu).
+\end{equation}
+Markov's inequality then gives the mean-energy corollary.
+
+\subsection{Autonomous dual survival}
+\label{supp:dual-survival-full}
+
+For the exact clock--signal exchange
+\begin{equation}
+[H_S,A_\nu]=+\hbar\nu A_\nu,
+\qquad
+[H_C,A_\nu]=-\hbar\nu A_\nu,
+\end{equation}
+the signal viewpoint sees $A_\nu$ as a positive $+\nu$ tangent, whereas the clock viewpoint sees $A_\nu^\dagger$ as a positive $+\nu$ tangent. The two Hermitian tangent quadratures span the same physical plane under $A_\nu\leftrightarrow A_\nu^\dagger$; only the sine coordinate reverses. Hence the affine radius and Fisher trace are unchanged.
+
+Applying Eq.~\eqref{eq:proof-upper-tail-N} to the signal range projector and to the clock range projector of $A_\nu^\dagger$ yields
+\begin{equation}
+\frac{R_{\rm lin}^2}{4}\frac{\Tr F_N^{(\nu)}}{N}
+\le T_S(\nu),
+\end{equation}
+and
+\begin{equation}
+\frac{R_{\rm lin}^2}{4}\frac{\Tr F_N^{(\nu)}}{N}
+\le T_C(\nu).
+\end{equation}
+Therefore
+\begin{equation}
+\boxed{
+\frac{R_{\rm lin}^2}{4}\frac{\Tr F_N^{(\nu)}}{N}
+\le\min\{T_C(\nu),T_S(\nu)\}.
+}
+\end{equation}
+The proof requires only global physicality of the baseline and exact local gap structure of the tangent; separate local stationarity is unnecessary because Eq.~\eqref{eq:proof-upper-tail-N} did not assume $[\rho_0,H_X]=0$.
