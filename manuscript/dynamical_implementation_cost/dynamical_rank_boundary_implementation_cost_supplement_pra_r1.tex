@@ -1,0 +1,363 @@
+\documentclass[aps,pra,preprint,nofootinbib]{revtex4-2}
+
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\rhozero}{\rho_0}
+\newcommand{\Omegazero}{\Omega_0}
+\newcommand{\Cmin}{C_{\min}}
+\newcommand{\Cker}{C}
+\newcommand{\Vimpl}{V_{\rm impl}}
+\newcommand{\HT}{H_T}
+\newcommand{\Htot}{H_{\rm tot}}
+
+\begin{document}
+
+\title{Supplemental Material for ``Exact minimum dynamical cost of prescribed rank-changing quantum-state curvature''}
+\author{Anonymous}
+\affiliation{Anonymous affiliation}
+\maketitle
+
+\section{Exact unitary kernel-curvature identity}
+
+First take a bounded self-adjoint tangent generator $K$. Let $\Omega(\bm\theta)=U(\bm\theta)\Omegazero U(\bm\theta)^\dagger$, with $U(0)=I$ and $\partial_jU(0)=-iK_j$. Write the one-coordinate expansion
+\begin{equation}
+ U(\theta)=I-i\theta K+\theta^2 W+o(\theta^2),
+\end{equation}
+where unitarity implies $W+W^\dagger=-K^2$. Then
+\begin{align}
+ \partial_\theta^2\Omega(0)
+ &=2K\Omegazero K-K^2\Omegazero-\Omegazero K^2
+ +2W_a\Omegazero-2\Omegazero W_a,
+ \label{eq:sup-second}
+\end{align}
+where $W_a=(W-W^\dagger)/2$ is anti-Hermitian.
+
+Let $P=\supp\rhozero$, $Q=I-P$, and $\Tr_E\Omegazero=\rhozero$. Since $Q\rhozero Q=0$, positivity implies
+\begin{equation}
+ (Q\otimes I)\Omegazero=\Omegazero(Q\otimes I)=0.
+ \label{eq:sup-support}
+\end{equation}
+Projecting Eq.~\eqref{eq:sup-second} with $Q\otimes I$ on both sides eliminates every term except $2K\Omegazero K$. Taking the partial trace gives
+\begin{equation}
+ Q\partial_\theta^2\rho(0)Q
+ =2\Tr_E[(Q\otimes I)K\Omegazero K(Q\otimes I)].
+ \label{eq:sup-kernelidentity}
+\end{equation}
+This argument also shows why the identity is independent of the second derivative of the unitary curve. For an unbounded self-adjoint generator with finite baseline second moment, apply the same identity to bounded spectral truncations of $K$ and pass to the state-weighted quadratic-form limit. The energy-conserving direct-sum construction below is treated more directly by differentiating its trace-class branch series.
+
+For several coordinates, Eq.~\eqref{eq:sup-kernelidentity} applies to each diagonal second derivative. Contracting with a positive physical parameter metric after a linear coordinate transformation gives the corresponding metric-covariant form.
+
+\section{Variance decomposition and universal lower bound}
+
+Set $\Pi=P\otimes I_E$ and $\bar\Pi=Q\otimes I_E$. Equation~\eqref{eq:sup-support} gives $\Omegazero=\Pi\Omegazero\Pi$. For a Hermitian $K$,
+\begin{align}
+ \Tr(\Omegazero K^2)
+ &=\Tr(\Omegazero K\Pi K)
+  +\Tr(\Omegazero K\bar\Pi K),\\
+ \Tr(\Omegazero K)&=\Tr(\Omegazero\Pi K\Pi).
+\end{align}
+Therefore
+\begin{equation}
+ \Var_{\Omegazero}(K)
+ =\Var_{\Omegazero}(\Pi K\Pi)
+ +\Tr(\Omegazero K\bar\Pi K),
+ \label{eq:sup-vardecomp}
+\end{equation}
+where the first term is nonnegative. Summing over coordinates and using Eq.~\eqref{eq:sup-kernelidentity},
+\begin{equation}
+ \Vimpl\ge\frac12\Tr\Cker.
+ \label{eq:sup-lower}
+\end{equation}
+Equality requires the support-block action of every generator to have zero variance on the baseline. The constructions below choose it to vanish entirely.
+
+\section{Second-order positivity and the minimum feasible curvature}
+
+\subsection{Finite-dimensional Schur-complement argument}
+
+Let
+\begin{equation}
+ \rho(\bm\theta)=\rhozero+\sum_j\theta_jD_j+\frac12\sum_{jk}\theta_j\theta_kR_{jk}+o(\|\bm\theta\|^2)
+\end{equation}
+be positive near the origin, with $PD_jP=QD_jQ=0$. Fix a real direction $u=(u_j)$ and define
+\begin{equation}
+ D_u=\sum_j u_jD_j,\qquad R_u=\sum_{jk}u_ju_kR_{jk}.
+\end{equation}
+For small scalar $t$, positivity of $\rho(tu)$ and the Schur complement of the support block yield
+\begin{equation}
+ QR_uQ\succeq2QD_uP\rhozero^+PD_uQ.
+ \label{eq:sup-directionalPSD}
+\end{equation}
+Summing Eq.~\eqref{eq:sup-directionalPSD} over an orthonormal physical parameter basis gives
+\begin{equation}
+ \Cker=Q\sum_jR_{jj}Q
+ \succeq2\sum_jQD_jP\rhozero^+PD_jQ=:\Cmin.
+ \label{eq:sup-Cmin}
+\end{equation}
+The semidefinite tangent-cone structure underlying this step is standard \cite{Shapiro1997,BonnansCominettiShapiro1999}.
+
+\subsection{Separable infinite dimension}
+
+Let $\rhozero$ be trace class on a separable Hilbert space. Because it is compact, write its positive support spectral decomposition
+\begin{equation}
+ \rhozero=\sum_{n\ge1}\lambda_n|n\rangle\langle n|,
+ \qquad \lambda_n>0,
+ \qquad \sum_n\lambda_n=1.
+\end{equation}
+Let $P_m=\sum_{n=1}^m|n\rangle\langle n|$. Assume
+\begin{equation}
+ L_j:=QD_jP\rhozero^{-1/2}\in\mathcal S_2.
+ \label{eq:sup-HS}
+\end{equation}
+Applying the finite-dimensional test-vector/Schur argument to $P_m\oplus Q$ gives the monotone sequence
+\begin{equation}
+ QR_{jj}Q\succeq2QD_jP_m(P_m\rhozero P_m)^{-1}P_mD_jQ.
+\end{equation}
+The right-hand side increases in the positive quadratic-form sense to $2L_jL_j^\dagger$. The Hilbert--Schmidt condition makes this limit positive trace class. Summing over $j$ gives
+\begin{equation}
+ \Cker\succeq\Cmin:=2\sum_jL_jL_j^\dagger.
+ \label{eq:sup-CminInfinite}
+\end{equation}
+No bounded pseudoinverse of $\rhozero$ is required.
+
+\section{Horizontal realization of the minimum curvature}
+
+In finite dimension define
+\begin{equation}
+ X_j:=QD_jP\rhozero^+,
+ \qquad
+ K_j^{\rm hor}=i(X_j-X_j^\dagger).
+ \label{eq:sup-horizontalK}
+\end{equation}
+A direct support/kernel block calculation gives
+\begin{equation}
+ -i[K_j^{\rm hor},\rhozero]=D_j.
+\end{equation}
+The support block of $K_j^{\rm hor}$ vanishes, so
+\begin{align}
+ \Var_{\rhozero}(K_j^{\rm hor})
+ &=\Tr(QD_jP\rhozero^+PD_jQ),\\
+ Q\partial_j^2\rho(0)Q
+ &=2QD_jP\rhozero^+PD_jQ.
+\end{align}
+Consequently
+\begin{equation}
+ \sum_j\Var(K_j^{\rm hor})=\frac12\Tr\Cmin.
+ \label{eq:sup-horizontalcost}
+\end{equation}
+For pure-boundary tangents the SLD-QFI satisfies
+\begin{equation}
+ \frac14\Tr H^{\rm SLD}=\frac12\Tr\Cmin,
+\end{equation}
+which is the usual first-order Bures/SLD horizontal minimum \cite{BraunsteinCaves1994}. This identity is used only as prior-art geometry connecting the first-order and second-order problems.
+
+In infinite dimension the potentially unbounded target-only operator in Eq.~\eqref{eq:sup-horizontalK} is unnecessary. One may instead use the canonical purification
+\begin{equation}
+ |\Omega\rangle=\sum_n\sqrt{\lambda_n}|n\rangle_T|n\rangle_E
+\end{equation}
+and the finite-norm global tangent vector
+\begin{equation}
+ |\chi_j^{\rm hor}\rangle
+ =\sum_n\frac{QD_j|n\rangle}{\sqrt{\lambda_n}}\otimes|n\rangle_E.
+ \label{eq:sup-horizontalvector}
+\end{equation}
+Equation~\eqref{eq:sup-HS} is exactly the condition $\|\chi_j^{\rm hor}\|<\infty$. The bounded rank-two global generator
+\begin{equation}
+ K_j=i(|\chi_j^{\rm hor}\rangle\langle\Omega|-|\Omega\rangle\langle\chi_j^{\rm hor}|)
+\end{equation}
+then realizes the same reduced derivative and cost.
+
+\section{Exact attainment for an arbitrary feasible prescribed curvature}
+
+Let
+\begin{equation}
+ S=\frac12(\Cker-\Cmin)\succeq0.
+\end{equation}
+Choose an ancillary flag Hilbert space orthogonal to the baseline purification labels and a vector $|\eta\rangle\in Q\otimes E_{\rm flag}$ satisfying
+\begin{equation}
+ \Tr_{E_{\rm flag}}|\eta\rangle\langle\eta|=S.
+\end{equation}
+Then
+\begin{equation}
+ \Tr_E|\eta\rangle\langle\Omega|=0,
+ \qquad
+ \Tr_E|\eta\rangle\langle\chi_j^{\rm hor}|=0.
+ \label{eq:sup-orthflag}
+\end{equation}
+Set
+\begin{equation}
+ |\chi_1\rangle=|\chi_1^{\rm hor}\rangle+|\eta\rangle,
+ \qquad
+ |\chi_j\rangle=|\chi_j^{\rm hor}\rangle\;(j>1).
+\end{equation}
+The first derivatives are unchanged by Eq.~\eqref{eq:sup-orthflag}, while
+\begin{equation}
+ 2\sum_j\Tr_E[Q|\chi_j\rangle\langle\chi_j|Q]
+ =\Cmin+2S=\Cker.
+\end{equation}
+Moreover
+\begin{equation}
+ \sum_j\|\chi_j\|^2
+ =\frac12\Tr\Cmin+\Tr S
+ =\frac12\Tr\Cker.
+\end{equation}
+Using rank-two generators $K_j=i(|\chi_j\rangle\langle\Omega|-|\Omega\rangle\langle\chi_j|)$ proves the upper bound matching Eq.~\eqref{eq:sup-lower}.
+
+This construction also makes clear why the theorem concerns the metric-contracted kernel Hessian. Assigning all of $S$ to one coordinate changes the separate $R_{jk}$ tensors but leaves the prescribed contraction and the optimized quadratic cost unchanged. A complete tensor-valued second-order interpolation problem would require additional compatibility data.
+
+\section{Strong stationarity and a countable joint energy basis}
+
+Let $H_T$ be self-adjoint on a separable Hilbert space and let $U_t=e^{-iH_Tt/\hbar}$. Suppose the positive trace-class state $\rhozero$ is strongly stationary,
+\begin{equation}
+ U_t\rhozero U_t^\dagger=\rhozero\quad\text{for all }t.
+\end{equation}
+Each nonzero eigenspace of the compact operator $\rhozero$ is finite dimensional and invariant under every $U_t$. The restriction $U_t|_{\mathcal E_\lambda}$ is therefore a finite-dimensional strongly continuous unitary representation of $\mathbb R$. Such a representation is simultaneously diagonalizable and decomposes into characters $e^{-iEt/\hbar}$. Hence the occupied support admits a countable orthonormal basis $|n\rangle$ satisfying
+\begin{equation}
+ \rhozero|n\rangle=\lambda_n|n\rangle,
+ \qquad
+ H_T|n\rangle=E_n|n\rangle.
+ \label{eq:sup-jointbasis}
+\end{equation}
+The statement concerns only the occupied support of the trace-class state; the ambient Hamiltonian may have arbitrary continuous spectral components elsewhere.
+
+If $D_j$ is strongly stationary as an operator/form on the relevant domain, then $QD_j|n\rangle$ has the same target energy $E_n$. If the positive trace-class excess curvature $S$ strongly commutes with $H_T$, compactness gives an energy-adapted decomposition
+\begin{equation}
+ S=\sum_rs_r|q_r\rangle\langle q_r|,
+ \qquad H_T|q_r\rangle=F_r|q_r\rangle.
+ \label{eq:sup-Senergy}
+\end{equation}
+The energies $F_r$ need not be occupied by the baseline.
+
+\section{Energy-conserving infinite-dimensional construction}
+
+This section gives the construction that remains valid when Eq.~\eqref{eq:sup-Senergy} contains target-energy shells empty at baseline.
+
+Choose any occupied joint eigenstate $|n_*\rangle$ with weight $\lambda_*>0$ and energy $E_*$. If $S\ne0$, select positive branch weights $w_r$ satisfying $\sum_rw_r=\lambda_*$. Replace the one baseline branch of weight $\lambda_*$ by mutually incoherent copies
+\begin{equation}
+ w_r|n_*,a_r\rangle\langle n_*,a_r|,
+\end{equation}
+with orthogonal ancilla input states. All other occupied baseline eigenstates retain one branch.
+
+For each excess eigenmode $|q_r\rangle$ of energy $F_r$, choose nonnegative ancilla input and output energies
+\begin{equation}
+ a_r=\max(0,F_r-E_*),
+ \qquad
+ b_r=\max(0,E_*-F_r),
+ \label{eq:sup-compensation}
+\end{equation}
+so that
+\begin{equation}
+ E_*+a_r=F_r+b_r.
+\end{equation}
+Use orthogonal ancilla states at equal energies whenever necessary. Define the normalized horizontal target vectors
+\begin{equation}
+ |h_{j,n}\rangle:=\frac{QD_j|n\rangle}{\lambda_n}.
+\end{equation}
+For the split branch set
+\begin{align}
+ |\chi^{\rm hor}_{j,*,r}\rangle&=|h_{j,n_*}\rangle\otimes|a_r\rangle,\\
+ |\eta_r\rangle&=\sqrt{\frac{s_r}{w_r}}|q_r\rangle\otimes|b_r\rangle.
+\end{align}
+Input and output ancilla states are chosen orthogonal, so the excess flag has zero first-order reduced signature and zero horizontal cross term. Assign it to one coordinate,
+\begin{equation}
+ |\chi_{1,*,r}\rangle=|\chi^{\rm hor}_{1,*,r}\rangle+|\eta_r\rangle.
+\end{equation}
+Each component of $|\chi_{j,*,r}\rangle$ has the same total energy as its branch baseline state $|n_*,a_r\rangle$. For an unsplit branch the horizontal target energy is unchanged, so the same ancilla state suffices.
+
+For every classical branch $\alpha$, let $|\Omega_\alpha\rangle$ be its pure global baseline vector and define
+\begin{equation}
+ K_{j,\alpha}
+ =i(|\chi_{j,\alpha}\rangle\langle\Omega_\alpha|-|\Omega_\alpha\rangle\langle\chi_{j,\alpha}|).
+ \label{eq:sup-branchK}
+\end{equation}
+Both vectors in Eq.~\eqref{eq:sup-branchK} lie in the same total-energy eigenspace. Thus $K_{j,\alpha}$ commutes with the branch total Hamiltonian. The orthogonal direct sum $K_j=\oplus_\alpha K_{j,\alpha}$ is self-adjoint on its standard direct-sum domain and strongly commutes with the semibounded total Hamiltonian
+\begin{equation}
+ H_{\rm tot}=H_T\otimes I+I\otimes H_E,
+ \qquad H_E\ge0.
+\end{equation}
+The resulting blockwise unitary $U(\bm\theta)=\oplus_\alpha\exp[-i\sum_j\theta_jK_{j,\alpha}]$ conserves total energy exactly.
+
+The reduced first derivative is exact because the split weights sum back to $\lambda_*$, while the excess flags disappear at first order. The horizontal part produces $\Cmin$. The excess contribution is
+\begin{equation}
+ 2\sum_rw_r\Tr_E|\eta_r\rangle\langle\eta_r|
+ =2\sum_rs_r|q_r\rangle\langle q_r|=2S.
+\end{equation}
+Therefore the prescribed curvature $\Cker$ is realized exactly. The cost is
+\begin{align}
+ \Vimpl
+ &=\frac12\Tr\Cmin+\sum_rw_r\|\eta_r\|^2\\
+ &=\frac12\Tr\Cmin+\sum_rs_r
+ =\frac12\Tr\Cker.
+ \label{eq:sup-energycost}
+\end{align}
+This repairs the tempting but false shortcut of normalizing a curvature block by the baseline weight in the same target-energy shell: spectator curvature can occupy a shell with zero baseline population.
+
+\section{Trace-norm second-order control of the direct-sum family}
+
+The global baseline in the preceding construction is the trace-class classical mixture
+\begin{equation}
+ \Omegazero=\sum_\alpha w_\alpha\omega_\alpha,
+ \qquad \omega_\alpha=|\Omega_\alpha\rangle\langle\Omega_\alpha|.
+\end{equation}
+For one branch and bounded branch generators,
+\begin{align}
+ \|[K_{j,\alpha},\omega_\alpha]\|_1
+ &\le2\|K_{j,\alpha}\|,\\
+ \|[K_{j,\alpha},[K_{k,\alpha},\omega_\alpha]]\|_1
+ &\le4\|K_{j,\alpha}\|\,\|K_{k,\alpha}\|.
+ \label{eq:sup-majorants}
+\end{align}
+The total quadratic cost gives
+\begin{equation}
+ \sum_\alpha w_\alpha\sum_j\|K_{j,\alpha}\|^2<\infty.
+\end{equation}
+Cauchy--Schwarz therefore makes the weighted first-derivative majorants summable, and also
+\begin{equation}
+ \sum_\alpha w_\alpha\|K_{j,\alpha}\|\|K_{k,\alpha}\|<\infty.
+\end{equation}
+Equation~\eqref{eq:sup-majorants} then permits termwise differentiation of the branch series by dominated convergence in trace norm. The global and reduced families are trace-norm $C^2$ at the origin. No fourth moment $\sum w_\alpha\|K_\alpha\|^4$ is required.
+
+The branch weights may additionally be chosen so that the baseline ancilla has finite mean energy whenever desired. Because the compensation energies in Eq.~\eqref{eq:sup-compensation} form a countable sequence, one can choose positive $w_r$ with both $\sum_rw_r=\lambda_*$ and $\sum_rw_ra_r<\infty$. The flag amplitude rescales as $w_r^{-1/2}$, leaving the state-weighted excess cost $w_r\|\eta_r\|^2=s_r$ unchanged.
+
+\section{Autonomous temporal endpoint action and a fixed-shell benchmark}
+
+For a clean single-gap exchange, let the prescribed kernel curvature lie in an endpoint sector on which
+\begin{equation}
+ G_{\rm ex}=2\hbar\nu Q.
+\end{equation}
+Then
+\begin{equation}
+ \mathcal A_{\rm ex}^{(2)}
+ =\frac14\Tr(G_{\rm ex}\Cker)
+ =\frac{\hbar\nu}{2}\Tr\Cker
+ =\hbar\nu\,V_{\min}.
+\end{equation}
+
+A three-state fixed-total-energy benchmark makes the zero-work point explicit. Let $|L\rangle,|M\rangle,|U\rangle$ be orthonormal within one degenerate total-energy eigenspace, baseline $|M\rangle$, and choose
+\begin{align}
+ -iK_x|M\rangle&=\frac c2(|L\rangle+|U\rangle),\\
+ -iK_y|M\rangle&=\frac{ic}{2}(|L\rangle-|U\rangle).
+\end{align}
+Then
+\begin{equation}
+ \Var(K_x)=\Var(K_y)=\frac{c^2}{2},
+ \qquad V_{\rm impl}=c^2,
+\end{equation}
+while the total-energy distribution remains a delta function for the entire family. The endpoint action is $\hbar\nu c^2$.
+
+\section{Boundary nonregularity and scope}
+
+The fact that ordinary likelihood theory changes at parameter-space boundaries is classical and predates the present operator construction \cite{Chernoff1954,Shapiro1985,SelfLiang1987}. Likewise, non-faithful quantum states can exhibit distinctions between SLD-QFI and continuous Bures geometry \cite{Safranek2017}, and recent work gives explicit Bures geodesics for non-faithful states \cite{CarrascoSpehner2026}. The present theorem does not claim these boundary phenomena. Its additional datum is a prescribed positive target-kernel Hessian beyond the first-order minimum, and its conclusion is the exact dilation-coupling price of that datum under an energy-conservation constraint.
+
+Channel purification/fibre geometry and noisy-metrology channel extensions are also established \cite{FujiwaraImai2008,EscherEtAl2011,DemkowiczKolodynskiGuta2012}. The theorem here is state-specific and local: it does not optimize a channel uniformly over all possible inputs and does not claim a new generic channel-QFI formula.
+
+\bibliography{references}
+
+\end{document}
