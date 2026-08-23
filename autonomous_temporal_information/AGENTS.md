@@ -10,32 +10,24 @@ This is a distinct post-Rev11 foundational program. The frozen Rev11 paper remai
 
 > When signal, clock/reference, controller, detector, and memory are all finite physical systems and no ideal externally timed operation is free, what resource constrains creation, transmission, and recovery of temporal information at frequency `nu`?
 
-Research is analytical/theoretical, falsification-first, and documentation-first. Existing asymmetry, reference-frame, phase-estimation, WAY, Page--Wootters, PSD-cone geometry, singular QFI/Bures geometry, Fisher-symmetric measurement theory, Gaussian displacement/Holevo theory, and finite-clock results are infrastructure unless a genuinely new operational theorem is isolated.
+Research is analytical/theoretical, falsification-first, and documentation-first. Established asymmetry/reference-frame theory, phase estimation, WAY, Page--Wootters, PSD-cone geometry, singular QFI/Bures geometry, principal angles/shorted operators, Fisher-symmetric measurements, and Gaussian metrology are infrastructure unless a distinct operational temporal-information theorem is isolated.
 
 ## Current frontier
 
-**WP10 — sharp one-sided mixed survival+synthesis law: analytic PASS and independently validated.**
+**WP11 — noncommuting-support shorted-endpoint master law: analytic PASS and independently validated.**
 
-The next target is the genuinely difficult case `[supp(rho),H] != 0`, where support projection and energy-gap decomposition do not commute.
+The local theorem hierarchy now covers:
 
-Current composition hierarchy:
+1. pre-existing finite-radius information;
+2. one-sided boundary synthesis;
+3. multimode synthesis budgets;
+4. bilateral synthesis interference;
+5. one-sided mixed pre-existing+synthesis information;
+6. arbitrary coherent noncommuting baseline support through endpoint shorting geometry.
 
-1. finite-radius pre-existing information:
-   `Fisher x robustness <= zeroth-order spectral survival`;
-2. one-sided zero-radius synthesis:
-   `Fisher <= second-order endpoint synthesis`;
-3. one-sided pre-existing + synthesis:
-   **additive** robust-survival + synthesis law;
-4. bilateral synthesis:
-   **Minkowski/square-root** endpoint composition;
-5. structured autonomous relative-time retention:
-   exact sharp hard- and mean-energy cosine laws.
+The next high-value target is to replace WP11's scalar shorting constants and separately charged kernel curvatures by the **tight operator-valued allocation problem**.
 
 ## Completed work packages
-
-### WP01 — prior-art boundary
-
-Do not claim novelty for modes of asymmetry, QFI/Fisher geometry as asymmetry, finite clocks/reference frames, Page--Wootters time, quantitative WAY, standard phase estimation, PSD-cone second-order geometry, singular/rank-changing QFI/Bures corrections, Fisher-symmetric measurements, Gaussian displacement/heterodyne/Holevo theory, or generic waveform-estimation bounds.
 
 ### WP02 — robust tangent-radius law
 
@@ -47,137 +39,89 @@ Hence
 
 `Ebar+ >= (hbar nu R_lin^2/4)[Tr F_N^(nu)/N]`.
 
-### WP03 — autonomous relational dual survival
+### WP03 / WP06 — relational dual survival and coherent-history extension
 
-For an exact exchange tangent,
+For a globally stationary clock--signal exchange tangent,
 
-`K_N=(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`,
+`K_N=(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`.
 
-so
+The total-energy coefficient `2` is asymptotically sharp. WP06 removes separate local stationarity: pre-existing Page--Wootters/history-state coherence does not evade the law.
 
-`Ebar_C^+ + Ebar_S^+ >= 2 hbar nu K_N`.
+### WP04 / WP05 — exact structured autonomous retention
 
-The factor `2` is asymptotically sharp.
-
-### WP04 / WP05 — exact autonomous retention
-
-For hard total-excitation cap `L`,
+Hard total-excitation cap:
 
 `R_M(k) <= cos^2{pi/[floor(L/k)+2]}`.
 
-At the fundamental mode,
-
-`E_max >= hbar nu[pi/arccos(sqrt R)-2]`,
-
-with sharp near-unit coefficient `pi`.
-
-For mean total excitation `Lbar=m+lambda`,
+Mean-total-energy envelope:
 
 `R_M(1) <= (1-lambda)g_m+lambda g_(m+1)`,
 
-`g_L=cos^2[pi/(L+2)]`,
+`g_L=cos^2[pi/(L+2)]`.
 
-and adjacent-shell sine mixtures attain equality. The mean-energy asymptotic coefficient is also `pi`.
+Sine-chain extremizers make the near-lossless coefficient `pi` exactly sharp under both hard and mean total energy.
 
-### WP06 — arbitrary coherent baseline/history state
+### WP07 — one-sided zero-radius synthesis
 
-For arbitrary `rho`, positive `R_lin`, range projector `P_U`, finite `N`, and arbitrary collective POVM,
+For `P=supp(rho0)` and baseline-empty endpoint `P_U`, with
 
-`(R_lin^2/4)[Tr F_N/N] <= Tr(P_U rho)`.
+`A=P_U A P`,
 
-Pre-existing Page--Wootters/history-state coherence does not evade the robust tail law.
-
-### WP07 — nonlinear zero-radius synthesis
-
-For `P=supp(rho0)`, baseline-empty endpoint `P_U`, and `A=P_U A P`, define
+define
 
 `J=Tr(A rho0^+ A^dagger)`.
 
-Then
+Then for every finite `N` and arbitrary entangled collective POVM,
 
-`boxed: Tr F_N/N <= J <= Delta T_U(0)`
-
-for every finite `N` and arbitrary entangled collective POVM.
+`boxed: Tr F_N/N <= J <= Delta T_U(0)`.
 
 The minimal qubit and coherent-sideband constructions saturate the coefficient.
 
-### WP08 — quadratic synthesis sum/energy law
+### WP08 — multimode quadratic synthesis budget
 
-For mutually orthogonal baseline-empty modes and one common arbitrary collective POVM,
+For mutually orthogonal baseline-empty modes and one common arbitrary collective measurement,
 
-`Tr F_(N,k)/N <= Delta_k T_k(0)`.
+`boxed: sum_k w_k Tr F_(N,k)/N <= sum_k w_k Delta_k T_k(0)`
 
-Hence for arbitrary nonnegative weights,
+for every nonnegative weight sequence.
 
-`boxed: sum_k w_k Tr F_(N,k)/N <= sum_k w_k Delta_k T_k(0)`.
-
-With gap weights,
+Gap weighting gives
 
 `boxed: sum_k hbar nu_k Tr F_(N,k)/(4N) <= E_gap,syn^(2)`.
 
-Multimode coherent sidebands with one common heterodyne measurement saturate every mode and positive weighted sum simultaneously.
+Multimode coherent sidebands with common heterodyne readout saturate every positive weighted sum simultaneously.
 
 ### WP09 — bilateral zero-radius Minkowski law
 
-For
-
-`P=supp(rho0)`, `Q=I-P`,
-
-write
+For arbitrary rank-deficient baseline,
 
 `A=X+Y^dagger`,
 
-`X=A P`, `Y=Q A^dagger P`.
+`X=A P`, `Y=Q A^dagger P`,
 
-With
-
-`J_X=Tr(X rho0^+ X^dagger)`,
-
-`J_Y=Tr(Y rho0^+ Y^dagger)`,
-
-one has
+with weighted norms `J_X,J_Y`,
 
 `boxed: sqrt[Tr F_N/N] <= sqrt(J_X)+sqrt(J_Y)`.
 
-For orthogonal baseline-empty upper/lower endpoint sectors,
+For orthogonal empty upper/lower endpoints,
 
 `boxed: Tr F_N/N <= [sqrt(Delta T_+)+sqrt(Delta T_-)]^2`.
 
-The exact-gap qutrit Fourier extremizer gives `Tr F_1=4c^2` while `Delta T_+ + Delta T_-=2c^2`, proving additive endpoint accounting false by exactly factor two.
+An exact-gap qutrit Fourier experiment proves ordinary additive endpoint accounting false by exactly factor two and saturates the Minkowski law. Equal positive gap costs obey the sharp `hbar nu/8` synthesis-action coefficient.
 
-Equal positive gap costs obey the sharp law
+### WP10 — one-sided mixed survival+synthesis law
 
-`E_bi,syn^(2) >= (hbar nu/8)[Tr F_N/N]`.
-
-### WP10 — sharp one-sided mixed survival+synthesis law
-
-Assume
-
-`P=supp(rho0)`, `[P,H]=0`,
-
-`[H,A_nu]=hbar nu A_nu`,
-
-`P A_nu Q=0`.
-
-Decompose
+Assume `[P,H]=0` and no lower-endpoint synthesis. Write
 
 `A_nu=B+K`,
 
-`B=P A_nu P`,
+`B=P A_nu P`, `K=Q A_nu P`.
 
-`K=Q A_nu P`.
+Then
 
-Define
+`boxed: Tr F_N/N <= J_B+J_K`
 
-`J_B=Tr(B rho0^+ B^dagger)`,
-
-`J_K=Tr(K rho0^+ K^dagger)`.
-
-For every finite `N` and arbitrary entangled collective POVM,
-
-`boxed: Tr F_N/N <= J_B+J_K`.
-
-Let `R_B` be the physical linear radius of the support-preserving sub-tangent, `T_pre(nu)` the pre-existing upper endpoint population, and `T_syn(x,y)` the newly synthesized upper endpoint population. Then
+with
 
 `J_B <= 4T_pre/R_B^2`,
 
@@ -185,42 +129,148 @@ Let `R_B` be the physical linear radius of the support-preserving sub-tangent, `
 
 Therefore
 
-`boxed: Tr F_N/N <= 4T_pre(nu)/R_B^2 + Delta T_syn(0)`.
+`boxed: Tr F_N/N <= 4T_pre/R_B^2 + Delta T_syn(0)`.
 
-This additive law is exactly sharp. The qutrit family
+A qutrit normalized-congruence family plus one Fourier measurement simultaneously saturates all terms. The sharp positive energy/action law is
 
-`rho0=p0|0><0|+p1|1><1|`,
+`boxed: Ebar+/R_B^2 + E_syn^(2) >= (hbar nu/4)[Tr F_N/N]`.
 
-`A_nu=kappa p0|1><0|+kappa p1|2><1|`
+### WP11 — noncommuting baseline support / shorted endpoints
 
-has
+Let the **full** tangent be exact gap,
 
-`J_B=kappa^2 p0`,
+`[H,A_nu]=hbar nu A_nu`,
 
-`J_K=kappa^2 p1`,
+with arbitrary rank-deficient baseline
 
-and one three-outcome Fourier measurement attains
+`P=supp(rho0)`, `Q=I-P`.
 
-`Tr F_1=kappa^2=J_B+J_K`.
+First-order physicality gives `Q A_nu Q=0`. Decompose
 
-A normalized congruence family realizes the exact tangent and gives
+`B=P A_nu P`,
 
-`Delta T_syn=kappa^2 p1=J_K`,
+`K_+=Q A_nu P`,
 
-while
+`K_-=Q A_nu^dagger P`.
 
-`4T_pre/R_B^2=kappa^2 p0=J_B`.
+Define
 
-The positive energy/action form is
+`J_B^+=Tr(B rho0^+ B^dagger)`,
 
-`boxed: Ebar+/R_B^2 + E_syn^(2) >= (hbar nu/4)[Tr F_N/N]`,
+`J_B^-=Tr(B^dagger rho0^+ B)`,
 
-`E_syn^(2)=(hbar nu/4)Delta T_syn`,
+`J_+=Tr(K_+ rho0^+ K_+^dagger)`,
 
-and the same qutrit family saturates it exactly.
+`J_-=Tr(K_- rho0^+ K_-^dagger)`.
+
+The finite-copy arbitrary-POVM measurement law is
+
+`boxed: sqrt[Tr F_N/N]`
+
+`<= min{sqrt(J_B^+ + J_+) + sqrt(J_-),`
+
+`       sqrt(J_B^- + J_-) + sqrt(J_+)}`.
+
+Let `Pi_U,Pi_D` be participating energy endpoint projectors and set
+
+`S_U=P Pi_U P`, `S_D=P Pi_D P`,
+
+`W_U=Q Pi_U Q`, `W_D=Q Pi_D Q`.
+
+For the internal information-bearing range projectors `R_B^+,R_B^-`, define
+
+`lambda_U=sup{lambda:S_U >= lambda R_B^+}`,
+
+`lambda_D=sup{lambda:S_D >= lambda R_B^-}`.
+
+For synthesized range projectors `R_+,R_-`, define
+
+`mu_U=sup{mu:W_U >= mu R_+}`,
+
+`mu_D=sup{mu:W_D >= mu R_-}`.
+
+With
+
+`C_Delta=Q(partial_x^2 rho+partial_y^2 rho)Q`,
+
+`Gamma_U=Tr(W_U C_Delta)`,
+
+`Gamma_D=Tr(W_D C_Delta)`,
+
+one obtains
+
+`J_B^+ <= 4T_U/(R_B^2 lambda_U)`,
+
+`J_B^- <= 4T_D/(R_B^2 lambda_D)`,
+
+`J_+ <= Gamma_U/mu_U`,
+
+`J_- <= Gamma_D/mu_D`.
+
+Define
+
+`B_U=4T_U/(R_B^2 lambda_U)`,
+
+`B_D=4T_D/(R_B^2 lambda_D)`,
+
+`S_U=Gamma_U/mu_U`,
+
+`S_D=Gamma_D/mu_D`.
+
+Then
+
+`boxed: Tr F_N/N`
+
+`<= min{[sqrt(B_U+S_U)+sqrt(S_D)]^2,`
+
+`       [sqrt(B_D+S_D)+sqrt(S_U)]^2}`.
+
+The generic master ceiling is not claimed globally sharp, but it reduces exactly to WP06, WP07, WP09, and WP10 in their solved limits.
+
+#### Explicit necessity counterexample
+
+Take
+
+`H=hbar omega diag(0,1,2,3)`, `nu=2omega`,
+
+`|r>=(1/2)|2>+(sqrt(3)/2)|3>`,
+
+`rho0=(1/2)|0><0|+(1/2)|r><r|`,
+
+`A_nu=|2><0|`.
+
+Then `[P,H]!=0` and
+
+`B=(1/2)|r><0|`,
+
+`K_+=(sqrt(3)/2)|q><0|`.
+
+The true internal norm is `J_B=1/2`. The naive WP10-style term without geometric correction is only
+
+`4T_U/R_B^2=1/8`.
+
+But
+
+`lambda_U=1/4`,
+
+which repairs the internal bound to equality. On the kernel side
+
+`mu_U=3/4`
+
+also repairs the curvature term exactly.
+
+This is operationally necessary: a fixed one-copy POVM formed by classical randomization of scalar-SLD-optimal cosine and sine measurements has
+
+`Tr F=7/4`,
+
+while the naive no-geometry total resource ceiling is
+
+`13/8`.
+
+Thus omitting endpoint-support geometry gives a false observable Fisher bound.
 
 Read:
-`notes/WP10_SHARP_ONE_SIDED_MIXED_SURVIVAL_SYNTHESIS_LAW.md`.
+`notes/WP11_SHORTED_ENDPOINT_MASTER_LAW_NONCOMMUTING_SUPPORT.md`.
 
 ## Numerical gates
 
@@ -230,62 +280,43 @@ Read:
 - `numerics/verify_quadratic_synthesis_sum_rule.py`
 - `numerics/verify_bilateral_synthesis_minkowski_law.py`
 - `numerics/verify_one_sided_mixed_survival_synthesis_law.py`
+- `numerics/verify_shorted_endpoint_master_law.py`
 
-WP10 validation covers random energy-diagonal rank-deficient baselines, arbitrary one-copy POVMs, random two-copy collective POVMs, the internal robust-tail bound, exact normalized congruence-family curvature, qutrit Fourier saturation, and sharp energy/action equality.
+WP11 validation uses randomized noncommuting rank-2 qutrit supports, exact-gap tangents satisfying `Q A Q=0`, arbitrary one-copy POVMs, random two-copy collective POVMs, support/kernel shorting inequalities, and the explicit four-level operational counterexample.
 
-## Current open frontier — noncommuting support
+## Current open frontier — WP12 operator-valued curvature allocation
 
-### 1. Remove `[P,H]=0`
+WP11 converts endpoint geometry to scalar constants, but this can be loose because the same kernel curvature can contribute to both `Gamma_U` and `Gamma_D`.
 
-For the full tangent `A_nu`, exact-gap structure remains valid. But when the baseline support projector `P` does not commute with `H`, the pieces
+Highest priority:
 
-`P A_nu P`, `Q A_nu P`, `P A_nu Q`
-
-need not individually be exact Bohr modes.
-
-Do not apply WP06/WP07 to those projected pieces as if their energy orientation were unchanged.
-
-### 2. Candidate operator geometry
-
-Investigate:
-
-- principal angles between `P` and participating energy endpoint subspaces;
-- compressed endpoint operators `P P_U P` and `P P_D P`;
-- shorted operators / Schur complements;
-- generalized eigenvalues weighted by `rho`;
-- matrix/Gram resources that reduce exactly to WP06, WP07, WP09, and WP10.
-
-### 3. Scalar sufficiency test
-
-Attempt to construct two exact-gap physical models with identical natural scalar data—spectral tails, internal tangent radius, and synthesis curvatures—but different attainable Fisher information or weighted tangent norms.
-
-If successful, record a no-go theorem: a scalar resource law is insufficient in the noncommuting-support regime.
-
-### 4. Secondary directions
-
-- full finite-amplitude phase orbit with support change;
-- Gaussian squeezing/covariance synthesis;
-- dynamical interaction/action resource supplying synthesis curvature;
-- collective-N mean-energy retention;
-- many-body/cut-set laws.
+1. retain Anderson--Trapp shorted operators instead of reducing immediately to `lambda,mu`;
+2. formulate the joint feasible allocation
+   `Z_+>=0, Z_->=0, Z_++Z_-<=C_Delta`
+   with the required range/endpoint constraints;
+3. maximize the measurement-side Minkowski functional over that feasible set;
+4. derive a finite-dimensional SDP/variational expression for the tightest curvature-only resource ceiling;
+5. solve overlapping-subspace special cases analytically and seek exact extremizers;
+6. lift the final operator law to both sides of an autonomous clock--signal cut.
 
 ## Priority status
 
-Targeted searches have not identified exact predecessors for the specific WP07--WP10 finite-copy frequency-resolved resource composition laws. This is **not certification**. Priority remains unverified.
+Shorted operators, principal angles, rank-deficient QFI, PSD-cone geometry, and scalar SLD attainability are established. Candidate novelty is restricted to the frequency-resolved temporal-information use of these objects and the necessity/sharpness statements above. **Priority remains unverified, not certified.**
 
 ## Read first
 
-1. `notes/WP10_SHARP_ONE_SIDED_MIXED_SURVIVAL_SYNTHESIS_LAW.md`
-2. `notes/WP09_SHARP_BILATERAL_SYNTHESIS_MINKOWSKI_LAW.md`
-3. `notes/WP08_QUADRATIC_SPECTRAL_SYNTHESIS_SUM_AND_ENERGY_LAW.md`
-4. `notes/WP07_NONLINEAR_ZERO_RADIUS_CURVATURE_AND_FINITE_AMPLITUDE_LAW.md`
-5. `notes/WP06_NONSTATIONARY_ROBUST_TAIL_AND_HISTORY_STATE_EXTENSION.md`
-6. `notes/WP05_EXACT_MEAN_ENERGY_AUTONOMOUS_RELATIONAL_RETENTION.md`
-7. `notes/WP04_EXACT_HARD_CAP_AUTONOMOUS_RELATIONAL_RETENTION.md`
-8. `notes/WP03_RELATIONAL_DUAL_ENERGY_SURVIVAL_LAW.md`
-9. `notes/WP02_LOCAL_FISHER_NO_GO_AND_ROBUST_TANGENT_RADIUS_LAW.md`
-10. `notes/WP01_FOUNDATIONAL_SCOPE_AND_PRIOR_ART_BOUNDARY.md`
-11. `ROADMAP.md`
+1. `notes/WP11_SHORTED_ENDPOINT_MASTER_LAW_NONCOMMUTING_SUPPORT.md`
+2. `notes/WP10_SHARP_ONE_SIDED_MIXED_SURVIVAL_SYNTHESIS_LAW.md`
+3. `notes/WP09_SHARP_BILATERAL_SYNTHESIS_MINKOWSKI_LAW.md`
+4. `notes/WP08_QUADRATIC_SPECTRAL_SYNTHESIS_SUM_AND_ENERGY_LAW.md`
+5. `notes/WP07_NONLINEAR_ZERO_RADIUS_CURVATURE_AND_FINITE_AMPLITUDE_LAW.md`
+6. `notes/WP06_NONSTATIONARY_ROBUST_TAIL_AND_HISTORY_STATE_EXTENSION.md`
+7. `notes/WP05_EXACT_MEAN_ENERGY_AUTONOMOUS_RELATIONAL_RETENTION.md`
+8. `notes/WP04_EXACT_HARD_CAP_AUTONOMOUS_RELATIONAL_RETENTION.md`
+9. `notes/WP03_RELATIONAL_DUAL_ENERGY_SURVIVAL_LAW.md`
+10. `notes/WP02_LOCAL_FISHER_NO_GO_AND_ROBUST_TANGENT_RADIUS_LAW.md`
+11. `notes/WP01_FOUNDATIONAL_SCOPE_AND_PRIOR_ART_BOUNDARY.md`
+12. `ROADMAP.md`
 
 ## Documentation rule
 
