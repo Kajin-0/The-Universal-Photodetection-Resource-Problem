@@ -92,11 +92,7 @@ A qutrit congruence family and one Fourier measurement simultaneously saturate a
 
 ### WP11 — shorted-endpoint master law for noncommuting support — PASS
 
-Let the **full** tangent remain an exact gap but allow
-
-`[P,H] != 0`, `P=supp(rho0)`.
-
-First-order physicality gives `Q A Q=0`. Decompose
+Let the full tangent remain an exact gap but allow `[P,H] != 0`, with `P=supp(rho0)`, `Q=I-P` and `Q A Q=0`. Decompose
 
 `B=PAP`,
 
@@ -104,17 +100,7 @@ First-order physicality gives `Q A Q=0`. Decompose
 
 `K_-=QA^dagger P`.
 
-Define weighted norms
-
-`J_B^+=Tr(B rho0^+ B^dagger)`,
-
-`J_B^-=Tr(B^dagger rho0^+ B)`,
-
-`J_+=Tr(K_+ rho0^+ K_+^dagger)`,
-
-`J_-=Tr(K_- rho0^+ K_-^dagger)`.
-
-Measurement-side finite-copy law:
+The finite-copy arbitrary-POVM measurement law is
 
 `boxed: sqrt[Tr F_N/N]`
 
@@ -122,198 +108,159 @@ Measurement-side finite-copy law:
 
 `       sqrt(J_B^- + J_-) + sqrt(J_+)}`.
 
-Let `Pi_U,Pi_D` be the participating energy endpoint projectors and define
+Compressed endpoint projectors `P Pi_U P`, `P Pi_D P`, `Q Pi_U Q`, `Q Pi_D Q` supply principal-angle/shorting constants that reduce the weighted tangent norms to physical endpoint populations and curvatures. An exact four-level counterexample proves these geometric factors are operationally necessary: omitting the upper shorting constant produces a false Fisher bound.
 
-`S_U=P Pi_U P`, `S_D=P Pi_D P`,
+### WP12 — exact operator curvature-allocation law — PASS
 
-`W_U=Q Pi_U Q`, `W_D=Q Pi_D Q`.
-
-Internal shorting constants:
-
-`lambda_U=sup{lambda:S_U >= lambda R_B^+}`,
-
-`lambda_D=sup{lambda:S_D >= lambda R_B^-}`.
-
-Kernel shorting constants:
-
-`mu_U=sup{mu:W_U >= mu R_+}`,
-
-`mu_D=sup{mu:W_D >= mu R_-}`.
-
-For
-
-`C_Delta=Q(partial_x^2 rho+partial_y^2 rho)Q`,
-
-`Gamma_U=Tr(W_U C_Delta)`,
-
-`Gamma_D=Tr(W_D C_Delta)`,
-
-one has
-
-`J_B^+ <= 4T_U/(R_B^2 lambda_U)`,
-
-`J_B^- <= 4T_D/(R_B^2 lambda_D)`,
-
-`J_+ <= Gamma_U/mu_U`,
-
-`J_- <= Gamma_D/mu_D`.
-
-Hence, with
-
-`B_U=4T_U/(R_B^2 lambda_U)`,
-
-`B_D=4T_D/(R_B^2 lambda_D)`,
-
-`S_U=Gamma_U/mu_U`,
-
-`S_D=Gamma_D/mu_D`,
-
-`boxed: Tr F_N/N`
-
-`<= min{[sqrt(B_U+S_U)+sqrt(S_D)]^2,`
-
-`       [sqrt(B_D+S_D)+sqrt(S_U)]^2}`.
-
-The generic scalar master bound is not claimed globally sharp, but it reduces exactly to WP06, WP07, WP09, and WP10 in the solved limits.
-
-#### Necessity of shorting geometry
-
-Exact four-level counterexample:
-
-`H=hbar omega diag(0,1,2,3)`, `nu=2omega`,
-
-`|r>=(1/2)|2>+(sqrt(3)/2)|3>`,
-
-`rho0=(1/2)|0><0|+(1/2)|r><r|`,
-
-`A=|2><0|`.
-
-Then
-
-`J_B=1/2`,
-
-but the naive no-geometry internal term is only
-
-`4T_U/R_B^2=1/8`.
-
-The exact support shorting constant is
-
-`lambda_U=1/4`,
-
-which restores equality. The kernel shorting constant is
-
-`mu_U=3/4`
-
-and likewise restores the exact synthesis norm.
-
-The omission is operationally fatal: a fixed randomized scalar-SLD POVM gives
-
-`Tr F=7/4 > 13/8`,
-
-where `13/8` is the naive total resource ceiling with the geometric factor omitted.
-
-Thus endpoint-support geometry is required for observable Fisher information.
-
-## Current frontier — WP12: operator-valued allocation law
-
-WP11's scalar constants are rigorous but can overcount when upper- and lower-oriented synthesis components draw on overlapping kernel curvature.
-
-### A. Retain shorted operators themselves
-
-For a positive kernel curvature operator `C_Delta` and an information-bearing subspace `R`, the Anderson--Trapp short
-
-`Short_R(C_Delta)`
-
-is the largest positive operator below `C_Delta` whose range lies in `R`.
-
-For a single synthesized orientation this immediately suggests the tighter resource
-
-`J_+ <= Tr Short_(R_+)(C_Delta)`
-
-when only the support constraint is used.
-
-Derive the endpoint-weighted version that also enforces compatibility with `W_U=Q Pi_U Q` rather than collapsing to the scalar `mu_U`.
-
-### B. Joint curvature allocation
-
-The actual second-order condition is
+Second-order positivity supplies the **joint** kernel-curvature constraint
 
 `Z_+ + Z_- <= C_Delta`,
 
-not two independent inequalities.
+not two independent curvature budgets.
 
-Define the feasible set
+For positive `C` and synthesized output projectors `R_+,R_-`, define
 
-`A(C_Delta;R_+,R_-)`
+`Phi_a(C;R_+,R_-)`
 
-of positive pairs `(Z_+,Z_-)` satisfying
+`= sup [sqrt(a+Tr Z_+) + sqrt(Tr Z_-)]^2`
 
-- `Z_+>=0`, `Z_->=0`;
-- `range(Z_+) subseteq R_+`;
-- `range(Z_-) subseteq R_-`;
-- `Z_+ + Z_- <= C_Delta`;
-- endpoint-weighted constraints inherited from `W_U,W_D` if necessary.
+over positive support-constrained allocations `Z_++Z_-<=C`.
 
-The sharp curvature-only Fisher ceiling should be obtained by maximizing the WP11 measurement functional over this feasible set.
+The exact variational representation is
 
-### C. Candidate variational resource
+`boxed: Phi_a`
 
-For a fixed upper-oriented internal resource `a>=0`, define
+`= inf_(0<eta<1) {a/eta`
 
-`Phi_a(C_Delta;R_+,R_-)`
+`+ h_(1/eta,1/(1-eta))(C;R_+,R_-)}`,
 
-`= sup_(Z_+,Z_- in A)`
+where
 
-`[sqrt(a+Tr Z_+) + sqrt(Tr Z_-)]^2`.
+`h_(alpha,beta)=max alpha Tr Z_+ + beta Tr Z_-`
 
-The conjugate orientation gives a second functional with `a` attached to the lower side. The final bound should take the minimum of the two.
+is an SDP with dual
 
-Questions:
+`boxed: h_(alpha,beta)=min_(W>=0) Tr(CW)`
 
-1. Can `Phi_a` be represented as an SDP or one-dimensional convex dual?
-2. Does the optimizer lie at an extreme decomposition of `C_Delta`?
-3. When `R_+ perp R_-`, does it reduce exactly to WP09?
-4. When `R_+=R_-`, what closed form results?
-5. Can endpoint-weighted shorting be incorporated without destroying convexity?
+subject to
 
-### D. Analytic overlapping-subspace benchmark
+`R_+ W R_+ >= alpha R_+`,
 
-If `R_+=R_-=R` and the only known scalar is
+`R_- W R_- >= beta R_-`.
 
-`s=Tr Short_R(C_Delta)`,
+Thus the exact resource allocation is a one-dimensional outer minimization over an SDP value.
 
-then the relaxed allocation has `j_++j_-<=s`.
+Exact limits:
 
-For fixed internal `a`, maximize
+- one synthesized orientation:
+  `Phi_a(C;R,0)=a+Tr Short_R(C)`;
+- identical synthesized subspace, with `s=Tr Short_R(C)`:
+  `Phi_a=(sqrt(a)+sqrt(s))^2` for `s<=a`, and `Phi_a=2(a+s)` for `s>=a`;
+- orthogonal decoupled synthesized subspaces:
+  `Phi_a=[sqrt(a+s_+)+sqrt(s_-)]^2`.
 
-`f(j)=[sqrt(a+j)+sqrt(s-j)]^2`, `0<=j<=s`.
+The physical master bound is
 
-The stationary point is `j=(s-a)/2` when `s>=a`. Therefore the relaxed closed form is
+`boxed: Tr F_N/N`
 
-`Phi(a,s)=`
+`<= min{Phi_(J_B^+)(C_Delta;R_+,R_-),`
 
-- `(sqrt(a)+sqrt(s))^2`, for `s<=a`;
-- `2(a+s)`, for `s>=a`.
+`       Phi_(J_B^-)(C_Delta;R_-,R_+)}`.
 
-Verify this algebraically and determine whether an exact quantum family can attain it.
+Replacing the internal norms by their WP11 endpoint-resource ceilings gives a fully resource-reduced noncommuting-support theorem.
 
-### E. Autonomous relational lift
+In the shared rank-one-kernel benchmark,
 
-After the one-system allocation law is understood, apply it from both clock and signal viewpoints to a globally stationary exchange tangent. Test whether the shorting/allocation objects must appear on **both** sides of the relational cut.
+`J_B^+=5/4`, `J_+=7/4`, `J_-=3`, `s=19/4`,
 
-### F. Priority and significance gate
+and the exact allocation gives `Phi=12`, whereas separately charging the same curvature to both orientations gives approximately `21.427`. The allocation law removes about `43.996%` of the overcount. The model's SLD-QFI trace is `10.75`, so the remaining gap is measurement-compatibility geometry rather than curvature-resource double counting.
 
-Search deeply against shorted-operator decomposition/parallel addition, semidefinite resource allocation, singular quantum estimation, quantitative WAY/reference-frame theory, and Gaussian covariance estimation.
+## Current frontier — WP13: spectral-energy operator allocation
 
-Do not draft the new foundational manuscript until WP12 either produces a sharp operator allocation theorem or shows that the remaining optimization is standard/prior art.
+WP12 allocates total kernel curvature exactly but does not yet price that curvature by physical endpoint energy/action.
+
+### A. Put endpoint costs inside the allocation
+
+Retain the kernel endpoint contractions
+
+`W_U=Q Pi_U Q`,
+
+`W_D=Q Pi_D Q`
+
+or, more generally, positive spectral cost operators obtained by compressing energy above the relevant endpoint threshold into `Q`.
+
+The next theorem should constrain the same feasible `Z_+,Z_-` by a positive operator-valued synthesis cost, rather than replacing `W_U,W_D` by scalar shorting constants `mu_U,mu_D`.
+
+### B. Define the correct spectral synthesis action
+
+Candidate form:
+
+`E_syn^(2)=(1/4)Tr[G C_Delta]`
+
+for an appropriate positive cost operator `G`, or an optimized version in which distinct positive costs `G_+,G_-` are assigned to the two synthesized orientations.
+
+Required properties:
+
+1. positivity even when one orientation corresponds to a lower ordinary subsystem-energy endpoint;
+2. exact reduction to WP07/WP08 energy weighting in clean baseline-empty sectors;
+3. exact or controlled reduction to WP09's bilateral `hbar nu/8` coefficient;
+4. compatibility with WP12's shared-curvature allocation without double counting;
+5. preservation of principal-angle geometry when `[P,H]!=0`.
+
+### C. Derive primal and dual energy-weighted SDPs
+
+For positive endpoint cost operators `G_+,G_-`, derive the sharp maximum Fisher-compatible allocation for a fixed synthesis-action budget and the dual witness operator. Determine whether the dual can be written as a single positive operator dominating weighted compressions on `R_+` and `R_-`.
+
+### D. Closed-form benchmarks
+
+Solve at least:
+
+- one orientation;
+- orthogonal endpoint subspaces;
+- coincident endpoint subspaces;
+- rank-one `R_+,R_-` with arbitrary principal angle;
+- the WP12 shared-kernel qutrit model.
+
+### E. Measurement compatibility
+
+After the resource allocation is energy weighted, test whether the remaining difference to attainable common-record Fisher information is exactly a standard Holevo/multiparameter compatibility penalty or whether another physical resource appears.
+
+### F. Autonomous relational lift
+
+Apply the final positive synthesis-action allocation from both clock and signal sides of a globally stationary exact exchange tangent. Determine whether a sharp two-sided spectral-action law results.
+
+## Secondary directions
+
+- rank-one arbitrary-principal-angle closed form for WP12/WP13;
+- Gaussian covariance-changing synthesis;
+- continuous-frequency limit rigor;
+- collective-N mean-energy retention beyond WP05;
+- many-body/cut-set resource laws.
+
+## Priority and significance gate
+
+Do not draft the new foundational manuscript yet. Require at least one of:
+
+- a sharp positive spectral-energy WP13 theorem;
+- a sharp impossibility result proving no scalar spectral-action law can represent the operator allocation;
+- a clean autonomous two-sided lift with a nontrivial sharp coefficient.
+
+Continue explicit prior-art checks against shorted operators/parallel addition, semidefinite resource allocation, operator-valued energy costs, singular quantum estimation, Holevo bounds, WAY/reference-frame theory, and quantum waveform estimation. Priority remains unverified until demonstrated otherwise.
 
 ## Validation requirements
 
-- add an independent WP12 numerical/SDP validator;
-- test random overlapping `R_+,R_-` subspaces;
-- test orthogonal and identical-subspace limits;
-- test one- and two-copy arbitrary POVMs;
-- construct at least one exact physical family saturating any claimed closed form.
+Current independent validators:
+
+- `numerics/verify_robust_tangent_radius_law.py`
+- `numerics/verify_relational_autonomous_laws.py`
+- `numerics/verify_nonlinear_zero_radius_law.py`
+- `numerics/verify_quadratic_synthesis_sum_rule.py`
+- `numerics/verify_bilateral_synthesis_minkowski_law.py`
+- `numerics/verify_one_sided_mixed_survival_synthesis_law.py`
+- `numerics/verify_shorted_endpoint_master_law.py`
+- `numerics/verify_operator_curvature_allocation_law.py`
+
+WP13 must add an independent energy-weighted allocation validator before being marked PASS.
 
 ## Documentation discipline
 
