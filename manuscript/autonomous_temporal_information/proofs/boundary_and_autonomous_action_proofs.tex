@@ -1,0 +1,270 @@
+% M2 proof module: WP07 / WP09 / audited WP18.
+
+\subsection{Rank-changing boundary curvature and autonomous action}
+\label{supp:boundary-action-full}
+
+Let $\rho(x,y)$ be a $C^2$ physical family with baseline $\rho_0$, support projector $P=\supp\rho_0$, and kernel projector $Q=\id-P$. Let
+\begin{equation}
+\partial_x\rho(0)=D_c=\frac{A+A^\dagger}{2},
+\qquad
+\partial_y\rho(0)=D_s=\frac{A-A^\dagger}{2i}.
+\end{equation}
+
+\subsubsection{One-sided boundary synthesis}
+
+Assume a baseline-empty endpoint projector $P_U$ with
+\begin{equation}
+A=P_UAP,
+\qquad
+P_UP=0.
+\end{equation}
+Define
+\begin{equation}
+J=\Tr(A\rho_0^+A^\dagger),
+\qquad
+T_U(x,y)=\Tr[P_U\rho(x,y)].
+\end{equation}
+For any POVM, the right-supported weighted score inequality gives
+\begin{equation}
+\Tr F_1\le J.
+\label{eq:boundary-score-one}
+\end{equation}
+The independent-copy identity gives
+\begin{equation}
+\frac{\Tr F_N}{N}\le J
+\label{eq:boundary-score-N}
+\end{equation}
+for arbitrary collective measurements.
+
+To obtain the curvature cost, apply the second-order PSD-cone condition separately to the $x$ and $y$ curves. Since
+\begin{equation}
+QD_cP=\frac A2,
+\qquad
+QD_sP=\frac A{2i},
+\end{equation}
+one has
+\begin{align}
+Q\partial_x^2\rho(0)Q
+&\succeq
+2\left(\frac A2\right)\rho_0^+
+\left(\frac A2\right)^\dagger
+=\frac12A\rho_0^+A^\dagger,\\
+Q\partial_y^2\rho(0)Q
+&\succeq
+2\left(\frac A{2i}\right)\rho_0^+
+\left(\frac A{2i}\right)^\dagger
+=\frac12A\rho_0^+A^\dagger.
+\end{align}
+Adding gives
+\begin{equation}
+C_\Delta
+:=Q(\partial_x^2+\partial_y^2)\rho(0)Q
+\succeq A\rho_0^+A^\dagger.
+\label{eq:one-side-Cdelta}
+\end{equation}
+Taking the trace after projection onto $P_U$ yields
+\begin{equation}
+\Delta T_U(0)
+\ge J.
+\end{equation}
+Thus
+\begin{equation}
+\boxed{
+\frac{\Tr F_N}{N}\le J\le\Delta T_U(0).
+}
+\label{eq:one-side-final}
+\end{equation}
+
+\subsubsection{Bilateral boundary Minkowski law}
+
+Now assume a pure-boundary tangent
+\begin{equation}
+PAP=0,
+\qquad
+QAQ=0.
+\end{equation}
+Define
+\begin{equation}
+X=QAP,
+\qquad
+Y=QA^\dagger P.
+\end{equation}
+Then
+\begin{equation}
+A=X+Y^\dagger.
+\end{equation}
+For a POVM define
+\begin{equation}
+u_y=\frac{\Tr(XM_y)}{\sqrt{p_y}},
+\qquad
+v_y=\frac{\Tr(YM_y)^*}{\sqrt{p_y}}.
+\end{equation}
+The Fisher trace is the squared norm of the sum of score vectors,
+\begin{equation}
+\Tr F_1=\|u+v\|_2^2.
+\end{equation}
+Weighted Cauchy--Schwarz gives
+\begin{equation}
+\|u\|_2^2\le J_+,
+\qquad
+\|v\|_2^2\le J_-,
+\end{equation}
+where
+\begin{equation}
+J_+=\Tr(X\rho_0^+X^\dagger),
+\qquad
+J_-=\Tr(Y\rho_0^+Y^\dagger).
+\end{equation}
+Therefore Minkowski gives
+\begin{equation}
+\boxed{
+\sqrt{\Tr F_1}\le\sqrt{J_+}+\sqrt{J_-}.
+}
+\end{equation}
+For $N$ copies the two weighted norms scale as $NJ_+$ and $NJ_-$, hence
+\begin{equation}
+\boxed{
+\sqrt{\frac{\Tr F_N}{N}}
+\le\sqrt{J_+}+\sqrt{J_-}.
+}
+\label{eq:bilateral-N}
+\end{equation}
+
+For the second-order resource, the support-to-kernel blocks of the two real derivatives are
+\begin{equation}
+K_c=\frac{X+Y}{2},
+\qquad
+K_s=\frac{X-Y}{2i}.
+\end{equation}
+The two PSD-cone inequalities give
+\begin{equation}
+Q\partial_x^2\rho Q\succeq2K_c\rho_0^+K_c^\dagger,
+\end{equation}
+\begin{equation}
+Q\partial_y^2\rho Q\succeq2K_s\rho_0^+K_s^\dagger.
+\end{equation}
+Adding them cancels the $X/Y$ cross terms exactly:
+\begin{equation}
+C_\Delta\succeq
+X\rho_0^+X^\dagger+Y\rho_0^+Y^\dagger
+=Z_++Z_-.
+\label{eq:bilateral-shared-curvature}
+\end{equation}
+
+If $X$ and $Y$ enter orthogonal baseline-empty endpoint sectors $P_+$ and $P_-$, define
+\begin{equation}
+T_\pm(x,y)=\Tr(P_\pm\rho(x,y)).
+\end{equation}
+Projecting Eq.~\eqref{eq:bilateral-shared-curvature} onto the two sectors gives
+\begin{equation}
+J_+\le\Delta T_+(0),
+\qquad
+J_-\le\Delta T_-(0).
+\end{equation}
+Combining with Eq.~\eqref{eq:bilateral-N},
+\begin{equation}
+\frac{\Tr F_N}{N}
+\le
+\left[\sqrt{\Delta T_+(0)}+\sqrt{\Delta T_-(0)}\right]^2.
+\label{eq:bilateral-curvature-final}
+\end{equation}
+The cross term in the square is generally physical and cannot be replaced by an additive curvature bound.
+
+\subsubsection{Autonomous two-sided action}
+
+Assume now the exact exchange relations
+\begin{equation}
+[H_S,A_\nu]=+\hbar\nu A_\nu,
+\qquad
+[H_C,A_\nu]=-\hbar\nu A_\nu.
+\end{equation}
+In a clean bilateral boundary geometry, $X$ creates a signal-upper and clock-lower endpoint, whereas $Y$ creates a signal-lower and clock-upper endpoint. Let the corresponding local population Laplacians be
+\begin{equation}
+\Delta T_{S,+},\quad\Delta T_{S,-},\quad
+\Delta T_{C,+},\quad\Delta T_{C,-}.
+\end{equation}
+Define
+\begin{equation}
+\Aact_S^{(2)}
+=\frac{\hbar\nu}{4}
+(\Delta T_{S,+}+\Delta T_{S,-}),
+\end{equation}
+\begin{equation}
+\Aact_C^{(2)}
+=\frac{\hbar\nu}{4}
+(\Delta T_{C,+}+\Delta T_{C,-}).
+\end{equation}
+From Eq.~\eqref{eq:bilateral-curvature-final} and
+\begin{equation}
+(\sqrt a+\sqrt b)^2\le2(a+b),
+\end{equation}
+each subsystem obeys
+\begin{equation}
+\Aact_X^{(2)}
+\ge\frac{\hbar\nu}{8}\frac{\Tr F_N}{N},
+\qquad X\in\{C,S\}.
+\end{equation}
+Therefore
+\begin{equation}
+\boxed{
+\Aact_C^{(2)}+\Aact_S^{(2)}
+\ge\frac{\hbar\nu}{4}\frac{\Tr F_N}{N}.
+}
+\label{eq:autonomous-bilateral-action-proof}
+\end{equation}
+
+If only one orientation is present, Eq.~\eqref{eq:one-side-final} applies on each local side separately. Each subsystem then obeys
+\begin{equation}
+\Aact_X^{(2)}
+\ge\frac{\hbar\nu}{4}\frac{\Tr F_N}{N},
+\end{equation}
+so
+\begin{equation}
+\boxed{
+\Aact_C^{(2)}+\Aact_S^{(2)}
+\ge\frac{\hbar\nu}{2}\frac{\Tr F_N}{N}.
+}
+\label{eq:autonomous-one-sided-action-proof}
+\end{equation}
+
+\subsubsection{Sharp fixed-shell constructions}
+
+For bilateral synthesis use the total-excitation-2 shell
+\begin{equation}
+|L\rangle=|2_C,0_S\rangle,
+\quad
+|M\rangle=|1_C,1_S\rangle,
+\quad
+|U\rangle=|0_C,2_S\rangle,
+\end{equation}
+with
+\begin{equation}
+A_\nu=c(|U\rangle\langle M|+|M\rangle\langle L|),
+\qquad
+\rho_0=|M\rangle\langle M|.
+\end{equation}
+The exact family
+\begin{align}
+|\psi(x,y)\rangle={}&
+\sqrt{1-\frac{c^2}{2}(x^2+y^2)}|M\rangle\\
+&+\frac c2(x+i y)|L\rangle
++\frac c2(x-i y)|U\rangle
+\end{align}
+is normalized on the open disk $x^2+y^2<2/c^2$ and lies entirely inside one total-energy eigenspace. Every local endpoint Laplacian is $c^2$, while the three-outcome Fourier measurement gives
+\begin{equation}
+\Tr F_1=4c^2.
+\end{equation}
+Thus Eq.~\eqref{eq:autonomous-bilateral-action-proof} is saturated exactly.
+
+For one-sided synthesis use
+\begin{equation}
+A_\nu=2c|U\rangle\langle D|,
+\qquad
+\rho_0=|D\rangle\langle D|,
+\end{equation}
+inside a fixed-total-excitation-1 shell and the convention-consistent family
+\begin{equation}
+|\psi(x,y)\rangle
+=\sqrt{1-c^2(x^2+y^2)}|D\rangle+c(x-i y)|U\rangle.
+\end{equation}
+The local endpoint Laplacians are $4c^2$, a fixed equatorial POVM gives $\Tr F_1=4c^2$, and Eq.~\eqref{eq:autonomous-one-sided-action-proof} is saturated exactly.
