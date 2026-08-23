@@ -1,0 +1,238 @@
+% Audited M2R1 proof module: WP11/WP13/WP19 arbitrary-support autonomous bridge.
+
+\subsection{Arbitrary coherent-support mixed survival--synthesis bridge}
+\label{supp:mixed-full-proof-r1}
+
+All statements in this subsection are finite-dimensional. Let $A_\nu$ satisfy
+\begin{equation}
+[H_S,A_\nu]=+\hbar\nu A_\nu,
+\qquad
+[H_C,A_\nu]=-\hbar\nu A_\nu,
+\end{equation}
+and let $P=\supp\rho_0$, $Q=\id-P$. Two-sided first-order physicality implies
+\begin{equation}
+QA_\nu Q=0.
+\end{equation}
+Decompose
+\begin{equation}
+B=PA_\nu P,
+\qquad
+K_+=QA_\nu P,
+\qquad
+K_-=QA_\nu^\dagger P,
+\label{eq:mixed-r1-decomp}
+\end{equation}
+so $A_\nu=B+K_++K_-^\dagger$. Define
+\begin{align}
+J_B^+&=\Tr(B\rho_0^+B^\dagger),&
+J_B^-&=\Tr(B^\dagger\rho_0^+B),\\
+J_+&=\Tr(K_+\rho_0^+K_+^\dagger),&
+J_-&=\Tr(K_-\rho_0^+K_-^\dagger).
+\end{align}
+
+\subsubsection{Measurement-side master inequality}
+
+Set $X=(B+K_+)P$ and $Y=K_-$. The outputs of $B$ and $K_+$ lie in orthogonal $P$ and $Q$ sectors, hence
+\begin{equation}
+\Tr(X\rho_0^+X^\dagger)=J_B^++J_+.
+\end{equation}
+Weighted Hilbert--Schmidt Cauchy--Schwarz and score-space Minkowski give
+\begin{equation}
+\sqrt{\Tr F_1}
+\le
+\sqrt{J_B^++J_+}+\sqrt{J_-}.
+\end{equation}
+Applying the same argument to $A_\nu^\dagger$ gives
+\begin{equation}
+\sqrt{\Tr F_1}
+\le
+\sqrt{J_B^-+J_-}+\sqrt{J_+}.
+\end{equation}
+All weighted norms scale exactly by $N$ for independent encoding, so for every finite $N$ and arbitrary collective POVM,
+\begin{equation}
+\boxed{
+\sqrt{\frac{\Tr F_N}{N}}
+\le
+\min\!\left\{
+\sqrt{J_B^++J_+}+\sqrt{J_-},
+\sqrt{J_B^-+J_-}+\sqrt{J_+}
+\right\}.
+}
+\label{eq:mixed-r1-measurement}
+\end{equation}
+
+\subsubsection{Two-sided shorted survival ceilings}
+
+Because $P$ need not commute with either local Hamiltonian, $B=PAP$ need not itself be an exact Bohr-gap operator. Let
+\begin{equation}
+Z_B^+=B\rho_0^+B^\dagger,
+\qquad
+Z_B^-=B^\dagger\rho_0^+B,
+\end{equation}
+with support projectors $R_B^+=\supp Z_B^+$ and $R_B^-=\supp Z_B^-$. Let $\Pi_{S,U},\Pi_{S,D},\Pi_{C,U},\Pi_{C,D}$ be minimal participating endpoint projectors for the support-preserving exchange content and define
+\begin{align}
+S_{S,U}&=P\Pi_{S,U}P,&S_{S,D}&=P\Pi_{S,D}P,\\
+S_{C,U}&=P\Pi_{C,U}P,&S_{C,D}&=P\Pi_{C,D}P.
+\end{align}
+Define
+\begin{align}
+\lambda_{S,U}&=\sup\{\lambda\ge0:S_{S,U}\succeq\lambda R_B^+\},\\
+\lambda_{C,D}&=\sup\{\lambda\ge0:S_{C,D}\succeq\lambda R_B^+\},\\
+\lambda_{S,D}&=\sup\{\lambda\ge0:S_{S,D}\succeq\lambda R_B^-\},\\
+\lambda_{C,U}&=\sup\{\lambda\ge0:S_{C,U}\succeq\lambda R_B^-\}.
+\end{align}
+Let $R_B$ be the affine radius of the support-preserving sub-tangent and $T_{X,E}=\Tr(\Pi_{X,E}\rho_0)$. If the relevant shorting constant is positive, the finite-radius majorization gives
+\begin{align}
+J_B^+&\le\frac{4T_{S,U}}{R_B^2\lambda_{S,U}},&
+J_B^+&\le\frac{4T_{C,D}}{R_B^2\lambda_{C,D}},\\
+J_B^-&\le\frac{4T_{S,D}}{R_B^2\lambda_{S,D}},&
+J_B^-&\le\frac{4T_{C,U}}{R_B^2\lambda_{C,U}}.
+\end{align}
+A bound with $\lambda=0$ is unavailable and is treated as $+\infty$, not as a division by zero. Thus, for $B\ne0$, define $a_+$ and $a_-$ as the minima over the available finite local-side ceilings. If neither local side has positive shorting constant for a nonzero $J_B^\pm$, the corresponding $a_\pm=+\infty$ and that orientation supplies no finite scalar survival bound. If $B=0$, set
+\begin{equation}
+a_+=a_-=0.
+\end{equation}
+In all cases with finite ceilings,
+\begin{equation}
+J_B^+\le a_+,
+\qquad
+J_B^-\le a_-.
+\label{eq:mixed-r1-apm}
+\end{equation}
+
+\subsubsection{Canonical endpoint-incidence action}
+
+Define
+\begin{equation}
+\Pi_{\rm out}=\supp(A_\nu A_\nu^\dagger),
+\qquad
+\Pi_{\rm in}=\supp(A_\nu^\dagger A_\nu).
+\end{equation}
+The exact exchange relations imply that both commute with $H_C$ and $H_S$. Define
+\begin{equation}
+G_{\rm ex}
+=2\hbar\nu\,Q(\Pi_{\rm out}+\Pi_{\rm in})Q.
+\label{eq:mixed-r1-Gex}
+\end{equation}
+For the kernel Laplacian
+\begin{equation}
+C_\Delta=Q(\partial_x^2+\partial_y^2)\rho(0)Q,
+\end{equation}
+second-order positivity gives
+\begin{equation}
+C_\Delta\succeq Z_++Z_-,
+\qquad
+Z_+=K_+\rho_0^+K_+^\dagger,
+\quad
+Z_-=K_-\rho_0^+K_-^\dagger.
+\end{equation}
+Define
+\begin{equation}
+\Aact_{\rm ex}^{(2)}=\frac14\Tr(G_{\rm ex}C_\Delta),
+\qquad
+e:=4\Aact_{\rm ex}^{(2)}.
+\end{equation}
+For each nonzero synthesized orientation define $R_\pm=\supp Z_\pm$ and
+\begin{equation}
+g_\pm=\lambda_{\min}(R_\pm G_{\rm ex}R_\pm|_{R_\pm}).
+\end{equation}
+Whenever the nonzero ranges have positive prices,
+\begin{equation}
+g_+J_+ +g_-J_-\le e,
+\label{eq:mixed-r1-action-budget}
+\end{equation}
+with absent orientations simply omitted. If a nonzero orientation has $g_\pm=0$, no finite scalar action-only theorem can bound its $J_\pm$; one must retain a different cost operator or the operator-valued curvature itself.
+
+\subsubsection{Bilateral scalar envelope}
+
+For $a,e\ge0$ and $p,q>0$, define
+\begin{equation}
+\Psi_a(e;p,q)=
+\begin{cases}
+(\sqrt a+\sqrt{e/q})^2,&e\le ap^2/q,\\[1mm]
+(e+pa)(p^{-1}+q^{-1}),&e\ge ap^2/q.
+\end{cases}
+\label{eq:mixed-r1-Psi}
+\end{equation}
+This is the exact maximum of
+\begin{equation}
+[\sqrt{a+j_+}+\sqrt{j_-}]^2
+\end{equation}
+subject to $pj_++qj_-\le e$, $j_\pm\ge0$.
+
+If both synthesized orientations are nonzero and $g_+,g_->0$, Eqs.~\eqref{eq:mixed-r1-measurement}--\eqref{eq:mixed-r1-action-budget} give
+\begin{equation}
+\boxed{
+\frac{\Tr F_N}{N}
+\le
+\min\!\left\{
+\Psi_{a_+}(e;g_+,g_-),
+\Psi_{a_-}(e;g_-,g_+)
+\right\}.
+}
+\label{eq:mixed-r1-bilateral}
+\end{equation}
+
+\subsubsection{Degenerate synthesis orientations}
+
+The absent-range cases follow directly from Eq.~\eqref{eq:mixed-r1-measurement}; they are not obtained by evaluating an undefined restricted eigenvalue.
+
+If $J_-=0$, $J_+>0$, and $g_+>0$,
+\begin{equation}
+\boxed{
+\frac{\Tr F_N}{N}
+\le
+\min\!\left\{
+a_+ +\frac{e}{g_+},
+\left(\sqrt{a_-}+\sqrt{\frac{e}{g_+}}\right)^2
+\right\}.
+}
+\label{eq:mixed-r1-plus-only}
+\end{equation}
+If $J_+=0$, $J_->0$, and $g_->0$,
+\begin{equation}
+\boxed{
+\frac{\Tr F_N}{N}
+\le
+\min\!\left\{
+\left(\sqrt{a_+}+\sqrt{\frac{e}{g_-}}\right)^2,
+a_- +\frac{e}{g_-}
+\right\}.
+}
+\label{eq:mixed-r1-minus-only}
+\end{equation}
+If $J_+=J_-=0$,
+\begin{equation}
+\boxed{
+\frac{\Tr F_N}{N}\le\min\{a_+,a_-\}.
+}
+\label{eq:mixed-r1-support-only}
+\end{equation}
+In the clean pure-boundary plus-only or minus-only case, $a_+=a_-=0$ and the canonical autonomous endpoint incidence has $g=2\hbar\nu$. Since $e=4\Aact_{\rm ex}^{(2)}$, Eqs.~\eqref{eq:mixed-r1-plus-only} or \eqref{eq:mixed-r1-minus-only} reduce to
+\begin{equation}
+\Aact_{\rm ex}^{(2)}
+\ge\frac{\hbar\nu}{2}\frac{\Tr F_N}{N},
+\end{equation}
+which is exactly the one-sided WP18 coefficient. The clean bilateral case similarly gives the $\hbar\nu/4$ coefficient.
+
+\subsubsection{Shared-kernel qutrit check}
+
+For the qutrit benchmark defined later in the supplement,
+\begin{equation}
+J_B^+=J_B^-=\frac54,
+\qquad
+J_+=\frac74,
+\qquad
+J_-=3,
+\end{equation}
+with
+\begin{equation}
+g_+=g_-=\frac{13}{4}\hbar\nu,
+\qquad
+4\Aact_{\rm ex}^{(2)}=\frac{247}{16}\hbar\nu.
+\end{equation}
+In units $\hbar\nu=1$, Eq.~\eqref{eq:mixed-r1-bilateral} gives
+\begin{equation}
+\Psi_{5/4}(247/16;13/4,13/4)=12.
+\end{equation}
+Thus the canonical autonomous reduction introduces no additional resource-layer looseness in this benchmark.
