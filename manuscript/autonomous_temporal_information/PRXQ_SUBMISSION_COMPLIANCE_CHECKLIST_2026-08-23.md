@@ -2,70 +2,100 @@
 
 **Date:** 2026-08-23
 
-**Purpose:** record current APS/PRX Quantum submission requirements separately from the scientific theorem audit. This file is a packaging checklist, not part of the manuscript claim.
+**Purpose:** submission-packaging checklist for the current PRX Quantum R4 flagship. This file is not part of the scientific claim and must be re-checked against then-current APS/PRX Quantum instructions on the actual submission date.
 
-## Already implemented in the repository
+## Current manuscript package
 
-- [x] PRX Quantum-focused abstract: `sections/prxq_abstract_r1.tex`.
-- [x] PRX Quantum-focused introduction: `sections/prxq_introduction_r1.tex`.
-- [x] Nontechnical Popular Summary near the recommended 150-word length: `PRXQ_POPULAR_SUMMARY_R1.md`.
-- [x] Cover-letter draft with context, key findings, significance case, and fields for submission history/referee metadata: `PRXQ_COVER_LETTER_R1.md`.
-- [x] Data Availability Statement: `sections/data_availability_r1.tex`.
-- [x] Public repository citation in `references.bib`: `UniversalPhotodetectionResourceRepo2026`.
-- [x] Substantive AI-use disclosure: `sections/ai_use_disclosure_r1.tex`.
-- [x] Deterministic generator inserts PRXQ abstract, introduction, AI disclosure, and Data Availability Statement without modifying the audited theorem body: `apply_prxq_frontmatter_r1.py`.
-- [x] Static gate enforces that every citation used by Supplemental Material also appears in the generated main-paper bibliography.
-- [x] Supplement is self-contained at the mathematical level and main paper is intended to stand alone conceptually.
+- [x] Scientific theorem/proof baseline is frozen at PRXQ R3.
+- [x] Current journal-facing main is the deterministic R4 bridge revision.
+- [x] R4 title remains **Two spectral-resource regimes for autonomous temporal information**.
+- [x] Canonical supplement remains the unchanged M2R3 supplement.
+- [x] R4 adds only the late-scope companion bridge; it does not import the companion proof.
+- [x] `check_prxq_r4_bridge.py` freezes the R3 theorem/proof prefix byte-for-byte and preserves theorem/proposition/corollary counts.
+- [x] Final PR-triggered verification run `32674844366` passed R3 regeneration/static gate, R4 generation/freeze gate, R4 compile, supplement compile, and artifact upload.
+- [x] Final artifact `9502376602`, SHA-256 `8e32c8248050ffa8be254d86f2f0a5724ef0e3edd1a9e2cf38cbc3a17ca3ed76`.
+- [x] Exact R4 main (20 pages) and supplement (25 pages) render-inspected; modified pages PASS visual QA.
 
-## Current APS requirements checked against official guidance
+## Companion-manuscript handling
 
-### Cover letter
+R4 cites the separate manuscript
 
-PRX Quantum requests context, a summary of key findings, relevant Physical Review submission history including joint submissions, and any recommended/excluded referees. The draft contains all four categories, with author-specific fields left explicit rather than invented.
+> *Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature*.
 
-### Popular Summary
+The current review-preparation bibliography entry is anonymous and labels it a companion manuscript.
 
-PRX Quantum requires a nontechnical summary before publication and recommends approximately 150 words, no equations, low jargon, with problem -> advance -> implications -> broader importance. The R1 summary follows that structure.
+Before actual submission:
 
-### Data Availability Statement
+- [ ] determine the companion's exact public/submission status;
+- [ ] if an arXiv identifier, DOI, accepted-paper record, or other citable public metadata exists, replace the anonymous companion entry with that metadata;
+- [ ] if the companion is simultaneously under consideration or jointly submitted, disclose that status accurately in the cover letter and submission system as required by then-current journal instructions;
+- [ ] if the companion is not public, confirm that the citation form and editor disclosure are acceptable under then-current APS policy;
+- [ ] do not imply that the flagship theorem depends on the companion: R4 explicitly states that the companion result is not used in the flagship proofs.
 
-All Physical Review articles require a Data Availability Statement. This theoretical work reports no experimental or observational data, but it does use original validation software. The current statement therefore identifies the public repository containing manuscript sources, research notes, and custom numerical validators.
+## Cover letter
 
-**Pre-submission improvement recommended:** archive the exact submission commit/release in a persistent repository such as Zenodo and replace or supplement the GitHub URL citation with the resulting DOI. APS prefers persistent identifiers for public data/software citations.
+Current draft:
 
-### Supplemental-Material references
+`PRXQ_COVER_LETTER_R1.md`
 
-PRX Quantum requires references cited in Supplemental Material to appear in the main article's reference list. `check_m2_tex_static.py` now enforces this automatically after the PRXQ manuscript is generated.
+The R4 cover-letter draft now:
 
-### Substantive AI use
+- summarizes the two-regime survival/synthesis principle;
+- gives the sharp bilateral/one-sided action coefficients;
+- mentions the companion equality `A_ex^(2)=hbar nu V_min` as an independent dynamical completion;
+- explicitly says the flagship is self-contained and does not rely on the companion proof;
+- leaves submission history, companion status, joint-submission status, and referee metadata for the author to confirm rather than inventing them.
 
-APS currently defines substantive AI use to include scientific reasoning or interpretation, drafting/revising scientific claims, literature synthesis, derivations/calculations, material code generation/debugging, simulations/numerical analysis, and data/statistical analysis. This project used AI in several of those ways, so disclosure is mandatory.
+## Popular Summary
 
-The current disclosure states:
+- [x] A nontechnical Popular Summary exists: `PRXQ_POPULAR_SUMMARY_R1.md`.
+- [ ] Re-read it immediately before submission and confirm it still matches the final R4 framing; do not add implementation-cost detail unless it improves rather than obscures the two-regime concept.
 
-- tool: OpenAI ChatGPT;
-- version/configuration: manuscript-stage GPT-5.6 Sol, with earlier GPT-5.6-series sessions;
-- assistance: exploratory derivations, counterexample searches, literature synthesis, algebraic checks, validator code, adversarial review, and manuscript drafting;
-- direction/verification: explicit human problem specifications and review decisions, with AI outputs treated as provisional and subjected to analytic proofs, separate re-derivation passes, counterexample searches, source verification, and numerical validators;
-- responsibility: final scientific responsibility remains with the author.
+## AI disclosure and Data Availability
 
-## Items that cannot be certified by the repository and must be confirmed by the author
+The current package contains dedicated AI-use and Data Availability material generated through the existing PRXQ front-matter chain.
 
-- [ ] **AI rights/privacy terms:** confirm immediately before submission that the OpenAI account/settings and governing terms used for the work satisfy APS's requirement that the AI tool claim no rights over submitted content and that applicable data-use/privacy settings are acceptable. APS specifically asks authors to revisit current terms because they can change.
-- [ ] **Human final review:** read and approve every theorem statement, proof, citation, AI disclosure, and generated manuscript before submission; APS places full responsibility on the human author.
-- [ ] **Submission history:** fill the cover-letter statement accurately.
-- [ ] **Joint-submission status:** fill the cover-letter statement accurately.
-- [ ] **Corresponding-author metadata:** name, affiliation, active email, and verified ORCID as required by APS.
-- [ ] **Referee suggestions/exclusions:** supply only after a conflict-of-interest check; do not invent names for completeness.
-- [ ] **Funding/conflict statements:** add if applicable.
-- [ ] **Persistent archive:** preferably mint an immutable DOI-backed archive for the exact submission code/source snapshot and update the Data Availability citation.
-- [ ] **Successful LaTeX/BibTeX CI result:** retrieve a concrete successful GitHub Actions run before calling the submission build verified.
+Before submission:
 
-## Official policy sources checked on 2026-08-23
+- [ ] re-check the current APS Appropriate Use of AI Tools policy;
+- [ ] verify the tool/provider/model description and the human-direction/verification statement remain accurate;
+- [ ] confirm the applicable OpenAI account/privacy/rights terms satisfy the then-current journal requirements;
+- [ ] re-check the current APS Data Availability Statement guidance;
+- [ ] ensure any software/code availability statement accurately describes what is public at submission time;
+- [ ] if an immutable DOI-backed software/source archive is created, use the persistent identifier where appropriate.
+
+## Author-controlled metadata that the repository cannot certify
+
+- [ ] corresponding-author name, affiliation, active email, and ORCID;
+- [ ] all coauthor metadata if applicable;
+- [ ] funding and conflict-of-interest statements;
+- [ ] accurate Physical Review submission history;
+- [ ] exact related/companion-manuscript status;
+- [ ] joint-submission status;
+- [ ] suggested/excluded referees only after conflict-of-interest review;
+- [ ] final human read and approval of every theorem statement, proof, citation, disclosure, and generated submission file.
+
+## Scientific scope lock for submission
+
+Do not enlarge R4 merely because the companion theorem exists.
+
+The allowed bridge is:
+
+`V_min(C)=(1/2)Tr C`,
+
+`A_ex^(2)=hbar nu V_min`,
+
+with the explicit limitations already present in R4.
+
+Do not import the infinite-dimensional implementation proof, ancillary construction, or full PRA theorem stack into the PRXQ submission.
+
+Do not use Nobel/prize-level framing in the manuscript, Popular Summary, cover letter, or submission metadata.
+
+## Official policy pages recorded for re-checking
+
+These were the policy locations used in the August 23, 2026 packaging audit and must be revisited on the actual submission date because requirements can change:
 
 - PRX Quantum Information for Authors: `https://journals.aps.org/prxquantum/authors`
 - APS Data Availability Statement guidelines: `https://journals.aps.org/authors/data-availability-statements`
 - APS Appropriate Use of AI Tools: `https://journals.aps.org/authors/appropriate-use-ai-tools`
 - APS Editorial Policies and Practices: `https://journals.aps.org/authors/editorial-policies`
-
-Because these policies can change, re-check them on the actual submission date.
