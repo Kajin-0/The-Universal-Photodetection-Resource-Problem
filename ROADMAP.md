@@ -1,140 +1,125 @@
 # Research Roadmap
 
-**Updated:** 2026-08-22
+**Updated:** 2026-08-23
 
-**Active branch:** `agent/temporal-information-resource-law`
+**Active branch:** `agent/autonomous-temporal-information-law`
 
-Paper 1 Rev11 and Paper 2 Rev7 are frozen.
+Paper 1 Rev11, Paper 2 Rev7, and the random-time spectral-resource Rev11 manuscript are frozen.
 
-**Grand Challenge science frontier:** **WP28**.
+The active autonomous temporal-information program has reached **WP31**. Its PRX Quantum R3 manuscript is build-verified and science-frozen while the stronger post-R3 theorem chain is audited.
 
-**Preferred manuscript:** **Rev11 — Spectral Resource Laws for Temporal Fisher Information**, frozen after full local preflight.
+## Established autonomous hierarchy
 
-# Established hierarchy
+### A1 — finite-radius survival
 
-## G1 — exact periodic finite-copy Fisher-tail law
+`(R_lin^2/4)[Tr F_N^tan/N] <= T(nu)`
 
-For exact periodic random-time encoding,
+for finite `N` and arbitrary collective POVM.
 
-`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`
+Autonomous exchange gives the two-sided local-tail version.
 
-for any finite `N` and any joint POVM, including arbitrary entangled collective measurements.
+### A2 — rank-boundary synthesis
 
-## G2 — arbitrary semibounded pure-point Bohr-gap law
+At zero affine radius, the resource moves to positive second-order endpoint synthesis.
 
-For an arbitrary semibounded pure-point Hamiltonian, long-window random-time averaging at frequency `nu` isolates exact Bohr pairs and gives
+Clean autonomous action coefficients:
 
-`A_nu=rho0^(1/2)V_nu rho0^(1/2)`.
+- bilateral `hbar nu/4`;
+- one-sided `hbar nu/2`.
 
-Therefore
+R3 also contains the SLD-QFI action corollary, spectator-curvature no-go, coherent-support mixed bridge, qutrit resource/QFI/accessibility hierarchy, and multi-gap shared-Hessian sum.
 
-`Tr F_N^(nu)/N <= min(D_nu,U_nu) <= Pr(Omega>=nu)`
+### A3 — exact dynamical implementation meaning
 
-for any finite `N` and joint POVM, with no global equal-spacing or commensurability assumption.
+WP21 shows that kernel curvature is exactly the squared implementation coupling into empty sectors.
 
-This is the main WP28/Rev11 strengthening.
+WP22 gives the exact first-order minimum `V_min=(1/4)Tr H_SLD` for the pure-boundary tangent.
 
-## G3 — controlled continuum survival law
+WP23 upgrades this to a prescribed feasible metric-contracted kernel 2-jet:
 
-`R(nu)<=Pr(Omega>=nu)`.
+`boxed: V_min=(1/2)Tr C`.
 
-The spectral measure may be atomic, absolutely continuous, singular-continuous, or mixed. `Ebar+=hbar<Omega>` is excess energy above the participating lower edge; the area and `hfR` laws are first-moment corollaries.
+For clean exact exchange,
 
-## G4 — common-measurement Herglotz geometry
+`boxed: V_min=A_ex^(2)/(hbar nu)`.
 
-For one fixed one-copy POVM,
+The finite-dimensional minimum is exactly total-energy conserving.
 
-`R_M(k)=int cos(k theta)J_M(dtheta)`.
+### A4 — exact-gap robustness
 
-Every Toeplitz matrix `[R_M(i-j)]` is PSD. Zero-population completion cannot create Fisher information.
+WP25 gives the finite-radius leakage-corrected theorem for approximate Bohr gaps.
 
-For arbitrary pure-point spectra the same geometry holds across exact multiples of a chosen Bohr gap.
+WP27 gives the rank-boundary counterpart with near-resonant endpoint curvature plus explicit off-resonant score-amplitude penalties.
 
-## G5 — near-lossless divergence with sharp exponent
+Therefore exact resonance is not an all-or-nothing assumption in either main regime.
 
-`Ebar+>=hbar nu A(q)`,
+### A5 — infinite-dimensional survival and synthesis
 
-`A(q)~1/sqrt(2(1-q))`.
+WP28 extends finite-radius survival to separable infinite-dimensional systems under bounded relative tangent regularity.
 
-The sine-profile family realizes
+WP29 extends rank-boundary synthesis under Hilbert--Schmidt right-relative tangent regularity.
 
-`nbar_L~pi/[2sqrt(1-R_L(1))]`,
+### A6 — infinite-dimensional dynamical cost
 
-so the inverse-square-root exponent is sharp. Do not claim the optimal prefactor.
+WP30 proves
 
-## G6 — complete one-copy extremizer classification
+`inf_(smooth unitary dilations)V_impl=(1/2)Tr C`
 
-Only on the full contiguous pure-sector chain:
+without imposing energy conservation.
 
-`first-harmonic saturation`
+WP31 closes the exact-energy-conservation domain issue even when the stationary trace-class state has unbounded occupied target-energy support. Use a classically mixed energy-shell dilation, shellwise optimal generators, and a zero-energy ancilla. Finite quadratic cost is enough for trace-norm `C^2` smoothness.
 
-`<=> geometric-mixture populations`
+Hence
 
-`<=> Hausdorff-moment tails`
+`boxed:
+inf_(semibounded exactly energy-conserving smooth unitary dilations)
+V_impl=(1/2)Tr C`
 
-`<=> one source-adapted POVM saturates every harmonic simultaneously`.
+and, in the clean endpoint geometry,
 
-Do not generalize this converse to arbitrary anharmonic/sparse/mixed spectra or arbitrary entangled `N>1` equality cases.
+`boxed: V_min=A_ex^(2)/(hbar nu)`.
 
-## G7 — nonextremal photon relevance
+## Audit status
 
-A transform-limited truncated-Gaussian single photon reaches about 96.6% of the survival ceiling at `0.5 sigma` and 88.5% at `sigma` under canonical covariant timing.
+- Original theorem stack through WP20: hostile mathematical audit **PASS**.
+- `Psi_a` mixed envelope: independently re-derived and brute-force validated.
+- WP23 prescribed-2-jet theorem: dedicated hostile audit **PASS** at the finite-dimensional statement level.
+- WP25/WP27 robustness laws: dedicated random validators pass.
+- WP28/WP29 truncation validator passes.
+- WP31 shell-dilation validator is committed and targets the unbounded-generator / finite-state-weighted-cost regime.
+- Priority remains **unverified, not certified**.
 
-## G8 — independent Poisson source to field
+## Prior-art discipline
 
-For an independent quantum-marked Poisson source, arbitrary parameter-independent field formation and detector processing cannot evade the normalized modewise ceiling because final POVMs pull back to the upstream event register.
+Do not claim novelty for Page--Wootters/modes of asymmetry, generic Fisher/QFI/Bures/Holevo theory, Bures/Uhlmann horizontal lifts, classical nonregular boundary statistics, covariant/energy-conserving Stinespring dilation theory, generic quantum speed limits/control norms, infinite-dimensional QFI/Bures functional analysis, or standard operator inequalities.
 
-## G9 — arbitrary waveform synthesis boundary
+The narrow post-R3 candidate contribution is the **frequency-resolved endpoint synthesis action as the exact minimum state-weighted quadratic implementation-coupling cost for a prescribed feasible rank-changing local kernel 2-jet under globally conserving relational dynamics**, with controlled detuning and infinite-dimensional extensions.
 
-The coherent-sideband no-go remains: baseline mean energy alone cannot constrain arbitrary parameter-dependent waveform-state synthesis. Broader laws require explicit encoding/control/action resources.
+## Current gate
 
-## Retired from manuscript main line
+Pause theorem proliferation long enough to make the current result publication-grade.
 
-The separately optimized SLD-QFI envelope remains mathematically valid in WP10/WP12/WP15 but was **removed from Rev11** because it is peripheral relative to the anharmonic Bohr-gap theorem. Do not restore it unless a specific editorial need arises.
+### Immediate work order
 
-# Prior-art discipline
+1. hostile-audit WP31's compactness/stationary-energy-support lemma;
+2. hostile-audit its trace-norm `C^2` dominated-convergence step;
+3. extend the WP31 validator to mixed and degenerate shell baselines with random PSD excess curvature;
+4. perform a targeted priority search for prescribed-second-order-jet Stinespring/purification implementation-cost results;
+5. decide between:
+   - **R4 integration** of only the strongest post-R3 result(s), or
+   - a **separate dynamical/infinite-dimensional follow-up paper** centered on WP21--WP31.
 
-Do not claim novelty for arbitrary Bohr-frequency / `U(1)` modes, random-time dephasing, Herglotz/Bochner, Hausdorff/Bernstein theory, canonical phase POVMs, geometric/exponential mixtures, finite sine states, generic QFI/Holevo machinery, or generic Poisson/CPTP processing.
+### Next theorem targets only after that gate
 
-Candidate contribution: arbitrary-POVM Fisher-tail coefficients, exact-Bohr-gap extension to arbitrary semibounded pure-point Hamiltonians, common-measurement spectral geometry, semibounded near-lossless divergence with sharp exponent, complete one-copy equality classification in the contiguous model, and source-to-record inheritance.
+1. noisy/CPTP implementation cost;
+2. unbounded-relative-tangent quadratic-form theory;
+3. approximate-exchange dynamical cost combining WP27 with WP31;
+4. Gaussian/CV specialization only after the abstract infinite-dimensional results are stabilized.
 
-**Priority remains unverified, not certified.**
+## Manuscript integrity
 
-# Rev11 gate — PASSED locally
+Every public-facing paper must be scientifically standalone. Never include personal repository URLs, usernames, repository names, development history, or dependencies on internal research files.
 
-- full LaTeX/BibTeX build: **PASS**;
-- **12 pages**;
-- PDF size: **452,384 bytes**;
-- unresolved citations/references: **0**;
-- overfull boxes: **0**;
-- all 12 pages rendered at 200 dpi and visually inspected: **PASS**;
-- all six numerical validators: **PASS**;
-- PDF SHA-256: `5e0ac0132a7f4a3f7b07e9c4ba86b046b23bc89c1f7635efe9f737019396d0f0`;
-- source ZIP SHA-256: `208fd7a2e932507366797658c84dff1666257477143a433bf81d7741a8d0c8a1`;
-- fresh source-package compile: **PASS**;
-- fresh compile visually pixel-identical at 200 dpi on all pages.
+## Documentation discipline
 
-Detailed record:
-`grand_challenge/notes/MANUSCRIPT_REV11_ANHARMONIC_PREFLIGHT_2026-08-22.md`.
-
-# Journal ladder
-
-1. **PRX Quantum — Research Article**.
-2. **Physical Review A — Regular Article**.
-3. Physical Review Research — secondary alternative.
-4. PRL — only after a deliberate Letter rewrite; do not hide hypotheses or proof structure.
-
-# Current work order
-
-**Freeze Rev11.** Do not add the optional finite-amplitude trace-distance result, optimize constants, or broaden the extremizer theorem by default. Reopen only for:
-
-- a concrete theorem defect;
-- historical-priority collision;
-- substantive referee objection;
-- build/rendering or journal-format defect.
-
-Complete publication engineering as far as possible autonomously. Do not introduce “human verification” as a research/manuscript gate.
-
-# Documentation discipline
-
-Every material theorem, prior-art collision, manuscript defect, or publication-status change must update the detailed notes, active handoff files, and `main`.
+Every material theorem, counterexample, proof repair, validator, prior-art collision, or publication decision must update the active research notes, autonomous landing files, and top-level landing files.
