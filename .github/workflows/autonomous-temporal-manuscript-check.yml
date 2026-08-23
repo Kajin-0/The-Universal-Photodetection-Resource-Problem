@@ -18,14 +18,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Static M2R1 TeX integrity gate
+      - name: Generate PRX Quantum front-matter revision
+        working-directory: manuscript/autonomous_temporal_information
+        run: python apply_prxq_frontmatter_r1.py
+
+      - name: Static TeX integrity gate
         working-directory: manuscript/autonomous_temporal_information
         run: python check_m2_tex_static.py
 
-      - name: Compile canonical M2R1 main manuscript
+      - name: Compile PRX Quantum prose-targeted main manuscript
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: autonomous_temporal_resource_law_m2r1.tex
+          root_file: autonomous_temporal_resource_law_prxq_r1.tex
           working_directory: manuscript/autonomous_temporal_information
           latexmk_use_xelatex: false
 
@@ -39,15 +43,21 @@ jobs:
       - name: Upload manuscript builds
         uses: actions/upload-artifact@v4
         with:
-          name: autonomous-temporal-information-manuscript-m2r1
+          name: autonomous-temporal-information-prxq-r1
           path: |
-            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_m2r1.pdf
+            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_prxq_r1.pdf
+            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_prxq_r1.tex
             manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_m2r1.tex
             manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_supplement_m2r1.pdf
             manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_supplement_m2r1.tex
+            manuscript/autonomous_temporal_information/sections/*.tex
             manuscript/autonomous_temporal_information/proofs/*.tex
+            manuscript/autonomous_temporal_information/apply_prxq_frontmatter_r1.py
             manuscript/autonomous_temporal_information/check_m2_tex_static.py
             manuscript/autonomous_temporal_information/references.bib
+            manuscript/autonomous_temporal_information/PRXQ_POPULAR_SUMMARY_R1.md
+            manuscript/autonomous_temporal_information/M2R1_JOURNAL_POSITIONING_2026-08-23.md
             manuscript/autonomous_temporal_information/THEOREM_PROVENANCE_MATRIX.md
             manuscript/autonomous_temporal_information/MANUSCRIPT_HANDOFF.md
             manuscript/autonomous_temporal_information/M2_HOSTILE_THEOREM_LANGUAGE_AND_DIMENSION_AUDIT.md
+            manuscript/autonomous_temporal_information/M2R1_POST_REWRITE_HOSTILE_AUDIT.md
