@@ -79,25 +79,17 @@ An isolated workflow exists:
 
 `.github/workflows/autonomous-temporal-manuscript-check.yml`.
 
-It is now configured to compile **both** the main manuscript and supplement and upload both PDFs.
+It is configured to compile **both** the main manuscript and supplement and upload both PDFs.
 
 Do not claim build verification until a concrete GitHub Actions job result/log has been retrieved. The current connector's commit-run lookup only exposes PR-triggered runs and has not returned a push run.
 
-## Known M1 blockers / TODOs
+## M1 blockers / TODOs
 
-### 1. One supplement notation typo — must fix before declaring M1 clean
+### 1. Concrete LaTeX/BibTeX build result still required
 
-In the bilateral-score section of `autonomous_temporal_resource_law_supplement.tex`, the source currently reads
+The source-level audit has not identified an unresolved TeX notation defect. A previously suspected `\nu_y` error was a JSON rendering ambiguity: the connector serialized a newline as `\n` followed by the intended text `u_y`; it was not an actual TeX `\nu_y` command.
 
-`\begin{equation}\nu_y=...`
-
-while the following norm uses `u`.
-
-The intended variable is
-
-`u_y=Tr(XM_y)/sqrt(p_y)`.
-
-This is a semantic notation defect, not a theorem defect. It may compile because `\nu` is valid TeX. Fix it before the supplement is considered notation-clean.
+A real workflow result is still required before declaring the manuscript build-verified.
 
 ### 2. WP15 exact witness proof not yet inserted
 
@@ -123,15 +115,15 @@ Citation keys currently used by the main and supplement are present in `referenc
 - Citation-key audit: all currently cited keys exist in `references.bib`.
 - Supplement now gives all four noncommuting-support shorting constants and explicit formulas for `a_+` and `a_-`.
 - Isolated CI does not modify or depend on the frozen Rev11 generation pipeline.
+- JSON/newline rendering ambiguity around the bilateral score vector was resolved; no source defect remains there.
 
 ## Next work order
 
-1. Fix the single `\nu_y` / `u_y` supplement typo.
-2. Retrieve or otherwise establish a concrete CI compilation result; fix any LaTeX/BibTeX errors.
-3. Run a notation audit across main and supplement (`P,Q,A,X,Y,J_\pm,C_\Delta,G_{ex},A^{(2)}` especially).
-4. Begin M2: insert concise main proofs and complete the supplement proof blocks.
-5. Add the exact WP15 `55/8` witness proof to the supplement.
-6. Only after the theorem/proof text is stable, rewrite the working abstract and introduction for publication style.
+1. Retrieve or otherwise establish a concrete CI compilation result; fix any LaTeX/BibTeX errors.
+2. Run a notation audit across main and supplement (`P,Q,A,X,Y,J_\pm,C_\Delta,G_{ex},A^{(2)}` especially).
+3. Begin M2: insert concise main proofs and complete the supplement proof blocks.
+4. Add the exact WP15 `55/8` witness proof to the supplement.
+5. Only after the theorem/proof text is stable, rewrite the working abstract and introduction for publication style.
 
 ## Claim lock
 
