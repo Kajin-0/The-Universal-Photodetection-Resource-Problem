@@ -28,7 +28,7 @@ and, for autonomous relational clock--signal information,
 
 ### WP01 — prior-art and model boundary
 
-Qualitative mode support, QFI-as-asymmetry, finite quantum clocks, WAY tradeoffs, Page--Wootters relational time, standard phase-estimation sine states, PSD-cone curvature, and singular QFI/Bures geometry are prior art. The target must be a quantitative operational temporal-information law.
+Qualitative mode support, QFI-as-asymmetry, finite quantum clocks, WAY tradeoffs, Page--Wootters relational time, standard phase-estimation sine states, PSD-cone curvature, singular QFI/Bures geometry, and Gaussian displacement/Holevo theory are prior art. The target must be a quantitative operational temporal-information law.
 
 ### WP02 — local Fisher no-go and robust tangent radius
 
@@ -84,15 +84,15 @@ Sine-chain history states attain equality.
 
 ### WP05 — exact mean-total-energy autonomous retention
 
-Let
+With
 
 `g_L=cos^2[pi/(L+2)]`
 
-and write
+and
 
-`Lbar=m+lambda`, `m=floor(Lbar)`, `0<=lambda<1`.
+`Lbar=m+lambda`,
 
-The exact sharp one-copy mean-energy envelope is
+the exact sharp one-copy envelope is
 
 `R_M(1) <= (1-lambda)g_m+lambda g_(m+1)`.
 
@@ -100,55 +100,39 @@ Adjacent-shell sine-chain mixtures attain equality, giving the same sharp near-u
 
 ### WP06 — arbitrary coherent baselines / history states
 
-The robust upper-tail theorem does **not** require the baseline to commute with the relevant Hamiltonian.
-
 For arbitrary baseline `rho`, positive `R_lin`, tangent range projector `P_U`, and arbitrary finite-copy collective POVMs,
 
 `(R_lin^2/4)[Tr F_N/N] <= Tr(P_U rho)`.
 
-Therefore the relational dual-survival law remains valid for globally stationary clock--signal states that already contain Page--Wootters/history-state relational coherence.
+Thus the robust upper-tail theorem survives pre-existing Page--Wootters/history-state relational coherence; separate local stationarity is unnecessary.
 
-### WP07 — nonlinear `R_lin=0` synthesis is also resource-constrained
+### WP07 — nonlinear `R_lin=0` synthesis is resource-constrained
 
-For a two-sided `C^2` physical curve at a rank-deficient baseline,
+For a baseline-empty endpoint sector and the same two-quadrature complex tangent convention used throughout the project,
 
-`rho(theta)=rho0+theta D+(theta^2/2)C+o(theta^2)`,
+`A=P_U A P`, `P=supp(rho0)`,
 
-let `P=supp(rho0)`, `Q=I-P`, `R=P rho0 P`, and `K=QDP`.
-
-Established PSD-cone geometry gives
-
-`Q C Q >= 2 K R^(-1)K^dagger`.
-
-The project-level result comes from applying this to the same two-quadrature complex temporal tangent convention used in WP02/WP03/WP06. If
-
-`A=P_U A P`
-
-enters a previously empty upper endpoint sector, define
+set
 
 `J(A|rho0)=Tr(A rho0^+ A^dagger)`.
 
-Then for **every finite `N` and every entangled collective POVM**,
+Second-order PSD-cone geometry plus the direct arbitrary-POVM Fisher proof gives, for **every finite `N` and every entangled collective POVM**,
 
-`Tr F_N/N <= J(A|rho0) <= Delta T_U(0)`,
-
-where
-
-`T_U(x,y)=Tr[P_U rho(x,y)]`.
+`boxed: Tr F_N/N <= J(A|rho0) <= Delta T_U(0)`.
 
 Equivalently,
 
-`(1/4)[Tr F_N/N] <= (1/4)Delta T_U(0)`.
+`boxed: (1/4)[Tr F_N/N] <= (1/4)Delta T_U(0)`.
 
-This is a sharp zero-radius analogue of the WP02 robust law: the resource moves from **zeroth-order pre-existing endpoint population** to **second-order endpoint population synthesis**.
-
-The minimal zero-radius qubit exactly saturates both inequalities with a fixed four-outcome equatorial POVM.
+The minimal zero-radius qubit saturates both inequalities with one fixed four-outcome equatorial POVM.
 
 The earlier coherent-sideband counterexample also saturates the operational coefficient. For
 
 `alpha_sb(x,y)=(A/2)(x+i y)`,
 
-`n_sb=Nbar(x^2+y^2)/4`, so
+`n_sb=Nbar(x^2+y^2)/4`,
+
+so
 
 `Delta n_sb(0)=Nbar`,
 
@@ -156,26 +140,70 @@ and heterodyne readout gives
 
 `Tr F=Nbar`.
 
-Thus the counterexample that killed baseline-energy-only bounds identifies exactly the quadratic spectral resource that must be charged.
+Thus the loophole created by arbitrary waveform synthesis is paid for by **second-order endpoint population synthesis** rather than baseline population.
 
-A complementary finite-amplitude two-endpoint phase experiment obeys, for a `pi` relative-phase pair,
+A complementary finite-amplitude `pi` phase-pair law gives
 
-`D_tr^2/4 <= min{T_C(nu),T_S(nu)}`,
+`D_tr^2/4 <= min{T_C(nu),T_S(nu)}`
 
-which yields
+and therefore
 
 `Ebar_C^+ + Ebar_S^+ >= (hbar nu/2)D_tr^2`.
 
-The PSD-cone curvature, rank-changing QFI/Bures, block-coherence, and Helstrom ingredients are prior art. Candidate novelty is only the frequency-resolved autonomous temporal-resource consequence and its sharp arbitrary-POVM coefficient.
+### WP08 — quadratic spectral-synthesis sum and energy law
+
+Let `{P_k}` be mutually orthogonal baseline-empty endpoint sectors with mode parameters `(x_k,y_k)` and tangents
+
+`A_k=P_k A_k P`.
+
+For one fixed arbitrary collective POVM on `N` copies, let `F_(N,k)` be the Fisher block for mode `k`. WP07 applies to every block of the same record:
+
+`Tr F_(N,k)/N <= Delta_k T_k(0)`.
+
+Therefore, for arbitrary nonnegative weights `w_k`,
+
+`boxed: sum_k w_k [Tr F_(N,k)/N] <= sum_k w_k Delta_k T_k(0)`.
+
+With temporal-gap weights,
+
+`E_gap,syn^(2):=(hbar/4)sum_k nu_k Delta_k T_k(0)`,
+
+so
+
+`boxed: sum_k hbar nu_k [Tr F_(N,k)/(4N)] <= E_gap,syn^(2)`.
+
+This is the zero-radius analogue of a spectral information budget.
+
+For multimode coherent sidebands
+
+`alpha_k=g_k(x_k+i y_k)`,
+
+one has
+
+`Delta_k n_k(0)=4|g_k|^2`.
+
+Multimode heterodyne gives
+
+`Tr F_k=4|g_k|^2`,
+
+so **every mode and every nonnegative weighted sum are saturated simultaneously** by one fixed measurement.
+
+Using actual sideband photon energies `hbar omega_k` as weights gives the exact positive synthesis-energy identity
+
+`sum_k (hbar omega_k/4)Tr F_k`
+
+`= (1/4)sum_k Delta_k E_k(0)`.
+
+Coherent-state displacement estimation, heterodyne/Holevo theory, and linear waveform-estimation limits are prior art. Candidate novelty is the frequency-resolved quadratic spectral-resource law and its connection to the earlier baseline-energy no-go.
 
 ## Current frontier — unified mixed endpoint law
 
-The highest-value next target is a general exact-gap tangent containing both:
+The highest-value unresolved problem is now a general exact-gap tangent containing both:
 
 - support-to-support components, charged by WP06 pre-existing spectral survival and `R_lin`;
-- support-to-kernel or kernel-to-support components, charged by WP07 second-order endpoint synthesis.
+- support-to-kernel or kernel-to-support components, charged by WP07/WP08 second-order endpoint synthesis.
 
-The objective is a sharp arbitrary-POVM theorem that combines these contributions without double counting or losing the WP06/WP07 constants. A counterexample proving that no additive scalar unification exists would also be a valuable result.
+The objective is a sharp arbitrary-POVM theorem that combines these contributions without double counting or losing the established constants. Score-space interference means a naive additive scalar law is not guaranteed; a proof of an unavoidable Minkowski/matrix geometry would also be a substantive result.
 
 ## Validation
 
@@ -184,11 +212,12 @@ Independent numerical/adversarial validators:
 - `numerics/verify_robust_tangent_radius_law.py`
 - `numerics/verify_relational_autonomous_laws.py`
 - `numerics/verify_nonlinear_zero_radius_law.py`
+- `numerics/verify_quadratic_synthesis_sum_rule.py`
 
-The WP07 validator includes random rank-deficient curvature tests, explicit sharp qubit saturation, randomized one-copy POVMs, randomized two-copy collective POVMs, random PSD block-coherence tests, finite-phase Helstrom checks, and the coherent-sideband coefficients.
+The WP08 validator tests same-record random weighted sums, random two-copy collective POVMs, and exact multimode coherent heterodyne population/energy saturation.
 
 ## Priority discipline
 
-The mathematical ingredients overlap strongly with phase estimation, modes of asymmetry, quantitative WAY/reference-frame theory, Page--Wootters relational time, numerical-radius theory, PSD-cone second-order geometry, singular QFI/Bures geometry, block coherence, and quantum waveform estimation. Targeted searches have not identified an exact predecessor for the combined WP07 finite-copy two-quadrature spectral-synthesis statement, but **priority remains unverified, not certified**.
+The mathematical ingredients overlap strongly with phase estimation, asymmetry/reference-frame theory, Page--Wootters, PSD-cone geometry, singular QFI/Bures geometry, Gaussian displacement estimation, and quantum waveform estimation. Targeted searches have not identified exact predecessors for the combined WP07/WP08 finite-copy frequency-resolved synthesis laws, but **priority remains unverified, not certified**.
 
-Read `AGENTS.md`, `ROADMAP.md`, and WP01--WP07 before continuing. Record every material theorem, counterexample, prior-art collision, or killed conjecture immediately; do not rely on chat history.
+Read `AGENTS.md`, `ROADMAP.md`, and WP01--WP08 before continuing. Record every material theorem, counterexample, prior-art collision, or killed conjecture immediately; do not rely on chat history.
