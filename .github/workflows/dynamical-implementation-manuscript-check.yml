@@ -1,0 +1,54 @@
+name: Dynamical implementation manuscript LaTeX check
+
+on:
+  push:
+    branches:
+      - agent/autonomous-temporal-information-law
+    paths:
+      - 'manuscript/dynamical_implementation_cost/**'
+      - '.github/workflows/dynamical-implementation-manuscript-check.yml'
+  pull_request:
+    branches:
+      - agent/autonomous-temporal-information-law
+    paths:
+      - 'manuscript/dynamical_implementation_cost/**'
+      - '.github/workflows/dynamical-implementation-manuscript-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Static standalone theorem and identity gate
+        working-directory: manuscript/dynamical_implementation_cost
+        run: python check_tex_static.py
+
+      - name: Compile main manuscript
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: dynamical_rank_boundary_implementation_cost_draft.tex
+          working_directory: manuscript/dynamical_implementation_cost
+          latexmk_use_xelatex: false
+
+      - name: Compile supplemental material
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: dynamical_rank_boundary_implementation_cost_supplement.tex
+          working_directory: manuscript/dynamical_implementation_cost
+          latexmk_use_xelatex: false
+
+      - name: Upload standalone manuscript build
+        uses: actions/upload-artifact@v4
+        with:
+          name: dynamical-rank-boundary-implementation-cost
+          path: |
+            manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_draft.pdf
+            manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_draft.tex
+            manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_supplement.pdf
+            manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_supplement.tex
+            manuscript/dynamical_implementation_cost/references.bib
