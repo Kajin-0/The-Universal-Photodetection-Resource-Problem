@@ -38,6 +38,8 @@ At a rank-changing boundary of quantum state space, a first-order tangent fixes 
 
 At a rank-changing boundary, first-order distinguishability and second-order physical realizability separate. Probability may enter outcomes that are empty at the baseline only at second order, a generic source of nonregular statistical behavior \cite{Chernoff1954,Shapiro1985,SelfLiang1987}. For quantum states, positivity additionally constrains how support--kernel coherences may be completed by population in the kernel; rank changes also produce familiar subtleties in quantum-Fisher and Bures geometry \cite{Safranek2017}.
 
+Recent work has analyzed the Riemannian curvature of the Bures metric itself near rank-changing density matrices, including conical singularities in higher-dimensional state spaces \cite{HuangEtAl2026}. That geometric curvature is distinct from the quantity prescribed here: $C$ is the metric-contracted second derivative of a particular state family projected into the baseline kernel.
+
 The minimum cost of a \emph{first-order} quantum tangent is already part of established purification geometry. The Bures/SLD metric is obtained by minimizing purification motion \cite{BraunsteinCaves1994}; related fibre/Kraus-gauge formulations underlie channel Fisher information and noisy-metrology bounds \cite{FujiwaraImai2008,EscherEtAl2011,DemkowiczKolodynskiGuta2012}. Covariant Stinespring dilation is likewise established \cite{Scutaru1979}. These results do not determine the cost of an independently prescribed, nonminimal positive second-order population in the target kernel.
 
 Here we solve that local second-order implementation problem exactly. If $C$ denotes the prescribed physical-metric contraction of the target kernel Hessian, positivity requires $C\succeq C_{\min}$, where $C_{\min}$ is fixed by the first derivative. We prove that every finite-cost unitary dilation obeys $V_{\rm impl}\ge\tfrac12\Tr C$ and construct a dilation attaining equality for every feasible $C$. The construction separates the horizontal first-order motion from an ancillary flag carrying precisely the excess $C-C_{\min}$. Exact total-energy conservation does not increase the optimum: a semibounded conserving dilation exists even in separable infinite dimension with unbounded occupied target energies. An autonomous temporal exchange then converts the general result into the spectral identity $\mathcal A_{\rm ex}^{(2)}=\hbar\nu V_{\min}$.
@@ -268,7 +270,7 @@ OpenAI ChatGPT (GPT-5.6-series models, including GPT-5.6 Sol) was used substanti
 \end{acknowledgments}
 
 \section*{Data Availability}
-No data were created or analyzed in this theoretical study. All analytic results needed to support the conclusions are contained in the Article and Supplemental Material.
+No empirical data were created or analyzed in this theoretical study. Internal numerical-validation scripts were used only to cross-check analytic identities and are not required to reproduce the reported results. The analytic results needed to support the conclusions are contained in the Article and Supplemental Material. The validation scripts are available from the author upon reasonable request.
 
 \bibliography{references}
 
