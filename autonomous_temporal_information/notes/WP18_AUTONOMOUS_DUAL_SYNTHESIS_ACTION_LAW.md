@@ -1,127 +1,108 @@
 # WP18 — Sharp autonomous dual synthesis-action law at zero tangent radius
 
-**Date:** 2026-08-22
+**Date:** 2026-08-22; hostile convention audit 2026-08-23
 
 **Branch:** `agent/autonomous-temporal-information-law`
 
-**Status:** analytic PASS for the clean globally stationary exact-exchange boundary regime. The theorem closes the `R_lin=0` autonomous loophole left by WP03: if relative temporal information is created by quadratic boundary synthesis rather than pre-existing finite-radius coherence, positive absolute-gap synthesis action must be paid on **both** clock and signal sides. For bilateral synthesis the total coefficient is `hbar nu/4`; for one-sided synthesis it improves to `hbar nu/2`. Both coefficients are exactly sharp in finite-dimensional globally stationary exchange models. Page--Wootters relational time, energy-conserving exchange dynamics, PSD-cone curvature, and multiparameter phase estimation are prior art. Candidate novelty is the sharp two-sided frequency-resolved synthesis-action law. Priority remains **unverified, not certified**.
+**Status:** analytic PASS after independent factor/convention audit. A minor sign inconsistency in the originally written one-sided extremizer was corrected: with `D_s=(A-A^dagger)/(2i)`, the exact family uses `x-i y`, not `x+i y`. This is only a reversal of the sine coordinate and never changed the Fisher/action values or coefficients. The bilateral theorem and extremizer were convention-consistent as written.
 
-## 1. Problem left by WP03
+## 1. Exact exchange and two-quadrature convention
 
-WP03 established the finite-radius autonomous law
+Let
 
-`(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`
+`[H_S,A_nu]=+hbar nu A_nu`,
 
-and hence
+`[H_C,A_nu]=-hbar nu A_nu`,
 
-`Ebar_C^+ + Ebar_S^+ >= 2 hbar nu (R_lin^2/4)[Tr F_N/N]`.
-
-But WP03 is vacuous when
-
-`R_lin=0`.
-
-WP07--WP14 showed that this does not make temporal information free: rank-changing tangents require second-order spectral synthesis.
-
-WP18 asks whether the same conclusion becomes **two-sided** in a genuinely autonomous clock--signal exchange.
-
-## 2. Globally stationary exact exchange
-
-Let clock `C` and signal `S` have Hamiltonians `H_C,H_S`.
-
-Let the complex temporal tangent obey
-
-> `[H_S,A_nu]=+hbar nu A_nu`,
->
-> `[H_C,A_nu]=-hbar nu A_nu`,
-
-with `nu>0`.
-
-Therefore
+so
 
 `[H_C+H_S,A_nu]=0`.
 
-The two quadratures
+Use
 
 `D_c=(A_nu+A_nu^dagger)/2`,
 
-`D_s=(A_nu-A_nu^dagger)/(2i)`
+`D_s=(A_nu-A_nu^dagger)/(2i)`.
 
-encode a relative temporal mode while preserving total energy.
+For a POVM `{M_y}`, write
+
+`p_y=Tr(rho0 M_y)`,
+
+`z_y=Tr(A_nu M_y)`.
+
+Then
+
+`partial_x p_y=Re z_y`,
+
+`partial_y p_y=Im z_y`,
+
+and therefore the two-quadrature classical Fisher trace is exactly
+
+> `Tr F_1=sum_y |z_y|^2/p_y`.
+
+This fixes all factors in what follows.
 
 Let
 
 `P=supp(rho0)`, `Q=I-P`.
 
-For a two-sided physical `C^2` family, first-order positivity gives
-
-`Q A_nu Q=0`.
-
-In the pure boundary regime considered here there is no support-preserving component:
+In the pure-boundary theorem assume
 
 `P A_nu P=0`.
+
+First-order physicality gives
+
+`Q A_nu Q=0`.
 
 Define
 
 `X=A_nu P`,
 
-`Y=Q A_nu^dagger P`,
+`Y=Q A_nu^dagger P`.
 
-so
+Then
 
-`A_nu=X+Y^dagger`.
+`A_nu=X+Y^dagger`,
 
-The one-sided case is `Y=0` or `X=0`; bilateral synthesis has both nonzero.
+with `X,Y` support-to-kernel and hence traceless.
 
-## 3. Paired endpoint sectors
+## 2. Finite-copy arbitrary-POVM Fisher law rederived
 
-Because `A_nu` raises the signal and lowers the clock by exactly the same gap, the two support-to-kernel orientations terminate in paired endpoint sectors.
+For `N` independently encoded copies,
 
-Choose mutually orthogonal baseline-empty projectors
+`rho_N=rho0^(tensor N)`
 
-`P_(S,+)`, `P_(S,-)`
+and
 
-for the signal upper/lower endpoints and
+`A_(N,nu)=sum_j rho0^(tensor(j-1)) tensor A_nu tensor rho0^(tensor(N-j))`.
 
-`P_(C,+)`, `P_(C,-)`
+Let `P_N=P^(tensor N)`.
 
-for the clock upper/lower endpoints such that
+The two right-supported pieces are
 
-`X=P_(S,+) P_(C,-) X P`,
+`X_N=A_(N,nu) P_N`
 
-`Y=P_(S,-) P_(C,+) Y P`.
+and
 
-Here tensor-product identities are suppressed.
+`Y_N=(I-P_N) A_(N,nu)^dagger P_N`.
 
-Thus:
+They are sums of single-copy insertions of `X` and `Y`.
 
-- `X` synthesizes a signal-upper / clock-lower endpoint;
-- `Y` synthesizes a signal-lower / clock-upper endpoint.
+Using
 
-All four endpoint sectors are absent from the baseline in this clean boundary theorem.
+`rho0 rho0^+ rho0=rho0`,
 
-## 4. Endpoint population curvatures
+`X P=X`, `Y P=Y`,
 
-For the exact physical family `rho(x,y)`, define
+and
 
-`T_(S,+)=Tr[P_(S,+) rho(x,y)]`,
+`Tr X=Tr Y=0`,
 
-`T_(S,-)=Tr[P_(S,-) rho(x,y)]`,
+all cross-copy terms in the weighted quadratic forms vanish. Therefore
 
-`T_(C,+)=Tr[P_(C,+) rho(x,y)]`,
+`Tr(X_N rho_N^+ X_N^dagger)=N J_X`,
 
-`T_(C,-)=Tr[P_(C,-) rho(x,y)]`.
-
-Let
-
-`Delta=partial_x^2+partial_y^2`
-
-at the origin.
-
-The WP07/WP09 second-order PSD-cone theorem gives
-
-`J_X<=Delta T_(S,+)`,
-
-`J_Y<=Delta T_(S,-)`,
+`Tr(Y_N rho_N^+ Y_N^dagger)=N J_Y`,
 
 where
 
@@ -129,73 +110,76 @@ where
 
 `J_Y=Tr(Y rho0^+ Y^dagger)`.
 
-The same operators viewed from the clock side give
+The weighted Hilbert--Schmidt score bound plus Minkowski therefore gives every joint POVM on the `N` copies
+
+> `boxed: sqrt[Tr F_N/N] <= sqrt(J_X)+sqrt(J_Y)`.
+
+For `Y=0`, this reduces to
+
+> `boxed: Tr F_N/N <= J_X`.
+
+No asymptotic or separable-measurement assumption is present.
+
+## 3. Second-order endpoint synthesis
+
+For a `C^2` physical family, let the clean baseline-empty signal endpoint curvatures be
+
+`Delta T_(S,+)`, `Delta T_(S,-)`
+
+and clock endpoint curvatures
+
+`Delta T_(C,+)`, `Delta T_(C,-)`.
+
+Exact exchange pairs the orientations:
+
+- `X`: signal upper / clock lower;
+- `Y`: signal lower / clock upper.
+
+The WP07 second-order PSD-cone inequality applied to the two quadratures gives
+
+`J_X<=Delta T_(S,+)`,
 
 `J_X<=Delta T_(C,-)`,
 
+`J_Y<=Delta T_(S,-)`,
+
 `J_Y<=Delta T_(C,+)`.
 
-The pairing is the autonomous content: one synthesized score amplitude simultaneously consumes a signal endpoint and the matching opposite clock endpoint.
+Hence, locally on either subsystem,
 
-## 5. Arbitrary finite-copy Fisher law from each side
+`Tr F_N/N <= [sqrt(Delta T_+)+sqrt(Delta T_-)]^2`.
 
-WP09 gives, for every finite `N` and every arbitrary entangled collective POVM on `N` independently encoded copies,
+## 4. Positive synthesis actions and audited coefficients
 
-> `sqrt[Tr F_N/N] <= sqrt(J_X)+sqrt(J_Y)`.
+Define positive absolute-gap actions
 
-Therefore the signal endpoint curvatures obey
+`A_S^(2)=(hbar nu/4)[Delta T_(S,+)+Delta T_(S,-)]`,
 
-> `boxed: Tr F_N/N`
->
-> `<= [sqrt(Delta T_(S,+))+sqrt(Delta T_(S,-))]^2`.
+`A_C^(2)=(hbar nu/4)[Delta T_(C,+)+Delta T_(C,-)]`.
 
-Independently, the clock endpoint curvatures obey
+These are not signed subsystem energy curvatures.
 
-> `boxed: Tr F_N/N`
->
-> `<= [sqrt(Delta T_(C,+))+sqrt(Delta T_(C,-))]^2`.
+### Bilateral synthesis
 
-No external timing reference, SLD attainability, or separable readout is assumed.
-
-## 6. Positive local synthesis actions
-
-Ordinary signed subsystem energy curvature is not the correct quantity because synthesizing a lower endpoint can reduce that subsystem's mean energy.
-
-Instead assign the positive **absolute exchange-gap action**
-
-> `A_S^(2)=(hbar nu/4)[Delta T_(S,+)+Delta T_(S,-)]`,
->
-> `A_C^(2)=(hbar nu/4)[Delta T_(C,+)+Delta T_(C,-)]`.
-
-These are the local specializations of the WP09/WP13 positive spectral-synthesis action.
-
-Using
+From
 
 `(sqrt(a)+sqrt(b))^2<=2(a+b)`,
 
-each local Fisher law implies
+each subsystem obeys
 
-> `A_S^(2) >= (hbar nu/8)[Tr F_N/N]`,
->
-> `A_C^(2) >= (hbar nu/8)[Tr F_N/N]`.
+`A_X^(2)>=(hbar nu/8)[Tr F_N/N]`.
 
-Adding them gives the main theorem:
+Adding clock and signal gives
 
-> **Autonomous dual synthesis-action law — bilateral boundary**
+> **Autonomous dual synthesis-action law — bilateral**
 >
 > `boxed: A_C^(2)+A_S^(2)`
 >
 > `>= (hbar nu/4)[Tr F_N/N]`.
 
-This is the zero-radius analogue of WP03's statement that a relative temporal mode must be backed on both sides of the clock--signal cut.
+### One-sided synthesis
 
-## 7. One-sided boundary refinement
-
-If only one support orientation is present, say
-
-`Y=0`,
-
-then WP07 gives directly
+If `Y=0`, then
 
 `Tr F_N/N<=Delta T_(S,+)`
 
@@ -203,31 +187,19 @@ and
 
 `Tr F_N/N<=Delta T_(C,-)`.
 
-Therefore
+Thus each subsystem contributes `hbar nu/4` times the Fisher trace, and
 
-> `A_S^(2)>=(hbar nu/4)[Tr F_N/N]`,
->
-> `A_C^(2)>=(hbar nu/4)[Tr F_N/N]`.
-
-Hence
-
-> **Autonomous dual synthesis-action law — one-sided boundary**
+> **Autonomous dual synthesis-action law — one-sided**
 >
 > `boxed: A_C^(2)+A_S^(2)`
 >
 > `>= (hbar nu/2)[Tr F_N/N]`.
 
-The stronger coefficient occurs because there is no opposite synthesized score amplitude with which to interfere constructively.
+The factor audit therefore confirms the published branch coefficients `1/4` and `1/2` exactly.
 
-## 8. Exact bilateral extremizer in a fixed-total-energy shell
+## 5. Exact bilateral fixed-shell extremizer
 
-Take equally spaced local Hamiltonians
-
-`H_C=hbar nu N_C`,
-
-`H_S=hbar nu N_S`.
-
-Restrict to the fixed-total-excitation-2 shell spanned by
+Use the total-excitation-2 shell
 
 `|L>=|2_C,0_S>`,
 
@@ -235,201 +207,132 @@ Restrict to the fixed-total-excitation-2 shell spanned by
 
 `|U>=|0_C,2_S>`.
 
-Every vector in this shell has exactly the same total energy
+Every vector has total energy `2 hbar nu`.
 
-`2 hbar nu`.
+Take
 
-Thus every density operator supported in the shell is globally stationary under
+`rho0=|M><M|`,
 
-`H_C+H_S`.
+`A_nu=c(|U><M|+|M><L|)`.
 
-Choose
-
-`rho0=|M><M|`
-
-and
-
-> `A_nu=c(|U><M|+|M><L|)`.
-
-Both terms satisfy
-
-`[H_S,A_nu]=+hbar nu A_nu`,
-
-`[H_C,A_nu]=-hbar nu A_nu`.
-
-The support decomposition is
-
-`X=c|U><M|`,
-
-`Y=c|L><M|`,
-
-so
-
-`J_X=J_Y=c^2`.
-
-### Exact physical family
-
-Use
+The exact normalized family is
 
 `|psi(x,y)>`
 
-`=sqrt[1-(c^2/2)(x^2+y^2)] |M>`
+`=sqrt[1-(c^2/2)(x^2+y^2)]|M>`
 
 ` +(c/2)(x+i y)|L>`
 
 ` +(c/2)(x-i y)|U>`.
 
-This remains entirely inside the fixed-total-energy shell and is therefore globally stationary for every `(x,y)`.
+It is physical on the open disk
 
-The four local endpoint populations are paired:
+`x^2+y^2 < 2/c^2`.
 
-`T_(S,-)=T_(C,+)=c^2(x^2+y^2)/4`,
+Direct differentiation gives precisely
 
-`T_(S,+)=T_(C,-)=c^2(x^2+y^2)/4`.
+`partial_x rho(0)=D_c`,
 
-Hence
+`partial_y rho(0)=D_s`.
 
-`Delta T_(S,-)=Delta T_(S,+)=c^2`,
+All states remain in one total-energy eigenspace, so
 
-`Delta T_(C,-)=Delta T_(C,+)=c^2`.
+`[rho(x,y),H_C+H_S]=0`
 
-Thus
+throughout the disk.
+
+Each of the four local endpoint populations equals
+
+`c^2(x^2+y^2)/4`,
+
+so every endpoint Laplacian is `c^2` and
 
 `A_S^(2)=A_C^(2)=hbar nu c^2/2`.
 
-## 9. Fourier measurement saturates the bilateral coefficient
+The three-outcome Fourier basis
 
-Use the orthonormal Fourier basis in the ordered shell `{|L>,|M>,|U>}`:
+`|v_m>=(e^(-i phi_m)|L>+|M>+e^(i phi_m)|U>)/sqrt(3)`,
 
 `phi_m=2 pi m/3`,
 
-`|v_m>=(e^(-i phi_m)|L>+|M>+e^(i phi_m)|U>)/sqrt(3)`.
-
-As in WP09,
+has baseline probabilities `1/3` and gives
 
 `Tr F_1=4c^2`.
 
 Therefore
 
-`A_C^(2)+A_S^(2)=hbar nu c^2`
+> `A_C^(2)+A_S^(2)=hbar nu c^2=(hbar nu/4)Tr F_1`.
 
-and
+The bilateral coefficient is exactly sharp with an ordinary nonsingular POVM.
 
-`(hbar nu/4)Tr F_1=hbar nu c^2`.
+## 6. Exact one-sided fixed-shell extremizer — corrected convention
 
-Hence
-
-> `boxed: A_C^(2)+A_S^(2)=(hbar nu/4)Tr F_1`.
-
-The bilateral coefficient is exactly sharp already at one copy.
-
-Crucially, global time-translation asymmetry is zero throughout the entire family: the temporal information is purely relational inside one degenerate total-energy shell.
-
-## 10. Exact one-sided extremizer
-
-Use the fixed-total-excitation-1 shell
+Use
 
 `|D>=|1_C,0_S>`,
 
-`|U>=|0_C,1_S>`.
-
-Choose
+`|U>=|0_C,1_S>`,
 
 `rho0=|D><D|`,
 
-`A_nu=2c |U><D|`.
+`A_nu=2c|U><D|`.
 
-The exact family
+The convention-consistent exact family is
 
-`|psi(x,y)>=sqrt[1-c^2(x^2+y^2)]|D>+c(x+i y)|U>`
+> `|psi(x,y)>=sqrt[1-c^2(x^2+y^2)]|D>+c(x-i y)|U>`.
 
-is globally stationary because both basis states have total energy `hbar nu`.
+It is physical on
 
-One has
+`x^2+y^2<1/c^2`
 
-`Tr F_1=4c^2`,
+and satisfies exactly
+
+`partial_x rho(0)=D_c`,
+
+`partial_y rho(0)=D_s`.
+
+The baseline-empty signal-upper and clock-lower populations are both
+
+`c^2(x^2+y^2)`,
+
+so
 
 `Delta T_(S,+)=Delta T_(C,-)=4c^2`.
 
-Hence
+A fixed four-outcome equatorial POVM gives
+
+`Tr F_1=4c^2`.
+
+Thus
 
 `A_S^(2)=A_C^(2)=hbar nu c^2`
 
 and
 
-> `A_C^(2)+A_S^(2)`
->
-> `=2 hbar nu c^2`
->
-> `=(hbar nu/2)Tr F_1`.
+> `A_C^(2)+A_S^(2)=2hbar nu c^2=(hbar nu/2)Tr F_1`.
 
-Thus the one-sided coefficient is also exactly sharp.
+The one-sided coefficient is exactly sharp.
 
-## 11. Relation to WP03
+## 7. Meaning of the theorem
 
-WP03 and WP18 describe complementary physical regimes.
+The fixed-shell extremizers make three points simultaneously:
 
-### Finite-radius regime
+1. global time-translation asymmetry is exactly zero;
+2. signed total-energy curvature is exactly zero;
+3. relative temporal Fisher information is nevertheless nonzero and requires positive endpoint synthesis action on both local sides.
 
-Pre-existing spectral population/coherence allows a nonzero affine neighborhood.
+The resource is therefore not ordinary total energy or global asymmetry. It is a positive frequency-resolved kinematic cost of creating the local endpoint structure that supports the relative temporal score.
 
-Resource:
+## 8. Prior-art boundary
 
-`robust Fisher x R_lin^2 -> two-sided baseline survival/mean energy`.
+Do not claim novelty for Page--Wootters relational time, energy-conserving exchange, fixed-number relative-phase metrology, Fourier phase measurements, PSD-cone curvature, or generic QFI/Holevo theory.
 
-### Zero-radius boundary regime
+Candidate novelty remains the sharp finite-copy arbitrary-POVM two-sided action statement and its role as the zero-radius completion of WP03.
 
-The affine tangent is not itself physical for any finite radius; an exact nonlinear family must synthesize new endpoint population at second order.
+Priority remains **unverified, not certified**.
 
-Resource:
+## 9. Audit result
 
-`Fisher -> two-sided positive quadratic spectral action`.
+The 2026-08-23 hostile rederivation found **no coefficient or physicality defect** in WP18.
 
-In both regimes, autonomous relative temporal information requires matched resources on both sides of the relational cut.
-
-The resource changes order in the local parameter expansion, but the **two-sided exchange principle survives**.
-
-## 12. Why signed mean-energy curvature is insufficient
-
-In the bilateral fixed-total-energy extremizer,
-
-`<H_C>+<H_S>=2 hbar nu`
-
-exactly for every `(x,y)`.
-
-Indeed each subsystem's mean energy is also unchanged by symmetry between its upper and lower endpoint populations.
-
-Therefore ordinary total-energy curvature is zero while
-
-`Tr F_1=4c^2>0`.
-
-This is an autonomous version of the WP14 coherent-sideband lesson: signed mean energy can cancel even when positive spectral synthesis is unavoidable.
-
-The correct action counts absolute exchange-gap population on both sides.
-
-## 13. Prior-art boundary
-
-Do not claim novelty for:
-
-- Page--Wootters relational time or globally stationary history states;
-- energy-conserving exchange Hamiltonians;
-- relative-phase estimation in fixed-number sectors;
-- PSD-cone second-order tangent geometry;
-- Fourier qutrit phase measurements;
-- generic quantum Fisher/Holevo compatibility theory.
-
-Candidate novelty is the specific frequency-resolved arbitrary-POVM statement:
-
-> at zero affine tangent radius, globally stationary relational temporal Fisher information requires positive second-order spectral exchange action on **both** clock and signal, with sharp total coefficients `hbar nu/4` in the bilateral case and `hbar nu/2` in the one-sided case.
-
-Priority remains unverified.
-
-## 14. Next work
-
-Highest-value next targets:
-
-1. remove the clean baseline-empty endpoint assumption using the WP11/WP12 shorted-operator geometry on both clock and signal sides;
-2. determine whether a single joint operator allocation couples the two local action bounds more tightly than simply adding them;
-3. extend the autonomous action theorem across multiple gaps and derive a common spectral-action budget;
-4. perform a deep priority/significance audit of WP03+WP18 against relational quantum metrology and quantitative WAY literature;
-5. only after that decide whether the autonomous theorem pair is publication-grade.
+The only defect was the sign of `y` in the originally written one-sided exact ket. It has been corrected above. Since replacing `y` by `-y` is only a coordinate reversal, no Fisher information, endpoint curvature, action, or sharpness result changed.
