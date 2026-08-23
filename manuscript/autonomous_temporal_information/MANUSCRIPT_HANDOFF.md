@@ -4,143 +4,187 @@
 
 **Branch:** `agent/autonomous-temporal-information-law`
 
-## Phase
+## Canonical manuscript state
 
-**M2R1 — audited proof integration and referee-facing statement cleanup.**
+The current journal-facing manuscript is **PRX Quantum R3**, build-verified, standalone, and science-frozen while the post-R3 research chain is audited.
 
-Research theorem production is paused. Do not create WP21 unless manuscript work exposes a concrete theorem defect or genuinely missing result.
+The old M2R1 handoff is obsolete.
 
-## Read order
+Canonical generated submission roots:
 
-1. `../../autonomous_temporal_information/notes/PUBLICATION_THEOREM_STACK_AFTER_AUDITS.md`
-2. `../../autonomous_temporal_information/notes/HOSTILE_MATHEMATICAL_AUDIT_WP18_WP20.md`
-3. `../../autonomous_temporal_information/notes/FOUNDATIONAL_SIGNIFICANCE_PRIORITY_GATE_AFTER_WP20.md`
-4. `M2_HOSTILE_THEOREM_LANGUAGE_AND_DIMENSION_AUDIT.md`
-5. `THEOREM_PROVENANCE_MATRIX.md`
-6. `autonomous_temporal_resource_law_m2r1.tex`
-7. `autonomous_temporal_resource_law_supplement_m2r1.tex`
-8. the R1 proof files in `proofs/`
-
-All `_draft`, original monolithic supplement, and `_m2` manuscript roots are archival earlier stages.
-
-## Canonical M2R1 files
-
-- `autonomous_temporal_resource_law_m2r1.tex`
-- `autonomous_temporal_resource_law_supplement_m2r1.tex`
-- `proofs/finite_radius_survival_proofs.tex`
-- `proofs/boundary_and_autonomous_action_proofs.tex`
-- `proofs/noncommuting_mixed_bridge_proof_r1.tex`
-- `proofs/multigap_action_sum_proof_r1.tex`
-- `proofs/shared_kernel_qutrit_benchmark.tex`
-- `proofs/wp15_exact_common_record_qutrit.tex`
+- `autonomous_temporal_resource_law_prxq_r3.tex`
+- `autonomous_temporal_resource_law_supplement_m2r3.tex`
 - `references.bib`
+
+Generation/audit scripts:
+
+- `apply_m2r2_review_repairs.py`
+- `apply_submission_cleanup_r2.py`
+- `apply_m2r3_boundary_strengthening.py`
+- `apply_prxq_frontmatter_r3.py`
 - `check_m2_tex_static.py`
-- `THEOREM_PROVENANCE_MATRIX.md`
-- `M2_HOSTILE_THEOREM_LANGUAGE_AND_DIMENSION_AUDIT.md`
-- `README.md`
 
-## Main physical message
-
-The manuscript is about **two physical resource regimes**, not a new generic resource theory of time:
-
-- `R_lin > 0`: robust relative temporal Fisher information is backed by pre-existing spectral survival;
-- rank-changing `R_lin = 0`: useful Fisher information is backed by positive second-order endpoint synthesis action.
-
-For globally stationary exact clock--signal exchange, both regimes are two-sided across the relational cut.
-
-## Headline theorem sequence
-
-1. fixed-mean-energy high-frequency local-Fisher counterexample;
-2. finite-radius robust Fisher--survival law;
-3. autonomous dual-survival law;
-4. one-sided/bilateral rank-changing boundary synthesis;
-5. sharp autonomous dual synthesis-action law;
-6. arbitrary coherent-support mixed survival/synthesis bridge;
-7. multi-gap shared-Hessian spectral-action sum.
-
-For publication framing, the one-sided/bilateral boundary pair is one logical result block.
-
-## Audit status
-
-### Literature/significance
-
-**PROVISIONAL PASS for a narrow theorem paper. Priority remains unverified, not certified.**
-
-Broad novelty claims remain prohibited. Mandatory comparisons include Page--Wootters/shared asymmetry, modes of asymmetry, QFI energetic coherence, quantitative WAY/conservation-law coherence cost, rank-changing QFI/Bures geometry, waveform Holevo bounds, and 2026 protocol-level energy-constrained metrology.
-
-### Core mathematics
-
-The earlier research audit passed after:
-
-1. correcting the one-sided sine-coordinate convention to `x-i y` under `D_s=(A-A^dagger)/(2i)`;
-2. canonicalizing the mixed action with
-   `Pi_out=supp(A A^dagger)`,
-   `Pi_in=supp(A^dagger A)`,
-   `G_ex=2 hbar nu Q(Pi_out+Pi_in)Q`.
-
-### M2 hostile theorem-language audit
-
-The R1 source revision additionally fixes four literal statement vulnerabilities without changing the scientific coefficients:
-
-1. **finite-dimensional scope** is explicit; no arbitrary infinite-dimensional functional-analytic extension is claimed;
-2. **mixed degenerate orientations** are separated from the bilateral `Psi` formula: plus-only, minus-only, and no-synthesis cases have their own inequalities;
-3. **zero shorting constants / zero restricted action costs** are handled as unavailable or vacuous scalar resource directions, never as divisions by zero;
-4. **multi-gap null directions and parameter metric** are explicit: a nonzero cost-null synthesized direction has `gamma_k=0`, and all Fisher/Hessian traces use the fixed Euclidean cosine--sine quadrature metric.
-
-The audited one-sided mixed limit recovers exactly
-
-`A_ex^(2) >= (hbar nu/2) Tr F_N/N`,
-
-and the bilateral clean limit remains
-
-`A_ex^(2) >= (hbar nu/4) Tr F_N/N`.
-
-## Self-contained qutrit benchmark
-
-`proofs/shared_kernel_qutrit_benchmark.tex` now defines the shared-kernel model before the WP15 witness proof. It records:
-
-- `rho0=P/2`, with rank-two support;
-- `A=|1><0|-sqrt(2)|2><1|`;
-- `J_B^+=J_B^-=5/4`, `J_+=7/4`, `J_-=3`;
-- minimal `C_Delta=(19/4)Q`;
-- canonical `G_ex/(hbar nu)=diag(2,4,2)`;
-- `g_+=g_-=13 hbar nu/4`;
-- `4 A_ex=247 hbar nu/16`;
-- physical resource ceiling `12`;
-- SLD trace `43/4`;
-- followed by the exact WP15 common-record supremum `55/8`.
-
-Thus the supplement no longer requires the research notes to define the benchmark.
-
-## Build and source-integrity gate
-
-Isolated workflow:
+Workflow:
 
 `.github/workflows/autonomous-temporal-manuscript-check.yml`
 
-Current sequence:
+The R3 GitHub Actions gate passed generation, standalone-identity scanning, static TeX integrity, main compilation, supplement compilation, and artifact packaging.
 
-1. run `python check_m2_tex_static.py` against the audited M2R1 roots;
-2. compile `autonomous_temporal_resource_law_m2r1.tex`;
-3. compile `autonomous_temporal_resource_law_supplement_m2r1.tex`;
-4. upload M2R1 PDFs, proof modules, bibliography, static gate, and audit/handoff files.
+## Manuscript integrity lock
 
-The static script recursively expands `\input` files and checks duplicate labels, undefined refs, missing BibTeX keys, missing inputs, internal draft markers, and the known bilateral-score notation failure mode.
+The paper and supplement must be scientifically standalone.
 
-**Do not claim build verification until a concrete successful Actions result/log is retrieved.** This session's GitHub connector does not expose push-triggered workflow runs, and the local runtime cannot materialize GitHub repository files for an independent TeX build.
+Never include:
 
-## Remaining work
+- personal GitHub URLs;
+- usernames;
+- repository names;
+- internal work-package labels exposed to readers;
+- development history;
+- statements requiring the reader to consult internal notes or code repositories.
 
-1. post-rewrite hostile consistency audit of `autonomous_temporal_resource_law_m2r1.tex` against the R1 proof modules;
-2. verify that every mixed special case and unavailable-resource branch is literally stated without hidden undefined quantities;
-3. check bibliography coverage and manuscript wording for every standard mathematical ingredient;
-4. once those gates pass, compress the abstract/introduction into publication prose and assess current journal positioning;
-5. no new theorem production unless these audits reveal a genuine mathematical gap.
+The standalone identity-leak gate must remain active.
 
-## Claim lock
+## R3 scientific claim
 
-Allowed working novelty sentence, always qualified by unverified priority:
+The paper is about **two physical spectral-resource regimes** for globally stationary relative temporal information, not a generic new resource theory of time.
 
-> We derive finite-copy arbitrary-POVM spectral-resource laws for globally stationary relative temporal modes that distinguish a finite-radius regime backed by pre-existing two-sided spectral survival from a rank-changing zero-radius regime backed by positive second-order two-sided endpoint synthesis action, with sharp fixed-shell and multi-frequency constructions.
+### Finite affine radius
 
-Do not strengthen this without a new priority audit.
+Pre-existing spectral survival backs the robust local temporal mode:
+
+`(R_lin^2/4)[Tr F_N^tan/N] <= T(nu)`.
+
+For an autonomous clock--signal exchange, the same information must be backed on both local sides.
+
+### Rank-changing zero radius
+
+A nonlinear physical family may remain informative even when the affine radius vanishes. Positive second-order endpoint synthesis becomes the resource.
+
+Clean exact-exchange action laws:
+
+- bilateral `A_C^(2)+A_S^(2) >= (hbar nu/4)[Tr F_N^tan/N]`;
+- one-sided `A_C^(2)+A_S^(2) >= (hbar nu/2)[Tr F_N^tan/N]`.
+
+R3 strengthens the boundary section with
+
+`A_C^(2)+A_S^(2) >= (hbar nu/4)Tr H_SLD`
+
+for the pure-boundary SLD tangent and with the spectator-curvature no-go showing that arbitrary additional Bures boundary curvature is not determined by the selected first-order temporal mode.
+
+R3 also includes:
+
+- the coherent-support mixed survival/synthesis theorem;
+- the audited piecewise `Psi_a(e;p,q)` envelope;
+- the exact qutrit hierarchy `12 > 43/4 > 55/8`;
+- the multi-gap shared-Hessian spectral-action sum;
+- coordinate-covariant parameter-metric language;
+- explicit scope distinction from structured random-time encoding results;
+- standalone Data Availability and AI-use disclosures with no repository dependency.
+
+## Build status
+
+The final R3 Actions verification passed:
+
+1. R2 referee-repair generation;
+2. final submission cleanup;
+3. R3 boundary-QFI strengthening;
+4. PRX Quantum R3 front-matter/figure generation;
+5. static TeX + standalone identity gate;
+6. main manuscript compile;
+7. supplement compile;
+8. artifact packaging.
+
+Do not regress to older `_m2`, `_m2r1`, or R2 roots for submission work.
+
+## Post-R3 research is separate from the frozen manuscript
+
+Research was explicitly reopened after external critique to address:
+
+1. kinematic versus dynamical implementation cost;
+2. exact-resonance idealization;
+3. finite-dimensionality;
+4. classical nonregular-statistics positioning.
+
+That program now runs through **WP31** and has produced results materially stronger than the R3 scope.
+
+### WP21--WP23: dynamical implementation completion
+
+For a smooth unitary dilation,
+
+`Q partial_j^2 rho Q
+ =2 Tr_E[(Q⊗I)K_j Omega_0 K_j(Q⊗I)]`.
+
+For a prescribed feasible metric-contracted target-kernel Hessian `C`,
+
+`V_min=(1/2)Tr C`.
+
+For clean exact exchange,
+
+`V_min=A_ex^(2)/(hbar nu)`.
+
+The finite-dimensional optimum is exactly total-energy conserving.
+
+### WP24--WP27: audit and robustness
+
+- `Psi_a` was independently re-derived and numerically verified; no defect found.
+- Classical nonregular boundary statistics are mandatory prior art, not quantum novelty.
+- WP25 gives finite-radius approximate-gap robustness.
+- WP27 gives rank-boundary approximate-exchange robustness with explicit residual score-amplitude penalties.
+
+### WP28--WP31: infinite-dimensional completion
+
+- WP28: finite-radius theorem for trace-class baselines and bounded relative tangents on separable Hilbert spaces.
+- WP29: rank-boundary synthesis/action theorem for Hilbert--Schmidt right-relative tangents.
+- WP30: exact unconstrained infinite-dimensional prescribed-2-jet implementation minimum.
+- WP31: exact **semibounded, total-energy-conserving** infinite-dimensional implementation minimum even for unbounded occupied target-energy support, using an incoherent shell mixture and zero-energy ancilla.
+
+WP31 gives
+
+`inf V_impl=(1/2)Tr C`
+
+over exactly energy-conserving smooth unitary dilations and hence
+
+`V_min=A_ex^(2)/(hbar nu)`
+
+in the clean single-gap endpoint geometry.
+
+## Current publication decision gate
+
+**Do not automatically insert WP21--WP31 into R3.**
+
+The new theorem chain is now large enough that indiscriminate integration would likely make the existing paper less focused.
+
+Before changing the manuscript:
+
+1. hostile-audit WP31's stationary trace-class energy-support lemma;
+2. hostile-audit its trace-norm `C^2` dominated-convergence step;
+3. run the expanded mixed/degenerate-shell validator;
+4. perform a targeted priority search for state-specific prescribed-second-order-jet Stinespring/purification cost results;
+5. compare two architectures:
+   - **R4:** add only the strongest dynamical theorem and perhaps concise robustness/infinite-dimensional corollaries;
+   - **follow-up:** keep R3 focused and build a separate article around WP21--WP31.
+
+Until that gate is complete, R3 remains the canonical paper.
+
+## Prior-art lock
+
+Do not claim novelty for:
+
+- Page--Wootters relational time or asymmetry modes;
+- generic Fisher/QFI/Bures/Holevo theory;
+- Bures/Uhlmann horizontal purification geometry or `QFI/4` minimum purification speed;
+- generic quantum speed limits or integrated Hamiltonian/control norms;
+- classical nonregular boundary asymptotics;
+- energy-conserving/covariant Stinespring dilation theory;
+- infinite-dimensional QFI/Bures functional analysis;
+- numerical-radius, shorted-operator, Schur/PSD-cone, or Cauchy--Schwarz mathematics.
+
+The candidate post-R3 novelty is narrowly the endpoint-action / prescribed-kernel-2-jet minimum implementation-cost identity under globally conserving relational dynamics and its controlled detuning/infinite-dimensional extensions. Priority remains unverified.
+
+## Current work order
+
+1. complete WP31 hostile/prior-art audit;
+2. decide R4 versus follow-up;
+3. only after that decision modify journal-facing source;
+4. if further theorem work is warranted, prioritize noisy/CPTP implementation cost or unbounded-relative-tangent quadratic-form extensions rather than adding more bookkeeping to R3.
