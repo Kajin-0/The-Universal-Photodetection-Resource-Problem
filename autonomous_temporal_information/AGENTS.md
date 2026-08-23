@@ -10,13 +10,13 @@ This is a distinct post-Rev11 foundational program. The frozen Rev11 paper remai
 
 > When signal, clock/reference, controller, detector, and memory are all finite physical systems and no ideal externally timed operation is free, what resource constrains creation, transmission, and recovery of temporal information at frequency `nu`?
 
-Research is analytical/theoretical, falsification-first, and documentation-first. Existing asymmetry, reference-frame, phase-estimation, WAY, Page--Wootters, PSD-cone geometry, and finite-clock results are infrastructure unless a genuinely new operational theorem is isolated.
+Research is analytical/theoretical, falsification-first, and documentation-first. Existing asymmetry, reference-frame, phase-estimation, WAY, Page--Wootters, PSD-cone geometry, singular QFI/Bures geometry, and finite-clock results are infrastructure unless a genuinely new operational theorem is isolated.
 
 ## Current frontier
 
-**WP07 — nonlinear zero-radius curvature and finite-amplitude laws: analytic PASS in the support-to-kernel/two-sector settings.**
+**WP07 — nonlinear zero-radius spectral-synthesis law: analytic PASS in the support-to-kernel/two-sector settings.**
 
-The next target is a **unified interior/boundary law** combining WP06 pre-existing spectral support with WP07 quadratic spectral synthesis.
+The next target is a **unified mixed-endpoint exact-gap law** combining WP06 pre-existing spectral support with WP07 quadratic spectral synthesis.
 
 The theorem hierarchy is now:
 
@@ -24,9 +24,9 @@ The theorem hierarchy is now:
 
 while at a rank-deficient boundary,
 
-`zero-radius local Fisher <= quadratic creation of previously absent spectral population`.
+`zero-radius two-quadrature Fisher <= quadratic creation of a previously absent spectral endpoint`.
 
-For autonomous relations, the required exchange resource remains tied to both sides of the clock--signal cut.
+For autonomous relations, the matching exchange structure remains tied to both sides of the clock--signal cut.
 
 For the structured globally stationary relative-time model, the finite-resource retention law is exactly solved under both hard and mean total energy.
 
@@ -42,7 +42,8 @@ Established, not new:
 - Page--Wootters relational time;
 - quantitative WAY tradeoffs;
 - ordinary phase-estimation sine states / Heisenberg scaling;
-- generic PSD-cone curvature and boundary-QFI geometry;
+- second-order tangent geometry of the PSD cone;
+- rank-changing QFI/Bures Hessian corrections;
 - simply charging preparation/control energy.
 
 The program must produce a quantitative **operational temporal-information performance law**, not a repackaging of mode support or standard phase estimation.
@@ -184,65 +185,91 @@ Pre-existing relational clock coherence therefore does not evade
 Read:
 `notes/WP06_NONSTATIONARY_ROBUST_TAIL_AND_HISTORY_STATE_EXTENSION.md`.
 
-### WP07 — nonlinear `R_lin=0` curvature and finite-amplitude laws
+### WP07 — nonlinear `R_lin=0` spectral synthesis
 
-Let
+Let a two-sided `C^2` physical family pass through a rank-deficient baseline. Established PSD-cone second-order geometry gives, in one real direction,
 
-`rho(theta)=rho0+theta D+(theta^2/2)C+o(theta^2)`
+`Q rho''(0) Q >= 2 Q rho'(0)P(P rho0 P)^(-1)P rho'(0)Q`.
 
-be a two-sided `C^2` physical curve at a rank-deficient baseline. Let
+The scalar one-parameter consequence
 
-`P=supp(rho0)`, `Q=I-P`, `R=P rho0 P`, `K=QDP`.
+`F_Q <= 2 T_U''`
 
-Second-order PSD-cone geometry gives the necessary condition
+is useful but lies close to known rank-changing QFI/Bures Hessian corrections and is **not** the main novelty claim.
 
-`Q C Q >= 2 K R^(-1)K^dagger`.
+The stronger operational result uses the same complex two-quadrature tangent convention as WP02/WP03/WP06. Suppose
 
-This matrix geometry is prior art. The temporal-resource consequence is:
+`A=P_U A P`,
 
-if the first-order tangent enters a previously empty upper resource sector `P_U<=Q`, then
+where `P=supp(rho0)` and `P_U` is a previously empty upper endpoint sector. Define
 
-`F_Q(0) <= 2 T_U''(0)`.
+`J(A|rho0)=Tr(A rho0^+ A^dagger)`.
 
-For arbitrary finite-copy collective readout,
+Weighted Hilbert--Schmidt Cauchy--Schwarz gives, for any one-copy POVM,
 
-`(1/4)[F_N(0)/N] <= J_U^(2)`,
+`Tr F_1 <= J(A|rho0)`.
 
-`J_U^(2)=T_U''(0)/2`.
+For `N` independently encoded copies, cross-copy terms vanish because `Tr A=0`, so for **every finite N and every entangled collective POVM**,
 
-In multiparameter form,
+`Tr F_N/N <= J(A|rho0)`.
 
-`F_N(0)/N <= 2 Hess[T_U](0)`.
+Applying the second-order PSD condition to the cosine and sine directions separately yields
 
-Thus the zero-radius sector is paid for by **quadratic spectral synthesis** rather than baseline population.
+`J(A|rho0) <= Delta T_U(0)`,
 
-The old coherent-sideband no-go saturates the coefficient exactly:
+where
 
-`n_sb(epsilon)=epsilon^2 Nbar/4`,
+`T_U(x,y)=Tr[P_U rho(x,y)]`.
 
-`F_Q=Nbar=2 n_sb''(0)`.
+Therefore the sharp zero-radius law is
 
-A complementary finite-amplitude two-endpoint phase experiment uses block positivity:
+`boxed: Tr F_N/N <= J(A|rho0) <= Delta T_U(0)`.
 
-`||C||_1^2 <= q_D q_U`.
+Equivalently,
 
-For a relative pi phase flip,
+`boxed: (1/4)[Tr F_N/N] <= (1/4)Delta T_U(0)`.
 
-`D_tr=2||C||_1`,
+This coefficient is sharp at one copy. For
 
-hence
+`rho0=|0><0|`, `A=2c|1><0|`,
 
-`D_tr^2/4 <= min(q_D,q_U)`.
+one has
 
-In an exact autonomous exchange pair,
+`J=Delta T_U=4c^2`,
 
-`D_tr^2/4 <= min{T_C(nu),T_S(nu)}`,
+and a fixed four-outcome equatorial POVM attains
+
+`Tr F_1=4c^2`.
+
+The inherited coherent-sideband counterexample also saturates the operational coefficient. For
+
+`alpha_sb(x,y)=(A/2)(x+i y)`,
+
+`n_sb=Nbar(x^2+y^2)/4`,
 
 so
 
+`Delta n_sb(0)=Nbar`.
+
+Heterodyne readout gives
+
+`Tr F=Nbar`.
+
+Thus the source family that invalidated baseline-energy-only bounds is exactly paid for by second-order sideband population synthesis.
+
+A complementary finite-amplitude two-endpoint phase theorem gives, for a `pi` relative-phase pair,
+
+`D_tr^2/4 <= q_D q_U <= min(q_D,q_U)`.
+
+For an exact autonomous exchange pair,
+
+`D_tr^2/4 <= min{T_C(nu),T_S(nu)}`,
+
+hence
+
 `Ebar_C^+ + Ebar_S^+ >= (hbar nu/2)D_tr^2`.
 
-The PSD-cone, block-coherence, and Helstrom ingredients are prior art; candidate novelty is the frequency-resolved autonomous resource interpretation.
+The PSD-cone, singular-QFI/Bures, block-coherence, and Helstrom mathematics is prior art. Candidate novelty is restricted to the **frequency-resolved finite-copy arbitrary-POVM two-quadrature Fisher-versus-spectral-synthesis law** and its autonomous interpretation.
 
 Read:
 `notes/WP07_NONLINEAR_ZERO_RADIUS_CURVATURE_AND_FINITE_AMPLITUDE_LAW.md`.
@@ -253,18 +280,25 @@ Read:
 - `numerics/verify_relational_autonomous_laws.py`
 - `numerics/verify_nonlinear_zero_radius_law.py`
 
-The validators cover the fixed-energy/high-frequency no-go, random robust-tail POVMs, finite-copy collective readout, dual-tail tests, weak-commutativity sharpness, finite-shift numerical radii, sine extremizers, higher-harmonic cosine laws, random zero-radius curvature saturation, two-quadrature equality, random block-coherence bounds, phase-flip trace distance, and the coherent-sideband curvature coefficient.
+The WP07 validator checks random rank-deficient unitary curvature equality, one-parameter QFI curvature, the explicit sharp two-quadrature qubit POVM, random one-copy POVMs, random two-copy collective POVMs, random block-coherence inequalities, finite-phase trace distance, and coherent-sideband coefficients.
 
-## Current open frontier — unified interior/boundary theorem
+## Current open frontier — mixed endpoint theorem
 
 ### 1. Exact-gap support decomposition — highest priority
 
 For a general exact-gap tangent at an arbitrary baseline, split the information-bearing operator into:
 
 - support-to-support pieces, which use pre-existing spectral resource and should reduce to WP06;
-- support-to-kernel pieces, which synthesize a previously absent sector and should reduce to WP07.
+- support-to-kernel pieces, which synthesize a previously absent upper endpoint and should reduce to WP07;
+- kernel-to-support pieces, where the upper endpoint is pre-existing but a lower endpoint must be synthesized.
 
-Seek one invariant theorem that combines these contributions without an arbitrary case split or double counting.
+Seek one sharp arbitrary-POVM theorem combining these contributions without double counting.
+
+The main technical obstruction is score-space interference: for `A=A_int+A_syn`, an arbitrary POVM can make
+
+`Tr(A_int M_y)` and `Tr(A_syn M_y)`
+
+interfere in the same outcome score. An additive scalar resource law is therefore not automatic. A proof that only a Minkowski-type combination is universally possible would itself be an important structural result.
 
 ### 2. Full finite-amplitude phase orbit
 
@@ -272,7 +306,7 @@ WP07's binary phase-pair theorem is operational but does not reproduce the sharp
 
 ### 3. Bosonic coherent-sideband theorem
 
-Promote the WP14/WP07 consistency check into a general statement for coherent or Gaussian sideband synthesis using sideband number/energy creation, including multiple sidebands and arbitrary phase-sensitive POVMs.
+Promote the WP14/WP07 consistency check into a general multimode coherent/Gaussian sideband-synthesis statement using sideband number/energy creation, including arbitrary phase-sensitive POVMs.
 
 ### 4. Collective-N mean-energy retention
 
@@ -288,7 +322,7 @@ If interactions are not restricted to energy-conserving/covariant processing, id
 
 ## Priority status
 
-Targeted searches have not identified exact predecessors for WP02 robust tangent-radius Fisher survival, WP03/WP06 dual survival with arbitrary coherent baseline, WP04/WP05 autonomous Fisher-retention formulations, or the specific WP07 frequency-resolved Fisher-versus-spectral-synthesis consequence. This is **not certification**. Priority remains unverified.
+Targeted searches have not identified exact predecessors for WP02 robust tangent-radius Fisher survival, WP03/WP06 dual survival with arbitrary coherent baseline, WP04/WP05 autonomous Fisher-retention formulations, or the specific WP07 finite-copy two-quadrature spectral-synthesis consequence. This is **not certification**. Priority remains unverified.
 
 ## Read first
 
