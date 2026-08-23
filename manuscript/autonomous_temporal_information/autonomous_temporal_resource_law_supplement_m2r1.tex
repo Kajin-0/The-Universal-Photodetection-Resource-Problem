@@ -1,0 +1,56 @@
+\documentclass[aps,pra,preprint,nofootinbib]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\id}{\mathbb I}
+\newcommand{\Rlin}{R_{\mathrm{lin}}}
+\newcommand{\Aact}{\mathcal A}
+
+\begin{document}
+
+\title{Supplemental Material for ``Two spectral-resource regimes for autonomous temporal information''}
+\author{Anonymous}
+\affiliation{Anonymous}
+\maketitle
+
+This Supplemental Material gives self-contained proof cores for the resource statements used in the main text. We work with finite-dimensional clock and signal Hilbert spaces, as appropriate to the finite-internal-system formulation studied here; infinite-dimensional extensions require separate domain and closed-range hypotheses and are not claimed. The order follows the physical hierarchy: finite-radius survival, rank-changing boundary synthesis, the arbitrary-support mixed bridge, the multi-gap shared-Hessian law, and finally the exact qutrit common-record accessibility benchmark. Standard ingredients---numerical-radius inequalities, PSD-cone second-order geometry, shorted operators, and multiparameter Fisher bounds---are used as mathematical infrastructure rather than novelty claims \cite{BhatiaJain2023,Shapiro1997,BonnansCominettiShapiro1999,AndersonTrapp1975,BraunsteinCaves1994,GillMassar2000}.
+
+\section{Finite-radius survival}
+\input{proofs/finite_radius_survival_proofs.tex}
+
+\section{Rank-changing boundary synthesis and autonomous action}
+\input{proofs/boundary_and_autonomous_action_proofs.tex}
+
+\section{Arbitrary coherent support}
+\input{proofs/noncommuting_mixed_bridge_proof_r1.tex}
+
+\section{Multi-gap shared-Hessian action}
+\input{proofs/multigap_action_sum_proof_r1.tex}
+
+\section{Exact common-record accessibility benchmark}
+\input{proofs/shared_kernel_qutrit_benchmark.tex}
+\input{proofs/wp15_exact_common_record_qutrit.tex}
+
+\section{Interpretive separation of resource, QFI, and accessibility}
+The inequalities proved above are physical necessary-resource bounds on an encoded state family. They are not SLD-attainability statements. Conversely, a QFI matrix is a quantum-statistical tangent bound and need not equal the physical resource ceiling. The shared-kernel qutrit makes this separation explicit:
+\begin{equation}
+12>\frac{43}{4}>\frac{55}{8},
+\end{equation}
+where the three quantities are respectively the physical resource ceiling, the SLD-QFI trace, and the exact one-copy common-record Fisher supremum. This distinction is important at rank-changing boundaries, where zero-probability directions and incompatible score quadratures can separate the three layers substantially \cite{Safranek2017,LiEtAl2016}.
+
+\bibliographystyle{apsrev4-2}
+\bibliography{references}
+
+\end{document}
