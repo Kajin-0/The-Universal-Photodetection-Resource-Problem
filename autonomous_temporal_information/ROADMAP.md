@@ -10,7 +10,7 @@ Seek a foundational physical resource principle for temporal information when cl
 
 ### WP01 — prior-art and model boundary — PASS
 
-Do not claim novelty for modes-of-asymmetry, QFI as asymmetry, finite clocks/control, Page--Wootters relational time, quantitative WAY, generic speed limits, phase-estimation sine states, PSD-cone curvature, boundary QFI/Bures geometry, or simply charging preparation/control energy.
+Do not claim novelty for modes-of-asymmetry, QFI as asymmetry, finite clocks/control, Page--Wootters relational time, quantitative WAY, generic speed limits, phase-estimation sine states, PSD-cone curvature, singular QFI/Bures geometry, or simply charging preparation/control energy.
 
 The program must produce an operational temporal-information resource law.
 
@@ -94,112 +94,151 @@ For arbitrary `rho`, positive `R_lin`, tangent range projector `P_U`, finite `N`
 
 Thus the relational dual-tail theorem remains valid for globally stationary Page--Wootters/history states that are not separately stationary under the local Hamiltonians.
 
-### WP07 — nonlinear zero-radius curvature and finite-amplitude laws — PASS in the boundary/two-sector regimes
+### WP07 — nonlinear zero-radius spectral-synthesis law — PASS in the support-to-kernel/two-sector regimes
 
-For a two-sided `C^2` physical curve
+For a two-sided `C^2` physical curve at a rank-deficient baseline, established PSD-cone second-order geometry gives
 
-`rho(theta)=rho0+theta D+(theta^2/2)C+o(theta^2)`
+`Q rho''(0) Q >= 2 Q rho'(0)P(P rho0 P)^(-1)P rho'(0)Q`.
 
-at a rank-deficient baseline, let
+The one-parameter scalar consequence
 
-`P=supp(rho0)`, `Q=I-P`, `R=P rho0 P`, `K=QDP`.
+`F_Q <= 2 T_U''`
 
-Second-order PSD-cone geometry gives
+is close to known rank-changing QFI/Bures Hessian geometry and is not the main novelty claim.
 
-`Q C Q >= 2 K R^(-1)K^dagger`.
+The stronger operational result uses the project's two-quadrature complex tangent convention. For
 
-If the first-order tangent enters a previously empty upper resource sector `P_U<=Q`, then
+`A=P_U A P`,
 
-`F_Q(0) <= 2 T_U''(0)`.
+where `P=supp(rho0)` and `P_U` is a previously empty upper endpoint, define
 
-For arbitrary finite-copy collective readout,
+`J(A|rho0)=Tr(A rho0^+ A^dagger)`.
 
-`(1/4)[F_N(0)/N] <= J_U^(2)`,
+For every finite `N` and arbitrary entangled collective POVM,
 
-`J_U^(2)=T_U''(0)/2`.
+`Tr F_N/N <= J(A|rho0)`.
 
-In multiparameter form,
+Second-order positivity applied to the two quadratures gives
 
-`F_N(0)/N <= 2 Hess[T_U](0)`.
+`J(A|rho0) <= Delta T_U(0)`,
 
-Thus `R_lin=0` does not eliminate resource accounting: it moves the cost from zeroth-order spectral population to **second-order spectral population creation**.
+where
 
-The earlier coherent-sideband counterexample saturates this coefficient exactly:
+`T_U(x,y)=Tr[P_U rho(x,y)]`.
 
-`F_Q=Nbar=2 n_sb''(0)`.
+Hence the sharp zero-radius law is
 
-A complementary finite-amplitude two-sector phase theorem gives, for a pi relative-phase pair,
+`boxed: Tr F_N/N <= J(A|rho0) <= Delta T_U(0)`.
 
-`D_tr^2/4 <= q_D q_U <= min(q_D,q_U)`.
+Equivalently,
 
-For an exact autonomous exchange pair,
+`boxed: (1/4)[Tr F_N/N] <= (1/4)Delta T_U(0)`.
+
+The minimal pure qubit saturates both inequalities at one copy with a fixed four-outcome equatorial POVM.
+
+The coherent-sideband no-go also saturates the operational coefficient:
+
+`alpha_sb(x,y)=(A/2)(x+i y)`,
+
+`n_sb=Nbar(x^2+y^2)/4`,
+
+`Delta n_sb(0)=Nbar`,
+
+while heterodyne measurement gives
+
+`Tr F=Nbar`.
+
+Thus the high-frequency family that evades baseline-energy-only bounds is paid for exactly by second-order sideband population synthesis.
+
+A complementary finite-amplitude two-endpoint phase theorem gives
 
 `D_tr^2/4 <= min{T_C(nu),T_S(nu)}`
 
-and
+for a `pi` relative-phase pair and therefore
 
 `Ebar_C^+ + Ebar_S^+ >= (hbar nu/2)D_tr^2`.
 
-The underlying PSD-cone, block-coherence, and Helstrom mathematics is prior art. Candidate novelty is the frequency-resolved autonomous temporal-resource interpretation.
+The underlying PSD-cone, singular-QFI/Bures, block-coherence, and Helstrom mathematics is prior art. Candidate novelty is restricted to the frequency-resolved finite-copy arbitrary-POVM temporal-resource consequence.
 
-## Current frontier — unified support/interior law
+## Current frontier — unified mixed-endpoint exact-gap law
 
-### A. Combine WP06 and WP07 without double counting
+### A. Decompose a general exact-gap tangent
 
-For a general exact-gap tangent at an arbitrary baseline, decompose the information-bearing operator into:
+For a rank-deficient arbitrary baseline, a positive-gap tangent can contain several endpoint types:
 
-1. **support-to-support** components, which use pre-existing endpoint population and should be charged by a WP06-style survival/robustness term;
-2. **support-to-kernel** components, which synthesize a new endpoint sector and should be charged by a WP07 quadratic-supply term.
+1. **support-to-support:** both endpoints already populated. This is the WP06 finite-radius sector.
+2. **support-to-kernel:** the upper endpoint is absent at baseline and is synthesized at second order. This is the sharp WP07 sector.
+3. **kernel-to-support:** the upper endpoint is present but the lower endpoint is absent and must be synthesized at second order in the conjugate direction.
 
-The target is one coordinate-invariant inequality that reduces exactly to WP06 in the interior and WP07 on the boundary.
+The next theorem should charge all three without double counting.
 
-Questions:
+### B. Determine whether sharp scalar additivity is possible
 
-- Does the SLD-QFI orthogonal decomposition of support-support and support-kernel matrix elements give the correct additive resource decomposition?
-- Can a classical arbitrary-POVM Fisher bound inherit that decomposition without replacing the result by a loose total-QFI envelope?
-- Is there a natural generalized robustness functional that interpolates continuously between `R_lin^2 T` and `T_U''`?
+Write schematically
 
-### B. Full finite-amplitude phase orbit
+`A=A_int+A_syn`.
 
-The binary Helstrom theorem is useful but deliberately weaker than full relative-time recovery. Seek a finite-amplitude orbit metric or phase-estimation functional that:
+For an arbitrary POVM outcome,
 
-- survives support changes;
+`z_y=Tr(A_int M_y)+Tr(A_syn M_y)`.
+
+The Fisher trace contains
+
+`|z_y|^2/p_y`,
+
+so score-space cross terms need not vanish merely because the operator blocks are orthogonal.
+
+Required work:
+
+- test whether exact-gap block structure forces any cancellation after summing a POVM;
+- if not, derive the sharp universal Minkowski-type bound;
+- construct counterexamples to naive additive resource formulas;
+- identify a matrix/Gram resource that may retain sharpness even when no scalar sum does.
+
+A proof that scalar additivity is impossible would be scientifically useful because it would identify the correct geometry of the unified resource.
+
+### C. Preserve the endpoint orientation
+
+The upper-kernel and lower-kernel cases are physically different.
+
+- upper kernel: high-energy population is synthesized and the WP07 upper-curvature law applies directly;
+- lower kernel: the high-energy endpoint may be pre-existing, but the donor/lower state must be synthesized; the resource accounting should involve upper survival **and** lower-endpoint curvature.
+
+The autonomous clock--signal version should then test whether each local subsystem incurs the appropriate pre-existing/synthesis cost under the opposite orientation of the exchange.
+
+### D. Full finite-amplitude phase orbit
+
+The binary Helstrom theorem is useful but deliberately weaker than continuous relative-time recovery. Seek a support-changing phase-orbit metric that:
+
 - remains arbitrary-POVM operational;
-- reduces locally to the WP07 curvature law;
-- recovers the WP04/WP05 divergence for near-lossless continuous temporal recovery when appropriate.
+- reduces locally to WP07;
+- recovers WP04/WP05 divergence for near-lossless continuous temporal recovery when appropriate.
 
-Candidate tools:
+Candidate tools include Bures/Hellinger orbit distance, posterior phase sharpness, Holevo phase cost, Chernoff information over phase, or a generalized Herglotz retention functional.
 
-- Bures/Hellinger distance over a complete orbit;
-- average phase fidelity/sharpness;
-- Holevo phase cost;
-- Chernoff information integrated over phase;
-- posterior first-harmonic retention generalized to rank-changing families.
+### E. General bosonic sideband synthesis theorem
 
-### C. General bosonic sideband synthesis theorem
-
-WP14/WP07 gives one exactly matched example. Generalize to multimode coherent/Gaussian synthesis:
+WP14/WP07 now match exactly in the one-sideband model. Generalize to:
 
 - multiple upper/lower sidebands;
 - arbitrary carrier spectrum;
-- sideband-number Hessian as the synthesis resource;
+- sideband-number Hessian as the spectral synthesis resource;
 - arbitrary phase-sensitive POVMs;
 - autonomous clock/control implementation.
 
-Determine whether a modewise sum/area law exists for the quadratic sideband-supply spectrum.
+Seek a modewise sum/area law for the quadratic sideband-supply spectrum.
 
-### D. Deep priority audit
+### F. Deep priority audit
 
-Search specifically against:
+Continue targeted searches against:
 
-- second-order tangent sets of the PSD cone and semidefinite curvature terms;
+- second-order tangent sets of the PSD cone;
 - singular/rank-changing quantum statistical models;
 - Bures/QFI continuous completion;
-- block coherence and subspace-coherence monogamy;
+- subspace/block coherence;
 - finite-reference-frame phase discrimination;
-- resource theories with second-order/asymptotic conversion rates;
-- coherent and Gaussian phase/frequency estimation;
-- quantum waveform estimation and bandlimited controls.
+- quantum waveform estimation and Gaussian sensing;
+- resource theories with second-order/asymptotic conversion rates.
 
 Do not claim novelty for the underlying matrix geometry.
 
@@ -221,7 +260,7 @@ If operations do not obey the energy-conserving/covariant structure, determine w
 
 Do not draft a new foundational manuscript yet. First require:
 
-- a unified interior/boundary theorem or a sharp impossibility result explaining why no such scalar unification exists;
+- a unified mixed-endpoint theorem or a sharp impossibility result explaining why no scalar unification exists;
 - deep priority audit including the WP07 collision neighborhood;
 - at least one theorem clearly not reducible to known phase estimation/WAY/asymmetry/PSD-cone statements;
 - hostile mathematical review;
