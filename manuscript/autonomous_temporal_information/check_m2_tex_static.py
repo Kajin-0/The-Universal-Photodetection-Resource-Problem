@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Static integrity checks for the autonomous temporal-information M2 manuscript.
+"""Static integrity checks for the autonomous temporal-information M2R1 manuscript.
 
 This is deliberately lightweight and uses only the Python standard library.
-It is not a TeX parser.  It catches repository-level mistakes that should fail
+It is not a TeX parser. It catches repository-level mistakes that should fail
 before LaTeX is invoked: duplicate labels, undefined refs, missing BibTeX keys,
-missing input files, and obvious internal-draft markers in canonical M2 roots.
+missing input files, and obvious internal-draft markers in canonical roots.
 """
 
 from __future__ import annotations
@@ -15,8 +15,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOTS = [
-    HERE / "autonomous_temporal_resource_law_m2.tex",
-    HERE / "autonomous_temporal_resource_law_supplement_m2.tex",
+    HERE / "autonomous_temporal_resource_law_m2r1.tex",
+    HERE / "autonomous_temporal_resource_law_supplement_m2r1.tex",
 ]
 BIB = HERE / "references.bib"
 
@@ -39,7 +39,6 @@ BANNED_MARKERS = (
 def strip_comments(text: str) -> str:
     out: list[str] = []
     for line in text.splitlines():
-        # First unescaped percent sign starts a TeX comment.
         m = re.search(r"(?<!\\)%", line)
         if m:
             line = line[: m.start()]
@@ -59,7 +58,7 @@ def read_expanded(path: Path, stack: tuple[Path, ...] = ()) -> str:
 
     def repl(match: re.Match[str]) -> str:
         rel = match.group(1)
-        child = (path.parent / rel)
+        child = path.parent / rel
         if child.suffix == "":
             child = child.with_suffix(".tex")
         return read_expanded(child.resolve(), (*stack, path))
@@ -79,7 +78,7 @@ def check_root(root: Path, keys: set[str]) -> list[str]:
     errors: list[str] = []
     try:
         text = read_expanded(root.resolve())
-    except Exception as exc:  # fail with concise diagnostic
+    except Exception as exc:
         return [f"{root.name}: input expansion failed: {exc}"]
 
     labels = LABEL_RE.findall(text)
@@ -105,10 +104,8 @@ def check_root(root: Path, keys: set[str]) -> list[str]:
 
     for marker in BANNED_MARKERS:
         if marker in text:
-            errors.append(f"{root.name}: canonical M2 source still contains draft marker {marker!r}")
+            errors.append(f"{root.name}: canonical M2R1 source still contains draft marker {marker!r}")
 
-    # The project convention uses u_y for the first bilateral score vector.
-    # A literal TeX nu_y here is a known serialization/notation failure mode.
     if re.search(r"\\nu_y\s*=\s*\\frac\{\\Tr\(XM_y\)", text):
         errors.append(f"{root.name}: found \\nu_y where bilateral score vector must be u_y")
 
@@ -133,7 +130,7 @@ def main() -> int:
             print(f"ERROR: {err}", file=sys.stderr)
         return 1
 
-    print(f"M2 static TeX integrity PASS; BibTeX keys={len(keys)}")
+    print(f"M2R1 static TeX integrity PASS; BibTeX keys={len(keys)}")
     return 0
 
 
