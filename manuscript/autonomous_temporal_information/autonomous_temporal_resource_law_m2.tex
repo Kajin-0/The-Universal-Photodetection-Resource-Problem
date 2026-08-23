@@ -1,0 +1,532 @@
+\documentclass[aps,pra,preprint,nofootinbib]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\id}{\mathbb I}
+\newcommand{\Rlin}{R_{\mathrm{lin}}}
+\newcommand{\rhozero}{\rho_0}
+\newcommand{\Fcl}{F}
+\newcommand{\Aact}{\mathcal A}
+
+\begin{document}
+
+\title{Two spectral-resource regimes for autonomous temporal information}
+
+\author{Anonymous}
+\affiliation{Anonymous}
+
+\begin{abstract}
+A local Fisher metric can remain finite at arbitrarily high Bohr frequency while the baseline mean energy is fixed, so temporal Fisher information alone cannot obey a universal energy--bandwidth law under unrestricted state synthesis. We identify the missing physical structure and obtain two complementary resource regimes. For a nonzero affine physical tangent radius, finite-copy classical Fisher information at an exact energy gap is bounded by pre-existing spectral survival; in a globally stationary clock--signal exchange the same information must be backed on both sides of the relational cut. At a rank-changing boundary the affine radius can vanish while an exact nonlinear family remains informative. There the resource moves to second order: baseline-empty endpoint population must be synthesized, opposite endpoint orientations combine by a sharp Minkowski law, and an autonomous exchange requires a positive two-sided synthesis action even inside a fixed-total-energy eigenspace with zero global time-translation asymmetry. We extend the construction to arbitrary coherent support using shorted endpoint geometry and a canonical domain/range endpoint-incidence operator, and derive a frequency-weighted multi-gap action sum that is simultaneously saturated by one common Fourier measurement in a fixed-total-energy shell. The synthesis action is a kinematic resource of the encoded state family, not a claim about total implementation energy.
+\end{abstract}
+
+\maketitle
+
+\section{Problem, conventions, and claim boundary}
+\label{sec:model}
+
+We consider local two-parameter quantum statistical models whose two real coordinates are the cosine and sine quadratures of one temporal mode. Let $A$ denote the corresponding complex tangent and define
+\begin{equation}
+D_c=\frac{A+A^\dagger}{2},\qquad
+D_s=\frac{A-A^\dagger}{2i}.
+\label{eq:quadratures}
+\end{equation}
+For a POVM $\{M_y\}$ at the baseline state $\rhozero$, write
+\begin{equation}
+p_y=\Tr(\rhozero M_y),\qquad z_y=\Tr(A M_y).
+\end{equation}
+The outcome derivatives are $\partial_c p_y=\operatorname{Re}z_y$ and $\partial_s p_y=\operatorname{Im}z_y$, so our two-quadrature classical Fisher trace is
+\begin{equation}
+\Tr \Fcl_1=\sum_{y:p_y>0}\frac{|z_y|^2}{p_y}.
+\label{eq:FItrace}
+\end{equation}
+For $N$ independently encoded copies, $\Fcl_N$ denotes the Fisher matrix of an arbitrary joint POVM; no separability or asymptotic assumption is imposed unless stated explicitly.
+
+An operator $A_\nu$ is an exact positive Bohr-gap tangent of frequency $\nu>0$ for Hamiltonian $H$ when
+\begin{equation}
+[H,A_\nu]=\hbar\nu A_\nu.
+\label{eq:bohrgap}
+\end{equation}
+For an autonomous clock--signal pair the corresponding exact exchange condition is
+\begin{equation}
+[H_S,A_\nu]=+\hbar\nu A_\nu,
+\qquad
+[H_C,A_\nu]=-\hbar\nu A_\nu,
+\label{eq:exchange}
+\end{equation}
+which implies $[H_C+H_S,A_\nu]=0$.
+
+The resource statements below are deliberately distinct from general resource theories of time-translation asymmetry, the Page--Wootters mechanism, quantitative Wigner--Araki--Yanase constraints, waveform Holevo bounds, and protocol-level energy-constrained quantum metrology. Those frameworks supply essential prior structure \cite{PageWootters1983,MarvianSpekkens2014Modes,CarmoSoaresPinto2021,TajimaShiraishiSaito2020,Marvian2022,YamaguchiTajima2023,GardnerEtAl2024,ChenYang2026}. Our target is narrower: frequency-resolved necessary resources for a local \emph{relational} temporal Fisher mode, including rank-changing physical families for which global time-translation asymmetry can vanish identically.
+
+\begin{definition}[Linear physical tangent radius]
+For a baseline $\rhozero$ and complex tangent $A$, $\Rlin(\rhozero,A)$ is the supremum of $R\ge0$ such that
+\begin{equation}
+\rhozero+xD_c+yD_s\succeq0
+\quad\text{for every }x^2+y^2\le R^2.
+\label{eq:RlinDef}
+\end{equation}
+If no nonzero disk is physical, $\Rlin=0$.
+\end{definition}
+
+The affine radius is not the radius of an arbitrary nonlinear physical family. A rank-deficient model can have $\Rlin=0$ while a nonlinear state family remains physical because second-order population is generated automatically.
+
+\section{Fixed mean energy does not bound unrestricted local Fisher information}
+\label{sec:nogo}
+
+\begin{proposition}[Fixed-energy high-frequency local-Fisher counterexample]
+\label{prop:nogo}
+Fix an excess mean energy $E>0$ and a constant $c>0$. For every $\nu>E/\hbar$, let
+\begin{equation}
+H_\nu=\hbar\nu |1\rangle\!\langle1|,
+\quad
+\rhozero=(1-p)|0\rangle\!\langle0|+p|1\rangle\!\langle1|,
+\quad
+p=\frac{E}{\hbar\nu},
+\end{equation}
+and choose $A_\nu=2c|1\rangle\!\langle0|$. Then $\Tr(\rhozero H_\nu)=E$ for all $\nu$, while an equatorial covariant qubit POVM has
+\begin{equation}
+\Tr \Fcl_1=4c^2
+\end{equation}
+independently of $\nu$. The affine physical radius is
+\begin{equation}
+\Rlin^2=\frac{p(1-p)}{c^2}\xrightarrow[\nu\to\infty]{}0.
+\end{equation}
+Hence no baseline-energy-only law can force arbitrary local Fisher information to vanish at high frequency without an additional physical-robustness or finite-amplitude assumption.
+\end{proposition}
+
+The counterexample identifies the variable lost by a purely local metric: the state-space neighborhood over which the tangent itself remains physical.
+
+\section{Finite-radius spectral-survival laws}
+\label{sec:finite-radius}
+
+Assume first that $\rhozero$ is stationary under $H$ and $A_\nu$ obeys Eq.~\eqref{eq:bohrgap}. Let $P_{U,\nu}$ and $P_{D,\nu}$ be the upper- and lower-endpoint projectors supporting the range and domain of the $+\nu$ mode, and define
+\begin{equation}
+U_\nu=\Tr(\rhozero P_{U,\nu}),\qquad
+D_\nu=\Tr(\rhozero P_{D,\nu}).
+\end{equation}
+
+\begin{theorem}[Robust Fisher--survival law]
+\label{thm:single-survival}
+If $\Rlin>0$, then for every finite $N$ and every joint POVM on $N$ independently encoded copies,
+\begin{equation}
+\boxed{
+\frac{\Rlin^2}{4}\frac{\Tr \Fcl_N^{(\nu)}}{N}
+\le \min\{D_\nu,U_\nu\}.
+}
+\label{eq:robust-survival}
+\end{equation}
+If $H$ is semibounded with lower edge $E_*$ and
+\begin{equation}
+T(\nu)=\Pr_{\rhozero}[H-E_*\ge\hbar\nu],
+\end{equation}
+then
+\begin{equation}
+\frac{\Rlin^2}{4}\frac{\Tr \Fcl_N^{(\nu)}}{N}\le T(\nu),
+\label{eq:tail-survival}
+\end{equation}
+and for finite mean excess energy $\bar E^+=\Tr[\rhozero(H-E_*)]$,
+\begin{equation}
+\bar E^+\ge
+\frac{\hbar\nu\Rlin^2}{4}\frac{\Tr \Fcl_N^{(\nu)}}{N}.
+\label{eq:energy-corollary}
+\end{equation}
+\end{theorem}
+
+\emph{Proof core.} Positive affine radius forces $A=PAP$ on $P=\supp\rhozero$. With $B=\rhozero^{-1/2}A\rhozero^{-1/2}$, positivity of the entire affine disk is equivalent to $\Rlin w(B)\le1$, hence $\|B\|\le2/\Rlin$ by the standard numerical-radius inequality \cite{BhatiaJain2023}. Outcome-wise weighted Hilbert--Schmidt Cauchy--Schwarz gives
+\begin{equation}
+\Tr F_1\le\Tr(A\rhozero^+A^\dagger).
+\end{equation}
+The latter operator is bounded by $4\rhozero/\Rlin^2$ and supported on the upper endpoint. Applying the same argument to $A^\dagger$ gives the lower endpoint. For $N$ copies, all off-diagonal copy terms in the weighted norm vanish because $\Tr A=0$, so the bound scales exactly as $N$ even for an arbitrary collective POVM. The full derivation is given in the Supplemental Material.
+
+\subsection{Globally stationary relative time}
+
+Let $C$ and $S$ have semibounded local Hamiltonians and suppose
+\begin{equation}
+[\rhozero,H_C+H_S]=0,
+\end{equation}
+while $A_\nu$ obeys Eq.~\eqref{eq:exchange}. Separate stationarity under $H_C$ and $H_S$ is not required for the support-sensitive extension. Define
+\begin{equation}
+T_X(\nu)=\Pr_{\rhozero}[H_X-E_{X,*}\ge\hbar\nu],\qquad X\in\{C,S\}.
+\end{equation}
+
+\begin{theorem}[Autonomous dual-survival law]
+\label{thm:dual-survival}
+For every finite $N$ and arbitrary joint POVM,
+\begin{equation}
+\boxed{
+\frac{\Rlin^2}{4}\frac{\Tr \Fcl_N^{(\nu)}}{N}
+\le \min\{T_C(\nu),T_S(\nu)\}.
+}
+\label{eq:dual-survival}
+\end{equation}
+Therefore
+\begin{equation}
+\bar E_C^+ +\bar E_S^+
+\ge
+\frac{\hbar\nu\Rlin^2}{2}
+\frac{\Tr \Fcl_N^{(\nu)}}{N}.
+\label{eq:dual-energy}
+\end{equation}
+\end{theorem}
+
+\emph{Proof core.} The signal Hamiltonian sees $A_\nu$ as a positive $+\nu$ gap; the clock Hamiltonian sees $A_\nu^\dagger$ as a positive $+\nu$ gap. Conjugation reverses only the sine coordinate, so both views have the same affine radius and Fisher trace. Applying the arbitrary-baseline upper-tail form of the preceding proof on the two local sides gives Eq.~\eqref{eq:dual-survival}. Thus a globally stationary relative mode is backed by matched local spectral survival rather than global time-translation asymmetry.
+
+\section{Rank-changing boundary: second-order synthesis replaces survival}
+\label{sec:boundary}
+
+Let $\rho(x,y)$ be a two-sided $C^2$ physical family with $\rho(0,0)=\rhozero$, let $P=\supp\rhozero$ and $Q=\id-P$, and let its first derivatives be Eq.~\eqref{eq:quadratures}.
+
+\begin{theorem}[One-sided boundary synthesis]
+\label{thm:one-sided-boundary}
+Suppose $P_U P=0$ and $A=P_UAP$. Define
+\begin{equation}
+J(A|\rhozero)=\Tr(A\rhozero^+A^\dagger),
+\qquad
+T_U(x,y)=\Tr[P_U\rho(x,y)].
+\end{equation}
+Then for every finite $N$ and arbitrary collective POVM,
+\begin{equation}
+\boxed{
+\frac{\Tr \Fcl_N}{N}
+\le J(A|\rhozero)
+\le \Delta T_U(0),
+}
+\label{eq:one-sided-boundary}
+\end{equation}
+where $\Delta=\partial_x^2+\partial_y^2$.
+\end{theorem}
+
+\emph{Proof core.} The same weighted score inequality gives $\Tr F_N/N\le J$. For a one-parameter two-sided $C^2$ physical curve, Schur-complement positivity at a rank-deficient baseline implies
+\begin{equation}
+Q\rho''(0)Q\succeq2K\rhozero^+K^\dagger,
+\end{equation}
+where $K=Q\rho'(0)P$. Applying this independently to the cosine and sine directions, whose support-to-kernel blocks are $A/2$ and $A/(2i)$, gives $\Delta T_U(0)\ge J$. This PSD-cone geometry is established mathematics \cite{Shapiro1997,BonnansCominettiShapiro1999}; the resource consequence is the frequency-resolved positive endpoint synthesis it enforces.
+
+For a pure boundary tangent with $PAP=QAQ=0$, write
+\begin{equation}
+X=QAP,\qquad Y=QA^\dagger P,\qquad A=X+Y^\dagger,
+\end{equation}
+and
+\begin{equation}
+J_+=\Tr(X\rhozero^+X^\dagger),\qquad
+J_-=\Tr(Y\rhozero^+Y^\dagger).
+\end{equation}
+
+\begin{theorem}[Bilateral boundary Minkowski law]
+\label{thm:bilateral-boundary}
+For every finite $N$ and arbitrary collective POVM,
+\begin{equation}
+\boxed{
+\sqrt{\frac{\Tr \Fcl_N}{N}}
+\le \sqrt{J_+}+\sqrt{J_-}.
+}
+\label{eq:boundary-minkowski}
+\end{equation}
+If $X$ and $Y$ enter mutually orthogonal baseline-empty endpoint sectors $P_+$ and $P_-$, with $T_\pm(x,y)=\Tr[P_\pm\rho(x,y)]$, then
+\begin{equation}
+\boxed{
+\frac{\Tr \Fcl_N}{N}
+\le
+\left[\sqrt{\Delta T_+(0)}+\sqrt{\Delta T_-(0)}\right]^2.
+}
+\label{eq:boundary-curvature}
+\end{equation}
+The square-root composition is sharp; ordinary additive endpoint-curvature accounting is false in general.
+\end{theorem}
+
+\emph{Proof core.} For each POVM outcome the complex score is the sum of a right-supported $X$ score and the conjugate right-supported $Y$ score. Their weighted $\ell_2$ norms are bounded by $\sqrt{J_+}$ and $\sqrt{J_-}$, so Hilbert-space Minkowski gives Eq.~\eqref{eq:boundary-minkowski}. In the PSD curvature inequalities the cosine/sine support-to-kernel blocks are $(X+Y)/2$ and $(X-Y)/(2i)$; adding the two operator inequalities cancels their cross terms exactly and yields a single shared curvature satisfying $C_\Delta\succeq Z_++Z_-$. Projection onto orthogonal endpoint sectors gives Eq.~\eqref{eq:boundary-curvature}. An exact three-level Fourier model saturates the square-root law and violates naive additive curvature by a factor of two.
+
+\section{Autonomous zero-radius synthesis action}
+\label{sec:autonomous-action}
+
+Return to Eq.~\eqref{eq:exchange} and assume $PAP=0$. In a clean spectral geometry, $X$ synthesizes a signal-upper and clock-lower endpoint, while $Y$ synthesizes a signal-lower and clock-upper endpoint. Define
+\begin{equation}
+\Aact_S^{(2)}=\frac{\hbar\nu}{4}(\Delta T_{S,+}+\Delta T_{S,-}),
+\qquad
+\Aact_C^{(2)}=\frac{\hbar\nu}{4}(\Delta T_{C,+}+\Delta T_{C,-}).
+\label{eq:local-actions}
+\end{equation}
+These are positive absolute-gap endpoint-incidence resources, not signed subsystem-energy curvatures.
+
+\begin{theorem}[Autonomous dual synthesis-action law]
+\label{thm:dual-action}
+For every finite $N$ and arbitrary collective POVM, bilateral synthesis obeys
+\begin{equation}
+\boxed{
+\Aact_C^{(2)}+\Aact_S^{(2)}
+\ge
+\frac{\hbar\nu}{4}\frac{\Tr \Fcl_N}{N},
+}
+\label{eq:dual-action-bilateral}
+\end{equation}
+while one-sided synthesis obeys
+\begin{equation}
+\boxed{
+\Aact_C^{(2)}+\Aact_S^{(2)}
+\ge
+\frac{\hbar\nu}{2}\frac{\Tr \Fcl_N}{N}.
+}
+\label{eq:dual-action-one-sided}
+\end{equation}
+Both coefficients are sharp already at one copy.
+\end{theorem}
+
+\emph{Proof core.} In the bilateral case, Eq.~\eqref{eq:boundary-curvature} and $(\sqrt a+\sqrt b)^2\le2(a+b)$ imply separately
+\begin{equation}
+\Aact_X^{(2)}\ge\frac{\hbar\nu}{8}\frac{\Tr F_N}{N},\qquad X=C,S.
+\end{equation}
+Adding the two local inequalities gives Eq.~\eqref{eq:dual-action-bilateral}. If only one support orientation is present, the one-sided boundary theorem applies directly on each local side and doubles the coefficient. Thus the factor-of-two distinction is the operational consequence of whether two opposite boundary score amplitudes can interfere constructively.
+
+\subsection{Fixed-total-energy sharpness}
+
+Let
+\begin{equation}
+|L\rangle=|2_C,0_S\rangle,\quad
+|M\rangle=|1_C,1_S\rangle,\quad
+|U\rangle=|0_C,2_S\rangle,
+\end{equation}
+with equal local level spacing $\hbar\nu$, and take
+\begin{equation}
+\rhozero=|M\rangle\!\langle M|,
+\qquad
+A_\nu=c(|U\rangle\!\langle M|+|M\rangle\!\langle L|).
+\end{equation}
+The exactly normalized family
+\begin{align}
+|\psi(x,y)\rangle={}&
+\sqrt{1-\frac{c^2}{2}(x^2+y^2)}\,|M\rangle
++\frac c2(x+i y)|L\rangle
++\frac c2(x-i y)|U\rangle
+\label{eq:bilateral-extremizer}
+\end{align}
+is physical on $x^2+y^2<2/c^2$ and remains inside the total-energy-$2\hbar\nu$ eigenspace. Each local endpoint Laplacian is $c^2$, a three-outcome Fourier measurement gives $\Tr F_1=4c^2$, and Eq.~\eqref{eq:dual-action-bilateral} is saturated exactly. The one-sided coefficient is saturated by the convention-consistent fixed-shell family
+\begin{equation}
+|\psi(x,y)\rangle
+=\sqrt{1-c^2(x^2+y^2)}|D\rangle+c(x-i y)|U\rangle.
+\end{equation}
+
+\section{Arbitrary coherent support: mixed survival and synthesis}
+\label{sec:mixed}
+
+Let $P=\supp\rhozero$, $Q=\id-P$ and suppose $A_\nu$ obeys Eq.~\eqref{eq:exchange}. First-order physicality gives $QA_\nu Q=0$. Define
+\begin{equation}
+B=PA_\nu P,\qquad
+K_+=QA_\nu P,\qquad
+K_-=QA_\nu^\dagger P,
+\label{eq:mixed-decomp}
+\end{equation}
+and
+\begin{align}
+Z_B^+&=B\rhozero^+B^\dagger,&Z_B^-&=B^\dagger\rhozero^+B,\\
+Z_+&=K_+\rhozero^+K_+^\dagger,&Z_-&=K_-\rhozero^+K_-^\dagger.
+\end{align}
+Write $J_B^\pm=\Tr Z_B^\pm$ and $J_\pm=\Tr Z_\pm$.
+
+The support-preserving term need not itself remain an exact Bohr-gap operator when $P$ fails to commute with the local Hamiltonians. Its resource therefore contains the geometry between its information-bearing support and the compressed physical endpoints. Let $a_+$ and $a_-$ denote the corresponding two-sided shorted endpoint-survival ceilings, so
+\begin{equation}
+J_B^+\le a_+,
+\qquad
+J_B^-\le a_-.
+\label{eq:a-ceilings}
+\end{equation}
+Explicit formulas are given in the Supplemental Material and reduce to ordinary survival in the commuting clean limit. Shorted-operator mathematics is standard \cite{AndersonTrapp1975}.
+
+For the boundary contribution define canonical endpoint-role projectors of the full exact exchange,
+\begin{equation}
+\Pi_{\mathrm{out}}=\supp(A_\nu A_\nu^\dagger),
+\qquad
+\Pi_{\mathrm{in}}=\supp(A_\nu^\dagger A_\nu),
+\label{eq:inout}
+\end{equation}
+and
+\begin{equation}
+G_{\mathrm{ex}}=2\hbar\nu\,Q(\Pi_{\mathrm{out}}+\Pi_{\mathrm{in}})Q.
+\label{eq:Gex}
+\end{equation}
+For a $C^2$ family define
+\begin{equation}
+C_\Delta=Q(\partial_x^2+\partial_y^2)\rho(0)Q,
+\qquad
+\Aact_{\mathrm{ex}}^{(2)}=\frac14\Tr(G_{\mathrm{ex}}C_\Delta).
+\label{eq:Aex}
+\end{equation}
+Let $R_\pm=\supp Z_\pm$ and
+\begin{equation}
+g_\pm=\lambda_{\min}\!\left(R_\pm G_{\mathrm{ex}}R_\pm\big|_{R_\pm}\right).
+\label{eq:gpm}
+\end{equation}
+Then $g_+J_+ +g_-J_-\le4\Aact_{\mathrm{ex}}^{(2)}$.
+
+For $a,e\ge0$ and $p,q>0$, define
+\begin{equation}
+\Psi_a(e;p,q)=
+\begin{cases}
+(\sqrt a+\sqrt{e/q})^2,&e\le ap^2/q,\\[1mm]
+(e+pa)(p^{-1}+q^{-1}),&e\ge ap^2/q.
+\end{cases}
+\label{eq:Psi}
+\end{equation}
+
+\begin{theorem}[Noncommuting autonomous mixed resource law]
+\label{thm:mixed}
+For every finite $N$ and arbitrary collective POVM,
+\begin{equation}
+\boxed{
+\frac{\Tr \Fcl_N}{N}
+\le
+\min\!\left\{
+\Psi_{a_+}(4\Aact_{\mathrm{ex}}^{(2)};g_+,g_-),
+\Psi_{a_-}(4\Aact_{\mathrm{ex}}^{(2)};g_-,g_+)
+\right\}.
+}
+\label{eq:mixed-master}
+\end{equation}
+The theorem reduces to dual pre-existing survival when $K_\pm=0$ and to the autonomous synthesis-action law when $B=0$ in the clean endpoint geometry.
+\end{theorem}
+
+\emph{Proof core.} Weighted score Minkowski gives
+\begin{equation}
+\sqrt{\frac{\Tr F_N}{N}}
+\le\min\!\left\{
+\sqrt{J_B^++J_+}+\sqrt{J_-},
+\sqrt{J_B^-+J_-}+\sqrt{J_+}
+\right\}.
+\end{equation}
+Shorting bounds $J_B^\pm$ by $a_\pm$. The canonical positive operator $G_{\rm ex}$ prices the same kernel curvature only once and yields the linear synthesis budget $g_+J_++g_-J_-\le4\Aact_{\rm ex}^{(2)}$. Maximizing each Minkowski branch over this two-variable linear budget is elementary and gives exactly Eq.~\eqref{eq:Psi}; taking the better of the two orientations yields Eq.~\eqref{eq:mixed-master}. In the shared-kernel qutrit benchmark this resource reduction gives exactly $12$, while the SLD-QFI trace and exact common-record Fisher supremum are $43/4$ and $55/8$, respectively. The latter is proved by an explicit quadratic witness in the Supplemental Material.
+
+The operator $G_{\mathrm{ex}}$ counts endpoint \emph{roles}. If one energy state lies in both $\Pi_{\mathrm{in}}$ and $\Pi_{\mathrm{out}}$, it is counted twice because it plays two roles. Equation~\eqref{eq:Aex} is a kinematic kernel-resolved endpoint-incidence action, not generally a signed mean-energy curvature or total protocol energy.
+
+\section{Multi-gap spectral-action sum}
+\label{sec:multigap}
+
+Consider one common $C^2$ multiparameter family with zero-radius pure-boundary exact exchange modes $A_k$ at positive gaps $\nu_k$. Define
+\begin{equation}
+X_k=QA_kP,\qquad Y_k=QA_k^\dagger P,
+\end{equation}
+\begin{equation}
+Z_{k,+}=X_k\rhozero^+X_k^\dagger,
+\qquad
+Z_{k,-}=Y_k\rhozero^+Y_k^\dagger,
+\end{equation}
+and
+\begin{equation}
+C_\Sigma=
+Q\sum_k(\partial_{x_k}^2+\partial_{y_k}^2)\rho(0)Q.
+\label{eq:Csigma}
+\end{equation}
+Second-order positivity gives the shared operator law
+\begin{equation}
+\boxed{
+C_\Sigma\succeq\sum_k(Z_{k,+}+Z_{k,-}).
+}
+\label{eq:Csigma-bound}
+\end{equation}
+
+Let $G\succeq0$ be one positive kernel cost and define
+\begin{equation}
+\Aact_{G,\Sigma}^{(2)}=\frac14\Tr(GC_\Sigma).
+\end{equation}
+For each nonzero orientation let $g_{k,\pm}$ be the minimum restriction of $G$ to $\supp Z_{k,\pm}$, and define
+\begin{equation}
+\gamma_k=
+\begin{cases}
+(g_{k,+}^{-1}+g_{k,-}^{-1})^{-1},&Z_{k,+},Z_{k,-}\ne0,\\
+g_{k,+},&Z_{k,-}=0,\\
+g_{k,-},&Z_{k,+}=0.
+\end{cases}
+\label{eq:gammak}
+\end{equation}
+
+\begin{theorem}[Multi-gap boundary action sum]
+\label{thm:multigap}
+For one fixed arbitrary joint POVM on $N$ independently encoded copies, let $\Fcl_{N,k}$ be the $2\times2$ Fisher block for $(x_k,y_k)$. Then
+\begin{equation}
+\boxed{
+\sum_k\gamma_k\frac{\Tr \Fcl_{N,k}}{N}
+\le4\Aact_{G,\Sigma}^{(2)}.
+}
+\label{eq:multigap-general}
+\end{equation}
+In a clean bilateral autonomous geometry where $G$ assigns cost $2\hbar\nu_k$ to each orientation,
+\begin{equation}
+\boxed{
+\Aact_{G,\Sigma}^{(2)}
+\ge
+\sum_k\frac{\hbar\nu_k}{4}
+\frac{\Tr \Fcl_{N,k}}{N}.
+}
+\label{eq:multigap-clean}
+\end{equation}
+\end{theorem}
+
+\emph{Proof core.} Apply the two real-coordinate PSD-cone inequalities to each mode and add the cosine and sine inequalities before taking any scalar resource. Cross terms cancel within each mode, and summing gives Eq.~\eqref{eq:Csigma-bound}. Pricing once with $G$ gives a common linear budget for all $J_{k,\pm}$. Modewise Minkowski followed by weighted Cauchy--Schwarz converts each bilateral pair to its harmonic price $\gamma_k$; summing yields Eq.~\eqref{eq:multigap-general}. Thus the resource is one shared Hessian, not a sum of independently assigned curvature budgets.
+
+\subsection{Simultaneous sharpness with one common record}
+
+Take the fixed-total-excitation shell
+\begin{equation}
+|n\rangle\equiv |m-n\rangle_C|m+n\rangle_S,
+\qquad n=-m,\ldots,m,
+\end{equation}
+with baseline $|0\rangle$ and
+\begin{equation}
+A_k=c_k(|k\rangle\!\langle0|+|0\rangle\!\langle-k|),
+\qquad \nu_k=k\omega_0.
+\end{equation}
+The exact common family is
+\begin{align}
+|\psi(\bm x,\bm y)\rangle={}&
+\sqrt{1-\frac12\sum_{k=1}^m c_k^2(x_k^2+y_k^2)}\,|0\rangle\nonumber\\
+&+\sum_{k=1}^m\frac{c_k}{2}(x_k+i y_k)|-k\rangle
++\sum_{k=1}^m\frac{c_k}{2}(x_k-i y_k)|k\rangle.
+\label{eq:star-family}
+\end{align}
+For $d=2m+1$, the discrete Fourier basis
+\begin{equation}
+|v_j\rangle=\frac1{\sqrt d}\sum_{n=-m}^{m}e^{in\phi_j}|n\rangle,
+\qquad \phi_j=\frac{2\pi j}{d},
+\end{equation}
+gives
+\begin{equation}
+F_{x_kx_l}=2c_k^2\delta_{kl},\qquad
+F_{y_ky_l}=2c_k^2\delta_{kl},\qquad
+F_{x_ky_l}=0.
+\label{eq:fourier-F}
+\end{equation}
+Thus $\Tr F_{1,k}=4c_k^2$ for every mode simultaneously. With
+\begin{equation}
+G=2\hbar\omega_0\sum_{n\ne0}|n|\,|n\rangle\!\langle n|,
+\end{equation}
+Eq.~\eqref{eq:multigap-clean} is saturated term by term and in the complete weighted sum. The Supplemental Material gives the discrete-harmonic orthogonality calculation explicitly.
+
+For overlapping mode ranges in a general model, Eq.~\eqref{eq:multigap-general} remains valid for any supplied positive $G$, but a unique frequency-diagonal physical interpretation is not claimed.
+
+\section{Relation to prior work and scope}
+\label{sec:prior}
+
+The broad mathematical and conceptual ingredients are established. Page and Wootters showed how relational evolution can be represented within a stationary closed-system description \cite{PageWootters1983}. Resource theories of asymmetry characterize harmonic modes and coherence needed to break a symmetry \cite{MarvianSpekkens2014Modes}; shared asymmetry has been applied directly to the Page--Wootters mechanism \cite{CarmoSoaresPinto2021}. Quantum Fisher information has an operational role as a resource of energetic coherence \cite{Marvian2022,YamaguchiTajima2023}, and conservation-law constraints on measurements and operations are treated by quantitative WAY and coherence-cost results \cite{MarvianSpekkensWAY2012,TajimaShiraishiSaito2020}. Rank-changing QFI/Bures singularities are known \cite{Safranek2017}, while multiparameter and waveform-estimation theory separates SLD information from common-record attainability \cite{GillMassar2000,LiEtAl2016,GardnerEtAl2024}. Energy-constrained metrology can charge the total energy consumed by preparation, controls, and measurement \cite{ChenYang2026}.
+
+The present resource is different in scope. Equations~\eqref{eq:dual-survival} and \eqref{eq:dual-action-bilateral} concern a frequency-resolved relational mode that can be globally time-translation symmetric. The finite-radius law charges pre-existing local spectral survival. At a rank-changing boundary, an entropy-type shared-asymmetry resource is generally nonanalytic in amplitude, whereas the positive endpoint-incidence action supplies a finite quadratic necessary coefficient. The action is kinematic: it is computed from the local Hessian of the encoded state family. We do not claim that it equals the total physical energy required to synthesize that family dynamically.
+
+\section{Discussion}
+\label{sec:discussion}
+
+The theorem chain separates two mechanisms that a local Fisher metric alone conflates. In the interior of state space, a temporal mode can be strong only over a finite affine neighborhood; multiplying Fisher information by that physical radius exposes a pre-existing spectral-survival cost. At a rank-deficient boundary, the affine neighborhood can collapse even though a nonlinear family remains physical. The missing population must then appear at second order, and its positive spectral incidence supplies the boundary resource. In an autonomous exchange both mechanisms are two-sided because every signal energy step is matched by an opposite clock step.
+
+The result is not a universal implementation-energy theorem and not a replacement for asymmetry resource theory. It is a local, frequency-resolved necessary-resource theorem for encoded relative temporal information. Important open problems remain: deriving a dynamical implementation cost that produces the kinematic action, extending the sharp spectral sum to controlled continua, and determining whether covariance-changing Gaussian families require an additional resource beyond endpoint curvature.
+
+\bibliography{references}
+
+\end{document}
