@@ -36,6 +36,10 @@ jobs:
         working-directory: manuscript/dynamical_implementation_cost
         run: python apply_pra_r1_frontmatter.py
 
+      - name: Generate PRA R1 publication-facing supplement
+        working-directory: manuscript/dynamical_implementation_cost
+        run: python apply_pra_r1_supplement_title.py
+
       - name: PRA R1 standalone and theorem-freeze gate
         working-directory: manuscript/dynamical_implementation_cost
         run: python check_pra_r1_static.py
@@ -47,10 +51,10 @@ jobs:
           working_directory: manuscript/dynamical_implementation_cost
           latexmk_use_xelatex: false
 
-      - name: Compile audited D2 supplemental material
+      - name: Compile PRA R1 supplemental material
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: dynamical_rank_boundary_implementation_cost_supplement_d2.tex
+          root_file: dynamical_rank_boundary_implementation_cost_supplement_pra_r1.tex
           working_directory: manuscript/dynamical_implementation_cost
           latexmk_use_xelatex: false
 
@@ -65,6 +69,6 @@ jobs:
           path: |
             manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_pra_r1.pdf
             manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_pra_r1.tex
-            manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_supplement_d2.pdf
-            manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_supplement_d2.tex
+            manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_supplement_pra_r1.pdf
+            manuscript/dynamical_implementation_cost/dynamical_rank_boundary_implementation_cost_supplement_pra_r1.tex
             manuscript/dynamical_implementation_cost/references.bib
