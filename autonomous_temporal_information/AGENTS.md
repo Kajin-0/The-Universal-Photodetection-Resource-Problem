@@ -6,28 +6,28 @@ The frozen Rev11 paper remains on `agent/temporal-information-resource-law` and 
 
 ## Mission
 
-Determine the physical resource constraining temporal information when clock/reference, signal, controller, detector, and memory are finite internal systems and no ideal external timing operation is free.
+Determine the physical resource constraining temporal information when clock/reference, signal, controller, detector, and memory are finite physical systems and no ideal externally timed operation is free.
 
-Research is analytical/theoretical, falsification-first, and documentation-first. Standard asymmetry/reference-frame theory, Page--Wootters, relative-phase and multiphase metrology, waveform Holevo theory, numerical-radius/Ando theory, POVM convex duality, shorted operators, SDP/SOCP theory, PSD-cone curvature, rank-changing QFI/Bures geometry, Gill--Massar/Holevo compatibility, and energy-constrained metrology are infrastructure unless a distinct operational temporal-information theorem is isolated.
+Research is analytical/theoretical, falsification-first, and documentation-first. The repository, not chat history, is authoritative.
 
 ## Current status
 
-**WP20 — multi-gap autonomous spectral-action sum law: analytic PASS and independently validated.**
+**WP20 is the latest theorem work package.** A hostile significance/priority gate after WP20 gives a **PROVISIONAL PASS for a narrowly scoped theorem paper**, while broad novelty claims fail. No WP21 should be created until WP18--WP20 pass a dedicated hostile mathematical audit.
 
-The branch now has a coherent hierarchy:
+Read first:
 
-1. finite-radius information -> pre-existing spectral survival;
-2. zero-radius information -> second-order spectral synthesis;
-3. bilateral synthesis -> score-space Minkowski geometry;
-4. noncommuting support -> shorted/operator geometry;
-5. positive spectral action -> endpoint-cost weighting;
-6. common-record accessibility -> a separate measurement-compatibility layer;
-7. autonomous exact exchange -> matched clock+signal resources in both finite-radius and zero-radius regimes;
-8. multiple zero-radius exchange frequencies -> one shared Hessian spectral-action budget.
+1. `notes/FOUNDATIONAL_SIGNIFICANCE_PRIORITY_GATE_AFTER_WP20.md`
+2. `notes/WP20_MULTIGAP_AUTONOMOUS_SPECTRAL_ACTION_SUM_LAW.md`
+3. `notes/WP19_HOSTILE_AUDIT_AND_PRIOR_ART_BOUNDARY.md`
+4. `notes/WP19_NONCOMMUTING_AUTONOMOUS_MIXED_RESOURCE_ACTION_LAW.md`
+5. `notes/WP18_AUTONOMOUS_DUAL_SYNTHESIS_ACTION_LAW.md`
+6. WP11--WP16 if noncommuting-support or accessibility details are needed.
 
-## Essential theorem stack
+## Essential theorem hierarchy
 
-### WP02 / WP03 / WP06
+### WP02 / WP03 / WP06 — finite-radius survival
+
+For exact temporal gap `nu`, finite `N`, arbitrary collective POVM,
 
 `(R_lin^2/4)[Tr F_N/N] <= T(nu)`.
 
@@ -35,95 +35,89 @@ For globally stationary exact exchange,
 
 `(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`.
 
-### WP04 / WP05
+This is the pre-existing-resource regime.
 
-Structured globally stationary retention has exact sine-chain hard/mean-energy envelopes and sharp near-lossless coefficient `pi`.
+### WP04 / WP05 — structured autonomous retention
 
-### WP07 / WP08
+Hard and mean total-excitation constraints have exact sine-chain envelopes and sharp near-lossless coefficient `pi`.
 
-At `R_lin=0`, one-sided boundary synthesis obeys
+### WP07 / WP08 / WP09 — zero-radius synthesis
+
+At a rank-deficient physical boundary, `R_lin=0` does not imply zero local information. For an exact nonlinear family, second-order endpoint synthesis replaces zeroth-order baseline population.
+
+One-sided:
 
 `Tr F_N/N <= J <= Delta T_U`.
 
-Orthogonal mode sums admit a positive frequency-weighted synthesis budget.
+Bilateral:
 
-### WP09
+`sqrt[Tr F_N/N] <= sqrt(J_+)+sqrt(J_-)`.
 
-Bilateral boundary synthesis obeys
+Naive additive bilateral synthesis is false by an exact factor-two qutrit extremizer.
 
-`sqrt[Tr F_N/N] <= sqrt(J_X)+sqrt(J_Y)`.
+### WP10 / WP11 / WP12 — mixed and noncommuting support
 
-The factor-two failure of additive endpoint synthesis is exactly sharp.
-
-### WP10
-
-Energy-invariant-support one-sided mixed law:
-
-`Tr F_N/N <= 4T_pre/R_B^2 + Delta T_syn`.
-
-### WP11 / WP12
+Energy-invariant support gives a sharp additive finite-radius+synthesis law.
 
 For arbitrary coherent support use
 
 `B=PAP`, `K_+=QAP`, `K_-=QA^dagger P`.
 
-Shorting/principal-angle geometry is necessary. Shared kernel curvature satisfies
+Shorting/principal-angle geometry is genuinely necessary. Shared kernel curvature satisfies
 
-`Z_+ + Z_- <= C_Delta`.
+`Z_+ + Z_- <= C_Delta`,
 
-The exact allocation `Phi_a` is a one-dimensional minimization over an SDP value.
+and the exact curvature allocation is a one-dimensional minimization over an SDP value.
 
-### WP13 / WP14
+### WP13 / WP14 — positive spectral action and operator overlap
 
-Positive spectral action:
+`A_G^(2)=(1/4)Tr(G C_Delta)`.
 
-`A_G^(2)=(1/4)Tr(GC_Delta)`.
+Bilateral scalar action prices combine harmonically. Rank-one shared-curvature allocation is governed by capacities and a principal angle in the inverse shorted-curvature metric.
 
-Bilateral action costs combine harmonically. Rank-one allocation geometry is controlled by the principal angle in the inverse shorted-curvature metric.
+### WP15 / WP16 — accessibility layer
 
-### WP15
+Resource, QFI/SLD, and common-record information are different objects.
 
-Exact shared-kernel qutrit hierarchy:
+Shared-kernel benchmark:
 
-`12 > 43/4 > 55/8`
+`12 > 43/4 > 55/8`.
 
-for physical resource, SLD trace, and one-copy common-record Fisher supremum.
-
-### WP16
-
-For rank-one kernel and maximally mixed support,
+Generic rank-one-kernel maximally mixed support:
 
 `sqrt(Tr F_1)<=sqrt(R(B))+sqrt(r kappa)`,
 
 `kappa=||a||^2+||b||^2+2|a^dagger b|`.
 
-For qutrits `R(B)=4w(B)^2`. A signed three-cycle saturates the universal bound at `9`; naive additivity gives only `5`. Exact accessibility needs additional phase/orientation geometry.
+For qutrits `R(B)=4w(B)^2`.
 
-WP16 also gives the exact Fisher-witness convex dual and weighted numerical-radius LMI.
+### WP17 — killed direction
 
-### WP17 — NO-GO
+Do not pursue a generic `exact curvature + its own scalar action` Pareto law. It is redundant absent another independent physical constraint.
 
-A generic `exact curvature + its own scalar action` Pareto law is redundant. Do not pursue it without an independent physical constraint.
+### WP18 — sharp autonomous zero-radius synthesis action
 
-### WP18
+For globally stationary exact exchange
 
-Clean zero-radius globally stationary exchange:
+`[H_S,A_nu]=+hbar nu A_nu`,
 
-bilateral
+`[H_C,A_nu]=-hbar nu A_nu`,
 
-`A_C^(2)+A_S^(2)>=(hbar nu/4)[Tr F_N/N]`,
+bilateral clean boundary synthesis obeys
 
-one-sided
+`A_C^(2)+A_S^(2)>=(hbar nu/4)[Tr F_N/N]`.
+
+One-sided clean synthesis obeys
 
 `A_C^(2)+A_S^(2)>=(hbar nu/2)[Tr F_N/N]`.
 
-Both coefficients are exactly sharp in fixed-total-energy shells with zero global asymmetry.
+Both coefficients are exactly sharp inside fixed-total-energy shells. Global `H_C+H_S` asymmetry is exactly zero in the extremizing nonlinear families.
 
-### WP19
+### WP19 — arbitrary coherent-support autonomous bridge
 
-For arbitrary coherent support, define two-sided shorted pre-existing resources `a_+,a_-` and one combined positive clock+signal endpoint-incidence operator `G_CS`.
+Define two-sided shorted pre-existing resource ceilings `a_+,a_-` and one combined positive clock+signal endpoint-incidence cost operator `G_CS`.
 
-The general resource is the **kernel-resolved endpoint-incidence action**
+The kernel-resolved action is
 
 `A_CS^(2)=(1/4)Tr(G_CS C_Delta)`.
 
@@ -135,68 +129,86 @@ With restricted costs `g_+,g_-`,
 
 `      Psi_(a_-)(4A_CS;g_-,g_+)}`.
 
-Do not call general `A_CS` the full endpoint-population Laplacian or signed mean-energy curvature.
+Do not call general `A_CS` the full endpoint-population Laplacian, signed mean-energy curvature, or total protocol energy.
 
-The shared-kernel qutrit embeds into a fixed-total-energy exchange shell and WP19 reproduces the WP12 resource ceiling `12` exactly.
+### WP20 — multi-gap autonomous sum
 
-Read:
-- `notes/WP19_NONCOMMUTING_AUTONOMOUS_MIXED_RESOURCE_ACTION_LAW.md`
-- `notes/WP19_HOSTILE_AUDIT_AND_PRIOR_ART_BOUNDARY.md`
-
-### WP20
-
-For zero-radius pure-boundary modes in one multiparameter family,
-
-`C_Sigma=Q sum_k(partial_(x_k)^2+partial_(y_k)^2)rho Q`
-
-obeys
+For zero-radius pure-boundary exchange modes in one common multiparameter family,
 
 `C_Sigma>=sum_k[Z_(k,+)+Z_(k,-)]`.
 
 For any `G>=0`,
 
-`A_G,Sigma^(2)=(1/4)Tr(G C_Sigma)`
+`sum_k gamma_k Tr F_(N,k)/N <= 4A_(G,Sigma)^(2)`.
 
-and effective mode costs `gamma_k`,
+Clean bilateral gaps give
 
-`boxed: sum_k gamma_k Tr F_(N,k)/N <=4A_G,Sigma^(2)`.
+`A_(G,Sigma)^(2)>=sum_k(hbar nu_k/4)Tr F_(N,k)/N`.
 
-Clean bilateral endpoint costs give
+The full weighted sum is simultaneously saturated by one discrete Fourier measurement in a fixed-total-energy shell.
 
-`A_G,Sigma^(2)>=sum_k (hbar nu_k/4)Tr F_(N,k)/N`.
+## Significance gate
 
-This is simultaneously sharp with one common Fourier measurement in the fixed-total-energy shell
+### Broad novelty — FAIL
 
-`|n>=|m-n>_C|m+n>_S`,
+The following are prior infrastructure, not paper claims:
 
-baseline `|0>`,
+- Page--Wootters relational time;
+- shared/mutual asymmetry and internal coherence;
+- modes of asymmetry and Bohr-frequency decomposition;
+- QFI as energetic coherence / asymmetry resource;
+- quantitative WAY and coherence cost under conservation laws;
+- relative-phase / multiphase estimation and Fourier/covariant measurements;
+- waveform QCRB/Holevo theory;
+- total-protocol energy-constrained metrology;
+- PSD-cone second-order geometry;
+- singular QFI/Bures geometry;
+- shorted operators, principal angles, numerical radius, SDP/SOCP duality.
 
-`A_k=c_k(|k><0|+|0><-k|)`.
+### Narrow candidate contribution — PROVISIONAL PASS
 
-The same Fourier basis yields `Tr F_(1,k)=4c_k^2` for every gap at once.
+The surviving paper story is the operational **finite-radius / zero-radius resource bridge** for globally stationary relative temporal modes:
 
-Read:
-`notes/WP20_MULTIGAP_AUTONOMOUS_SPECTRAL_ACTION_SUM_LAW.md`.
+- finite radius -> two-sided pre-existing spectral survival;
+- zero radius -> two-sided positive second-order spectral synthesis action;
+- arbitrary finite-copy POVMs;
+- exact sharp fixed-shell coefficients;
+- noncommuting-support operator extension;
+- sharp frequency-weighted boundary sum.
 
-## Current frontier
+Priority remains **unverified, not certified**.
 
-**Do not automatically create WP21.** First perform a hostile significance/priority gate.
+Key literature that must be cited and distinguished includes:
 
-Highest-value tasks:
+- Marvian--Spekkens, PRA 90, 062110 (2014), modes of asymmetry;
+- Carmo--Soares-Pinto, PRA 103, 052420 (2021), Page--Wootters shared asymmetry;
+- Tajima--Shiraishi--Saito, PR Research 2, 043374 (2020), coherence cost under conservation laws;
+- Marvian, PRL 129, 190502 (2022), QFI energetic-coherence cost;
+- Gardner et al., PRL 132, 130801 (2024), waveform Holevo limit;
+- Chen--Yang, PRL 136, 070801 (2026), total energy-constrained metrology.
 
-1. compare WP03 and WP18--WP20 directly against Page--Wootters shared-asymmetry resource theory, quantum reference frames, fixed-number relative-phase/multiphase metrology, quantitative WAY, and current energy-constrained metrology;
-2. determine whether a mixed finite-radius + multi-gap theorem is genuinely stronger than summing nonlinear WP19 envelopes; kill it if not;
-3. examine a controlled continuum limit only if it gives a nontrivial spectral action measure;
-4. decide whether the autonomous theorem chain is publication-grade before adding more operator mathematics.
+## Immediate work order — hostile mathematical audit
+
+Do **not** create WP21 until all items below are resolved and recorded.
+
+1. Re-derive WP18 directly from WP07/WP09 conventions; audit every factor `2` and `4`.
+2. Re-derive the one-sided and bilateral fixed-shell extremizers and verify normalization/positivity on a genuine open parameter neighborhood.
+3. Re-derive finite-copy scaling for the synthesis laws instead of assuming the earlier proof transfers unchanged.
+4. Audit WP19 endpoint projector overlap and multiplicity in `G_CS`; preserve the kernel-incidence interpretation.
+5. Re-derive WP20 by summing the second-order PSD constraints over a genuine common multiparameter family.
+6. Check that the common Fourier readout simultaneously saturates every Fisher block with the branch's exact two-quadrature convention.
+7. Check that multi-gap cost assignment does not accidentally double count a state in a way inconsistent with the stated *positive endpoint-incidence* resource.
+8. Record any defect immediately. If no defect is found, write a hostile mathematical audit note and then decide manuscript formation.
 
 ## Numerical gates
 
-All previous WP validators remain required. New gates:
+All existing validators remain required, especially:
 
-- `numerics/verify_rank_one_kernel_common_record_minkowski.py`
 - `numerics/verify_autonomous_dual_synthesis_action_law.py`
 - `numerics/verify_noncommuting_autonomous_mixed_resource_action_law.py`
 - `numerics/verify_multigap_autonomous_spectral_action_sum_law.py`
+
+Numerics validate algebra; they do not replace the hostile analytic rederivation.
 
 ## Documentation rule
 
