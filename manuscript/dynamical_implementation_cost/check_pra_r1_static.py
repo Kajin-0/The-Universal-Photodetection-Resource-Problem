@@ -27,8 +27,7 @@ d2 = D2.read_text(encoding="utf-8")
 bib = BIB.read_text(encoding="utf-8")
 
 # Standalone/public identity lock. Match actual project/provenance identifiers,
-# not generic substrings such as "repo" that occur inside ordinary words
-# (for example, "Reports" in bibliography journal titles).
+# not generic substrings such as "repo" that occur inside ordinary words.
 forbidden = [
     "GitHub", "github.com", "Kajin-0", "The-Universal-Photodetection-Resource-Problem",
     "WP21", "WP22", "WP23", "WP24", "WP25", "WP26", "WP27", "WP28", "WP29",
@@ -40,7 +39,7 @@ for name, text in [(MAIN.name, main), (SUPP.name, supp), (BIB.name, bib)]:
         if token.lower() in lower:
             errors.append(f"{name}: forbidden publication-facing token {token!r}")
 
-# Publication titles should use the PRA-facing curvature language consistently.
+# Publication titles should name the actual optimized functional precisely.
 title_match = re.search(r"\\title\{([^}]*)\}", main)
 if not title_match:
     errors.append("PRA R1 title not found")
@@ -48,7 +47,7 @@ else:
     title = title_match.group(1)
     if "jet" in title.lower():
         errors.append("PRA R1 title still contains 'jet'")
-    required_title_terms = ["minimum", "dynamical", "rank-changing", "curvature"]
+    required_title_terms = ["minimum", "unitary", "coupling", "rank-changing", "curvature"]
     for term in required_title_terms:
         if term not in title.lower():
             errors.append(f"PRA R1 title missing term {term!r}")
@@ -59,7 +58,7 @@ if not supp_title_match:
 else:
     supp_title = supp_title_match.group(1)
     expected_supp_title = (
-        "Supplemental Material for ``Exact minimum dynamical cost of "
+        "Supplemental Material for ``Exact minimum unitary coupling cost of "
         "prescribed rank-changing quantum-state curvature''"
     )
     if supp_title != expected_supp_title:
@@ -101,6 +100,16 @@ for marker in [
 ]:
     if marker not in main:
         errors.append(f"PRA R1 missing rank-changing Bures-geometry separation marker: {marker}")
+
+# Final hostile-review scope repairs.
+for marker in [
+    r"Eqs.~\eqref{eq:covariance-rho}--\eqref{eq:covariance}",
+    "the generator may be unbounded and the ancillary Hamiltonian is part of the optimization rather than externally fixed",
+    "no bound on peak or operator-norm coupling, ancilla dimension, controller bandwidth, or controller spectral complexity is claimed",
+    "Exact attainment is therefore not asserted for an externally fixed controller spectrum",
+]:
+    if marker not in main:
+        errors.append(f"PRA R1 missing final hostile-review scope marker: {marker}")
 
 # APS substantive-AI disclosure. Research-level use is placed in its own
 # publication methods layer rather than only in Acknowledgments.
