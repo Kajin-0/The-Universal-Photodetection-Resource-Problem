@@ -6,7 +6,7 @@ SRC = HERE / "dynamical_rank_boundary_implementation_cost_supplement_d2.tex"
 OUT = HERE / "dynamical_rank_boundary_implementation_cost_supplement_pra_r1.tex"
 
 NEW_TITLE = (
-    r"\title{Supplemental Material for ``Exact minimum dynamical cost of "
+    r"\title{Supplemental Material for ``Exact minimum unitary coupling cost of "
     r"prescribed rank-changing quantum-state curvature''}"
 )
 
