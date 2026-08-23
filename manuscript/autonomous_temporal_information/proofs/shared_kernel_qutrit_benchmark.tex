@@ -1,0 +1,90 @@
+% Self-contained benchmark data used by the WP19 resource check and WP15 accessibility proof.
+
+\subsection{Shared-kernel qutrit benchmark}
+\label{supp:qutrit-benchmark}
+
+Use a three-level fixed-total-energy shell with ordered basis $\{|0\rangle,|1\rangle,|2\rangle\}$ and define
+\begin{equation}
+|q\rangle
+=\frac12|0\rangle
++\sqrt{\frac58}|1\rangle
++\frac{1}{2\sqrt2}|2\rangle.
+\end{equation}
+Let
+\begin{equation}
+Q=|q\rangle\langle q|,
+\qquad
+P=\id-Q,
+\qquad
+\rho_0=\frac{P}{2},
+\end{equation}
+and choose the exact positive-gap tangent
+\begin{equation}
+A=|1\rangle\langle0|-\sqrt2|2\rangle\langle1|.
+\label{eq:qutrit-benchmark-A-physical}
+\end{equation}
+An orthonormal basis of $P$ is
+\begin{equation}
+|e_1\rangle
+=\frac1{\sqrt3}|0\rangle-\sqrt{\frac23}|2\rangle,
+\end{equation}
+\begin{equation}
+|e_2\rangle
+=-\frac{\sqrt{15}}6|0\rangle
++\frac{\sqrt6}{4}|1\rangle
+-\frac{\sqrt{30}}{12}|2\rangle.
+\end{equation}
+In the ordered basis $\{|e_1\rangle,|e_2\rangle,|q\rangle\}$,
+\begin{equation}
+\rho_0=\operatorname{diag}(1/2,1/2,0)
+\end{equation}
+and
+\begin{equation}
+A=
+\begin{pmatrix}
+0 & \sqrt2/2 & \sqrt{30}/6\\
+\sqrt2/4 & 0 & \sqrt6/3\\
+\sqrt{30}/12 & -\sqrt6/3 & 0
+\end{pmatrix}.
+\label{eq:qutrit-benchmark-A-support}
+\end{equation}
+
+For the support/kernel decomposition $B=PAP$, $K_+=QAP$, $K_-=QA^\dagger P$, the exact weighted norms are
+\begin{equation}
+J_B^+=J_B^-=\frac54,
+\qquad
+J_+=\frac74,
+\qquad
+J_-=3.
+\label{eq:qutrit-benchmark-J}
+\end{equation}
+The minimal shared kernel curvature is
+\begin{equation}
+C_\Delta=\frac{19}{4}Q.
+\end{equation}
+For the autonomous embedding, the canonical endpoint-incidence operator has physical-basis representation
+\begin{equation}
+\frac{G_{\rm ex}}{\hbar\nu}=\operatorname{diag}(2,4,2).
+\end{equation}
+Hence both synthesized rank-one ranges have restricted price
+\begin{equation}
+g_+=g_-=\frac{13}{4}\hbar\nu,
+\end{equation}
+and the minimal-curvature action obeys
+\begin{equation}
+4\Aact_{\rm ex}^{(2)}=\frac{247}{16}\hbar\nu.
+\end{equation}
+With $a_+=a_-=5/4$, the mixed resource envelope returns exactly
+\begin{equation}
+\Psi_{5/4}(247/16;13/4,13/4)=12
+\end{equation}
+in units $\hbar\nu=1$.
+
+The two-quadrature SLD-QFI matrix for the same baseline tangent is
+\begin{equation}
+F_Q=\operatorname{diag}\!\left(\frac{39}{8},\frac{47}{8}\right),
+\qquad
+\Tr F_Q=\frac{43}{4}.
+\label{eq:qutrit-benchmark-QFI}
+\end{equation}
+The following subsection proves that the exact one-copy common-record classical Fisher supremum is only $55/8$. Thus this single finite-dimensional model separates physical resource, SLD tangent geometry, and accessible common-record information.
