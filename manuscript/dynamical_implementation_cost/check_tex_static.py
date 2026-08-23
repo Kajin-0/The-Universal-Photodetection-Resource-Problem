@@ -24,6 +24,7 @@ if not BIB.exists():
 else:
     bib = BIB.read_text(encoding="utf-8")
 
+# Manuscript-facing identity/provenance leakage is forbidden.
 forbidden = [
     "GitHub",
     "github.com",
@@ -34,8 +35,9 @@ forbidden = [
     "work package",
 ]
 for name, text in texts.items():
+    lower = text.lower()
     for token in forbidden:
-        if token.lower() in text.lower():
+        if token.lower() in lower:
             errors.append(f"{name}: forbidden manuscript-facing token {token!r}")
 
 # Prevent reintroduction of the superseded infinite-dimensional shortcut.
@@ -45,23 +47,21 @@ invalid_claims = [
     "C_E/p_E",
 ]
 for name, text in texts.items():
+    lower = text.lower()
     for claim in invalid_claims:
-        if claim.lower() in text.lower():
+        if claim.lower() in lower:
             errors.append(f"{name}: superseded energy-shell claim detected: {claim}")
 
 # The repaired construction must remain explicit in the supplement.
 supp = texts.get("dynamical_rank_boundary_implementation_cost_supplement.tex", "")
 required_supp = [
-    r"a_r=\\max(0,F_r-E_*)",
-    r"b_r=\\max(0,E_*-F_r)",
-    "curvature in energy sectors with zero baseline population" if False else "spectator curvature can occupy a shell with zero baseline population",
+    r"a_r=\max(0,F_r-E_*)",
+    r"b_r=\max(0,E_*-F_r)",
+    "spectator curvature can occupy a shell with zero baseline population",
     "No fourth moment",
 ]
 for req in required_supp:
-    if req.startswith("a_r=") or req.startswith("b_r="):
-        if not re.search(req, supp):
-            errors.append(f"supplement missing repaired compensation formula matching {req}")
-    elif req not in supp:
+    if req not in supp:
         errors.append(f"supplement missing repaired-proof marker: {req}")
 
 # Check labels and refs within each standalone root.
@@ -89,18 +89,15 @@ for name, text in texts.items():
 # Headline theorem and scope markers that must not silently disappear.
 main = texts.get("dynamical_rank_boundary_implementation_cost_draft.tex", "")
 required_main = [
-    r"\\Vmin(\\Cker;D,\\rhozero)",
-    r"\\frac12\\Tr\\Cker",
-    r"\\cA_{\\rm ex}^{(2)}=\\hbar\\nu\\,\\Vmin",
+    r"\Vmin(\Cker;D,\rhozero)",
+    r"\frac12\Tr\Cker",
+    r"\cA_{\rm ex}^{(2)}=\hbar\nu\,\Vmin",
     "not a thermodynamic-work theorem",
     "not an arbitrary full tensor of mixed second derivatives",
 ]
 for req in required_main:
-    if req.startswith("\\"):
-        if not re.search(req, main):
-            errors.append(f"main missing theorem marker matching {req}")
-    elif req not in main:
-        errors.append(f"main missing scope marker: {req}")
+    if req not in main:
+        errors.append(f"main missing theorem/scope marker: {req}")
 
 if errors:
     print("STATIC GATE FAILED")
