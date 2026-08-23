@@ -110,9 +110,7 @@ Then
 
 `boxed: Phi_a`
 
-`= inf_(0<eta<1) {a/eta`
-
-`+ h_(1/eta,1/(1-eta))(C;R_+,R_-)}`,
+`= inf_(0<eta<1) {a/eta + h_(1/eta,1/(1-eta))(C;R_+,R_-)}`,
 
 where `h_(alpha,beta)` is an SDP with dual
 
@@ -140,11 +138,7 @@ or any `G>=0`, and define
 
 `A_G^(2)=(1/4)Tr(G C_Delta)`.
 
-This charges the shared curvature only once:
-
-`4A_G^(2) >= Tr(GZ_+)+Tr(GZ_-)`.
-
-For synthesized ranges `R_+,R_-`, define the exact restricted costs
+For synthesized ranges `R_+,R_-`, define
 
 `g_+=lambda_min[R_+ G R_+ |_(R_+)]`,
 
@@ -154,7 +148,7 @@ Then
 
 `boxed: g_+J_+ + g_-J_- <= 4A_G^(2)`.
 
-If either relevant `g` vanishes, no finite scalar action-only theorem exists for that orientation.
+If a relevant `g` vanishes, no finite scalar action-only theorem exists for that orientation.
 
 For upper-oriented internal resource `a`, write
 
@@ -169,23 +163,9 @@ The exact action-only envelope is
 
 For pure bilateral synthesis,
 
-`boxed: Psi_0=e(1/p+1/q)`.
+`Psi_0=e(1/p+1/q)`.
 
-Thus the effective bilateral spectral cost is harmonic:
-
-`epsilon_parallel=(1/p+1/q)^(-1)`.
-
-For the symmetric clean exact-gap choice `p=q=hbar nu`,
-
-`boxed: A_G^(2) >= (hbar nu/8)[Tr F_N/N]`,
-
-recovering WP09. One-sided synthesis recovers the sharp `hbar nu/4` coefficient of WP07/WP10.
-
-An unequal-cost exact-gap qutrit with one Fourier measurement saturates
-
-`Tr F_1=4A_G^(2)(1/p+1/q)`
-
-for arbitrary positive `p,q`.
+Thus the effective bilateral spectral cost is harmonic. Equal clean gap costs `p=q=hbar nu` recover the sharp WP09 `hbar nu/8` coefficient; one-sided synthesis recovers the WP07/WP10 `hbar nu/4` coefficient. An unequal-cost exact-gap qutrit plus one Fourier measurement saturates the harmonic coefficient for arbitrary positive `p,q`.
 
 ### WP14 — rank-one curvature-metric principal-angle law
 
@@ -193,7 +173,7 @@ For rank-one synthesized ranges
 
 `R_+=|u><u|`, `R_-=|v><v|`,
 
-short the curvature first to
+short first to
 
 `C_S=Short_span{u,v}(C)`.
 
@@ -203,23 +183,15 @@ Define
 
 `s_v=1/<v|C_S^(-1)|v>`,
 
-and the curvature-whitened overlap
+and
 
-`c=|<u|C_S^(-1)|v>|`
-
-`  /sqrt(<u|C_S^(-1)|u><v|C_S^(-1)|v>)`.
+`c=|<u|C_S^(-1)|v>|/sqrt(<u|C_S^(-1)|u><v|C_S^(-1)|v>)`.
 
 The complete feasible boundary is
 
-`boxed: y_max(x)`
+`boxed: y_max(x)=s_v[1-x/s_u]/[1-(1-c^2)x/s_u]`.
 
-`=s_v[1-x/s_u]/[1-(1-c^2)x/s_u]`.
-
-For
-
-`r=alpha s_u/(beta s_v)`,
-
-the exact linear WP12 allocation is
+For `r=alpha s_u/(beta s_v)`, the exact linear allocation is
 
 `boxed: h_(alpha,beta)=`
 
@@ -227,19 +199,89 @@ the exact linear WP12 allocation is
 - `[alpha s_u+beta s_v-2c sqrt(alpha beta s_u s_v)]/(1-c^2)`, if `c^2<r<c^(-2)`;
 - `alpha s_u`, if `r>=c^(-2)`.
 
-Thus every rank-one WP12 instance contains no SDP: only the final one-dimensional `eta` minimization remains.
+Thus rank-one WP12 instances contain no SDP. The governing overlap is the principal angle in the inverse shorted-curvature metric, not the ordinary Hilbert-space angle. The same ordinary overlap `1/2` can yield `c=1/sqrt(13)` or `c=2/sqrt(7)` under different positive curvature operators.
 
-Crucially, `c` is not the ordinary Hilbert-space angle. Two ranges with the same ordinary overlap `1/2` can have curvature-metric cosines `1/sqrt(13)` or `2/sqrt(7)` depending only on the available curvature. The matrix resource therefore contains irreducible information lost under scalar energy/action compression.
+### WP15 — exact common-record Fisher supremum in the shared-kernel qutrit
+
+For the WP12 rank-one-kernel benchmark,
+
+`rho0=P/2`,
+
+`A=|1><0|-sqrt(2)|2><1|`,
+
+WP12 gives the physical resource ceiling
+
+`Phi=12`,
+
+while the SLD-QFI matrix is
+
+`F_Q=diag(39/8,47/8)`,
+
+so
+
+`Tr F_Q=43/4`.
+
+WP15 solves the remaining one-copy arbitrary-POVM optimization exactly. In a support/kernel basis, the Hermitian witness
+
+`Y=[[9/16,0,0],`
+
+`   [0,9/16,3sqrt(15)/8],`
+
+`   [0,3sqrt(15)/8,23/4]]`
+
+satisfies for every vector `|phi>`
+
+`boxed: |<phi|A|phi>|^2`
+
+`<= <phi|rho0|phi><phi|Y|phi>`.
+
+The proof uses the exact LMI family
+
+`lambda rho0+lambda^(-1)Y-(e^(i theta)A+e^(-i theta)A^dagger)>=0`.
+
+With `x=lambda^2`, `t=cos^2 theta`, the nontrivial leading principal minors factor into
+
+`t(8x-9)^2+(1-t)(64x^2+112x+81)`
+
+and
+
+`t(8x-9)^2+(1-t)(40x+81)`,
+
+so positivity is manifest.
+
+Rank-one refinement then gives every POVM
+
+`Tr F_1<=Tr Y=55/8`.
+
+A regular three-outcome projective sequence approaches this value: the support numerical-radius basis contributes `9/8`, while a nearly dark outcome tilted toward
+
+`i(a-b)/||a-b||`, `||a-b||^2=23/8`,
+
+contributes `23/4`.
+
+Therefore
+
+`boxed: sup_(one-copy POVMs) Tr F_1=55/8`.
+
+The benchmark hierarchy is now exactly
+
+`physical resource: 12=96/8`,
+
+`SLD quantum-statistical: 43/4=86/8`,
+
+`common-record Fisher: 55/8`.
+
+The resource-to-SLD gap is `5/4`; the SLD-to-common-record gap is `31/8`. The earlier provisional interpretation of the whole `12 -> 10.75` difference as measurement compatibility was therefore incorrect.
 
 ## Current frontier
 
-The next high-value target is no longer the existence of a local resource law; that hierarchy is now fairly well defined. The main unresolved questions are:
+The local hierarchy is now separated into physical resource, quantum-statistical tangent geometry, and actually accessible common-record information. Highest-value next targets are:
 
-1. **measurement compatibility:** determine whether the WP12 shared-kernel `12` versus SLD-QFI `10.75` gap is exactly a Holevo/common-record compatibility penalty;
-2. **operator + action Pareto law:** retain both WP14 curvature overlap and WP13 spectral cost rather than compressing immediately to one scalar action;
-3. **autonomous relational lift:** apply the full operator/action resource simultaneously to clock and signal sides of a globally stationary exact exchange tangent;
-4. **Gaussian covariance synthesis:** test whether squeezing/covariance-changing temporal families obey the same curvature-action hierarchy;
-5. **priority audit:** compare explicitly against 2026 energy-constrained quantum-metrology results before manuscript formation.
+1. generalize the WP15 dual-witness method to a class of rank-one-kernel two-quadrature models;
+2. retain both WP14 operator overlap and WP13 spectral action in a sharp Pareto law;
+3. lift the full operator/action resource simultaneously to clock and signal sides of a globally stationary exact exchange tangent;
+4. test covariance-changing Gaussian temporal families;
+5. perform a hostile priority/significance review of WP07--WP15 before deciding whether a new manuscript is justified.
 
 ## Validation
 
@@ -253,11 +295,12 @@ The next high-value target is no longer the existence of a local resource law; t
 - `numerics/verify_operator_curvature_allocation_law.py`
 - `numerics/verify_positive_spectral_action_allocation_law.py`
 - `numerics/verify_rank_one_curvature_metric_angle_law.py`
+- `numerics/verify_exact_common_record_fisher_supremum.py`
 
 ## Priority discipline
 
-Energy-constrained quantum metrology, shorted operators, rank-one semidefinite packing/SOCP reductions, principal angles in weighted metrics, SDP duality, Holevo theory, PSD-cone curvature, rank-deficient QFI, and Gaussian metrology are established. Candidate novelty is restricted to their **frequency-resolved rank-changing temporal-information resource consequences** and the exact theorem hierarchy connecting survival, synthesis curvature, spectral action, and arbitrary-POVM Fisher information.
+Energy-constrained quantum metrology, shorted operators, rank-one SDP/SOCP reductions, weighted principal angles, numerical-radius theory, Gill--Massar/Holevo compatibility, PSD-cone curvature, rank-changing QFI/Bures geometry, and Gaussian metrology are established. Candidate novelty is restricted to their **frequency-resolved rank-changing temporal-information resource consequences** and the exact hierarchy connecting survival, synthesis curvature, spectral action, and arbitrary-POVM Fisher information.
 
 Priority remains **unverified, not certified**.
 
-Read `AGENTS.md`, `ROADMAP.md`, and WP01--WP14 before continuing. Record every material theorem, counterexample, prior-art collision, or killed conjecture immediately; do not rely on chat history.
+Read `AGENTS.md`, `ROADMAP.md`, and WP01--WP15 before continuing. Record every material theorem, counterexample, prior-art collision, or killed conjecture immediately; do not rely on chat history.
