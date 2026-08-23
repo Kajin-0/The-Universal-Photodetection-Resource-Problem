@@ -1,0 +1,35 @@
+name: Autonomous temporal manuscript LaTeX check
+
+on:
+  push:
+    branches:
+      - agent/autonomous-temporal-information-law
+    paths:
+      - 'manuscript/autonomous_temporal_information/**'
+      - '.github/workflows/autonomous-temporal-manuscript-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile theorem-first manuscript
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: autonomous_temporal_resource_law_draft.tex
+          working_directory: manuscript/autonomous_temporal_information
+          latexmk_use_xelatex: false
+
+      - name: Upload manuscript build
+        uses: actions/upload-artifact@v4
+        with:
+          name: autonomous-temporal-information-manuscript
+          path: |
+            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_draft.pdf
+            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_draft.tex
+            manuscript/autonomous_temporal_information/references.bib
