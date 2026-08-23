@@ -1,129 +1,114 @@
 # The Universal Photodetection Resource Problem
 
-**Status synchronized: 2026-08-22**
+**Status synchronized: 2026-08-23**
 
-## Project split
+This repository contains several related theoretical programs. The repository is authoritative; chat history is not.
+
+## Current project split
 
 1. **Paper 1 / Rev11** — frozen.
 2. **Paper 2 / Rev7** — frozen.
-3. **Grand Challenge** — science frontier **WP28**; **Rev11 frozen as the preferred PRX Quantum manuscript**.
+3. **Random-time spectral-resource program** — preferred Rev11 manuscript frozen on `agent/temporal-information-resource-law`.
+4. **Autonomous temporal-information program** — active research on `agent/autonomous-temporal-information-law`; PRX Quantum R3 manuscript build-verified and science-frozen while the post-R3 theorem chain is audited.
 
-Active branch: `agent/temporal-information-resource-law`.
+**Active scientific branch:** `agent/autonomous-temporal-information-law`
 
-Authoritative handoff: `grand_challenge/AGENTS.md`.
+**Current autonomous frontier:** **WP31**
 
-# Grand Challenge — Spectral Resource Laws for Temporal Fisher Information
+Authoritative active handoff: `autonomous_temporal_information/AGENTS.md`.
 
-## Exact periodic theorem
+## Active autonomous result
 
-For exact periodic random-time encoding with sector probabilities `q_n`, any finite `N` and **any joint POVM**, including entangled collective measurements, obey
+The existing R3 manuscript establishes two resource regimes for globally stationary relative temporal information:
 
-`Tr F_N^(k)/N <= min(D_k,U_k) <= T_k`,
+- finite affine radius -> pre-existing spectral survival;
+- rank-changing zero radius -> positive second-order endpoint synthesis action.
 
-where `T_k=sum_(m>=k)q_m`.
+For clean exact autonomous exchange the boundary coefficients are
 
-Thus `sum_(k>=1)R_N(k)<=nbar`.
+`A_C^(2)+A_S^(2) >= (hbar nu/4)[Tr F_N^tan/N]`
 
-## Rev11: the mechanism is not a harmonic-ladder artifact
+bilaterally and
 
-For an arbitrary semibounded pure-point Hamiltonian
+`A_C^(2)+A_S^(2) >= (hbar nu/2)[Tr F_N^tan/N]`
 
-`H=E_* I + hbar sum_alpha omega_alpha P_alpha`,
+one-sidedly, with exact fixed-total-energy sharpness.
 
-with no equal-spacing or commensurability assumption, fix a requested modulation frequency `nu`. Long-window random-time averaging isolates exact Bohr pairs `omega_beta-omega_alpha=nu` and gives
+R3 also contains a pure-boundary SLD-QFI action corollary, a spectator-curvature no-go, the coherent-support mixed bridge, the exact `12 > 43/4 > 55/8` qutrit hierarchy, and the multi-gap shared-Hessian law.
 
-`A_nu=rho0^(1/2)V_nu rho0^(1/2)`.
+## Post-R3 dynamical completion
 
-Therefore the same arbitrary-measurement proof yields
+Research was reopened to address the criticism that the synthesis action was only kinematic.
 
-`Tr F_N^(nu)/N <= min(D_nu,U_nu) <= S(nu)=Pr(Omega>=nu)`
+### Exact implementation coupling
 
-for every finite `N` and arbitrary joint POVM.
+For a smooth unitary dilation,
 
-If no exact Bohr pair exists at `hbar nu`, the limiting local Fisher response at that gap vanishes. Anharmonicity can strengthen the restriction rather than invalidate it.
+`Q partial_j^2 rho Q
+ =2 Tr_E[(Q⊗I)K_j Omega_0 K_j(Q⊗I)]`.
 
-## Continuum survival law
+Thus the kernel synthesis action is exactly a state-weighted squared dynamical coupling into the previously empty endpoint sectors.
 
-Controlled periodic-to-continuum limits satisfy
+### Exact prescribed-2-jet cost
 
-`R(nu)<=Pr(Omega>=nu)`.
+For a prescribed feasible metric-contracted target-kernel Hessian `C`,
 
-The spectral measure may be atomic, absolutely continuous, singular-continuous, or mixed; no density or smoothness is assumed.
+`boxed: V_min=(1/2)Tr C`.
 
-`Ebar+=hbar<Omega>` is mean excess energy above the participating lower edge. The area and `hfR` relations are first-moment corollaries.
+In the clean single-gap exchange geometry,
 
-## One physical measurement has global spectral geometry
+`boxed: V_min=A_ex^(2)/(hbar nu)`.
 
-For **one fixed one-copy POVM**, the periodic retention sequence is Herglotz/positive definite:
+WP23 proves the finite-dimensional exactly energy-conserving result.
 
-`R_M(k)=int cos(k theta)J_M(dtheta)`.
+### Infinite-dimensional energy-conserving completion
 
-The same structure applies across exact multiples `m nu` of a chosen Bohr gap for an arbitrary semibounded pure-point Hamiltonian. Zero-population completion is an algebraic dilation only and cannot create Fisher information.
+WP28 and WP29 extend the finite-radius and rank-boundary resource laws to separable infinite-dimensional systems under bounded-relative / Hilbert--Schmidt finite-information assumptions.
 
-Combining the Herglotz constraint with semibounded tails gives
+WP30 extends the prescribed-2-jet dynamical minimum to arbitrary smooth infinite-dimensional unitary dilations.
 
-`Ebar+>=hbar nu A(R_M(nu))`,
+WP31 closes the remaining exact-energy-conservation domain problem. A stationary trace-class state decomposes into countably many occupied target-energy shells. By implementing the optimal dilation **separately inside each shell** and using an incoherent global shell mixture with zero-energy ancilla,
 
-with `A(q)~1/sqrt(2(1-q))` as `q->1`.
+`boxed:
+inf_(semibounded exactly energy-conserving smooth unitary dilations)
+V_impl=(1/2)Tr C`
 
-A finite sine-profile family proves the `(1-R)^(-1/2)` divergence exponent is **sharp**; the optimal prefactor is not claimed.
+remains valid even when the occupied target energies are unbounded above.
 
-## Complete one-copy extremizers
+The direct-sum generator may be unbounded; finite state-weighted quadratic cost nevertheless gives summable trace-norm first- and second-derivative majorants, so no fourth-moment condition is required.
 
-The exact converse remains deliberately narrower. On the full contiguous pure-sector chain:
+## Exact-resonance robustness
 
-`first-harmonic equality`
+The exact Bohr-gap hypothesis is no longer all-or-nothing.
 
-`<=> geometric-mixture populations`
+- **WP25:** finite-radius survival with an explicit commutator-residual leakage penalty.
+- **WP27:** rank-boundary synthesis/action with near-resonant endpoint terms plus explicit off-resonant score-amplitude penalties.
 
-`<=> Hausdorff-moment survival tails`
+Both recover the exact-gap laws continuously as the residual vanishes.
 
-`<=> one source-adapted POVM saturates every harmonic simultaneously`.
+## External-review audits
 
-Controlled continuum limits of exponential mixtures give the completely monotone equality cone.
+- The mixed `Psi_a(e;p,q)` envelope was independently re-derived and brute-force validated; no defect found.
+- Classical nonregular boundary statistics are mandatory prior art. Boundary nonregularity itself is not a quantum novelty claim.
+- Bures/Uhlmann horizontal-lift `QFI/4` geometry, generic quantum speed limits, covariant Stinespring dilation theory, and infinite-dimensional QFI/Bures analysis are prior art infrastructure.
 
-## Physical source-to-record scope
-
-Independent quantum-marked Poisson sources inherit the modewise law through arbitrary **parameter-independent** source-to-field and detector processing. Arbitrary parameter-dependent waveform-state synthesis remains outside the theorem; the coherent-sideband counterexample is the explicit boundary.
-
-# Rev11 final preflight
-
-Rev11 replaced the peripheral separately optimized SLD-QFI section with the fixed-Hamiltonian Bohr-gap theorem.
-
-Final local gate:
-
-- full LaTeX/BibTeX build: **PASS**;
-- **12 pages**;
-- unresolved citations/references: **0**;
-- overfull boxes: **0**;
-- all pages rendered at 200 dpi and visually inspected: **PASS**;
-- all six numerical validators: **PASS**;
-- PDF SHA-256: `5e0ac0132a7f4a3f7b07e9c4ba86b046b23bc89c1f7635efe9f737019396d0f0`;
-- source ZIP SHA-256: `208fd7a2e932507366797658c84dff1666257477143a433bf81d7741a8d0c8a1`;
-- fresh source-package compile: **PASS**;
-- 200-dpi comparison against fresh source-package compile: **0 changed pixels on all 12 pages**.
-
-Detailed preflight:
-`grand_challenge/notes/MANUSCRIPT_REV11_ANHARMONIC_PREFLIGHT_2026-08-22.md`.
-
-The current connector does not expose the relevant branch-push Actions run; no direct remote-run result is claimed.
-
-# Prior-art boundary
-
-Arbitrary Bohr-frequency decompositions, random-time dephasing, `U(1)` modes, Herglotz/Bochner mathematics, moment theory, canonical phase measurements, sine states, and generic QFI/CPTP machinery are prior art.
-
-The candidate contribution is the operational arbitrary-POVM Fisher-tail coefficient, its exact-Bohr-gap extension, the fixed-measurement spectral consistency/energy law, sharp near-lossless exponent, contiguous-chain extremizer classification, and source-to-record inheritance.
+The narrow candidate post-R3 contribution is the **frequency-resolved endpoint synthesis action as the exact minimum state-weighted quadratic implementation-coupling cost for a prescribed feasible rank-changing local kernel 2-jet under globally conserving relational dynamics**, together with controlled detuning and infinite-dimensional extensions.
 
 **Priority remains unverified, not certified.**
 
-# Journal target
+## Current work order
 
-**First target:** PRX Quantum — Research Article.
+1. hostile-audit WP31's stationary trace-class energy-support lemma;
+2. hostile-audit its trace-norm `C^2` dominated-convergence proof;
+3. expand the WP31 validator to mixed/degenerate shells and random excess curvature;
+4. targeted priority search for state-specific second-order Stinespring/purification implementation-cost theorems;
+5. decide deliberately whether WP21--WP31 belong in an R4 of the existing paper or in a separate dynamical follow-up article;
+6. if theorem work continues, prioritize noisy/CPTP implementation cost or unbounded-relative-tangent quadratic-form extensions.
 
-**Fallback:** Physical Review A — Regular Article.
+## Manuscript integrity
 
-# Current work order
+Every paper must be scientifically standalone. Never put personal repository URLs, usernames, repository names, development history, or dependencies on internal research files into a manuscript.
 
-**Freeze Rev11.** Reopen only for a concrete mathematical defect, priority collision, substantive referee objection, build/render regression, or unavoidable journal-format requirement.
+## Frozen programs
 
-Do not reintroduce “human verification” as a research/manuscript completion gate. The finished package is produced as far as possible and then submitted by a human.
+The random-time Rev11 manuscript and the other frozen papers remain untouched unless a concrete theorem defect, priority collision, substantive referee objection, or unavoidable submission requirement appears.
