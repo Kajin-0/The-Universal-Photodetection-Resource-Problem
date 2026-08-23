@@ -14,9 +14,9 @@ The emerging hierarchy is
 
 `local Fisher information`
 
-`x physical tangent robustness`
+`x physical robustness or synthesis curvature`
 
-`-> spectral survival resource`
+`-> spectral resource`
 
 and, for autonomous relational clock--signal information,
 
@@ -122,17 +122,54 @@ while generally
 
 Pre-existing clock coherence does not evade the robust law.
 
-## Current frontier — nonlinear `R_lin=0` synthesis
+### WP07 — nonlinear `R_lin=0` curvature and finite-amplitude law
 
-The highest-value unresolved sector is a smooth physical family whose first-order tangent reaches a new high-energy subspace from a rank-deficient baseline while second-order curvature supplies the population needed for positivity. Such families can have
+The zero-radius sector is no longer completely open.
 
-`R_lin=0`
+For a two-sided `C^2` physical curve
 
-while remaining exactly physical for finite parameter amplitude.
+`rho(theta)=rho0+theta D+(theta^2/2)C+o(theta^2)`
 
-The next target is a finite-amplitude/curvature-aware resource law that covers coherent-sideband-style arbitrary waveform synthesis without assuming a nonzero linear tangent radius.
+at a rank-deficient baseline, let `P=supp(rho0)`, `Q=I-P`, `R=P rho0 P`, and `K=QDP`.
 
-Candidate operational quantities include finite trace distance, hypothesis-testing performance, Bures/Hellinger geometry at finite amplitude, second-order population injection, and explicit autonomous control action.
+Positivity forces the second-order PSD-cone condition
+
+`Q C Q >= 2 K R^(-1) K^dagger`.
+
+When the first-order tangent enters a previously empty upper resource sector `P_U<=Q`, the SLD QFI and every classical FI satisfy
+
+`F_Q(0) <= 2 T_U''(0)`,
+
+and, for arbitrary finite-copy collective readout,
+
+`(1/4)[F_N(0)/N] <= J_U^(2)`,
+
+`J_U^(2)=T_U''(0)/2`.
+
+Thus zero-radius synthesis is paid for by **quadratic spectral population creation** rather than by baseline population.
+
+The earlier coherent upper-sideband counterexample exactly saturates the coefficient:
+
+`F_Q=Nbar=2 n_sb''(0)`.
+
+A complementary finite-amplitude two-endpoint phase experiment obeys
+
+`D_tr^2/4 <= min{T_C(nu),T_S(nu)}`
+
+for a pi relative-phase pair, yielding
+
+`Ebar_C^+ + Ebar_S^+ >= (hbar nu/2)D_tr^2`.
+
+The PSD-cone curvature, block-coherence, and Helstrom ingredients are prior art. Candidate novelty is their frequency-resolved autonomous temporal-resource interpretation.
+
+## Current frontier — unified interior/boundary resource law
+
+The highest-value next target is to combine the two regimes without double counting:
+
+- support-to-support exact-gap information: controlled by WP06 pre-existing spectral survival and `R_lin`;
+- support-to-kernel exact-gap information: controlled by WP07 quadratic spectral injection.
+
+A successful unified theorem should then be tested on full phase orbits and coherent bosonic sideband synthesis, not only local boundary curves or binary phase pairs.
 
 ## Validation
 
@@ -140,11 +177,12 @@ Independent numerical/adversarial validators:
 
 - `numerics/verify_robust_tangent_radius_law.py`
 - `numerics/verify_relational_autonomous_laws.py`
+- `numerics/verify_nonlinear_zero_radius_law.py`
 
-They check the fixed-energy no-go, robust-tail inequality, finite-copy collective POVMs, dual-tail relations, weak-commutativity sharpness, finite-shift numerical radii, sine extremizers, and higher-harmonic cosine laws.
+They cover the fixed-energy no-go, robust-tail inequality, finite-copy collective POVMs, dual-tail relations, weak-commutativity sharpness, finite-shift numerical radii, sine extremizers, higher-harmonic cosine laws, zero-radius curvature saturation, random PSD block-coherence inequalities, and finite-phase Helstrom bounds.
 
 ## Priority discipline
 
-The mathematical ingredients overlap strongly with phase estimation, modes of asymmetry, quantitative WAY/reference-frame theory, Page--Wootters relational time, numerical-radius theory, and quantum statistical geometry. Targeted searches have not identified exact predecessors for the combined operational laws above, but **priority remains unverified, not certified**.
+The mathematical ingredients overlap strongly with phase estimation, modes of asymmetry, quantitative WAY/reference-frame theory, Page--Wootters relational time, numerical-radius theory, PSD-cone second-order geometry, boundary QFI/Bures geometry, block coherence, and quantum statistical geometry. Targeted searches have not identified exact predecessors for the combined operational temporal-resource laws above, but **priority remains unverified, not certified**.
 
-Read `AGENTS.md`, `ROADMAP.md`, and the WP01--WP06 notes before continuing. Record every material theorem, counterexample, prior-art collision, or killed conjecture immediately; do not rely on chat history.
+Read `AGENTS.md`, `ROADMAP.md`, and the WP01--WP07 notes before continuing. Record every material theorem, counterexample, prior-art collision, or killed conjecture immediately; do not rely on chat history.
