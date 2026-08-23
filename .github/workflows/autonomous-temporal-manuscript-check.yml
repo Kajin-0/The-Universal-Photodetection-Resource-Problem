@@ -18,18 +18,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Compile theorem-first manuscript
+      - name: Compile theorem-first main manuscript
         uses: xu-cheng/latex-action@v3
         with:
           root_file: autonomous_temporal_resource_law_draft.tex
           working_directory: manuscript/autonomous_temporal_information
           latexmk_use_xelatex: false
 
-      - name: Upload manuscript build
+      - name: Compile theorem-first supplement
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: autonomous_temporal_resource_law_supplement.tex
+          working_directory: manuscript/autonomous_temporal_information
+          latexmk_use_xelatex: false
+
+      - name: Upload manuscript builds
         uses: actions/upload-artifact@v4
         with:
           name: autonomous-temporal-information-manuscript
           path: |
             manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_draft.pdf
             manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_draft.tex
+            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_supplement.pdf
+            manuscript/autonomous_temporal_information/autonomous_temporal_resource_law_supplement.tex
             manuscript/autonomous_temporal_information/references.bib
+            manuscript/autonomous_temporal_information/THEOREM_PROVENANCE_MATRIX.md
