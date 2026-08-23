@@ -1,0 +1,189 @@
+% Audited M2R1 proof module: WP20 multi-gap shared-Hessian action sum.
+
+\subsection{Multi-gap shared-Hessian spectral-action sum}
+\label{supp:multigap-full-proof-r1}
+
+Let $\rho(\bm x,\bm y)$ be one finite-dimensional $C^2$ physical family with baseline $\rho_0$, support projector $P$, and kernel projector $Q$. For each positive gap $\nu_k$, let the complex tangent be $A_k$ and assume
+\begin{equation}
+P A_k P=0,
+\qquad
+Q A_k Q=0.
+\end{equation}
+The real coordinates $(x_k,y_k)$ are the fixed cosine/sine quadratures of $A_k$; the Hessian trace below uses the corresponding direct-sum Euclidean parameter metric. No invariance under arbitrary anisotropic reparameterizations is claimed.
+
+Define
+\begin{equation}
+X_k=Q A_k P,
+\qquad
+Y_k=Q A_k^\dagger P,
+\end{equation}
+so $A_k=X_k+Y_k^\dagger$. The support-to-kernel cosine and sine blocks are
+\begin{equation}
+K_{k,c}=\frac{X_k+Y_k}{2},
+\qquad
+K_{k,s}=\frac{X_k-Y_k}{2i}.
+\end{equation}
+Second-order positivity gives
+\begin{equation}
+Q\partial_{x_k}^2\rho(0)Q
+\succeq2K_{k,c}\rho_0^+K_{k,c}^\dagger,
+\end{equation}
+and
+\begin{equation}
+Q\partial_{y_k}^2\rho(0)Q
+\succeq2K_{k,s}\rho_0^+K_{k,s}^\dagger.
+\end{equation}
+Adding cancels the mixed $X_k/Y_k$ terms:
+\begin{align}
+C_{\Delta,k}
+&:=Q(\partial_{x_k}^2+\partial_{y_k}^2)\rho(0)Q\\
+&\succeq
+X_k\rho_0^+X_k^\dagger
++Y_k\rho_0^+Y_k^\dagger\\
+&=:Z_{k,+}+Z_{k,-}.
+\end{align}
+Summing the operator inequalities before scalar pricing yields
+\begin{equation}
+\boxed{
+C_\Sigma
+:=Q\sum_k(\partial_{x_k}^2+\partial_{y_k}^2)\rho(0)Q
+\succeq
+\sum_k(Z_{k,+}+Z_{k,-}).
+}
+\label{eq:common-hessian-r1}
+\end{equation}
+
+Let $G\succeq0$ be one positive kernel cost and define
+\begin{equation}
+\Aact_{G,\Sigma}^{(2)}=\frac14\Tr(GC_\Sigma).
+\end{equation}
+For every nonzero orientation define $R_{k,\pm}=\supp Z_{k,\pm}$ and
+\begin{equation}
+g_{k,\pm}
+=\lambda_{\min}(R_{k,\pm}GR_{k,\pm}|_{R_{k,\pm}}).
+\end{equation}
+Equation~\eqref{eq:common-hessian-r1} implies
+\begin{equation}
+4\Aact_{G,\Sigma}^{(2)}
+\ge
+\sum_k\left[g_{k,+}J_{k,+}+g_{k,-}J_{k,-}\right],
+\label{eq:total-cost-r1}
+\end{equation}
+with absent orientations omitted and $J_{k,\pm}=\Tr Z_{k,\pm}$.
+
+For a fixed arbitrary collective POVM on $N$ independently encoded copies, modewise score Minkowski gives
+\begin{equation}
+\sqrt{\frac{\Tr F_{N,k}}{N}}
+\le\sqrt{J_{k,+}}+\sqrt{J_{k,-}}.
+\end{equation}
+Define the effective mode price by
+\begin{equation}
+\gamma_k=
+\begin{cases}
+(g_{k,+}^{-1}+g_{k,-}^{-1})^{-1},
+&J_{k,+},J_{k,-}>0\text{ and }g_{k,+},g_{k,-}>0,\\[1mm]
+g_{k,+},
+&J_{k,+}>0,\ J_{k,-}=0,\ g_{k,+}>0,\\[1mm]
+g_{k,-},
+&J_{k,-}>0,\ J_{k,+}=0,\ g_{k,-}>0,\\[1mm]
+0,
+&\text{some nonzero orientation has zero restricted cost.}
+\end{cases}
+\label{eq:gamma-r1}
+\end{equation}
+A mode with $A_k=0$ may simply be omitted. For positive bilateral costs, weighted Cauchy--Schwarz gives
+\begin{equation}
+\gamma_k(\sqrt{J_{k,+}}+\sqrt{J_{k,-}})^2
+\le g_{k,+}J_{k,+}+g_{k,-}J_{k,-}.
+\end{equation}
+For one-sided modes the same statement is immediate, while $\gamma_k=0$ is deliberately vacuous for a cost-null information-bearing direction. Hence
+\begin{equation}
+\boxed{
+\sum_k\gamma_k\frac{\Tr F_{N,k}}{N}
+\le4\Aact_{G,\Sigma}^{(2)}.
+}
+\label{eq:multigap-r1-final}
+\end{equation}
+If a nonzero orientation has zero restricted cost, no positive scalar information price for that mode can follow from the chosen $G$ alone; one must change $G$ or retain the operator-valued curvature.
+
+\subsubsection{Clean autonomous frequency weighting}
+
+Suppose each mode is an exact clock--signal exchange at gap $\nu_k$ and the two endpoint ranges are mode separated. Choose $G$ to assign combined clock-plus-signal incidence price
+\begin{equation}
+2\hbar\nu_k
+\end{equation}
+to either orientation of mode $k$. Then $g_{k,+}=g_{k,-}=2\hbar\nu_k$ for bilateral modes and
+\begin{equation}
+\gamma_k=\hbar\nu_k.
+\end{equation}
+Equation~\eqref{eq:multigap-r1-final} becomes
+\begin{equation}
+\boxed{
+\Aact_{G,\Sigma}^{(2)}
+\ge
+\sum_k\frac{\hbar\nu_k}{4}\frac{\Tr F_{N,k}}{N}.
+}
+\label{eq:clean-multigap-r1}
+\end{equation}
+
+\subsubsection{One common sharp Fourier measurement}
+
+Take
+\begin{equation}
+|n\rangle=|m-n\rangle_C|m+n\rangle_S,
+\qquad n=-m,\ldots,m,
+\end{equation}
+with baseline $|0\rangle$. For $k=1,\ldots,m$ choose
+\begin{equation}
+A_k=c_k(|k\rangle\langle0|+|0\rangle\langle-k|),
+\qquad
+\nu_k=k\omega_0.
+\end{equation}
+The exact common family is
+\begin{align}
+|\psi(\bm x,\bm y)\rangle={}&
+\sqrt{1-\frac12\sum_{k=1}^m c_k^2(x_k^2+y_k^2)}|0\rangle\\
+&+\sum_{k=1}^m\frac{c_k}{2}(x_k+i y_k)|-k\rangle
++\sum_{k=1}^m\frac{c_k}{2}(x_k-i y_k)|k\rangle.
+\end{align}
+It lies entirely in one total-energy eigenspace and is physical on
+\begin{equation}
+\frac12\sum_kc_k^2(x_k^2+y_k^2)<1.
+\end{equation}
+Its kernel Hessian is
+\begin{equation}
+C_\Sigma
+=\sum_{k=1}^m c_k^2
+(|-k\rangle\langle-k|+|k\rangle\langle k|).
+\end{equation}
+
+Let $d=2m+1$ and measure
+\begin{equation}
+|v_j\rangle
+=\frac1{\sqrt d}\sum_{n=-m}^{m}e^{in\phi_j}|n\rangle,
+\qquad
+\phi_j=\frac{2\pi j}{d}.
+\end{equation}
+At the baseline $p_j=1/d$ and
+\begin{equation}
+z_{j,k}=\langle v_j|A_k|v_j\rangle
+=\frac{2c_k}{d}e^{-ik\phi_j}.
+\end{equation}
+Discrete harmonic orthogonality gives
+\begin{align}
+F_{x_kx_l}&=2c_k^2\delta_{kl},\\
+F_{y_ky_l}&=2c_k^2\delta_{kl},\\
+F_{x_ky_l}&=0.
+\end{align}
+Thus $\Tr F_{1,k}=4c_k^2$ for every mode simultaneously. With
+\begin{equation}
+G=2\hbar\omega_0\sum_{n\ne0}|n|\,|n\rangle\langle n|,
+\end{equation}
+\begin{equation}
+\Aact_{G,\Sigma}^{(2)}
+=\sum_k\hbar\nu_k c_k^2
+=\sum_k\frac{\hbar\nu_k}{4}\Tr F_{1,k}.
+\end{equation}
+Hence one common measurement simultaneously saturates every mode and the complete weighted sum.
+
+For overlapping ranges, Eq.~\eqref{eq:multigap-r1-final} remains valid for any supplied $G\succeq0$, but a unique frequency-diagonal interpretation is not claimed.
