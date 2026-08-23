@@ -40,6 +40,13 @@ jobs:
         working-directory: manuscript/dynamical_implementation_cost
         run: python apply_pra_r1_supplement_title.py
 
+      - name: Verify committed PRA R1 sources are fresh
+        working-directory: manuscript/dynamical_implementation_cost
+        run: |
+          git diff --exit-code -- \
+            dynamical_rank_boundary_implementation_cost_pra_r1.tex \
+            dynamical_rank_boundary_implementation_cost_supplement_pra_r1.tex
+
       - name: PRA R1 standalone and theorem-freeze gate
         working-directory: manuscript/dynamical_implementation_cost
         run: python check_pra_r1_static.py
