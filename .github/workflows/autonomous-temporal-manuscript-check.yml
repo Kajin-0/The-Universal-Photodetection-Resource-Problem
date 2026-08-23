@@ -7,6 +7,12 @@ on:
     paths:
       - 'manuscript/autonomous_temporal_information/**'
       - '.github/workflows/autonomous-temporal-manuscript-check.yml'
+  pull_request:
+    branches:
+      - agent/autonomous-temporal-information-law
+    paths:
+      - 'manuscript/autonomous_temporal_information/**'
+      - '.github/workflows/autonomous-temporal-manuscript-check.yml'
   workflow_dispatch:
 
 permissions:
@@ -63,6 +69,7 @@ jobs:
             manuscript/autonomous_temporal_information/M2R1_POST_REWRITE_HOSTILE_AUDIT.md
 
       - name: Publish compiled PDFs to branch
+        if: github.event_name == 'push'
         shell: bash
         run: |
           set -euo pipefail
