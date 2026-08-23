@@ -6,38 +6,38 @@ The frozen Rev11 paper remains on `agent/temporal-information-resource-law` and 
 
 ## Mission
 
-Determine the physical resource constraining temporal information when clock/reference, signal, controller, detector, and memory are finite internal systems and no external timing operation is free.
+Determine the physical resource constraining temporal information when clock/reference, signal, controller, detector, and memory are finite internal systems and no ideal external timing operation is free.
 
-Research is analytical/theoretical, falsification-first, and documentation-first. Standard asymmetry/reference-frame theory, Page--Wootters, numerical-radius/Ando theory, POVM convex duality, shorted operators, SDP/SOCP theory, PSD-cone curvature, rank-changing QFI/Bures geometry, Gill--Massar/Holevo compatibility, and energy-constrained metrology are infrastructure unless a distinct operational temporal-information theorem is isolated.
+Research is analytical/theoretical, falsification-first, and documentation-first. Standard asymmetry/reference-frame theory, Page--Wootters, relative-phase and multiphase metrology, waveform Holevo theory, numerical-radius/Ando theory, POVM convex duality, shorted operators, SDP/SOCP theory, PSD-cone curvature, rank-changing QFI/Bures geometry, Gill--Massar/Holevo compatibility, and energy-constrained metrology are infrastructure unless a distinct operational temporal-information theorem is isolated.
 
 ## Current status
 
-**WP18 — sharp autonomous dual synthesis-action law: analytic PASS and independently validated.**
+**WP20 — multi-gap autonomous spectral-action sum law: analytic PASS and independently validated.**
 
-The central hierarchy is now:
+The branch now has a coherent hierarchy:
 
-1. finite-radius temporal information -> pre-existing spectral survival;
-2. zero-radius temporal information -> second-order kernel spectral synthesis;
-3. noncommuting support -> shorted/operator geometry;
-4. spectral action -> positive endpoint-cost weighting;
-5. common-record accessibility -> separate measurement-compatibility geometry;
-6. autonomous exact exchange -> matched resources on both sides of the clock--signal cut in both finite-radius and zero-radius regimes.
+1. finite-radius information -> pre-existing spectral survival;
+2. zero-radius information -> second-order spectral synthesis;
+3. bilateral synthesis -> score-space Minkowski geometry;
+4. noncommuting support -> shorted/operator geometry;
+5. positive spectral action -> endpoint-cost weighting;
+6. common-record accessibility -> a separate measurement-compatibility layer;
+7. autonomous exact exchange -> matched clock+signal resources in both finite-radius and zero-radius regimes;
+8. multiple zero-radius exchange frequencies -> one shared Hessian spectral-action budget.
 
 ## Essential theorem stack
 
 ### WP02 / WP03 / WP06
 
-Finite-radius exact-gap law:
-
 `(R_lin^2/4)[Tr F_N/N] <= T(nu)`.
 
-Autonomous exchange:
+For globally stationary exact exchange,
 
 `(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`.
 
 ### WP04 / WP05
 
-Structured globally stationary retention has exact sine-chain envelopes and sharp near-lossless coefficient `pi` under hard and mean total-energy constraints.
+Structured globally stationary retention has exact sine-chain hard/mean-energy envelopes and sharp near-lossless coefficient `pi`.
 
 ### WP07 / WP08
 
@@ -45,7 +45,7 @@ At `R_lin=0`, one-sided boundary synthesis obeys
 
 `Tr F_N/N <= J <= Delta T_U`.
 
-Orthogonal mode sums admit a positive frequency/energy weighted synthesis budget.
+Orthogonal mode sums admit a positive frequency-weighted synthesis budget.
 
 ### WP09
 
@@ -53,11 +53,11 @@ Bilateral boundary synthesis obeys
 
 `sqrt[Tr F_N/N] <= sqrt(J_X)+sqrt(J_Y)`.
 
-The factor-two departure from additive endpoint synthesis is exactly sharp.
+The factor-two failure of additive endpoint synthesis is exactly sharp.
 
 ### WP10
 
-For energy-invariant support and one-sided mixed survival+synthesis,
+Energy-invariant-support one-sided mixed law:
 
 `Tr F_N/N <= 4T_pre/R_B^2 + Delta T_syn`.
 
@@ -67,11 +67,11 @@ For arbitrary coherent support use
 
 `B=PAP`, `K_+=QAP`, `K_-=QA^dagger P`.
 
-Shorting/principal-angle geometry is required. Shared kernel curvature satisfies
+Shorting/principal-angle geometry is necessary. Shared kernel curvature satisfies
 
 `Z_+ + Z_- <= C_Delta`.
 
-The exact allocation functional `Phi_a` is a one-dimensional minimization over an SDP value.
+The exact allocation `Phi_a` is a one-dimensional minimization over an SDP value.
 
 ### WP13 / WP14
 
@@ -79,112 +79,125 @@ Positive spectral action:
 
 `A_G^(2)=(1/4)Tr(GC_Delta)`.
 
-The pure bilateral effective endpoint price is harmonic.
-
-For rank-one synthesized ranges, the exact allocation geometry is controlled by the principal angle in the inverse shorted-curvature metric, not the ordinary Hilbert-space angle.
+Bilateral action costs combine harmonically. Rank-one allocation geometry is controlled by the principal angle in the inverse shorted-curvature metric.
 
 ### WP15
 
-The shared-kernel qutrit has exact hierarchy
+Exact shared-kernel qutrit hierarchy:
 
 `12 > 43/4 > 55/8`
 
-for physical resource, SLD trace, and accessible one-copy common-record Fisher respectively.
+for physical resource, SLD trace, and one-copy common-record Fisher supremum.
 
-### WP16 — generic rank-one-kernel common-record law
+### WP16
 
-For
+For rank-one kernel and maximally mixed support,
 
-`rho0=P/r`, `rank(Q)=1`,
+`sqrt(Tr F_1)<=sqrt(R(B))+sqrt(r kappa)`,
 
-`A=[[B,b],[a^dagger,0]]`,
+`kappa=||a||^2+||b||^2+2|a^dagger b|`.
 
-define
+For qutrits `R(B)=4w(B)^2`. A signed three-cycle saturates the universal bound at `9`; naive additivity gives only `5`. Exact accessibility needs additional phase/orientation geometry.
 
-`kappa=||a||^2+||b||^2+2|a^dagger b|`
+WP16 also gives the exact Fisher-witness convex dual and weighted numerical-radius LMI.
 
-and support-only common-record optimum `R(B)`.
+### WP17 — NO-GO
 
-Then
+A generic `exact curvature + its own scalar action` Pareto law is redundant. Do not pursue it without an independent physical constraint.
 
-`boxed: sqrt(Tr F_1)<=sqrt(R(B))+sqrt(r kappa)`.
+### WP18
 
-For qutrits,
+Clean zero-radius globally stationary exchange:
 
-`R(B)=4w(B)^2`,
+bilateral
 
-so
+`A_C^(2)+A_S^(2)>=(hbar nu/4)[Tr F_N/N]`,
 
-`Tr F_1<=[2w(B)+sqrt(2kappa)]^2`.
+one-sided
 
-The signed three-cycle saturates at `9`, whereas naive additivity gives `5`.
+`A_C^(2)+A_S^(2)>=(hbar nu/2)[Tr F_N/N]`.
 
-A second model with the same two scalar invariants has WP11 ceiling `6`, proving exact accessibility requires additional phase/orientation geometry.
+Both coefficients are exactly sharp in fixed-total-energy shells with zero global asymmetry.
 
-WP16 also gives the exact Fisher-witness dual
+### WP19
 
-`F_CR=inf_Y Tr Y`
+For arbitrary coherent support, define two-sided shorted pre-existing resources `a_+,a_-` and one combined positive clock+signal endpoint-incidence operator `G_CS`.
 
-subject to
+The general resource is the **kernel-resolved endpoint-incidence action**
 
-`|<phi|A|phi>|^2<=<phi|rho|phi><phi|Y|phi>`
+`A_CS^(2)=(1/4)Tr(G_CS C_Delta)`.
 
-for all vectors, equivalently a semi-infinite weighted numerical-radius LMI family.
+With restricted costs `g_+,g_-`,
 
-### WP17 — killed Pareto sidequest
+`Tr F_N/N`
 
-If exact `C_Delta` is known, scalar action `Tr(GC_Delta)` is redundant. If only the action is known, optimization over unknown curvature collapses exactly to WP13. Do not invent a generic operator+its-own-action Pareto theorem without an independent physical constraint.
+`<=min{Psi_(a_+)(4A_CS;g_+,g_-),`
 
-### WP18 — autonomous dual synthesis action
+`      Psi_(a_-)(4A_CS;g_-,g_+)}`.
 
-For a globally stationary exact exchange
+Do not call general `A_CS` the full endpoint-population Laplacian or signed mean-energy curvature.
 
-`[H_S,A_nu]=+hbar nu A_nu`,
-
-`[H_C,A_nu]=-hbar nu A_nu`,
-
-clean zero-radius boundary synthesis obeys, for every finite `N` and arbitrary collective POVM,
-
-`boxed: A_C^(2)+A_S^(2) >= (hbar nu/4)[Tr F_N/N]`
-
-in the bilateral case, where local actions are positive absolute-gap endpoint-curvature costs.
-
-If only one support orientation is synthesized,
-
-`boxed: A_C^(2)+A_S^(2) >= (hbar nu/2)[Tr F_N/N]`.
-
-Both coefficients are exactly sharp.
-
-Bilateral extremizer: the fixed-total-energy shell
-
-`|2,0>, |1,1>, |0,2>`
-
-with baseline `|1,1>` and
-
-`A_nu=c(|0,2><1,1|+|1,1><2,0|)`.
-
-A Fourier measurement gives `Tr F_1=4c^2` and saturates the `hbar nu/4` total action coefficient while global time-translation asymmetry remains identically zero.
+The shared-kernel qutrit embeds into a fixed-total-energy exchange shell and WP19 reproduces the WP12 resource ceiling `12` exactly.
 
 Read:
-`notes/WP18_AUTONOMOUS_DUAL_SYNTHESIS_ACTION_LAW.md`.
+- `notes/WP19_NONCOMMUTING_AUTONOMOUS_MIXED_RESOURCE_ACTION_LAW.md`
+- `notes/WP19_HOSTILE_AUDIT_AND_PRIOR_ART_BOUNDARY.md`
+
+### WP20
+
+For zero-radius pure-boundary modes in one multiparameter family,
+
+`C_Sigma=Q sum_k(partial_(x_k)^2+partial_(y_k)^2)rho Q`
+
+obeys
+
+`C_Sigma>=sum_k[Z_(k,+)+Z_(k,-)]`.
+
+For any `G>=0`,
+
+`A_G,Sigma^(2)=(1/4)Tr(G C_Sigma)`
+
+and effective mode costs `gamma_k`,
+
+`boxed: sum_k gamma_k Tr F_(N,k)/N <=4A_G,Sigma^(2)`.
+
+Clean bilateral endpoint costs give
+
+`A_G,Sigma^(2)>=sum_k (hbar nu_k/4)Tr F_(N,k)/N`.
+
+This is simultaneously sharp with one common Fourier measurement in the fixed-total-energy shell
+
+`|n>=|m-n>_C|m+n>_S`,
+
+baseline `|0>`,
+
+`A_k=c_k(|k><0|+|0><-k|)`.
+
+The same Fourier basis yields `Tr F_(1,k)=4c_k^2` for every gap at once.
+
+Read:
+`notes/WP20_MULTIGAP_AUTONOMOUS_SPECTRAL_ACTION_SUM_LAW.md`.
 
 ## Current frontier
 
-1. Extend WP18 to arbitrary coherent/noncommuting baseline support using WP11/WP12 geometry on both local Hamiltonians.
-2. Determine whether the clock and signal share one tighter joint curvature allocation rather than two separately added local reductions.
-3. Derive multi-gap autonomous synthesis-action budgets.
-4. Perform a hostile priority/significance audit of WP03+WP18 against relational metrology, quantitative WAY, Page--Wootters, and current energy-constrained metrology.
-5. Only then consider a new manuscript.
+**Do not automatically create WP21.** First perform a hostile significance/priority gate.
+
+Highest-value tasks:
+
+1. compare WP03 and WP18--WP20 directly against Page--Wootters shared-asymmetry resource theory, quantum reference frames, fixed-number relative-phase/multiphase metrology, quantitative WAY, and current energy-constrained metrology;
+2. determine whether a mixed finite-radius + multi-gap theorem is genuinely stronger than summing nonlinear WP19 envelopes; kill it if not;
+3. examine a controlled continuum limit only if it gives a nontrivial spectral action measure;
+4. decide whether the autonomous theorem chain is publication-grade before adding more operator mathematics.
 
 ## Numerical gates
 
-In addition to WP02--WP15 validators, current new gates are:
+All previous WP validators remain required. New gates:
 
 - `numerics/verify_rank_one_kernel_common_record_minkowski.py`
 - `numerics/verify_autonomous_dual_synthesis_action_law.py`
-
-Every nontrivial future theorem must receive an independent validator before being marked PASS.
+- `numerics/verify_noncommuting_autonomous_mixed_resource_action_law.py`
+- `numerics/verify_multigap_autonomous_spectral_action_sum_law.py`
 
 ## Documentation rule
 
-Every material theorem, failed conjecture, priority collision, or killed direction must be recorded immediately in this directory and reflected in `README.md`, `AGENTS.md`, and `ROADMAP.md`. The repository, not chat history, is authoritative.
+Every material theorem, failed conjecture, priority collision, or killed direction must be recorded immediately and reflected in `README.md`, `AGENTS.md`, and `ROADMAP.md`. The repository, not chat history, is authoritative.
