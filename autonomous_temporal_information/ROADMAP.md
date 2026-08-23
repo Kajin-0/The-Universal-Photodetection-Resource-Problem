@@ -8,29 +8,23 @@ Seek a foundational physical resource principle for temporal information when cl
 
 ## Completed foundations
 
-### WP01 — prior-art/model boundary — PASS
-
-Do not claim novelty for standard asymmetry/reference-frame theory, QFI-as-asymmetry, finite clocks, Page--Wootters, WAY, standard phase estimation, PSD-cone curvature, singular QFI/Bures geometry, Fisher-symmetric measurements, Gaussian displacement/Holevo theory, or generic waveform estimation.
-
 ### WP02 — robust tangent-radius law — PASS
 
-`(R_lin^2/4)[Tr F_N^(nu)/N] <= min(D_nu,U_nu) <= T(nu)`
+For exact gap `nu`, finite `N`, and arbitrary collective POVM,
 
-for exact gap `nu`, finite `N`, and arbitrary collective POVM.
+`(R_lin^2/4)[Tr F_N^(nu)/N] <= min(D_nu,U_nu) <= T(nu)`.
 
-Hence
+Thus
 
 `Ebar+ >= (hbar nu R_lin^2/4)[Tr F_N^(nu)/N]`.
 
-### WP03 — autonomous relational dual survival — PASS
+### WP03 / WP06 — autonomous dual survival and coherent-history extension — PASS
 
-`K_N=(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`,
+For a globally stationary exchange tangent,
 
-so
+`K_N=(R_lin^2/4)[Tr F_N/N] <= min{T_C(nu),T_S(nu)}`.
 
-`Ebar_C^+ + Ebar_S^+ >= 2 hbar nu K_N`.
-
-The factor `2` is asymptotically sharp.
+WP06 removes separate local stationarity and allows pre-existing Page--Wootters/history-state coherence.
 
 ### WP04 / WP05 — exact structured autonomous retention — PASS
 
@@ -44,21 +38,13 @@ Mean total excitation `Lbar=m+lambda`:
 
 `g_L=cos^2[pi/(L+2)]`.
 
-Sine-chain extremizers make the near-unit coefficient `pi` sharp under both hard and mean total energy.
-
-### WP06 — arbitrary coherent-baseline tail law — PASS
-
-For arbitrary `rho`, positive `R_lin`, range projector `P_U`, finite `N`, and arbitrary collective POVM,
-
-`(R_lin^2/4)[Tr F_N/N] <= Tr(P_U rho)`.
+Sine-chain extremizers make the near-lossless coefficient `pi` exactly sharp under both hard and mean total energy.
 
 ### WP07 — one-sided zero-radius synthesis — PASS
 
 For `A=P_U A P`, `P=supp(rho0)`, baseline-empty `P_U`,
 
 `boxed: Tr F_N/N <= J(A|rho0) <= Delta T_U(0)`.
-
-The minimal qubit and coherent-sideband constructions saturate the coefficient.
 
 ### WP08 — multimode quadratic synthesis budget — PASS
 
@@ -68,11 +54,9 @@ For one common arbitrary collective measurement,
 
 for arbitrary `w_k>=0`.
 
-With gap weights,
+Gap weighting gives
 
 `boxed: sum_k hbar nu_k Tr F_(N,k)/(4N) <= E_gap,syn^(2)`.
-
-Multimode coherent sidebands with common heterodyne readout saturate every positive weighted sum.
 
 ### WP09 — bilateral zero-radius Minkowski law — PASS
 
@@ -82,170 +66,254 @@ For
 
 `X=A P`, `Y=Q A^dagger P`,
 
-`J_X=Tr(X rho0^+ X^dagger)`,
-
-`J_Y=Tr(Y rho0^+ Y^dagger)`,
-
-one has
-
 `boxed: sqrt[Tr F_N/N] <= sqrt(J_X)+sqrt(J_Y)`.
 
-For orthogonal baseline-empty upper/lower endpoints,
+For orthogonal empty upper/lower endpoints,
 
 `boxed: Tr F_N/N <= [sqrt(Delta T_+)+sqrt(Delta T_-)]^2`.
 
-The qutrit Fourier extremizer violates naive additive endpoint synthesis by exactly factor two and saturates the square-root law. Equal positive gap costs obey
-
-`E_bi,syn^(2) >= (hbar nu/8)[Tr F_N/N]`.
+The exact-gap qutrit Fourier extremizer violates naive additive synthesis by exactly factor two and makes the equal-gap `hbar nu/8` coefficient sharp.
 
 ### WP10 — one-sided mixed finite-radius + synthesis law — PASS
 
-Assume
-
-`P=supp(rho0)`, `[P,H]=0`,
-
-`[H,A_nu]=hbar nu A_nu`,
-
-`P A_nu Q=0`.
-
-Write
+For `[P,H]=0` and one-sided upper synthesis,
 
 `A_nu=B+K`,
 
-`B=P A_nu P`,
-
-`K=Q A_nu P`.
-
-Then for every finite `N` and arbitrary collective POVM,
-
-`boxed: Tr F_N/N <= J_B+J_K`.
-
-If `R_B` is the support-preserving sub-tangent radius, `T_pre` the pre-existing upper endpoint population, and `T_syn` the newly synthesized upper endpoint population,
-
-`J_B <= 4T_pre/R_B^2`,
-
-`J_K <= Delta T_syn(0)`.
-
-Therefore
-
-`boxed: Tr F_N/N <= 4T_pre/R_B^2 + Delta T_syn(0)`.
-
-This additive composition is exactly sharp. The qutrit family
-
-`rho0=p0|0><0|+p1|1><1|`,
-
-`A_nu=kappa p0|1><0|+kappa p1|2><1|`
-
-with a normalized congruence family and one Fourier measurement simultaneously saturates
-
-`Tr F_1=J_B+J_K=4T_pre/R_B^2+Delta T_syn=kappa^2`.
-
-The positive energy/action form
-
-`boxed: Ebar+/R_B^2 + E_syn^(2) >= (hbar nu/4)[Tr F_N/N]`
-
-is likewise sharp.
-
-This resolves the mixed **commuting-support / one-sided** bridge: same-orientation pre-existing and synthesis resources add, whereas opposite-orientation synthesis obeys the WP09 Minkowski law.
-
-## Current frontier — WP11: noncommuting baseline support
-
-### A. Core obstruction
-
-Remove `[P,H]=0` while keeping the full `A_nu` an exact Bohr-gap operator.
-
-When `[P,H] != 0`, the support pieces
-
-`P A_nu P`, `Q A_nu P`, `P A_nu Q`
-
-are generally not exact-gap operators. Therefore the WP10 proof cannot attach independent energy endpoints to those support pieces.
-
-### B. First target: principal-angle bridge
-
-Let `P_U` and `P_D` be the participating upper/lower energy endpoint projectors. Study the compressed positive contractions
-
-`S_U=P P_U P`,
-
-`S_D=P P_D P`
-
-and the kernel-side contractions
-
-`W_U=Q P_U Q`,
-
-`W_D=Q P_D Q`.
-
-Their nonzero eigenvalues are squared cosines/sines of principal angles between baseline support and endpoint subspaces.
-
-Test whether these operators provide the minimal geometric correction required to convert the abstract WP09 norms `J_X,J_Y` into physical spectral resources.
-
-### C. Candidate support-internal estimate
-
-For the support-preserving compression `B=P A_nu P`, its range lies in `range(P P_U)`. If `R_U=supp(S_U)` and `lambda_U` is the smallest positive eigenvalue of `S_U`, then a plausible rigorous chain is
-
-`J_B^+ <= 4 Tr(R_U rho)/R_B^2`
+`B=P A_nu P`, `K=Q A_nu P`,
 
 and
 
-`Tr(P_U rho)=Tr(S_U rho) >= lambda_U Tr(R_U rho)`,
+`boxed: Tr F_N/N <= J_B+J_K <= 4T_pre/R_B^2 + Delta T_syn(0)`.
 
-which would imply
+A qutrit congruence family and one Fourier measurement simultaneously saturate all terms. The sharp energy/action form is
 
-`J_B^+ <= 4 T_U/(R_B^2 lambda_U)`.
+`boxed: Ebar+/R_B^2 + E_syn^(2) >= (hbar nu/4)[Tr F_N/N]`.
 
-Derive this carefully, including the lower-orientation analogue and all zero-eigenvalue cases. Determine sharpness and whether the principal-angle penalty is unavoidable.
+### WP11 — shorted-endpoint master law for noncommuting support — PASS
 
-### D. Kernel synthesis geometry
+Let the **full** tangent remain an exact gap but allow
 
-Second-order positivity gives a kernel curvature operator rather than a clean energy-sector scalar when `P_U` and `P` do not commute.
+`[P,H] != 0`, `P=supp(rho0)`.
 
-Test endpoint-weighted kernel curvature objects such as
+First-order physicality gives `Q A Q=0`. Decompose
 
-`Tr[Q P_U Q C_Delta]`,
+`B=PAP`,
 
-where
+`K_+=QAP`,
 
-`C_Delta=Q(partial_x^2 rho + partial_y^2 rho)Q`.
+`K_-=QA^dagger P`.
 
-Determine whether principal-angle eigenvalues convert these quantities into rigorous bounds on the support-to-kernel weighted tangent norm.
+Define weighted norms
 
-### E. Scalar sufficiency / no-go test
+`J_B^+=Tr(B rho0^+ B^dagger)`,
 
-Construct exact-gap low-dimensional models with noncommuting `P` and `H` and ask whether the sharp information ceiling is determined by only:
+`J_B^-=Tr(B^dagger rho0^+ B)`,
 
-- baseline upper/lower scalar tails;
-- one internal tangent radius;
-- total upper/lower scalar synthesis curvature.
+`J_+=Tr(K_+ rho0^+ K_+^dagger)`,
 
-If two models can share these scalars but have different `J_X,J_Y` or attainable Fisher information, record a scalar-insufficiency theorem and promote the operator geometry as necessary.
+`J_-=Tr(K_- rho0^+ K_-^dagger)`.
 
-### F. Numerical protocol
+Measurement-side finite-copy law:
 
-For candidate WP11 laws:
+`boxed: sqrt[Tr F_N/N]`
 
-1. use 3--5 level equally spaced Hamiltonians;
-2. generate coherent rank-deficient baseline supports not diagonal in energy;
-3. enforce the physical tangent condition `Q A Q=0` for exact-gap shifts;
-4. test random POVMs and explicit Fourier/phase POVMs;
-5. test `N=2` collective measurements;
-6. sweep principal angles toward `0` and `pi/2` to test singular limits;
-7. require reduction to WP06, WP07, WP09, and WP10.
+`<= min{sqrt(J_B^+ + J_+) + sqrt(J_-),`
 
-### G. Priority audit
+`       sqrt(J_B^- + J_-) + sqrt(J_+)}`.
 
-Search against shorted operators, principal-angle inequalities, PSD block matrix completion, singular quantum estimation, support-changing models, and coherence/asymmetry resource theory. Do not claim novelty for the matrix-analysis machinery.
+Let `Pi_U,Pi_D` be the participating energy endpoint projectors and define
 
-## Secondary open directions
+`S_U=P Pi_U P`, `S_D=P Pi_D P`,
 
-- full finite-amplitude phase orbit with support change;
-- Gaussian covariance/squeezing synthesis beyond displacement;
-- autonomous dynamical interaction/action resource;
-- collective-N mean-energy retention beyond WP05;
-- many-body/cut-set laws;
-- continuum synthesis limits.
+`W_U=Q Pi_U Q`, `W_D=Q Pi_D Q`.
 
-## Publication / significance gate
+Internal shorting constants:
 
-Do not draft the foundational manuscript yet. First require a sharp WP11 theorem or scalar-insufficiency result, deep priority audit, hostile mathematical review, sharp constructions, and a clear autonomous physical consequence.
+`lambda_U=sup{lambda:S_U >= lambda R_B^+}`,
+
+`lambda_D=sup{lambda:S_D >= lambda R_B^-}`.
+
+Kernel shorting constants:
+
+`mu_U=sup{mu:W_U >= mu R_+}`,
+
+`mu_D=sup{mu:W_D >= mu R_-}`.
+
+For
+
+`C_Delta=Q(partial_x^2 rho+partial_y^2 rho)Q`,
+
+`Gamma_U=Tr(W_U C_Delta)`,
+
+`Gamma_D=Tr(W_D C_Delta)`,
+
+one has
+
+`J_B^+ <= 4T_U/(R_B^2 lambda_U)`,
+
+`J_B^- <= 4T_D/(R_B^2 lambda_D)`,
+
+`J_+ <= Gamma_U/mu_U`,
+
+`J_- <= Gamma_D/mu_D`.
+
+Hence, with
+
+`B_U=4T_U/(R_B^2 lambda_U)`,
+
+`B_D=4T_D/(R_B^2 lambda_D)`,
+
+`S_U=Gamma_U/mu_U`,
+
+`S_D=Gamma_D/mu_D`,
+
+`boxed: Tr F_N/N`
+
+`<= min{[sqrt(B_U+S_U)+sqrt(S_D)]^2,`
+
+`       [sqrt(B_D+S_D)+sqrt(S_U)]^2}`.
+
+The generic scalar master bound is not claimed globally sharp, but it reduces exactly to WP06, WP07, WP09, and WP10 in the solved limits.
+
+#### Necessity of shorting geometry
+
+Exact four-level counterexample:
+
+`H=hbar omega diag(0,1,2,3)`, `nu=2omega`,
+
+`|r>=(1/2)|2>+(sqrt(3)/2)|3>`,
+
+`rho0=(1/2)|0><0|+(1/2)|r><r|`,
+
+`A=|2><0|`.
+
+Then
+
+`J_B=1/2`,
+
+but the naive no-geometry internal term is only
+
+`4T_U/R_B^2=1/8`.
+
+The exact support shorting constant is
+
+`lambda_U=1/4`,
+
+which restores equality. The kernel shorting constant is
+
+`mu_U=3/4`
+
+and likewise restores the exact synthesis norm.
+
+The omission is operationally fatal: a fixed randomized scalar-SLD POVM gives
+
+`Tr F=7/4 > 13/8`,
+
+where `13/8` is the naive total resource ceiling with the geometric factor omitted.
+
+Thus endpoint-support geometry is required for observable Fisher information.
+
+## Current frontier — WP12: operator-valued allocation law
+
+WP11's scalar constants are rigorous but can overcount when upper- and lower-oriented synthesis components draw on overlapping kernel curvature.
+
+### A. Retain shorted operators themselves
+
+For a positive kernel curvature operator `C_Delta` and an information-bearing subspace `R`, the Anderson--Trapp short
+
+`Short_R(C_Delta)`
+
+is the largest positive operator below `C_Delta` whose range lies in `R`.
+
+For a single synthesized orientation this immediately suggests the tighter resource
+
+`J_+ <= Tr Short_(R_+)(C_Delta)`
+
+when only the support constraint is used.
+
+Derive the endpoint-weighted version that also enforces compatibility with `W_U=Q Pi_U Q` rather than collapsing to the scalar `mu_U`.
+
+### B. Joint curvature allocation
+
+The actual second-order condition is
+
+`Z_+ + Z_- <= C_Delta`,
+
+not two independent inequalities.
+
+Define the feasible set
+
+`A(C_Delta;R_+,R_-)`
+
+of positive pairs `(Z_+,Z_-)` satisfying
+
+- `Z_+>=0`, `Z_->=0`;
+- `range(Z_+) subseteq R_+`;
+- `range(Z_-) subseteq R_-`;
+- `Z_+ + Z_- <= C_Delta`;
+- endpoint-weighted constraints inherited from `W_U,W_D` if necessary.
+
+The sharp curvature-only Fisher ceiling should be obtained by maximizing the WP11 measurement functional over this feasible set.
+
+### C. Candidate variational resource
+
+For a fixed upper-oriented internal resource `a>=0`, define
+
+`Phi_a(C_Delta;R_+,R_-)`
+
+`= sup_(Z_+,Z_- in A)`
+
+`[sqrt(a+Tr Z_+) + sqrt(Tr Z_-)]^2`.
+
+The conjugate orientation gives a second functional with `a` attached to the lower side. The final bound should take the minimum of the two.
+
+Questions:
+
+1. Can `Phi_a` be represented as an SDP or one-dimensional convex dual?
+2. Does the optimizer lie at an extreme decomposition of `C_Delta`?
+3. When `R_+ perp R_-`, does it reduce exactly to WP09?
+4. When `R_+=R_-`, what closed form results?
+5. Can endpoint-weighted shorting be incorporated without destroying convexity?
+
+### D. Analytic overlapping-subspace benchmark
+
+If `R_+=R_-=R` and the only known scalar is
+
+`s=Tr Short_R(C_Delta)`,
+
+then the relaxed allocation has `j_++j_-<=s`.
+
+For fixed internal `a`, maximize
+
+`f(j)=[sqrt(a+j)+sqrt(s-j)]^2`, `0<=j<=s`.
+
+The stationary point is `j=(s-a)/2` when `s>=a`. Therefore the relaxed closed form is
+
+`Phi(a,s)=`
+
+- `(sqrt(a)+sqrt(s))^2`, for `s<=a`;
+- `2(a+s)`, for `s>=a`.
+
+Verify this algebraically and determine whether an exact quantum family can attain it.
+
+### E. Autonomous relational lift
+
+After the one-system allocation law is understood, apply it from both clock and signal viewpoints to a globally stationary exchange tangent. Test whether the shorting/allocation objects must appear on **both** sides of the relational cut.
+
+### F. Priority and significance gate
+
+Search deeply against shorted-operator decomposition/parallel addition, semidefinite resource allocation, singular quantum estimation, quantitative WAY/reference-frame theory, and Gaussian covariance estimation.
+
+Do not draft the new foundational manuscript until WP12 either produces a sharp operator allocation theorem or shows that the remaining optimization is standard/prior art.
+
+## Validation requirements
+
+- add an independent WP12 numerical/SDP validator;
+- test random overlapping `R_+,R_-` subspaces;
+- test orthogonal and identical-subspace limits;
+- test one- and two-copy arbitrary POVMs;
+- construct at least one exact physical family saturating any claimed closed form.
 
 ## Documentation discipline
 
