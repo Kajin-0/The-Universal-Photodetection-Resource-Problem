@@ -2,10 +2,11 @@
 """Static integrity checks for the autonomous temporal-information manuscript.
 
 This is deliberately lightweight and uses only the Python standard library.
-It is not a TeX parser. It catches repository-level mistakes that should fail
+It is not a TeX parser. It catches manuscript-package mistakes that should fail
 before LaTeX is invoked: duplicate labels, undefined refs, missing BibTeX keys,
-missing input files, internal draft markers, and PRX Quantum's requirement that
-references cited in Supplemental Material also appear in the main bibliography.
+missing input files, internal draft markers, personal-repository leakage, and
+PRX Quantum's requirement that references cited in Supplemental Material also
+appear in the main bibliography.
 """
 
 from __future__ import annotations
@@ -35,6 +36,15 @@ BANNED_MARKERS = (
     "SOURCES:",
     "Working theorem-first abstract",
     "TODO",
+)
+
+# Submission files must be fully standalone and must never expose a personal
+# source-control identity or rely on a private/public project repository.
+FORBIDDEN_SUBMISSION_TOKENS = (
+    "github",
+    "kajin-0",
+    "UniversalPhotodetectionResourceRepo2026",
+    "The Universal Photodetection Resource Problem",
 )
 
 
@@ -78,12 +88,21 @@ def extract_citations(text: str, include_nocite: bool = True) -> set[str]:
     return keys
 
 
-def bib_keys() -> set[str]:
+def bib_text_and_keys() -> tuple[str, set[str]]:
     text = BIB.read_text(encoding="utf-8")
     keys = set(BIBKEY_RE.findall(text))
     if not keys:
         raise RuntimeError("no BibTeX keys parsed from references.bib")
-    return keys
+    return text, keys
+
+
+def forbidden_token_errors(name: str, text: str) -> list[str]:
+    low = text.lower()
+    return [
+        f"{name}: forbidden personal-repository token present: {token!r}"
+        for token in FORBIDDEN_SUBMISSION_TOKENS
+        if token.lower() in low
+    ]
 
 
 def inspect_root(root: Path, keys: set[str]) -> tuple[list[str], str, set[str]]:
@@ -116,6 +135,8 @@ def inspect_root(root: Path, keys: set[str]) -> tuple[list[str], str, set[str]]:
         if marker in text:
             errors.append(f"{root.name}: canonical source still contains draft marker {marker!r}")
 
+    errors.extend(forbidden_token_errors(root.name, text))
+
     if re.search(r"\\nu_y\s*=\s*\\frac\{\\Tr\(XM_y\)", text):
         errors.append(f"{root.name}: found \\nu_y where bilateral score vector must be u_y")
 
@@ -134,8 +155,8 @@ def main() -> int:
         print("ERROR: references.bib missing", file=sys.stderr)
         return 1
 
-    keys = bib_keys()
-    errors: list[str] = []
+    bib_text, keys = bib_text_and_keys()
+    errors: list[str] = forbidden_token_errors(BIB.name, bib_text)
     inspected: dict[Path, tuple[str, set[str]]] = {}
 
     for root in ROOTS:
@@ -164,6 +185,7 @@ def main() -> int:
         return 1
 
     print(f"Static TeX integrity PASS; BibTeX keys={len(keys)}")
+    print("Standalone-submission identity leak gate PASS")
     return 0
 
 
