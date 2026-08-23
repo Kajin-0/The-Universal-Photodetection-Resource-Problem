@@ -11,7 +11,7 @@ Research is analytical/theoretical. Numerical validation is allowed. Do not make
 1. Paper 1 / Rev11 — frozen.
 2. Paper 2 / Rev7 — frozen.
 3. Random-time spectral-resource Rev11 — frozen on `agent/temporal-information-resource-law`.
-4. Autonomous temporal-information program — theorem frontier frozen at WP32/WP33; separate dynamical-cost follow-up now at final PRA R1 publication state on `agent/autonomous-temporal-information-law`.
+4. Autonomous temporal-information program — theorem frontier frozen at WP32/WP33; separate follow-up now at final reviewer-repaired PRA R1 state on `agent/autonomous-temporal-information-law`.
 
 **WP31 is superseded.**
 
@@ -19,80 +19,79 @@ Research is analytical/theoretical. Numerical validation is allowed. Do not make
 
 1. `manuscript/dynamical_implementation_cost/MANUSCRIPT_HANDOFF.md`
 2. `manuscript/dynamical_implementation_cost/PRA_R1_FINAL_PUBLICATION_AUDIT_2026-08-23.md`
-3. `autonomous_temporal_information/AGENTS.md`
-4. `autonomous_temporal_information/notes/WP33_HOSTILE_AUDIT_WP32_AND_PRIORITY_BOUNDARY.md`
-5. `autonomous_temporal_information/notes/WP32_REPAIRED_INFINITE_DIMENSIONAL_ENERGY_CONSERVING_2JET_COST.md`
-6. `manuscript/autonomous_temporal_information/MANUSCRIPT_HANDOFF.md`
+3. `docs/CURRENT_RESEARCH_STATE.md`
+4. `autonomous_temporal_information/AGENTS.md`
+5. `autonomous_temporal_information/notes/WP33_HOSTILE_AUDIT_WP32_AND_PRIORITY_BOUNDARY.md`
+6. `autonomous_temporal_information/notes/WP32_REPAIRED_INFINITE_DIMENSIONAL_ENERGY_CONSERVING_2JET_COST.md`
 
 ## Current strongest theorem
 
-For a stationary rank-changing temporal family with a prescribed feasible metric-contracted target-kernel Hessian `C`,
+For a stationary rank-changing temporal family with prescribed feasible metric-contracted target-kernel Hessian `C`,
 
-`boxed: V_min=(1/2)Tr C`.
+`V_min=(1/2)Tr C`.
 
 In the clean single-gap endpoint geometry,
 
-`boxed: A_ex^(2)=hbar nu V_min`.
+`A_ex^(2)=hbar nu V_min`.
 
-WP32 proves this even in separable infinite dimension and under exact total-energy conservation with a semibounded ancilla, including arbitrary stationary spectator curvature in target-energy shells empty at baseline.
+WP32 proves this in separable infinite dimension under exact total-energy conservation with a semibounded ancilla, including stationary excess curvature in target-energy shells empty at baseline.
 
-The proof uses a countable joint energy/eigenvalue basis of the stationary trace-class baseline, classical splitting of one baseline eigenstate into ancilla-labelled copies, proportional horizontal-tangent replication, and nonnegative ancilla input/output energy compensation for arbitrary excess-curvature modes.
+## Publication state
 
-Finite state-weighted quadratic cost yields the required trace-norm `C^2` regularity even when the direct-sum generator is unbounded.
+Final journal-facing paper:
 
-## Audit status
+> **Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature**
 
-WP33: **PASS** under the stated finite-information assumptions.
+The final extreme adversarial review found no blocking mathematical error and produced three implemented repairs:
 
-Final publication-facing hostile audit: **PASS** for the current PRA R1 package, with priority still **unverified, not certified**.
+1. Theorem 2 now explicitly cites `Eqs. (17)-(19)` for the full stationarity/covariance assumption block.
+2. The limitations section now states that the infinite-dimensional attaining generator may be unbounded; the ancillary Hamiltonian is part of the optimization rather than externally fixed; no bound is claimed on peak/operator-norm coupling, ancilla dimension, controller bandwidth, or spectral complexity; and exact attainment is not asserted for an externally fixed controller spectrum.
+3. The title was narrowed from generic “dynamical cost” to **“unitary coupling cost.”**
 
-Novelty boundary:
+No theorem coefficient or construction changed.
 
-- generic covariant/energy-conserving Stinespring dilation is prior art;
-- Bures/Uhlmann/QFI horizontal geometry is prior art;
-- Riemannian curvature of the Bures metric near rank-changing states is prior art / adjacent geometry;
-- classical nonregular boundary statistics are prior art;
-- second-order PSD-cone tangent geometry is prior art;
-- the candidate distinct result is the state-specific **prescribed rank-changing target-kernel-curvature minimum implementation cost**, its exact conserving attainability, and its autonomous spectral endpoint identity.
+Final observable verification:
 
-A current nearby 2026 paper, Huang et al. arXiv:2605.27907, is explicitly separated in PRA R1: it concerns Bures Riemannian curvature, not the prescribed state-family kernel Hessian contraction `C` optimized here.
+- workflow run `32673160217` — **PASS**;
+- source freshness — **PASS**;
+- D2 theorem gate — **PASS**;
+- PRA title/scope/theorem/proof/publication gate — **PASS**;
+- main/supplement compile — **PASS**;
+- final LaTeX-quality gate — **PASS**;
+- artifact upload — **PASS**.
 
-## Frozen manuscript status
+Artifact `9501942180`, SHA-256 `4236d6f514b2f290d302062ab4c7a599c03c817da259f3d9715b787a4d37d640`, contains the 11-page main and 10-page supplement. Both were rendered at 180 dpi and visually inspected cleanly.
 
-The autonomous PRX Quantum R3 paper is build-verified, standalone, and science-frozen. Do not import WP21--WP32 wholesale.
+## Audit / novelty boundary
 
-The separate dynamical-cost follow-up is now also scientifically frozen:
+WP33: **PASS** under stated assumptions.
 
-> **Exact minimum dynamical cost of prescribed rank-changing quantum-state curvature**
+Final publication-facing hostile audit: **PASS**. Priority remains **unverified, not certified**.
 
-The audited D2 source is the theorem/proof baseline. PRA R1 is the journal-facing transform.
+Do not claim novelty for generic covariant/energy-conserving Stinespring dilation, Bures/Uhlmann/SLD-QFI horizontal geometry, Riemannian Bures curvature, classical nonregular boundary statistics, generic quantum speed limits/control norms, second-order PSD-cone tangent geometry, or infinite-dimensional Bures/QFI analysis.
 
-Final observable workflow run `32667189807` passed:
+The candidate distinct result is the exact prescribed rank-changing target-kernel-curvature minimum **unitary coupling cost**, its exact conserving attainability under the stated optimization class, and the autonomous spectral endpoint identity.
 
-- D2 generation/static theorem gate;
-- PRA main and supplement generation;
-- committed-source freshness;
-- theorem/proof freeze;
-- both LaTeX compiles;
-- final LaTeX-quality gate;
-- artifact upload.
+Huang et al. (2026), arXiv:2605.27907, is explicitly separated: it concerns Bures Riemannian curvature, not the prescribed state-family kernel Hessian contraction optimized here.
 
-Final artifact `9500374374`, SHA-256 `7bc86f37407f1a4875e0f4a6cd3aaa14db4cf61166afd2efd5df8c1f3fa7e7b4`, contains the 11-page main and 10-page supplement. Both exact PDFs were render-inspected cleanly.
+## Policy / integrity lock
 
-The final PRA publication layer contains a dedicated `AI-Assisted Research and Verification` disclosure for substantive OpenAI ChatGPT / GPT-5.6-series use and software-aware Data Availability language for internal numerical-validation scripts. These changes do not alter the frozen D2 theorem/proof body.
+The final PRA publication layer contains:
 
-## Current work order
-
-1. preserve R3, D2, and PRA R1 as frozen scientific/publication states;
-2. do not reopen theorem production merely to increase manuscript size;
-3. immediately before actual submission, re-check then-current APS requirements and replace anonymous author/affiliation metadata in the submission package only;
-4. reopen this theorem stack only for a genuine proof defect, direct prior-art collision, referee requirement, or changed journal policy;
-5. if new research is desired, start it as a deliberately separate program (highest-value deferred targets: noisy/CPTP implementation cost, approximate-exchange dynamical cost, unbounded-relative-tangent quadratic-form theory, Gaussian/CV specialization).
-
-## Manuscript integrity
+- `AI-Assisted Research and Verification` for substantive OpenAI ChatGPT / GPT-5.6-series use;
+- explicit author verification/responsibility language;
+- software-aware Data Availability wording for internal validation scripts.
 
 Every public-facing paper must be scientifically standalone. Never include personal repository URLs, usernames, repository names, development history, or dependencies on internal research files.
 
+## Current work order
+
+1. preserve R3, D2, and the reviewer-repaired PRA R1 package;
+2. do not reopen theorem production merely to increase manuscript size;
+3. immediately before actual submission, re-check then-current APS requirements and replace anonymous author/affiliation metadata only in the submission package;
+4. reopen this theorem stack only for a genuine proof defect, direct prior-art collision, referee requirement, or changed journal policy;
+5. if new research is desired, start it as a separate program.
+
 ## Documentation rule
 
-Every material theorem, counterexample, proof repair, validator, prior-art collision, publication-policy change, or publication decision must update the dedicated notes, autonomous landing files, manuscript handoff, and top-level landing files.
+Every material theorem, counterexample, proof repair, validator, prior-art collision, publication-policy change, hostile-review repair, or publication decision must update the dedicated notes, autonomous landing files, manuscript handoff, and top-level landing files.
