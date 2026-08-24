@@ -16,13 +16,14 @@ Working title:
 
 > **Operational benchmarks for temporal information in photodetection**
 
-## Paper-4 status after WP07
+## Paper-4 gate status
 
-**Prior-art/significance gate: PASS WITH NARROWED CLAIMS.**
+- WP07 prior-art/significance: **PASS WITH NARROWED CLAIMS**.
+- WP08 final pre-manuscript stack: **PASS**.
 
-Paper 4 remains justified in principle, but generic Fisher detector metrics, variable/random dead time, inter-arrival characterization, sideband metrology, seeded/vacuum interferometry, rank-boundary QFI curvature and beam-splitter metrology are prior ingredients, not novelty claims.
+Manuscript drafting may now begin.
 
-### Primary candidate new science — WP04
+## Primary candidate new Paper-4 theorem
 
 A seeded carrier/sideband family obeys the finite-radius survival law. As baseline sideband seed `p->0`, the affine radius collapses and the resource moves to sideband population curvature with
 
@@ -32,21 +33,31 @@ At zero seed the family is rank changing and ordinary ideal weak phase modulatio
 
 No direct collision for this exact support-controlled survival-to-synthesis crossover was found in the targeted WP07 search. Priority remains unverified, not certified.
 
-### Practical benchmark imported from frozen Paper 2 — WP03
+## Practical benchmark imported from frozen Paper 2
 
 For generalized iid Type-II recovery, fixing mean recovery fixes the complete homogeneous saturation curve `r=lambda exp(-lambda m)` but not temporal information. At the common maximum, timestamp DC FI vanishes iff recovery is deterministic; explicit matched-mean/matched-variance laws have different accessible timestamp information.
 
-These are frozen Paper-2 results. Paper 4 may translate them into a detector-characterization/falsification protocol and must cite the companion paper; it must not present them as new Paper-4 theorems.
+These are frozen Paper-2 results. Paper 4 must cite and operationalize them rather than republish them as new theorems.
 
-### Supporting measurement bridge
+## Conventional detector bridge
 
-- linear Gaussian optical-power quadratures: `Tr F/T=2/NEP(f)^2`;
-- ideal Poisson fractional timestamps: `Tr F/T=lambda_0`;
-- independent timing jitter: multiply by `|Phi_J(Omega)|^2`.
+For peak optical-power quadratures under the locked one-sided-PSD convention,
 
-These are translation/background results, not novelty claims.
+`Tr F/T=2/NEP(f)^2`.
 
-### Compact Hamiltonian benchmark
+Ideal fractional Poisson timestamps give `Tr F/T=lambda0`; independent jitter multiplies the spectrum by `|Phi_J(Omega)|^2`.
+
+WP08 gives an explicit standard-detector example showing that equal DC NEP and equal responsivity 3-dB bandwidth do not fix temporal FI. Two detectors with identical `|H|^2=1/(1+x^2)` and equal DC noise have normalized FI spectra
+
+`J_A=1/(1+x^2)`
+
+and
+
+`J_B=(1+25x^2)/[(1+x^2)(1+5x^2)]`.
+
+At `x=1`, `J_B/J_A=13/3≈4.3333`; B remains above half its DC FI until `x≈2.9703`.
+
+## Compact Hamiltonian benchmark
 
 A resonant two-mode beam splitter in the fixed `N_tot=2` shell gives
 
@@ -56,30 +67,25 @@ A resonant two-mode beam splitter in the fixed `N_tot=2` shell gives
 
 with the total bare-energy distribution exactly fixed.
 
-The Hamiltonian is standard; its role is an independently calibratable test of the companion implementation theorem.
-
 ## Falsification discipline
 
-Paper 4 must distinguish:
+Paper 4 distinguishes:
 
 1. detector-model/reduction failure;
 2. resource-law violation only after all theorem hypotheses are independently verified;
 3. failure of a model-specific saturating equality.
 
-Most laboratory mismatches should first be interpreted as model/calibration failures, not fundamental theorem violations.
+## Current work order
 
-## Immediate work order
-
-**WP08 — final pre-manuscript theorem/benchmark stack.**
-
-1. derive a conventional detector-misranking example showing why response bandwidth or a single sensitivity number can fail for temporal-information tasks;
-2. lock exact assumptions and units for the minimum claim stack;
-3. classify every result as new Paper-4 theorem, cited upstream benchmark, or standard bridge;
-4. create a manuscript workspace only if WP08 remains coherent.
+1. create the Paper-4 manuscript workspace;
+2. open from the conventional detector-specification counterexample, not abstract resource theory;
+3. keep WP04 as the principal original theorem;
+4. cite rather than duplicate the random-time and PRA theorems;
+5. run a hostile manuscript-level audit before any publication freeze.
 
 ## Claim discipline
 
-No prize-level framing. No novelty claim for standard NEP, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, sideband generation, beam-splitter physics, standard interferometry, or generic boundary-QFI mathematics.
+No prize-level framing. No novelty claim for standard NEP, generic Fisher sensing, Poisson/dead-time formulas, random/variable dead time, inter-arrival characterization, paralyzable correlations, sideband generation/metrology, seeded/vacuum interferometry, generic boundary-QFI geometry, beam-splitter physics, or standard interferometry.
 
 ## Frozen publication packages
 
