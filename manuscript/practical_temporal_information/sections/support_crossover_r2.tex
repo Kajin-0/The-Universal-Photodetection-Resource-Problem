@@ -1,11 +1,11 @@
-\subsection{Selected carrier--sideband pair with arbitrary spectators}
+\subsection{Selected carrier--sideband pair with arbitrary stationary spectators}
 
-Let $|c\rangle$ denote a selected carrier frequency bin and $|s\rangle$ a sideband bin separated by angular frequency $\Omega$. All other populated modes are collected into an orthogonal spectator subspace $\mathcal H_\perp$. For $p>0$, consider a baseline
+Let $H$ denote the free optical Hamiltonian. Let $|c\rangle$ and $|s\rangle$ be selected energy/frequency modes satisfying $E_s-E_c=\hbar\Omega$, and collect all other populated modes into an orthogonal spectator subspace $\mathcal H_\perp$. For $p>0$, consider a stationary baseline
 \begin{equation}
 \rho_p=a_p|c\rangle\langle c|+p|s\rangle\langle s|+\sigma_p,
 \label{eq:rho_p_general}
 \end{equation}
-where $\sigma_p\succeq0$ is supported on $\mathcal H_\perp$,
+with $[\rho_p,H]=0$. Here $\sigma_p\succeq0$ is supported on $\mathcal H_\perp$ and is itself stationary with respect to the free Hamiltonian, allowing coherence within degenerate energy subspaces but not arbitrary coherence between distinct free-energy eigenspaces. The normalization is
 \begin{equation}
 a_p+p+\Tr\sigma_p=1,
 \end{equation}
@@ -17,14 +17,16 @@ a_p\to q>0,
 \quad\text{in trace norm}.
 \label{eq:seed_path_limit}
 \end{equation}
-The seed can therefore be compensated anywhere in the spectator population; it need not be taken entirely from the selected carrier. We assume only $a_p>p$ in the neighborhood of interest.
+The seed can therefore be compensated anywhere in the stationary spectator population; it need not be taken entirely from the selected carrier. We assume only $a_p>p$ in the neighborhood of interest.
+
+The parameter $p$ is an \emph{incoherent population seed}: the baseline has no fixed carrier--sideband coherence. Experimentally this can be realized by an independently populated sideband, relative-phase randomization, or another preparation whose ensemble state is diagonal in the selected frequency basis. A fixed coherent sideband amplitude changes the baseline off-diagonal structure and is outside the exact model considered here.
 
 Apply a calibrated lossless converter acting solely on the selected pair,
 \begin{equation}
 U(x,y)=\exp\!\left\{\kappa[(x-iy)|s\rangle\langle c|-(x+iy)|c\rangle\langle s|]\right\},
 \label{eq:converter_general}
 \end{equation}
-where $x,y$ are dimensionless peak control quadratures, $r=\sqrt{x^2+y^2}$, and $\kappa$ converts control amplitude to a small mixing angle. The spectator block is inert.
+where $x,y$ are dimensionless peak control quadratures, $r=\sqrt{x^2+y^2}$, and $\kappa$ converts control amplitude to a small mixing angle. The spectator block is inert. Because the selected modes are separated by $\hbar\Omega$, the positive-frequency first-order tangent is confined to the definite $+\Omega$ spectral mode required by the one-sided survival theorem.
 
 The selected sideband population is exactly
 \begin{equation}
@@ -56,11 +58,14 @@ R_{\rm lin}^2=
 \label{eq:Rlin_general}
 \end{equation}
 
+Operationally, $R_{\rm lin}$ should not be inferred from the zero-seed curvature that it is later compared with. It can be reconstructed independently from the baseline state and the first derivatives $D_x=\partial_x\rho|_0$ and $D_y=\partial_y\rho|_0$: local state/tangent tomography determines the largest disk for which $\rho_p+xD_x+yD_y\succeq0$. In the selected two-mode model this independent reconstruction reduces to Eq.~\eqref{eq:Rlin_general} once $a_p$, $p$, and $\kappa$ have been separately calibrated from baseline populations and the small-signal converter response.
+
 For every $p>0$, the positive-frequency tangent has range in the pre-existing sideband sector. The finite-radius spectral-survival theorem of Ref.~\cite{CompanionTwoRegimes2026} gives
 \begin{equation}
 \boxed{
 \frac{R_{\rm lin}^2}{4}\Tr F\le p.}
 \label{eq:survival_bound_general}
+\label{eq:survival_bound}
 \end{equation}
 Equivalently,
 \begin{equation}
@@ -68,7 +73,7 @@ Equivalently,
 4\kappa^2\frac{(a_p-p)^2}{a_p}.
 \label{eq:survival_ceiling_general}
 \end{equation}
-The resource on the right of Eq.~\eqref{eq:survival_bound_general} is simply the directly measurable baseline population of the selected sideband.
+The resource on the right of Eq.~\eqref{eq:survival_bound_general} is simply the independently measurable baseline population of the selected upper sideband.
 
 \subsection{Spectator-independent support-to-synthesis crossover}
 
@@ -85,20 +90,22 @@ The corresponding one-sided rank-boundary inequality is
 \begin{equation}
 \Tr F\le\Delta P_s(0).
 \label{eq:boundary_bound_general}
+\label{eq:boundary_bound}
 \end{equation}
 
 Finite Fisher information associated with an outcome or eigenvalue that vanishes quadratically at a rank-changing point is already known in quantum sensing and boundary-QFI theory \cite{GefenRotemRetzker2019,Safranek2017}. Our added statement is not that boundary mechanism itself. It is the finite-seed continuation from the interior: the pre-existing sideband population and its exact affine physical radius can be followed continuously to zero, and their radius-normalized survival resource converges to the boundary population curvature.
 
 \begin{proposition}[Spectator-independent seed regularization]
-For the family \eqref{eq:rho_p_general}--\eqref{eq:converter_general},
+For the stationary family \eqref{eq:rho_p_general}--\eqref{eq:converter_general},
 \begin{equation}
 \boxed{
 \lim_{p\to0^+}\frac{4p}{R_{\rm lin}^2}
 =4\kappa^2q
 =\Delta P_s(0).}
 \label{eq:main_crossover_general}
+\label{eq:main_crossover}
 \end{equation}
-The limit is independent of the spectator populations and of the detailed seed-compensation path, subject to Eq.~\eqref{eq:seed_path_limit} and the assumption that the local converter leaves the spectator sector inert.
+The limit is independent of the stationary spectator populations and of the detailed seed-compensation path, subject to Eq.~\eqref{eq:seed_path_limit} and the assumption that the local converter leaves the spectator sector inert.
 \end{proposition}
 
 \begin{proof}
@@ -112,7 +119,9 @@ Since $a_p\to q>0$, the right-hand side tends to $4\kappa^2q$. Equation~\eqref{e
 
 Equation~\eqref{eq:main_crossover_general} is the practical content of the survival/synthesis distinction. As the selected sideband seed is removed, the pre-existing upper-endpoint population and the affine physical radius vanish together. Their radius-normalized ratio converges to the directly measurable second-order generation curvature of the now-empty sideband. Correspondingly, the finite-radius information ceiling \eqref{eq:survival_ceiling_general} tends continuously to the boundary ceiling \eqref{eq:boundary_bound_general}, even though the order of the resource changes.
 
-The theorem does not require the selected carrier to contain the full baseline population. Populated polarization, spatial, spectral, or other spectator modes are permitted. What is required is a calibrated local two-mode converter whose first-order action is confined to the selected carrier/sideband pair. Loss, parameter-dependent decoherence, seed-dependent coupling to spectators, or other channel changes constitute Level-I model departures and need not obey the exact equalities above.
+A noncircular experimental comparison uses three independently obtained data products. First, baseline plus local tangent tomography determines $R_{\rm lin}$ without using second-order boundary data. Second, a separate zero-seed sweep fits $P_s(x,y)$ to obtain $\Delta P_s(0)$. Third, an independent phase-sensitive record supplies the Fisher matrix. Failure of the radius--curvature identity itself first falsifies the selected stationary two-mode model; only a Fisher-information excess under independently verified theorem hypotheses constitutes a Level-II resource-law challenge.
+
+The theorem does not require the selected carrier to contain the full baseline population. Populated polarization, spatial, spectral, or other stationary spectator modes are permitted. What is required is a stationary baseline, a definite selected spectral gap, and a calibrated local two-mode converter whose first-order action is confined to that carrier/sideband pair. Loss, parameter-dependent decoherence, seed-dependent coupling to spectators, inter-energy spectator coherence, or other channel changes constitute Level-I model departures and need not obey the exact equalities above.
 
 At the boundary, the active $c$--$s$ block has weight $q$. Write its normalized local state as
 \begin{equation}
@@ -129,7 +138,7 @@ so
 \boxed{\Tr F=4q\kappa^2=\Delta P_s(0).}
 \label{eq:boundary_saturation_general}
 \end{equation}
-Thus the generalized boundary law remains attainable despite arbitrary inert spectator population.
+Thus the generalized boundary law remains attainable despite arbitrary inert stationary spectator population.
 
 For visualization and the simplest laboratory normalization, one may take
 \begin{equation}
