@@ -1,0 +1,54 @@
+name: Practical temporal-information manuscript LaTeX check
+
+on:
+  push:
+    branches:
+      - agent/practical-temporal-information-benchmarks
+    paths:
+      - 'manuscript/practical_temporal_information/**'
+      - '.github/workflows/practical-temporal-information-manuscript-check.yml'
+  pull_request:
+    branches:
+      - agent/practical-temporal-information-benchmarks
+    paths:
+      - 'manuscript/practical_temporal_information/**'
+      - '.github/workflows/practical-temporal-information-manuscript-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Static practical-manuscript integrity gate
+        working-directory: manuscript/practical_temporal_information
+        run: python check_practical_static.py
+
+      - name: Compile practical manuscript
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: operational_temporal_information_draft.tex
+          working_directory: manuscript/practical_temporal_information
+          latexmk_use_xelatex: false
+
+      - name: Fail on unresolved references or serious TeX layout warnings
+        working-directory: manuscript/practical_temporal_information
+        run: |
+          LOG=operational_temporal_information_draft.log
+          test -f "$LOG"
+          ! grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|There were undefined citations|Overfull \\hbox|Overfull \\vbox" "$LOG"
+
+      - name: Upload practical manuscript build
+        uses: actions/upload-artifact@v4
+        with:
+          name: practical-temporal-information-draft
+          path: |
+            manuscript/practical_temporal_information/operational_temporal_information_draft.pdf
+            manuscript/practical_temporal_information/operational_temporal_information_draft.tex
+            manuscript/practical_temporal_information/references.bib
+            manuscript/practical_temporal_information/README.md
+            manuscript/practical_temporal_information/MANUSCRIPT_ARCHITECTURE.md
