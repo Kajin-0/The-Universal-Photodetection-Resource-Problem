@@ -18,84 +18,45 @@ The three mature temporal-information papers remain scientifically frozen. The a
 4. `practical_temporal_information/notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
 5. `practical_temporal_information/notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
 6. `practical_temporal_information/notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
-7. `manuscript/autonomous_temporal_information/MANUSCRIPT_HANDOFF.md`
-8. `manuscript/dynamical_implementation_cost/MANUSCRIPT_HANDOFF.md`
+7. `practical_temporal_information/notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
 
-## Mature paper architecture — preserve
+## Paper 4 current stack
 
-1. PRXQ flagship: *Two spectral-resource regimes for autonomous temporal information*.
-2. Broad random-time/timestamp spectral-information paper.
-3. PRA dynamical completion: *Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature*.
+- **WP01:** `Tr F/T=2/NEP(f)^2` for linear stationary Gaussian optical-power quadratures.
+- **WP02:** ideal Poisson fractional-modulation timestamps give `Tr F/T=lambda_0`; independent timing jitter gives factor `|Phi_J(Omega)|^2`.
+- **WP03:** mean dead time, recovery variance/CV, maximum count rate, and even the complete homogeneous saturation curve do not determine temporal-information transfer.
+- **WP04:** seeded-to-empty optical sidebands realize the finite-radius survival -> rank-boundary synthesis transition with
+  `lim_(p->0+)4p/R_lin^2=Delta P_s(0)`; ordinary ideal phase modulation saturates the bilateral boundary-curvature law.
+- **WP05:** standard resonant beam-splitter physics realizes the exact implementation theorem inside a fixed total-energy shell.
 
-Do not concatenate these papers and do not copy their full proof stacks into Paper 4.
+WP05 standard model:
 
-## Paper 4 current frontier
+`H_0=hbar nu(N_C+N_S)`, baseline `|1,1>`, endpoints `|2,0>,|0,2>`.
 
-### WP01
+For `U=exp[-i g t(xB_x+yB_y)]`,
 
-Linear stationary Gaussian weak-signal detector:
+`V_impl=8(g t)^2`,
 
-`Tr F/T=2|R(f)|^2/S_n(f)=2/NEP(f)^2`.
+`Tr C=16(g t)^2`,
 
-### WP02
+`V_min=(1/2)Tr C=8(g t)^2`,
 
-Ideal Poisson fractional-modulation timestamps:
+`A_ex=hbar nu V_min=8 hbar nu(g t)^2`.
 
-`Tr F/T=lambda_0`,
+The total bare-energy distribution remains exactly fixed. For a fixed-duration physical Hamiltonian family,
 
-with independent jitter factor `|Phi_J(Omega)|^2`.
+`V_impl=(t^2/hbar^2)sum_j Var(H_j)`.
 
-### WP03
-
-Conventional dead-time/saturation characterization is insufficient. Deterministic Type-II recovery at `lambda tau=1` is DC-information blind but retains every nonzero mode. Arbitrary finite-mean iid recovery shares `r=lambda exp(-lambda m)`, yet `G_DC=0` at the common maximum iff recovery is deterministic. Explicit equal-mean/equal-variance/equal-saturation recovery laws have different timestamp information.
-
-### WP04
-
-Exact seeded carrier/sideband model:
-
-`rho_p=(1-p)|c><c|+p|s><s|`.
-
-With mixing coefficient `kappa`,
-
-`R_lin^2=p(1-p)/[kappa^2(1-2p)^2]`,
-
-and for `p>0`
-
-`(R_lin^2/4)Tr F<=p`.
-
-At the empty-sideband boundary `p=0`,
-
-`Delta P_s(0)=4kappa^2`,
-
-`Tr F<=Delta P_s(0)`,
-
-and
-
-**`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.**
-
-A fixed four-outcome frequency-bin POVM saturates the one-sided boundary law.
-
-Ordinary weak phase modulation gives two baseline-empty first sidebands with
-
-`Delta P_+=Delta P_-=1`
-
-and a fixed three-mode phase-sensitive analyzer attains
-
-**`Tr F=4=[sqrt(Delta P_+)+sqrt(Delta P_-)]^2`.**
-
-This is an exact ideal saturation example of the bilateral boundary-curvature theorem using standard optical sidebands.
-
-Do not infer autonomous action or RF work from the externally driven EOM. WP05 must include the controller/clock explicitly before using `A_ex=hbar nu V_min` physically.
+Do not call this work, consumed RF energy, average interaction energy, operator norm, peak coupling, controller bandwidth, or fixed-controller-spectrum optimum.
 
 ## Immediate work order
 
-1. WP05 — textbook resonant-exchange/controller interpretation of the PRA coupling cost.
-2. WP06 — integrated falsification matrix and minimal practical result stack.
-3. WP07 — dedicated prior-art/significance gate before manuscript drafting.
+1. WP06 — integrated falsification matrix, rank scientific value, define minimum practical manuscript stack, demote tutorial-only material.
+2. WP07 — dedicated prior-art/significance gate before manuscript drafting.
 
 ## Claim discipline
 
-No prize-level framing. No novelty claim for standard NEP, Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic sideband generation, SU(2) mode mixing, or standard frequency-bin interferometry. Assign novelty only after WP07.
+No prize-level framing. No novelty claim for standard NEP, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, sideband generation, SU(2)/beam-splitter physics, or standard frequency-bin interferometry. Assign novelty only after WP07.
 
 ## Documentation rule
 
