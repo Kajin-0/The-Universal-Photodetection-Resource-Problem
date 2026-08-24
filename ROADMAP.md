@@ -2,106 +2,113 @@
 
 **Updated:** 2026-08-23
 
-**Active branch:** `agent/autonomous-temporal-information-law`
+**Active branch:** `agent/practical-temporal-information-benchmarks`
 
-## Current phase
+## Mature publication program — frozen
 
-The major theorem-production phase is closed.
+The three developed temporal-information papers remain separate:
 
-- PRX Quantum R3 is the frozen scientific theorem/proof baseline for the two-regime paper.
-- PRX Quantum R4 is the current journal-facing flagship, adding only a narrow dynamical bridge.
-- WP32 is the canonical exact energy-conserving implementation theorem; WP33 hostile audit is PASS.
-- The reviewer-repaired PRA R1 unitary-coupling paper is frozen.
-- The broad random-time spectral-resource paper remains an independent publication track.
+1. PRX Quantum flagship: *Two spectral-resource regimes for autonomous temporal information* — R3 frozen theorem/proof baseline, R4 journal-facing bridge revision.
+2. *Spectral Resource Laws for Temporal Fisher Information* — independent broad random-time/spectral-survival paper.
+3. PRA dynamical completion: *Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature* — final reviewer-repaired package.
 
-**WP31 is superseded.**
+Do not concatenate them. The prior architecture remains recorded in `manuscript/THREE_PAPER_PUBLICATION_ARCHITECTURE_2026-08-23.md`.
 
-## Three-paper publication architecture
+## New active program — Paper 4 practical/falsifiability bridge
 
-Do **not** concatenate the active results.
+Working title:
 
-### Paper A — conceptual flagship / PRX Quantum
+> **Operational benchmarks for temporal information in photodetection**
 
-**Two spectral-resource regimes for autonomous temporal information**
+Goal: express the abstract temporal-information results through standard photodetector measurements and state explicit falsification conditions.
 
-Core thesis:
+This is not a new generic resource-theory layer. It is justified only if it produces nontrivial, experimentally legible consequences beyond a tutorial restatement.
 
-`finite affine radius -> pre-existing spectral survival`
+## WP01 — complete: linear Gaussian Fisher/NEP bridge
 
-versus
+For peak optical-power quadratures and a one-sided output-noise PSD,
 
-`rank-changing zero radius -> positive second-order synthesis action`.
+`F_xx/T = F_yy/T = |R(f)|^2/S_n(f)`
 
-R4 adds only the companion bridge
+and
 
-`V_min(C)=(1/2)Tr C`,
+`Tr F/T = 2|R(f)|^2/S_n(f)`.
 
-`A_ex^(2)=hbar nu V_min`,
+With conventional frequency-resolved
 
-and explicitly says this companion theorem is not used in the flagship proofs.
+`NEP(f)=sqrt(S_n(f))/|R(f)|`,
 
-Final R4 run `32674844366`: PASS.
-Artifact `9502376602`, SHA-256 `8e32c8248050ffa8be254d86f2f0a5724ef0e3edd1a9e2cf38cbc3a17ca3ed76`.
-Main 20 pages; supplement 25 pages; render QA PASS.
+this becomes
 
-### Paper B — broad operational spectral law
+`F_xx/T = 1/NEP(f)^2`,
 
-**Spectral Resource Laws for Temporal Fisher Information**
+`Tr F/T = 2/NEP(f)^2`.
 
-Keep this paper independent. Its value is broader random-time/spectral-survival structure and photodetection-facing operational consequences rather than the autonomous rank-boundary implementation problem.
+For arbitrary weak waveform coordinates,
 
-### Paper C — dynamical completion / PRA
+`F_ij = 4 Re integral_0^infinity q_i*(f) q_j(f)/NEP(f)^2 df`.
 
-**Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature**
+WP01 also establishes a standard-physics distinction between responsivity bandwidth and task-specific Fisher-information bandwidth. They agree for locally flat output noise but need not agree for colored or transfer-correlated noise.
 
-Central theorem:
+Authoritative note:
 
-`V_min(C;D,rho_0)=(1/2)Tr C`.
+`practical_temporal_information/notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`.
 
-The exact optimum remains attainable under the stated total-energy-conserving implementation class, including the repaired separable infinite-dimensional setting.
+## Planned work packages
 
-Final reviewer-repair run `32673160217`: PASS.
-Artifact `9501942180`, SHA-256 `4236d6f514b2f290d302062ab4c7a599c03c817da259f3d9715b787a4d37d640`.
-Main 11 pages; supplement 10 pages; render QA PASS.
+### WP02 — Poisson timestamps and timing jitter
 
-Architecture record:
+Derive from the point-process likelihood:
 
-`manuscript/THREE_PAPER_PUBLICATION_ARCHITECTURE_2026-08-23.md`.
+- ideal two-quadrature Fisher rate for weak sinusoidal fractional modulation;
+- exact attenuation under independent timestamp jitter using the jitter characteristic function;
+- finite-window/end-effect assumptions;
+- practical extraction from timestamp records.
 
-## Why no omnibus paper
+### WP03 — dead time, recovery, and detector memory
 
-Combining all three would blur the principal claims and enlarge referee surface area without creating a new theorem. The preferred sequence is:
+Use standard nonparalyzable/paralyzable or generalized recovery models and connect measurable timestamp Fisher spectra to the existing random-time resource theory. Identify predictions that differ from mean-count saturation curves.
 
-`conceptual law -> broad operational law -> exact dynamical completion`.
+### WP04 — sideband survival-to-synthesis crossover
 
-A future synthesis/resource-theory article is justified only if the component papers survive external review and genuinely new unifying structure, applications, or independent uptake emerges. It should not be a concatenation of already-developed manuscripts.
+Use conventional optical modulation and sideband physics. Compare a pre-seeded sideband with a baseline-empty sideband and determine the exact observable that realizes the transition from pre-existing spectral survival to second-order synthesis.
 
-## Submission work order
+### WP05 — standard Hamiltonian implementation bridge
 
-1. PRXQ flagship first, using R4 as the journal-facing main and unchanged M2R3 supplement.
-2. Keep the random-time spectral paper on its own publication path.
-3. Submit the unitary-coupling companion as the dynamical completion, naturally targeted to PRA.
-4. If the companion is publicly available before/during PRXQ submission, replace the anonymous R4 companion citation with the public arXiv/DOI metadata.
-5. Immediately before each submission, re-check current journal policy and replace anonymous author/affiliation metadata.
-6. Do not reopen theorem development simply to increase manuscript length.
+Translate `V_min=(1/2)Tr C` into at least one textbook resonant exchange model such as a beam-splitter/frequency-conversion Hamiltonian, while preserving all scope limitations of the PRA theorem.
 
-## Deferred theory — separate future programs
+### WP06 — integrated falsification matrix
 
-Potential new programs remain:
+For every headline prediction specify:
 
-1. noisy/CPTP implementation cost;
-2. approximate-exchange dynamical implementation cost;
-3. unbounded-relative-tangent closed quadratic-form theory;
-4. Gaussian/CV specialization.
+- measured inputs;
+- predicted equality/inequality;
+- nuisance/calibration assumptions;
+- statistical test;
+- observation that would contradict the model or resource law.
 
-None is required for the present three-paper publication program.
+### WP07 — prior-art/significance gate
+
+Before drafting a manuscript, determine whether the surviving results constitute a publishable fourth paper. Do not force publication if the work is only pedagogical.
+
+## Candidate high-value practical result
+
+A potentially important direction is a task-specific information bandwidth based on
+
+`|R(f)|^2/S_n(f) = 1/NEP(f)^2`
+
+rather than responsivity alone. A standard linear filter that attenuates signal and dominant pre-filter noise equally can have a finite responsivity 3-dB point while preserving narrowband Fisher information until additive readout noise becomes important. This could provide a physically transparent example of why bandwidth alone does not rank temporal sensing performance.
+
+Novelty of this framing is not yet established.
 
 ## Claim discipline
 
-Priority remains unverified/not certified.
+- no novelty claim for NEP/detectivity definitions;
+- no novelty claim for Fisher information as a generic sensing metric;
+- no generalized `NEP_F` novelty claim before dedicated prior-art review;
+- no implied experimental validation without data;
+- no prize-level framing.
 
-Do not use Nobel/prize-level framing in manuscripts or cover letters. Do not claim novelty for generic Bures/Uhlmann/QFI geometry, covariant dilation theory, generic QSL/control bounds, classical nonregular boundary statistics, or standard PSD-cone mathematics.
+## Documentation cadence
 
-## Manuscript integrity
-
-Every public-facing paper must be scientifically standalone and contain no personal repository identifiers, internal work-package history, or dependencies on private research files.
+Update `practical_temporal_information/notes/`, `practical_temporal_information/AGENTS.md`, and the top-level landing files after each material advance. The repository must remain sufficient for takeover without chat context.
