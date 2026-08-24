@@ -14,40 +14,52 @@ The three mature temporal-information papers remain scientifically frozen. The a
 
 1. `docs/CURRENT_RESEARCH_STATE.md`
 2. `practical_temporal_information/AGENTS.md`
-3. `practical_temporal_information/notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
-4. `practical_temporal_information/notes/WP06_MINIMUM_PAPER_STACK_AND_FALSIFICATION_MATRIX.md`
+3. `practical_temporal_information/notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
+4. `practical_temporal_information/notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
 5. `practical_temporal_information/notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
 6. `practical_temporal_information/notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
 7. `practical_temporal_information/notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
 
-## Paper-4 status
+## Paper-4 gate status
 
-WP07 prior-art/significance gate: **PASS WITH NARROWED CLAIMS**.
+- WP07 prior-art/significance gate: **PASS WITH NARROWED CLAIMS**.
+- WP08 final pre-manuscript gate: **PASS**.
 
-### Primary candidate new theorem
+Manuscript drafting may begin.
 
-WP04 support-controlled sideband crossover:
+## Final Paper-4 hierarchy
+
+### New candidate science
+
+WP04 support-controlled crossover:
 
 `lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.
 
-This explicitly connects the finite-radius spectral-survival regime to rank-boundary second-order synthesis as baseline sideband support is removed. No direct collision for this exact identity/interpretation was found in the targeted search. Priority remains unverified.
+This explicitly connects finite-radius spectral survival to rank-boundary second-order synthesis as baseline sideband support is removed. No direct collision for this exact identity/interpretation was found in the targeted search. Priority remains unverified.
 
 ### Imported benchmark, not new Paper-4 theorem
 
-WP03's Type-II result belongs to the frozen random-time paper: identical conventional saturation characterization can coexist with different temporal-information channels. Paper 4 may translate it into an experimental/falsification protocol but must cite the companion and not duplicate its novelty claim.
+WP03's Type-II information theorem belongs to the frozen random-time paper. Paper 4 may translate it into an experimental/falsification protocol but must cite the companion and not duplicate its novelty claim.
 
-### Supporting standard bridges
+### Standard bridges
 
-- linear Gaussian: `Tr F/T=2/NEP(f)^2`;
-- ideal Poisson timestamps: `Tr F/T=lambda_0`;
-- independent jitter: `|Phi_J|^2`;
-- resonant beam-splitter implementation: `V_min=(1/2)Tr C`, `A_ex=hbar nu V_min` in the stated benchmark.
+- linear Gaussian `Tr F/T=2/NEP(f)^2`;
+- ideal Poisson timestamps `Tr F/T=lambda0`;
+- independent jitter `|Phi_J|^2`;
+- WP08 explicit equal-DC-NEP/equal-response-bandwidth but unequal-FI-spectrum detector example;
+- WP05 resonant beam-splitter implementation benchmark of the frozen PRA theorem.
 
-These are standard-language bridges or applications of frozen theorems, not generic novelty claims.
+## Conventional-specification example
 
-## Prior-art exclusions
+With identical response `|H|^2=1/(1+x^2)` and equal DC noise,
 
-Do not claim novelty for generic dead-time information theory, variable/random dead time, inter-arrival dead-time characterization, paralyzable correlation distortion, sideband Fisher metrology, seeded/vacuum interferometry, generic rank-boundary QFI curvature, or standard beam-splitter metrology.
+`J_A=1/(1+x^2)`,
+
+`J_B=(1+25x^2)/[(1+x^2)(1+5x^2)]`.
+
+At `x=1`, `J_B/J_A=13/3≈4.3333` despite equal DC NEP and equal responsivity 3-dB bandwidth. B remains above half its DC FI until `x≈2.9703`.
+
+Use this as the manuscript opening; it is an illustration, not a priority claim.
 
 ## Falsification hierarchy
 
@@ -55,11 +67,15 @@ Always distinguish detector-model/reduction failure, resource-law violation unde
 
 ## Immediate work order
 
-**WP08 — final pre-manuscript stack.** Derive an explicit conventional-detector misranking example, lock assumptions/units, classify every statement as new Paper-4 theorem versus cited upstream benchmark versus standard bridge, and only then create the manuscript workspace.
+1. create `manuscript/practical_temporal_information/`;
+2. draft from standard detector physics outward;
+3. keep WP04 as the principal original theorem;
+4. cite rather than duplicate upstream theorem proofs;
+5. run hostile manuscript-level review before freezing a submission package.
 
 ## Claim discipline
 
-No prize-level framing. No implied experimental validation without data.
+No prize-level framing. No novelty claim for generic dead-time information theory, variable/random dead time, interval characterization, paralyzable correlations, standard NEP/Fisher sensing, sideband metrology, seeded/vacuum interferometry, generic rank-boundary QFI, beam-splitter physics, or standard interferometry. No implied experimental validation without data.
 
 ## Documentation rule
 
