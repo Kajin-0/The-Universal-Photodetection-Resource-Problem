@@ -11,81 +11,112 @@ Create a fourth paper that translates the temporal-information resource program 
 ## Read first
 
 1. `README.md`
-2. `notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
-3. `notes/WP06_MINIMUM_PAPER_STACK_AND_FALSIFICATION_MATRIX.md`
-4. `notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
-5. `notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
-6. `notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
-7. `notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`
-8. `notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
-9. root `docs/CURRENT_RESEARCH_STATE.md`
+2. `notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
+3. `notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
+4. `notes/WP06_MINIMUM_PAPER_STACK_AND_FALSIFICATION_MATRIX.md`
+5. `notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
+6. `notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
+7. `notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
+8. `notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`
+9. `notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
+10. root `docs/CURRENT_RESEARCH_STATE.md`
 
-## Current Paper-4 architecture after WP07
+## Current status
 
-WP07 is **PASS WITH NARROWED CLAIMS**.
+WP07 prior-art gate: **PASS WITH NARROWED CLAIMS**.
 
-### Primary new candidate science
+WP08 final pre-manuscript gate: **PASS**.
 
-**WP04 — support-controlled optical crossover.** A controllable baseline sideband seed interpolates between finite-radius spectral survival and rank-boundary second-order synthesis, with
+The manuscript workspace may now be created.
+
+## Final Paper-4 claim hierarchy
+
+### New candidate Paper-4 science
+
+**P4-T1 — support-seed crossover**
+
+For the explicit positive-semidefinite carrier/sideband family of WP04,
 
 `lim_(p->0+) 4p/R_lin^2 = Delta P_s(0)`.
 
-No direct collision for this exact crossover identity / survival-synthesis interpretation was found in the targeted prior-art search. Priority remains unverified, not certified.
+This is the scientific center of Paper 4: controlled removal of baseline spectral support converts the finite-radius survival resource into the rank-boundary second-order synthesis resource.
 
-### Practical benchmark imported from the frozen random-time paper
+**P4-C1 — ideal phase-modulation boundary saturator**
 
-**WP03 — detector memory.** The exact Type-II theorem that identical conventional saturation characterization can coexist with different temporal-information channels is scientifically important, but it is already a Paper-2 result. Paper 4 may translate it into a detector-characterization/falsification protocol and must cite the companion paper; do not republish it as a new Paper-4 theorem.
+Ordinary weak phase modulation with the locked phase-sensitive analyzer saturates the bilateral boundary population-curvature Fisher law.
 
-### Supporting measurement bridge
+Priority remains unverified/not certified; targeted WP07 search found no direct collision.
 
-- **WP01:** linear Gaussian `Tr F/T=2/NEP(f)^2` under the locked convention.
-- **WP02:** ideal Poisson timestamps `Tr F/T=lambda_0`; independent jitter gives `|Phi_J|^2`.
+### Cited upstream benchmarks
 
-These are measurement-language bridges, not novelty claims.
+**P4-B1 — Type-II memory benchmark.** Use the frozen random-time paper's theorem that the entire homogeneous saturation curve can be fixed while timestamp information differs. Make it experimentally actionable; do not republish it as a new theorem.
 
-### Compact implementation benchmark
+**P4-B2 — prescribed-curvature implementation benchmark.** Use the frozen PRA theorem `V_min=(1/2)Tr C` and WP05's standard resonant beam-splitter realization.
 
-- **WP05:** standard fixed-energy resonant beam-splitter benchmark realizes `V_min=(1/2)Tr C`, `A_ex=hbar nu V_min`.
+### Standard bridge/background
 
-The beam-splitter physics is standard; its role is an independently calibratable implementation test of the companion theorem.
+- **P4-S1:** linear Gaussian `Tr F/T=2/NEP(f)^2` under the locked convention.
+- **P4-S2:** ideal Poisson/jitter `Tr F/T=lambda0 |Phi_J(Omega)|^2` for fractional two-quadrature modulation.
+- **P4-S3:** explicit conventional-specification incompleteness example from WP08.
 
-## Prior-art exclusions from WP07
+## Opening detector example
 
-Do not claim novelty for:
+Two detectors have identical responsivity
 
-- dead-time information theory in general;
-- variable/random dead-time photocounting;
-- inter-arrival characterization of dead time;
-- paralyzable photon-correlation distortions;
-- Fisher-information rates for dead-time event records generically;
-- weak phase-modulation sidebands or sideband photon counting;
-- vacuum versus seeded interferometry;
-- rank-changing QFI/Bures curvature in general;
-- beam-splitter generator variance as standard metrology.
+`|H|^2=1/(1+x^2)`, `x=f/f_c`,
+
+the same DC output-noise PSD `S0`, the same DC NEP, and the same responsivity 3-dB frequency `f_c`.
+
+Detector A: `S_A=S0`.
+
+Detector B: `S_B/S0=1/5+(4/5)/(1+25x^2)`.
+
+Their normalized single-quadrature FI spectra are
+
+`J_A=1/(1+x^2)`,
+
+`J_B=(1+25x^2)/[(1+x^2)(1+5x^2)]`.
+
+At `f=f_c`, `J_B/J_A=13/3≈4.3333` despite identical conventional DC sensitivity and responsivity bandwidth. B remains above half its DC FI until `f≈2.9703 f_c`.
+
+Use this as the manuscript opening. It is an explicit standard-detector illustration, not a priority claim.
 
 ## Falsification hierarchy
 
 Always distinguish:
 
 1. **Level I — detector-model/reduction failure.** Gaussian, Poisson, independent-jitter, ideal modulation, or ideal Hamiltonian assumptions fail.
-2. **Level II — resource-law challenge.** Only after theorem hypotheses, parameter normalization, support/radius and measured FI/curvature are independently verified.
+2. **Level II — resource-law challenge.** Only after theorem hypotheses, parameter normalization, support/radius, and measured FI/curvature are independently verified.
 3. **Level III — saturating-model equality failure.** Usually falsifies the selected ideal saturator, not the general theorem.
+
+## Manuscript architecture
+
+I. What conventional detector specifications do not determine.
+
+II. Memory benchmark: identical saturation does not imply identical information.
+
+III. Spectral support: seeded survival -> empty-sideband synthesis.
+
+IV. Standard Hamiltonian implementation.
+
+V. Falsification matrix.
+
+VI. Discussion.
+
+Maximum four figures. Main-text target roughly 10–14 journal pages before references.
 
 ## Immediate work order
 
-**WP08 — final pre-manuscript theorem/benchmark stack.**
+1. create `manuscript/practical_temporal_information/` with manuscript architecture, references, and a minimal REVTeX draft;
+2. write the Introduction/measurement bridge from WP08 without novelty overclaiming;
+3. integrate WP04 as the principal original theorem;
+4. cite rather than duplicate the Paper-2 and PRA proofs;
+5. run a hostile manuscript-level audit before calling any draft submission-ready.
 
-1. derive a minimal conventional detector-misranking example showing why response bandwidth or a single sensitivity number can fail for temporal-information tasks;
-2. formalize exact assumptions/units for the minimum Paper-4 claim stack;
-3. decide the manuscript's genuinely new theorem versus imported benchmark content;
-4. only then create the manuscript workspace.
+## Prior-art exclusions
 
-Do not create new sidequests unless they sharpen measurement, falsifiability, or the standard-physics interpretation.
-
-## Claim discipline
-
-No prize-level framing. No experimental validation without data. No novelty claim for standard NEP, Fisher sensing, Poisson/dead-time formulas, renewal spectra, sideband generation, beam-splitter physics, standard interferometry, or generic boundary-QFI mathematics.
+Do not claim novelty for dead-time information theory, variable/random dead time, inter-arrival characterization, paralyzable correlation distortion, sideband Fisher metrology, seeded/vacuum interferometry, generic rank-boundary QFI curvature, beam-splitter metrology, standard NEP, or generic Fisher sensing.
 
 ## Documentation rule
 
-After every material result or scope change, update the corresponding note and this handoff. When the frontier changes, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
+After every material manuscript/science change, update the corresponding note and this handoff. When the frontier changes, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
