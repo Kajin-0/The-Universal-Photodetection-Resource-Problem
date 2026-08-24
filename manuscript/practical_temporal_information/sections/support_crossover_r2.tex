@@ -1,0 +1,171 @@
+\subsection{Selected carrier--sideband pair with arbitrary spectators}
+
+Let $|c\rangle$ denote a selected carrier frequency bin and $|s\rangle$ a sideband bin separated by angular frequency $\Omega$. All other populated modes are collected into an orthogonal spectator subspace $\mathcal H_\perp$. For $p>0$, consider a baseline
+\begin{equation}
+\rho_p=a_p|c\rangle\langle c|+p|s\rangle\langle s|+\sigma_p,
+\label{eq:rho_p_general}
+\end{equation}
+where $\sigma_p\succeq0$ is supported on $\mathcal H_\perp$,
+\begin{equation}
+a_p+p+\Tr\sigma_p=1,
+\end{equation}
+and, as $p\to0^+$,
+\begin{equation}
+a_p\to q>0,
+\qquad
+\sigma_p\to\sigma_0
+\quad\text{in trace norm}.
+\label{eq:seed_path_limit}
+\end{equation}
+The seed can therefore be compensated anywhere in the spectator population; it need not be taken entirely from the selected carrier. We assume only $a_p>p$ in the neighborhood of interest.
+
+Apply a calibrated lossless converter acting solely on the selected pair,
+\begin{equation}
+U(x,y)=\exp\!\left\{\kappa[(x-iy)|s\rangle\langle c|-(x+iy)|c\rangle\langle s|]\right\},
+\label{eq:converter_general}
+\end{equation}
+where $x,y$ are dimensionless peak control quadratures, $r=\sqrt{x^2+y^2}$, and $\kappa$ converts control amplitude to a small mixing angle. The spectator block is inert.
+
+The selected sideband population is exactly
+\begin{equation}
+\boxed{
+P_s(p;r)=p+(a_p-p)\sin^2(\kappa r).}
+\label{eq:sideband_population_general}
+\end{equation}
+Hence
+\begin{equation}
+P_s=p+(a_p-p)\kappa^2(x^2+y^2)+O(r^4).
+\end{equation}
+
+The first-order affine $c$--$s$ block is
+\begin{equation}
+\begin{pmatrix}
+a_p & \kappa(a_p-p)(x+iy)\\
+\kappa(a_p-p)(x-iy) & p
+\end{pmatrix},
+\end{equation}
+up to an immaterial sine-quadrature sign convention. Its determinant is
+\begin{equation}
+a_pp-\kappa^2(a_p-p)^2(x^2+y^2).
+\end{equation}
+Because the spectator sector is positive and uncoupled, the exact affine physical radius is therefore
+\begin{equation}
+\boxed{
+R_{\rm lin}^2=
+\frac{a_pp}{\kappa^2(a_p-p)^2}.}
+\label{eq:Rlin_general}
+\end{equation}
+
+For every $p>0$, the positive-frequency tangent has range in the pre-existing sideband sector. The finite-radius spectral-survival theorem of Ref.~\cite{CompanionTwoRegimes2026} gives
+\begin{equation}
+\boxed{
+\frac{R_{\rm lin}^2}{4}\Tr F\le p.}
+\label{eq:survival_bound_general}
+\end{equation}
+Equivalently,
+\begin{equation}
+\Tr F\le
+4\kappa^2\frac{(a_p-p)^2}{a_p}.
+\label{eq:survival_ceiling_general}
+\end{equation}
+The resource on the right of Eq.~\eqref{eq:survival_bound_general} is simply the directly measurable baseline population of the selected sideband.
+
+\subsection{Spectator-independent support-to-synthesis crossover}
+
+At $p=0$, Eq.~\eqref{eq:seed_path_limit} gives selected carrier population $q$ and an empty sideband. Equation~\eqref{eq:sideband_population_general} becomes
+\begin{equation}
+P_s(0;x,y)=q\kappa^2(x^2+y^2)+O(r^4),
+\end{equation}
+so with $\Delta=\partial_x^2+\partial_y^2$,
+\begin{equation}
+\boxed{\Delta P_s(0)=4\kappa^2q.}
+\label{eq:sideband_curvature_general}
+\end{equation}
+The corresponding one-sided rank-boundary inequality is
+\begin{equation}
+\Tr F\le\Delta P_s(0).
+\label{eq:boundary_bound_general}
+\end{equation}
+
+\begin{proposition}[Spectator-independent seed regularization]
+For the family \eqref{eq:rho_p_general}--\eqref{eq:converter_general},
+\begin{equation}
+\boxed{
+\lim_{p\to0^+}\frac{4p}{R_{\rm lin}^2}
+=4\kappa^2q
+=\Delta P_s(0).}
+\label{eq:main_crossover_general}
+\end{equation}
+The limit is independent of the spectator populations and of the detailed seed-compensation path, subject to Eq.~\eqref{eq:seed_path_limit} and the assumption that the local converter leaves the spectator sector inert.
+\end{proposition}
+
+\begin{proof}
+Substitution of Eq.~\eqref{eq:Rlin_general} gives
+\begin{equation}
+\frac{4p}{R_{\rm lin}^2}
+=4\kappa^2\frac{(a_p-p)^2}{a_p}.
+\end{equation}
+Since $a_p\to q>0$, the right-hand side tends to $4\kappa^2q$. Equation~\eqref{eq:sideband_curvature_general} gives the same quantity from the exact zero-seed family.
+\end{proof}
+
+Equation~\eqref{eq:main_crossover_general} is the practical content of the survival/synthesis distinction. As the selected sideband seed is removed, the pre-existing upper-endpoint population and the affine physical radius vanish together. Their radius-normalized ratio converges to the directly measurable second-order generation curvature of the now-empty sideband. Correspondingly, the finite-radius information ceiling \eqref{eq:survival_ceiling_general} tends continuously to the boundary ceiling \eqref{eq:boundary_bound_general}, even though the order of the resource changes.
+
+The theorem does not require the selected carrier to contain the full baseline population. Populated polarization, spatial, spectral, or other spectator modes are permitted. What is required is a calibrated local two-mode converter whose first-order action is confined to the selected carrier/sideband pair. Loss, parameter-dependent decoherence, seed-dependent coupling to spectators, or other channel changes constitute Level-I model departures and need not obey the exact equalities above.
+
+At the boundary, the active $c$--$s$ block has weight $q$ and local form
+\begin{equation}
+q\,|\psi(x,y)\rangle\langle\psi(x,y)|,
+\qquad
+|\psi(x,y)\rangle
+=|c\rangle+\kappa(x-iy)|s\rangle+O(r^2),
+\end{equation}
+plus the parameter-independent spectator state $\sigma_0$. A fixed four-outcome equatorial POVM on the active two-mode subspace, completed by the spectator projector, gives
+\begin{equation}
+F_{xx}=F_{yy}=2q\kappa^2,
+\qquad F_{xy}=0,
+\end{equation}
+so
+\begin{equation}
+\boxed{\Tr F=4q\kappa^2=\Delta P_s(0).}
+\label{eq:boundary_saturation_general}
+\end{equation}
+Thus the generalized boundary law remains attainable despite arbitrary inert spectator population.
+
+For visualization and the simplest laboratory normalization, one may take
+\begin{equation}
+a_p=1-p,
+\qquad \sigma_p=0,
+\end{equation}
+which reduces Eqs.~\eqref{eq:Rlin_general} and \eqref{eq:main_crossover_general} to
+\begin{equation}
+R_{\rm lin}^2=
+\frac{p(1-p)}{\kappa^2(1-2p)^2},
+\qquad
+\lim_{p\to0^+}\frac{4p}{R_{\rm lin}^2}=4\kappa^2.
+\end{equation}
+This special case is useful for figures but is not required by the proposition.
+
+\subsection{Ordinary phase modulation as a bilateral boundary example}
+
+The same boundary structure appears in textbook optical phase modulation. Starting from a single carrier and applying
+\begin{equation}
+\exp\{i[x\cos(\Omega t)+y\sin(\Omega t)]\},
+\end{equation}
+the first upper and lower sideband probabilities obey
+\begin{equation}
+P_+(x,y)=P_-(x,y)=\frac{x^2+y^2}{4}+O[(x^2+y^2)^2].
+\end{equation}
+Hence
+\begin{equation}
+\Delta P_+(0)=\Delta P_-(0)=1.
+\end{equation}
+The bilateral boundary inequality of Ref.~\cite{CompanionTwoRegimes2026} becomes
+\begin{equation}
+\boxed{
+\Tr F\le
+\left[\sqrt{\Delta P_+(0)}+\sqrt{\Delta P_-(0)}\right]^2=4.}
+\label{eq:bilateral_bound_r2}
+\end{equation}
+The local pure-state QFI has $H_{xx}=H_{yy}=2$ and $H_{xy}=0$, and a fixed three-mode interferometric measurement can attain the same classical Fisher matrix. Thus ideal weak phase modulation saturates Eq.~\eqref{eq:bilateral_bound_r2}.
+
+The resource and Fisher measurements need not be the same measurement. Direct spectral photon counting or power analysis measures the sideband curvature. Recovering both modulation quadratures at first order requires a phase-sensitive measurement, such as calibrated carrier/sideband mixing, frequency-bin interferometry, homodyne detection, or an equivalent POVM. This separation is important experimentally.
