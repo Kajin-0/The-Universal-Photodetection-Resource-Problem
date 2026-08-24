@@ -16,19 +16,27 @@ Working title:
 
 > **Operational benchmarks for temporal information in photodetection**
 
-## Paper-4 result hierarchy after WP06
+## Paper-4 status after WP07
 
-### Headline result A — detector memory
+**Prior-art/significance gate: PASS WITH NARROWED CLAIMS.**
 
-For generalized iid Type-II recovery, fixing mean recovery fixes the entire homogeneous saturation curve `r=lambda exp(-lambda m)` but does not fix temporal information. At the common maximum, complete timestamp DC FI vanishes iff recovery is deterministic. Exact equal-mean/equal-variance/equal-saturation laws have different pair correlations and accessible FI.
+Paper 4 remains justified in principle, but generic Fisher detector metrics, variable/random dead time, inter-arrival characterization, sideband metrology, seeded/vacuum interferometry, rank-boundary QFI curvature and beam-splitter metrology are prior ingredients, not novelty claims.
 
-### Headline result B — spectral support crossover
+### Primary candidate new science — WP04
 
-A seeded carrier/sideband family obeys the finite-radius survival law. As seed `p->0`, the affine radius collapses and the resource moves to sideband population curvature with
+A seeded carrier/sideband family obeys the finite-radius survival law. As baseline sideband seed `p->0`, the affine radius collapses and the resource moves to sideband population curvature with
 
 **`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.**
 
-Ordinary ideal weak phase modulation saturates the bilateral boundary-curvature law.
+At zero seed the family is rank changing and ordinary ideal weak phase modulation saturates the bilateral boundary-curvature law under the locked convention.
+
+No direct collision for this exact support-controlled survival-to-synthesis crossover was found in the targeted WP07 search. Priority remains unverified, not certified.
+
+### Practical benchmark imported from frozen Paper 2 — WP03
+
+For generalized iid Type-II recovery, fixing mean recovery fixes the complete homogeneous saturation curve `r=lambda exp(-lambda m)` but not temporal information. At the common maximum, timestamp DC FI vanishes iff recovery is deterministic; explicit matched-mean/matched-variance laws have different accessible timestamp information.
+
+These are frozen Paper-2 results. Paper 4 may translate them into a detector-characterization/falsification protocol and must cite the companion paper; it must not present them as new Paper-4 theorems.
 
 ### Supporting measurement bridge
 
@@ -36,15 +44,19 @@ Ordinary ideal weak phase modulation saturates the bilateral boundary-curvature 
 - ideal Poisson fractional timestamps: `Tr F/T=lambda_0`;
 - independent timing jitter: multiply by `|Phi_J(Omega)|^2`.
 
-### Compact Hamiltonian completion
+These are translation/background results, not novelty claims.
 
-A resonant two-mode beam-splitter in the fixed `N_tot=2` shell gives
+### Compact Hamiltonian benchmark
+
+A resonant two-mode beam splitter in the fixed `N_tot=2` shell gives
 
 `V_min=8(g t)^2=(1/2)Tr C`,
 
 `A_ex=hbar nu V_min`,
 
 with the total bare-energy distribution exactly fixed.
+
+The Hamiltonian is standard; its role is an independently calibratable test of the companion implementation theorem.
 
 ## Falsification discipline
 
@@ -56,29 +68,18 @@ Paper 4 must distinguish:
 
 Most laboratory mismatches should first be interpreted as model/calibration failures, not fundamental theorem violations.
 
-## Minimum manuscript architecture
-
-I. concise detector-language FI bridge;
-II. memory: same saturation, different information;
-III. spectral support: survival -> sideband synthesis;
-IV. short resonant-exchange implementation benchmark;
-V. integrated falsification matrix/discussion.
-
-Target roughly 10–14 main-text journal pages before references, maximum four figures.
-
-WP01/WP02 are bridge material. WP03/WP04 are the likely central science. WP05 is compact physical interpretation.
-
-## Scope removals
-
-Do not add separate main-text photoconductor/RC examples, `NEP_F` branding, many recovery laws, many sideband technologies, unequal-frequency pump machinery, or the PRA infinite-dimensional proof stack unless WP07/referees provide a concrete reason.
-
 ## Immediate work order
 
-**WP07 — adversarial prior-art/significance gate.** Search the exact candidate distinct claims. Do not draft Paper 4 unless a publishable core survives.
+**WP08 — final pre-manuscript theorem/benchmark stack.**
+
+1. derive a conventional detector-misranking example showing why response bandwidth or a single sensitivity number can fail for temporal-information tasks;
+2. lock exact assumptions and units for the minimum claim stack;
+3. classify every result as new Paper-4 theorem, cited upstream benchmark, or standard bridge;
+4. create a manuscript workspace only if WP08 remains coherent.
 
 ## Claim discipline
 
-Priority remains **unverified, not certified**. No prize-level framing. No novelty claim for standard NEP, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, sideband generation, beam-splitter physics, or standard interferometry.
+No prize-level framing. No novelty claim for standard NEP, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, sideband generation, beam-splitter physics, standard interferometry, or generic boundary-QFI mathematics.
 
 ## Frozen publication packages
 
