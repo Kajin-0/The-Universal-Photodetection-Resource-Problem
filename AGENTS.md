@@ -2,78 +2,103 @@
 
 ## Purpose
 
-Durable project handoff for The Universal Photodetection Resource Problem. The repository, not chat history, is authoritative.
+Durable handoff for The Universal Photodetection Resource Problem. The repository, not chat history, is authoritative.
 
 ## Active branch
 
 `agent/practical-temporal-information-benchmarks`
 
-The three mature temporal-information papers remain scientifically frozen. The active fourth program is a standard-physics/falsifiability bridge.
+The three mature temporal-information papers remain scientifically frozen. The fourth practical/falsifiability paper is now scientifically frozen at **R4** pending deterministic figure integration.
 
 ## Read first
 
 1. `docs/CURRENT_RESEARCH_STATE.md`
 2. `practical_temporal_information/AGENTS.md`
-3. `practical_temporal_information/notes/WP09_HOSTILE_MANUSCRIPT_AUDIT_AND_SPECTATOR_INDEPENDENT_CROSSOVER.md`
-4. `practical_temporal_information/notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
-5. `practical_temporal_information/notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
-6. `manuscript/practical_temporal_information/README.md`
-7. `manuscript/practical_temporal_information/MANUSCRIPT_ARCHITECTURE.md`
+3. `practical_temporal_information/notes/WP11_R3_RENDER_AUDIT_AND_R4_PRESENTATION_FREEZE.md`
+4. `practical_temporal_information/notes/WP10_R2_BUILD_AND_SECOND_HOSTILE_AUDIT.md`
+5. `practical_temporal_information/notes/WP09_HOSTILE_MANUSCRIPT_AUDIT_AND_SPECTATOR_INDEPENDENT_CROSSOVER.md`
+6. `practical_temporal_information/notes/WP07A_CLOSE_PRIOR_ART_BOUNDARY_SUPERRESOLUTION.md`
+7. `manuscript/practical_temporal_information/README.md`
+8. `manuscript/practical_temporal_information/MANUSCRIPT_ARCHITECTURE.md`
 
-## Paper-4 gate status
+## Current Paper-4 freeze
 
-- WP07 prior-art/significance: **PASS WITH NARROWED CLAIMS**.
-- WP08 pre-manuscript gate: **PASS**.
-- WP09 first hostile manuscript audit: **CONDITIONAL PASS**.
+Working title:
 
-The first full REVTeX draft exists and its static provenance gate passed. Initial CI exposed only a mechanical `ruledtabular` incompatibility; R1 generation removes that wrapper deterministically before compilation.
+> **Operational temporal-information benchmarks for photodetection**
 
-## Strengthened Paper-4 theorem after WP09
+R4 final verification:
 
-For a selected carrier/sideband pair embedded in arbitrary inert spectator modes,
+- run `32684526293` PASS;
+- job `97307019940` PASS;
+- artifact `9505218922`;
+- archive digest `sha256:9905a2cbd4366d57731fc8f4a99c6f72a513629a8727257a43131e02efb96cce`;
+- exact PDF 8 pages / 266068 bytes;
+- PDF SHA-256 `794cb1c52326dc1965e14ea8ccd15530b41b2e523ca501e88f081cf69d741a01`.
+
+All pages rendered/inspected. R4 differs from R3 only by hidden hyperlink borders. Disposable PR #35 was closed unmerged. Zero open PRs.
+
+## Frozen Paper-4 theorem
+
+For stationary selected modes with `E_s-E_c=hbar Omega`,
 
 `rho_p=a_p|c><c|+p|s><s|+sigma_p`,
 
-with `a_p->q>0`, the calibrated two-mode converter gives
+where `[rho_p,H]=0`, spectators are stationary/inert, `a_p>p`, `a_p->q>0`, and `p` is an incoherent/phase-randomized sideband population seed,
 
-`R_lin^2=a_p p/[kappa^2(a_p-p)^2]`
+`R_lin^2=a_p p/[kappa^2(a_p-p)^2]`.
 
-and
+The frozen flagship theorem specializes to
 
-`Delta P_s(0)=4kappa^2 q`.
+`(R_lin^2/4)Tr F<=p`.
 
-Therefore
+At zero seed,
 
-**`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.**
+`Delta P_s(0)=4kappa^2 q`,
 
-The original normalized two-level model is only the `q=1` special case. The generalized result is exact for a lossless selected-mode converter with inert spectators; it is not claimed for arbitrary lossy or parameter-dependent channels.
+so
 
-Targeted prior-art search found no direct collision for this exact identity/interpretation. Priority remains unverified/not certified.
+**`lim_(p->0+)4p/R_lin^2=4kappa^2 q=Delta P_s(0)`.**
 
-## Other Paper-4 components
+The completed boundary POVM attains `Tr F=Delta P_s(0)`.
 
-- Type-II memory theorem: cited result from the frozen random-time paper, not new Paper-4 theorem.
-- `Tr F/T=2/NEP(f)^2`: standard linear-Gaussian bridge under explicit conventions.
-- ideal Poisson/jitter relation: standard timestamp bridge.
-- WP08 equal-DC-NEP/equal-response-bandwidth but unequal-FI-spectrum example: standard detector illustration.
-- resonant beam-splitter cost equality: standard-physics benchmark of the frozen PRA theorem.
+Do not loosen the hypotheses or expand the theorem without a concrete blocking defect.
+
+## Novelty boundary
+
+Finite FI from quadratically vanishing boundary probabilities/eigenvalues is prior art (Gefen--Rotem--Retzker 2019; Safranek 2017). The candidate distinct content is the finite-seed/finite-radius continuation and the independent measurement/falsification architecture.
+
+Priority remains **unverified, not certified**.
+
+## Provenance
+
+- Type-II memory theorem: frozen random-time companion; operational benchmark only here.
+- Exact prescribed-curvature coupling theorem: frozen PRA companion; equal-frequency resonant benchmark only here.
+- NEP/FI, Poisson/jitter, colored-noise example, weak phase modulation, and beam-splitter mechanics: standard/illustrative material.
+
+Never duplicate companion proofs or move their novelty claims into Paper 4.
 
 ## Falsification hierarchy
 
-Always distinguish detector-model/reduction failure, resource-law challenge after independently verifying theorem assumptions, and failure of a model-specific saturating equality.
+1. Level I — detector/state/model reduction failure.
+2. Level II — resource-law challenge only after independently verifying theorem assumptions and resource quantities.
+3. Level III — failure of an ideal saturating model/equality.
 
 ## Immediate work order
 
-1. complete R1 mechanical build verification;
-2. produce R2 with the WP09 generalized crossover theorem;
-3. compile and render R2;
-4. hostile-audit R2 before any science freeze;
-5. only then produce figures and publication-style compression.
+**WP12: publication figures.**
 
-## Claim discipline
+Create at most four deterministic scientific figures with committed generation scripts and data checks:
 
-No prize-level framing. No implied experimental validation without data. No novelty claim for generic dead-time information theory, variable/random dead time, interval characterization, paralyzable correlations, standard NEP/Fisher sensing, sideband metrology, seeded/vacuum interferometry, generic rank-boundary QFI, beam-splitter physics, or standard interferometry.
+1. equal conventional detector specs / unequal information spectra;
+2. common Type-II saturation / different timestamp information;
+3. stationary support-seed survival→synthesis crossover — principal figure;
+4. equal-frequency resonant implementation + calibration/falsification map.
+
+Do not change R4 scientific text while designing figures. Integrate figures through a new isolated manuscript revision only after the figure package itself passes numerical and visual QA.
+
+Then rebuild/render/hostile-review and proceed to publication compression / fresh APS policy checks.
 
 ## Documentation rule
 
-Every material result or scope change must update the dedicated note, practical handoff, root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
+Every material result or scope change must update its WP note, practical handoff, root `README.md`, this file, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
