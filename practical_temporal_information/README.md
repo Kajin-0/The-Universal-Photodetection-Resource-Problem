@@ -8,94 +8,81 @@ Develop a fourth, deliberately grounded paper that translates the existing tempo
 
 Working title:
 
-> **Operational benchmarks for temporal information in photodetection**
+> **Operational temporal-information benchmarks for photodetection**
 
 ## Gate status
 
 - WP07 prior-art/significance gate: **PASS WITH NARROWED CLAIMS**.
 - WP08 final pre-manuscript gate: **PASS**.
+- WP09 first hostile manuscript audit: **CONDITIONAL PASS**.
 
-The manuscript workspace may now be created.
+The first full REVTeX manuscript exists. Its static claim/provenance gate passed on the first CI attempt. That attempt then exposed a purely mechanical incompatibility between REVTeX `ruledtabular` and the paragraph-width falsification-table columns; a deterministic R1 transform now removes only that wrapper before compilation.
 
-## Final claim hierarchy
+## Strengthened scientific center after WP09
 
-### Primary new candidate theorem
+The original two-level support crossover was mathematically correct but unnecessarily specialized. WP09 generalizes it to a selected carrier/sideband pair embedded in arbitrary inert spectator modes.
 
-**Support-controlled survival-to-synthesis crossover**
+Take
 
-For the explicit seeded carrier/sideband family,
+`rho_p = a_p |c><c| + p |s><s| + sigma_p`,
 
-`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.
+with `sigma_p>=0` on the spectator subspace, `a_p>p`, `a_p->q>0`, and a local lossless converter that acts only on `|c>,|s>`.
 
-At `p>0` the relevant sideband lies in the baseline support and finite-radius survival applies. At `p=0` the affine radius collapses and second-order sideband population curvature becomes the synthesis resource. Ordinary ideal weak phase modulation saturates the bilateral boundary-curvature law under the locked convention.
+Then
 
-Targeted WP07 search found no direct collision for this exact identity / interpretation. Priority remains unverified, not certified.
+`P_s(p;r)=p+(a_p-p)sin^2(kappa r)`,
 
-### Cited upstream benchmark — detector memory
+`R_lin^2=a_p p/[kappa^2(a_p-p)^2]`,
 
-The frozen random-time paper proves that for fixed mean Type-II recovery all iid recovery laws share `r=lambda exp(-lambda m)` while timestamp information is not fixed; at the common maximum deterministic recovery is uniquely information-singular. Paper 4 should make this result experimentally actionable, not republish it as a new theorem.
+and finite-radius survival gives
 
-### Cited upstream benchmark — implementation cost
+`(R_lin^2/4)Tr F<=p`.
 
-The frozen PRA companion proves `V_min=(1/2)Tr C`. WP05 gives a standard resonant beam-splitter realization with
+At the zero-seed boundary,
 
-`V_min=8(g t)^2`, `A_ex=hbar nu V_min`,
+`Delta P_s(0)=4kappa^2 q`.
 
-while the total bare-energy distribution remains fixed.
+Hence the strengthened identity is
+
+**`lim_(p->0+)4p/R_lin^2=4kappa^2 q=Delta P_s(0)`.**
+
+The result is insensitive to arbitrary spectator populations and to how seed normalization is compensated outside the selected mode pair, provided the selected carrier occupation tends to `q` and spectators are inert under the calibrated converter.
+
+The normalized two-bin model `a_p=1-p`, `sigma_p=0`, `q=1` is retained only as the simplest special case for plotting and intuition.
+
+## Other retained results
+
+### Memory benchmark from frozen Paper 2
+
+For fixed mean Type-II recovery `m`, every iid recovery law shares `r=lambda exp(-lambda m)` while timestamp information is not fixed; at the common maximum deterministic recovery is uniquely information-singular. Paper 4 makes this experimentally actionable but does not republish it as a new theorem.
 
 ### Standard measurement bridge
 
-- linear Gaussian: `Tr F/T=2/NEP(f)^2`;
-- ideal Poisson fractional timestamps: `Tr F/T=lambda0`;
-- independent timing jitter: multiply by `|Phi_J(Omega)|^2`.
+- linear Gaussian: `Tr F/T=2/NEP(f)^2` under the locked one-sided-PSD convention;
+- ideal fractional Poisson timestamps: `Tr F/T=lambda0`;
+- independent jitter: factor `|Phi_J(Omega)|^2`.
 
-No novelty claim is attached to these bridges.
+### WP08 conventional-specification example
 
-## Conventional-specification incompleteness example — WP08
+Two detectors can share DC NEP and responsivity `f_3dB` yet differ by `13/3≈4.3333` in FI at `f_c`; one remains above half its DC FI until `2.9703 f_c` because its excess noise rolls off faster than its response.
 
-Both detectors have
+### Standard Hamiltonian benchmark
 
-`|H(f)|^2=1/[1+(f/f_c)^2]`,
+The fixed-energy resonant beam-splitter model gives
 
-the same DC output-noise PSD `S0`, the same DC NEP, and the same responsivity 3-dB frequency `f_c`.
+`V_min=8(gt)^2=(1/2)Tr C`,
 
-Detector A:
+`A_ex=hbar nu V_min`,
 
-`S_A(f)=S0`.
+with unchanged total bare-energy distribution.
 
-Detector B:
-
-`S_B/S0=1/5+(4/5)/[1+25(f/f_c)^2]`.
-
-Normalized single-quadrature FI spectra:
-
-`J_A=1/(1+x^2)`,
-
-`J_B=(1+25x^2)/[(1+x^2)(1+5x^2)]`, `x=f/f_c`.
-
-At `f=f_c`,
-
-`J_B/J_A=13/3≈4.3333`.
-
-B does not fall to half its DC FI until
-
-`f≈2.9703 f_c`.
-
-Thus the pair `{DC NEP, responsivity 3-dB bandwidth}` does not determine temporal estimation performance. This is a standard-physics illustration, not a priority claim.
-
-## Falsification hierarchy
-
-1. detector-model/reduction failure;
-2. resource-law challenge only after theorem hypotheses are independently verified;
-3. failure of a model-specific saturating equality.
-
-## Final main-text architecture
+## Manuscript architecture
 
 I. What conventional detector specifications do not determine.
 
 II. Detector-language FI bridge and memory benchmark.
 
-III. Spectral support: seeded survival -> empty-sideband synthesis.
+III. Spectral support: selected-mode seeded survival -> empty-sideband synthesis.
 
 IV. Standard Hamiltonian implementation.
 
@@ -103,7 +90,17 @@ V. Integrated falsification matrix.
 
 VI. Discussion.
 
-Target roughly 10–14 journal pages before references; maximum four figures.
+## Immediate work
+
+1. complete R1 mechanical build verification;
+2. generate R2 with the WP09 generalized crossover theorem;
+3. compile and render R2;
+4. run a second hostile manuscript-level audit;
+5. only after that, generate the four planned figures and compress for publication.
+
+## Claim discipline
+
+No novelty claim for generic dead-time information theory, variable/random dead time, interval characterization, paralyzable correlations, standard NEP/Fisher sensing, sideband generation/metrology, seeded/vacuum interferometry, generic boundary-QFI curvature, beam-splitter physics, or standard interferometry. Priority for the selected-mode crossover remains unverified, not certified. No experimental validation is implied without data.
 
 ## Authoritative notes
 
@@ -115,14 +112,7 @@ Target roughly 10–14 journal pages before references; maximum four figures.
 - `notes/WP06_MINIMUM_PAPER_STACK_AND_FALSIFICATION_MATRIX.md`
 - `notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
 - `notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
-
-## Immediate work
-
-Create `manuscript/practical_temporal_information/`, draft from the detector example outward, keep WP04 as the principal original theorem, cite rather than duplicate the mature papers, and run a hostile manuscript-level audit before freezing any submission package.
-
-## Claim discipline
-
-No novelty claim for generic dead-time information theory, variable/random dead time, interval characterization, paralyzable correlations, standard NEP/Fisher sensing, sideband generation/metrology, seeded/vacuum interferometry, generic boundary-QFI curvature, beam-splitter physics, or standard interferometry. No experimental validation is implied without data.
+- `notes/WP09_HOSTILE_MANUSCRIPT_AUDIT_AND_SPECTATOR_INDEPENDENT_CROSSOVER.md`
 
 ## Documentation rule
 
