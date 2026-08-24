@@ -40,30 +40,41 @@ jobs:
         working-directory: manuscript/practical_temporal_information
         run: python check_practical_r2.py
 
-      - name: Compile practical R2 manuscript
+      - name: Generate hostile-review-repaired R3 source
+        working-directory: manuscript/practical_temporal_information
+        run: python apply_r3_hostile_review_repairs.py
+
+      - name: Verify R3 contains only audited reference and resonance repairs
+        working-directory: manuscript/practical_temporal_information
+        run: python check_practical_r3.py
+
+      - name: Compile practical R3 manuscript
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: operational_temporal_information_r2.tex
+          root_file: operational_temporal_information_r3.tex
           working_directory: manuscript/practical_temporal_information
           latexmk_use_xelatex: false
 
       - name: Fail on unresolved references or serious TeX layout warnings
         working-directory: manuscript/practical_temporal_information
         run: |
-          LOG=operational_temporal_information_r2.log
+          LOG=operational_temporal_information_r3.log
           test -f "$LOG"
           ! grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|There were undefined citations|Overfull \\hbox|Overfull \\vbox" "$LOG"
 
-      - name: Upload practical R2 manuscript build
+      - name: Upload practical R3 manuscript build
         uses: actions/upload-artifact@v4
         with:
-          name: practical-temporal-information-r2
+          name: practical-temporal-information-r3
           path: |
-            manuscript/practical_temporal_information/operational_temporal_information_r2.pdf
+            manuscript/practical_temporal_information/operational_temporal_information_r3.pdf
+            manuscript/practical_temporal_information/operational_temporal_information_r3.tex
             manuscript/practical_temporal_information/operational_temporal_information_r2.tex
             manuscript/practical_temporal_information/operational_temporal_information_r1.tex
             manuscript/practical_temporal_information/operational_temporal_information_draft.tex
             manuscript/practical_temporal_information/sections/support_crossover_r2.tex
+            manuscript/practical_temporal_information/apply_r3_hostile_review_repairs.py
+            manuscript/practical_temporal_information/check_practical_r3.py
             manuscript/practical_temporal_information/references.bib
             manuscript/practical_temporal_information/README.md
             manuscript/practical_temporal_information/MANUSCRIPT_ARCHITECTURE.md
