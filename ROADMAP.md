@@ -16,58 +16,73 @@ Working title:
 
 > **Operational benchmarks for temporal information in photodetection**
 
-## Completed practical stack
+## Completed research gates
 
 - **WP01:** linear Gaussian detector -> `Tr F/T=2/NEP(f)^2`.
-- **WP02:** ideal Poisson timestamps -> `Tr F/T=lambda_0`; independent jitter -> `|Phi_J|^2`.
-- **WP03:** practical translation of the frozen Type-II memory theorem: conventional saturation/low-order recovery summaries can fail to determine temporal-information transfer.
+- **WP02:** ideal Poisson timestamps -> `Tr F/T=lambda0`; independent jitter -> `|Phi_J|^2`.
+- **WP03:** practical translation of the frozen Type-II memory theorem.
 - **WP04:** exact seeded-to-empty sideband survival/synthesis crossover and ideal phase-modulation boundary saturation.
 - **WP05:** standard fixed-energy resonant beam splitter realizes `V_min=(1/2)Tr C` and `A_ex=hbar nu V_min`.
-- **WP06:** minimum manuscript architecture and falsification hierarchy fixed.
-- **WP07:** adversarial prior-art/significance gate — **PASS WITH NARROWED CLAIMS**.
+- **WP06:** minimum manuscript architecture and falsification hierarchy.
+- **WP07:** prior-art/significance gate — PASS WITH NARROWED CLAIMS.
+- **WP08:** final pre-manuscript theorem/benchmark stack — PASS.
 
-## WP07 outcome
+## Final scientific hierarchy
 
-Broad ingredients are established prior art and are excluded from novelty claims:
+### Principal new candidate result
 
-- dead-time information theory;
-- variable/random dead-time photocounting;
-- inter-arrival characterization;
-- paralyzable correlation distortion;
-- sideband Fisher metrology;
-- seeded/vacuum interferometry;
-- generic rank-changing QFI curvature;
-- standard beam-splitter metrology.
-
-The primary candidate new Paper-4 theorem is WP04's support-controlled crossover
+WP04:
 
 `lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.
 
-No direct collision for that exact identity / survival-to-synthesis interpretation was found in the targeted search. Priority remains unverified, not certified.
+This is the controlled support-removal crossover from finite-radius spectral survival to rank-boundary second-order synthesis. Priority remains unverified/not certified; no direct collision was found in the targeted WP07 search.
 
-WP03's strong Type-II information theorem belongs to the frozen random-time paper. Paper 4 may make it experimentally actionable but must cite it and not republish it as new.
+### Upstream results used as practical benchmarks
 
-## WP08 — active final pre-manuscript gate
+- WP03 / frozen random-time paper: equal Type-II saturation characterization does not determine timestamp information.
+- frozen PRA companion: `V_min=(1/2)Tr C`, instantiated by WP05's resonant beam-splitter benchmark.
 
-1. Construct an explicit conventional detector-misranking example showing why response bandwidth or a single sensitivity number is insufficient for temporal-information tasks.
-2. Lock assumptions, units and parameter conventions for every retained equation.
-3. Classify each retained result as:
-   - new Paper-4 theorem/corollary;
-   - cited result from one of the three mature papers;
-   - standard detector/statistical bridge.
-4. Decide the final manuscript title/abstract thesis and figure architecture.
-5. Create a manuscript workspace only if the resulting stack is both coherent and non-duplicative.
+Do not duplicate their proofs or reassign their novelty to Paper 4.
 
-Do not add more detector families merely to increase apparent breadth.
+### Standard measurement bridges
+
+- NEP/FI relation under explicit Gaussian/PSD conventions;
+- ideal Poisson/jitter timestamp relation;
+- WP08 conventional-specification incompleteness example.
+
+## WP08 detector example
+
+Two detectors share identical response `|H|^2=1/(1+x^2)`, DC noise, DC NEP and responsivity 3-dB bandwidth.
+
+White-noise A:
+
+`J_A=1/(1+x^2)`.
+
+White-plus-Lorentzian B:
+
+`J_B=(1+25x^2)/[(1+x^2)(1+5x^2)]`.
+
+At `x=1`, B carries `13/3≈4.3333` times A's FI. B remains above half its DC FI until `x≈2.9703`.
+
+This is the manuscript-opening standard-physics example.
+
+## Manuscript phase — active
+
+1. create `manuscript/practical_temporal_information/`;
+2. write a detector-first architecture and minimal REVTeX draft;
+3. use at most four figures;
+4. keep the support-crossover theorem as the new scientific center;
+5. cite rather than duplicate Paper-2 and PRA theorem proofs;
+6. run a hostile manuscript-level audit before freezing any revision.
 
 ## Falsification discipline
 
-The paper must distinguish detector-model/reduction failure, resource-law challenge after independently verifying theorem assumptions, and failure of a model-specific saturating equality.
+Every claim must state what is measured, what assumptions are independently checked, what equality/inequality is predicted, and whether a failure is Level I model failure, Level II resource-law challenge, or Level III saturator failure.
 
 ## Claim discipline
 
-No novelty claim for standard NEP/detectivity, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic sidebands, beam-splitter physics, standard interferometry, or generic rank-boundary QFI. No implied experimental validation without data. No prize-level framing.
+No novelty claim for standard NEP/detectivity, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, variable/random dead time, interval characterization, electro-optic sidebands, seeded/vacuum interferometry, beam-splitter physics, standard interferometry, or generic rank-boundary QFI. No implied experimental validation without data. No prize-level framing.
 
 ## Documentation cadence
 
-Update WP08 and all handoff/landing files as soon as the final pre-manuscript stack changes materially.
+Update the manuscript handoff and all landing files after every material manuscript/science change.
