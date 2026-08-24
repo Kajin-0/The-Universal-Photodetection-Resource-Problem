@@ -14,31 +14,40 @@ The three mature temporal-information papers remain scientifically frozen. The a
 
 1. `docs/CURRENT_RESEARCH_STATE.md`
 2. `practical_temporal_information/AGENTS.md`
-3. `practical_temporal_information/notes/WP06_MINIMUM_PAPER_STACK_AND_FALSIFICATION_MATRIX.md`
-4. `practical_temporal_information/notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
+3. `practical_temporal_information/notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
+4. `practical_temporal_information/notes/WP06_MINIMUM_PAPER_STACK_AND_FALSIFICATION_MATRIX.md`
 5. `practical_temporal_information/notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
-6. `practical_temporal_information/notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
+6. `practical_temporal_information/notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
+7. `practical_temporal_information/notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
 
-## Paper-4 minimum stack
+## Paper-4 status
 
-### Headline science
+WP07 prior-art/significance gate: **PASS WITH NARROWED CLAIMS**.
 
-1. **Memory:** the complete Type-II saturation curve and low-order recovery statistics do not determine temporal-information transfer; explicit matched conventional detectors have different timestamp information.
-2. **Spectral support:** seeded-to-empty sidebands realize survival -> synthesis with exact crossover `lim 4p/R_lin^2=Delta P_s` and ideal phase-modulation boundary saturation.
+### Primary candidate new theorem
 
-### Supporting bridge
+WP04 support-controlled sideband crossover:
+
+`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.
+
+This explicitly connects the finite-radius spectral-survival regime to rank-boundary second-order synthesis as baseline sideband support is removed. No direct collision for this exact identity/interpretation was found in the targeted search. Priority remains unverified.
+
+### Imported benchmark, not new Paper-4 theorem
+
+WP03's Type-II result belongs to the frozen random-time paper: identical conventional saturation characterization can coexist with different temporal-information channels. Paper 4 may translate it into an experimental/falsification protocol but must cite the companion and not duplicate its novelty claim.
+
+### Supporting standard bridges
 
 - linear Gaussian: `Tr F/T=2/NEP(f)^2`;
 - ideal Poisson timestamps: `Tr F/T=lambda_0`;
-- independent jitter: `|Phi_J|^2`.
+- independent jitter: `|Phi_J|^2`;
+- resonant beam-splitter implementation: `V_min=(1/2)Tr C`, `A_ex=hbar nu V_min` in the stated benchmark.
 
-### Compact implementation
+These are standard-language bridges or applications of frozen theorems, not generic novelty claims.
 
-Resonant beam splitter in fixed total energy:
+## Prior-art exclusions
 
-`V_min=8(g t)^2=(1/2)Tr C`,
-
-`A_ex=hbar nu V_min`.
+Do not claim novelty for generic dead-time information theory, variable/random dead time, inter-arrival dead-time characterization, paralyzable correlation distortion, sideband Fisher metrology, seeded/vacuum interferometry, generic rank-boundary QFI curvature, or standard beam-splitter metrology.
 
 ## Falsification hierarchy
 
@@ -46,12 +55,12 @@ Always distinguish detector-model/reduction failure, resource-law violation unde
 
 ## Immediate work order
 
-**WP07 only:** run an adversarial prior-art/significance search on the exact candidate distinct claims. Do not draft a manuscript until this gate is closed.
+**WP08 — final pre-manuscript stack.** Derive an explicit conventional-detector misranking example, lock assumptions/units, classify every statement as new Paper-4 theorem versus cited upstream benchmark versus standard bridge, and only then create the manuscript workspace.
 
 ## Claim discipline
 
-No prize-level framing. No novelty claim for standard NEP, Fisher sensing, Poisson/dead-time formulas, renewal spectra, sideband generation, beam-splitter physics, or standard interferometry. Assign novelty only after WP07.
+No prize-level framing. No implied experimental validation without data.
 
 ## Documentation rule
 
-Every material prior-art finding or scope change must update the WP07 note, practical handoff, root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
+Every material result or scope change must update the dedicated note, practical handoff, root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
