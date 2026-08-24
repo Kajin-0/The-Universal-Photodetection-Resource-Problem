@@ -11,102 +11,76 @@ Create a fourth paper that translates the temporal-information resource program 
 ## Read first
 
 1. `README.md`
-2. `notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`
-3. `notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
-4. `notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
-5. `notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
-6. `notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
-7. root `docs/CURRENT_RESEARCH_STATE.md`
+2. `notes/WP06_MINIMUM_PAPER_STACK_AND_FALSIFICATION_MATRIX.md`
+3. `notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
+4. `notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
+5. `notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
+6. `notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`
+7. `notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
+8. root `docs/CURRENT_RESEARCH_STATE.md`
 
-## Current result stack
+## Current Paper-4 architecture
 
-### WP01 — analog Gaussian
+WP06 scope gate says the practical paper should not carry WP01–WP05 as five equal contributions.
 
-`F_xx/T=F_yy/T=1/NEP(f)^2`, `Tr F/T=2/NEP(f)^2` under the convention lock.
+### Headline science
 
-### WP02 — ideal timestamps
+1. **WP03 — detector memory:** identical conventional saturation characterization can coexist with different temporal-information channels.
+2. **WP04 — spectral support:** seeded and empty sidebands realize the finite-radius survival -> rank-boundary synthesis transition with an exact measurable crossover.
 
-`Tr F/T=lambda_0` for fractional Poisson modulation. Optical-power form exactly matches ideal shot-noise NEP. Independent jitter gives factor `|Phi_J(Omega)|^2`.
+### Supporting bridge
 
-### WP03 — detector memory
+- **WP01:** `Tr F/T=2/NEP(f)^2` in the linear stationary Gaussian regime.
+- **WP02:** ideal Poisson timestamps give `Tr F/T=lambda_0`; independent jitter gives `|Phi_J|^2`.
 
-Standard saturation can be information-incomplete. Deterministic Type-II recovery at `lambda tau=1` has `G(0)=0` but nonzero information at every nonzero frequency. Arbitrary finite-mean iid recovery shares `r=lambda exp(-lambda m)`, yet `G_DC=0` at the common maximum iff recovery is deterministic. Exact equal-mean/equal-variance/equal-saturation laws have different timestamp information.
+### Compact physical completion
 
-### WP04 — sideband support crossover
+- **WP05:** standard fixed-energy resonant beam-splitter benchmark realizes `V_min=(1/2)Tr C`, `A_ex=hbar nu V_min`.
 
-Seeded carrier/sideband model:
+## Falsification hierarchy
 
-`R_lin^2=p(1-p)/[kappa^2(1-2p)^2]`,
+Always distinguish:
 
-`(R_lin^2/4)Tr F<=p`.
+1. **Level I — detector-model/reduction failure:** e.g. Gaussian, Poisson, independent-jitter, or ideal beam-splitter assumptions fail.
+2. **Level II — resource-law challenge:** only after the theorem hypotheses, parameter normalization, support/radius, and measured FI/curvature are independently verified.
+3. **Level III — saturating-model equality failure:** usually means the chosen ideal saturator is imperfect; it is not automatically a violation of the general lower/upper theorem.
 
-At `p=0`,
+Do not use “falsifies the theorem” casually.
 
-`Delta P_s=4kappa^2`, `Tr F<=Delta P_s`,
+## Minimum manuscript structure
 
-with exact crossover
+I. Motivation — standard sensitivity/saturation are not information-transfer laws.
 
-`lim_(p->0+)4p/R_lin^2=Delta P_s`.
+II. Detector-language FI bridge — concise NEP + timestamps.
 
-Ordinary ideal weak phase modulation saturates the bilateral boundary law with `Delta P_+=Delta P_-=1`, `Tr F=4` under a fixed phase-sensitive three-mode analyzer.
+III. Memory — same saturation, different information.
 
-### WP05 — resonant exchange implementation
+IV. Spectral support — seeded survival to empty-sideband synthesis.
 
-Two resonant modes:
+V. Standard Hamiltonian implementation — short beam-splitter box/section.
 
-`H_0=hbar nu(N_C+N_S)`.
+VI. Falsification matrix and discussion.
 
-Standard beam-splitter exchange acts inside the `N_tot=2` shell
+Main text target: about 10–14 journal pages before references. Four figures maximum.
 
-`|2,0>, |1,1>, |0,2>`.
+## Explicitly demoted unless WP07 changes the decision
 
-For `U(x,y)=exp[-i g t(xB_x+yB_y)]` and baseline `|1,1>`:
-
-`Var(K_x)=Var(K_y)=4(g t)^2`,
-
-**`V_impl=8(g t)^2`.**
-
-Endpoint curvature:
-
-`Delta P_L=Delta P_U=8(g t)^2`,
-
-`Tr C=16(g t)^2`,
-
-so
-
-**`V_min=(1/2)Tr C=8(g t)^2`.**
-
-Autonomous action:
-
-**`A_ex^(2)=8 hbar nu(g t)^2`.**
-
-The total bare-energy distribution is exactly fixed at `2hbar nu` throughout.
-
-For fixed interaction duration,
-
-**`V_impl=(t^2/hbar^2)sum_j Var(H_j)`.**
-
-This is the practical Hamiltonian interpretation. Do not call it work, consumed RF energy, average interaction energy, operator norm, peak coupling, controller bandwidth, or fixed-controller-spectrum optimum.
-
-Practical falsification compares independently calibrated `g t` with independently measured endpoint Hessians:
-
-`8(g t)^2=(1/2)[Delta P_L+Delta P_U]`.
-
-## Publication status before WP06
-
-WP03 and WP04 are the likely core new practical results. WP01/WP02 supply the common measurement language. WP05 supplies a standard Hamiltonian interpretation of the companion theorem.
-
-Do not draft a manuscript yet. First decide the minimum coherent stack and then run prior art.
+- separate photoconductor lifetime-pole section;
+- separate RC photodiode section;
+- generalized `NEP_F` branding/novelty;
+- many recovery examples;
+- many modulation technologies;
+- pumped unequal-frequency converter machinery;
+- infinite-dimensional PRA proof machinery.
 
 ## Immediate work order
 
-1. **WP06:** integrated falsification matrix, rank scientific value, define minimum Paper-4 result stack, demote tutorial-only material.
-2. **WP07:** dedicated prior-art/significance gate before manuscript drafting.
+**WP07 only:** adversarial prior-art/significance gate. Search the exact integrated claims, not generic keywords. Do not create a manuscript workspace unless a distinct publishable core survives.
 
 ## Claim discipline
 
-No prize-level framing. No novelty claim for standard NEP, generic FI sensing, Poisson/dead-time formulas, renewal spectra, sideband generation, SU(2)/beam-splitter physics, or standard frequency-bin interferometry. Assign novelty only after WP07.
+No prize-level framing. No novelty claim for standard NEP, Fisher sensing, Poisson/dead-time formulas, renewal spectra, sideband generation, beam-splitter physics, or standard interferometry. Assign novelty only after WP07.
 
 ## Documentation rule
 
-After every material advance, update the corresponding note and this handoff. When the frontier changes, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
+After every material prior-art finding or scope change, update the relevant note and this handoff. When the frontier changes, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
