@@ -18,25 +18,11 @@ WP31 remains superseded. WP32 is canonical; WP33 hostile audit remains PASS unde
 
 ## New active frontier — practical/falsifiability Paper 4
 
-The next program is deliberately more grounded than the existing theorem papers.
-
 Working title:
 
 > **Operational benchmarks for temporal information in photodetection**
 
 Objective: translate temporal Fisher/resource statements into standard detector observables and make falsifiability explicit.
-
-Primary observables:
-
-- frequency-dependent responsivity;
-- measured output noise PSD;
-- NEP/detectivity;
-- response versus information bandwidth;
-- raw photon/event timestamps;
-- timing jitter;
-- dead time/recovery/memory;
-- optical carrier/sideband populations;
-- standard resonant-exchange coupling parameters.
 
 Workspace:
 
@@ -44,21 +30,13 @@ Workspace:
 - `practical_temporal_information/AGENTS.md`;
 - `practical_temporal_information/notes/`.
 
-## WP01 result — linear Gaussian detector bridge
+## WP01 — linear Gaussian detector bridge
 
-For
-
-`delta P(t)=x cos(2 pi f t)+y sin(2 pi f t)`
-
-with peak optical-power quadratures `x,y`, linear small-signal responsivity `R(f)`, and one-sided additive stationary Gaussian output-noise PSD `S_n(f)`, the Fisher rates are
+For peak optical-power quadratures `x,y`, linear small-signal responsivity `R(f)`, and one-sided additive stationary Gaussian output-noise PSD `S_n(f)`,
 
 `F_xx/T = F_yy/T = |R(f)|^2/S_n(f)`,
 
-`F_xy -> 0`,
-
-and
-
-**`Tr F/T = 2|R(f)|^2/S_n(f)`.**
+`Tr F/T = 2|R(f)|^2/S_n(f)`.
 
 When conventional frequency-resolved NEP is valid,
 
@@ -66,42 +44,80 @@ When conventional frequency-resolved NEP is valid,
 
 so
 
-**`F_xx/T = 1/NEP(f)^2`**
+`F_xx/T = 1/NEP(f)^2`,
 
-and
+`Tr F/T = 2/NEP(f)^2`.
 
-**`Tr F/T = 2/NEP(f)^2`.**
+For arbitrary weak waveform coordinates,
 
-For arbitrary weak input-waveform coordinates `q_i(t)`,
+`F_ij = 4 Re integral_0^infinity q_i*(f) q_j(f)/NEP(f)^2 df`.
 
-**`F_ij = 4 Re integral_0^infinity q_i*(f) q_j(f)/NEP(f)^2 df`.**
+Thus inverse-square NEP is exactly the frequency weighting of the local input-waveform Fisher metric in the linear stationary Gaussian regime. Response bandwidth and Fisher-information bandwidth need not coincide when noise is frequency dependent.
 
-Thus inverse-square NEP is exactly the frequency weighting of the local input-waveform Fisher metric in the linear stationary Gaussian regime.
+Authoritative note: `practical_temporal_information/notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`.
 
-WP01 also shows that conventional responsivity 3-dB bandwidth is not generally an information bandwidth. The relevant narrowband information response is proportional to
+## WP02 — ideal Poisson timestamps and independent timing jitter
 
-`|R(f)|^2/S_n(f)=1/NEP(f)^2`.
+For
 
-If signal and dominant input noise are passed through the same nonzero linear transfer function, both can attenuate while their Fisher ratio remains unchanged; additive post-filter/readout noise restores a finite information rolloff. This gives a conventional signal-processing explanation for why speed-of-response alone does not determine temporal estimation performance.
+`lambda(t)=lambda_0[1+x cos(Omega t)+y sin(Omega t)]`
 
-Authoritative derivation:
+with fractional peak quadratures, the ideal inhomogeneous-Poisson model gives
 
-`practical_temporal_information/notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`.
+**`Tr F/T=lambda_0`**
 
-## Prior-art status for WP01
+exactly for the continuously illuminated finite-window model. For long/integer-period records,
 
-No novelty claim is made for NEP, detectivity, matched filtering, Fisher information in optical sensing, or the generic connection between detector noise and estimation precision.
+`F_xx/T=F_yy/T=lambda_0/2`, `F_xy/T -> 0`.
 
-A 2025 Nature Photonics consensus statement strongly supports using measured frequency-dependent responsivity, noise PSD, and frequency/bandwidth-specific NEP and warns against inappropriate white-noise bandwidth normalization under colored noise. Recent optical-sensing papers also combine Fisher information with detector NEP. Therefore the publishable novelty, if any, must come from the integrated temporal-information framework, new detector-ranking/crossover laws, and explicit survival/synthesis falsification tests rather than from `F ~ 1/NEP^2` alone.
+For optical-power quadratures,
+
+`Tr F_P/T=eta/(hbar omega_opt P_0)`.
+
+This exactly matches the WP01 shot-noise formula `2/NEP_shot^2` for an ideal unity-gain photodiode using one-sided `S_I=2qI_0`.
+
+Independent timestamp jitter with characteristic function `Phi_J(Omega)` gives
+
+**`Tr F_jitter/T=lambda_0 |Phi_J(Omega)|^2`.**
+
+For Gaussian jitter standard deviation `sigma_t`,
+
+`Tr F/T=lambda_0 exp[-Omega^2 sigma_t^2]`,
+
+`f_F,3dB=sqrt(ln 2)/(2 pi sigma_t)`.
+
+Independent unmodulated dark counts with signal rate `lambda_s` and dark rate `lambda_d` give
+
+`Tr F/T=lambda_s^2/(lambda_s+lambda_d)`
+
+before the jitter factor.
+
+Authoritative note: `practical_temporal_information/notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`.
+
+## Scientific significance at this stage
+
+WP01–WP02 establish a clean common language between ordinary analog photodetector characterization and raw event-timestamp estimation, but they are not by themselves claimed as novel enough for Paper 4.
+
+The publication-level test now shifts to WP03–WP04:
+
+- can full timestamp information distinguish detector recovery laws that conventional mean count-rate curves cannot distinguish?
+- can the survival/synthesis transition be made experimentally visible as a seeded-to-empty optical-sideband crossover with a sharp measurable inequality?
+
+If those fail to produce nontrivial new consequences, do not force a fourth paper.
+
+## Prior-art / claim boundary
+
+No novelty claim for standard NEP, detectivity, matched filtering, generic Fisher information in sensing, Poisson-process Fisher information, shot-noise formulas, or independent timing-jitter characteristic-function attenuation.
+
+A 2025 Nature Photonics consensus statement supports the use of measured frequency-dependent responsivity/noise PSD/NEP and warns against inappropriate white-noise normalization under colored noise. Neighboring optical-sensing work already combines Fisher precision with detector NEP. The new work must therefore earn novelty through integration, memory-sensitive benchmarks, detector ranking, survival/synthesis crossover, or falsification structure.
 
 ## Immediate next work
 
-1. WP02 — derive ideal inhomogeneous-Poisson two-quadrature timestamp Fisher rate and exact independent-jitter attenuation.
-2. WP03 — add dead time/recovery/memory and connect to the random-time spectral-resource theorem.
-3. WP04 — construct the optical seeded-to-empty sideband survival/synthesis crossover.
-4. WP05 — standard resonant-exchange Hamiltonian interpretation of unitary coupling cost.
-5. WP06 — integrated falsification matrix.
-6. WP07 — prior-art/significance gate before manuscript drafting.
+1. WP03 — derive practical dead-time/recovery/memory benchmarks and connect them to the existing random-time spectral-resource theorem.
+2. WP04 — construct optical seeded-to-empty sideband survival/synthesis crossover.
+3. WP05 — standard resonant-exchange interpretation of the unitary-coupling theorem.
+4. WP06 — integrated falsification matrix.
+5. WP07 — dedicated prior-art/significance gate before manuscript drafting.
 
 ## Publication/claim discipline
 
