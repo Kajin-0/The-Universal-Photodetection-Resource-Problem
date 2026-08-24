@@ -11,15 +11,14 @@ Create a fourth paper that translates the temporal-information resource program 
 ## Read first
 
 1. `README.md`
-2. `notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
-3. `notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
-4. `notes/WP06_MINIMUM_PAPER_STACK_AND_FALSIFICATION_MATRIX.md`
+2. `notes/WP09_HOSTILE_MANUSCRIPT_AUDIT_AND_SPECTATOR_INDEPENDENT_CROSSOVER.md`
+3. `notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
+4. `notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
 5. `notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
 6. `notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
 7. `notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
-8. `notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`
-9. `notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
-10. root `docs/CURRENT_RESEARCH_STATE.md`
+8. `manuscript/practical_temporal_information/README.md`
+9. root `docs/CURRENT_RESEARCH_STATE.md`
 
 ## Current status
 
@@ -27,91 +26,82 @@ WP07 prior-art gate: **PASS WITH NARROWED CLAIMS**.
 
 WP08 final pre-manuscript gate: **PASS**.
 
-The manuscript workspace may now be created.
+WP09 hostile manuscript audit: **CONDITIONAL PASS**. No coefficient or theorem-use defect was found, but the central crossover should be generalized from the normalized two-level baseline to a selected carrier/sideband pair embedded in an arbitrary inert spectator sector before scientific freeze.
 
-## Final Paper-4 claim hierarchy
+The first full manuscript draft exists and has its own static/CI gate. Initial CI passed the static provenance gate and exposed one purely mechanical REVTeX table incompatibility; a deterministic R1 transform removes only the incompatible `ruledtabular` wrapper before compilation.
 
-### New candidate Paper-4 science
+## Strengthened Paper-4 theorem after WP09
 
-**P4-T1 — support-seed crossover**
+Let
 
-For the explicit positive-semidefinite carrier/sideband family of WP04,
+`rho_p = a_p |c><c| + p |s><s| + sigma_p`,
 
-`lim_(p->0+) 4p/R_lin^2 = Delta P_s(0)`.
+where `sigma_p>=0` is supported on spectator modes, `a_p>p`, `a_p->q>0` as `p->0+`, and the calibrated local converter acts only on the selected carrier/sideband pair.
 
-This is the scientific center of Paper 4: controlled removal of baseline spectral support converts the finite-radius survival resource into the rank-boundary second-order synthesis resource.
+Then
 
-**P4-C1 — ideal phase-modulation boundary saturator**
+`P_s(p;r)=p+(a_p-p) sin^2(kappa r)`,
 
-Ordinary weak phase modulation with the locked phase-sensitive analyzer saturates the bilateral boundary population-curvature Fisher law.
+and the exact affine radius is
+
+`R_lin^2 = a_p p/[kappa^2(a_p-p)^2]`.
+
+The finite-radius survival law gives
+
+`(R_lin^2/4)Tr F <= p`.
+
+At zero seed,
+
+`Delta P_s(0)=4 kappa^2 q`.
+
+Therefore
+
+**`lim_(p->0+) 4p/R_lin^2 = 4 kappa^2 q = Delta P_s(0)`.**
+
+This is independent of the detailed spectator population and of how normalization compensation is distributed among spectator modes, provided the selected carrier occupation tends to `q` and the local converter leaves spectators inert.
+
+The original `a_p=1-p`, `sigma_p=0`, `q=1` model remains the simplest plotted special case.
+
+## Claim hierarchy
+
+### Candidate original Paper-4 science
+
+- spectator-independent selected-mode support-seed crossover above;
+- ideal weak phase-modulation boundary saturator under the locked convention;
+- integrated falsification architecture.
 
 Priority remains unverified/not certified; targeted WP07 search found no direct collision.
 
 ### Cited upstream benchmarks
 
-**P4-B1 — Type-II memory benchmark.** Use the frozen random-time paper's theorem that the entire homogeneous saturation curve can be fixed while timestamp information differs. Make it experimentally actionable; do not republish it as a new theorem.
+- Type-II memory/information theorem from the frozen random-time paper;
+- prescribed-curvature implementation theorem from the frozen PRA paper.
 
-**P4-B2 — prescribed-curvature implementation benchmark.** Use the frozen PRA theorem `V_min=(1/2)Tr C` and WP05's standard resonant beam-splitter realization.
+Do not duplicate their proofs or novelty claims.
 
-### Standard bridge/background
+### Standard bridges
 
-- **P4-S1:** linear Gaussian `Tr F/T=2/NEP(f)^2` under the locked convention.
-- **P4-S2:** ideal Poisson/jitter `Tr F/T=lambda0 |Phi_J(Omega)|^2` for fractional two-quadrature modulation.
-- **P4-S3:** explicit conventional-specification incompleteness example from WP08.
-
-## Opening detector example
-
-Two detectors have identical responsivity
-
-`|H|^2=1/(1+x^2)`, `x=f/f_c`,
-
-the same DC output-noise PSD `S0`, the same DC NEP, and the same responsivity 3-dB frequency `f_c`.
-
-Detector A: `S_A=S0`.
-
-Detector B: `S_B/S0=1/5+(4/5)/(1+25x^2)`.
-
-Their normalized single-quadrature FI spectra are
-
-`J_A=1/(1+x^2)`,
-
-`J_B=(1+25x^2)/[(1+x^2)(1+5x^2)]`.
-
-At `f=f_c`, `J_B/J_A=13/3≈4.3333` despite identical conventional DC sensitivity and responsivity bandwidth. B remains above half its DC FI until `f≈2.9703 f_c`.
-
-Use this as the manuscript opening. It is an explicit standard-detector illustration, not a priority claim.
+- linear Gaussian `Tr F/T=2/NEP(f)^2`;
+- ideal Poisson timestamps and independent-jitter attenuation;
+- WP08 equal-DC-NEP/equal-response-bandwidth but unequal-FI-spectrum example;
+- standard resonant beam-splitter implementation benchmark.
 
 ## Falsification hierarchy
 
 Always distinguish:
 
-1. **Level I — detector-model/reduction failure.** Gaussian, Poisson, independent-jitter, ideal modulation, or ideal Hamiltonian assumptions fail.
-2. **Level II — resource-law challenge.** Only after theorem hypotheses, parameter normalization, support/radius, and measured FI/curvature are independently verified.
-3. **Level III — saturating-model equality failure.** Usually falsifies the selected ideal saturator, not the general theorem.
-
-## Manuscript architecture
-
-I. What conventional detector specifications do not determine.
-
-II. Memory benchmark: identical saturation does not imply identical information.
-
-III. Spectral support: seeded survival -> empty-sideband synthesis.
-
-IV. Standard Hamiltonian implementation.
-
-V. Falsification matrix.
-
-VI. Discussion.
-
-Maximum four figures. Main-text target roughly 10–14 journal pages before references.
+1. **Level I — detector-model/reduction failure**;
+2. **Level II — resource-law challenge only after independent verification of theorem hypotheses**;
+3. **Level III — failure of an ideal saturating model/equality**.
 
 ## Immediate work order
 
-1. create `manuscript/practical_temporal_information/` with manuscript architecture, references, and a minimal REVTeX draft;
-2. write the Introduction/measurement bridge from WP08 without novelty overclaiming;
-3. integrate WP04 as the principal original theorem;
-4. cite rather than duplicate the Paper-2 and PRA proofs;
-5. run a hostile manuscript-level audit before calling any draft submission-ready.
+1. finish mechanical R1 build verification;
+2. generate a scientific R2 that replaces the narrow crossover subsection with the WP09 spectator-independent theorem while preserving the detector-first architecture;
+3. compile/render R2 and run a second hostile manuscript audit;
+4. only then begin figure production and publication-style compression.
+
+Do not create new detector-model sidequests.
 
 ## Prior-art exclusions
 
@@ -119,4 +109,4 @@ Do not claim novelty for dead-time information theory, variable/random dead time
 
 ## Documentation rule
 
-After every material manuscript/science change, update the corresponding note and this handoff. When the frontier changes, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
+After every material result or scope change, update the corresponding note and this handoff. When the frontier changes, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
