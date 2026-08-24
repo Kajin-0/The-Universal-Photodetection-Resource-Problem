@@ -8,77 +8,120 @@ The repository, not chat history, is authoritative.
 
 Create a fourth paper that brings the temporal-information resource program down to standard detector physics and builds explicit falsifiability into the presentation.
 
-Do **not** turn this into another general resource-theory paper. The default test for every section is: can an experimental detector physicist identify what quantity would be measured and what observation would contradict the prediction?
+Do not turn this into another general resource-theory paper. Every central result should answer: what is measured, what is predicted, and what observation would contradict it?
 
 ## Frozen upstream inputs
 
 Do not modify the scientific theorem/proof layers of:
 
-1. PRX Quantum R3/R4 flagship `Two spectral-resource regimes for autonomous temporal information`;
+1. PRX Quantum flagship `Two spectral-resource regimes for autonomous temporal information`;
 2. random-time paper `Spectral Resource Laws for Temporal Fisher Information`;
 3. PRA R1 `Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature`.
 
-If the practical program exposes a genuine defect in an upstream theorem, record it immediately and stop using the affected claim until repaired. Otherwise upstream modifications should be limited to later small cross-reference/application paragraphs and only after Paper 4 has a stable result.
+If Paper 4 exposes a genuine upstream defect, record it immediately and stop using the affected claim until repaired. Otherwise upstream changes should be limited to later small application/cross-reference paragraphs after Paper 4 is stable.
+
+## Read first
+
+1. `README.md`
+2. `notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`
+3. `notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
+4. root `docs/CURRENT_RESEARCH_STATE.md`
 
 ## Current frontier
 
-WP01 has started the detector-language bridge.
+### WP01 — complete: linear Gaussian detector
 
-Primary practical observables:
-
-- modulation frequency `f` or angular frequency `Omega`;
-- transfer responsivity `R(f)` in A/W or V/W;
-- one-sided output noise PSD `S_n(f)` in A^2/Hz or V^2/Hz;
-- conventional frequency-resolved `NEP(f)=sqrt(S_n(f))/|R(f)|` when the linear/PSD assumptions hold;
-- raw photon/event timestamps and their likelihood under modulated illumination;
-- timing-jitter distribution and characteristic function;
-- dead-time/recovery statistics;
-- optical carrier/sideband populations and their modulation curvature.
-
-## Convention lock under development
-
-All Fisher/PSD prefactors must be derived explicitly. Never write `F ~ R^2/S` without stating:
-
-- one-sided versus two-sided PSD;
-- peak versus RMS modulation amplitudes;
-- observation duration;
-- whether Fisher information refers to one quadrature or the trace of cosine/sine quadratures;
-- units of the estimated parameters.
-
-The current candidate convention is: for peak input quadratures `x,y` in watts, linear response `R(f)` and one-sided output PSD `S_n(f)`, long-time stationary Gaussian noise should give
+For peak optical-power quadratures `x,y`, one-sided output-noise PSD `S_n(f)`, and linear responsivity `R(f)`,
 
 `F_xx/T = F_yy/T = |R(f)|^2/S_n(f)`
 
-and therefore
+and
 
-`Tr F/T = 2 |R(f)|^2/S_n(f) = 2/NEP(f)^2`.
+`Tr F/T = 2|R(f)|^2/S_n(f)`.
 
-This is provisional until WP01 is fully derived and cross-checked.
+When conventional frequency-resolved NEP is valid,
 
-## Initial work packages
+`NEP(f)=sqrt(S_n(f))/|R(f)|`,
 
-- **WP01:** Linear Gaussian detector: Fisher information, matched filtering, NEP, bandwidth, units and prefactors.
-- **WP02:** Ideal Poisson timestamps + independent timing jitter.
-- **WP03:** Dead time/recovery/memory and connection to the random-time spectral-resource theorem.
-- **WP04:** Optical sideband survival-to-synthesis crossover with seeded and empty sidebands.
-- **WP05:** Textbook resonant-exchange interpretation of the exact unitary-coupling cost.
-- **WP06:** Integrated falsification matrix and minimal practical manuscript theorem stack.
-- **WP07:** Dedicated prior-art/significance gate before manuscript drafting.
+so
 
-Work-package numbering may be extended only when necessary; do not create sidequests that do not sharpen measurement, falsifiability, or standard-physics interpretation.
+`F_xx/T=1/NEP(f)^2`,
+
+`Tr F/T=2/NEP(f)^2`.
+
+For arbitrary weak waveform coordinates,
+
+`F_ij = 4 Re integral_0^infinity q_i*(f) q_j(f)/NEP(f)^2 df`.
+
+The task-relevant information response is `|R|^2/S_n=1/NEP^2`, not responsivity alone. Therefore response 3-dB bandwidth and Fisher-information bandwidth need not coincide.
+
+### WP02 — complete: Poisson timestamps and independent jitter
+
+For an ideal inhomogeneous Poisson detector
+
+`lambda(t)=lambda_0[1+x cos(Omega t)+y sin(Omega t)]`
+
+with fractional peak quadratures,
+
+**`Tr F/T=lambda_0`**
+
+exactly for the continuously illuminated finite-window model. For integer-period/long observations,
+
+`F_xx/T=F_yy/T=lambda_0/2`, `F_xy/T -> 0`.
+
+For optical-power quadratures with `lambda_0=eta P_0/(hbar omega_opt)`,
+
+`Tr F_P/T=eta/(hbar omega_opt P_0)`.
+
+This exactly equals the WP01 prediction `2/NEP_shot^2` using one-sided shot-current PSD `S_I=2qI_0` and `R_I=eta q/(hbar omega_opt)`.
+
+If each timestamp is independently displaced by jitter `J`, with characteristic function `Phi_J(Omega)`,
+
+**`Tr F_jitter/T=lambda_0 |Phi_J(Omega)|^2`.**
+
+For Gaussian jitter standard deviation `sigma_t`,
+
+`Tr F/T=lambda_0 exp[-Omega^2 sigma_t^2]`
+
+and
+
+`f_F,3dB=sqrt(ln 2)/(2 pi sigma_t) ~= 0.1325/sigma_t`.
+
+Independent dark counts `lambda_d` with signal rate `lambda_s` give
+
+`Tr F/T=lambda_s^2/(lambda_s+lambda_d)`
+
+before the jitter factor.
+
+These formulas give direct timestamp-record falsification tests and make analog shot-noise and event-timestamp descriptions quantitatively identical when they represent the same ideal detection process.
+
+## Convention lock
+
+Every Fisher/PSD statement must specify:
+
+- one-sided versus two-sided PSD;
+- peak versus RMS modulation;
+- one- versus two-quadrature Fisher information;
+- absolute-power versus fractional modulation coordinates;
+- observation/gating assumptions;
+- whether timestamps are raw, independently jittered, or memory-correlated.
+
+## Next work packages
+
+- **WP03:** dead time/recovery/memory and connection to the random-time spectral-resource theorem.
+- **WP04:** optical sideband survival-to-synthesis crossover with seeded and empty sidebands.
+- **WP05:** textbook resonant-exchange interpretation of exact unitary-coupling cost.
+- **WP06:** integrated falsification matrix and minimal practical manuscript theorem stack.
+- **WP07:** dedicated prior-art/significance gate before manuscript drafting.
+
+Do not create sidequests that do not sharpen measurement accessibility, falsifiability, or standard-physics interpretation.
 
 ## Publication criterion
 
-Paper 4 is justified only if it produces at least one result beyond a tutorial restatement. Candidate publication-level contributions include:
+Paper 4 is justified only if it produces at least one result beyond a tutorial restatement. Candidate publication-level content includes a nontrivial detector-ranking law, a memory/timestamp benchmark invisible to mean count curves, a measurable survival/synthesis crossover, or an integrated falsification protocol that directly tests the upstream resource inequalities.
 
-- a rigorous convention-controlled equivalence between a standard detector metric and temporal Fisher-information rate that clarifies when conventional normalization fails;
-- a generalized information-equivalent input-noise benchmark that remains meaningful for nonlinear/non-Gaussian/timestamp detectors, if prior art does not already subsume it;
-- a new experimentally accessible survival/synthesis crossover prediction;
-- a unified falsification protocol that tests the abstract resource inequalities with standard detector measurements;
-- a nontrivial model comparison showing conventional bandwidth/NEP or D* can mis-rank detectors for temporal-information tasks.
-
-If none survives prior-art review, do not force a fourth paper; retain the work as an applications/benchmarking note or additions to existing papers.
+No novelty claim is made for standard NEP, detectivity, matched filtering, Poisson Fisher information, shot-noise formulas, or generic timing-jitter transfer functions.
 
 ## Documentation rule
 
-After every material advance, update the corresponding note and this handoff. When the program frontier changes, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md` on this branch.
+After every material advance, update the corresponding note and this handoff. When the frontier changes, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
