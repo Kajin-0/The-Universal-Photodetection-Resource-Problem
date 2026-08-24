@@ -14,68 +14,65 @@ The three mature temporal-information papers remain scientifically frozen. The a
 
 1. `docs/CURRENT_RESEARCH_STATE.md`
 2. `practical_temporal_information/AGENTS.md`
-3. `practical_temporal_information/notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
-4. `practical_temporal_information/notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
-5. `practical_temporal_information/notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
-6. `practical_temporal_information/notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
-7. `practical_temporal_information/notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
+3. `practical_temporal_information/notes/WP09_HOSTILE_MANUSCRIPT_AUDIT_AND_SPECTATOR_INDEPENDENT_CROSSOVER.md`
+4. `practical_temporal_information/notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
+5. `practical_temporal_information/notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
+6. `manuscript/practical_temporal_information/README.md`
+7. `manuscript/practical_temporal_information/MANUSCRIPT_ARCHITECTURE.md`
 
 ## Paper-4 gate status
 
-- WP07 prior-art/significance gate: **PASS WITH NARROWED CLAIMS**.
-- WP08 final pre-manuscript gate: **PASS**.
+- WP07 prior-art/significance: **PASS WITH NARROWED CLAIMS**.
+- WP08 pre-manuscript gate: **PASS**.
+- WP09 first hostile manuscript audit: **CONDITIONAL PASS**.
 
-Manuscript drafting may begin.
+The first full REVTeX draft exists and its static provenance gate passed. Initial CI exposed only a mechanical `ruledtabular` incompatibility; R1 generation removes that wrapper deterministically before compilation.
 
-## Final Paper-4 hierarchy
+## Strengthened Paper-4 theorem after WP09
 
-### New candidate science
+For a selected carrier/sideband pair embedded in arbitrary inert spectator modes,
 
-WP04 support-controlled crossover:
+`rho_p=a_p|c><c|+p|s><s|+sigma_p`,
 
-`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.
+with `a_p->q>0`, the calibrated two-mode converter gives
 
-This explicitly connects finite-radius spectral survival to rank-boundary second-order synthesis as baseline sideband support is removed. No direct collision for this exact identity/interpretation was found in the targeted search. Priority remains unverified.
+`R_lin^2=a_p p/[kappa^2(a_p-p)^2]`
 
-### Imported benchmark, not new Paper-4 theorem
+and
 
-WP03's Type-II information theorem belongs to the frozen random-time paper. Paper 4 may translate it into an experimental/falsification protocol but must cite the companion and not duplicate its novelty claim.
+`Delta P_s(0)=4kappa^2 q`.
 
-### Standard bridges
+Therefore
 
-- linear Gaussian `Tr F/T=2/NEP(f)^2`;
-- ideal Poisson timestamps `Tr F/T=lambda0`;
-- independent jitter `|Phi_J|^2`;
-- WP08 explicit equal-DC-NEP/equal-response-bandwidth but unequal-FI-spectrum detector example;
-- WP05 resonant beam-splitter implementation benchmark of the frozen PRA theorem.
+**`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.**
 
-## Conventional-specification example
+The original normalized two-level model is only the `q=1` special case. The generalized result is exact for a lossless selected-mode converter with inert spectators; it is not claimed for arbitrary lossy or parameter-dependent channels.
 
-With identical response `|H|^2=1/(1+x^2)` and equal DC noise,
+Targeted prior-art search found no direct collision for this exact identity/interpretation. Priority remains unverified/not certified.
 
-`J_A=1/(1+x^2)`,
+## Other Paper-4 components
 
-`J_B=(1+25x^2)/[(1+x^2)(1+5x^2)]`.
-
-At `x=1`, `J_B/J_A=13/3≈4.3333` despite equal DC NEP and equal responsivity 3-dB bandwidth. B remains above half its DC FI until `x≈2.9703`.
-
-Use this as the manuscript opening; it is an illustration, not a priority claim.
+- Type-II memory theorem: cited result from the frozen random-time paper, not new Paper-4 theorem.
+- `Tr F/T=2/NEP(f)^2`: standard linear-Gaussian bridge under explicit conventions.
+- ideal Poisson/jitter relation: standard timestamp bridge.
+- WP08 equal-DC-NEP/equal-response-bandwidth but unequal-FI-spectrum example: standard detector illustration.
+- resonant beam-splitter cost equality: standard-physics benchmark of the frozen PRA theorem.
 
 ## Falsification hierarchy
 
-Always distinguish detector-model/reduction failure, resource-law violation under independently verified hypotheses, and failure of a model-specific saturating equality.
+Always distinguish detector-model/reduction failure, resource-law challenge after independently verifying theorem assumptions, and failure of a model-specific saturating equality.
 
 ## Immediate work order
 
-1. create `manuscript/practical_temporal_information/`;
-2. draft from standard detector physics outward;
-3. keep WP04 as the principal original theorem;
-4. cite rather than duplicate upstream theorem proofs;
-5. run hostile manuscript-level review before freezing a submission package.
+1. complete R1 mechanical build verification;
+2. produce R2 with the WP09 generalized crossover theorem;
+3. compile and render R2;
+4. hostile-audit R2 before any science freeze;
+5. only then produce figures and publication-style compression.
 
 ## Claim discipline
 
-No prize-level framing. No novelty claim for generic dead-time information theory, variable/random dead time, interval characterization, paralyzable correlations, standard NEP/Fisher sensing, sideband metrology, seeded/vacuum interferometry, generic rank-boundary QFI, beam-splitter physics, or standard interferometry. No implied experimental validation without data.
+No prize-level framing. No implied experimental validation without data. No novelty claim for generic dead-time information theory, variable/random dead time, interval characterization, paralyzable correlations, standard NEP/Fisher sensing, sideband metrology, seeded/vacuum interferometry, generic rank-boundary QFI, beam-splitter physics, or standard interferometry.
 
 ## Documentation rule
 
