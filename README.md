@@ -12,11 +12,11 @@ The three mature temporal-information papers remain separate and scientifically 
 2. **Broad operational paper:** *Spectral Resource Laws for Temporal Fisher Information* — random-time/spectral-survival and photodetection-facing theory.
 3. **PRA dynamical completion:** *Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature* — exact prescribed-curvature unitary-coupling theorem.
 
-A fourth, deliberately grounded program is now active on this branch:
+A fourth, deliberately grounded program is active on this branch:
 
 4. **Practical/falsifiability bridge:** working title *Operational benchmarks for temporal information in photodetection*.
    - translates Fisher/resource statements into responsivity, noise PSD, NEP, bandwidth, timestamp, jitter, dead-time, and optical-sideband observables;
-   - must contain explicit falsification criteria;
+   - requires explicit falsification criteria;
    - must remain useful in standard detector language even if a reader does not adopt the full abstract resource framework;
    - does not modify the frozen scientific content of Papers 1–3 unless it exposes a genuine defect.
 
@@ -26,19 +26,15 @@ Paper-4 workspace:
 - `practical_temporal_information/AGENTS.md`;
 - `practical_temporal_information/notes/`.
 
-The earlier three-paper architecture remains recorded in `manuscript/THREE_PAPER_PUBLICATION_ARCHITECTURE_2026-08-23.md`; Paper 4 is an applications/falsifiability bridge, not an omnibus replacement.
+## Paper 4 current frontier
 
-## Paper 4 current frontier — WP01
+### WP01 — linear Gaussian Fisher/NEP bridge
 
-For the standard weak sinusoidal detector model
-
-`delta P(t)=x cos(2 pi f t)+y sin(2 pi f t)`
-
-with **peak** quadrature amplitudes `x,y`, linear responsivity `R(f)`, and **one-sided** additive stationary Gaussian output-noise PSD `S_n(f)`, WP01 derives
+For peak optical-power quadratures `x,y`, linear responsivity `R(f)`, and one-sided additive stationary Gaussian output-noise PSD `S_n(f)`,
 
 `F_xx/T = F_yy/T = |R(f)|^2/S_n(f)`
 
-and therefore
+and
 
 `Tr F/T = 2 |R(f)|^2/S_n(f)`.
 
@@ -54,19 +50,53 @@ and
 
 **`Tr F/T = 2/NEP(f)^2`.**
 
-The arbitrary-waveform Gaussian Fisher matrix becomes
+For arbitrary weak waveform coordinates,
 
 `F_ij = 4 Re integral_0^infinity q_i*(f) q_j(f) / NEP(f)^2 df`.
 
-Thus inverse-square frequency-resolved NEP is exactly the matched-filter Fisher weighting in the linear stationary Gaussian regime.
+The practical information response is therefore `|R|^2/S_n=1/NEP^2`, so responsivity 3-dB bandwidth and task-specific Fisher-information bandwidth need not coincide when noise is frequency dependent.
 
-WP01 also shows that conventional responsivity bandwidth need not equal task-specific Fisher-information bandwidth when output noise is frequency dependent. If signal and dominant input noise are filtered by the same invertible transfer function, responsivity may roll off while the ideal matched-filter Fisher information remains unchanged until post-filter/readout noise dominates.
+Authoritative note: `practical_temporal_information/notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`.
 
-Authoritative derivation:
+### WP02 — ideal Poisson timestamps and timing jitter
 
-`practical_temporal_information/notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`.
+For
 
-No novelty claim is made for NEP, detectivity, Fisher information in optical sensing, or the generic fact that detector noise limits Fisher precision. Dedicated prior-art review is required before any generalized information-equivalent detector metric is claimed as new.
+`lambda(t)=lambda_0[1+x cos(Omega t)+y sin(Omega t)]`
+
+with fractional peak quadratures, the continuously illuminated inhomogeneous-Poisson model gives
+
+**`Tr F/T=lambda_0`**
+
+exactly. For integer-period/long records,
+
+`F_xx/T=F_yy/T=lambda_0/2`, `F_xy/T -> 0`.
+
+For optical-power quadratures with `lambda_0=eta P_0/(hbar omega_opt)`,
+
+`Tr F_P/T=eta/(hbar omega_opt P_0)`.
+
+This exactly equals WP01's `2/NEP_shot^2` result for an ideal shot-noise-limited photodiode using one-sided `S_I=2qI_0`.
+
+If each timestamp is independently displaced by jitter `J` with characteristic function `Phi_J(Omega)`,
+
+**`Tr F_jitter/T=lambda_0 |Phi_J(Omega)|^2`.**
+
+For Gaussian jitter standard deviation `sigma_t`,
+
+`Tr F/T=lambda_0 exp[-Omega^2 sigma_t^2]`
+
+and
+
+`f_F,3dB=sqrt(ln 2)/(2 pi sigma_t) ~= 0.1325/sigma_t`.
+
+Independent unmodulated dark counts give `Tr F/T=lambda_s^2/(lambda_s+lambda_d)` before the jitter factor.
+
+Authoritative note: `practical_temporal_information/notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`.
+
+## Why the practical program may be publishable
+
+WP01–WP02 by themselves are mostly a rigorous bridge, not yet sufficient novelty. The stronger target is WP03–WP04: identify detector-memory information invisible in mean count curves and construct a measurable transition between pre-existing spectral survival and baseline-empty sideband synthesis. Paper 4 is justified only if those produce a nontrivial falsifiable result beyond tutorial translation.
 
 ## Existing flagship / companion status
 
@@ -78,16 +108,17 @@ PRA R1 final verification: run `32673160217` PASS; artifact `9501942180`; SHA-25
 
 Priority remains **unverified, not certified**.
 
-Do not use Nobel/prize-level framing in manuscripts, cover letters, abstracts, or scientific repository claims. Do not claim novelty for generic Bures/Uhlmann/SLD geometry, covariant dilation theory, standard NEP/detectivity definitions, Fisher information as a generic sensing metric, classical nonregular boundary statistics, or standard PSD-cone mathematics.
+Do not use Nobel/prize-level framing in manuscripts, cover letters, abstracts, or scientific repository claims. Do not claim novelty for standard NEP/detectivity, matched filtering, generic Fisher sensing, Poisson-process Fisher information, shot-noise formulas, timing-jitter transfer functions, Bures/Uhlmann/SLD geometry, covariant dilation theory, or standard PSD-cone mathematics.
 
 ## Current work order
 
 1. preserve the three mature papers' scientific theorem/proof layers;
-2. execute Paper-4 WP02: ideal Poisson timestamps and independent timing jitter;
-3. then derive dead-time/recovery/memory benchmarks and connect them to the random-time spectral-resource paper;
-4. construct a seeded-to-empty optical-sideband survival/synthesis crossover with measurable falsification conditions;
-5. perform a dedicated prior-art/significance gate before drafting Paper 4;
-6. update practical-program notes and top-level handoffs after every material advance.
+2. execute WP03: dead time/recovery/memory benchmarks and connect them to the random-time spectral-resource paper;
+3. construct WP04 seeded-to-empty optical-sideband survival/synthesis crossover;
+4. translate the PRA implementation cost into a textbook resonant-exchange model;
+5. build an integrated falsification matrix;
+6. perform a dedicated prior-art/significance gate before drafting Paper 4;
+7. update practical-program notes and top-level handoffs after every material advance.
 
 ## Manuscript integrity
 
