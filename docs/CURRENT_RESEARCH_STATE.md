@@ -8,7 +8,7 @@
 
 The three mature temporal-information papers remain scientifically frozen in their theorem/proof layers. WP31 is superseded; WP32 remains canonical and WP33 remains PASS under stated assumptions.
 
-## New active frontier — practical/falsifiability Paper 4
+## Active frontier — practical/falsifiability Paper 4
 
 Working title:
 
@@ -20,17 +20,13 @@ Workspace: `practical_temporal_information/`.
 
 ## WP01 — linear Gaussian detector
 
-For peak optical-power quadratures and one-sided output noise PSD,
+For peak optical-power quadratures and one-sided output PSD,
 
 `F_xx/T=F_yy/T=|R(f)|^2/S_n(f)=1/NEP(f)^2`,
 
 `Tr F/T=2/NEP(f)^2`.
 
-For arbitrary weak waveform coordinates,
-
-`F_ij=4 Re integral_0^infinity q_i*(f)q_j(f)/NEP(f)^2 df`.
-
-Thus inverse-square NEP is the local Gaussian input-waveform Fisher weighting, and responsivity bandwidth is not generally identical to information bandwidth.
+Thus inverse-square NEP is the weak-waveform Fisher weighting in the linear stationary Gaussian regime, and response bandwidth need not equal information bandwidth.
 
 ## WP02 — ideal timestamps and timing jitter
 
@@ -38,82 +34,107 @@ For fractional sinusoidal modulation of an ideal Poisson event rate,
 
 `Tr F/T=lambda_0`.
 
-For optical-power coordinates this exactly equals the analog shot-noise result `2/NEP_shot^2`.
+For optical-power coordinates this exactly equals the analog shot-noise result. Independent timestamp jitter gives factor `|Phi_J(Omega)|^2`.
 
-Independent timestamp jitter with characteristic function `Phi_J(Omega)` gives
+## WP03 — dead time/recovery
 
-`Tr F/T=lambda_0|Phi_J(Omega)|^2`.
+For deterministic paralyzable recovery at `lambda tau=1`, the complete timestamp channel has `G(0)=0` but `G(omega)>0` at every nonzero frequency. At `f=1/(2tau)`, `G>=0.51697536`; high-frequency `G->1/e`.
 
-Gaussian jitter gives `f_F,3dB=sqrt(ln2)/(2 pi sigma_t)`.
+For arbitrary finite-mean iid recovery with mean `m`, every law shares
 
-## WP03 — dead time/recovery: standard saturation is insufficient
+`r=lambda exp(-lambda m)`,
 
-### Deterministic paralyzable recovery
+but at the common maximum
 
-At the classical count maximum `lambda tau=1`, the complete stationary timestamp channel satisfies
+`G_DC=0 iff recovery is deterministic`.
 
-`G(0)=0`
+Explicit same-mean/same-variance recovery laws with the same entire saturation curve have different pair correlations and accessible timestamp FI. Therefore standard saturation and low-order recovery summaries do not determine temporal-information transfer.
 
-but retains information at every nonzero temporal frequency.
+## WP04 — optical sideband survival-to-synthesis crossover
 
-At `omega tau=pi` (`f=1/(2tau)`),
+### Seeded two-bin exact model
 
-`G>=0.51697536`,
+Baseline:
 
-with exact model value about `0.52814`; high-frequency `G->1/e`.
+`rho_p=(1-p)|c><c|+p|s><s|`, `0<=p<1/2`.
 
-For `tau=10 ns`, the benchmark is `lambda=100 MHz`, registered rate `36.79 MHz`, and test frequency `50 MHz`.
+Lossless local frequency-bin mixing coefficient: `kappa`.
 
-### Random iid recovery
+Exact sideband population:
 
-Every finite-mean iid recovery law with mean `m` shares
+`P_s=p+(1-2p)sin^2(kappa sqrt(x^2+y^2))`.
 
-`r(lambda)=lambda exp(-lambda m)`.
+For `p>0`,
 
-At the common count maximum `lambda m=1`,
+**`R_lin^2=p(1-p)/[kappa^2(1-2p)^2]`.**
 
-**`G_DC=0 iff T=m almost surely`.**
+The finite-radius survival theorem becomes
 
-Every nondegenerate recovery distribution retains positive timestamp information although the conventional count-rate slope is zero for all distributions.
+**`(R_lin^2/4)Tr F<=p`.**
 
-A practical bounded witness is `Z_s=exp(-sD)`: the local fractional-rate derivative of `E[Z_s]` at the count maximum is zero iff recovery is deterministic and strictly positive for every nondegenerate finite-mean recovery law.
+At `p=0`, the sideband is a kernel direction and
 
-### Exact same-mean/same-variance counterexample
+**`Delta P_s(0)=4kappa^2`,**
 
-At mean recovery `m=10 ns`:
+so the one-sided boundary theorem gives
 
-- Law A: `5 ns` or `15 ns`, each probability `1/2`;
-- Law B: `2.5 ns` (`2/9`), `10 ns` (`5/9`), `17.5 ns` (`2/9`).
+**`Tr F<=Delta P_s(0)`.**
 
-Both have variance `25 ns^2`, CV `0.5`, identical maximum count rate, and the entire same saturation curve.
+The transition is exact and continuous at the level of the Fisher ceiling:
 
-Yet at the common maximum and lag `7.5 ns`,
+**`lim_(p->0+)4p/R_lin^2=Delta P_s(0)=4kappa^2`.**
 
-`g_A^(2)=0.7274957`,
+A fixed four-outcome frequency-bin POVM saturates the empty-sideband boundary value.
 
-`g_B^(2)=0.3188718`.
+### Ordinary weak phase modulation
 
-The one-bit interval statistic `1{D<=4 ns}` has zero FI for A and positive FI for B (`G_Z=0.00443520`).
+For ideal single-carrier phase modulation, the first upper/lower sidebands obey
 
-This proves in a detector-facing form that mean recovery, variance/CV, maximum count rate, and even the complete homogeneous saturation curve do not determine temporal-information transfer.
+`Delta P_+(0)=Delta P_-(0)=1`.
 
-Authoritative note: `practical_temporal_information/notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`.
+A fixed three-mode phase-sensitive analyzer attains
 
-## Significance assessment after WP03
+`F_xx=F_yy=2`,
 
-WP01–WP02 are primarily a rigorous common-language bridge. WP03 supplies the first strong practical result capable of supporting a fourth paper: conventional dead-time/saturation characterization can provably discard information needed to characterize temporal sensing.
+and therefore
 
-The next decisive test is WP04: whether the flagship survival/synthesis distinction can be made equally concrete through ordinary optical sideband physics.
+**`Tr F=4=[sqrt(Delta P_+)+sqrt(Delta P_-)]^2`.**
+
+Thus standard optical sideband generation supplies an exact ideal saturation example of the bilateral rank-boundary curvature law.
+
+Direct sideband spectroscopy determines the population-curvature resource; both temporal quadratures require a phase-sensitive interferometric/coherent Fisher measurement.
+
+An externally driven EOM is not automatically an autonomous clock-signal system. Its consumed RF power is not identified with the synthesis action.
+
+The exact flagship normalization, checked against the final verified R4 source artifact, is
+
+`A_S^(2)=(hbar nu/4)(Delta T_S,+ + Delta T_S,-)`,
+
+`A_C^(2)=(hbar nu/4)(Delta T_C,+ + Delta T_C,-)`,
+
+and in the clean companion unitary-dilation specialization
+
+`A_ex^(2)=hbar nu V_min`.
+
+WP05 will add an explicit controller/clock before applying this dynamical interpretation.
+
+## Significance assessment after WP04
+
+Paper 4 now has two likely nontrivial practical cores:
+
+1. detector memory: standard saturation/low-order recovery characterization can provably fail to determine temporal-information transfer;
+2. spectral support: the survival/synthesis transition has an exact measurable optical-sideband realization with a continuous crossover and ideal saturation.
+
+WP01–WP02 provide a common analog/timestamp benchmark language around those results.
 
 ## Immediate next work
 
-1. WP04 — seeded-to-empty optical-sideband survival/synthesis crossover.
-2. WP05 — standard resonant-exchange interpretation of the unitary-coupling theorem.
-3. WP06 — integrated falsification matrix.
-4. WP07 — dedicated prior-art/significance gate before manuscript drafting.
+1. WP05 — textbook autonomous resonant-exchange/controller interpretation of the unitary-coupling theorem.
+2. WP06 — integrated falsification matrix and minimal practical result stack.
+3. WP07 — dedicated prior-art/significance gate before manuscript drafting.
 
 ## Claim discipline
 
-No novelty claim for standard NEP, detectivity, matched filtering, generic Fisher sensing, Poisson/dead-time count laws, renewal spectra, random-dead-time pair-correlation formulas, or timing-jitter filtering. No prize-level framing. No experimental validation may be implied without data.
+No novelty claim for standard NEP, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic sideband generation, SU(2) mode mixing, or standard frequency-bin interferometry. No prize-level framing. No experimental validation may be implied without data.
 
 Every material Paper-4 advance must update the practical notes and all top-level landing files so a future agent can continue without chat history.
