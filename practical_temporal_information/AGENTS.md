@@ -6,9 +6,7 @@ The repository, not chat history, is authoritative.
 
 ## Mission
 
-Create a fourth paper that translates the temporal-information resource program into standard detector physics and explicit falsification tests. Every central result should state what is measured, what is predicted, and what observation would contradict it.
-
-Do not modify the frozen scientific theorem/proof layers of the PRXQ flagship, random-time timestamp paper, or PRA unitary-coupling paper unless this program exposes a genuine defect.
+Create a fourth paper that translates the temporal-information resource program into standard detector physics and explicit falsification tests. Do not modify the frozen scientific theorem/proof layers of the three mature papers unless a genuine defect is exposed.
 
 ## Read first
 
@@ -17,104 +15,97 @@ Do not modify the frozen scientific theorem/proof layers of the PRXQ flagship, r
 3. `notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
 4. `notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
 5. `notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
-6. root `docs/CURRENT_RESEARCH_STATE.md`
+6. `notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
+7. root `docs/CURRENT_RESEARCH_STATE.md`
 
 ## Current result stack
 
-### WP01 — analog Gaussian detector
+### WP01 — analog Gaussian
 
-For peak optical-power quadratures and one-sided output PSD,
+`F_xx/T=F_yy/T=1/NEP(f)^2`, `Tr F/T=2/NEP(f)^2` under the convention lock.
 
-`F_xx/T=F_yy/T=|R(f)|^2/S_n(f)=1/NEP(f)^2`,
+### WP02 — ideal timestamps
 
-`Tr F/T=2/NEP(f)^2`.
+`Tr F/T=lambda_0` for fractional Poisson modulation. Optical-power form exactly matches ideal shot-noise NEP. Independent jitter gives factor `|Phi_J(Omega)|^2`.
 
-The full weak-waveform Fisher matrix is the `1/NEP(f)^2` noise-weighted matched-filter metric. Response bandwidth and information bandwidth need not coincide.
+### WP03 — detector memory
 
-### WP02 — ideal timestamps and independent jitter
+Standard saturation can be information-incomplete. Deterministic Type-II recovery at `lambda tau=1` has `G(0)=0` but nonzero information at every nonzero frequency. Arbitrary finite-mean iid recovery shares `r=lambda exp(-lambda m)`, yet `G_DC=0` at the common maximum iff recovery is deterministic. Exact equal-mean/equal-variance/equal-saturation laws have different timestamp information.
 
-For fractional sinusoidal modulation of an ideal Poisson rate,
+### WP04 — sideband support crossover
 
-`Tr F/T=lambda_0`.
+Seeded carrier/sideband model:
 
-For optical-power coordinates this exactly matches the analog shot-noise result. Independent timing jitter multiplies the two-quadrature spectrum by `|Phi_J(Omega)|^2`.
+`R_lin^2=p(1-p)/[kappa^2(1-2p)^2]`,
 
-### WP03 — dead time/recovery
-
-For deterministic paralyzable recovery at `lambda tau=1`, the complete timestamp channel has `G(0)=0` but `G(omega)>0` at every nonzero frequency. At `f=1/(2tau)`, `G>=0.51697536`; high-frequency `G->1/e`.
-
-For arbitrary finite-mean iid recovery, every law with mean `m` shares `r=lambda exp(-lambda m)`, yet at `lambda m=1`, `G_DC=0 iff recovery is deterministic`.
-
-An exact same-mean/same-variance example shows identical mean, variance/CV, and complete saturation curve do not determine pair correlations or accessible timestamp FI.
-
-### WP04 — exact optical survival-to-synthesis crossover
-
-Use carrier/sideband baseline
-
-`rho_p=(1-p)|c><c|+p|s><s|`, `0<=p<1/2`,
-
-with calibrated two-mode mixing coefficient `kappa`.
-
-Exact sideband population:
-
-`P_s=p+(1-2p)sin^2(kappa sqrt(x^2+y^2))`.
-
-For `p>0`,
-
-**`R_lin^2=p(1-p)/[kappa^2(1-2p)^2]`**
-
-and the survival theorem is
-
-**`(R_lin^2/4)Tr F<=p`.**
+`(R_lin^2/4)Tr F<=p`.
 
 At `p=0`,
 
-**`Delta P_s(0)=4kappa^2`**
+`Delta P_s=4kappa^2`, `Tr F<=Delta P_s`,
 
-and
+with exact crossover
 
-**`Tr F<=Delta P_s(0)`.**
+`lim_(p->0+)4p/R_lin^2=Delta P_s`.
 
-The crossover is exact:
+Ordinary ideal weak phase modulation saturates the bilateral boundary law with `Delta P_+=Delta P_-=1`, `Tr F=4` under a fixed phase-sensitive three-mode analyzer.
 
-**`lim_(p->0+)4p/R_lin^2=Delta P_s(0)=4kappa^2`.**
+### WP05 — resonant exchange implementation
 
-A fixed four-outcome frequency-bin POVM saturates the empty-sideband one-sided bound.
+Two resonant modes:
 
-Ordinary ideal weak phase modulation of a single-frequency photon gives two empty first sidebands with
+`H_0=hbar nu(N_C+N_S)`.
 
-`Delta P_+=Delta P_-=1`,
+Standard beam-splitter exchange acts inside the `N_tot=2` shell
 
-and a fixed three-mode interferometric measurement attains
+`|2,0>, |1,1>, |0,2>`.
 
-**`Tr F=4=[sqrt(Delta P_+)+sqrt(Delta P_-)]^2`.**
+For `U(x,y)=exp[-i g t(xB_x+yB_y)]` and baseline `|1,1>`:
 
-Thus ordinary optical sideband generation is an exact ideal saturation example of the bilateral rank-boundary curvature law.
+`Var(K_x)=Var(K_y)=4(g t)^2`,
 
-Important: direct sideband-power measurement estimates curvature but does not recover both phase quadratures. FI must be measured with a phase-sensitive frequency-bin interferometer/coherent equivalent on identically prepared trials.
+**`V_impl=8(g t)^2`.**
 
-Also important: an externally driven EOM is not automatically an autonomous clock-signal system. Do not equate its RF power with the flagship synthesis action. The verified autonomous normalization is reserved for WP05.
+Endpoint curvature:
 
-## Current publication assessment
+`Delta P_L=Delta P_U=8(g t)^2`,
 
-WP03 and WP04 are the two likely publication-level practical cores:
+`Tr C=16(g t)^2`,
 
-1. conventional detector saturation/low-order recovery characterization can provably fail to determine temporal-information transfer;
-2. the flagship survival/synthesis transition has an exact measurable sideband realization with a continuous crossover and ideal saturation.
+so
 
-WP01/WP02 provide the common analog/timestamp language around those results.
+**`V_min=(1/2)Tr C=8(g t)^2`.**
+
+Autonomous action:
+
+**`A_ex^(2)=8 hbar nu(g t)^2`.**
+
+The total bare-energy distribution is exactly fixed at `2hbar nu` throughout.
+
+For fixed interaction duration,
+
+**`V_impl=(t^2/hbar^2)sum_j Var(H_j)`.**
+
+This is the practical Hamiltonian interpretation. Do not call it work, consumed RF energy, average interaction energy, operator norm, peak coupling, controller bandwidth, or fixed-controller-spectrum optimum.
+
+Practical falsification compares independently calibrated `g t` with independently measured endpoint Hessians:
+
+`8(g t)^2=(1/2)[Delta P_L+Delta P_U]`.
+
+## Publication status before WP06
+
+WP03 and WP04 are the likely core new practical results. WP01/WP02 supply the common measurement language. WP05 supplies a standard Hamiltonian interpretation of the companion theorem.
+
+Do not draft a manuscript yet. First decide the minimum coherent stack and then run prior art.
 
 ## Immediate work order
 
-1. **WP05:** include a controller/clock explicitly and reduce `V_min=(1/2)Tr C`, `A_ex=hbar nu V_min` to a textbook resonant-exchange Hamiltonian.
-2. **WP06:** integrated falsification matrix and minimal practical theorem/result stack.
-3. **WP07:** dedicated prior-art/significance gate before manuscript drafting.
-
-Do not create sidequests that do not improve measurement accessibility, falsifiability, or standard-physics interpretation.
+1. **WP06:** integrated falsification matrix, rank scientific value, define minimum Paper-4 result stack, demote tutorial-only material.
+2. **WP07:** dedicated prior-art/significance gate before manuscript drafting.
 
 ## Claim discipline
 
-No prize-level framing. No novelty claim for standard NEP, Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic phase modulation, sideband generation, SU(2) frequency conversion, or standard frequency-bin interferometry. Assign novelty only after WP07.
+No prize-level framing. No novelty claim for standard NEP, generic FI sensing, Poisson/dead-time formulas, renewal spectra, sideband generation, SU(2)/beam-splitter physics, or standard frequency-bin interferometry. Assign novelty only after WP07.
 
 ## Documentation rule
 
