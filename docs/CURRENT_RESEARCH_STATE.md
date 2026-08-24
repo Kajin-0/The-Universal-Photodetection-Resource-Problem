@@ -14,23 +14,17 @@ Working title:
 
 > **Operational benchmarks for temporal information in photodetection**
 
-## Completed work
+## Research-gate status
 
-### WP01 — analog Gaussian bridge
+- WP01–WP06: completed practical theorem/benchmark development and scope control.
+- WP07 prior-art/significance gate: **PASS WITH NARROWED CLAIMS**.
+- WP08 final pre-manuscript gate: **PASS**.
 
-`Tr F/T=2/NEP(f)^2` for peak optical-power quadratures under a one-sided PSD convention. Standard measurement bridge; no novelty claim.
+The manuscript workspace may now be created.
 
-### WP02 — ideal timestamp bridge
+## Final scientific hierarchy
 
-`Tr F/T=lambda_0` for fractional Poisson modulation; optical-power form exactly matches ideal shot-noise NEP. Independent timing jitter gives factor `|Phi_J(Omega)|^2`. Standard bridge; no novelty claim.
-
-### WP03 — detector-memory benchmark from frozen Paper 2
-
-For arbitrary finite-mean iid Type-II recovery, fixing mean recovery fixes the complete homogeneous saturation curve `r=lambda exp(-lambda m)` but not temporal information. At the common maximum, complete timestamp DC FI vanishes iff recovery is deterministic. Exact equal-mean/equal-variance/equal-saturation recovery laws have different timestamp statistics and accessible FI.
-
-These are existing results of the frozen random-time paper. Paper 4 may translate them into an experimental characterization/falsification protocol and must cite that paper; do not republish them as new Paper-4 theorems.
-
-### WP04 — primary candidate new support result
+### Primary candidate new Paper-4 theorem
 
 A seeded carrier/sideband family obeys finite-radius survival; at zero seed the sideband becomes a rank-changing kernel direction and second-order population curvature takes over. Exact crossover:
 
@@ -38,9 +32,37 @@ A seeded carrier/sideband family obeys finite-radius survival; at zero seed the 
 
 Ordinary ideal weak phase modulation saturates the bilateral boundary-curvature law under a fixed phase-sensitive analyzer.
 
-Targeted WP07 prior-art search found no direct collision for this exact support-controlled survival-to-synthesis crossover. Priority remains unverified, not certified.
+Targeted WP07 search found no direct collision for this exact support-controlled survival-to-synthesis crossover. Priority remains unverified, not certified.
 
-### WP05 — standard Hamiltonian implementation benchmark
+### Imported practical benchmark from frozen random-time paper
+
+For arbitrary finite-mean iid Type-II recovery, fixing mean recovery fixes the complete homogeneous saturation curve `r=lambda exp(-lambda m)` but not temporal information. At the common maximum, complete timestamp DC FI vanishes iff recovery is deterministic. Exact equal-mean/equal-variance/equal-saturation recovery laws have different accessible timestamp information.
+
+Paper 4 may translate this into a characterization/falsification protocol but must cite the frozen paper and not re-present the theorem as new.
+
+### Standard detector-language bridge
+
+For peak optical-power quadratures under a one-sided PSD convention,
+
+`Tr F/T=2/NEP(f)^2`.
+
+Ideal fractional Poisson timestamps give `Tr F/T=lambda0`; independent timing jitter multiplies the spectrum by `|Phi_J(Omega)|^2`.
+
+WP08 gives an explicit detector-specification counterexample. With identical response
+
+`|H|^2=1/(1+x^2)`,
+
+equal DC noise, equal DC NEP and equal responsivity 3-dB bandwidth,
+
+`J_A=1/(1+x^2)`
+
+and
+
+`J_B=(1+25x^2)/[(1+x^2)(1+5x^2)]`.
+
+At `x=1`, `J_B/J_A=13/3≈4.3333`; B remains above half its DC FI until `x≈2.9703`.
+
+### Standard Hamiltonian implementation benchmark
 
 A resonant two-mode beam splitter in the fixed `N_tot=2` shell gives
 
@@ -52,40 +74,23 @@ while the total bare-energy distribution remains exactly fixed. For fixed durati
 
 `V_impl=(t^2/hbar^2)sum_j Var(H_j)`.
 
-The beam-splitter Hamiltonian is standard; its role is an independently calibratable benchmark for the companion implementation theorem.
+This is an independently calibratable benchmark of the frozen PRA theorem, not a claim that beam-splitter metrology is new.
 
-### WP06 — scope/falsification gate
+## Prior-art exclusions after WP07
 
-The minimum practical paper architecture is:
+Do not claim novelty for generic dead-time information theory, variable/random dead time, interval dead-time characterization, paralyzable correlation distortion, standard Fisher detector analysis, weak sideband metrology, seeded/vacuum interferometry, generic rank-changing QFI curvature, or standard beam-splitter physics.
 
-1. concise NEP/timestamp measurement bridge;
-2. Paper-2 memory benchmark made experimentally actionable;
-3. new WP04 support crossover;
-4. compact WP05 resonant-exchange implementation benchmark;
-5. integrated falsification matrix.
+## Active manuscript work
 
-Falsification is stratified into detector-model/reduction failure, resource-law challenge under verified assumptions, and failure of a model-specific saturating equality.
-
-### WP07 — prior-art/significance gate
-
-**PASS WITH NARROWED CLAIMS.**
-
-Established prior ingredients include dead-time information theory, variable/random dead time, interval-based detector characterization, paralyzable correlation distortion, weak-sideband Fisher metrology, seeded/vacuum interferometry, generic rank-boundary QFI curvature, and standard beam-splitter metrology. Do not claim novelty for them.
-
-The distinct Paper-4 core is therefore narrower: WP04's support-controlled crossover plus a rigorous experimental/falsification architecture, with WP03 used as a cited practical benchmark rather than duplicated.
-
-## Current active task — WP08
-
-Final pre-manuscript gate:
-
-1. derive an explicit conventional detector-misranking example showing why response bandwidth or a single sensitivity number can fail for temporal-information tasks;
-2. lock assumptions, units, PSD conventions and parameterizations;
-3. classify every retained statement as new Paper-4 theorem, cited upstream theorem, or standard bridge;
-4. decide final manuscript architecture and figures;
-5. create the manuscript workspace only if this stack remains coherent and non-duplicative.
+1. create `manuscript/practical_temporal_information/`;
+2. open from the conventional detector-specification example;
+3. keep WP04 as the principal original theorem;
+4. cite rather than duplicate the random-time and PRA proofs;
+5. use an explicit Level-I/II/III falsification matrix;
+6. hostile-audit the complete draft before any publication freeze.
 
 ## Claim discipline
 
-No novelty claim for standard NEP, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic sidebands, beam-splitter Hamiltonians, standard interferometry, or generic boundary-QFI geometry. No prize-level framing. No experimental validation may be implied without data.
+No prize-level framing. No experimental validation may be implied without data. Every laboratory discrepancy must be classified first as model/reduction failure unless the theorem assumptions have independently been established.
 
-Every material WP08 result must update its note and all top-level landing files.
+Every material manuscript advance must update its handoff and all top-level landing files.
