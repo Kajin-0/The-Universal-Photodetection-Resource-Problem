@@ -28,26 +28,31 @@ jobs:
         working-directory: manuscript/practical_temporal_information
         run: python check_practical_static.py
 
-      - name: Compile practical manuscript
+      - name: Generate mechanically compatible R1 source
+        working-directory: manuscript/practical_temporal_information
+        run: python apply_r1_compile_fix.py
+
+      - name: Compile practical R1 manuscript
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: operational_temporal_information_draft.tex
+          root_file: operational_temporal_information_r1.tex
           working_directory: manuscript/practical_temporal_information
           latexmk_use_xelatex: false
 
       - name: Fail on unresolved references or serious TeX layout warnings
         working-directory: manuscript/practical_temporal_information
         run: |
-          LOG=operational_temporal_information_draft.log
+          LOG=operational_temporal_information_r1.log
           test -f "$LOG"
           ! grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|There were undefined citations|Overfull \\hbox|Overfull \\vbox" "$LOG"
 
-      - name: Upload practical manuscript build
+      - name: Upload practical R1 manuscript build
         uses: actions/upload-artifact@v4
         with:
-          name: practical-temporal-information-draft
+          name: practical-temporal-information-r1
           path: |
-            manuscript/practical_temporal_information/operational_temporal_information_draft.pdf
+            manuscript/practical_temporal_information/operational_temporal_information_r1.pdf
+            manuscript/practical_temporal_information/operational_temporal_information_r1.tex
             manuscript/practical_temporal_information/operational_temporal_information_draft.tex
             manuscript/practical_temporal_information/references.bib
             manuscript/practical_temporal_information/README.md
