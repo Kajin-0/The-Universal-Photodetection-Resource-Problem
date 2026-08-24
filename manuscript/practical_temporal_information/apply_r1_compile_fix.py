@@ -44,10 +44,16 @@ Measure $\Delta P_\pm(0)$ and the Fisher information. The ideal equality is $\Tr
 \medskip\noindent\textbf{Resonant exchange benchmark.}
 Independently calibrate $gt$ and the endpoint curvature $C$. The ideal equality is $V_{\rm impl}=\tfrac12\Tr C=8(gt)^2$. Failure of equality is Level III; a sub-bound value under verified theorem assumptions would challenge the companion lower bound."""
 
+# Remove the float before changing any preceding text so byte offsets cannot go stale.
 start = text.index(start_marker)
 end = text.index(end_marker, start) + len(end_marker)
-text = text.replace(old_lead, new_lead)
 text = text[:start] + replacement + text[end:]
+text = text.replace(old_lead, new_lead, 1)
+
+# Regression guard: the generated R1 must contain no remnants of the removed float.
+for forbidden in (r"\begin{table*}", r"\end{table*}", r"\begin{tabular}", r"\end{tabular}", r"\begin{ruledtabular}", r"\end{ruledtabular}"):
+    if forbidden in text:
+        raise SystemExit(f"Residual REVTeX-incompatible table markup in R1: {forbidden}")
 
 out.write_text(text, encoding="utf-8")
 print(f"Generated {out.name}: replaced the REVTeX-incompatible falsification table with conservative paragraph blocks")
