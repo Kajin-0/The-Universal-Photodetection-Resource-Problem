@@ -1,0 +1,412 @@
+\documentclass[aps,pra,reprint,superscriptaddress,longbibliography]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsthm,bm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{siunitx}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\FI}{\mathcal F}
+\newcommand{\Aex}{\mathcal A_{\rm ex}^{(2)}}
+
+\begin{document}
+
+\title{Operational temporal-information benchmarks for photodetection}
+
+\author{Anonymous}
+\affiliation{Anonymous affiliation}
+
+\begin{abstract}
+Photodetectors are commonly compared using noise-equivalent power, responsivity bandwidth, saturation curves, timing jitter, and related device metrics. These quantities are indispensable, but they do not in general determine how much information a detector transfers about a time-dependent optical signal. We formulate a detector-facing description in which temporal Fisher information is reconstructed directly from standard analog or timestamp measurements. For a linear detector in additive stationary Gaussian noise, the two-quadrature Fisher-information rate is $2/\mathrm{NEP}^2(f)$ under an explicit one-sided-PSD convention. We give a concrete pair of detectors with identical dc NEP and identical responsivity bandwidth but a factor $13/3$ difference in Fisher information at that bandwidth because their noise spectra differ. For photon-counting records, the corresponding ideal Poisson information rate and timing-jitter transfer law follow directly from the timestamp likelihood. We then use a known random-recovery Type-II result to show how identical saturation characterization can coexist with different timestamp information. Our principal result is an explicit optical carrier--sideband model in which a controllable baseline sideband seed connects two distinct resource regimes. For nonzero seed, information is constrained by pre-existing spectral support and a finite affine physical radius; as the seed vanishes, the radius collapses and the finite-radius resource converges exactly to the second-order sideband-population curvature that controls the rank-changing boundary. Ideal weak phase modulation saturates the boundary law. A standard fixed-energy resonant exchange model supplies an independently calibratable benchmark for the associated unitary-coupling cost. We conclude with explicit model-, resource-, and saturation-level falsification criteria.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Photodetector performance is summarized by a small number of experimentally useful quantities: responsivity, noise-equivalent power (NEP), detectivity, response bandwidth, saturation behavior, timing jitter, and dead time. Careful use of these metrics is essential, and recent detector-characterization guidance has emphasized the importance of stating their assumptions and frequency dependence explicitly \cite{PecuniaEtAl2025}. The question considered here is narrower: \emph{which of these measurements determine the amount of information that a detector transfers about a specified temporal optical perturbation?}
+
+For a sinusoidal perturbation, the answer is already more subtle than a response bandwidth. A detector can have a fast electrical or optical transfer function while its useful information is restricted by colored noise. Conversely, an excess-noise process can roll off more rapidly than the signal response, so the information spectrum can remain large well beyond the conventional $3$-dB response frequency. The quantity relevant to local waveform estimation is the Fisher information of the actual accessible record, not the signal transfer function alone.
+
+This perspective also separates detector technologies that are awkward to compare using the same raw observables. An analog photoconductor or photodiode naturally produces a voltage or current trace with a measured noise power spectral density (PSD). A photon-counting detector instead produces an event record whose useful information can reside in the complete sequence of timestamps, particularly in the presence of timing jitter, dead time, recovery, or memory. Fisher information is not introduced here as a replacement for NEP or bandwidth. Rather, it supplies a common operational quantity to which those familiar measurements reduce under their usual assumptions.
+
+The analysis is motivated by three companion theoretical results. A random-time detector analysis establishes that conventional saturation curves need not determine the Fisher-information spectrum of a detector with memory \cite{CompanionMemory2026}. A separate spectral-resource analysis distinguishes temporal information supported by pre-existing spectral population from information generated at a rank-changing boundary \cite{CompanionTwoRegimes2026}. A third companion result gives the exact minimum state-weighted quadratic unitary-coupling cost of prescribed rank-changing curvature \cite{CompanionUnitaryCost2026}. The goal of the present paper is not to reproduce those proof frameworks. It is to translate their content into ordinary detector measurements and to state what observations would actually contradict the resulting models or inequalities.
+
+The paper has four main steps. First, we derive the convention-controlled Fisher/NEP relation and give a concrete example in which two detectors with the same dc NEP and the same responsivity bandwidth have substantially different temporal Fisher information. Second, we state the timestamp counterpart and use the Type-II companion result as a practical memory benchmark. Third, we derive an explicit support-controlled optical sideband model whose finite-radius information resource converges exactly to a second-order sideband-generation resource as the baseline sideband seed is removed. This support-to-synthesis crossover is the principal result of the present paper. Finally, we reduce the companion unitary-coupling theorem to a standard resonant exchange Hamiltonian and formulate a hierarchy of falsification tests.
+
+\section{Detector information in standard measurement language}
+
+\subsection{Linear Gaussian detector: Fisher information and NEP}
+
+Consider a weak two-quadrature modulation of the incident optical power,
+\begin{equation}
+P(t)=P_0+x\cos(2\pi f t)+y\sin(2\pi f t),
+\label{eq:input_modulation}
+\end{equation}
+where $x$ and $y$ are \emph{peak} optical-power quadratures in watts. Let the detector have complex small-signal responsivity $\mathcal R(f)$ in \si{A/W} or \si{V/W}, and let $S_n(f)$ denote the one-sided output-noise PSD in \si{A^2/Hz} or \si{V^2/Hz}. Assume a long observation interval $T$, additive stationary Gaussian noise, and parameter-independent covariance.
+
+The Gaussian likelihood gives the asymptotic Fisher matrix
+\begin{equation}
+\frac{F_{xx}}{T}=\frac{F_{yy}}{T}=\frac{|\mathcal R(f)|^2}{S_n(f)},
+\qquad F_{xy}=0.
+\label{eq:gaussian_fi}
+\end{equation}
+With the conventional frequency-resolved definition
+\begin{equation}
+\mathrm{NEP}(f)=\frac{\sqrt{S_n(f)}}{|\mathcal R(f)|},
+\end{equation}
+Eq.~\eqref{eq:gaussian_fi} becomes
+\begin{equation}
+\boxed{
+\frac{\Tr F}{T}=\frac{2}{\mathrm{NEP}^2(f)}.}
+\label{eq:nep_fi}
+\end{equation}
+The units are consistent: $F_{xx}/T$ has units \si{W^{-2}.s^{-1}}, while $1/\mathrm{NEP}^2$ has the same units because $\mathrm{NEP}$ is measured in \si{W/\sqrt{Hz}}.
+
+Equation~\eqref{eq:nep_fi} is not a new detector metric. It is the matched-filter/Fisher interpretation of frequency-resolved NEP under the stated linear-Gaussian assumptions. Its value here is that it makes clear which information is and is not retained by coarser specifications such as a single dc NEP or a responsivity bandwidth.
+
+\subsection{Equal dc NEP and equal response bandwidth do not fix temporal information}
+
+Let two detectors have the same dc responsivity scale $\mathcal R_0$, the same dc output-noise PSD $S_0$, and the same normalized single-pole response
+\begin{equation}
+|H(f)|^2=\frac{1}{1+(f/f_c)^2}.
+\end{equation}
+Both therefore have the same dc NEP $\sqrt{S_0}/\mathcal R_0$ and the same responsivity $3$-dB frequency $f_c$.
+
+Detector A has white output noise,
+\begin{equation}
+S_A(f)=S_0.
+\end{equation}
+Detector B instead has a white floor plus a Lorentzian excess-noise term,
+\begin{equation}
+\frac{S_B(f)}{S_0}=\frac15+\frac{4/5}{1+25(f/f_c)^2}.
+\label{eq:noise_b}
+\end{equation}
+This is an ordinary colored-noise structure: a low-frequency excess contribution rolls off toward a lower white floor.
+
+Writing $u=f/f_c$ and normalizing the single-quadrature FI rate by the common dc value $I_0=\mathcal R_0^2/S_0$, Eqs.~\eqref{eq:gaussian_fi} and \eqref{eq:noise_b} give
+\begin{align}
+J_A(u)&=\frac{1}{1+u^2},\\
+J_B(u)&=\frac{1+25u^2}{(1+u^2)(1+5u^2)}.
+\label{eq:AB_FI}
+\end{align}
+At the nominal response bandwidth,
+\begin{equation}
+J_A(1)=\frac12,
+\qquad
+J_B(1)=\frac{13}{6},
+\end{equation}
+so
+\begin{equation}
+\boxed{\frac{J_B(1)}{J_A(1)}=\frac{13}{3}\simeq4.33.}
+\label{eq:FI_ratio}
+\end{equation}
+The two detectors tie according to dc NEP and responsivity bandwidth but differ by more than a factor four in Fisher information at $f_c$.
+
+Detector B also remains above one half of its \emph{dc} FI until
+\begin{equation}
+\frac{f}{f_c}=\sqrt{\frac{22+\sqrt{489}}{5}}\simeq2.9703.
+\label{eq:B_halfdc}
+\end{equation}
+Its information spectrum is nonmonotonic because the excess noise rolls off faster than the response. The point is not that Eq.~\eqref{eq:noise_b} is special; rather, the pair $\{\mathrm{NEP}(0),f_{3\mathrm{dB}}^{(R)}\}$ leaves the finite-frequency noise spectrum unspecified and therefore cannot determine the FI spectrum.
+
+\subsection{Ideal photon timestamps and independent timing jitter}
+
+A corresponding result is immediate for an ideal point-process detector. Let
+\begin{equation}
+\lambda(t)=\lambda_0[1+x\cos(\Omega t)+y\sin(\Omega t)]
+\end{equation}
+with dimensionless peak fractional quadratures $x,y$. For an ideal Poisson timestamp record, the likelihood of the complete event sequence gives, in the long-time limit,
+\begin{equation}
+\frac{F_{xx}}{T}=\frac{F_{yy}}{T}=\frac{\lambda_0}{2},
+\qquad
+\boxed{\frac{\Tr F}{T}=\lambda_0.}
+\label{eq:poisson_fi}
+\end{equation}
+If every registered event receives an independent timing displacement $J$ with characteristic function
+\begin{equation}
+\Phi_J(\Omega)=\mathbb E[e^{i\Omega J}],
+\end{equation}
+then the temporal modulation is filtered by the jitter distribution and
+\begin{equation}
+\boxed{
+\frac{\Tr F(\Omega)}{T}
+=\lambda_0|\Phi_J(\Omega)|^2.}
+\label{eq:jitter_fi}
+\end{equation}
+For Gaussian jitter of rms width $\sigma_t$, this becomes $\lambda_0\exp[-\Omega^2\sigma_t^2]$.
+
+Equations~\eqref{eq:nep_fi} and \eqref{eq:poisson_fi} are the analog and event-record forms of the same local-estimation problem. When the optical-power conversion and shot-noise PSD are written consistently, the two descriptions agree exactly.
+
+\section{Detector memory: identical saturation does not imply identical information}
+
+Dead-time and recovery effects provide a particularly clear example of information that is discarded by a static input--output curve. Dead-time-modified photocounting, variable dead-time distributions, and information transmission in dead-time channels have a substantial literature \cite{CantorMatinTeich1975,TeichCantor1978,TeichVannucci1978,ApanasovichPaltsev1995,Peterson2021,JorgensenJohnson2026}. The claim here is therefore not that timestamp statistics or dead-time information theory are new.
+
+We use instead a stronger result established in the companion random-time analysis \cite{CompanionMemory2026}. Consider a generalized paralyzable (Type-II) detector in which every incident Poisson event starts an independent recovery interval $T_r$ with finite mean
+\begin{equation}
+m=\mathbb E[T_r].
+\end{equation}
+For the entire iid recovery class, the homogeneous registered rate is
+\begin{equation}
+\boxed{r(\lambda)=\lambda e^{-\lambda m}.}
+\label{eq:typeII_rate}
+\end{equation}
+Thus all recovery distributions with the same mean have the same conventional saturation curve, including the same maximum at $\lambda m=1$.
+
+The complete registered-timestamp experiment is not fixed by Eq.~\eqref{eq:typeII_rate}. At the common maximum, the companion result gives
+\begin{equation}
+\boxed{
+G_{\rm DC}=0
+\quad\Longleftrightarrow\quad
+T_r=m\ \text{almost surely},}
+\label{eq:typeII_singularity}
+\end{equation}
+where $G_{\rm DC}$ is the source-normalized long-time Fisher-information retention for a fractional dc perturbation. Any genuinely random recovery law retains positive timestamp information there, even though the mean count curve has zero slope.
+
+The same companion analysis gives explicit recovery laws with equal mean, equal variance, equal coefficient of variation, and therefore exactly the same curve \eqref{eq:typeII_rate}, yet different local timestamp experiments. This produces a practical characterization lesson: a source-rate sweep can establish the saturation curve, but it cannot certify the temporal-information channel. Interval or higher-order timestamp statistics are required if recovery randomness matters.
+
+A falsification protocol can therefore separate two questions. First fit the conventional rate curve and estimate $m$. Then operate near $\lambda m=1$ and estimate a timestamp likelihood, an interval statistic, or the response to a weak finite-frequency modulation. A deterministic-recovery model predicts the information singularity \eqref{eq:typeII_singularity}; a statistically significant local timestamp response falsifies that model even though the saturation curve remains correct. This is a model-discrimination test, not by itself a challenge to the general resource inequalities below.
+
+\section{Spectral support: from survival to synthesis}
+
+We now introduce the principal original model of this paper. The aim is to make a rank-changing support transition directly controllable by an ordinary optical quantity: a baseline sideband seed.
+
+\subsection{Seeded two-frequency-bin model}
+
+Let $|c\rangle$ denote a carrier frequency bin and $|s\rangle$ a sideband bin separated by angular frequency $\Omega$. Consider the baseline state
+\begin{equation}
+\rho_p=(1-p)|c\rangle\langle c|+p|s\rangle\langle s|,
+\qquad 0\le p<\frac12.
+\label{eq:rho_p}
+\end{equation}
+For $p>0$ both bins lie in the support. At $p=0$ the sideband is empty and becomes a kernel direction.
+
+Apply a calibrated lossless two-mode converter
+\begin{equation}
+U(x,y)=\exp\!\left\{\kappa[(x-iy)|s\rangle\langle c|-(x+iy)|c\rangle\langle s|]\right\},
+\label{eq:converter}
+\end{equation}
+where $x,y$ are dimensionless peak control quadratures, $r=\sqrt{x^2+y^2}$, and $\kappa$ converts control amplitude to a small mixing angle. The output state is $\rho_p(x,y)=U\rho_pU^\dagger$.
+
+The sideband population is exactly
+\begin{equation}
+\boxed{
+P_s(p;r)=p+(1-2p)\sin^2(\kappa r).}
+\label{eq:sideband_population}
+\end{equation}
+Hence
+\begin{equation}
+P_s=p+(1-2p)\kappa^2(x^2+y^2)+O(r^4).
+\end{equation}
+
+The first-order affine family has determinant
+\begin{equation}
+p(1-p)-\kappa^2(1-2p)^2(x^2+y^2),
+\end{equation}
+so its exact physical tangent radius is
+\begin{equation}
+\boxed{
+R_{\rm lin}^2=
+\frac{p(1-p)}{\kappa^2(1-2p)^2}.}
+\label{eq:Rlin}
+\end{equation}
+For every $p>0$, $R_{\rm lin}>0$. As $p\to0^+$, the affine disk collapses even though the exact nonlinear unitary family remains physical.
+
+The finite-radius spectral-survival inequality of Ref.~\cite{CompanionTwoRegimes2026}, specialized to this two-bin family, reads
+\begin{equation}
+\boxed{
+\frac{R_{\rm lin}^2}{4}\Tr F\le p.}
+\label{eq:survival_bound}
+\end{equation}
+Equivalently,
+\begin{equation}
+\Tr F\le\frac{4\kappa^2(1-2p)^2}{1-p}.
+\label{eq:survival_ceiling}
+\end{equation}
+Here the resource $p$ is simply the directly measured baseline sideband population.
+
+\subsection{Exact support-to-synthesis crossover}
+
+At $p=0$, the sideband population satisfies
+\begin{equation}
+P_s(0;x,y)=\kappa^2(x^2+y^2)+O(r^4),
+\end{equation}
+so with $\Delta=\partial_x^2+\partial_y^2$,
+\begin{equation}
+\boxed{\Delta P_s(0)=4\kappa^2.}
+\label{eq:sideband_curvature}
+\end{equation}
+The corresponding one-sided boundary inequality is
+\begin{equation}
+\Tr F\le\Delta P_s(0).
+\label{eq:boundary_bound}
+\end{equation}
+
+\begin{proposition}[Support-controlled survival-to-synthesis crossover]
+For the family \eqref{eq:rho_p}--\eqref{eq:converter}, the finite-radius resource appearing in Eq.~\eqref{eq:survival_bound} converges to the rank-boundary sideband-population curvature according to
+\begin{equation}
+\boxed{
+\lim_{p\to0^+}\frac{4p}{R_{\rm lin}^2}
+=4\kappa^2
+=\Delta P_s(0).}
+\label{eq:main_crossover}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Substitution of Eq.~\eqref{eq:Rlin} gives
+\begin{equation}
+\frac{4p}{R_{\rm lin}^2}
+=4\kappa^2\frac{(1-2p)^2}{1-p},
+\end{equation}
+whose $p\to0^+$ limit is $4\kappa^2$. Equation~\eqref{eq:sideband_curvature} gives the same value from the exact nonlinear boundary family.
+\end{proof}
+
+Equation~\eqref{eq:main_crossover} is the practical content of the survival/synthesis distinction. The pre-existing sideband population and the affine radius vanish together. Their ratio tends to a directly measurable second-order generation curvature, and the finite-radius Fisher ceiling \eqref{eq:survival_ceiling} tends continuously to the boundary ceiling \eqref{eq:boundary_bound}. The order of the resource changes because the support changes.
+
+At $p=0$ the pure state has local form
+\begin{equation}
+|\psi(x,y)\rangle
+=|c\rangle+\kappa(x-iy)|s\rangle+O(r^2).
+\end{equation}
+A fixed four-outcome equatorial qubit POVM gives
+\begin{equation}
+F_{xx}=F_{yy}=2\kappa^2,
+\qquad F_{xy}=0,
+\end{equation}
+so
+\begin{equation}
+\Tr F=4\kappa^2=\Delta P_s(0).
+\end{equation}
+The boundary law is therefore attainable in this ideal model.
+
+\subsection{Ordinary phase modulation as a bilateral boundary example}
+
+The same structure appears in textbook optical phase modulation. Starting from a single carrier and applying
+\begin{equation}
+\exp\{i[x\cos(\Omega t)+y\sin(\Omega t)]\},
+\end{equation}
+the first upper and lower sideband probabilities obey
+\begin{equation}
+P_+(x,y)=P_-(x,y)=\frac{x^2+y^2}{4}+O[(x^2+y^2)^2].
+\end{equation}
+Hence
+\begin{equation}
+\Delta P_+(0)=\Delta P_-(0)=1.
+\end{equation}
+The bilateral boundary inequality of Ref.~\cite{CompanionTwoRegimes2026} becomes
+\begin{equation}
+\boxed{
+\Tr F\le
+\left[\sqrt{\Delta P_+(0)}+\sqrt{\Delta P_-(0)}\right]^2=4.}
+\label{eq:bilateral_bound}
+\end{equation}
+The local pure-state QFI has $H_{xx}=H_{yy}=2$ and $H_{xy}=0$, and a fixed three-mode interferometric measurement can attain the same classical Fisher matrix. Thus ideal weak phase modulation saturates Eq.~\eqref{eq:bilateral_bound}.
+
+The resource and Fisher measurements need not be the same measurement. Direct spectral photon counting or power analysis measures the sideband curvature. Recovering both modulation quadratures at first order requires a phase-sensitive measurement, such as calibrated carrier/sideband mixing, frequency-bin interferometry, homodyne detection, or an equivalent POVM. This separation is important experimentally.
+
+\section{Standard Hamiltonian implementation benchmark}
+
+The previous section concerns the geometry of an optical state family. An externally driven electro-optic modulator should not be interpreted as an autonomous energy-conserving controller, and its electrical power consumption is not the synthesis action. To connect the boundary curvature to a standard dynamical model, we use the separate implementation theorem of Ref.~\cite{CompanionUnitaryCost2026}.
+
+For a fixed-duration local Hamiltonian family with dimensionless coordinates,
+\begin{equation}
+K_j=\frac{t}{\hbar}H_j,
+\end{equation}
+so the state-weighted quadratic coupling functional is
+\begin{equation}
+\boxed{
+V_{\rm impl}
+=\sum_j\operatorname{Var}(K_j)
+=\frac{t^2}{\hbar^2}\sum_j\operatorname{Var}(H_j).}
+\label{eq:Vimpl_H}
+\end{equation}
+
+A textbook benchmark is resonant exchange between two bosonic modes. Restrict to the fixed-total-excitation manifold $N_{\rm tot}=2$ and define
+\begin{equation}
+|M\rangle=|1,1\rangle,
+\quad |L\rangle=|2,0\rangle,
+\quad |U\rangle=|0,2\rangle.
+\end{equation}
+The usual beam-splitter exchange operators $a_C^\dagger a_S\pm a_Ca_S^\dagger$ act entirely within this fixed bare-energy shell. For the two orthogonal local quadratures with calibrated coupling rate $g$ and interaction time $t$, direct matrix-element evaluation gives
+\begin{equation}
+\boxed{
+V_{\rm impl}=8(gt)^2,}
+\end{equation}
+and the endpoint-curvature contraction is
+\begin{equation}
+\boxed{\Tr C=16(gt)^2.}
+\end{equation}
+Thus this standard model attains the companion optimum
+\begin{equation}
+\boxed{
+V_{\min}=\frac12\Tr C=8(gt)^2.}
+\label{eq:beam_splitter_cost}
+\end{equation}
+For the clean autonomous single-gap normalization,
+\begin{equation}
+\boxed{
+\Aex=\hbar\nu V_{\min}=8\hbar\nu(gt)^2.}
+\label{eq:action_cost}
+\end{equation}
+The total bare-energy distribution remains exactly fixed throughout the exchange. Equations~\eqref{eq:beam_splitter_cost} and \eqref{eq:action_cost} therefore concern a local quadratic coupling resource, not thermodynamic work, consumed RF power, peak Hamiltonian norm, controller bandwidth, or a fixed-controller-spectrum optimization.
+
+Experimentally, the benchmark separates two calibrations: $gt$ can be obtained from ordinary exchange/Rabi calibration, while $\Tr C$ is obtained from the second derivatives of endpoint populations with respect to the local control coordinates. Their equality in Eq.~\eqref{eq:beam_splitter_cost} is a model-specific saturation test of the general lower bound.
+
+\section{What would falsify the framework?}
+
+A practical theory should distinguish failure of a detector reduction from failure of a resource inequality. Table~\ref{tab:falsification} summarizes that hierarchy.
+
+\begin{table*}[t]
+\caption{Operational falsification hierarchy. A failure should be assigned to the strongest level whose assumptions have independently been verified.}
+\label{tab:falsification}
+\begin{ruledtabular}
+\begin{tabular}{p{0.19\textwidth}p{0.22\textwidth}p{0.24\textwidth}p{0.25\textwidth}}
+Model or result & Measured quantities & Prediction & Interpretation of a statistically significant failure \\
+\hline
+Linear Gaussian detector & $\mathcal R(f)$, $S_n(f)$, empirical likelihood/FI & $F_{xx}/T=F_{yy}/T=|\mathcal R|^2/S_n$ & Level I: non-Gaussianity, nonstationarity, parameter-dependent covariance, calibration error, or nonlinear response \\
+Poisson timestamps + jitter & $\lambda_0$, jitter distribution, timestamp FI & $\Tr F/T=\lambda_0|\Phi_J|^2$ & Level I: non-Poisson source, correlated/state-dependent jitter, dead time, afterpulsing, or likelihood mismatch \\
+Type-II memory benchmark & rate curve plus interval/timestamp statistics & Same $r(\lambda)$ need not imply same timestamp FI; deterministic recovery is singular at $\lambda m=1$ & Failure of the specified recovery model or, after reproducing companion assumptions, challenge to the companion theorem \\
+Finite sideband seed & $p$, $\kappa$, $R_{\rm lin}$, phase-sensitive FI & $(R_{\rm lin}^2/4)\Tr F\le p$ & Level II only after the two-bin state model, support, radius, and parameter normalization are independently verified \\
+Empty sideband boundary & $\Delta P_s(0)$ and phase-sensitive FI & $\Tr F\le\Delta P_s(0)$ & Level II under verified boundary-state assumptions \\
+Ideal phase modulation & $\Delta P_\pm(0)$ and FI & $\Tr F=[\sqrt{\Delta P_+}+\sqrt{\Delta P_-}]^2=4$ & Level III: failure of the ideal modulator/analyzer model unless the underlying inequality is exceeded \\
+Resonant exchange benchmark & calibrated $gt$ and endpoint curvature $C$ & $V_{\rm impl}=\tfrac12\Tr C=8(gt)^2$ & Level III saturation failure; a sub-bound value under verified theorem assumptions would challenge the companion lower bound \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+This distinction matters because most experimental disagreements should initially be expected to identify missing detector physics. For example, an apparent violation of Eq.~\eqref{eq:nep_fi} in a real device would first motivate tests for colored non-Gaussian noise, nonstationarity, nonlinear response, or parameter-dependent covariance. Calling such a discrepancy a violation of a fundamental information law would be premature.
+
+The support inequalities are different. If the optical state family, coordinate normalization, baseline support, tangent radius, sideband curvature, and Fisher likelihood were all independently verified, then an excess over Eqs.~\eqref{eq:survival_bound} or \eqref{eq:boundary_bound} would directly challenge the stated resource-law application. The purpose of the hierarchy is to make that distinction experimentally explicit.
+
+\section{Discussion}
+
+The results suggest a specific role for temporal Fisher information in detector characterization. It is not a replacement for NEP, responsivity bandwidth, detectivity, saturation curves, timing jitter, or dead time. Each of those quantities describes physically important aspects of detector operation. The limitation is that no small subset of them generally specifies the information carried by the complete record about an arbitrary temporal perturbation.
+
+The linear-Gaussian relation \eqref{eq:nep_fi} shows that frequency-resolved NEP already has a direct information interpretation. The detector pair in Eqs.~\eqref{eq:AB_FI}--\eqref{eq:FI_ratio} demonstrates why reducing that frequency-resolved information to a dc number plus a response bandwidth can be misleading. For event detectors, Eq.~\eqref{eq:jitter_fi} gives the corresponding ideal timestamp picture, while the Type-II benchmark shows why memory can make the full timestamp likelihood relevant even when the mean saturation curve is known.
+
+The support-controlled sideband model adds a different limitation. For $p>0$, temporal information is backed by a pre-existing spectral population and a finite physical tangent neighborhood. Sending $p$ to zero removes that support and collapses the affine radius. The exact crossover \eqref{eq:main_crossover} shows that the finite-radius resource does not simply disappear: after the appropriate radius normalization it becomes the second-order sideband-population curvature of the rank-changing family. The observable information ceiling is continuous even though the mathematical order of the resource changes.
+
+This transition is experimentally legible. A controllable incoherent or effectively mixed sideband seed sets $p$; a calibrated frequency converter fixes $\kappa$; spectroscopy or photon counting determines sideband population; and a phase-sensitive frequency-bin analyzer estimates the two-quadrature Fisher matrix. At the boundary, ordinary weak phase modulation provides a familiar bilateral saturation example. No autonomous controller model is required to test the state-family curvature law itself.
+
+When an autonomous implementation is desired, the resonant exchange benchmark provides a separate standard-physics calibration. Its total bare-energy distribution remains fixed while the endpoint curvature and state-weighted coupling variance are positive and exactly related. This illustrates why the companion coupling cost should not be identified with work consumption.
+
+A useful experimental program therefore does not require a single device to test every statement in this paper. Analog photodetectors can test the frequency-resolved NEP/FI reduction. Timestamp detectors can test memory and jitter models. Frequency-bin optics can test the survival-to-synthesis crossover. Resonant exchange systems can test the implementation benchmark. The common structure is that each test compares an independently measured resource quantity with the Fisher information of the accessible record.
+
+The principal limitation of the present paper is equally important: no experimental data are reported. The detector models are intended as analytically controlled benchmarks and falsification protocols. Real devices will add loss, background counts, drift, afterpulsing, multimode structure, technical noise, and imperfect state preparation. Those effects should first be incorporated at the detector-model level rather than absorbed into a redefinition of the resource inequalities.
+
+\section*{Data Availability}
+
+No experimental or observational data are reported. All results are analytical. Any numerical values in the text follow directly from the displayed analytic models. Source files and validation scripts, if released with the final manuscript, will be cited through a persistent public archive.
+
+\section*{AI-Assisted Research and Verification}
+
+OpenAI ChatGPT (GPT-5.6-series, including GPT-5.6 Sol) was used substantively for exploratory derivations, adversarial algebra checks, literature organization, numerical cross-check design, and manuscript preparation. AI outputs were treated as provisional. The author directed the research questions and proof strategy, checked the mathematical claims against explicit derivations and independent consistency tests, verified literature claims against source material, and takes responsibility for the final content.
+
+\bibliography{references}
+
+\end{document}
