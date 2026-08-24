@@ -4,11 +4,11 @@
 
 Durable project handoff for The Universal Photodetection Resource Problem. The repository, not chat history, is authoritative.
 
-## Active branch and current program
+## Active branch
 
-**Active branch:** `agent/practical-temporal-information-benchmarks`
+`agent/practical-temporal-information-benchmarks`
 
-The three mature temporal-information papers remain scientifically frozen in their theorem/proof layers. A separate fourth program is active to connect them to standard detector physics and explicit falsification tests.
+The three mature temporal-information papers remain scientifically frozen. The active fourth program translates them into standard detector measurements and explicit falsification tests.
 
 Read first:
 
@@ -16,83 +16,76 @@ Read first:
 2. `practical_temporal_information/AGENTS.md`
 3. `practical_temporal_information/notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`
 4. `practical_temporal_information/notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
-5. `manuscript/THREE_PAPER_PUBLICATION_ARCHITECTURE_2026-08-23.md`
-6. `manuscript/autonomous_temporal_information/MANUSCRIPT_HANDOFF.md`
-7. `manuscript/dynamical_implementation_cost/MANUSCRIPT_HANDOFF.md`
+5. `practical_temporal_information/notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
+6. `manuscript/THREE_PAPER_PUBLICATION_ARCHITECTURE_2026-08-23.md`
 
 ## Mature paper architecture — preserve
 
-1. **PRX Quantum flagship:** *Two spectral-resource regimes for autonomous temporal information* — R3 frozen theorem/proof baseline; R4 current journal-facing bridge revision.
-2. **Broad operational spectral paper:** *Spectral Resource Laws for Temporal Fisher Information* — independent random-time/spectral-survival track.
-3. **PRA dynamical completion:** *Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature* — frozen reviewer-repaired PRA R1 package.
+1. PRXQ flagship: *Two spectral-resource regimes for autonomous temporal information*.
+2. Broad random-time/timestamp spectral-information paper.
+3. PRA dynamical completion: *Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature*.
 
-Do not concatenate these papers and do not import their full proof stacks into Paper 4.
+Do not concatenate these papers and do not copy their full proof stacks into Paper 4.
 
 ## Paper 4 mission
 
 Working title: **Operational benchmarks for temporal information in photodetection**.
 
-Every central statement should identify measured quantities, predicted equality/inequality, nuisance assumptions, and an observation that would contradict it.
+Every central result should identify measured quantities, predicted equality/inequality, nuisance assumptions, and a result that would contradict the model/theorem.
 
 ## Current frontier
 
-### WP01 — linear Gaussian detector
+WP01: linear Gaussian weak-signal detector gives
 
-For peak optical-power quadratures, one-sided output PSD `S_n(f)`, and linear responsivity `R(f)`,
+`Tr F/T=2|R(f)|^2/S_n(f)=2/NEP(f)^2`
 
-`F_xx/T = F_yy/T = |R(f)|^2/S_n(f)`
+for peak optical-power quadratures and one-sided PSD.
 
-and
+WP02: ideal Poisson timestamps give
 
-`Tr F/T = 2|R(f)|^2/S_n(f) = 2/NEP(f)^2`
+`Tr F/T=lambda_0`
 
-when conventional frequency-resolved NEP is valid.
+for fractional quadratures, exactly matching shot-noise NEP in optical-power coordinates. Independent jitter multiplies the spectrum by `|Phi_J(Omega)|^2`.
 
-For arbitrary weak waveform coordinates,
+WP03: standard dead-time metrics are provably insufficient.
 
-`F_ij = 4 Re integral_0^infinity q_i*(f) q_j(f)/NEP(f)^2 df`.
+For deterministic paralyzable recovery at `lambda tau=1`,
 
-Response bandwidth and Fisher-information bandwidth need not coincide when noise is frequency dependent.
+`G(0)=0`
 
-### WP02 — Poisson timestamps and independent timing jitter
+but `G(omega)>0` for every nonzero frequency. At `f=1/(2tau)`, `G>=0.51697536`; high-frequency `G->1/e`.
 
-For fractional sinusoidal modulation of an ideal Poisson event rate,
+For arbitrary finite-mean iid Type-II recovery,
 
-**`Tr F/T=lambda_0`**.
+`r(lambda)=lambda exp(-lambda m)`
 
-For optical-power quadratures this exactly matches the WP01 shot-noise result `2/NEP_shot^2`.
+for every recovery distribution with mean `m`, but at `lambda m=1`
 
-Independent timestamp jitter with characteristic function `Phi_J(Omega)` gives
+**`G_DC=0 iff T=m almost surely`.**
 
-**`Tr F/T=lambda_0 |Phi_J(Omega)|^2`.**
+A simple bounded interval statistic `exp(-sD)` has zero local rate derivative iff recovery is deterministic and positive derivative for every nondegenerate finite-mean recovery law.
 
-Gaussian jitter gives
+Exact same-mean/same-variance example at `m=10 ns`:
 
-`Tr F/T=lambda_0 exp[-Omega^2 sigma_t^2]`,
+- Law A: `5 ns` / `15 ns`, each `1/2`;
+- Law B: `2.5 ns` (`2/9`), `10 ns` (`5/9`), `17.5 ns` (`2/9`).
 
-`f_F,3dB=sqrt(ln 2)/(2 pi sigma_t)`.
+Both have variance `25 ns^2`, CV `0.5`, and identical saturation curve, yet at the common maximum their registered pair correlation at `7.5 ns` is `0.7274957` versus `0.3188718`. The one-bit statistic `1{D<=4 ns}` has zero FI for A and positive FI for B.
 
-Independent signal and dark Poisson streams give
-
-`Tr F/T=lambda_s^2/(lambda_s+lambda_d)`
-
-before the jitter factor.
+This is the current strongest practical message: **homogeneous saturation curves and low-order recovery statistics do not determine temporal-information transfer.**
 
 ## Immediate work order
 
-1. WP03 — dead time/recovery/memory and connection to the random-time spectral-resource theorem.
-2. WP04 — seeded-to-empty optical sideband survival/synthesis crossover.
-3. WP05 — textbook resonant-exchange interpretation of exact unitary-coupling cost.
-4. WP06 — integrated falsification matrix.
-5. WP07 — dedicated prior-art/significance gate before manuscript drafting.
+1. WP04 — optical seeded-to-empty sideband survival/synthesis crossover.
+2. WP05 — textbook resonant-exchange interpretation of exact unitary-coupling cost.
+3. WP06 — integrated falsification matrix.
+4. WP07 — dedicated prior-art/significance gate before manuscript drafting.
 
 Do not create sidequests that do not improve measurement accessibility, falsifiability, or standard-physics interpretation.
 
 ## Claim discipline
 
-Priority remains unverified/not certified. Do not use Nobel/prize-level framing in scientific materials. Do not claim novelty for standard NEP, detectivity, matched filtering, generic Fisher sensing, Poisson-process Fisher information, shot-noise formulas, or timing-jitter characteristic-function filtering.
-
-Paper 4 is justified only if WP03–WP06 produce nontrivial experimentally legible consequences beyond tutorial translation.
+No prize-level framing. No novelty claim for standard NEP, detectivity, Fisher sensing, Poisson/dead-time count laws, renewal spectra, pair-correlation formulas, or timing-jitter filtering. Paper 4's novelty must come from the integrated benchmark/falsification laws and any new sideband/crossover or detector-ranking results that survive WP07.
 
 ## Documentation rule
 
