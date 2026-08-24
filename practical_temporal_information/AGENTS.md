@@ -12,13 +12,14 @@ Create a fourth paper that translates the temporal-information resource program 
 
 1. `README.md`
 2. `notes/WP09_HOSTILE_MANUSCRIPT_AUDIT_AND_SPECTATOR_INDEPENDENT_CROSSOVER.md`
-3. `notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
-4. `notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
-5. `notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
-6. `notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
-7. `notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
-8. `manuscript/practical_temporal_information/README.md`
-9. root `docs/CURRENT_RESEARCH_STATE.md`
+3. `notes/WP07A_CLOSE_PRIOR_ART_BOUNDARY_SUPERRESOLUTION.md`
+4. `notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
+5. `notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
+6. `notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
+7. `notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
+8. `notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
+9. `manuscript/practical_temporal_information/README.md`
+10. root `docs/CURRENT_RESEARCH_STATE.md`
 
 ## Current status
 
@@ -26,11 +27,15 @@ WP07 prior-art gate: **PASS WITH NARROWED CLAIMS**.
 
 WP08 final pre-manuscript gate: **PASS**.
 
-WP09 hostile manuscript audit: **CONDITIONAL PASS**. No coefficient or theorem-use defect was found, but the central crossover should be generalized from the normalized two-level baseline to a selected carrier/sideband pair embedded in an arbitrary inert spectator sector before scientific freeze.
+WP09 hostile manuscript audit: **CONDITIONAL PASS** pending final clean R2 build/render and second hostile read. The main scientific repair has already been implemented: the support crossover is generalized to a selected carrier/sideband pair embedded in arbitrary inert spectators.
 
-The first full manuscript draft exists and has its own static/CI gate. Initial CI passed the static provenance gate and exposed one purely mechanical REVTeX table incompatibility; a deterministic R1 transform removes only the incompatible `ruledtabular` wrapper before compilation.
+WP07A adds a crucial novelty boundary: Gefen--Rotem--Retzker (2019) and the rank-changing QFI literature already establish that an outcome/eigenvalue vanishing quadratically at a boundary can retain finite Fisher information. Paper 4 must not claim that mechanism as new. Its candidate contribution is the **finite-seed continuation from the interior**, including the exact affine physical radius and its radius-normalized convergence to the boundary curvature.
 
-## Strengthened Paper-4 theorem after WP09
+The first full manuscript draft exists and has isolated R1/R2 generation plus static gates. REVTeX rejected both paragraph-width tabular columns and labeled `description` items in the falsification section, so the generated R1 now uses conservative ordinary paragraph blocks. No scientific content was removed.
+
+A hostile source check also found and repaired a manuscript-only notation defect: the radius requires the product `a_p p`, now written explicitly as `a_p\,p`; the R2 gate rejects the erroneous string `a_pp`.
+
+## Strengthened Paper-4 theorem
 
 Let
 
@@ -62,15 +67,30 @@ This is independent of the detailed spectator population and of how normalizatio
 
 The original `a_p=1-p`, `sigma_p=0`, `q=1` model remains the simplest plotted special case.
 
+## Novelty boundary
+
+Do **not** claim novelty for:
+
+- finite FI from a quadratically vanishing probability/eigenvalue;
+- projection-noise suppression at a null outcome;
+- generic rank-changing/boundary QFI behavior;
+- sideband Fisher metrology or seeded/vacuum interferometry.
+
+The candidate distinct result is the exact finite-seed spectral-survival regularization
+
+`4p/R_lin^2 -> Delta P_s(0)`
+
+and its selected-mode spectator-independent realization.
+
+Priority remains unverified/not certified.
+
 ## Claim hierarchy
 
 ### Candidate original Paper-4 science
 
-- spectator-independent selected-mode support-seed crossover above;
+- selected-mode support-seed crossover above;
 - ideal weak phase-modulation boundary saturator under the locked convention;
 - integrated falsification architecture.
-
-Priority remains unverified/not certified; targeted WP07 search found no direct collision.
 
 ### Cited upstream benchmarks
 
@@ -96,16 +116,13 @@ Always distinguish:
 
 ## Immediate work order
 
-1. finish mechanical R1 build verification;
-2. generate a scientific R2 that replaces the narrow crossover subsection with the WP09 spectator-independent theorem while preserving the detector-first architecture;
-3. compile/render R2 and run a second hostile manuscript audit;
-4. only then begin figure production and publication-style compression.
+1. complete the latest prior-art-hardened R2 CI run;
+2. download and render the exact successful artifact if green;
+3. hostile-audit the rendered R2 and theorem/provenance language;
+4. close disposable PR #35 unmerged after final verification;
+5. only then begin figure production and publication-style compression.
 
 Do not create new detector-model sidequests.
-
-## Prior-art exclusions
-
-Do not claim novelty for dead-time information theory, variable/random dead time, inter-arrival characterization, paralyzable correlation distortion, sideband Fisher metrology, seeded/vacuum interferometry, generic rank-boundary QFI curvature, beam-splitter metrology, standard NEP, or generic Fisher sensing.
 
 ## Documentation rule
 
