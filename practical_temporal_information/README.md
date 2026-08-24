@@ -10,125 +10,119 @@ Working title:
 
 > **Operational benchmarks for temporal information in photodetection**
 
-## Publication gate after WP07
+## Gate status
 
-**PASS WITH NARROWED CLAIMS.**
+- WP07 prior-art/significance gate: **PASS WITH NARROWED CLAIMS**.
+- WP08 final pre-manuscript gate: **PASS**.
 
-The practical paper remains justified in principle, but not because Fisher information, detector dead time, inter-arrival statistics, optical sidebands, seeded/vacuum interferometry, or rank-changing QFI are individually new. Those ingredients have substantial prior art.
+The manuscript workspace may now be created.
 
-The strongest candidate new Paper-4 result is the **support-controlled optical survival-to-synthesis crossover** of WP04. The exact Type-II information theorem of WP03 is scientifically important but belongs to the already-frozen random-time paper and must be treated here as a cited practical benchmark, not republished as a new theorem.
+## Final claim hierarchy
 
-Authoritative gate:
+### Primary new candidate theorem
 
-`notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`.
+**Support-controlled survival-to-synthesis crossover**
 
-## Current minimum paper architecture
+For the explicit seeded carrier/sideband family,
 
-1. **measurement bridge** — analog NEP and timestamp likelihoods map ordinary detector records to temporal Fisher information;
-2. **memory benchmark** — use the frozen Paper-2 Type-II theorem to show concretely why saturation curves can be information-incomplete;
-3. **new candidate theorem: spectral support crossover** — seeded versus empty optical sidebands realize the survival-to-synthesis transition with an exact measurable crossover;
-4. **compact Hamiltonian benchmark** — a standard fixed-energy resonant beam splitter realizes the exact unitary-coupling identity;
-5. **integrated falsification matrix** — every result states measured quantities, assumptions, prediction, and what a failure means.
+`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.
 
-## Result summary
+At `p>0` the relevant sideband lies in the baseline support and finite-radius survival applies. At `p=0` the affine radius collapses and second-order sideband population curvature becomes the synthesis resource. Ordinary ideal weak phase modulation saturates the bilateral boundary-curvature law under the locked convention.
 
-### WP01 — analog bridge
+Targeted WP07 search found no direct collision for this exact identity / interpretation. Priority remains unverified, not certified.
 
-`F_xx/T=F_yy/T=1/NEP(f)^2`, `Tr F/T=2/NEP(f)^2` under the locked convention.
+### Cited upstream benchmark — detector memory
 
-This is background/translation, not a novelty claim.
+The frozen random-time paper proves that for fixed mean Type-II recovery all iid recovery laws share `r=lambda exp(-lambda m)` while timestamp information is not fixed; at the common maximum deterministic recovery is uniquely information-singular. Paper 4 should make this result experimentally actionable, not republish it as a new theorem.
 
-### WP02 — timestamp bridge
+### Cited upstream benchmark — implementation cost
 
-Ideal fractional Poisson modulation gives `Tr F/T=lambda_0`; independent timing jitter gives factor `|Phi_J(Omega)|^2`. The optical-power form exactly matches ideal shot-noise NEP.
+The frozen PRA companion proves `V_min=(1/2)Tr C`. WP05 gives a standard resonant beam-splitter realization with
 
-This is background/translation, not a novelty claim.
+`V_min=8(g t)^2`, `A_ex=hbar nu V_min`,
 
-### WP03 — memory benchmark from frozen Paper 2
+while the total bare-energy distribution remains fixed.
 
-For fixed mean recovery `m`, every iid Type-II recovery law shares `r=lambda exp(-lambda m)`. At the common maximum, `G_DC=0` iff recovery is deterministic. Exact equal-mean/equal-variance/equal-saturation laws have different timestamp information and accessible separating statistics.
+### Standard measurement bridge
 
-Paper 4 should turn this into a falsifiable detector-characterization protocol while citing the random-time paper. It must not claim the theorem as new Paper-4 content.
+- linear Gaussian: `Tr F/T=2/NEP(f)^2`;
+- ideal Poisson fractional timestamps: `Tr F/T=lambda0`;
+- independent timing jitter: multiply by `|Phi_J(Omega)|^2`.
 
-### WP04 — primary candidate new science
+No novelty claim is attached to these bridges.
 
-Seeded sideband:
+## Conventional-specification incompleteness example — WP08
 
-`(R_lin^2/4)Tr F<=p`.
+Both detectors have
 
-Empty-sideband boundary:
+`|H(f)|^2=1/[1+(f/f_c)^2]`,
 
-`Tr F<=Delta P_s`,
+the same DC output-noise PSD `S0`, the same DC NEP, and the same responsivity 3-dB frequency `f_c`.
 
-with exact crossover
+Detector A:
 
-`lim_(p->0+)4p/R_lin^2=Delta P_s`.
+`S_A(f)=S0`.
 
-Ordinary ideal weak phase modulation saturates the bilateral boundary-curvature law under the locked convention.
+Detector B:
 
-The targeted WP07 search found no direct prior-art collision for this exact support-controlled crossover identity / survival-synthesis interpretation. Priority remains unverified, not certified.
+`S_B/S0=1/5+(4/5)/[1+25(f/f_c)^2]`.
 
-### WP05 — Hamiltonian completion
+Normalized single-quadrature FI spectra:
 
-Standard resonant two-boson beam-splitter benchmark:
+`J_A=1/(1+x^2)`,
 
-`V_min=8(g t)^2=(1/2)Tr C`,
+`J_B=(1+25x^2)/[(1+x^2)(1+5x^2)]`, `x=f/f_c`.
 
-`A_ex=hbar nu V_min`,
+At `f=f_c`,
 
-while the total bare-energy distribution remains exactly fixed.
+`J_B/J_A=13/3≈4.3333`.
 
-For fixed duration,
+B does not fall to half its DC FI until
 
-`V_impl=(t^2/hbar^2)sum_j Var(H_j)`.
+`f≈2.9703 f_c`.
 
-The Hamiltonian is standard; the contribution here is its use as an independently calibratable implementation benchmark for the companion theorem.
+Thus the pair `{DC NEP, responsivity 3-dB bandwidth}` does not determine temporal estimation performance. This is a standard-physics illustration, not a priority claim.
 
 ## Falsification hierarchy
 
-### Level I — detector-model/reduction failure
+1. detector-model/reduction failure;
+2. resource-law challenge only after theorem hypotheses are independently verified;
+3. failure of a model-specific saturating equality.
 
-Examples: `R^2/S_n` does not match empirical FI, independent-jitter law fails, ideal modulation/beam-splitter curvature misses calibration.
+## Final main-text architecture
 
-First interpretation: model, calibration, stationarity, or independence assumptions are wrong.
+I. What conventional detector specifications do not determine.
 
-### Level II — resource-law challenge under verified assumptions
+II. Detector-language FI bridge and memory benchmark.
 
-Examples: a calibrated finite-radius experiment violates `(R_lin^2/4)Tr F<=p`, or a verified rank-boundary family violates its curvature FI bound.
+III. Spectral support: seeded survival -> empty-sideband synthesis.
 
-Only after theorem hypotheses are independently established should such a violation be described as challenging the resource law.
+IV. Standard Hamiltonian implementation.
 
-### Level III — saturating-model equality failure
+V. Integrated falsification matrix.
 
-Failure of ideal phase-modulation or beam-splitter equality normally falsifies the specific saturating model, not the general theorem.
+VI. Discussion.
 
-## Prior-art exclusions after WP07
+Target roughly 10–14 journal pages before references; maximum four figures.
 
-Do not claim novelty for generic dead-time information theory, variable/random dead time, interval-based dead-time characterization, paralyzable correlation distortion, sideband Fisher metrology, seeded/vacuum interferometry, generic rank-boundary QFI curvature, or standard beam-splitter metrology.
+## Authoritative notes
 
-## Scope removals
-
-Do not add dedicated main-text sections for a separate photoconductor pole model, RC photodiode example, generalized `NEP_F` terminology, many recovery families, extra modulation technologies, unequal-frequency pumped converters, or infinite-dimensional PRA machinery unless a concrete need appears.
-
-## Proposed main-text structure
-
-I. Motivation: sensitivity/saturation are not information-transfer laws.
-
-II. Detector-language Fisher bridge.
-
-III. Memory benchmark: same saturation, different information.
-
-IV. New support theorem: survival -> sideband synthesis.
-
-V. Standard Hamiltonian implementation benchmark.
-
-VI. Integrated falsification table/discussion.
-
-Target main-text length: roughly 10–14 journal pages before references; maximum four figures.
+- `notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`
+- `notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
+- `notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
+- `notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
+- `notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
+- `notes/WP06_MINIMUM_PAPER_STACK_AND_FALSIFICATION_MATRIX.md`
+- `notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
+- `notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
 
 ## Immediate work
 
-**WP08 — final pre-manuscript stack.** Derive one explicit conventional-detector misranking example, lock exact assumptions/units and decide which statements are new Paper-4 theorems versus cited upstream benchmarks. Create the manuscript workspace only after WP08 passes.
+Create `manuscript/practical_temporal_information/`, draft from the detector example outward, keep WP04 as the principal original theorem, cite rather than duplicate the mature papers, and run a hostile manuscript-level audit before freezing any submission package.
+
+## Claim discipline
+
+No novelty claim for generic dead-time information theory, variable/random dead time, interval characterization, paralyzable correlations, standard NEP/Fisher sensing, sideband generation/metrology, seeded/vacuum interferometry, generic boundary-QFI curvature, beam-splitter physics, or standard interferometry. No experimental validation is implied without data.
 
 ## Documentation rule
 
