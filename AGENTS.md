@@ -8,14 +8,14 @@ Durable project handoff for The Universal Photodetection Resource Problem. The r
 
 **Active branch:** `agent/practical-temporal-information-benchmarks`
 
-The three mature temporal-information papers remain scientifically frozen in their theorem/proof layers. A separate fourth program is now active to connect them to standard detector physics and explicit falsification tests.
+The three mature temporal-information papers remain scientifically frozen in their theorem/proof layers. A separate fourth program is active to connect them to standard detector physics and explicit falsification tests.
 
 Read first:
 
 1. `docs/CURRENT_RESEARCH_STATE.md`
 2. `practical_temporal_information/AGENTS.md`
-3. `practical_temporal_information/README.md`
-4. `practical_temporal_information/notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`
+3. `practical_temporal_information/notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`
+4. `practical_temporal_information/notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
 5. `manuscript/THREE_PAPER_PUBLICATION_ARCHITECTURE_2026-08-23.md`
 6. `manuscript/autonomous_temporal_information/MANUSCRIPT_HANDOFF.md`
 7. `manuscript/dynamical_implementation_cost/MANUSCRIPT_HANDOFF.md`
@@ -32,62 +32,67 @@ Do not concatenate these papers and do not import their full proof stacks into P
 
 Working title: **Operational benchmarks for temporal information in photodetection**.
 
-The fourth paper must translate theory into ordinary observables such as
+Every central statement should identify measured quantities, predicted equality/inequality, nuisance assumptions, and an observation that would contradict it.
 
-- small-signal responsivity;
-- output noise PSD;
-- NEP/detectivity;
-- response and information bandwidth;
-- raw timestamps;
-- timing jitter;
-- dead time/recovery/memory;
-- optical carrier/sideband populations;
-- calibrated interaction/coupling parameters where the PRA theorem is invoked.
+## Current frontier
 
-Every central statement should identify what is measured and what observation would contradict it.
+### WP01 — linear Gaussian detector
 
-## Current frontier — WP01 complete
-
-With peak optical-power quadratures `x,y`, one-sided output PSD `S_n(f)`, and linear responsivity `R(f)`, the stationary Gaussian model gives
+For peak optical-power quadratures, one-sided output PSD `S_n(f)`, and linear responsivity `R(f)`,
 
 `F_xx/T = F_yy/T = |R(f)|^2/S_n(f)`
 
 and
 
-`Tr F/T = 2|R(f)|^2/S_n(f)`.
+`Tr F/T = 2|R(f)|^2/S_n(f) = 2/NEP(f)^2`
 
-When conventional frequency-resolved NEP is valid,
+when conventional frequency-resolved NEP is valid.
 
-`NEP(f)=sqrt(S_n(f))/|R(f)|`,
-
-so
-
-`F_xx/T=1/NEP(f)^2`,
-
-`Tr F/T=2/NEP(f)^2`.
-
-For arbitrary weak waveform coordinates `q_i`,
+For arbitrary weak waveform coordinates,
 
 `F_ij = 4 Re integral_0^infinity q_i*(f) q_j(f)/NEP(f)^2 df`.
 
-This provides the first exact detector-language bridge. It also shows that responsivity 3-dB bandwidth is not generally the same as Fisher-information bandwidth when noise is frequency dependent.
+Response bandwidth and Fisher-information bandwidth need not coincide when noise is frequency dependent.
 
-No novelty claim is made for NEP or generic Fisher sensing. The possible new contribution lies in the integrated temporal-information benchmark/falsification framework and any new crossover/ranking laws that survive prior-art review.
+### WP02 — Poisson timestamps and independent timing jitter
+
+For fractional sinusoidal modulation of an ideal Poisson event rate,
+
+**`Tr F/T=lambda_0`**.
+
+For optical-power quadratures this exactly matches the WP01 shot-noise result `2/NEP_shot^2`.
+
+Independent timestamp jitter with characteristic function `Phi_J(Omega)` gives
+
+**`Tr F/T=lambda_0 |Phi_J(Omega)|^2`.**
+
+Gaussian jitter gives
+
+`Tr F/T=lambda_0 exp[-Omega^2 sigma_t^2]`,
+
+`f_F,3dB=sqrt(ln 2)/(2 pi sigma_t)`.
+
+Independent signal and dark Poisson streams give
+
+`Tr F/T=lambda_s^2/(lambda_s+lambda_d)`
+
+before the jitter factor.
 
 ## Immediate work order
 
-1. WP02 — ideal Poisson timestamps and independent timing jitter, with exact Fisher prefactors and finite-time assumptions.
-2. WP03 — dead time/recovery/memory and connection to the existing random-time theorem.
-3. WP04 — seeded-to-empty sideband survival/synthesis crossover.
-4. WP05 — textbook resonant-exchange interpretation of the exact unitary-coupling cost.
-5. WP06 — integrated falsification matrix.
-6. WP07 — dedicated prior-art/significance gate before manuscript drafting.
+1. WP03 — dead time/recovery/memory and connection to the random-time spectral-resource theorem.
+2. WP04 — seeded-to-empty optical sideband survival/synthesis crossover.
+3. WP05 — textbook resonant-exchange interpretation of exact unitary-coupling cost.
+4. WP06 — integrated falsification matrix.
+5. WP07 — dedicated prior-art/significance gate before manuscript drafting.
 
 Do not create sidequests that do not improve measurement accessibility, falsifiability, or standard-physics interpretation.
 
 ## Claim discipline
 
-Priority remains unverified/not certified. Do not use Nobel/prize-level framing in scientific materials. Do not claim a proposed Fisher-equivalent input-noise metric is novel until a dedicated search establishes its relationship to prior information-equivalent noise/sensitivity metrics.
+Priority remains unverified/not certified. Do not use Nobel/prize-level framing in scientific materials. Do not claim novelty for standard NEP, detectivity, matched filtering, generic Fisher sensing, Poisson-process Fisher information, shot-noise formulas, or timing-jitter characteristic-function filtering.
+
+Paper 4 is justified only if WP03–WP06 produce nontrivial experimentally legible consequences beyond tutorial translation.
 
 ## Documentation rule
 
