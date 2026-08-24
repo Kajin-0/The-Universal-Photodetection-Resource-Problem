@@ -46,13 +46,13 @@ a_p & \kappa(a_p-p)(x+iy)\\
 \end{equation}
 up to an immaterial sine-quadrature sign convention. Its determinant is
 \begin{equation}
-a_pp-\kappa^2(a_p-p)^2(x^2+y^2).
+a_p\,p-\kappa^2(a_p-p)^2(x^2+y^2).
 \end{equation}
 Because the spectator sector is positive and uncoupled, the exact affine physical radius is therefore
 \begin{equation}
 \boxed{
 R_{\rm lin}^2=
-\frac{a_pp}{\kappa^2(a_p-p)^2}.}
+\frac{a_p\,p}{\kappa^2(a_p-p)^2}.}
 \label{eq:Rlin_general}
 \end{equation}
 
@@ -87,6 +87,8 @@ The corresponding one-sided rank-boundary inequality is
 \label{eq:boundary_bound_general}
 \end{equation}
 
+Finite Fisher information associated with an outcome or eigenvalue that vanishes quadratically at a rank-changing point is already known in quantum sensing and boundary-QFI theory \cite{GefenRotemRetzker2019,Safranek2017}. Our added statement is not that boundary mechanism itself. It is the finite-seed continuation from the interior: the pre-existing sideband population and its exact affine physical radius can be followed continuously to zero, and their radius-normalized survival resource converges to the boundary population curvature.
+
 \begin{proposition}[Spectator-independent seed regularization]
 For the family \eqref{eq:rho_p_general}--\eqref{eq:converter_general},
 \begin{equation}
@@ -112,14 +114,12 @@ Equation~\eqref{eq:main_crossover_general} is the practical content of the survi
 
 The theorem does not require the selected carrier to contain the full baseline population. Populated polarization, spatial, spectral, or other spectator modes are permitted. What is required is a calibrated local two-mode converter whose first-order action is confined to the selected carrier/sideband pair. Loss, parameter-dependent decoherence, seed-dependent coupling to spectators, or other channel changes constitute Level-I model departures and need not obey the exact equalities above.
 
-At the boundary, the active $c$--$s$ block has weight $q$ and local form
+At the boundary, the active $c$--$s$ block has weight $q$. Write its normalized local state as
 \begin{equation}
-q\,|\psi(x,y)\rangle\langle\psi(x,y)|,
-\qquad
 |\psi(x,y)\rangle
-=|c\rangle+\kappa(x-iy)|s\rangle+O(r^2),
+=|c\rangle+\kappa(x-iy)|s\rangle+O(r^2).
 \end{equation}
-plus the parameter-independent spectator state $\sigma_0$. A fixed four-outcome equatorial POVM on the active two-mode subspace, completed by the spectator projector, gives
+The full boundary state is the active block $q|\psi\rangle\langle\psi|$ plus the parameter-independent spectator state $\sigma_0$. A fixed four-outcome equatorial POVM on the active two-mode subspace, completed by the spectator projector, gives
 \begin{equation}
 F_{xx}=F_{yy}=2q\kappa^2,
 \qquad F_{xy}=0,
