@@ -2,15 +2,15 @@
 
 **Date:** 2026-08-23
 
-**Status:** R3 SCIENTIFIC/PUBLICATION BUILD PASS; R4 presentation-only verification ACTIVE.
+**Status:** **PASS — R4 exact build/render freeze closed.** Scientific content is frozen through R3; R4 changes hyperlink presentation only.
 
 ## Purpose
 
-Close the second hostile manuscript audit at the exact built-PDF level, then remove one non-scientific presentation defect (visible hyperlink borders) without changing scientific content.
+Close the second hostile manuscript audit at the exact built-PDF level, then remove the one remaining non-scientific presentation defect (visible hyperlink borders) without changing scientific content.
 
 ## R3 exact verification
 
-Disposable verification PR: `#35` — must never be merged.
+Disposable verification PR: `#35` — never merge.
 
 Workflow run: `32684317367`
 
@@ -28,7 +28,7 @@ All steps passed:
 8. unresolved-reference/citation and overfull-box gate;
 9. artifact upload.
 
-Artifact:
+R3 artifact:
 
 - ID: `9505151860`
 - name: `practical-temporal-information-r3`
@@ -42,9 +42,9 @@ Exact built R3 PDF:
 - bytes: `266067`
 - SHA-256: `b1816af4811e900f05fa56eac4141d16ed617441f52c855b94eae6b571b475af`
 
-## Render audit
+## R3 render audit
 
-The exact artifact PDF was rendered at 180 dpi and every page inspected.
+The exact R3 artifact PDF was rendered at 180 dpi and every page inspected.
 
 PASS:
 
@@ -60,13 +60,13 @@ PASS:
 - equal-frequency resonant Hamiltonian clarification legible;
 - Type-II and unitary-coupling results remain visibly attributed to companion manuscripts.
 
-One non-scientific presentation issue remains: default `hyperref` draws visible red/green/cyan link rectangles around internal references, citations, and bibliography links. These are not a correctness problem but make the PDF look unfinished.
+The only presentation defect was default `hyperref` drawing visible colored link rectangles.
 
 ## Second hostile scientific audit — final findings
 
 ### Support theorem coefficient — PASS
 
-Frozen flagship Theorem 1 defines `P_U,nu` and `P_D,nu` as the endpoint projectors supporting the **range and domain of the particular +nu tangent**, not global energy-tail projectors. Because the practical tangent acts only from the selected carrier to the selected sideband,
+Frozen flagship Theorem 1 defines `P_U,nu` and `P_D,nu` as endpoint projectors supporting the **range and domain of the particular +nu tangent**, not global energy-tail projectors. Because the practical tangent acts only from the selected carrier to the selected sideband,
 
 `P_U,Omega = |s><s|`,
 
@@ -74,15 +74,15 @@ so
 
 `U_Omega = Tr(rho_p |s><s|) = p`
 
-exactly, regardless of population in inert stationary spectator modes. Therefore
+exactly, regardless of population in allowed inert stationary spectator modes. Therefore
 
 `(R_lin^2/4) Tr F <= p`
 
-is the correct one-copy specialization even with arbitrary allowed spectators.
+is the correct one-copy specialization.
 
 ### Spectator zero modes — PASS
 
-The tangent is identically zero on the spectator block, so zero eigenvalues or rank deficiency inside the inert spectator sector do not reduce the affine radius. Positivity of the affine family reduces to positivity of the selected carrier/sideband block plus the unchanged positive spectator block.
+The tangent is identically zero on the spectator block, so zero eigenvalues or rank deficiency inside the inert spectator sector do not reduce the affine radius. Positivity reduces to the selected carrier/sideband block plus the unchanged positive spectator block.
 
 ### Boundary POVM — PASS
 
@@ -96,15 +96,15 @@ hence
 
 ### Conventional detector example — PASS
 
-The equal-DC-NEP/equal-response-bandwidth example remains algebraically correct and is presented as an illustrative specification-incompleteness example, not as a new theorem.
+The equal-DC-NEP/equal-response-bandwidth example remains algebraically correct and is presented as an illustrative specification-incompleteness example, not as a novelty theorem.
 
 ### Memory provenance — PASS
 
-The Type-II rate/Fisher singularity theorem is explicitly introduced as a companion result and the manuscript explicitly denies novelty for generic timestamp/dead-time information theory.
+The Type-II rate/Fisher singularity theorem is explicitly introduced as a companion result; the manuscript explicitly denies novelty for generic timestamp/dead-time information theory.
 
 ### Unitary-coupling provenance — PASS
 
-The resonant exchange section is explicitly a standard benchmark of the separate companion implementation theorem. R3 now states the equal-frequency free Hamiltonian
+The resonant exchange section is explicitly a standard benchmark of the separate companion implementation theorem. R3 states the equal-frequency free Hamiltonian
 
 `H_0=hbar nu(N_C+N_S)`
 
@@ -133,14 +133,69 @@ R4 is generated from R3 by adding exactly
 
 after the existing `hyperref` package line. The R4 gate reconstructs the complete expected file from R3 and rejects any other byte change.
 
-No word, equation, reference target, theorem, proof, citation, disclosure, or bibliography entry is allowed to change in R4.
+No word, equation, reference target, theorem, proof, citation, disclosure, or bibliography entry changes in R4.
+
+## R4 exact verification
+
+Workflow run: `32684526293`
+
+Job: `97307019940`
+
+Every step PASS:
+
+1. first-draft static provenance/integrity;
+2. R1 mechanical generation;
+3. R2 theorem generation;
+4. R2 scientific-isolation gate;
+5. R3 hostile-review generation;
+6. R3 exact whole-file gate;
+7. R4 presentation generation;
+8. R4 presentation-isolation gate;
+9. R4 LaTeX compile;
+10. unresolved-reference/citation and overfull-box gate;
+11. artifact upload.
+
+R4 artifact:
+
+- ID: `9505218922`
+- name: `practical-temporal-information-r4`
+- archive size: `322116` bytes
+- archive digest: `sha256:9905a2cbd4366d57731fc8f4a99c6f72a513629a8727257a43131e02efb96cce`
+
+Exact R4 PDF:
+
+- file: `operational_temporal_information_r4.pdf`
+- pages: `8`
+- bytes: `266068`
+- SHA-256: `794cb1c52326dc1965e14ea8ccd15530b41b2e523ca501e88f081cf69d741a01`
+
+## R4 render/diff audit
+
+The exact R4 artifact PDF was rendered at 180 dpi and all eight pages were inspected.
+
+PASS:
+
+- no clipping;
+- no overlaps;
+- no broken glyphs;
+- no black squares;
+- no equation overflow;
+- no visual regression;
+- colored hyperlink rectangles are gone.
+
+A direct 180-dpi render comparison of R3 versus R4 changed only tiny rectangular regions at former hyperlink-border locations. Per-page changed-pixel fractions were approximately `0.00027%` to `0.00511%`; the changed regions coincide with reference/citation/DOI link rectangles. This is consistent with the R4 byte-isolation gate and confirms presentation-only change.
+
+## Freeze decision
+
+**R4 is the current practical-manuscript freeze.**
+
+Do not reopen theorem expansion. The next work is publication figures and later publication-style compression/packaging. Any scientific change after R4 requires a new explicit revision layer and a concrete blocking reason.
 
 ## Immediate work order
 
-1. obtain green R4 CI;
-2. download exact R4 artifact;
-3. record artifact/PDF hashes and page count;
-4. render all pages and confirm link rectangles are gone with no visual regression;
-5. close PR #35 unmerged;
-6. synchronize all practical/root landing files to the R4 freeze;
-7. begin figure production only after that synchronization.
+1. close disposable PR #35 unmerged;
+2. synchronize all practical/root landing files to this R4 freeze;
+3. produce the four planned publication figures with deterministic sources;
+4. integrate figures through an isolated manuscript revision;
+5. recompile/render/hostile-review the figure-integrated manuscript;
+6. then do journal/submission compression and current-policy checks.
