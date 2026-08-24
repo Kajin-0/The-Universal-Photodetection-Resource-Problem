@@ -14,7 +14,7 @@
 
 Working title:
 
-> **Operational benchmarks for temporal information in photodetection**
+> **Operational temporal-information benchmarks for photodetection**
 
 ## Completed research gates
 
@@ -26,58 +26,65 @@ Working title:
 - **WP06:** minimum manuscript architecture and falsification hierarchy.
 - **WP07:** prior-art/significance gate — PASS WITH NARROWED CLAIMS.
 - **WP08:** final pre-manuscript theorem/benchmark stack — PASS.
+- **WP09:** first hostile manuscript audit — CONDITIONAL PASS with one substantive theorem strengthening.
 
-## Final scientific hierarchy
+## WP09 strengthening
 
-### Principal new candidate result
+The selected sideband need not be the only populated mode. For
 
-WP04:
+`rho_p=a_p|c><c|+p|s><s|+sigma_p`,
 
-`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.
+where `sigma_p` is an arbitrary positive spectator block, `a_p->q>0`, and the calibrated converter acts only on the carrier/sideband pair,
 
-This is the controlled support-removal crossover from finite-radius spectral survival to rank-boundary second-order synthesis. Priority remains unverified/not certified; no direct collision was found in the targeted WP07 search.
+`R_lin^2=a_p p/[kappa^2(a_p-p)^2]`,
 
-### Upstream results used as practical benchmarks
+`Delta P_s(0)=4kappa^2 q`,
 
-- WP03 / frozen random-time paper: equal Type-II saturation characterization does not determine timestamp information.
-- frozen PRA companion: `V_min=(1/2)Tr C`, instantiated by WP05's resonant beam-splitter benchmark.
+so
 
-Do not duplicate their proofs or reassign their novelty to Paper 4.
+**`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.**
 
-### Standard measurement bridges
+This removes the principal hostile-review concern that the crossover is an artifact of a pure/normed two-level baseline. It remains a model theorem for a lossless selected-mode converter with inert spectators, not a universal theorem for arbitrary lossy channels.
 
-- NEP/FI relation under explicit Gaussian/PSD conventions;
-- ideal Poisson/jitter timestamp relation;
-- WP08 conventional-specification incompleteness example.
+The finite-radius coefficient was rechecked directly against the frozen flagship proof:
 
-## WP08 detector example
+`(R_lin^2/4)Tr F <= Tr(P_U rho_0)`.
 
-Two detectors share identical response `|H|^2=1/(1+x^2)`, DC noise, DC NEP and responsivity 3-dB bandwidth.
+For the seeded sideband `Tr(P_U rho_0)=p`; no coefficient repair is needed.
 
-White-noise A:
+## Manuscript state
 
-`J_A=1/(1+x^2)`.
+The first full REVTeX draft exists in `manuscript/practical_temporal_information/`.
 
-White-plus-Lorentzian B:
+Its initial PR-triggered CI passed the static provenance/claim gate and failed only because REVTeX `ruledtabular` cannot wrap the paragraph-width falsification-table columns. A deterministic R1 transform now removes only that wrapper before compilation.
 
-`J_B=(1+25x^2)/[(1+x^2)(1+5x^2)]`.
+## Active work order
 
-At `x=1`, B carries `13/3≈4.3333` times A's FI. B remains above half its DC FI until `x≈2.9703`.
+1. finish R1 mechanical build verification;
+2. generate scientific R2 replacing the narrow crossover proposition with the WP09 spectator-independent statement;
+3. compile/render R2;
+4. run a second hostile manuscript-level audit;
+5. if R2 passes, produce at most four publication figures and compress for Physical Review Applied style.
 
-This is the manuscript-opening standard-physics example.
+## Claim hierarchy
 
-## Manuscript phase — active
+### Candidate original Paper-4 science
 
-1. create `manuscript/practical_temporal_information/`;
-2. write a detector-first architecture and minimal REVTeX draft;
-3. use at most four figures;
-4. keep the support-crossover theorem as the new scientific center;
-5. cite rather than duplicate Paper-2 and PRA theorem proofs;
-6. run a hostile manuscript-level audit before freezing any revision.
+- WP09 selected-mode support-seed crossover;
+- ideal weak phase-modulation boundary saturator;
+- integrated falsification architecture.
 
-## Falsification discipline
+### Cited upstream results
 
-Every claim must state what is measured, what assumptions are independently checked, what equality/inequality is predicted, and whether a failure is Level I model failure, Level II resource-law challenge, or Level III saturator failure.
+- Type-II memory theorem from the frozen random-time paper;
+- exact unitary-coupling theorem from the frozen PRA paper.
+
+### Standard bridges
+
+- NEP/FI relation;
+- Poisson/jitter relation;
+- WP08 colored-noise detector counterexample;
+- standard resonant beam-splitter realization.
 
 ## Claim discipline
 
