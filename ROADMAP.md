@@ -22,93 +22,81 @@ Goal: translate temporal Fisher/resource results into standard detector measurem
 
 ## Completed work packages
 
-### WP01 — linear Gaussian FI/NEP
+### WP01 — analog Gaussian
 
-`F_xx/T=F_yy/T=1/NEP(f)^2`,
+`Tr F/T=2/NEP(f)^2` under the locked convention. Full weak-waveform FI is the `1/NEP(f)^2` matched-filter metric.
 
-`Tr F/T=2/NEP(f)^2`
+### WP02 — ideal timestamps
 
-under the locked peak-quadrature / one-sided-PSD convention.
+`Tr F/T=lambda_0` for fractional Poisson modulation; optical-power form exactly matches ideal shot-noise NEP. Independent jitter gives `|Phi_J|^2`.
 
-### WP02 — Poisson timestamps and jitter
+### WP03 — detector memory
 
-`Tr F/T=lambda_0`
+Standard saturation/low-order recovery characterization can be information-incomplete. Deterministic Type-II recovery at the count maximum is DC-information blind but retains every nonzero mode. Arbitrary finite-mean iid recovery shares the same saturation curve for fixed mean, yet only deterministic recovery is timestamp-FI singular at the common maximum.
 
-for fractional two-quadrature modulation; optical-power form exactly matches ideal shot-noise NEP. Independent jitter gives factor `|Phi_J(Omega)|^2`.
+### WP04 — optical support crossover
 
-### WP03 — dead time/recovery
-
-At deterministic Type-II paralysis maximum, `G(0)=0` but every nonzero frequency survives; `G>=0.51697536` at `f=1/(2tau)` and `G->1/e` at high frequency.
-
-For arbitrary finite-mean iid recovery, all distributions with mean `m` share `r=lambda exp(-lambda m)`, but `G_DC=0` at `lambda m=1` iff recovery is deterministic. Equal-mean/equal-variance/equal-saturation recovery laws can have different timestamp information.
-
-### WP04 — optical sideband survival/synthesis
-
-Seeded two-bin baseline:
-
-`rho_p=(1-p)|c><c|+p|s><s|`.
-
-With local mixing coefficient `kappa`,
-
-`R_lin^2=p(1-p)/[kappa^2(1-2p)^2]`.
-
-Finite-radius regime:
+Seeded sideband:
 
 `(R_lin^2/4)Tr F<=p`.
 
 Empty-sideband boundary:
 
-`Delta P_s(0)=4kappa^2`,
+`Tr F<=Delta P_s`,
 
-`Tr F<=Delta P_s(0)`.
+with exact limiting identity
 
-Exact crossover:
+`lim_(p->0+)4p/R_lin^2=Delta P_s`.
 
-**`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.**
+Ordinary ideal weak phase modulation saturates the bilateral curvature law.
 
-A fixed common-record frequency-bin POVM saturates the boundary value.
+### WP05 — resonant exchange implementation
 
-Ordinary weak phase modulation yields `Delta P_+=Delta P_-=1` and a fixed phase-sensitive three-mode analyzer achieves
+Two equal-frequency bosonic modes with standard beam-splitter coupling remain inside a fixed total-excitation shell.
 
-**`Tr F=4=[sqrt(Delta P_+)+sqrt(Delta P_-)]^2`.**
+For baseline `|1,1>` and parameterized interaction `U=exp[-i g t(xB_x+yB_y)]`,
 
-This is an exact ideal standard-optics saturation example of the bilateral rank-boundary curvature law.
+`V_impl=8(g t)^2`,
 
-## Remaining work packages
+`Tr C=16(g t)^2`,
 
-### WP05 — autonomous resonant-exchange implementation bridge
+**`V_min=(1/2)Tr C=8(g t)^2`,**
 
-Include the controller/clock explicitly. Reduce the companion theorem
+**`A_ex=hbar nu V_min=8 hbar nu(g t)^2`.**
 
-`V_min=(1/2)Tr C`,
+The total bare-energy distribution remains a delta function at `2hbar nu`.
 
-`A_ex=hbar nu V_min`
+For fixed duration,
 
-to a textbook energy-conserving beam-splitter/frequency-conversion interaction. Identify exactly what `V_impl=sum Var(K_j)` becomes in measurable/calibrated coupling parameters. Keep it separate from work, consumed RF power, peak Hamiltonian norm, controller bandwidth, and fixed-controller-spectrum optimization.
+`V_impl=(t^2/hbar^2)sum_j Var(H_j)`.
 
-### WP06 — integrated falsification matrix
+This supplies the standard Hamiltonian meaning of the abstract coupling functional while preserving the explicit non-work limitation.
 
-For every headline result specify measured inputs, predicted equality/inequality, nuisance assumptions, statistical test, and contradiction criterion. Select the minimum practical result stack; remove anything merely pedagogical.
+## WP06 — next: minimum paper stack and falsification matrix
 
-### WP07 — prior-art/significance gate
+Do not simply carry WP01–WP05 wholesale into a manuscript. Rank them by scientific function:
 
-Search specifically for:
+- which results are central claims;
+- which are bridges/background;
+- which are merely examples;
+- which require separate data sets;
+- which can be tested with common laboratory observables.
 
-- FI/NEP detector metrics and information bandwidth;
-- dead-time recovery distributions with identical saturation but different information/identifiability;
-- sideband-population curvature bounds on modulation FI;
-- seeded-to-empty support crossovers in optical metrology;
-- experimentally framed rank-boundary QFI/FI tests.
+Build one table with measured quantities, prediction, calibration assumptions, and falsification criterion for every retained headline result.
 
-Do not draft Paper 4 until this gate determines which claims are genuinely distinct.
+A likely minimal paper will center WP03 + WP04, use WP01/WP02 to establish the common information language, and use WP05 as a compact Hamiltonian interpretation rather than a second full theory section.
+
+## WP07 — prior-art/significance gate
+
+Before manuscript drafting, search specifically for the exact integrated claims and practical crossovers. Demote or remove anything already standard. If only pedagogical material remains, do not force Paper 4.
 
 ## Current candidate thesis
 
-> Conventional detector figures of merit can fail to determine temporal-information transfer. Frequency-resolved response/noise and full timestamp structure provide a common falsifiable benchmark, while pre-existing versus generated optical sideband population realizes the survival/synthesis distinction in standard photonics.
+> Conventional detector figures of merit can fail to determine temporal-information transfer. Frequency-resolved response/noise and full timestamp structure provide a common falsifiable benchmark, while seeded versus generated spectral populations identify the survival/synthesis transition and a standard resonant exchange gives its exact minimum-coupling realization.
 
 ## Claim discipline
 
-No novelty claim for standard NEP/detectivity, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic sideband generation, SU(2) conversion, or standard frequency-bin interferometry. No implied experimental validation without data. No prize-level framing.
+No novelty claim for standard NEP/detectivity, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic sidebands, SU(2)/beam-splitter physics, or standard interferometry. No implied experimental validation without data. No prize-level framing.
 
 ## Documentation cadence
 
