@@ -33,13 +33,16 @@ if r2[r2_body_start:r2_end] != expected_body:
 required = [
     r"\rho_p=a_p|c\rangle\langle c|+p|s\rangle\langle s|+\sigma_p",
     r"R_{\rm lin}^2=",
-    r"\frac{a_pp}{\kappa^2(a_p-p)^2}",
+    r"\frac{a_p\,p}{\kappa^2(a_p-p)^2}",
     r"\lim_{p\to0^+}\frac{4p}{R_{\rm lin}^2}",
     r"4\kappa^2q",
     r"\Delta P_s(0)",
     "spectator populations",
     "local converter leaves the spectator sector inert",
     r"\Tr F=4q\kappa^2=\Delta P_s(0)",
+    r"\cite{GefenRotemRetzker2019,Safranek2017}",
+    "already known in quantum sensing and boundary-QFI theory",
+    "Our added statement is not that boundary mechanism itself",
 ]
 missing = [item for item in required if item not in sec]
 if missing:
@@ -47,6 +50,10 @@ if missing:
     for item in missing:
         print(" -", item)
     sys.exit(1)
+
+# Reject the exact notation typo found by the hostile audit.
+if "a_pp" in sec:
+    raise SystemExit("Ambiguous/incorrect a_pp notation found; the radius requires the product a_p p")
 
 if sec.count("Spectator-independent seed regularization") != 1:
     raise SystemExit("Expected exactly one generalized crossover proposition")
