@@ -10,14 +10,16 @@ Durable project handoff for The Universal Photodetection Resource Problem. The r
 
 The three mature temporal-information papers remain scientifically frozen. The active fourth program translates them into standard detector measurements and explicit falsification tests.
 
-Read first:
+## Read first
 
 1. `docs/CURRENT_RESEARCH_STATE.md`
 2. `practical_temporal_information/AGENTS.md`
 3. `practical_temporal_information/notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`
 4. `practical_temporal_information/notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
 5. `practical_temporal_information/notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
-6. `manuscript/THREE_PAPER_PUBLICATION_ARCHITECTURE_2026-08-23.md`
+6. `practical_temporal_information/notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
+7. `manuscript/autonomous_temporal_information/MANUSCRIPT_HANDOFF.md`
+8. `manuscript/dynamical_implementation_cost/MANUSCRIPT_HANDOFF.md`
 
 ## Mature paper architecture — preserve
 
@@ -27,66 +29,74 @@ Read first:
 
 Do not concatenate these papers and do not copy their full proof stacks into Paper 4.
 
-## Paper 4 mission
+## Paper 4 current frontier
 
-Working title: **Operational benchmarks for temporal information in photodetection**.
+### WP01
 
-Every central result should identify measured quantities, predicted equality/inequality, nuisance assumptions, and a result that would contradict the model/theorem.
+Linear stationary Gaussian weak-signal detector:
 
-## Current frontier
+`Tr F/T=2|R(f)|^2/S_n(f)=2/NEP(f)^2`.
 
-WP01: linear Gaussian weak-signal detector gives
+### WP02
 
-`Tr F/T=2|R(f)|^2/S_n(f)=2/NEP(f)^2`
+Ideal Poisson fractional-modulation timestamps:
 
-for peak optical-power quadratures and one-sided PSD.
+`Tr F/T=lambda_0`,
 
-WP02: ideal Poisson timestamps give
+with independent jitter factor `|Phi_J(Omega)|^2`.
 
-`Tr F/T=lambda_0`
+### WP03
 
-for fractional quadratures, exactly matching shot-noise NEP in optical-power coordinates. Independent jitter multiplies the spectrum by `|Phi_J(Omega)|^2`.
+Conventional dead-time/saturation characterization is insufficient. Deterministic Type-II recovery at `lambda tau=1` is DC-information blind but retains every nonzero mode. Arbitrary finite-mean iid recovery shares `r=lambda exp(-lambda m)`, yet `G_DC=0` at the common maximum iff recovery is deterministic. Explicit equal-mean/equal-variance/equal-saturation recovery laws have different timestamp information.
 
-WP03: standard dead-time metrics are provably insufficient.
+### WP04
 
-For deterministic paralyzable recovery at `lambda tau=1`,
+Exact seeded carrier/sideband model:
 
-`G(0)=0`
+`rho_p=(1-p)|c><c|+p|s><s|`.
 
-but `G(omega)>0` for every nonzero frequency. At `f=1/(2tau)`, `G>=0.51697536`; high-frequency `G->1/e`.
+With mixing coefficient `kappa`,
 
-For arbitrary finite-mean iid Type-II recovery,
+`R_lin^2=p(1-p)/[kappa^2(1-2p)^2]`,
 
-`r(lambda)=lambda exp(-lambda m)`
+and for `p>0`
 
-for every recovery distribution with mean `m`, but at `lambda m=1`
+`(R_lin^2/4)Tr F<=p`.
 
-**`G_DC=0 iff T=m almost surely`.**
+At the empty-sideband boundary `p=0`,
 
-A simple bounded interval statistic `exp(-sD)` has zero local rate derivative iff recovery is deterministic and positive derivative for every nondegenerate finite-mean recovery law.
+`Delta P_s(0)=4kappa^2`,
 
-Exact same-mean/same-variance example at `m=10 ns`:
+`Tr F<=Delta P_s(0)`,
 
-- Law A: `5 ns` / `15 ns`, each `1/2`;
-- Law B: `2.5 ns` (`2/9`), `10 ns` (`5/9`), `17.5 ns` (`2/9`).
+and
 
-Both have variance `25 ns^2`, CV `0.5`, and identical saturation curve, yet at the common maximum their registered pair correlation at `7.5 ns` is `0.7274957` versus `0.3188718`. The one-bit statistic `1{D<=4 ns}` has zero FI for A and positive FI for B.
+**`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.**
 
-This is the current strongest practical message: **homogeneous saturation curves and low-order recovery statistics do not determine temporal-information transfer.**
+A fixed four-outcome frequency-bin POVM saturates the one-sided boundary law.
+
+Ordinary weak phase modulation gives two baseline-empty first sidebands with
+
+`Delta P_+=Delta P_-=1`
+
+and a fixed three-mode phase-sensitive analyzer attains
+
+**`Tr F=4=[sqrt(Delta P_+)+sqrt(Delta P_-)]^2`.**
+
+This is an exact ideal saturation example of the bilateral boundary-curvature theorem using standard optical sidebands.
+
+Do not infer autonomous action or RF work from the externally driven EOM. WP05 must include the controller/clock explicitly before using `A_ex=hbar nu V_min` physically.
 
 ## Immediate work order
 
-1. WP04 — optical seeded-to-empty sideband survival/synthesis crossover.
-2. WP05 — textbook resonant-exchange interpretation of exact unitary-coupling cost.
-3. WP06 — integrated falsification matrix.
-4. WP07 — dedicated prior-art/significance gate before manuscript drafting.
-
-Do not create sidequests that do not improve measurement accessibility, falsifiability, or standard-physics interpretation.
+1. WP05 — textbook resonant-exchange/controller interpretation of the PRA coupling cost.
+2. WP06 — integrated falsification matrix and minimal practical result stack.
+3. WP07 — dedicated prior-art/significance gate before manuscript drafting.
 
 ## Claim discipline
 
-No prize-level framing. No novelty claim for standard NEP, detectivity, Fisher sensing, Poisson/dead-time count laws, renewal spectra, pair-correlation formulas, or timing-jitter filtering. Paper 4's novelty must come from the integrated benchmark/falsification laws and any new sideband/crossover or detector-ranking results that survive WP07.
+No prize-level framing. No novelty claim for standard NEP, Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic sideband generation, SU(2) mode mixing, or standard frequency-bin interferometry. Assign novelty only after WP07.
 
 ## Documentation rule
 
-After every material derivation, failed derivation, convention correction, prior-art collision, model decision, or falsification criterion, update the practical-program note and handoff. When the frontier moves, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
+After every material advance, update the corresponding practical note and handoff. When the frontier moves, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
