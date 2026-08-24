@@ -10,94 +10,55 @@
 2. Broad random-time/timestamp spectral-information paper.
 3. PRA exact unitary-coupling completion.
 
-Do not concatenate them.
-
 ## Active Paper 4
 
 Working title:
 
 > **Operational benchmarks for temporal information in photodetection**
 
-Goal: translate temporal Fisher/resource results into standard detector measurements and explicit falsification conditions.
+## Completed practical stack
 
-## Completed work packages
+- **WP01:** linear Gaussian detector -> `Tr F/T=2/NEP(f)^2`.
+- **WP02:** ideal Poisson timestamps -> `Tr F/T=lambda_0`; independent jitter -> `|Phi_J|^2`.
+- **WP03:** conventional Type-II saturation/low-order recovery summaries can fail to determine temporal-information transfer.
+- **WP04:** exact seeded-to-empty sideband survival/synthesis crossover and ideal phase-modulation boundary saturation.
+- **WP05:** standard fixed-energy resonant beam splitter realizes `V_min=(1/2)Tr C` and `A_ex=hbar nu V_min`.
+- **WP06:** minimum manuscript architecture and falsification hierarchy fixed.
 
-### WP01 — analog Gaussian
+## WP06 scope decision
 
-`Tr F/T=2/NEP(f)^2` under the locked convention. Full weak-waveform FI is the `1/NEP(f)^2` matched-filter metric.
+Likely headline science:
 
-### WP02 — ideal timestamps
+1. WP03 detector-memory information incompleteness;
+2. WP04 optical support crossover.
 
-`Tr F/T=lambda_0` for fractional Poisson modulation; optical-power form exactly matches ideal shot-noise NEP. Independent jitter gives `|Phi_J|^2`.
+WP01/WP02 are concise common-language bridge material. WP05 is a short Hamiltonian completion. Do not carry every derivation into main text.
 
-### WP03 — detector memory
+Target paper: roughly 10–14 main-text journal pages before references, maximum four figures.
 
-Standard saturation/low-order recovery characterization can be information-incomplete. Deterministic Type-II recovery at the count maximum is DC-information blind but retains every nonzero mode. Arbitrary finite-mean iid recovery shares the same saturation curve for fixed mean, yet only deterministic recovery is timestamp-FI singular at the common maximum.
+## WP07 — active gate
 
-### WP04 — optical support crossover
+Perform an adversarial prior-art/significance search around the exact distinct claims:
 
-Seeded sideband:
+1. identical full homogeneous Type-II saturation curves, even with matched recovery mean/variance, need not determine temporal FI and admit simple accessible separating statistics;
+2. exact seeded-to-empty optical support crossover `lim 4p/R_lin^2=Delta P_s` as a practical survival/synthesis transition;
+3. integrated falsification architecture linking standard NEP/timestamps to support curvature and fixed-energy coupling while distinguishing model failure from theorem failure.
 
-`(R_lin^2/4)Tr F<=p`.
+Also search close literature on:
 
-Empty-sideband boundary:
+- Fisher-information detector figures of merit / information bandwidth;
+- dead-time detector identifiability and full timestamp likelihoods;
+- rank-changing optical metrology / zero-population sidebands;
+- sideband population Hessians as FI/QFI bounds;
+- experimental tests of boundary QFI/Fisher discontinuities;
+- beam-splitter generator variance as local metrological cost.
 
-`Tr F<=Delta P_s`,
-
-with exact limiting identity
-
-`lim_(p->0+)4p/R_lin^2=Delta P_s`.
-
-Ordinary ideal weak phase modulation saturates the bilateral curvature law.
-
-### WP05 — resonant exchange implementation
-
-Two equal-frequency bosonic modes with standard beam-splitter coupling remain inside a fixed total-excitation shell.
-
-For baseline `|1,1>` and parameterized interaction `U=exp[-i g t(xB_x+yB_y)]`,
-
-`V_impl=8(g t)^2`,
-
-`Tr C=16(g t)^2`,
-
-**`V_min=(1/2)Tr C=8(g t)^2`,**
-
-**`A_ex=hbar nu V_min=8 hbar nu(g t)^2`.**
-
-The total bare-energy distribution remains a delta function at `2hbar nu`.
-
-For fixed duration,
-
-`V_impl=(t^2/hbar^2)sum_j Var(H_j)`.
-
-This supplies the standard Hamiltonian meaning of the abstract coupling functional while preserving the explicit non-work limitation.
-
-## WP06 — next: minimum paper stack and falsification matrix
-
-Do not simply carry WP01–WP05 wholesale into a manuscript. Rank them by scientific function:
-
-- which results are central claims;
-- which are bridges/background;
-- which are merely examples;
-- which require separate data sets;
-- which can be tested with common laboratory observables.
-
-Build one table with measured quantities, prediction, calibration assumptions, and falsification criterion for every retained headline result.
-
-A likely minimal paper will center WP03 + WP04, use WP01/WP02 to establish the common information language, and use WP05 as a compact Hamiltonian interpretation rather than a second full theory section.
-
-## WP07 — prior-art/significance gate
-
-Before manuscript drafting, search specifically for the exact integrated claims and practical crossovers. Demote or remove anything already standard. If only pedagogical material remains, do not force Paper 4.
-
-## Current candidate thesis
-
-> Conventional detector figures of merit can fail to determine temporal-information transfer. Frequency-resolved response/noise and full timestamp structure provide a common falsifiable benchmark, while seeded versus generated spectral populations identify the survival/synthesis transition and a standard resonant exchange gives its exact minimum-coupling realization.
+Demote anything already standard. If no distinct central result survives, do not force Paper 4.
 
 ## Claim discipline
 
-No novelty claim for standard NEP/detectivity, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic sidebands, SU(2)/beam-splitter physics, or standard interferometry. No implied experimental validation without data. No prize-level framing.
+No novelty claim for standard NEP/detectivity, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic sidebands, beam-splitter physics, or standard interferometry. No implied experimental validation without data. No prize-level framing.
 
 ## Documentation cadence
 
-Update `practical_temporal_information/notes/`, `practical_temporal_information/AGENTS.md`, and all top-level landing files after every material advance.
+Update WP07 and all handoff/landing files as prior-art conclusions materially change the frontier.
