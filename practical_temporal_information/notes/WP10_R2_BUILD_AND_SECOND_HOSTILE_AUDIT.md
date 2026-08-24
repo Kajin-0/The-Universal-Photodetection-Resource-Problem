@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-23
 
-**Status:** ACTIVE. Scientific R2 isolation/provenance gates pass; final APS build and rendered-page audit are not yet closed.
+**Status:** ACTIVE. Scientific R2 isolation/provenance gates pass; final APS build and rendered-page audit are not yet closed. The second hostile audit has already found two manuscript-level clarifications that should be repaired before scientific freeze: the generalized spectator theorem must explicitly retain the flagship stationary-baseline/spectral-mode hypothesis, and the practical protocol must explain how `R_lin` is reconstructed independently from baseline/tangent tomography rather than inferred circularly from the same second-order data used on the boundary side.
 
 ## Purpose
 
@@ -66,34 +66,95 @@ Correct radius:
 
 `R_lin^2 = a_p p/[kappa^2(a_p-p)^2]`.
 
+## Direct coefficient audit against the frozen flagship
+
+The frozen PRXQ flagship Theorem 1 states, for the positive-frequency tangent and arbitrary finite-copy joint POVM,
+
+`(R_lin^2/4) [Tr F_N^tan/N] <= min{D_nu,U_nu}`.
+
+For the selected carrier-to-upper-sideband mode, `a_p>p` and the upper-endpoint baseline population is exactly `U_nu=p`. Therefore the practical manuscript specialization
+
+`(R_lin^2/4) Tr F <= p`
+
+for one copy is coefficient-correct. No factor-of-two/four repair is required.
+
+## Second hostile-audit findings in progress
+
+### Finding A — stationary-baseline/spectral-mode hypothesis must be explicit
+
+The flagship finite-radius theorem assumes a stationary baseline under the free Hamiltonian and a tangent belonging to a definite `+nu` spectral mode. The current R2 prose says the spectator sector is arbitrary and inert, but `arbitrary spectators` cannot mean arbitrary coherences between distinct free-energy eigenspaces.
+
+Required repair before freeze:
+
+- state explicitly that `[rho_p,H]=0` for the baseline path;
+- choose `|c>` and `|s>` as free-Hamiltonian modes separated by `hbar Omega` (or an equivalent definite spectral-gap pair);
+- require the spectator block to respect baseline stationarity, allowing degeneracy-preserving coherences but not generic inter-energy coherences;
+- state that the local converter tangent is the selected `+Omega` mode to which the one-sided survival theorem is being applied.
+
+This is a theorem-hypothesis clarification, not a change to the derived radius/crossover formula.
+
+### Finding B — `R_lin` needs a noncircular practical reconstruction protocol
+
+The finite-seed identity is algebraically expressible using `a_p`, `p`, and `kappa`. If `R_lin` is merely computed from the same ideal two-mode model, the crossover equality is primarily a model identity rather than an independent laboratory test.
+
+Required repair before freeze:
+
+- explain that `R_lin` is reconstructed from independently measured baseline state plus first derivatives/tangent (e.g. local state or frequency-bin tomography), by testing positivity of the affine family `rho_p+x D_x+y D_y`;
+- in the selected two-mode model this independent reconstruction reduces to `R_lin^2=a_p p/[kappa^2(a_p-p)^2]` once `a_p,p,kappa` have separately been calibrated;
+- measure `Delta P_s(0)` independently from a second-order fit to the exact nonlinear zero-seed family;
+- estimate the Fisher matrix from a separate phase-sensitive likelihood/measurement record;
+- classify failure of the radius/curvature identity itself as Level-I selected-model failure unless the more general theorem hypotheses and resource quantities have been independently verified.
+
+This makes the falsification architecture genuinely operational instead of circular.
+
+### Finding C — active-block POVM attainability check passes
+
+At zero seed, the active block has weight `q`. The four equatorial active-subspace effects
+
+`E_{+x}=(1/2)|+x><+x|`, `E_{-x}=(1/2)|-x><-x|`,
+
+`E_{+y}=(1/2)|+y><+y|`, `E_{-y}=(1/2)|-y><-y|`
+
+sum to the identity on the selected two-mode subspace. Completing them with the spectator projector gives a normalized POVM. The four active baseline probabilities are `q/4`, the spectator probability is `1-q`, and direct differentiation gives
+
+`F_xx=F_yy=2 q kappa^2`, `F_xy=0`,
+
+hence
+
+`Tr F=4 q kappa^2=Delta P_s(0)`.
+
+No coefficient repair is required.
+
+### Finding D — coherent versus incoherent seed needs local clarification
+
+The theorem baseline is diagonal in the selected carrier/sideband populations. The experimentally controlled seed is therefore an incoherent or phase-randomized sideband population, not a fixed coherent sideband amplitude. The Discussion already gestures at an `incoherent or effectively mixed` seed, but this distinction should be moved into the model definition and experimental protocol. A coherent seed changes the baseline off-diagonal structure/support geometry and is outside the present exact theorem unless separately analyzed.
+
 ## CI history relevant to WP10
 
 Disposable PR #35 exists only to expose pull-request CI and must not be merged.
 
 Runs through `32680286663` all passed the scientific/provenance generation gates and failed only in TeX layout/generation mechanics described above.
 
-A fresh run has been triggered after commit `d12306bd...`; its result is still pending at the time this note is created.
+Run `32683887550` is the first run after the stale-offset transformer repair. At the time of this update, all pre-compile generation/scientific gates have passed and LaTeX compilation is still in progress.
 
-## Second hostile-audit questions after a green build
+## Remaining hostile-audit questions after a green build
 
-1. Does the selected-mode theorem require any hidden regularity of `sigma_p` beyond positivity, support orthogonality, trace normalization, and the stated trace-norm limit?
-2. Is the application of the flagship finite-radius coefficient exactly normalized for the selected one-sided spectral endpoint?
-3. Does the attainability argument with active-block weight `q` and a spectator projector produce a legitimate normalized POVM and exactly `Tr F=4 q kappa^2`?
-4. Is the practical parameter `p` experimentally identifiable independently of `kappa`, `R_lin`, and the Fisher likelihood?
-5. Does the manuscript distinguish an experimentally prepared incoherent sideband seed from a coherent sideband amplitude strongly enough?
-6. Is the seed-path invariance physically meaningful when `a_p` itself is calibrated rather than assumed?
-7. Could ordinary loss or mode leakage mimic the predicted crossover; if so, is this clearly classified as Level-I model failure rather than theorem violation?
-8. Is the conventional detector counterexample mathematically correct and sufficiently physical without being oversold as a new theorem?
-9. Are the Type-II and unitary-coupling results clearly attributed to companion papers and not republished as Paper-4 novelty?
-10. Does the paper remain useful if the crossover novelty is ultimately judged too narrow? The fallback value must be the integrated practical/falsification framework, not recycled companion theorems.
+1. Does the final repaired statement encode stationarity/spectral-mode hypotheses without overconstraining harmless degenerate spectators?
+2. Is the `R_lin` tomography protocol described independently enough to support falsifiability rather than tautological model fitting?
+3. Is the incoherent/phase-randomized seed implementation stated clearly enough for ordinary optics readers?
+4. Is the seed-path invariance physically meaningful when `a_p` itself is calibrated rather than assumed? Preliminary answer: yes; only `a_p->q>0` enters the limit, while spectator normalization compensation drops out.
+5. Could ordinary loss or mode leakage mimic the predicted crossover? Yes; the manuscript already classifies such effects as Level-I model departures, but this should be checked in the final rendered prose.
+6. Is the conventional detector counterexample mathematically correct and sufficiently physical without being oversold as a new theorem? Preliminary algebra audit: PASS (`J_B(1)/J_A(1)=13/3`, half-DC FI at `f/f_c=sqrt[(22+sqrt(489))/5]`).
+7. Are the Type-II and unitary-coupling results clearly attributed to companion papers and not republished as Paper-4 novelty?
+8. Does the paper remain useful if the crossover novelty is ultimately judged too narrow? The fallback value must be the integrated practical/falsification framework, not recycled companion theorems.
 
 ## Immediate work order
 
 1. obtain a green R2 CI build;
 2. download the exact artifact and record artifact ID/SHA if available;
 3. render and visually inspect every page;
-4. perform the ten-point hostile audit above;
-5. repair only genuine defects, with isolated deterministic transforms where possible;
+4. generate an isolated post-R2 scientific repair for Findings A/B/D if the rendered source confirms the wording gap;
+5. rerun CI and a final hostile audit;
 6. close PR #35 unmerged after final verification;
 7. synchronize final status into practical and root landing files;
 8. only then begin four-figure production.
