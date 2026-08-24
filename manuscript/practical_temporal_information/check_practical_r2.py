@@ -32,8 +32,16 @@ if r2[r2_body_start:r2_end] != expected_body:
 
 required = [
     r"\rho_p=a_p|c\rangle\langle c|+p|s\rangle\langle s|+\sigma_p",
+    r"[\rho_p,H]=0",
+    r"E_s-E_c=\hbar\Omega",
+    "stationary spectator",
+    "incoherent population seed",
+    "A fixed coherent sideband amplitude",
+    "definite $+\\Omega$ spectral mode",
     r"R_{\rm lin}^2=",
     r"\frac{a_p\,p}{\kappa^2(a_p-p)^2}",
+    "local state/tangent tomography",
+    "should not be inferred from the zero-seed curvature",
     r"\lim_{p\to0^+}\frac{4p}{R_{\rm lin}^2}",
     r"4\kappa^2q",
     r"\Delta P_s(0)",
@@ -43,6 +51,11 @@ required = [
     r"\cite{GefenRotemRetzker2019,Safranek2017}",
     "already known in quantum sensing and boundary-QFI theory",
     "Our added statement is not that boundary mechanism itself",
+    "A noncircular experimental comparison uses three independently obtained data products",
+    "inter-energy spectator coherence",
+    r"\label{eq:survival_bound}",
+    r"\label{eq:boundary_bound}",
+    r"\label{eq:main_crossover}",
 ]
 missing = [item for item in required if item not in sec]
 if missing:
@@ -59,8 +72,13 @@ if sec.count("Spectator-independent seed regularization") != 1:
     raise SystemExit("Expected exactly one generalized crossover proposition")
 
 # Prevent the R2 section from claiming universality beyond the selected-mode model.
-for required_limitation in ["Loss", "spectator", "converter"]:
+for required_limitation in ["Loss", "spectator", "converter", "stationary baseline"]:
     if required_limitation not in sec:
         raise SystemExit(f"R2 support section missing limitation marker: {required_limitation}")
+
+# The legacy aliases preserve frozen Discussion references after the isolated section replacement.
+for alias in ["eq:survival_bound", "eq:boundary_bound", "eq:main_crossover"]:
+    if sec.count(r"\label{" + alias + "}") != 1:
+        raise SystemExit(f"Expected exactly one legacy label alias: {alias}")
 
 print("Practical manuscript R2 scientific-isolation gate: PASS")
