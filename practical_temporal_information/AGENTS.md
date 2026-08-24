@@ -6,124 +6,128 @@ The repository, not chat history, is authoritative.
 
 ## Mission
 
-Create a fourth paper that translates the temporal-information resource program into standard detector physics and explicit falsification tests. Do not modify the frozen theorem/proof layers of the three mature papers unless a genuine defect is exposed.
+Create a fourth paper that translates the three temporal-information theory papers into standard detector physics, independently measurable quantities, and explicit falsification tests. The mature companion theorem/proof layers remain frozen.
 
 ## Read first
 
 1. `README.md`
-2. `notes/WP09_HOSTILE_MANUSCRIPT_AUDIT_AND_SPECTATOR_INDEPENDENT_CROSSOVER.md`
-3. `notes/WP07A_CLOSE_PRIOR_ART_BOUNDARY_SUPERRESOLUTION.md`
-4. `notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
-5. `notes/WP07_PRIOR_ART_AND_SIGNIFICANCE_GATE.md`
-6. `notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
-7. `notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
-8. `notes/WP05_RESONANT_EXCHANGE_UNITARY_COUPLING_BRIDGE.md`
-9. `manuscript/practical_temporal_information/README.md`
-10. root `docs/CURRENT_RESEARCH_STATE.md`
+2. `notes/WP11_R3_RENDER_AUDIT_AND_R4_PRESENTATION_FREEZE.md`
+3. `notes/WP10_R2_BUILD_AND_SECOND_HOSTILE_AUDIT.md`
+4. `notes/WP09_HOSTILE_MANUSCRIPT_AUDIT_AND_SPECTATOR_INDEPENDENT_CROSSOVER.md`
+5. `notes/WP07A_CLOSE_PRIOR_ART_BOUNDARY_SUPERRESOLUTION.md`
+6. `notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
+7. `manuscript/practical_temporal_information/README.md`
+8. `manuscript/practical_temporal_information/MANUSCRIPT_ARCHITECTURE.md`
+9. root `docs/CURRENT_RESEARCH_STATE.md`
 
-## Current status
+## Current status — R4 frozen
 
-WP07 prior-art gate: **PASS WITH NARROWED CLAIMS**.
+WP07: **PASS WITH NARROWED CLAIMS**.
 
-WP08 final pre-manuscript gate: **PASS**.
+WP08: **PASS**.
 
-WP09 hostile manuscript audit: **CONDITIONAL PASS** pending final clean R2 build/render and second hostile read. The main scientific repair has already been implemented: the support crossover is generalized to a selected carrier/sideband pair embedded in arbitrary inert spectators.
+WP09: **PASS AFTER SPECTATOR GENERALIZATION**.
 
-WP07A adds a crucial novelty boundary: Gefen--Rotem--Retzker (2019) and the rank-changing QFI literature already establish that an outcome/eigenvalue vanishing quadratically at a boundary can retain finite Fisher information. Paper 4 must not claim that mechanism as new. Its candidate contribution is the **finite-seed continuation from the interior**, including the exact affine physical radius and its radius-normalized convergence to the boundary curvature.
+WP10 second hostile scientific/build audit: **PASS AFTER R2/R3 REPAIRS**.
 
-The first full manuscript draft exists and has isolated R1/R2 generation plus static gates. REVTeX rejected both paragraph-width tabular columns and labeled `description` items in the falsification section, so the generated R1 now uses conservative ordinary paragraph blocks. No scientific content was removed.
+WP11 exact artifact/render audit: **PASS**.
 
-A hostile source check also found and repaired a manuscript-only notation defect: the radius requires the product `a_p p`, now written explicitly as `a_p\,p`; the R2 gate rejects the erroneous string `a_pp`.
+Current publication-facing manuscript freeze: **R4**.
 
-## Strengthened Paper-4 theorem
+Final R4 verification:
 
-Let
+- run `32684526293`;
+- job `97307019940`;
+- artifact `9505218922`;
+- archive digest `sha256:9905a2cbd4366d57731fc8f4a99c6f72a513629a8727257a43131e02efb96cce`;
+- PDF 8 pages, 266068 bytes;
+- PDF SHA-256 `794cb1c52326dc1965e14ea8ccd15530b41b2e523ca501e88f081cf69d741a01`.
 
-`rho_p = a_p |c><c| + p |s><s| + sigma_p`,
+All generation/isolation/compile/warning/artifact gates passed. All eight pages were rendered and inspected. R3→R4 pixel differences occur only at former hyperlink-border locations. Disposable PR #35 was closed **unmerged**. There are currently zero open PRs.
 
-where `sigma_p>=0` is supported on spectator modes, `a_p>p`, `a_p->q>0` as `p->0+`, and the calibrated local converter acts only on the selected carrier/sideband pair.
+## Frozen Paper-4 theorem
 
-Then
+Select stationary free-Hamiltonian modes `|c>`, `|s>` separated by `hbar Omega` and let
 
-`P_s(p;r)=p+(a_p-p) sin^2(kappa r)`,
+`rho_p=a_p|c><c|+p|s><s|+sigma_p`,
 
-and the exact affine radius is
+with `[rho_p,H]=0`, stationary inert spectators, `a_p>p`, `a_p->q>0`, and an incoherent/phase-randomized sideband population seed `p`.
 
-`R_lin^2 = a_p p/[kappa^2(a_p-p)^2]`.
+For a calibrated converter acting only on the selected pair,
 
-The finite-radius survival law gives
+`R_lin^2=a_p p/[kappa^2(a_p-p)^2]`,
 
-`(R_lin^2/4)Tr F <= p`.
+and the frozen flagship theorem specializes exactly to
+
+`(R_lin^2/4)Tr F<=p`.
 
 At zero seed,
 
-`Delta P_s(0)=4 kappa^2 q`.
+`Delta P_s(0)=4 kappa^2 q`,
 
-Therefore
+so
 
-**`lim_(p->0+) 4p/R_lin^2 = 4 kappa^2 q = Delta P_s(0)`.**
+**`lim_(p->0+)4p/R_lin^2=4 kappa^2 q=Delta P_s(0)`.**
 
-This is independent of the detailed spectator population and of how normalization compensation is distributed among spectator modes, provided the selected carrier occupation tends to `q` and the local converter leaves spectators inert.
+A completed equatorial POVM attains
 
-The original `a_p=1-p`, `sigma_p=0`, `q=1` model remains the simplest plotted special case.
+`Tr F=4 q kappa^2=Delta P_s(0)`.
+
+Do not weaken the explicit hypotheses: stationary baseline, definite selected spectral gap, incoherent seed, inert selected-mode spectators, calibrated local converter.
 
 ## Novelty boundary
 
-Do **not** claim novelty for:
+Do not claim novelty for finite FI from quadratically vanishing probabilities/eigenvalues. Gefen--Rotem--Retzker (2019) and Safranek (2017) cover that general boundary mechanism.
 
-- finite FI from a quadratically vanishing probability/eigenvalue;
-- projection-noise suppression at a null outcome;
-- generic rank-changing/boundary QFI behavior;
-- sideband Fisher metrology or seeded/vacuum interferometry.
-
-The candidate distinct result is the exact finite-seed spectral-survival regularization
+Candidate distinct content is the finite-seed/finite-radius continuation
 
 `4p/R_lin^2 -> Delta P_s(0)`
 
-and its selected-mode spectator-independent realization.
+plus its independent measurement/falsification architecture.
 
-Priority remains unverified/not certified.
+Priority remains **unverified, not certified**.
 
-## Claim hierarchy
+## Provenance discipline
 
-### Candidate original Paper-4 science
+The Type-II memory theorem belongs to the frozen random-time companion. Paper 4 only operationalizes it.
 
-- selected-mode support-seed crossover above;
-- ideal weak phase-modulation boundary saturator under the locked convention;
-- integrated falsification architecture.
+The exact prescribed-curvature coupling theorem belongs to the frozen PRA companion. Paper 4 only supplies a standard equal-frequency resonant benchmark.
 
-### Cited upstream benchmarks
-
-- Type-II memory/information theorem from the frozen random-time paper;
-- prescribed-curvature implementation theorem from the frozen PRA paper.
-
-Do not duplicate their proofs or novelty claims.
-
-### Standard bridges
-
-- linear Gaussian `Tr F/T=2/NEP(f)^2`;
-- ideal Poisson timestamps and independent-jitter attenuation;
-- WP08 equal-DC-NEP/equal-response-bandwidth but unequal-FI-spectrum example;
-- standard resonant beam-splitter implementation benchmark.
+The NEP/FI relation, Poisson/jitter bridge, colored-noise detector example, phase modulation, and beam-splitter physics are standard/illustrative material and must not be sold as fundamental novelty.
 
 ## Falsification hierarchy
 
-Always distinguish:
+1. **Level I:** detector/state/model reduction failure.
+2. **Level II:** resource-law challenge only after independent verification of theorem hypotheses and resource quantities.
+3. **Level III:** failure of an ideal saturating model/equality.
 
-1. **Level I — detector-model/reduction failure**;
-2. **Level II — resource-law challenge only after independent verification of theorem hypotheses**;
-3. **Level III — failure of an ideal saturating model/equality**.
+The support test uses independent products:
+
+- baseline + tangent tomography -> `R_lin`;
+- zero-seed quadratic population fit -> `Delta P_s(0)`;
+- separate phase-sensitive likelihood -> Fisher matrix.
+
+## Deterministic manuscript chain
+
+`draft -> R1 mechanical -> R2 theorem -> R3 hostile-review -> R4 presentation`.
+
+R4 is frozen. Any scientific change now requires a new explicit revision layer and a concrete blocking reason.
 
 ## Immediate work order
 
-1. complete the latest prior-art-hardened R2 CI run;
-2. download and render the exact successful artifact if green;
-3. hostile-audit the rendered R2 and theorem/provenance language;
-4. close disposable PR #35 unmerged after final verification;
-5. only then begin figure production and publication-style compression.
+**WP12 — publication figures.**
 
-Do not create new detector-model sidequests.
+Create at most four deterministic scientific figures:
+
+1. same conventional detector specs, different FI spectra;
+2. same Type-II saturation, different timestamp information — clearly attributed to companion work;
+3. stationary support-seed survival→synthesis crossover — principal figure;
+4. equal-frequency resonant exchange + falsification/calibration map.
+
+Each figure must have a script/source, explicit units/normalization, no decorative AI imagery, and an independent numerical/algebraic check. Do not alter manuscript science while designing figures.
+
+After figures: integrate them through an isolated revision, compile/render/hostile-review again, then do publication compression and current APS policy checks.
 
 ## Documentation rule
 
-After every material result or scope change, update the corresponding note and this handoff. When the frontier changes, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
+Update the relevant WP note and this handoff after every material result. When the frontier changes, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
