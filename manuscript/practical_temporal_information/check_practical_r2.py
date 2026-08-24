@@ -53,9 +53,6 @@ required = [
     "Our added statement is not that boundary mechanism itself",
     "A noncircular experimental comparison uses three independently obtained data products",
     "inter-energy spectator coherence",
-    r"\label{eq:survival_bound}",
-    r"\label{eq:boundary_bound}",
-    r"\label{eq:main_crossover}",
 ]
 missing = [item for item in required if item not in sec]
 if missing:
@@ -76,9 +73,9 @@ for required_limitation in ["Loss", "spectator", "converter", "stationary baseli
     if required_limitation not in sec:
         raise SystemExit(f"R2 support section missing limitation marker: {required_limitation}")
 
-# The legacy aliases preserve frozen Discussion references after the isolated section replacement.
-for alias in ["eq:survival_bound", "eq:boundary_bound", "eq:main_crossover"]:
-    if sec.count(r"\label{" + alias + "}") != 1:
-        raise SystemExit(f"Expected exactly one legacy label alias: {alias}")
+# Keep exactly one label per displayed equation; stale downstream references are repaired only in R3.
+for forbidden_alias in [r"\label{eq:survival_bound}", r"\label{eq:boundary_bound}", r"\label{eq:main_crossover}"]:
+    if forbidden_alias in sec:
+        raise SystemExit(f"Legacy label alias must not be embedded in an amsmath equation: {forbidden_alias}")
 
 print("Practical manuscript R2 scientific-isolation gate: PASS")
