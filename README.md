@@ -6,7 +6,7 @@ The repository is authoritative; chat history is not.
 
 ## Mature papers — preserve separately
 
-1. **PRX Quantum flagship:** *Two spectral-resource regimes for autonomous temporal information* — R3 frozen theorem/proof baseline, R4 current journal-facing bridge layer.
+1. **PRX Quantum flagship:** *Two spectral-resource regimes for autonomous temporal information* — R3 frozen theorem/proof baseline, R4 journal-facing bridge layer.
 2. **Broad random-time/timestamp paper:** independent spectral-information/memory track.
 3. **PRA dynamical completion:** *Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature*.
 
@@ -18,112 +18,108 @@ Working title:
 
 Workspace: `practical_temporal_information/`.
 
-## Paper 4 result stack
+## Practical result stack
 
-### WP01 — analog Gaussian bridge
+### WP01 — analog Gaussian
 
-For peak optical-power quadratures and one-sided output noise PSD,
+`Tr F/T=2|R(f)|^2/S_n(f)=2/NEP(f)^2` under the locked peak-quadrature / one-sided-PSD convention.
 
-`F_xx/T=F_yy/T=|R(f)|^2/S_n(f)=1/NEP(f)^2`,
+### WP02 — ideal timestamps
 
-`Tr F/T=2/NEP(f)^2`.
+`Tr F/T=lambda_0` for fractional Poisson modulation; optical-power form exactly matches ideal shot-noise NEP. Independent timing jitter contributes `|Phi_J(Omega)|^2`.
 
-The full weak-waveform Fisher metric is weighted by `1/NEP(f)^2`, so responsivity bandwidth and information bandwidth need not coincide.
+### WP03 — detector memory
 
-### WP02 — ideal timestamps and jitter
+Conventional saturation is not an information-transfer law. Deterministic Type-II recovery at `lambda tau=1` is DC-information blind while every nonzero temporal mode survives. For arbitrary finite-mean iid recovery, all distributions with mean `m` share `r=lambda exp(-lambda m)`, yet `G_DC=0` at the common maximum iff recovery is deterministic. Exact equal-mean/equal-variance/equal-saturation laws have different timestamp information.
 
-For fractional modulation of an ideal Poisson event stream,
+### WP04 — optical survival-to-synthesis
 
-`Tr F/T=lambda_0`.
+A seeded carrier/sideband model has
 
-For optical-power coordinates this exactly matches ideal shot-noise NEP. Independent timing jitter multiplies the spectrum by `|Phi_J(Omega)|^2`.
+`R_lin^2=p(1-p)/[kappa^2(1-2p)^2]`
 
-### WP03 — dead time/recovery
+and
 
-For deterministic paralyzable recovery at `lambda tau=1`, the complete timestamp channel has `G(0)=0` but retains nonzero information at every nonzero frequency. At `f=1/(2tau)`, `G>=0.51697536`; high-frequency `G->1/e`.
+`(R_lin^2/4)Tr F<=p`.
 
-For arbitrary finite-mean iid recovery with mean `m`, every law shares
+At the empty-sideband boundary,
 
-`r(lambda)=lambda exp(-lambda m)`,
+`Delta P_s=4kappa^2`, `Tr F<=Delta P_s`,
 
-but at the common maximum
+with exact crossover
 
-**`G_DC=0 iff recovery is deterministic`.**
+`lim_(p->0+)4p/R_lin^2=Delta P_s`.
 
-An exact same-mean/same-variance example shows identical mean, variance/CV, maximum count rate, and entire saturation curve can coexist with sharply different timestamp correlations and accessible Fisher information.
+Ordinary ideal weak phase modulation gives `Delta P_+=Delta P_-=1` and a fixed phase-sensitive analyzer attaining
 
-### WP04 — optical survival-to-synthesis crossover
+`Tr F=4=[sqrt(Delta P_+)+sqrt(Delta P_-)]^2`.
 
-Use carrier/sideband baseline
+### WP05 — standard Hamiltonian implementation
 
-`rho_p=(1-p)|c><c|+p|s><s|`, `0<=p<1/2`,
+Two resonant bosonic modes with
 
-with calibrated lossless mixing coefficient `kappa`.
+`H_0=hbar nu(N_C+N_S)`
 
-The exact sideband population is
+and the standard beam-splitter exchange are restricted to the fixed-energy `N_tot=2` manifold
 
-`P_s=p+(1-2p)sin^2(kappa sqrt(x^2+y^2))`.
+`|2,0>, |1,1>, |0,2>`.
 
-For `p>0`,
+For
 
-**`R_lin^2=p(1-p)/[kappa^2(1-2p)^2]`**
+`U(x,y)=exp[-i g t(xB_x+yB_y)]`
 
-and finite-radius survival gives
+and baseline `|1,1>`,
 
-**`(R_lin^2/4)Tr F<=p`.**
+`Var(K_x)=Var(K_y)=4(g t)^2`,
 
-At `p=0`, the sideband becomes baseline empty,
+so
 
-**`Delta P_s(0)=4kappa^2`**
+**`V_impl=8(g t)^2`.**
 
-and the rank-boundary theorem gives
+The independently observable endpoint curvatures are
 
-**`Tr F<=Delta P_s(0)`.**
+`Delta P_L=Delta P_U=8(g t)^2`,
 
-The crossover is exact:
+hence
 
-**`lim_(p->0+)4p/R_lin^2=Delta P_s(0)=4kappa^2`.**
+**`Tr C=16(g t)^2`,**
 
-A fixed four-outcome frequency-bin POVM saturates the boundary value.
+**`V_min=(1/2)Tr C=8(g t)^2`.**
 
-Ordinary ideal weak phase modulation provides an even more familiar bilateral example. The first upper/lower sidebands satisfy
+The autonomous spectral action is
 
-`Delta P_+=Delta P_-=1`,
+**`A_ex^(2)=hbar nu V_min=8 hbar nu(g t)^2`.**
 
-and a fixed three-mode phase-sensitive analyzer attains
+The complete total bare-energy distribution remains fixed at `2hbar nu` throughout.
 
-**`Tr F=4=[sqrt(Delta P_+)+sqrt(Delta P_-)]^2`.**
+For a fixed-duration physical interaction family,
 
-Thus standard optical sideband generation gives an exact ideal saturation example of the rank-boundary curvature law.
+**`V_impl=(t^2/hbar^2)sum_j Var(H_j)`.**
 
-A direct spectrum measurement determines the sideband-curvature resource; a phase-sensitive interferometric/coherent measurement is required for both Fisher quadratures.
-
-An externally driven EOM is **not** automatically the autonomous clock-signal model, and its RF power is not identified with the synthesis action. WP05 will include the controller explicitly.
+This is a generator-variance/coupling-strength quantity, not work, consumed RF power, mean interaction energy, operator norm, peak coupling, controller bandwidth, or fixed-controller-spectrum optimum.
 
 ## Current significance assessment
 
-Paper 4 now has two likely nontrivial practical cores:
+The likely Paper-4 core is now:
 
-1. conventional saturation/low-order recovery characterization can provably fail to determine temporal-information transfer;
-2. the survival-to-synthesis transition has an exact measurable optical-sideband realization with a continuous limiting law and ideal saturation examples.
+1. **memory result:** standard saturation and low-order dead-time summaries can provably miss temporal-information transfer;
+2. **support result:** seeded versus empty sidebands realize the finite-radius survival / rank-boundary synthesis transition with an exact measurable crossover;
+3. **implementation result:** the boundary curvature has a standard fixed-energy resonant-exchange realization whose exact minimum coupling can be checked by independent coupling and endpoint-curvature calibration.
 
-WP01/WP02 provide a common analog/timestamp measurement language around those results.
-
-No manuscript drafting yet. WP05–WP07 remain required.
+WP01/WP02 are likely supporting bridge material rather than the central novelty.
 
 ## Immediate work order
 
-1. WP05 — textbook autonomous resonant-exchange/controller interpretation of `V_min=(1/2)Tr C` and `A_ex=hbar nu V_min`.
-2. WP06 — integrated falsification matrix and minimal practical result stack.
-3. WP07 — dedicated prior-art/significance gate before manuscript drafting.
-4. Update practical notes and all landing files after every material advance.
+1. WP06 — rank the results, create the integrated falsification matrix, and define the **minimum** practical paper stack.
+2. WP07 — dedicated prior-art/significance gate before manuscript drafting.
+3. Update all documentation after each material change.
 
 ## Claim discipline
 
-Priority remains **unverified, not certified**. No prize-level framing. No novelty claim for standard NEP/detectivity, matched filtering, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic sideband generation, SU(2) mode mixing, or standard frequency-bin interferometry.
+Priority remains **unverified, not certified**. No prize-level framing. No novelty claim for standard NEP, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic sidebands, beam-splitter Hamiltonians, or standard interferometry.
 
 ## Frozen publication packages
 
-PRXQ R4 verification: run `32674844366` PASS; artifact `9502376602`; 20-page main / 25-page supplement; render QA PASS.
+PRXQ R4: run `32674844366` PASS; artifact `9502376602`.
 
-PRA R1 verification: run `32673160217` PASS; artifact `9501942180`; 11-page main / 10-page supplement; render QA PASS.
+PRA R1: run `32673160217` PASS; artifact `9501942180`.
