@@ -6,117 +6,79 @@ The repository is authoritative; chat history is not.
 
 ## Mature papers — preserve separately
 
-1. **PRX Quantum flagship:** *Two spectral-resource regimes for autonomous temporal information* — R3 frozen theorem/proof baseline, R4 journal-facing bridge layer.
-2. **Broad random-time/timestamp paper:** independent spectral-information/memory track.
-3. **PRA dynamical completion:** *Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature*.
+1. PRX Quantum flagship — *Two spectral-resource regimes for autonomous temporal information*.
+2. Broad random-time/timestamp spectral-information paper.
+3. PRA dynamical completion — *Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature*.
 
-A fourth practical/falsifiability program is active on branch `agent/practical-temporal-information-benchmarks`.
+The active fourth program is `agent/practical-temporal-information-benchmarks`.
 
 Working title:
 
 > **Operational benchmarks for temporal information in photodetection**
 
-Workspace: `practical_temporal_information/`.
+## Paper-4 result hierarchy after WP06
 
-## Practical result stack
+### Headline result A — detector memory
 
-### WP01 — analog Gaussian
+For generalized iid Type-II recovery, fixing mean recovery fixes the entire homogeneous saturation curve `r=lambda exp(-lambda m)` but does not fix temporal information. At the common maximum, complete timestamp DC FI vanishes iff recovery is deterministic. Exact equal-mean/equal-variance/equal-saturation laws have different pair correlations and accessible FI.
 
-`Tr F/T=2|R(f)|^2/S_n(f)=2/NEP(f)^2` under the locked peak-quadrature / one-sided-PSD convention.
+### Headline result B — spectral support crossover
 
-### WP02 — ideal timestamps
+A seeded carrier/sideband family obeys the finite-radius survival law. As seed `p->0`, the affine radius collapses and the resource moves to sideband population curvature with
 
-`Tr F/T=lambda_0` for fractional Poisson modulation; optical-power form exactly matches ideal shot-noise NEP. Independent timing jitter contributes `|Phi_J(Omega)|^2`.
+**`lim_(p->0+)4p/R_lin^2=Delta P_s(0)`.**
 
-### WP03 — detector memory
+Ordinary ideal weak phase modulation saturates the bilateral boundary-curvature law.
 
-Conventional saturation is not an information-transfer law. Deterministic Type-II recovery at `lambda tau=1` is DC-information blind while every nonzero temporal mode survives. For arbitrary finite-mean iid recovery, all distributions with mean `m` share `r=lambda exp(-lambda m)`, yet `G_DC=0` at the common maximum iff recovery is deterministic. Exact equal-mean/equal-variance/equal-saturation laws have different timestamp information.
+### Supporting measurement bridge
 
-### WP04 — optical survival-to-synthesis
+- linear Gaussian optical-power quadratures: `Tr F/T=2/NEP(f)^2`;
+- ideal Poisson fractional timestamps: `Tr F/T=lambda_0`;
+- independent timing jitter: multiply by `|Phi_J(Omega)|^2`.
 
-A seeded carrier/sideband model has
+### Compact Hamiltonian completion
 
-`R_lin^2=p(1-p)/[kappa^2(1-2p)^2]`
+A resonant two-mode beam-splitter in the fixed `N_tot=2` shell gives
 
-and
+`V_min=8(g t)^2=(1/2)Tr C`,
 
-`(R_lin^2/4)Tr F<=p`.
+`A_ex=hbar nu V_min`,
 
-At the empty-sideband boundary,
+with the total bare-energy distribution exactly fixed.
 
-`Delta P_s=4kappa^2`, `Tr F<=Delta P_s`,
+## Falsification discipline
 
-with exact crossover
+Paper 4 must distinguish:
 
-`lim_(p->0+)4p/R_lin^2=Delta P_s`.
+1. detector-model/reduction failure;
+2. resource-law violation only after all theorem hypotheses are independently verified;
+3. failure of a model-specific saturating equality.
 
-Ordinary ideal weak phase modulation gives `Delta P_+=Delta P_-=1` and a fixed phase-sensitive analyzer attaining
+Most laboratory mismatches should first be interpreted as model/calibration failures, not fundamental theorem violations.
 
-`Tr F=4=[sqrt(Delta P_+)+sqrt(Delta P_-)]^2`.
+## Minimum manuscript architecture
 
-### WP05 — standard Hamiltonian implementation
+I. concise detector-language FI bridge;
+II. memory: same saturation, different information;
+III. spectral support: survival -> sideband synthesis;
+IV. short resonant-exchange implementation benchmark;
+V. integrated falsification matrix/discussion.
 
-Two resonant bosonic modes with
+Target roughly 10–14 main-text journal pages before references, maximum four figures.
 
-`H_0=hbar nu(N_C+N_S)`
+WP01/WP02 are bridge material. WP03/WP04 are the likely central science. WP05 is compact physical interpretation.
 
-and the standard beam-splitter exchange are restricted to the fixed-energy `N_tot=2` manifold
+## Scope removals
 
-`|2,0>, |1,1>, |0,2>`.
-
-For
-
-`U(x,y)=exp[-i g t(xB_x+yB_y)]`
-
-and baseline `|1,1>`,
-
-`Var(K_x)=Var(K_y)=4(g t)^2`,
-
-so
-
-**`V_impl=8(g t)^2`.**
-
-The independently observable endpoint curvatures are
-
-`Delta P_L=Delta P_U=8(g t)^2`,
-
-hence
-
-**`Tr C=16(g t)^2`,**
-
-**`V_min=(1/2)Tr C=8(g t)^2`.**
-
-The autonomous spectral action is
-
-**`A_ex^(2)=hbar nu V_min=8 hbar nu(g t)^2`.**
-
-The complete total bare-energy distribution remains fixed at `2hbar nu` throughout.
-
-For a fixed-duration physical interaction family,
-
-**`V_impl=(t^2/hbar^2)sum_j Var(H_j)`.**
-
-This is a generator-variance/coupling-strength quantity, not work, consumed RF power, mean interaction energy, operator norm, peak coupling, controller bandwidth, or fixed-controller-spectrum optimum.
-
-## Current significance assessment
-
-The likely Paper-4 core is now:
-
-1. **memory result:** standard saturation and low-order dead-time summaries can provably miss temporal-information transfer;
-2. **support result:** seeded versus empty sidebands realize the finite-radius survival / rank-boundary synthesis transition with an exact measurable crossover;
-3. **implementation result:** the boundary curvature has a standard fixed-energy resonant-exchange realization whose exact minimum coupling can be checked by independent coupling and endpoint-curvature calibration.
-
-WP01/WP02 are likely supporting bridge material rather than the central novelty.
+Do not add separate main-text photoconductor/RC examples, `NEP_F` branding, many recovery laws, many sideband technologies, unequal-frequency pump machinery, or the PRA infinite-dimensional proof stack unless WP07/referees provide a concrete reason.
 
 ## Immediate work order
 
-1. WP06 — rank the results, create the integrated falsification matrix, and define the **minimum** practical paper stack.
-2. WP07 — dedicated prior-art/significance gate before manuscript drafting.
-3. Update all documentation after each material change.
+**WP07 — adversarial prior-art/significance gate.** Search the exact candidate distinct claims. Do not draft Paper 4 unless a publishable core survives.
 
 ## Claim discipline
 
-Priority remains **unverified, not certified**. No prize-level framing. No novelty claim for standard NEP, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, electro-optic sidebands, beam-splitter Hamiltonians, or standard interferometry.
+Priority remains **unverified, not certified**. No prize-level framing. No novelty claim for standard NEP, generic Fisher sensing, Poisson/dead-time formulas, renewal spectra, sideband generation, beam-splitter physics, or standard interferometry.
 
 ## Frozen publication packages
 
