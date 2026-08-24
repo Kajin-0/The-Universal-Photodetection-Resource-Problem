@@ -8,66 +8,175 @@ Develop a fourth, deliberately grounded paper that translates the existing tempo
 
 This program is **not** another abstraction layer and does not alter the frozen theorem/proof stacks of the three existing papers.
 
-Working paper concept:
+Working title:
 
 > **Operational benchmarks for temporal information in photodetection**
 
-Alternative working title:
+Alternative retained:
 
 > **Falsifiable temporal-information bounds for photodetection: from noise-equivalent power to spectral survival and sideband synthesis**
 
-## Core thesis
+## Current practical thesis
 
-For conventional linear photodetection, temporal Fisher information can be written directly in terms of experimentally familiar quantities such as frequency-dependent responsivity and noise power spectral density. For photon-counting detectors it can be extracted directly from timestamp likelihoods. These ordinary measurement languages can then be used to formulate explicit experimental falsification tests of the survival/synthesis resource laws.
+The work now has four linked detector-language results:
 
-The intended logical bridge is:
+1. linear Gaussian analog detection: `1/NEP(f)^2` is the frequency weighting of the weak-waveform Fisher metric;
+2. ideal event detection: timestamp Fisher information reproduces the same shot-noise limit, with independent timing jitter entering through `|Phi_J|^2`;
+3. memoryful dead-time detection: conventional saturation curves and low-order recovery statistics can fail to determine temporal-information transfer;
+4. optical sidebands: a pre-seeded spectral bin realizes the finite-radius survival regime, while an empty sideband realizes the rank-boundary synthesis regime, with an exact continuous crossover of the Fisher ceiling.
 
-`responsivity + noise PSD -> Fisher-information spectrum`
+The next step is to add the standard Hamiltonian/controller layer needed to interpret the companion unitary-coupling theorem without confusing it with RF power or thermodynamic work.
 
-`timestamp likelihood -> Fisher-information spectrum`
+## WP01 — linear Gaussian Fisher/NEP bridge
 
-`pre-existing sideband occupancy -> survival regime`
+For peak optical-power quadratures, linear responsivity `R(f)`, and one-sided output-noise PSD `S_n(f)`,
 
-`baseline-empty sideband generation -> synthesis regime`
+`F_xx/T=F_yy/T=|R(f)|^2/S_n(f)=1/NEP(f)^2`,
 
-`prescribed synthesis curvature -> minimum unitary coupling in the companion implementation class`
+`Tr F/T=2/NEP(f)^2`.
 
-## Initial target results
+For arbitrary weak waveform coordinates,
 
-1. Derive the exact convention-controlled relation between two-quadrature Fisher-information rate and NEP for a linear detector in additive stationary Gaussian noise.
-2. Define and audit whether a generalized Fisher-equivalent input-noise metric is useful beyond the Gaussian/linear limit; do not claim novelty before a dedicated prior-art gate.
-3. Derive the ideal Poisson timestamp Fisher spectrum and the exact independent-jitter attenuation factor.
-4. Connect dead time/recovery/memory models to the existing random-time spectral-resource paper using measurable timestamp statistics.
-5. Construct a standard optical sideband model that interpolates between pre-seeded spectral survival and baseline-empty second-order synthesis.
-6. State every central prediction in a falsifiable form: required measurements, predicted inequality/equality, and what observation would contradict it.
-7. Translate the unitary-coupling companion theorem into at least one textbook resonant-exchange Hamiltonian without changing the theorem's scope.
+`F_ij=4 Re integral_0^infinity q_i*(f)q_j(f)/NEP(f)^2 df`.
 
-## Model set
+Thus responsivity bandwidth and task-specific information bandwidth need not coincide when the noise spectrum is frequency dependent.
 
-Keep the practical paper small enough to remain coherent. Default examples:
+## WP02 — Poisson timestamps and independent jitter
 
-- linear photodiode / RC or transit-time limited detector;
-- photoconductor with lifetime pole and colored noise;
-- photon counter with timing jitter and dead time/recovery;
-- optical phase/amplitude sideband generation as a survival-to-synthesis crossover model.
+For fractional sinusoidal modulation of an ideal Poisson event stream,
+
+`Tr F/T=lambda_0`.
+
+For optical-power coordinates this exactly matches the WP01 ideal shot-noise result `2/NEP_shot^2`.
+
+Independent timestamp jitter gives
+
+`Tr F/T=lambda_0|Phi_J(Omega)|^2`.
+
+For Gaussian jitter,
+
+`f_F,3dB=sqrt(ln2)/(2 pi sigma_t)`.
+
+## WP03 — dead time/recovery information benchmarks
+
+For deterministic paralyzable recovery at `lambda tau=1`,
+
+`G(0)=0`
+
+but `G(omega)>0` for every nonzero frequency. At `f=1/(2tau)`,
+
+`G>=0.51697536`,
+
+with exact model value about `0.52814`; high-frequency `G->1/e`.
+
+For arbitrary finite-mean iid recovery with mean `m`, every law has the same conventional count curve
+
+`r(lambda)=lambda exp(-lambda m)`,
+
+but at `lambda m=1`
+
+`G_DC=0 iff recovery is deterministic`.
+
+An exact same-mean/same-variance example shows two detectors with identical mean, variance/CV, and complete saturation curve but very different timestamp pair correlations and accessible Fisher information.
+
+## WP04 — optical sideband survival-to-synthesis crossover
+
+### Exact seeded two-bin model
+
+Use carrier `|c>` and sideband `|s>` with baseline
+
+`rho_p=(1-p)|c><c|+p|s><s|`, `0<=p<1/2`,
+
+and calibrated lossless frequency-bin mixing coefficient `kappa`.
+
+The exact sideband population is
+
+`P_s(p;r)=p+(1-2p)sin^2(kappa r)`, `r=sqrt(x^2+y^2)`.
+
+For `p>0`, the exact affine tangent radius is
+
+**`R_lin^2=p(1-p)/[kappa^2(1-2p)^2]`.**
+
+The finite-radius survival theorem becomes the directly measurable inequality
+
+**`(R_lin^2/4) Tr F <= p`.**
+
+At `p=0`, the sideband is baseline empty and
+
+`Delta P_s(0)=4kappa^2`,
+
+so the rank-boundary theorem becomes
+
+**`Tr F <= Delta P_s(0)=4kappa^2`.**
+
+The crossover is exact:
+
+**`lim_(p->0+) 4p/R_lin^2 = Delta P_s(0)=4kappa^2`.**
+
+A fixed four-outcome frequency-bin POVM attains `Tr F=4kappa^2` at the empty-sideband boundary.
+
+### Ordinary weak phase modulation
+
+For a single-frequency photon with ideal weak phase modulation `exp{i[x cos(Omega t)+y sin(Omega t)]}`,
+
+`P_+=(x^2+y^2)/4+O(r^4)`,
+
+`P_-=(x^2+y^2)/4+O(r^4)`,
+
+hence
+
+`Delta P_+(0)=Delta P_-(0)=1`.
+
+A fixed three-mode interferometric measurement attains
+
+`F_xx=F_yy=2`, `Tr F=4`,
+
+so the bilateral boundary law is saturated:
+
+**`Tr F=[sqrt(Delta P_+)+sqrt(Delta P_-)]^2=4`.**
+
+A direct spectrum measurement supplies the curvature resource; a phase-sensitive frequency-bin interferometer or coherent equivalent is required to extract both first-order quadrature Fisher components.
+
+### Scope lock
+
+An externally driven EOM is used here only to test the state-family boundary-curvature law. It is **not** automatically an autonomous clock-signal model, and its electrical RF power is not identified with the flagship synthesis action.
+
+The verified autonomous normalization is retained for WP05:
+
+`A_S^(2)=(hbar nu/4)(Delta T_S,+ + Delta T_S,-)`,
+
+`A_C^(2)=(hbar nu/4)(Delta T_C,+ + Delta T_C,-)`,
+
+and in the clean companion implementation problem
+
+`A_ex^(2)=hbar nu V_min`.
+
+## Authoritative notes
+
+- `notes/WP01_LINEAR_GAUSSIAN_FISHER_NEP_BRIDGE.md`
+- `notes/WP02_POISSON_TIMESTAMPS_AND_JITTER.md`
+- `notes/WP03_DEAD_TIME_RECOVERY_INFORMATION_BENCHMARKS.md`
+- `notes/WP04_OPTICAL_SIDEBAND_SURVIVAL_SYNTHESIS_CROSSOVER.md`
+
+## Publication criterion
+
+Paper 4 now has two potentially publication-level practical cores rather than only a tutorial bridge:
+
+1. conventional dead-time/saturation characterization can provably fail to determine temporal-information transfer;
+2. the survival-to-synthesis transition has an exact, measurable optical-sideband realization with a continuous crossover and ideal saturation examples.
+
+The program still requires WP05–WP07 before manuscript drafting.
+
+## Next work
+
+1. **WP05:** explicit controller/clock + textbook resonant-exchange Hamiltonian interpretation of `V_min=(1/2)Tr C` and `A_ex=hbar nu V_min`.
+2. **WP06:** integrated falsification matrix and minimum practical theorem stack.
+3. **WP07:** dedicated prior-art/significance gate; do not draft a paper before this gate.
 
 ## Claim discipline
 
-- No claim that conventional NEP is new.
-- No claim that Fisher information as a detector metric is new without a dedicated literature review.
-- No claim that `NEP_F` or any proposed generalized metric is novel until exact prior art is checked.
-- No experimental result may be implied unless actual data are analyzed.
-- The paper may propose executable experiments and falsification protocols, but theoretical predictions must be clearly separated from measured validation.
-- Preserve the distinction between unitary coupling cost and thermodynamic work, peak interaction strength, controller bandwidth, or fixed-controller-spectrum cost.
-
-## Relationship to the three existing papers
-
-1. **Two spectral-resource regimes for autonomous temporal information** — supplies the survival/synthesis taxonomy and sharp resource inequalities.
-2. **Spectral Resource Laws for Temporal Fisher Information** — supplies the broader random-time/timestamp spectral theory.
-3. **Exact minimum unitary coupling cost of prescribed rank-changing quantum-state curvature** — supplies the exact implementation interpretation of prescribed rank-changing curvature.
-
-This fourth program translates those results into detector observables and falsification procedures. It should remain scientifically useful even to readers who never adopt the full abstract resource language.
+No novelty claim for conventional NEP, generic Fisher sensing, Poisson FI, timing-jitter transfer, classical paralyzable count laws, renewal spectra, electro-optic sideband generation, SU(2) mode mixing, or standard frequency-bin interferometry. No experimental result may be implied unless actual data are analyzed.
 
 ## Documentation rule
 
-Every material derivation, failed derivation, convention correction, prior-art collision, model choice, falsification criterion, or publication-scope decision must be recorded in `practical_temporal_information/notes/` and reflected in `AGENTS.md` and the repository landing files when it changes the program frontier.
+Every material derivation, failed derivation, convention correction, prior-art collision, model choice, falsification criterion, or publication-scope decision must be recorded in `notes/` and reflected in `AGENTS.md` and the repository landing files when it changes the frontier.
