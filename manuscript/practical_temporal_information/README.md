@@ -16,58 +16,67 @@ Alternative retained for later title comparison:
 
 > **Temporal-information benchmarks beyond static sensitivity and detector bandwidth**
 
-## Current manuscript freeze — R4
-
-The scientific text is frozen through R3; R4 is presentation-only.
+## Current manuscript freeze — R5
 
 Deterministic chain:
 
-`draft -> R1 mechanical -> R2 theorem -> R3 hostile-review -> R4 presentation`.
+`draft -> R1 mechanical -> R2 theorem -> R3 hostile-review -> R4 presentation -> R5 figures`
 
-Files:
+R5 is the canonical figure-integrated manuscript baseline.
+
+### Source layers
 
 - `operational_temporal_information_draft.tex` — first complete REVTeX baseline;
 - `apply_r1_compile_fix.py` — mechanical REVTeX compatibility transform;
-- generated `operational_temporal_information_r1.tex`;
-- `apply_r2_support_strengthening.py`;
-- `sections/support_crossover_r2.tex` — hardened theorem/protocol section;
-- generated `operational_temporal_information_r2.tex`;
+- `apply_r2_support_strengthening.py` + `sections/support_crossover_r2.tex` — hardened stationary-spectator theorem/protocol;
 - `check_practical_r2.py` — R2 scientific isolation gate;
-- `apply_r3_hostile_review_repairs.py`;
-- generated `operational_temporal_information_r3.tex`;
-- `check_practical_r3.py` — exact R3 whole-file gate;
-- `apply_r4_presentation_cleanup.py`;
-- generated `operational_temporal_information_r4.tex`;
-- `check_practical_r4.py` — presentation-only isolation gate;
+- `apply_r3_hostile_review_repairs.py` — stale-reference and equal-frequency benchmark repairs;
+- `check_practical_r3.py` — R3 exact isolation gate;
+- `apply_r4_presentation_cleanup.py` — hyperlink-border presentation only;
+- `check_practical_r4.py` — R4 presentation isolation;
+- `figures/` — frozen deterministic WP12 figure package;
+- `r5_figure_blocks.py` — exact four figure/caption blocks;
+- `apply_r5_figure_integration.py` — additive R5 transform;
+- `check_practical_r5.py` — removes all four blocks and requires exact recovery of R4;
 - `references.bib`;
 - `MANUSCRIPT_ARCHITECTURE.md`.
 
-## Exact R4 verification
+## Exact R5 verification
 
-Run `32684526293`, job `97307019940`: all gates PASS.
+Run `32915363157`, job `98017843874`: all gates PASS.
 
-Artifact `9505218922`:
+Source commit:
 
-- archive size `322116` bytes;
-- digest `sha256:9905a2cbd4366d57731fc8f4a99c6f72a513629a8727257a43131e02efb96cce`.
+`55ec3af3bd9d57830c03f65655180936eb85eda9`
 
-Exact R4 PDF:
+Artifact `9588018384`:
 
-- 8 pages;
-- 266068 bytes;
-- SHA-256 `794cb1c52326dc1965e14ea8ccd15530b41b2e523ca501e88f081cf69d741a01`.
+- archive size `615446` bytes;
+- digest `sha256:06e1de8d8f5e44f9d62e6ebd06362d2cfbc93132014718398e57b877c784c281`.
 
-All pages rendered at 180 dpi and inspected. No clipping, overlap, broken glyphs, black squares, equation overflow, unresolved references/citations, or overfull boxes. R3→R4 visual changes are restricted to removal of hyperlink borders.
+Exact R5 PDF:
 
-Disposable PR #35 is closed unmerged; no open PRs remain.
+- 10 pages;
+- 429432 bytes;
+- SHA-256 `fd451a59ca5b70731b61f7ce237bd06a1d5f7105305e064cfe21bbb588e6bf48`.
+
+All ten pages were rendered independently at 200 dpi and inspected. No clipping, overlap, broken glyphs, black squares, equation overflow, unresolved references/citations, overfull boxes, or figure/caption collisions remain.
+
+## Frozen figure package
+
+WP12 standalone verification:
+
+- run `32914889053` PASS;
+- artifact `9587797682`;
+- digest `sha256:261acabd321706ad73dfb873bf9ca4fbc7f81722a80f316be4318578eb43bf91`.
+
+R5 manuscript CI re-generates the four vector PDFs in the pinned environment and checks their exact canonical SHA-256 identities before integrating them.
+
+Do not redesign figures or alter their numerical values during ordinary text cleanup.
 
 ## Scientific center
 
-The paper should be understood first as detector physics and only second as an application of the broader temporal-information resource program.
-
-Opening problem:
-
-> DC sensitivity, response bandwidth, saturation curves, and timing jitter are useful detector specifications, but they do not generally determine how much information a detector transfers about a time-dependent optical signal.
+The paper should be read first as detector physics and second as an application of the broader temporal-information resource program.
 
 Principal candidate original result:
 
@@ -85,7 +94,7 @@ and
 
 The finite-seed bound is `(R_lin^2/4)Tr F<=p`; the zero-seed boundary is attainable with `Tr F=Delta P_s(0)`.
 
-The practical test reconstructs `R_lin` from baseline/tangent tomography, curvature from an independent zero-seed quadratic fit, and FI from a separate phase-sensitive measurement.
+The practical test obtains `R_lin`, zero-seed curvature, and Fisher information from independent measurements.
 
 ## Novelty boundary
 
@@ -99,26 +108,35 @@ Candidate distinct content is the finite-seed finite-radius continuation and the
 
 - stationary selected-mode support-seed survival→synthesis crossover;
 - practical independent-measurement/falsification architecture;
-- ideal weak phase-modulation boundary saturator as an explicit realization under the locked convention.
+- ideal weak phase-modulation boundary saturator under the locked convention.
 
 ### Cited companion results
 
-- random-time/Type-II information incompleteness theorem;
+- random-time/Type-II information incompleteness theorem and matched-recovery benchmark;
 - exact prescribed-curvature unitary-coupling theorem.
-
-Do not reproduce their proofs or inherit their novelty claims.
 
 ### Standard bridge/background
 
 - NEP/Fisher relation under explicit Gaussian/PSD conventions;
 - ideal Poisson timestamp and independent-jitter relation;
-- equal-DC-NEP/equal-bandwidth colored-noise counterexample;
+- equal-DC-NEP/equal-bandwidth colored-noise example;
 - standard equal-frequency resonant beam-splitter Hamiltonian.
 
-## Active task — figures, not theorem expansion
+## Active task — hostile compression audit
 
-Create at most four deterministic journal figures with committed scripts and numerical checks. Do not edit R4 science while producing them.
+R5 science and figures are frozen. Do not add new material.
 
-After the figure package passes independently, integrate figures through a new isolated manuscript revision and rerun compile/render/hostile-review.
+Next:
 
-Only after figure integration should publication-style compression, author metadata, cover material, and fresh APS policy checks begin.
+1. read R5 as a PRA referee/editor and identify repeated/tutorial prose only;
+2. create R6 only if the reduction is materially useful;
+3. R6 must be a deterministic text-only transform with an explicit allowed-edit map;
+4. preserve all four R5 figure blocks exactly;
+5. preserve theorem/proposition/equation/proof content and disclosures unless a genuine defect is discovered;
+6. compile, warning-check, render, and adversarially review R6 independently;
+7. after final text freeze, fresh-check current APS/PRA submission policy and prepare author/companion metadata.
+
+Latest authoritative notes:
+
+- `practical_temporal_information/notes/WP12_PUBLICATION_FIGURE_PACKAGE.md`
+- `practical_temporal_information/notes/WP13_R5_FIGURE_INTEGRATION_FREEZE.md`
