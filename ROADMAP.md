@@ -1,6 +1,6 @@
 # Research Roadmap
 
-**Updated:** 2026-08-23
+**Updated:** 2026-08-25
 
 **Active branch:** `agent/practical-temporal-information-benchmarks`
 
@@ -18,33 +18,33 @@ Working title:
 
 Provisional target: Physical Review Applied.
 
-## Completed Paper-4 work packages
+## Completed work packages
 
 - **WP01:** linear Gaussian detector -> `Tr F/T=2/NEP(f)^2`.
 - **WP02:** ideal Poisson timestamps -> `Tr F/T=lambda0`; independent jitter -> `|Phi_J|^2`.
 - **WP03:** practical translation of frozen Type-II memory theorem.
-- **WP04:** explicit seeded-to-empty sideband crossover and ideal phase-modulation boundary saturation.
-- **WP05:** equal-frequency resonant exchange benchmark of the frozen implementation theorem.
-- **WP06:** minimum manuscript architecture and falsification hierarchy.
-- **WP07:** adversarial prior-art/significance gate — **PASS WITH NARROWED CLAIMS**.
-- **WP07A:** close boundary-FI prior art identified; novelty boundary tightened.
-- **WP08:** final pre-manuscript theorem/benchmark stack — **PASS**.
-- **WP09:** first hostile manuscript audit; theorem generalized to stationary selected pair with inert spectators.
-- **WP10:** second hostile scientific/build audit; theorem hypotheses, noncircular `R_lin` protocol, incoherent seed, reference migration, and equal-frequency resonance clarification repaired.
-- **WP11:** exact R3/R4 build and render audit — **PASS**.
+- **WP04:** seeded-to-empty sideband crossover and ideal boundary saturation.
+- **WP05:** equal-frequency resonant implementation benchmark.
+- **WP06:** manuscript architecture and falsification hierarchy.
+- **WP07/WP07A:** prior-art/significance gate and narrowed boundary-FI novelty claim.
+- **WP08:** final pre-manuscript stack.
+- **WP09:** first hostile audit; theorem generalized to stationary selected pair with inert spectators.
+- **WP10:** second hostile scientific/build audit; theorem hypotheses and noncircular protocol hardened.
+- **WP11:** R3/R4 exact artifact/render audit — PASS.
+- **WP12:** standalone deterministic four-figure package — **FROZEN PASS**.
+- **WP13:** R5 figure integration, full CI, and 10-page render audit — **FROZEN PASS**.
 
-## Current R4 freeze
+## Current R5 freeze
 
-Final R4 verification:
+- run `32915363157` PASS;
+- job `98017843874` PASS;
+- source commit `55ec3af3bd9d57830c03f65655180936eb85eda9`;
+- artifact `9588018384`;
+- digest `sha256:06e1de8d8f5e44f9d62e6ebd06362d2cfbc93132014718398e57b877c784c281`;
+- PDF: 10 pages / 429432 bytes;
+- PDF SHA-256 `fd451a59ca5b70731b61f7ce237bd06a1d5f7105305e064cfe21bbb588e6bf48`.
 
-- run `32684526293` PASS;
-- job `97307019940` PASS;
-- artifact `9505218922`;
-- archive digest `sha256:9905a2cbd4366d57731fc8f4a99c6f72a513629a8727257a43131e02efb96cce`;
-- exact PDF: 8 pages, 266068 bytes;
-- SHA-256 `794cb1c52326dc1965e14ea8ccd15530b41b2e523ca501e88f081cf69d741a01`.
-
-All pages rendered and inspected. R4 changes only hyperlink presentation relative to R3. PR #35 closed unmerged; zero open PRs.
+All ten pages rendered/inspected at 200 dpi. R5 adds only the four frozen WP12 figure/caption blocks to R4.
 
 ## Frozen principal theorem
 
@@ -52,7 +52,7 @@ For stationary selected modes separated by `hbar Omega`,
 
 `rho_p=a_p|c><c|+p|s><s|+sigma_p`,
 
-with stationary inert spectators and incoherent/phase-randomized population seed,
+with stationary inert spectators and an incoherent/phase-randomized population seed,
 
 `R_lin^2=a_p p/[kappa^2(a_p-p)^2]`,
 
@@ -68,46 +68,59 @@ Therefore
 
 The boundary is attainable with `Tr F=Delta P_s(0)`.
 
-Do not reopen theorem expansion without a concrete blocking defect.
+Do not reopen theorem expansion without a genuine blocking defect.
 
 ## Novelty boundary
 
-The general mechanism of finite FI from quadratically vanishing boundary probabilities/eigenvalues is prior art. Paper 4's candidate distinct contribution is the exact finite-seed/finite-radius continuation into that boundary plus a noncircular detector-facing falsification protocol.
+The general mechanism of finite FI from quadratically vanishing boundary probabilities/eigenvalues is prior art. Paper 4's candidate distinct contribution is the controlled finite-seed/finite-radius continuation and independent detector-facing falsification protocol. Priority remains **unverified, not certified**.
 
-Priority remains **unverified, not certified**.
+## Frozen figures
 
-## Active work package — WP12 publication figures
+WP12 run `32914889053`, artifact `9587797682`.
 
-Maximum four figures:
+1. same conventional specs / different information spectra;
+2. same Type-II saturation / different timestamp information — companion benchmark;
+3. support-controlled survival→synthesis crossover — principal Paper-4 figure;
+4. equal-frequency resonant implementation + failure hierarchy — companion benchmark.
 
-### Figure 1 — same specifications, different information
+Do not redesign the frozen figures during ordinary publication cleanup.
 
-Show common single-pole responsivity, different output-noise spectra, and normalized FI spectra. Mark `f=f_c`, where the FI ratio is `13/3`, and the detector-B half-DC-FI point `f/f_c≈2.9703`.
+## Active work package — publication compression
 
-### Figure 2 — memory hidden by saturation
+The next task is not new science.
 
-Show the common Type-II saturation curve and one compact timestamp/interval-information contrast between two recovery laws. The theorem/result must be attributed to the frozen companion paper. Avoid reproducing an entire Paper-2 figure stack.
+### Gate A — hostile redundancy audit
 
-### Figure 3 — support-controlled survival→synthesis crossover
+Read frozen R5 as a Physical Review Applied referee/editor. Identify only text that is:
 
-Principal figure. Show selected carrier/sideband preparation, shrinking affine radius, finite-seed quantity `4p/R_lin^2`, and its convergence to `Delta P_s(0)=4kappa^2 q`. Make independent measurement routes for radius, curvature, and FI visually explicit.
+- repeated;
+- tutorial beyond what the target audience needs;
+- duplicated between caption and body;
+- unnecessarily defensive without adding a hypothesis or provenance boundary.
 
-### Figure 4 — standard resonant implementation + falsification map
+Do not delete assumptions, novelty boundaries, falsification distinctions, or companion attribution.
 
-Show equal-frequency fixed-energy exchange, the calibration relation `V_min=(1/2)Tr C`, and the Level-I/II/III interpretation of failures.
+### Gate B — optional R6
 
-## WP12 gates
+Create R6 only if the hostile audit finds a meaningful reduction. R6 must be a deterministic text-only transform with an explicit allowed-edit map.
 
-Each figure must:
+R6 constraints:
 
-1. be generated deterministically from committed script/source;
-2. have an analytic/numerical data check;
-3. use journal-readable labels and units/normalization;
-4. avoid decorative or AI-generated scientific content;
-5. distinguish Paper-4 original content from companion-derived benchmarks;
-6. pass rendered visual QA before manuscript integration.
+- preserve all four R5 figure blocks exactly;
+- preserve theorem/proposition/equation/proof content unless a genuine defect is found;
+- preserve Data Availability and AI-assistance disclosures;
+- preserve companion provenance and the narrow novelty boundary;
+- compile, warning-check, render, and adversarially review independently.
 
-After all figures pass, integrate them through a new isolated manuscript revision, rebuild/render/hostile-review, then compress for publication and fresh-check APS submission policy.
+### Gate C — submission packaging
+
+After the final text freeze:
+
+1. fresh-check then-current APS/PRA author, AI-tool, data-availability, related-manuscript, and citation policies;
+2. replace anonymous author/affiliation metadata;
+3. update companion citations if public identifiers exist;
+4. prepare cover letter and submission checklist;
+5. do not change scientific content merely to fit a submission template.
 
 ## Claim discipline
 
