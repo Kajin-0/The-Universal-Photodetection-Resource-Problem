@@ -4,130 +4,102 @@
 
 The repository, not chat history, is authoritative.
 
-## Mission
-
-Create a fourth paper that translates the three temporal-information theory papers into standard detector physics, independently measurable quantities, and explicit falsification tests. The mature companion theorem/proof layers remain frozen.
-
 ## Read first
 
 1. `README.md`
-2. `notes/WP11_R3_RENDER_AUDIT_AND_R4_PRESENTATION_FREEZE.md`
-3. `notes/WP10_R2_BUILD_AND_SECOND_HOSTILE_AUDIT.md`
-4. `notes/WP09_HOSTILE_MANUSCRIPT_AUDIT_AND_SPECTATOR_INDEPENDENT_CROSSOVER.md`
-5. `notes/WP07A_CLOSE_PRIOR_ART_BOUNDARY_SUPERRESOLUTION.md`
-6. `notes/WP08_FINAL_PREMANUSCRIPT_STACK_AND_SPEC_INCOMPLETENESS.md`
+2. `notes/WP13_R5_FIGURE_INTEGRATION_FREEZE.md`
+3. `notes/WP12_PUBLICATION_FIGURE_PACKAGE.md`
+4. `notes/WP11_R3_RENDER_AUDIT_AND_R4_PRESENTATION_FREEZE.md`
+5. `notes/WP10_R2_BUILD_AND_SECOND_HOSTILE_AUDIT.md`
+6. `notes/WP09_HOSTILE_MANUSCRIPT_AUDIT_AND_SPECTATOR_INDEPENDENT_CROSSOVER.md`
 7. `manuscript/practical_temporal_information/README.md`
-8. `manuscript/practical_temporal_information/MANUSCRIPT_ARCHITECTURE.md`
-9. root `docs/CURRENT_RESEARCH_STATE.md`
+8. root `docs/CURRENT_RESEARCH_STATE.md`
 
-## Current status — R4 frozen
+## Current status — R5 frozen
 
-WP07: **PASS WITH NARROWED CLAIMS**.
+Working title:
 
-WP08: **PASS**.
+> **Operational temporal-information benchmarks for photodetection**
 
-WP09: **PASS AFTER SPECTATOR GENERALIZATION**.
+Current canonical manuscript baseline: **R5**.
 
-WP10 second hostile scientific/build audit: **PASS AFTER R2/R3 REPAIRS**.
+Final verification:
 
-WP11 exact artifact/render audit: **PASS**.
+- run `32915363157` PASS;
+- job `98017843874` PASS;
+- source commit `55ec3af3bd9d57830c03f65655180936eb85eda9`;
+- artifact `9588018384`;
+- archive digest `sha256:06e1de8d8f5e44f9d62e6ebd06362d2cfbc93132014718398e57b877c784c281`;
+- exact PDF: 10 pages, 429432 bytes;
+- PDF SHA-256 `fd451a59ca5b70731b61f7ce237bd06a1d5f7105305e064cfe21bbb588e6bf48`.
 
-Current publication-facing manuscript freeze: **R4**.
+All ten pages were rendered at 200 dpi and inspected. R5 is byte-isolated from R4: removing the four exact figure/caption blocks restores R4 exactly.
 
-Final R4 verification:
-
-- run `32684526293`;
-- job `97307019940`;
-- artifact `9505218922`;
-- archive digest `sha256:9905a2cbd4366d57731fc8f4a99c6f72a513629a8727257a43131e02efb96cce`;
-- PDF 8 pages, 266068 bytes;
-- PDF SHA-256 `794cb1c52326dc1965e14ea8ccd15530b41b2e523ca501e88f081cf69d741a01`.
-
-All generation/isolation/compile/warning/artifact gates passed. All eight pages were rendered and inspected. R3→R4 pixel differences occur only at former hyperlink-border locations. Disposable PR #35 was closed **unmerged**. There are currently zero open PRs.
+WP12 figure package is separately frozen at run `32914889053`, artifact `9587797682`; every R5 build re-generates and hash-checks the four canonical vector PDFs before integration.
 
 ## Frozen Paper-4 theorem
 
-Select stationary free-Hamiltonian modes `|c>`, `|s>` separated by `hbar Omega` and let
+For stationary selected modes with `E_s-E_c=hbar Omega`,
 
 `rho_p=a_p|c><c|+p|s><s|+sigma_p`,
 
-with `[rho_p,H]=0`, stationary inert spectators, `a_p>p`, `a_p->q>0`, and an incoherent/phase-randomized sideband population seed `p`.
+where `[rho_p,H]=0`, spectators are stationary/inert, `a_p>p`, `a_p->q>0`, and `p` is an incoherent/phase-randomized sideband population seed,
 
-For a calibrated converter acting only on the selected pair,
+`R_lin^2=a_p p/[kappa^2(a_p-p)^2]`.
 
-`R_lin^2=a_p p/[kappa^2(a_p-p)^2]`,
-
-and the frozen flagship theorem specializes exactly to
+The frozen flagship theorem specializes exactly to
 
 `(R_lin^2/4)Tr F<=p`.
 
 At zero seed,
 
-`Delta P_s(0)=4 kappa^2 q`,
+`Delta P_s(0)=4kappa^2 q`,
 
-so
+hence
 
-**`lim_(p->0+)4p/R_lin^2=4 kappa^2 q=Delta P_s(0)`.**
+**`lim_(p->0+)4p/R_lin^2=4kappa^2 q=Delta P_s(0)`.**
 
-A completed equatorial POVM attains
+The completed boundary POVM attains `Tr F=Delta P_s(0)`.
 
-`Tr F=4 q kappa^2=Delta P_s(0)`.
-
-Do not weaken the explicit hypotheses: stationary baseline, definite selected spectral gap, incoherent seed, inert selected-mode spectators, calibrated local converter.
+Do not loosen the explicit hypotheses or expand this theorem without a genuine blocking defect.
 
 ## Novelty boundary
 
-Do not claim novelty for finite FI from quadratically vanishing probabilities/eigenvalues. Gefen--Rotem--Retzker (2019) and Safranek (2017) cover that general boundary mechanism.
-
-Candidate distinct content is the finite-seed/finite-radius continuation
-
-`4p/R_lin^2 -> Delta P_s(0)`
-
-plus its independent measurement/falsification architecture.
-
-Priority remains **unverified, not certified**.
+Finite FI from quadratically vanishing boundary probabilities/eigenvalues is prior art (Gefen--Rotem--Retzker 2019; Safranek 2017). Candidate distinct content is the finite-seed/finite-radius continuation and the independent measurement/falsification architecture. Priority remains **unverified, not certified**.
 
 ## Provenance discipline
 
-The Type-II memory theorem belongs to the frozen random-time companion. Paper 4 only operationalizes it.
+- Type-II memory theorem and matched-recovery values: frozen random-time companion.
+- Exact prescribed-curvature coupling theorem: frozen PRA companion.
+- NEP/FI, Poisson/jitter, colored-noise example, phase modulation, and beam-splitter mechanics: standard/illustrative.
 
-The exact prescribed-curvature coupling theorem belongs to the frozen PRA companion. Paper 4 only supplies a standard equal-frequency resonant benchmark.
-
-The NEP/FI relation, Poisson/jitter bridge, colored-noise detector example, phase modulation, and beam-splitter physics are standard/illustrative material and must not be sold as fundamental novelty.
+Do not duplicate companion proofs or transfer their novelty claims into Paper 4.
 
 ## Falsification hierarchy
 
-1. **Level I:** detector/state/model reduction failure.
-2. **Level II:** resource-law challenge only after independent verification of theorem hypotheses and resource quantities.
-3. **Level III:** failure of an ideal saturating model/equality.
-
-The support test uses independent products:
-
-- baseline + tangent tomography -> `R_lin`;
-- zero-seed quadratic population fit -> `Delta P_s(0)`;
-- separate phase-sensitive likelihood -> Fisher matrix.
+1. **Level I:** detector/state/implementation model failure.
+2. **Level II:** resource-law challenge only after independently verifying theorem assumptions and resource quantities.
+3. **Level III:** failure of an ideal saturating benchmark/equality.
 
 ## Deterministic manuscript chain
 
-`draft -> R1 mechanical -> R2 theorem -> R3 hostile-review -> R4 presentation`.
+`draft -> R1 mechanical -> R2 theorem -> R3 hostile-review -> R4 presentation -> R5 figures`
 
-R4 is frozen. Any scientific change now requires a new explicit revision layer and a concrete blocking reason.
+Every layer has an explicit isolation gate. R5 is frozen.
 
 ## Immediate work order
 
-**WP12 — publication figures.**
+Do **not** start new theorem or figure sidequests.
 
-Create at most four deterministic scientific figures:
+Next:
 
-1. same conventional detector specs, different FI spectra;
-2. same Type-II saturation, different timestamp information — clearly attributed to companion work;
-3. stationary support-seed survival→synthesis crossover — principal figure;
-4. equal-frequency resonant exchange + falsification/calibration map.
-
-Each figure must have a script/source, explicit units/normalization, no decorative AI imagery, and an independent numerical/algebraic check. Do not alter manuscript science while designing figures.
-
-After figures: integrate them through an isolated revision, compile/render/hostile-review again, then do publication compression and current APS policy checks.
+1. hostile-read R5 for redundancy/tutorial excess;
+2. if compression is worthwhile, create an isolated text-only R6 with an allowed-edit map;
+3. preserve all four figure blocks exactly;
+4. preserve theorem/proposition/equation/proof content unless a genuine defect is found;
+5. compile/render/adversarially audit any R6;
+6. then perform fresh APS/PRA policy checks and submission packaging.
 
 ## Documentation rule
 
-Update the relevant WP note and this handoff after every material result. When the frontier changes, also update root `README.md`, `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
+Every material result or scope change must update the corresponding WP note, this handoff, root `README.md`, root `AGENTS.md`, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
