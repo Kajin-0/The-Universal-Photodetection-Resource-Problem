@@ -8,18 +8,17 @@ Durable handoff for The Universal Photodetection Resource Problem. The repositor
 
 `agent/practical-temporal-information-benchmarks`
 
-The three mature temporal-information papers remain scientifically frozen. The fourth practical/falsifiability paper is now scientifically frozen at **R4** pending deterministic figure integration.
+The three mature temporal-information papers remain scientifically frozen. The fourth practical/falsifiability paper is frozen at **R5** with its four-figure package integrated.
 
 ## Read first
 
 1. `docs/CURRENT_RESEARCH_STATE.md`
 2. `practical_temporal_information/AGENTS.md`
-3. `practical_temporal_information/notes/WP11_R3_RENDER_AUDIT_AND_R4_PRESENTATION_FREEZE.md`
-4. `practical_temporal_information/notes/WP10_R2_BUILD_AND_SECOND_HOSTILE_AUDIT.md`
-5. `practical_temporal_information/notes/WP09_HOSTILE_MANUSCRIPT_AUDIT_AND_SPECTATOR_INDEPENDENT_CROSSOVER.md`
-6. `practical_temporal_information/notes/WP07A_CLOSE_PRIOR_ART_BOUNDARY_SUPERRESOLUTION.md`
+3. `practical_temporal_information/notes/WP13_R5_FIGURE_INTEGRATION_FREEZE.md`
+4. `practical_temporal_information/notes/WP12_PUBLICATION_FIGURE_PACKAGE.md`
+5. `practical_temporal_information/notes/WP11_R3_RENDER_AUDIT_AND_R4_PRESENTATION_FREEZE.md`
+6. `practical_temporal_information/notes/WP10_R2_BUILD_AND_SECOND_HOSTILE_AUDIT.md`
 7. `manuscript/practical_temporal_information/README.md`
-8. `manuscript/practical_temporal_information/MANUSCRIPT_ARCHITECTURE.md`
 
 ## Current Paper-4 freeze
 
@@ -27,16 +26,19 @@ Working title:
 
 > **Operational temporal-information benchmarks for photodetection**
 
-R4 final verification:
+R5 verification:
 
-- run `32684526293` PASS;
-- job `97307019940` PASS;
-- artifact `9505218922`;
-- archive digest `sha256:9905a2cbd4366d57731fc8f4a99c6f72a513629a8727257a43131e02efb96cce`;
-- exact PDF 8 pages / 266068 bytes;
-- PDF SHA-256 `794cb1c52326dc1965e14ea8ccd15530b41b2e523ca501e88f081cf69d741a01`.
+- run `32915363157` PASS;
+- job `98017843874` PASS;
+- source commit `55ec3af3bd9d57830c03f65655180936eb85eda9`;
+- artifact `9588018384`;
+- archive digest `sha256:06e1de8d8f5e44f9d62e6ebd06362d2cfbc93132014718398e57b877c784c281`;
+- PDF 10 pages / 429432 bytes;
+- PDF SHA-256 `fd451a59ca5b70731b61f7ce237bd06a1d5f7105305e064cfe21bbb588e6bf48`.
 
-All pages rendered/inspected. R4 differs from R3 only by hidden hyperlink borders. Disposable PR #35 was closed unmerged. Zero open PRs.
+The exact artifact was rendered at 200 dpi and all ten pages inspected. R5's checker proves that deleting its four exact frozen figure/caption blocks restores R4 byte-for-byte.
+
+WP12 figures are separately frozen: run `32914889053`, artifact `9587797682`; R5 CI hash-checks all four canonical vector PDFs before integration.
 
 ## Frozen Paper-4 theorem
 
@@ -60,45 +62,44 @@ so
 
 **`lim_(p->0+)4p/R_lin^2=4kappa^2 q=Delta P_s(0)`.**
 
-The completed boundary POVM attains `Tr F=Delta P_s(0)`.
+The boundary is attainable with `Tr F=Delta P_s(0)`.
 
-Do not loosen the hypotheses or expand the theorem without a concrete blocking defect.
+Do not loosen assumptions or extend this theorem without a concrete blocking defect.
 
 ## Novelty boundary
 
-Finite FI from quadratically vanishing boundary probabilities/eigenvalues is prior art (Gefen--Rotem--Retzker 2019; Safranek 2017). The candidate distinct content is the finite-seed/finite-radius continuation and the independent measurement/falsification architecture.
-
-Priority remains **unverified, not certified**.
+Finite FI from quadratically vanishing boundary probabilities/eigenvalues is prior art. Paper 4's candidate distinct content is the controlled finite-seed/finite-radius continuation plus the independent measurement/falsification architecture. Priority remains **unverified, not certified**.
 
 ## Provenance
 
-- Type-II memory theorem: frozen random-time companion; operational benchmark only here.
-- Exact prescribed-curvature coupling theorem: frozen PRA companion; equal-frequency resonant benchmark only here.
-- NEP/FI, Poisson/jitter, colored-noise example, weak phase modulation, and beam-splitter mechanics: standard/illustrative material.
+- Type-II memory theorem / matched-recovery timestamp benchmark: frozen random-time companion.
+- Prescribed-curvature unitary-coupling theorem: frozen PRA companion.
+- NEP/FI, Poisson/jitter, colored-noise detector example, phase modulation, and beam-splitter mechanics: standard/illustrative.
 
-Never duplicate companion proofs or move their novelty claims into Paper 4.
+Never duplicate companion proofs or inherit their novelty claims.
 
 ## Falsification hierarchy
 
-1. Level I — detector/state/model reduction failure.
-2. Level II — resource-law challenge only after independently verifying theorem assumptions and resource quantities.
-3. Level III — failure of an ideal saturating model/equality.
+1. Level I — detector/state/implementation model failure.
+2. Level II — resource-law challenge only after independent verification of theorem assumptions and resource quantities.
+3. Level III — failure of an ideal saturating benchmark/equality.
+
+## Deterministic Paper-4 manuscript chain
+
+`draft -> R1 mechanical -> R2 theorem -> R3 hostile-review -> R4 presentation -> R5 figures`
+
+R5 is frozen.
 
 ## Immediate work order
 
-**WP12: publication figures.**
+Do not start new theorem or figure sidequests.
 
-Create at most four deterministic scientific figures with committed generation scripts and data checks:
-
-1. equal conventional detector specs / unequal information spectra;
-2. common Type-II saturation / different timestamp information;
-3. stationary support-seed survival→synthesis crossover — principal figure;
-4. equal-frequency resonant implementation + calibration/falsification map.
-
-Do not change R4 scientific text while designing figures. Integrate figures through a new isolated manuscript revision only after the figure package itself passes numerical and visual QA.
-
-Then rebuild/render/hostile-review and proceed to publication compression / fresh APS policy checks.
+1. hostile-read R5 for redundant/tutorial prose;
+2. if compression materially improves the paper, implement it as an isolated text-only R6 with an explicit allowed-edit map;
+3. preserve all frozen figure blocks and theorem/equation/proof content unless a genuine defect is found;
+4. compile, render, and adversarially audit any R6;
+5. then fresh-check current APS/PRA policy and perform submission packaging.
 
 ## Documentation rule
 
-Every material result or scope change must update its WP note, practical handoff, root `README.md`, this file, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
+Every material change must update its WP note, practical handoff, root `README.md`, this file, `ROADMAP.md`, and `docs/CURRENT_RESEARCH_STATE.md`.
