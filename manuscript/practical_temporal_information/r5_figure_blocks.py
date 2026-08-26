@@ -20,7 +20,7 @@ FIGURE_BLOCKS = [
 \end{figure*}""",
     ),
     (
-        r"\subsection{Ordinary phase modulation as a bilateral boundary example}",
+        r"\section{Standard Hamiltonian implementation benchmark}",
         r"""\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/generated/fig3_support_survival_synthesis_crossover.pdf}
