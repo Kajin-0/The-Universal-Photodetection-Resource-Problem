@@ -24,6 +24,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
       - name: Static practical-manuscript baseline integrity gate
         working-directory: manuscript/practical_temporal_information
         run: python check_practical_static.py
@@ -56,36 +60,66 @@ jobs:
         working-directory: manuscript/practical_temporal_information
         run: python check_practical_r4.py
 
-      - name: Compile practical R4 manuscript
+      - name: Install pinned frozen-figure dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy==2.3.2 matplotlib==3.10.5
+
+      - name: Regenerate frozen WP12 vector figures
+        working-directory: manuscript/practical_temporal_information/figures
+        run: python generate_all.py
+
+      - name: Verify exact frozen WP12 PDF identities
+        working-directory: manuscript/practical_temporal_information/figures/generated
+        run: |
+          printf '%s  %s\n' \
+            '9b1f3b05552a91e6a57f08034d9275f450496138738f48eb654c6952e401b48e' 'fig1_same_specs_different_information.pdf' \
+            'ffdb3a32ae3a571366b1eaf915ec8842eecc9bd48725219848f8fa233a64713e' 'fig2_same_saturation_different_timestamps.pdf' \
+            'a7440d615fce70e8890af9d493fecf37b610938b1ec05ef53493f7f367195394' 'fig3_support_survival_synthesis_crossover.pdf' \
+            '7eafd153221f3617cd6fcc38c71ef92b6d2df21087490e6b3cd4c159615241f0' 'fig4_resonant_implementation_falsification.pdf' \
+            > expected_wp12_pdf_sha256.txt
+          sha256sum -c expected_wp12_pdf_sha256.txt
+
+      - name: Generate figure-integrated R5 source
+        working-directory: manuscript/practical_temporal_information
+        run: python apply_r5_figure_integration.py
+
+      - name: Verify R5 adds only four frozen figures and captions
+        working-directory: manuscript/practical_temporal_information
+        run: python check_practical_r5.py
+
+      - name: Compile practical R5 manuscript
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: operational_temporal_information_r4.tex
+          root_file: operational_temporal_information_r5.tex
           working_directory: manuscript/practical_temporal_information
           latexmk_use_xelatex: false
 
       - name: Fail on unresolved references or serious TeX layout warnings
         working-directory: manuscript/practical_temporal_information
         run: |
-          LOG=operational_temporal_information_r4.log
+          LOG=operational_temporal_information_r5.log
           test -f "$LOG"
           ! grep -E "LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|There were undefined citations|Overfull \\hbox|Overfull \\vbox" "$LOG"
 
-      - name: Upload practical R4 manuscript build
+      - name: Upload practical R5 manuscript build
         uses: actions/upload-artifact@v4
         with:
-          name: practical-temporal-information-r4
+          name: practical-temporal-information-r5
           path: |
-            manuscript/practical_temporal_information/operational_temporal_information_r4.pdf
+            manuscript/practical_temporal_information/operational_temporal_information_r5.pdf
+            manuscript/practical_temporal_information/operational_temporal_information_r5.tex
             manuscript/practical_temporal_information/operational_temporal_information_r4.tex
             manuscript/practical_temporal_information/operational_temporal_information_r3.tex
             manuscript/practical_temporal_information/operational_temporal_information_r2.tex
             manuscript/practical_temporal_information/operational_temporal_information_r1.tex
             manuscript/practical_temporal_information/operational_temporal_information_draft.tex
             manuscript/practical_temporal_information/sections/support_crossover_r2.tex
-            manuscript/practical_temporal_information/apply_r3_hostile_review_repairs.py
-            manuscript/practical_temporal_information/check_practical_r3.py
-            manuscript/practical_temporal_information/apply_r4_presentation_cleanup.py
-            manuscript/practical_temporal_information/check_practical_r4.py
+            manuscript/practical_temporal_information/r5_figure_blocks.py
+            manuscript/practical_temporal_information/apply_r5_figure_integration.py
+            manuscript/practical_temporal_information/check_practical_r5.py
+            manuscript/practical_temporal_information/figures/generated/*.pdf
+            manuscript/practical_temporal_information/figures/generated/locked_values.json
             manuscript/practical_temporal_information/references.bib
             manuscript/practical_temporal_information/README.md
             manuscript/practical_temporal_information/MANUSCRIPT_ARCHITECTURE.md
